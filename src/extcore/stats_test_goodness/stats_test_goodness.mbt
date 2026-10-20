@@ -107,23 +107,15 @@ pub fn stats_test_goodness_series_std(s : StatstestgoodnessSeries) -> Double { @
 pub fn stats_test_goodness_series_median(s : StatstestgoodnessSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_test_goodness_series_scale(s : StatstestgoodnessSeries, f : Double) -> StatstestgoodnessSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_test_goodness_series_add(a : StatstestgoodnessSeries, b : StatstestgoodnessSeries) -> StatstestgoodnessSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_test_goodness_series_sub(a : StatstestgoodnessSeries, b : StatstestgoodnessSeries) -> StatstestgoodnessSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_test_goodness_series_normalize(s : StatstestgoodnessSeries) -> StatstestgoodnessSeries {
@@ -254,22 +246,16 @@ pub fn stats_test_goodness_vector_zero(dim : Int) -> StatstestgoodnessVector {
 
 pub fn stats_test_goodness_vector_add(a : StatstestgoodnessVector, b : StatstestgoodnessVector) -> StatstestgoodnessVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_test_goodness_vector_sub(a : StatstestgoodnessVector, b : StatstestgoodnessVector) -> StatstestgoodnessVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_test_goodness_vector_scale(v : StatstestgoodnessVector, s : Double) -> StatstestgoodnessVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_test_goodness_vector_dot(a : StatstestgoodnessVector, b : StatstestgoodnessVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_test_goodness_frame_get(s : StatstestgoodnessFrame, i : Int) -> Dou
 }
 
 pub fn stats_test_goodness_frame_set(s : StatstestgoodnessFrame, i : Int, v : Double) -> StatstestgoodnessFrame {
-  let result = stats_test_goodness_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_frame_sum(s : StatstestgoodnessFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_test_goodness_table_get(s : StatstestgoodnessTable, i : Int) -> Dou
 }
 
 pub fn stats_test_goodness_table_set(s : StatstestgoodnessTable, i : Int, v : Double) -> StatstestgoodnessTable {
-  let result = stats_test_goodness_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_table_sum(s : StatstestgoodnessTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_test_goodness_graphn_get(s : StatstestgoodnessGraphN, i : Int) -> D
 }
 
 pub fn stats_test_goodness_graphn_set(s : StatstestgoodnessGraphN, i : Int, v : Double) -> StatstestgoodnessGraphN {
-  let result = stats_test_goodness_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_graphn_sum(s : StatstestgoodnessGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_test_goodness_node_get(s : StatstestgoodnessNode, i : Int) -> Doubl
 }
 
 pub fn stats_test_goodness_node_set(s : StatstestgoodnessNode, i : Int, v : Double) -> StatstestgoodnessNode {
-  let result = stats_test_goodness_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_node_sum(s : StatstestgoodnessNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_test_goodness_edge_get(s : StatstestgoodnessEdge, i : Int) -> Doubl
 }
 
 pub fn stats_test_goodness_edge_set(s : StatstestgoodnessEdge, i : Int, v : Double) -> StatstestgoodnessEdge {
-  let result = stats_test_goodness_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_edge_sum(s : StatstestgoodnessEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_test_goodness_path_get(s : StatstestgoodnessPath, i : Int) -> Doubl
 }
 
 pub fn stats_test_goodness_path_set(s : StatstestgoodnessPath, i : Int, v : Double) -> StatstestgoodnessPath {
-  let result = stats_test_goodness_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_path_sum(s : StatstestgoodnessPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_test_goodness_cluster_get(s : StatstestgoodnessCluster, i : Int) ->
 }
 
 pub fn stats_test_goodness_cluster_set(s : StatstestgoodnessCluster, i : Int, v : Double) -> StatstestgoodnessCluster {
-  let result = stats_test_goodness_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_cluster_sum(s : StatstestgoodnessCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_test_goodness_model_get(s : StatstestgoodnessModel, i : Int) -> Dou
 }
 
 pub fn stats_test_goodness_model_set(s : StatstestgoodnessModel, i : Int, v : Double) -> StatstestgoodnessModel {
-  let result = stats_test_goodness_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_model_sum(s : StatstestgoodnessModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_test_goodness_layer_get(s : StatstestgoodnessLayer, i : Int) -> Dou
 }
 
 pub fn stats_test_goodness_layer_set(s : StatstestgoodnessLayer, i : Int, v : Double) -> StatstestgoodnessLayer {
-  let result = stats_test_goodness_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_layer_sum(s : StatstestgoodnessLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_test_goodness_buffer_get(s : StatstestgoodnessBuffer, i : Int) -> D
 }
 
 pub fn stats_test_goodness_buffer_set(s : StatstestgoodnessBuffer, i : Int, v : Double) -> StatstestgoodnessBuffer {
-  let result = stats_test_goodness_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_buffer_sum(s : StatstestgoodnessBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_test_goodness_cursor_get(s : StatstestgoodnessCursor, i : Int) -> D
 }
 
 pub fn stats_test_goodness_cursor_set(s : StatstestgoodnessCursor, i : Int, v : Double) -> StatstestgoodnessCursor {
-  let result = stats_test_goodness_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_cursor_sum(s : StatstestgoodnessCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_test_goodness_view_get(s : StatstestgoodnessView, i : Int) -> Doubl
 }
 
 pub fn stats_test_goodness_view_set(s : StatstestgoodnessView, i : Int, v : Double) -> StatstestgoodnessView {
-  let result = stats_test_goodness_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_view_sum(s : StatstestgoodnessView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_test_goodness_range_get(s : StatstestgoodnessRange, i : Int) -> Dou
 }
 
 pub fn stats_test_goodness_range_set(s : StatstestgoodnessRange, i : Int, v : Double) -> StatstestgoodnessRange {
-  let result = stats_test_goodness_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_range_sum(s : StatstestgoodnessRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_test_goodness_slice_get(s : StatstestgoodnessSlice, i : Int) -> Dou
 }
 
 pub fn stats_test_goodness_slice_set(s : StatstestgoodnessSlice, i : Int, v : Double) -> StatstestgoodnessSlice {
-  let result = stats_test_goodness_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_goodness_slice_sum(s : StatstestgoodnessSlice) -> Double { @_common.sum(s.data) }

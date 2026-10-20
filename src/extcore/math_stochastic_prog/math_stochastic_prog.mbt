@@ -107,23 +107,15 @@ pub fn math_stochastic_prog_series_std(s : MathstochasticprogSeries) -> Double {
 pub fn math_stochastic_prog_series_median(s : MathstochasticprogSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_stochastic_prog_series_scale(s : MathstochasticprogSeries, f : Double) -> MathstochasticprogSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_stochastic_prog_series_add(a : MathstochasticprogSeries, b : MathstochasticprogSeries) -> MathstochasticprogSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_stochastic_prog_series_sub(a : MathstochasticprogSeries, b : MathstochasticprogSeries) -> MathstochasticprogSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_stochastic_prog_series_normalize(s : MathstochasticprogSeries) -> MathstochasticprogSeries {
@@ -254,22 +246,16 @@ pub fn math_stochastic_prog_vector_zero(dim : Int) -> MathstochasticprogVector {
 
 pub fn math_stochastic_prog_vector_add(a : MathstochasticprogVector, b : MathstochasticprogVector) -> MathstochasticprogVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_stochastic_prog_vector_sub(a : MathstochasticprogVector, b : MathstochasticprogVector) -> MathstochasticprogVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_stochastic_prog_vector_scale(v : MathstochasticprogVector, s : Double) -> MathstochasticprogVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_stochastic_prog_vector_dot(a : MathstochasticprogVector, b : MathstochasticprogVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_stochastic_prog_frame_get(s : MathstochasticprogFrame, i : Int) -> D
 }
 
 pub fn math_stochastic_prog_frame_set(s : MathstochasticprogFrame, i : Int, v : Double) -> MathstochasticprogFrame {
-  let result = math_stochastic_prog_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_frame_sum(s : MathstochasticprogFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_stochastic_prog_table_get(s : MathstochasticprogTable, i : Int) -> D
 }
 
 pub fn math_stochastic_prog_table_set(s : MathstochasticprogTable, i : Int, v : Double) -> MathstochasticprogTable {
-  let result = math_stochastic_prog_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_table_sum(s : MathstochasticprogTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_stochastic_prog_graphn_get(s : MathstochasticprogGraphN, i : Int) ->
 }
 
 pub fn math_stochastic_prog_graphn_set(s : MathstochasticprogGraphN, i : Int, v : Double) -> MathstochasticprogGraphN {
-  let result = math_stochastic_prog_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_graphn_sum(s : MathstochasticprogGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_stochastic_prog_node_get(s : MathstochasticprogNode, i : Int) -> Dou
 }
 
 pub fn math_stochastic_prog_node_set(s : MathstochasticprogNode, i : Int, v : Double) -> MathstochasticprogNode {
-  let result = math_stochastic_prog_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_node_sum(s : MathstochasticprogNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_stochastic_prog_edge_get(s : MathstochasticprogEdge, i : Int) -> Dou
 }
 
 pub fn math_stochastic_prog_edge_set(s : MathstochasticprogEdge, i : Int, v : Double) -> MathstochasticprogEdge {
-  let result = math_stochastic_prog_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_edge_sum(s : MathstochasticprogEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_stochastic_prog_path_get(s : MathstochasticprogPath, i : Int) -> Dou
 }
 
 pub fn math_stochastic_prog_path_set(s : MathstochasticprogPath, i : Int, v : Double) -> MathstochasticprogPath {
-  let result = math_stochastic_prog_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_path_sum(s : MathstochasticprogPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_stochastic_prog_cluster_get(s : MathstochasticprogCluster, i : Int) 
 }
 
 pub fn math_stochastic_prog_cluster_set(s : MathstochasticprogCluster, i : Int, v : Double) -> MathstochasticprogCluster {
-  let result = math_stochastic_prog_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_cluster_sum(s : MathstochasticprogCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_stochastic_prog_model_get(s : MathstochasticprogModel, i : Int) -> D
 }
 
 pub fn math_stochastic_prog_model_set(s : MathstochasticprogModel, i : Int, v : Double) -> MathstochasticprogModel {
-  let result = math_stochastic_prog_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_model_sum(s : MathstochasticprogModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_stochastic_prog_layer_get(s : MathstochasticprogLayer, i : Int) -> D
 }
 
 pub fn math_stochastic_prog_layer_set(s : MathstochasticprogLayer, i : Int, v : Double) -> MathstochasticprogLayer {
-  let result = math_stochastic_prog_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_layer_sum(s : MathstochasticprogLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_stochastic_prog_buffer_get(s : MathstochasticprogBuffer, i : Int) ->
 }
 
 pub fn math_stochastic_prog_buffer_set(s : MathstochasticprogBuffer, i : Int, v : Double) -> MathstochasticprogBuffer {
-  let result = math_stochastic_prog_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_buffer_sum(s : MathstochasticprogBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_stochastic_prog_cursor_get(s : MathstochasticprogCursor, i : Int) ->
 }
 
 pub fn math_stochastic_prog_cursor_set(s : MathstochasticprogCursor, i : Int, v : Double) -> MathstochasticprogCursor {
-  let result = math_stochastic_prog_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_cursor_sum(s : MathstochasticprogCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_stochastic_prog_view_get(s : MathstochasticprogView, i : Int) -> Dou
 }
 
 pub fn math_stochastic_prog_view_set(s : MathstochasticprogView, i : Int, v : Double) -> MathstochasticprogView {
-  let result = math_stochastic_prog_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_view_sum(s : MathstochasticprogView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_stochastic_prog_range_get(s : MathstochasticprogRange, i : Int) -> D
 }
 
 pub fn math_stochastic_prog_range_set(s : MathstochasticprogRange, i : Int, v : Double) -> MathstochasticprogRange {
-  let result = math_stochastic_prog_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_range_sum(s : MathstochasticprogRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_stochastic_prog_slice_get(s : MathstochasticprogSlice, i : Int) -> D
 }
 
 pub fn math_stochastic_prog_slice_set(s : MathstochasticprogSlice, i : Int, v : Double) -> MathstochasticprogSlice {
-  let result = math_stochastic_prog_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_stochastic_prog_slice_sum(s : MathstochasticprogSlice) -> Double { @_common.sum(s.data) }

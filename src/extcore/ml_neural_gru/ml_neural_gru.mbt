@@ -107,23 +107,15 @@ pub fn ml_neural_gru_series_std(s : MlneuralgruSeries) -> Double { @_common.std(
 pub fn ml_neural_gru_series_median(s : MlneuralgruSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_neural_gru_series_scale(s : MlneuralgruSeries, f : Double) -> MlneuralgruSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_neural_gru_series_add(a : MlneuralgruSeries, b : MlneuralgruSeries) -> MlneuralgruSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_neural_gru_series_sub(a : MlneuralgruSeries, b : MlneuralgruSeries) -> MlneuralgruSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_neural_gru_series_normalize(s : MlneuralgruSeries) -> MlneuralgruSeries {
@@ -254,22 +246,16 @@ pub fn ml_neural_gru_vector_zero(dim : Int) -> MlneuralgruVector {
 
 pub fn ml_neural_gru_vector_add(a : MlneuralgruVector, b : MlneuralgruVector) -> MlneuralgruVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_neural_gru_vector_sub(a : MlneuralgruVector, b : MlneuralgruVector) -> MlneuralgruVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_neural_gru_vector_scale(v : MlneuralgruVector, s : Double) -> MlneuralgruVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_neural_gru_vector_dot(a : MlneuralgruVector, b : MlneuralgruVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_neural_gru_frame_get(s : MlneuralgruFrame, i : Int) -> Double {
 }
 
 pub fn ml_neural_gru_frame_set(s : MlneuralgruFrame, i : Int, v : Double) -> MlneuralgruFrame {
-  let result = ml_neural_gru_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gru_frame_sum(s : MlneuralgruFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_neural_gru_table_get(s : MlneuralgruTable, i : Int) -> Double {
 }
 
 pub fn ml_neural_gru_table_set(s : MlneuralgruTable, i : Int, v : Double) -> MlneuralgruTable {
-  let result = ml_neural_gru_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gru_table_sum(s : MlneuralgruTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_neural_gru_graphn_get(s : MlneuralgruGraphN, i : Int) -> Double {
 }
 
 pub fn ml_neural_gru_graphn_set(s : MlneuralgruGraphN, i : Int, v : Double) -> MlneuralgruGraphN {
-  let result = ml_neural_gru_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gru_graphn_sum(s : MlneuralgruGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_neural_gru_node_get(s : MlneuralgruNode, i : Int) -> Double {
 }
 
 pub fn ml_neural_gru_node_set(s : MlneuralgruNode, i : Int, v : Double) -> MlneuralgruNode {
-  let result = ml_neural_gru_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gru_node_sum(s : MlneuralgruNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_neural_gru_edge_get(s : MlneuralgruEdge, i : Int) -> Double {
 }
 
 pub fn ml_neural_gru_edge_set(s : MlneuralgruEdge, i : Int, v : Double) -> MlneuralgruEdge {
-  let result = ml_neural_gru_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gru_edge_sum(s : MlneuralgruEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_neural_gru_path_get(s : MlneuralgruPath, i : Int) -> Double {
 }
 
 pub fn ml_neural_gru_path_set(s : MlneuralgruPath, i : Int, v : Double) -> MlneuralgruPath {
-  let result = ml_neural_gru_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gru_path_sum(s : MlneuralgruPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_neural_gru_cluster_get(s : MlneuralgruCluster, i : Int) -> Double {
 }
 
 pub fn ml_neural_gru_cluster_set(s : MlneuralgruCluster, i : Int, v : Double) -> MlneuralgruCluster {
-  let result = ml_neural_gru_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gru_cluster_sum(s : MlneuralgruCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_neural_gru_model_get(s : MlneuralgruModel, i : Int) -> Double {
 }
 
 pub fn ml_neural_gru_model_set(s : MlneuralgruModel, i : Int, v : Double) -> MlneuralgruModel {
-  let result = ml_neural_gru_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gru_model_sum(s : MlneuralgruModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_neural_gru_layer_get(s : MlneuralgruLayer, i : Int) -> Double {
 }
 
 pub fn ml_neural_gru_layer_set(s : MlneuralgruLayer, i : Int, v : Double) -> MlneuralgruLayer {
-  let result = ml_neural_gru_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gru_layer_sum(s : MlneuralgruLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_neural_gru_buffer_get(s : MlneuralgruBuffer, i : Int) -> Double {
 }
 
 pub fn ml_neural_gru_buffer_set(s : MlneuralgruBuffer, i : Int, v : Double) -> MlneuralgruBuffer {
-  let result = ml_neural_gru_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gru_buffer_sum(s : MlneuralgruBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_neural_gru_cursor_get(s : MlneuralgruCursor, i : Int) -> Double {
 }
 
 pub fn ml_neural_gru_cursor_set(s : MlneuralgruCursor, i : Int, v : Double) -> MlneuralgruCursor {
-  let result = ml_neural_gru_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gru_cursor_sum(s : MlneuralgruCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_neural_gru_view_get(s : MlneuralgruView, i : Int) -> Double {
 }
 
 pub fn ml_neural_gru_view_set(s : MlneuralgruView, i : Int, v : Double) -> MlneuralgruView {
-  let result = ml_neural_gru_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gru_view_sum(s : MlneuralgruView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_neural_gru_range_get(s : MlneuralgruRange, i : Int) -> Double {
 }
 
 pub fn ml_neural_gru_range_set(s : MlneuralgruRange, i : Int, v : Double) -> MlneuralgruRange {
-  let result = ml_neural_gru_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gru_range_sum(s : MlneuralgruRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_neural_gru_slice_get(s : MlneuralgruSlice, i : Int) -> Double {
 }
 
 pub fn ml_neural_gru_slice_set(s : MlneuralgruSlice, i : Int, v : Double) -> MlneuralgruSlice {
-  let result = ml_neural_gru_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gru_slice_sum(s : MlneuralgruSlice) -> Double { @_common.sum(s.data) }

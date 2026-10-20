@@ -107,23 +107,15 @@ pub fn math_quaternion_series_std(s : MathquaternionSeries) -> Double { @_common
 pub fn math_quaternion_series_median(s : MathquaternionSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_quaternion_series_scale(s : MathquaternionSeries, f : Double) -> MathquaternionSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_quaternion_series_add(a : MathquaternionSeries, b : MathquaternionSeries) -> MathquaternionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_quaternion_series_sub(a : MathquaternionSeries, b : MathquaternionSeries) -> MathquaternionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_quaternion_series_normalize(s : MathquaternionSeries) -> MathquaternionSeries {
@@ -254,22 +246,16 @@ pub fn math_quaternion_vector_zero(dim : Int) -> MathquaternionVector {
 
 pub fn math_quaternion_vector_add(a : MathquaternionVector, b : MathquaternionVector) -> MathquaternionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_quaternion_vector_sub(a : MathquaternionVector, b : MathquaternionVector) -> MathquaternionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_quaternion_vector_scale(v : MathquaternionVector, s : Double) -> MathquaternionVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_quaternion_vector_dot(a : MathquaternionVector, b : MathquaternionVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_quaternion_frame_get(s : MathquaternionFrame, i : Int) -> Double {
 }
 
 pub fn math_quaternion_frame_set(s : MathquaternionFrame, i : Int, v : Double) -> MathquaternionFrame {
-  let result = math_quaternion_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quaternion_frame_sum(s : MathquaternionFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_quaternion_table_get(s : MathquaternionTable, i : Int) -> Double {
 }
 
 pub fn math_quaternion_table_set(s : MathquaternionTable, i : Int, v : Double) -> MathquaternionTable {
-  let result = math_quaternion_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quaternion_table_sum(s : MathquaternionTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_quaternion_graphn_get(s : MathquaternionGraphN, i : Int) -> Double {
 }
 
 pub fn math_quaternion_graphn_set(s : MathquaternionGraphN, i : Int, v : Double) -> MathquaternionGraphN {
-  let result = math_quaternion_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quaternion_graphn_sum(s : MathquaternionGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_quaternion_node_get(s : MathquaternionNode, i : Int) -> Double {
 }
 
 pub fn math_quaternion_node_set(s : MathquaternionNode, i : Int, v : Double) -> MathquaternionNode {
-  let result = math_quaternion_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quaternion_node_sum(s : MathquaternionNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_quaternion_edge_get(s : MathquaternionEdge, i : Int) -> Double {
 }
 
 pub fn math_quaternion_edge_set(s : MathquaternionEdge, i : Int, v : Double) -> MathquaternionEdge {
-  let result = math_quaternion_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quaternion_edge_sum(s : MathquaternionEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_quaternion_path_get(s : MathquaternionPath, i : Int) -> Double {
 }
 
 pub fn math_quaternion_path_set(s : MathquaternionPath, i : Int, v : Double) -> MathquaternionPath {
-  let result = math_quaternion_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quaternion_path_sum(s : MathquaternionPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_quaternion_cluster_get(s : MathquaternionCluster, i : Int) -> Double
 }
 
 pub fn math_quaternion_cluster_set(s : MathquaternionCluster, i : Int, v : Double) -> MathquaternionCluster {
-  let result = math_quaternion_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quaternion_cluster_sum(s : MathquaternionCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_quaternion_model_get(s : MathquaternionModel, i : Int) -> Double {
 }
 
 pub fn math_quaternion_model_set(s : MathquaternionModel, i : Int, v : Double) -> MathquaternionModel {
-  let result = math_quaternion_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quaternion_model_sum(s : MathquaternionModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_quaternion_layer_get(s : MathquaternionLayer, i : Int) -> Double {
 }
 
 pub fn math_quaternion_layer_set(s : MathquaternionLayer, i : Int, v : Double) -> MathquaternionLayer {
-  let result = math_quaternion_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quaternion_layer_sum(s : MathquaternionLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_quaternion_buffer_get(s : MathquaternionBuffer, i : Int) -> Double {
 }
 
 pub fn math_quaternion_buffer_set(s : MathquaternionBuffer, i : Int, v : Double) -> MathquaternionBuffer {
-  let result = math_quaternion_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quaternion_buffer_sum(s : MathquaternionBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_quaternion_cursor_get(s : MathquaternionCursor, i : Int) -> Double {
 }
 
 pub fn math_quaternion_cursor_set(s : MathquaternionCursor, i : Int, v : Double) -> MathquaternionCursor {
-  let result = math_quaternion_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quaternion_cursor_sum(s : MathquaternionCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_quaternion_view_get(s : MathquaternionView, i : Int) -> Double {
 }
 
 pub fn math_quaternion_view_set(s : MathquaternionView, i : Int, v : Double) -> MathquaternionView {
-  let result = math_quaternion_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quaternion_view_sum(s : MathquaternionView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_quaternion_range_get(s : MathquaternionRange, i : Int) -> Double {
 }
 
 pub fn math_quaternion_range_set(s : MathquaternionRange, i : Int, v : Double) -> MathquaternionRange {
-  let result = math_quaternion_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quaternion_range_sum(s : MathquaternionRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_quaternion_slice_get(s : MathquaternionSlice, i : Int) -> Double {
 }
 
 pub fn math_quaternion_slice_set(s : MathquaternionSlice, i : Int, v : Double) -> MathquaternionSlice {
-  let result = math_quaternion_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quaternion_slice_sum(s : MathquaternionSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn bio_seq_align_semi_series_std(s : BioseqalignsemiSeries) -> Double { @_co
 pub fn bio_seq_align_semi_series_median(s : BioseqalignsemiSeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_seq_align_semi_series_scale(s : BioseqalignsemiSeries, f : Double) -> BioseqalignsemiSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_seq_align_semi_series_add(a : BioseqalignsemiSeries, b : BioseqalignsemiSeries) -> BioseqalignsemiSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_align_semi_series_sub(a : BioseqalignsemiSeries, b : BioseqalignsemiSeries) -> BioseqalignsemiSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_align_semi_series_normalize(s : BioseqalignsemiSeries) -> BioseqalignsemiSeries {
@@ -254,22 +246,16 @@ pub fn bio_seq_align_semi_vector_zero(dim : Int) -> BioseqalignsemiVector {
 
 pub fn bio_seq_align_semi_vector_add(a : BioseqalignsemiVector, b : BioseqalignsemiVector) -> BioseqalignsemiVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_align_semi_vector_sub(a : BioseqalignsemiVector, b : BioseqalignsemiVector) -> BioseqalignsemiVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_align_semi_vector_scale(v : BioseqalignsemiVector, s : Double) -> BioseqalignsemiVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_seq_align_semi_vector_dot(a : BioseqalignsemiVector, b : BioseqalignsemiVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_seq_align_semi_frame_get(s : BioseqalignsemiFrame, i : Int) -> Double
 }
 
 pub fn bio_seq_align_semi_frame_set(s : BioseqalignsemiFrame, i : Int, v : Double) -> BioseqalignsemiFrame {
-  let result = bio_seq_align_semi_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_semi_frame_sum(s : BioseqalignsemiFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_seq_align_semi_table_get(s : BioseqalignsemiTable, i : Int) -> Double
 }
 
 pub fn bio_seq_align_semi_table_set(s : BioseqalignsemiTable, i : Int, v : Double) -> BioseqalignsemiTable {
-  let result = bio_seq_align_semi_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_semi_table_sum(s : BioseqalignsemiTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_seq_align_semi_graphn_get(s : BioseqalignsemiGraphN, i : Int) -> Doub
 }
 
 pub fn bio_seq_align_semi_graphn_set(s : BioseqalignsemiGraphN, i : Int, v : Double) -> BioseqalignsemiGraphN {
-  let result = bio_seq_align_semi_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_semi_graphn_sum(s : BioseqalignsemiGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_seq_align_semi_node_get(s : BioseqalignsemiNode, i : Int) -> Double {
 }
 
 pub fn bio_seq_align_semi_node_set(s : BioseqalignsemiNode, i : Int, v : Double) -> BioseqalignsemiNode {
-  let result = bio_seq_align_semi_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_semi_node_sum(s : BioseqalignsemiNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_seq_align_semi_edge_get(s : BioseqalignsemiEdge, i : Int) -> Double {
 }
 
 pub fn bio_seq_align_semi_edge_set(s : BioseqalignsemiEdge, i : Int, v : Double) -> BioseqalignsemiEdge {
-  let result = bio_seq_align_semi_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_semi_edge_sum(s : BioseqalignsemiEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_seq_align_semi_path_get(s : BioseqalignsemiPath, i : Int) -> Double {
 }
 
 pub fn bio_seq_align_semi_path_set(s : BioseqalignsemiPath, i : Int, v : Double) -> BioseqalignsemiPath {
-  let result = bio_seq_align_semi_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_semi_path_sum(s : BioseqalignsemiPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_seq_align_semi_cluster_get(s : BioseqalignsemiCluster, i : Int) -> Do
 }
 
 pub fn bio_seq_align_semi_cluster_set(s : BioseqalignsemiCluster, i : Int, v : Double) -> BioseqalignsemiCluster {
-  let result = bio_seq_align_semi_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_semi_cluster_sum(s : BioseqalignsemiCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_seq_align_semi_model_get(s : BioseqalignsemiModel, i : Int) -> Double
 }
 
 pub fn bio_seq_align_semi_model_set(s : BioseqalignsemiModel, i : Int, v : Double) -> BioseqalignsemiModel {
-  let result = bio_seq_align_semi_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_semi_model_sum(s : BioseqalignsemiModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_seq_align_semi_layer_get(s : BioseqalignsemiLayer, i : Int) -> Double
 }
 
 pub fn bio_seq_align_semi_layer_set(s : BioseqalignsemiLayer, i : Int, v : Double) -> BioseqalignsemiLayer {
-  let result = bio_seq_align_semi_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_semi_layer_sum(s : BioseqalignsemiLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_seq_align_semi_buffer_get(s : BioseqalignsemiBuffer, i : Int) -> Doub
 }
 
 pub fn bio_seq_align_semi_buffer_set(s : BioseqalignsemiBuffer, i : Int, v : Double) -> BioseqalignsemiBuffer {
-  let result = bio_seq_align_semi_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_semi_buffer_sum(s : BioseqalignsemiBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_seq_align_semi_cursor_get(s : BioseqalignsemiCursor, i : Int) -> Doub
 }
 
 pub fn bio_seq_align_semi_cursor_set(s : BioseqalignsemiCursor, i : Int, v : Double) -> BioseqalignsemiCursor {
-  let result = bio_seq_align_semi_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_semi_cursor_sum(s : BioseqalignsemiCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_seq_align_semi_view_get(s : BioseqalignsemiView, i : Int) -> Double {
 }
 
 pub fn bio_seq_align_semi_view_set(s : BioseqalignsemiView, i : Int, v : Double) -> BioseqalignsemiView {
-  let result = bio_seq_align_semi_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_semi_view_sum(s : BioseqalignsemiView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_seq_align_semi_range_get(s : BioseqalignsemiRange, i : Int) -> Double
 }
 
 pub fn bio_seq_align_semi_range_set(s : BioseqalignsemiRange, i : Int, v : Double) -> BioseqalignsemiRange {
-  let result = bio_seq_align_semi_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_semi_range_sum(s : BioseqalignsemiRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_seq_align_semi_slice_get(s : BioseqalignsemiSlice, i : Int) -> Double
 }
 
 pub fn bio_seq_align_semi_slice_set(s : BioseqalignsemiSlice, i : Int, v : Double) -> BioseqalignsemiSlice {
-  let result = bio_seq_align_semi_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_semi_slice_sum(s : BioseqalignsemiSlice) -> Double { @_common.sum(s.data) }

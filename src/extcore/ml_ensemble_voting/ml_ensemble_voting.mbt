@@ -107,23 +107,15 @@ pub fn ml_ensemble_voting_series_std(s : MlensemblevotingSeries) -> Double { @_c
 pub fn ml_ensemble_voting_series_median(s : MlensemblevotingSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_ensemble_voting_series_scale(s : MlensemblevotingSeries, f : Double) -> MlensemblevotingSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_ensemble_voting_series_add(a : MlensemblevotingSeries, b : MlensemblevotingSeries) -> MlensemblevotingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_ensemble_voting_series_sub(a : MlensemblevotingSeries, b : MlensemblevotingSeries) -> MlensemblevotingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_ensemble_voting_series_normalize(s : MlensemblevotingSeries) -> MlensemblevotingSeries {
@@ -254,22 +246,16 @@ pub fn ml_ensemble_voting_vector_zero(dim : Int) -> MlensemblevotingVector {
 
 pub fn ml_ensemble_voting_vector_add(a : MlensemblevotingVector, b : MlensemblevotingVector) -> MlensemblevotingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_ensemble_voting_vector_sub(a : MlensemblevotingVector, b : MlensemblevotingVector) -> MlensemblevotingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_ensemble_voting_vector_scale(v : MlensemblevotingVector, s : Double) -> MlensemblevotingVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_ensemble_voting_vector_dot(a : MlensemblevotingVector, b : MlensemblevotingVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_ensemble_voting_frame_get(s : MlensemblevotingFrame, i : Int) -> Doubl
 }
 
 pub fn ml_ensemble_voting_frame_set(s : MlensemblevotingFrame, i : Int, v : Double) -> MlensemblevotingFrame {
-  let result = ml_ensemble_voting_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_voting_frame_sum(s : MlensemblevotingFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_ensemble_voting_table_get(s : MlensemblevotingTable, i : Int) -> Doubl
 }
 
 pub fn ml_ensemble_voting_table_set(s : MlensemblevotingTable, i : Int, v : Double) -> MlensemblevotingTable {
-  let result = ml_ensemble_voting_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_voting_table_sum(s : MlensemblevotingTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_ensemble_voting_graphn_get(s : MlensemblevotingGraphN, i : Int) -> Dou
 }
 
 pub fn ml_ensemble_voting_graphn_set(s : MlensemblevotingGraphN, i : Int, v : Double) -> MlensemblevotingGraphN {
-  let result = ml_ensemble_voting_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_voting_graphn_sum(s : MlensemblevotingGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_ensemble_voting_node_get(s : MlensemblevotingNode, i : Int) -> Double 
 }
 
 pub fn ml_ensemble_voting_node_set(s : MlensemblevotingNode, i : Int, v : Double) -> MlensemblevotingNode {
-  let result = ml_ensemble_voting_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_voting_node_sum(s : MlensemblevotingNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_ensemble_voting_edge_get(s : MlensemblevotingEdge, i : Int) -> Double 
 }
 
 pub fn ml_ensemble_voting_edge_set(s : MlensemblevotingEdge, i : Int, v : Double) -> MlensemblevotingEdge {
-  let result = ml_ensemble_voting_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_voting_edge_sum(s : MlensemblevotingEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_ensemble_voting_path_get(s : MlensemblevotingPath, i : Int) -> Double 
 }
 
 pub fn ml_ensemble_voting_path_set(s : MlensemblevotingPath, i : Int, v : Double) -> MlensemblevotingPath {
-  let result = ml_ensemble_voting_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_voting_path_sum(s : MlensemblevotingPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_ensemble_voting_cluster_get(s : MlensemblevotingCluster, i : Int) -> D
 }
 
 pub fn ml_ensemble_voting_cluster_set(s : MlensemblevotingCluster, i : Int, v : Double) -> MlensemblevotingCluster {
-  let result = ml_ensemble_voting_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_voting_cluster_sum(s : MlensemblevotingCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_ensemble_voting_model_get(s : MlensemblevotingModel, i : Int) -> Doubl
 }
 
 pub fn ml_ensemble_voting_model_set(s : MlensemblevotingModel, i : Int, v : Double) -> MlensemblevotingModel {
-  let result = ml_ensemble_voting_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_voting_model_sum(s : MlensemblevotingModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_ensemble_voting_layer_get(s : MlensemblevotingLayer, i : Int) -> Doubl
 }
 
 pub fn ml_ensemble_voting_layer_set(s : MlensemblevotingLayer, i : Int, v : Double) -> MlensemblevotingLayer {
-  let result = ml_ensemble_voting_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_voting_layer_sum(s : MlensemblevotingLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_ensemble_voting_buffer_get(s : MlensemblevotingBuffer, i : Int) -> Dou
 }
 
 pub fn ml_ensemble_voting_buffer_set(s : MlensemblevotingBuffer, i : Int, v : Double) -> MlensemblevotingBuffer {
-  let result = ml_ensemble_voting_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_voting_buffer_sum(s : MlensemblevotingBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_ensemble_voting_cursor_get(s : MlensemblevotingCursor, i : Int) -> Dou
 }
 
 pub fn ml_ensemble_voting_cursor_set(s : MlensemblevotingCursor, i : Int, v : Double) -> MlensemblevotingCursor {
-  let result = ml_ensemble_voting_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_voting_cursor_sum(s : MlensemblevotingCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_ensemble_voting_view_get(s : MlensemblevotingView, i : Int) -> Double 
 }
 
 pub fn ml_ensemble_voting_view_set(s : MlensemblevotingView, i : Int, v : Double) -> MlensemblevotingView {
-  let result = ml_ensemble_voting_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_voting_view_sum(s : MlensemblevotingView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_ensemble_voting_range_get(s : MlensemblevotingRange, i : Int) -> Doubl
 }
 
 pub fn ml_ensemble_voting_range_set(s : MlensemblevotingRange, i : Int, v : Double) -> MlensemblevotingRange {
-  let result = ml_ensemble_voting_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_voting_range_sum(s : MlensemblevotingRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_ensemble_voting_slice_get(s : MlensemblevotingSlice, i : Int) -> Doubl
 }
 
 pub fn ml_ensemble_voting_slice_set(s : MlensemblevotingSlice, i : Int, v : Double) -> MlensemblevotingSlice {
-  let result = ml_ensemble_voting_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_voting_slice_sum(s : MlensemblevotingSlice) -> Double { @_common.sum(s.data) }

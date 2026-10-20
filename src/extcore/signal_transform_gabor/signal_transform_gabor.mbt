@@ -107,23 +107,15 @@ pub fn signal_transform_gabor_series_std(s : SignaltransformgaborSeries) -> Doub
 pub fn signal_transform_gabor_series_median(s : SignaltransformgaborSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_transform_gabor_series_scale(s : SignaltransformgaborSeries, f : Double) -> SignaltransformgaborSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_transform_gabor_series_add(a : SignaltransformgaborSeries, b : SignaltransformgaborSeries) -> SignaltransformgaborSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_transform_gabor_series_sub(a : SignaltransformgaborSeries, b : SignaltransformgaborSeries) -> SignaltransformgaborSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_transform_gabor_series_normalize(s : SignaltransformgaborSeries) -> SignaltransformgaborSeries {
@@ -254,22 +246,16 @@ pub fn signal_transform_gabor_vector_zero(dim : Int) -> SignaltransformgaborVect
 
 pub fn signal_transform_gabor_vector_add(a : SignaltransformgaborVector, b : SignaltransformgaborVector) -> SignaltransformgaborVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_transform_gabor_vector_sub(a : SignaltransformgaborVector, b : SignaltransformgaborVector) -> SignaltransformgaborVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_transform_gabor_vector_scale(v : SignaltransformgaborVector, s : Double) -> SignaltransformgaborVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_transform_gabor_vector_dot(a : SignaltransformgaborVector, b : SignaltransformgaborVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_transform_gabor_frame_get(s : SignaltransformgaborFrame, i : Int) 
 }
 
 pub fn signal_transform_gabor_frame_set(s : SignaltransformgaborFrame, i : Int, v : Double) -> SignaltransformgaborFrame {
-  let result = signal_transform_gabor_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_gabor_frame_sum(s : SignaltransformgaborFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_transform_gabor_table_get(s : SignaltransformgaborTable, i : Int) 
 }
 
 pub fn signal_transform_gabor_table_set(s : SignaltransformgaborTable, i : Int, v : Double) -> SignaltransformgaborTable {
-  let result = signal_transform_gabor_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_gabor_table_sum(s : SignaltransformgaborTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_transform_gabor_graphn_get(s : SignaltransformgaborGraphN, i : Int
 }
 
 pub fn signal_transform_gabor_graphn_set(s : SignaltransformgaborGraphN, i : Int, v : Double) -> SignaltransformgaborGraphN {
-  let result = signal_transform_gabor_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_gabor_graphn_sum(s : SignaltransformgaborGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_transform_gabor_node_get(s : SignaltransformgaborNode, i : Int) ->
 }
 
 pub fn signal_transform_gabor_node_set(s : SignaltransformgaborNode, i : Int, v : Double) -> SignaltransformgaborNode {
-  let result = signal_transform_gabor_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_gabor_node_sum(s : SignaltransformgaborNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_transform_gabor_edge_get(s : SignaltransformgaborEdge, i : Int) ->
 }
 
 pub fn signal_transform_gabor_edge_set(s : SignaltransformgaborEdge, i : Int, v : Double) -> SignaltransformgaborEdge {
-  let result = signal_transform_gabor_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_gabor_edge_sum(s : SignaltransformgaborEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_transform_gabor_path_get(s : SignaltransformgaborPath, i : Int) ->
 }
 
 pub fn signal_transform_gabor_path_set(s : SignaltransformgaborPath, i : Int, v : Double) -> SignaltransformgaborPath {
-  let result = signal_transform_gabor_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_gabor_path_sum(s : SignaltransformgaborPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_transform_gabor_cluster_get(s : SignaltransformgaborCluster, i : I
 }
 
 pub fn signal_transform_gabor_cluster_set(s : SignaltransformgaborCluster, i : Int, v : Double) -> SignaltransformgaborCluster {
-  let result = signal_transform_gabor_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_gabor_cluster_sum(s : SignaltransformgaborCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_transform_gabor_model_get(s : SignaltransformgaborModel, i : Int) 
 }
 
 pub fn signal_transform_gabor_model_set(s : SignaltransformgaborModel, i : Int, v : Double) -> SignaltransformgaborModel {
-  let result = signal_transform_gabor_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_gabor_model_sum(s : SignaltransformgaborModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_transform_gabor_layer_get(s : SignaltransformgaborLayer, i : Int) 
 }
 
 pub fn signal_transform_gabor_layer_set(s : SignaltransformgaborLayer, i : Int, v : Double) -> SignaltransformgaborLayer {
-  let result = signal_transform_gabor_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_gabor_layer_sum(s : SignaltransformgaborLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_transform_gabor_buffer_get(s : SignaltransformgaborBuffer, i : Int
 }
 
 pub fn signal_transform_gabor_buffer_set(s : SignaltransformgaborBuffer, i : Int, v : Double) -> SignaltransformgaborBuffer {
-  let result = signal_transform_gabor_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_gabor_buffer_sum(s : SignaltransformgaborBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_transform_gabor_cursor_get(s : SignaltransformgaborCursor, i : Int
 }
 
 pub fn signal_transform_gabor_cursor_set(s : SignaltransformgaborCursor, i : Int, v : Double) -> SignaltransformgaborCursor {
-  let result = signal_transform_gabor_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_gabor_cursor_sum(s : SignaltransformgaborCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_transform_gabor_view_get(s : SignaltransformgaborView, i : Int) ->
 }
 
 pub fn signal_transform_gabor_view_set(s : SignaltransformgaborView, i : Int, v : Double) -> SignaltransformgaborView {
-  let result = signal_transform_gabor_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_gabor_view_sum(s : SignaltransformgaborView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_transform_gabor_range_get(s : SignaltransformgaborRange, i : Int) 
 }
 
 pub fn signal_transform_gabor_range_set(s : SignaltransformgaborRange, i : Int, v : Double) -> SignaltransformgaborRange {
-  let result = signal_transform_gabor_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_gabor_range_sum(s : SignaltransformgaborRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_transform_gabor_slice_get(s : SignaltransformgaborSlice, i : Int) 
 }
 
 pub fn signal_transform_gabor_slice_set(s : SignaltransformgaborSlice, i : Int, v : Double) -> SignaltransformgaborSlice {
-  let result = signal_transform_gabor_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_gabor_slice_sum(s : SignaltransformgaborSlice) -> Double { @_common.sum(s.data) }

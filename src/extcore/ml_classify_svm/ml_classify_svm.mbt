@@ -107,23 +107,15 @@ pub fn ml_classify_svm_series_std(s : MlclassifysvmSeries) -> Double { @_common.
 pub fn ml_classify_svm_series_median(s : MlclassifysvmSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_classify_svm_series_scale(s : MlclassifysvmSeries, f : Double) -> MlclassifysvmSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_classify_svm_series_add(a : MlclassifysvmSeries, b : MlclassifysvmSeries) -> MlclassifysvmSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_classify_svm_series_sub(a : MlclassifysvmSeries, b : MlclassifysvmSeries) -> MlclassifysvmSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_classify_svm_series_normalize(s : MlclassifysvmSeries) -> MlclassifysvmSeries {
@@ -254,22 +246,16 @@ pub fn ml_classify_svm_vector_zero(dim : Int) -> MlclassifysvmVector {
 
 pub fn ml_classify_svm_vector_add(a : MlclassifysvmVector, b : MlclassifysvmVector) -> MlclassifysvmVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_classify_svm_vector_sub(a : MlclassifysvmVector, b : MlclassifysvmVector) -> MlclassifysvmVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_classify_svm_vector_scale(v : MlclassifysvmVector, s : Double) -> MlclassifysvmVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_classify_svm_vector_dot(a : MlclassifysvmVector, b : MlclassifysvmVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_classify_svm_frame_get(s : MlclassifysvmFrame, i : Int) -> Double {
 }
 
 pub fn ml_classify_svm_frame_set(s : MlclassifysvmFrame, i : Int, v : Double) -> MlclassifysvmFrame {
-  let result = ml_classify_svm_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_svm_frame_sum(s : MlclassifysvmFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_classify_svm_table_get(s : MlclassifysvmTable, i : Int) -> Double {
 }
 
 pub fn ml_classify_svm_table_set(s : MlclassifysvmTable, i : Int, v : Double) -> MlclassifysvmTable {
-  let result = ml_classify_svm_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_svm_table_sum(s : MlclassifysvmTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_classify_svm_graphn_get(s : MlclassifysvmGraphN, i : Int) -> Double {
 }
 
 pub fn ml_classify_svm_graphn_set(s : MlclassifysvmGraphN, i : Int, v : Double) -> MlclassifysvmGraphN {
-  let result = ml_classify_svm_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_svm_graphn_sum(s : MlclassifysvmGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_classify_svm_node_get(s : MlclassifysvmNode, i : Int) -> Double {
 }
 
 pub fn ml_classify_svm_node_set(s : MlclassifysvmNode, i : Int, v : Double) -> MlclassifysvmNode {
-  let result = ml_classify_svm_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_svm_node_sum(s : MlclassifysvmNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_classify_svm_edge_get(s : MlclassifysvmEdge, i : Int) -> Double {
 }
 
 pub fn ml_classify_svm_edge_set(s : MlclassifysvmEdge, i : Int, v : Double) -> MlclassifysvmEdge {
-  let result = ml_classify_svm_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_svm_edge_sum(s : MlclassifysvmEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_classify_svm_path_get(s : MlclassifysvmPath, i : Int) -> Double {
 }
 
 pub fn ml_classify_svm_path_set(s : MlclassifysvmPath, i : Int, v : Double) -> MlclassifysvmPath {
-  let result = ml_classify_svm_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_svm_path_sum(s : MlclassifysvmPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_classify_svm_cluster_get(s : MlclassifysvmCluster, i : Int) -> Double 
 }
 
 pub fn ml_classify_svm_cluster_set(s : MlclassifysvmCluster, i : Int, v : Double) -> MlclassifysvmCluster {
-  let result = ml_classify_svm_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_svm_cluster_sum(s : MlclassifysvmCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_classify_svm_model_get(s : MlclassifysvmModel, i : Int) -> Double {
 }
 
 pub fn ml_classify_svm_model_set(s : MlclassifysvmModel, i : Int, v : Double) -> MlclassifysvmModel {
-  let result = ml_classify_svm_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_svm_model_sum(s : MlclassifysvmModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_classify_svm_layer_get(s : MlclassifysvmLayer, i : Int) -> Double {
 }
 
 pub fn ml_classify_svm_layer_set(s : MlclassifysvmLayer, i : Int, v : Double) -> MlclassifysvmLayer {
-  let result = ml_classify_svm_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_svm_layer_sum(s : MlclassifysvmLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_classify_svm_buffer_get(s : MlclassifysvmBuffer, i : Int) -> Double {
 }
 
 pub fn ml_classify_svm_buffer_set(s : MlclassifysvmBuffer, i : Int, v : Double) -> MlclassifysvmBuffer {
-  let result = ml_classify_svm_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_svm_buffer_sum(s : MlclassifysvmBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_classify_svm_cursor_get(s : MlclassifysvmCursor, i : Int) -> Double {
 }
 
 pub fn ml_classify_svm_cursor_set(s : MlclassifysvmCursor, i : Int, v : Double) -> MlclassifysvmCursor {
-  let result = ml_classify_svm_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_svm_cursor_sum(s : MlclassifysvmCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_classify_svm_view_get(s : MlclassifysvmView, i : Int) -> Double {
 }
 
 pub fn ml_classify_svm_view_set(s : MlclassifysvmView, i : Int, v : Double) -> MlclassifysvmView {
-  let result = ml_classify_svm_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_svm_view_sum(s : MlclassifysvmView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_classify_svm_range_get(s : MlclassifysvmRange, i : Int) -> Double {
 }
 
 pub fn ml_classify_svm_range_set(s : MlclassifysvmRange, i : Int, v : Double) -> MlclassifysvmRange {
-  let result = ml_classify_svm_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_svm_range_sum(s : MlclassifysvmRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_classify_svm_slice_get(s : MlclassifysvmSlice, i : Int) -> Double {
 }
 
 pub fn ml_classify_svm_slice_set(s : MlclassifysvmSlice, i : Int, v : Double) -> MlclassifysvmSlice {
-  let result = ml_classify_svm_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_svm_slice_sum(s : MlclassifysvmSlice) -> Double { @_common.sum(s.data) }

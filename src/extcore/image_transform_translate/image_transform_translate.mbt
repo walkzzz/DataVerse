@@ -107,23 +107,15 @@ pub fn image_transform_translate_series_std(s : ImagetransformtranslateSeries) -
 pub fn image_transform_translate_series_median(s : ImagetransformtranslateSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_transform_translate_series_scale(s : ImagetransformtranslateSeries, f : Double) -> ImagetransformtranslateSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_transform_translate_series_add(a : ImagetransformtranslateSeries, b : ImagetransformtranslateSeries) -> ImagetransformtranslateSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_transform_translate_series_sub(a : ImagetransformtranslateSeries, b : ImagetransformtranslateSeries) -> ImagetransformtranslateSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_transform_translate_series_normalize(s : ImagetransformtranslateSeries) -> ImagetransformtranslateSeries {
@@ -254,22 +246,16 @@ pub fn image_transform_translate_vector_zero(dim : Int) -> Imagetransformtransla
 
 pub fn image_transform_translate_vector_add(a : ImagetransformtranslateVector, b : ImagetransformtranslateVector) -> ImagetransformtranslateVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_transform_translate_vector_sub(a : ImagetransformtranslateVector, b : ImagetransformtranslateVector) -> ImagetransformtranslateVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_transform_translate_vector_scale(v : ImagetransformtranslateVector, s : Double) -> ImagetransformtranslateVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_transform_translate_vector_dot(a : ImagetransformtranslateVector, b : ImagetransformtranslateVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_transform_translate_frame_get(s : ImagetransformtranslateFrame, i :
 }
 
 pub fn image_transform_translate_frame_set(s : ImagetransformtranslateFrame, i : Int, v : Double) -> ImagetransformtranslateFrame {
-  let result = image_transform_translate_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_translate_frame_sum(s : ImagetransformtranslateFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_transform_translate_table_get(s : ImagetransformtranslateTable, i :
 }
 
 pub fn image_transform_translate_table_set(s : ImagetransformtranslateTable, i : Int, v : Double) -> ImagetransformtranslateTable {
-  let result = image_transform_translate_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_translate_table_sum(s : ImagetransformtranslateTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_transform_translate_graphn_get(s : ImagetransformtranslateGraphN, i
 }
 
 pub fn image_transform_translate_graphn_set(s : ImagetransformtranslateGraphN, i : Int, v : Double) -> ImagetransformtranslateGraphN {
-  let result = image_transform_translate_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_translate_graphn_sum(s : ImagetransformtranslateGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_transform_translate_node_get(s : ImagetransformtranslateNode, i : I
 }
 
 pub fn image_transform_translate_node_set(s : ImagetransformtranslateNode, i : Int, v : Double) -> ImagetransformtranslateNode {
-  let result = image_transform_translate_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_translate_node_sum(s : ImagetransformtranslateNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_transform_translate_edge_get(s : ImagetransformtranslateEdge, i : I
 }
 
 pub fn image_transform_translate_edge_set(s : ImagetransformtranslateEdge, i : Int, v : Double) -> ImagetransformtranslateEdge {
-  let result = image_transform_translate_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_translate_edge_sum(s : ImagetransformtranslateEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_transform_translate_path_get(s : ImagetransformtranslatePath, i : I
 }
 
 pub fn image_transform_translate_path_set(s : ImagetransformtranslatePath, i : Int, v : Double) -> ImagetransformtranslatePath {
-  let result = image_transform_translate_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_translate_path_sum(s : ImagetransformtranslatePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_transform_translate_cluster_get(s : ImagetransformtranslateCluster,
 }
 
 pub fn image_transform_translate_cluster_set(s : ImagetransformtranslateCluster, i : Int, v : Double) -> ImagetransformtranslateCluster {
-  let result = image_transform_translate_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_translate_cluster_sum(s : ImagetransformtranslateCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_transform_translate_model_get(s : ImagetransformtranslateModel, i :
 }
 
 pub fn image_transform_translate_model_set(s : ImagetransformtranslateModel, i : Int, v : Double) -> ImagetransformtranslateModel {
-  let result = image_transform_translate_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_translate_model_sum(s : ImagetransformtranslateModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_transform_translate_layer_get(s : ImagetransformtranslateLayer, i :
 }
 
 pub fn image_transform_translate_layer_set(s : ImagetransformtranslateLayer, i : Int, v : Double) -> ImagetransformtranslateLayer {
-  let result = image_transform_translate_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_translate_layer_sum(s : ImagetransformtranslateLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_transform_translate_buffer_get(s : ImagetransformtranslateBuffer, i
 }
 
 pub fn image_transform_translate_buffer_set(s : ImagetransformtranslateBuffer, i : Int, v : Double) -> ImagetransformtranslateBuffer {
-  let result = image_transform_translate_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_translate_buffer_sum(s : ImagetransformtranslateBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_transform_translate_cursor_get(s : ImagetransformtranslateCursor, i
 }
 
 pub fn image_transform_translate_cursor_set(s : ImagetransformtranslateCursor, i : Int, v : Double) -> ImagetransformtranslateCursor {
-  let result = image_transform_translate_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_translate_cursor_sum(s : ImagetransformtranslateCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_transform_translate_view_get(s : ImagetransformtranslateView, i : I
 }
 
 pub fn image_transform_translate_view_set(s : ImagetransformtranslateView, i : Int, v : Double) -> ImagetransformtranslateView {
-  let result = image_transform_translate_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_translate_view_sum(s : ImagetransformtranslateView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_transform_translate_range_get(s : ImagetransformtranslateRange, i :
 }
 
 pub fn image_transform_translate_range_set(s : ImagetransformtranslateRange, i : Int, v : Double) -> ImagetransformtranslateRange {
-  let result = image_transform_translate_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_translate_range_sum(s : ImagetransformtranslateRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_transform_translate_slice_get(s : ImagetransformtranslateSlice, i :
 }
 
 pub fn image_transform_translate_slice_set(s : ImagetransformtranslateSlice, i : Int, v : Double) -> ImagetransformtranslateSlice {
-  let result = image_transform_translate_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_translate_slice_sum(s : ImagetransformtranslateSlice) -> Double { @_common.sum(s.data) }

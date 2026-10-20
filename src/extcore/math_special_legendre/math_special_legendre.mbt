@@ -107,23 +107,15 @@ pub fn math_special_legendre_series_std(s : MathspeciallegendreSeries) -> Double
 pub fn math_special_legendre_series_median(s : MathspeciallegendreSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_special_legendre_series_scale(s : MathspeciallegendreSeries, f : Double) -> MathspeciallegendreSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_special_legendre_series_add(a : MathspeciallegendreSeries, b : MathspeciallegendreSeries) -> MathspeciallegendreSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_special_legendre_series_sub(a : MathspeciallegendreSeries, b : MathspeciallegendreSeries) -> MathspeciallegendreSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_special_legendre_series_normalize(s : MathspeciallegendreSeries) -> MathspeciallegendreSeries {
@@ -254,22 +246,16 @@ pub fn math_special_legendre_vector_zero(dim : Int) -> MathspeciallegendreVector
 
 pub fn math_special_legendre_vector_add(a : MathspeciallegendreVector, b : MathspeciallegendreVector) -> MathspeciallegendreVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_special_legendre_vector_sub(a : MathspeciallegendreVector, b : MathspeciallegendreVector) -> MathspeciallegendreVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_special_legendre_vector_scale(v : MathspeciallegendreVector, s : Double) -> MathspeciallegendreVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_special_legendre_vector_dot(a : MathspeciallegendreVector, b : MathspeciallegendreVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_special_legendre_frame_get(s : MathspeciallegendreFrame, i : Int) ->
 }
 
 pub fn math_special_legendre_frame_set(s : MathspeciallegendreFrame, i : Int, v : Double) -> MathspeciallegendreFrame {
-  let result = math_special_legendre_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_legendre_frame_sum(s : MathspeciallegendreFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_special_legendre_table_get(s : MathspeciallegendreTable, i : Int) ->
 }
 
 pub fn math_special_legendre_table_set(s : MathspeciallegendreTable, i : Int, v : Double) -> MathspeciallegendreTable {
-  let result = math_special_legendre_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_legendre_table_sum(s : MathspeciallegendreTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_special_legendre_graphn_get(s : MathspeciallegendreGraphN, i : Int) 
 }
 
 pub fn math_special_legendre_graphn_set(s : MathspeciallegendreGraphN, i : Int, v : Double) -> MathspeciallegendreGraphN {
-  let result = math_special_legendre_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_legendre_graphn_sum(s : MathspeciallegendreGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_special_legendre_node_get(s : MathspeciallegendreNode, i : Int) -> D
 }
 
 pub fn math_special_legendre_node_set(s : MathspeciallegendreNode, i : Int, v : Double) -> MathspeciallegendreNode {
-  let result = math_special_legendre_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_legendre_node_sum(s : MathspeciallegendreNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_special_legendre_edge_get(s : MathspeciallegendreEdge, i : Int) -> D
 }
 
 pub fn math_special_legendre_edge_set(s : MathspeciallegendreEdge, i : Int, v : Double) -> MathspeciallegendreEdge {
-  let result = math_special_legendre_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_legendre_edge_sum(s : MathspeciallegendreEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_special_legendre_path_get(s : MathspeciallegendrePath, i : Int) -> D
 }
 
 pub fn math_special_legendre_path_set(s : MathspeciallegendrePath, i : Int, v : Double) -> MathspeciallegendrePath {
-  let result = math_special_legendre_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_legendre_path_sum(s : MathspeciallegendrePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_special_legendre_cluster_get(s : MathspeciallegendreCluster, i : Int
 }
 
 pub fn math_special_legendre_cluster_set(s : MathspeciallegendreCluster, i : Int, v : Double) -> MathspeciallegendreCluster {
-  let result = math_special_legendre_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_legendre_cluster_sum(s : MathspeciallegendreCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_special_legendre_model_get(s : MathspeciallegendreModel, i : Int) ->
 }
 
 pub fn math_special_legendre_model_set(s : MathspeciallegendreModel, i : Int, v : Double) -> MathspeciallegendreModel {
-  let result = math_special_legendre_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_legendre_model_sum(s : MathspeciallegendreModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_special_legendre_layer_get(s : MathspeciallegendreLayer, i : Int) ->
 }
 
 pub fn math_special_legendre_layer_set(s : MathspeciallegendreLayer, i : Int, v : Double) -> MathspeciallegendreLayer {
-  let result = math_special_legendre_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_legendre_layer_sum(s : MathspeciallegendreLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_special_legendre_buffer_get(s : MathspeciallegendreBuffer, i : Int) 
 }
 
 pub fn math_special_legendre_buffer_set(s : MathspeciallegendreBuffer, i : Int, v : Double) -> MathspeciallegendreBuffer {
-  let result = math_special_legendre_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_legendre_buffer_sum(s : MathspeciallegendreBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_special_legendre_cursor_get(s : MathspeciallegendreCursor, i : Int) 
 }
 
 pub fn math_special_legendre_cursor_set(s : MathspeciallegendreCursor, i : Int, v : Double) -> MathspeciallegendreCursor {
-  let result = math_special_legendre_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_legendre_cursor_sum(s : MathspeciallegendreCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_special_legendre_view_get(s : MathspeciallegendreView, i : Int) -> D
 }
 
 pub fn math_special_legendre_view_set(s : MathspeciallegendreView, i : Int, v : Double) -> MathspeciallegendreView {
-  let result = math_special_legendre_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_legendre_view_sum(s : MathspeciallegendreView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_special_legendre_range_get(s : MathspeciallegendreRange, i : Int) ->
 }
 
 pub fn math_special_legendre_range_set(s : MathspeciallegendreRange, i : Int, v : Double) -> MathspeciallegendreRange {
-  let result = math_special_legendre_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_legendre_range_sum(s : MathspeciallegendreRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_special_legendre_slice_get(s : MathspeciallegendreSlice, i : Int) ->
 }
 
 pub fn math_special_legendre_slice_set(s : MathspeciallegendreSlice, i : Int, v : Double) -> MathspeciallegendreSlice {
-  let result = math_special_legendre_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_legendre_slice_sum(s : MathspeciallegendreSlice) -> Double { @_common.sum(s.data) }

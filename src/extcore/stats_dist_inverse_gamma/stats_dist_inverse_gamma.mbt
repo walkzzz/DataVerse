@@ -107,23 +107,15 @@ pub fn stats_dist_inverse_gamma_series_std(s : StatsdistinversegammaSeries) -> D
 pub fn stats_dist_inverse_gamma_series_median(s : StatsdistinversegammaSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_dist_inverse_gamma_series_scale(s : StatsdistinversegammaSeries, f : Double) -> StatsdistinversegammaSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_dist_inverse_gamma_series_add(a : StatsdistinversegammaSeries, b : StatsdistinversegammaSeries) -> StatsdistinversegammaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_dist_inverse_gamma_series_sub(a : StatsdistinversegammaSeries, b : StatsdistinversegammaSeries) -> StatsdistinversegammaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_dist_inverse_gamma_series_normalize(s : StatsdistinversegammaSeries) -> StatsdistinversegammaSeries {
@@ -254,22 +246,16 @@ pub fn stats_dist_inverse_gamma_vector_zero(dim : Int) -> StatsdistinversegammaV
 
 pub fn stats_dist_inverse_gamma_vector_add(a : StatsdistinversegammaVector, b : StatsdistinversegammaVector) -> StatsdistinversegammaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_dist_inverse_gamma_vector_sub(a : StatsdistinversegammaVector, b : StatsdistinversegammaVector) -> StatsdistinversegammaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_dist_inverse_gamma_vector_scale(v : StatsdistinversegammaVector, s : Double) -> StatsdistinversegammaVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_dist_inverse_gamma_vector_dot(a : StatsdistinversegammaVector, b : StatsdistinversegammaVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_dist_inverse_gamma_frame_get(s : StatsdistinversegammaFrame, i : In
 }
 
 pub fn stats_dist_inverse_gamma_frame_set(s : StatsdistinversegammaFrame, i : Int, v : Double) -> StatsdistinversegammaFrame {
-  let result = stats_dist_inverse_gamma_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_frame_sum(s : StatsdistinversegammaFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_dist_inverse_gamma_table_get(s : StatsdistinversegammaTable, i : In
 }
 
 pub fn stats_dist_inverse_gamma_table_set(s : StatsdistinversegammaTable, i : Int, v : Double) -> StatsdistinversegammaTable {
-  let result = stats_dist_inverse_gamma_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_table_sum(s : StatsdistinversegammaTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_dist_inverse_gamma_graphn_get(s : StatsdistinversegammaGraphN, i : 
 }
 
 pub fn stats_dist_inverse_gamma_graphn_set(s : StatsdistinversegammaGraphN, i : Int, v : Double) -> StatsdistinversegammaGraphN {
-  let result = stats_dist_inverse_gamma_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_graphn_sum(s : StatsdistinversegammaGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_dist_inverse_gamma_node_get(s : StatsdistinversegammaNode, i : Int)
 }
 
 pub fn stats_dist_inverse_gamma_node_set(s : StatsdistinversegammaNode, i : Int, v : Double) -> StatsdistinversegammaNode {
-  let result = stats_dist_inverse_gamma_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_node_sum(s : StatsdistinversegammaNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_dist_inverse_gamma_edge_get(s : StatsdistinversegammaEdge, i : Int)
 }
 
 pub fn stats_dist_inverse_gamma_edge_set(s : StatsdistinversegammaEdge, i : Int, v : Double) -> StatsdistinversegammaEdge {
-  let result = stats_dist_inverse_gamma_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_edge_sum(s : StatsdistinversegammaEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_dist_inverse_gamma_path_get(s : StatsdistinversegammaPath, i : Int)
 }
 
 pub fn stats_dist_inverse_gamma_path_set(s : StatsdistinversegammaPath, i : Int, v : Double) -> StatsdistinversegammaPath {
-  let result = stats_dist_inverse_gamma_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_path_sum(s : StatsdistinversegammaPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_dist_inverse_gamma_cluster_get(s : StatsdistinversegammaCluster, i 
 }
 
 pub fn stats_dist_inverse_gamma_cluster_set(s : StatsdistinversegammaCluster, i : Int, v : Double) -> StatsdistinversegammaCluster {
-  let result = stats_dist_inverse_gamma_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_cluster_sum(s : StatsdistinversegammaCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_dist_inverse_gamma_model_get(s : StatsdistinversegammaModel, i : In
 }
 
 pub fn stats_dist_inverse_gamma_model_set(s : StatsdistinversegammaModel, i : Int, v : Double) -> StatsdistinversegammaModel {
-  let result = stats_dist_inverse_gamma_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_model_sum(s : StatsdistinversegammaModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_dist_inverse_gamma_layer_get(s : StatsdistinversegammaLayer, i : In
 }
 
 pub fn stats_dist_inverse_gamma_layer_set(s : StatsdistinversegammaLayer, i : Int, v : Double) -> StatsdistinversegammaLayer {
-  let result = stats_dist_inverse_gamma_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_layer_sum(s : StatsdistinversegammaLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_dist_inverse_gamma_buffer_get(s : StatsdistinversegammaBuffer, i : 
 }
 
 pub fn stats_dist_inverse_gamma_buffer_set(s : StatsdistinversegammaBuffer, i : Int, v : Double) -> StatsdistinversegammaBuffer {
-  let result = stats_dist_inverse_gamma_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_buffer_sum(s : StatsdistinversegammaBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_dist_inverse_gamma_cursor_get(s : StatsdistinversegammaCursor, i : 
 }
 
 pub fn stats_dist_inverse_gamma_cursor_set(s : StatsdistinversegammaCursor, i : Int, v : Double) -> StatsdistinversegammaCursor {
-  let result = stats_dist_inverse_gamma_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_cursor_sum(s : StatsdistinversegammaCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_dist_inverse_gamma_view_get(s : StatsdistinversegammaView, i : Int)
 }
 
 pub fn stats_dist_inverse_gamma_view_set(s : StatsdistinversegammaView, i : Int, v : Double) -> StatsdistinversegammaView {
-  let result = stats_dist_inverse_gamma_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_view_sum(s : StatsdistinversegammaView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_dist_inverse_gamma_range_get(s : StatsdistinversegammaRange, i : In
 }
 
 pub fn stats_dist_inverse_gamma_range_set(s : StatsdistinversegammaRange, i : Int, v : Double) -> StatsdistinversegammaRange {
-  let result = stats_dist_inverse_gamma_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_range_sum(s : StatsdistinversegammaRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_dist_inverse_gamma_slice_get(s : StatsdistinversegammaSlice, i : In
 }
 
 pub fn stats_dist_inverse_gamma_slice_set(s : StatsdistinversegammaSlice, i : Int, v : Double) -> StatsdistinversegammaSlice {
-  let result = stats_dist_inverse_gamma_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_inverse_gamma_slice_sum(s : StatsdistinversegammaSlice) -> Double { @_common.sum(s.data) }

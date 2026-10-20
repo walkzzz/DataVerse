@@ -107,23 +107,15 @@ pub fn stats_test_chi_sq_series_std(s : StatstestchisqSeries) -> Double { @_comm
 pub fn stats_test_chi_sq_series_median(s : StatstestchisqSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_test_chi_sq_series_scale(s : StatstestchisqSeries, f : Double) -> StatstestchisqSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_test_chi_sq_series_add(a : StatstestchisqSeries, b : StatstestchisqSeries) -> StatstestchisqSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_test_chi_sq_series_sub(a : StatstestchisqSeries, b : StatstestchisqSeries) -> StatstestchisqSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_test_chi_sq_series_normalize(s : StatstestchisqSeries) -> StatstestchisqSeries {
@@ -254,22 +246,16 @@ pub fn stats_test_chi_sq_vector_zero(dim : Int) -> StatstestchisqVector {
 
 pub fn stats_test_chi_sq_vector_add(a : StatstestchisqVector, b : StatstestchisqVector) -> StatstestchisqVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_test_chi_sq_vector_sub(a : StatstestchisqVector, b : StatstestchisqVector) -> StatstestchisqVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_test_chi_sq_vector_scale(v : StatstestchisqVector, s : Double) -> StatstestchisqVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_test_chi_sq_vector_dot(a : StatstestchisqVector, b : StatstestchisqVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_test_chi_sq_frame_get(s : StatstestchisqFrame, i : Int) -> Double {
 }
 
 pub fn stats_test_chi_sq_frame_set(s : StatstestchisqFrame, i : Int, v : Double) -> StatstestchisqFrame {
-  let result = stats_test_chi_sq_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_chi_sq_frame_sum(s : StatstestchisqFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_test_chi_sq_table_get(s : StatstestchisqTable, i : Int) -> Double {
 }
 
 pub fn stats_test_chi_sq_table_set(s : StatstestchisqTable, i : Int, v : Double) -> StatstestchisqTable {
-  let result = stats_test_chi_sq_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_chi_sq_table_sum(s : StatstestchisqTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_test_chi_sq_graphn_get(s : StatstestchisqGraphN, i : Int) -> Double
 }
 
 pub fn stats_test_chi_sq_graphn_set(s : StatstestchisqGraphN, i : Int, v : Double) -> StatstestchisqGraphN {
-  let result = stats_test_chi_sq_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_chi_sq_graphn_sum(s : StatstestchisqGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_test_chi_sq_node_get(s : StatstestchisqNode, i : Int) -> Double {
 }
 
 pub fn stats_test_chi_sq_node_set(s : StatstestchisqNode, i : Int, v : Double) -> StatstestchisqNode {
-  let result = stats_test_chi_sq_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_chi_sq_node_sum(s : StatstestchisqNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_test_chi_sq_edge_get(s : StatstestchisqEdge, i : Int) -> Double {
 }
 
 pub fn stats_test_chi_sq_edge_set(s : StatstestchisqEdge, i : Int, v : Double) -> StatstestchisqEdge {
-  let result = stats_test_chi_sq_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_chi_sq_edge_sum(s : StatstestchisqEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_test_chi_sq_path_get(s : StatstestchisqPath, i : Int) -> Double {
 }
 
 pub fn stats_test_chi_sq_path_set(s : StatstestchisqPath, i : Int, v : Double) -> StatstestchisqPath {
-  let result = stats_test_chi_sq_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_chi_sq_path_sum(s : StatstestchisqPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_test_chi_sq_cluster_get(s : StatstestchisqCluster, i : Int) -> Doub
 }
 
 pub fn stats_test_chi_sq_cluster_set(s : StatstestchisqCluster, i : Int, v : Double) -> StatstestchisqCluster {
-  let result = stats_test_chi_sq_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_chi_sq_cluster_sum(s : StatstestchisqCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_test_chi_sq_model_get(s : StatstestchisqModel, i : Int) -> Double {
 }
 
 pub fn stats_test_chi_sq_model_set(s : StatstestchisqModel, i : Int, v : Double) -> StatstestchisqModel {
-  let result = stats_test_chi_sq_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_chi_sq_model_sum(s : StatstestchisqModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_test_chi_sq_layer_get(s : StatstestchisqLayer, i : Int) -> Double {
 }
 
 pub fn stats_test_chi_sq_layer_set(s : StatstestchisqLayer, i : Int, v : Double) -> StatstestchisqLayer {
-  let result = stats_test_chi_sq_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_chi_sq_layer_sum(s : StatstestchisqLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_test_chi_sq_buffer_get(s : StatstestchisqBuffer, i : Int) -> Double
 }
 
 pub fn stats_test_chi_sq_buffer_set(s : StatstestchisqBuffer, i : Int, v : Double) -> StatstestchisqBuffer {
-  let result = stats_test_chi_sq_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_chi_sq_buffer_sum(s : StatstestchisqBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_test_chi_sq_cursor_get(s : StatstestchisqCursor, i : Int) -> Double
 }
 
 pub fn stats_test_chi_sq_cursor_set(s : StatstestchisqCursor, i : Int, v : Double) -> StatstestchisqCursor {
-  let result = stats_test_chi_sq_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_chi_sq_cursor_sum(s : StatstestchisqCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_test_chi_sq_view_get(s : StatstestchisqView, i : Int) -> Double {
 }
 
 pub fn stats_test_chi_sq_view_set(s : StatstestchisqView, i : Int, v : Double) -> StatstestchisqView {
-  let result = stats_test_chi_sq_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_chi_sq_view_sum(s : StatstestchisqView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_test_chi_sq_range_get(s : StatstestchisqRange, i : Int) -> Double {
 }
 
 pub fn stats_test_chi_sq_range_set(s : StatstestchisqRange, i : Int, v : Double) -> StatstestchisqRange {
-  let result = stats_test_chi_sq_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_chi_sq_range_sum(s : StatstestchisqRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_test_chi_sq_slice_get(s : StatstestchisqSlice, i : Int) -> Double {
 }
 
 pub fn stats_test_chi_sq_slice_set(s : StatstestchisqSlice, i : Int, v : Double) -> StatstestchisqSlice {
-  let result = stats_test_chi_sq_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_chi_sq_slice_sum(s : StatstestchisqSlice) -> Double { @_common.sum(s.data) }

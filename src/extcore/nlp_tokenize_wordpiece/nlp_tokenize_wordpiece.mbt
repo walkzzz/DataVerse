@@ -107,23 +107,15 @@ pub fn nlp_tokenize_wordpiece_series_std(s : NlptokenizewordpieceSeries) -> Doub
 pub fn nlp_tokenize_wordpiece_series_median(s : NlptokenizewordpieceSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_tokenize_wordpiece_series_scale(s : NlptokenizewordpieceSeries, f : Double) -> NlptokenizewordpieceSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_tokenize_wordpiece_series_add(a : NlptokenizewordpieceSeries, b : NlptokenizewordpieceSeries) -> NlptokenizewordpieceSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_tokenize_wordpiece_series_sub(a : NlptokenizewordpieceSeries, b : NlptokenizewordpieceSeries) -> NlptokenizewordpieceSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_tokenize_wordpiece_series_normalize(s : NlptokenizewordpieceSeries) -> NlptokenizewordpieceSeries {
@@ -254,22 +246,16 @@ pub fn nlp_tokenize_wordpiece_vector_zero(dim : Int) -> NlptokenizewordpieceVect
 
 pub fn nlp_tokenize_wordpiece_vector_add(a : NlptokenizewordpieceVector, b : NlptokenizewordpieceVector) -> NlptokenizewordpieceVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_tokenize_wordpiece_vector_sub(a : NlptokenizewordpieceVector, b : NlptokenizewordpieceVector) -> NlptokenizewordpieceVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_tokenize_wordpiece_vector_scale(v : NlptokenizewordpieceVector, s : Double) -> NlptokenizewordpieceVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_tokenize_wordpiece_vector_dot(a : NlptokenizewordpieceVector, b : NlptokenizewordpieceVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_tokenize_wordpiece_frame_get(s : NlptokenizewordpieceFrame, i : Int) 
 }
 
 pub fn nlp_tokenize_wordpiece_frame_set(s : NlptokenizewordpieceFrame, i : Int, v : Double) -> NlptokenizewordpieceFrame {
-  let result = nlp_tokenize_wordpiece_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_wordpiece_frame_sum(s : NlptokenizewordpieceFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_tokenize_wordpiece_table_get(s : NlptokenizewordpieceTable, i : Int) 
 }
 
 pub fn nlp_tokenize_wordpiece_table_set(s : NlptokenizewordpieceTable, i : Int, v : Double) -> NlptokenizewordpieceTable {
-  let result = nlp_tokenize_wordpiece_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_wordpiece_table_sum(s : NlptokenizewordpieceTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_tokenize_wordpiece_graphn_get(s : NlptokenizewordpieceGraphN, i : Int
 }
 
 pub fn nlp_tokenize_wordpiece_graphn_set(s : NlptokenizewordpieceGraphN, i : Int, v : Double) -> NlptokenizewordpieceGraphN {
-  let result = nlp_tokenize_wordpiece_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_wordpiece_graphn_sum(s : NlptokenizewordpieceGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_tokenize_wordpiece_node_get(s : NlptokenizewordpieceNode, i : Int) ->
 }
 
 pub fn nlp_tokenize_wordpiece_node_set(s : NlptokenizewordpieceNode, i : Int, v : Double) -> NlptokenizewordpieceNode {
-  let result = nlp_tokenize_wordpiece_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_wordpiece_node_sum(s : NlptokenizewordpieceNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_tokenize_wordpiece_edge_get(s : NlptokenizewordpieceEdge, i : Int) ->
 }
 
 pub fn nlp_tokenize_wordpiece_edge_set(s : NlptokenizewordpieceEdge, i : Int, v : Double) -> NlptokenizewordpieceEdge {
-  let result = nlp_tokenize_wordpiece_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_wordpiece_edge_sum(s : NlptokenizewordpieceEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_tokenize_wordpiece_path_get(s : NlptokenizewordpiecePath, i : Int) ->
 }
 
 pub fn nlp_tokenize_wordpiece_path_set(s : NlptokenizewordpiecePath, i : Int, v : Double) -> NlptokenizewordpiecePath {
-  let result = nlp_tokenize_wordpiece_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_wordpiece_path_sum(s : NlptokenizewordpiecePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_tokenize_wordpiece_cluster_get(s : NlptokenizewordpieceCluster, i : I
 }
 
 pub fn nlp_tokenize_wordpiece_cluster_set(s : NlptokenizewordpieceCluster, i : Int, v : Double) -> NlptokenizewordpieceCluster {
-  let result = nlp_tokenize_wordpiece_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_wordpiece_cluster_sum(s : NlptokenizewordpieceCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_tokenize_wordpiece_model_get(s : NlptokenizewordpieceModel, i : Int) 
 }
 
 pub fn nlp_tokenize_wordpiece_model_set(s : NlptokenizewordpieceModel, i : Int, v : Double) -> NlptokenizewordpieceModel {
-  let result = nlp_tokenize_wordpiece_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_wordpiece_model_sum(s : NlptokenizewordpieceModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_tokenize_wordpiece_layer_get(s : NlptokenizewordpieceLayer, i : Int) 
 }
 
 pub fn nlp_tokenize_wordpiece_layer_set(s : NlptokenizewordpieceLayer, i : Int, v : Double) -> NlptokenizewordpieceLayer {
-  let result = nlp_tokenize_wordpiece_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_wordpiece_layer_sum(s : NlptokenizewordpieceLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_tokenize_wordpiece_buffer_get(s : NlptokenizewordpieceBuffer, i : Int
 }
 
 pub fn nlp_tokenize_wordpiece_buffer_set(s : NlptokenizewordpieceBuffer, i : Int, v : Double) -> NlptokenizewordpieceBuffer {
-  let result = nlp_tokenize_wordpiece_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_wordpiece_buffer_sum(s : NlptokenizewordpieceBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_tokenize_wordpiece_cursor_get(s : NlptokenizewordpieceCursor, i : Int
 }
 
 pub fn nlp_tokenize_wordpiece_cursor_set(s : NlptokenizewordpieceCursor, i : Int, v : Double) -> NlptokenizewordpieceCursor {
-  let result = nlp_tokenize_wordpiece_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_wordpiece_cursor_sum(s : NlptokenizewordpieceCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_tokenize_wordpiece_view_get(s : NlptokenizewordpieceView, i : Int) ->
 }
 
 pub fn nlp_tokenize_wordpiece_view_set(s : NlptokenizewordpieceView, i : Int, v : Double) -> NlptokenizewordpieceView {
-  let result = nlp_tokenize_wordpiece_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_wordpiece_view_sum(s : NlptokenizewordpieceView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_tokenize_wordpiece_range_get(s : NlptokenizewordpieceRange, i : Int) 
 }
 
 pub fn nlp_tokenize_wordpiece_range_set(s : NlptokenizewordpieceRange, i : Int, v : Double) -> NlptokenizewordpieceRange {
-  let result = nlp_tokenize_wordpiece_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_wordpiece_range_sum(s : NlptokenizewordpieceRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_tokenize_wordpiece_slice_get(s : NlptokenizewordpieceSlice, i : Int) 
 }
 
 pub fn nlp_tokenize_wordpiece_slice_set(s : NlptokenizewordpieceSlice, i : Int, v : Double) -> NlptokenizewordpieceSlice {
-  let result = nlp_tokenize_wordpiece_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_wordpiece_slice_sum(s : NlptokenizewordpieceSlice) -> Double { @_common.sum(s.data) }

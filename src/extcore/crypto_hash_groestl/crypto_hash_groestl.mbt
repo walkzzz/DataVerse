@@ -107,23 +107,15 @@ pub fn crypto_hash_groestl_series_std(s : CryptohashgroestlSeries) -> Double { @
 pub fn crypto_hash_groestl_series_median(s : CryptohashgroestlSeries) -> Double { @_common.median(s.vals) }
 
 pub fn crypto_hash_groestl_series_scale(s : CryptohashgroestlSeries, f : Double) -> CryptohashgroestlSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn crypto_hash_groestl_series_add(a : CryptohashgroestlSeries, b : CryptohashgroestlSeries) -> CryptohashgroestlSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn crypto_hash_groestl_series_sub(a : CryptohashgroestlSeries, b : CryptohashgroestlSeries) -> CryptohashgroestlSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn crypto_hash_groestl_series_normalize(s : CryptohashgroestlSeries) -> CryptohashgroestlSeries {
@@ -254,22 +246,16 @@ pub fn crypto_hash_groestl_vector_zero(dim : Int) -> CryptohashgroestlVector {
 
 pub fn crypto_hash_groestl_vector_add(a : CryptohashgroestlVector, b : CryptohashgroestlVector) -> CryptohashgroestlVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_hash_groestl_vector_sub(a : CryptohashgroestlVector, b : CryptohashgroestlVector) -> CryptohashgroestlVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_hash_groestl_vector_scale(v : CryptohashgroestlVector, s : Double) -> CryptohashgroestlVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn crypto_hash_groestl_vector_dot(a : CryptohashgroestlVector, b : CryptohashgroestlVector) -> Double {
@@ -372,10 +358,9 @@ pub fn crypto_hash_groestl_frame_get(s : CryptohashgroestlFrame, i : Int) -> Dou
 }
 
 pub fn crypto_hash_groestl_frame_set(s : CryptohashgroestlFrame, i : Int, v : Double) -> CryptohashgroestlFrame {
-  let result = crypto_hash_groestl_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_groestl_frame_sum(s : CryptohashgroestlFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn crypto_hash_groestl_table_get(s : CryptohashgroestlTable, i : Int) -> Dou
 }
 
 pub fn crypto_hash_groestl_table_set(s : CryptohashgroestlTable, i : Int, v : Double) -> CryptohashgroestlTable {
-  let result = crypto_hash_groestl_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_groestl_table_sum(s : CryptohashgroestlTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn crypto_hash_groestl_graphn_get(s : CryptohashgroestlGraphN, i : Int) -> D
 }
 
 pub fn crypto_hash_groestl_graphn_set(s : CryptohashgroestlGraphN, i : Int, v : Double) -> CryptohashgroestlGraphN {
-  let result = crypto_hash_groestl_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_groestl_graphn_sum(s : CryptohashgroestlGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn crypto_hash_groestl_node_get(s : CryptohashgroestlNode, i : Int) -> Doubl
 }
 
 pub fn crypto_hash_groestl_node_set(s : CryptohashgroestlNode, i : Int, v : Double) -> CryptohashgroestlNode {
-  let result = crypto_hash_groestl_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_groestl_node_sum(s : CryptohashgroestlNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn crypto_hash_groestl_edge_get(s : CryptohashgroestlEdge, i : Int) -> Doubl
 }
 
 pub fn crypto_hash_groestl_edge_set(s : CryptohashgroestlEdge, i : Int, v : Double) -> CryptohashgroestlEdge {
-  let result = crypto_hash_groestl_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_groestl_edge_sum(s : CryptohashgroestlEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn crypto_hash_groestl_path_get(s : CryptohashgroestlPath, i : Int) -> Doubl
 }
 
 pub fn crypto_hash_groestl_path_set(s : CryptohashgroestlPath, i : Int, v : Double) -> CryptohashgroestlPath {
-  let result = crypto_hash_groestl_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_groestl_path_sum(s : CryptohashgroestlPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn crypto_hash_groestl_cluster_get(s : CryptohashgroestlCluster, i : Int) ->
 }
 
 pub fn crypto_hash_groestl_cluster_set(s : CryptohashgroestlCluster, i : Int, v : Double) -> CryptohashgroestlCluster {
-  let result = crypto_hash_groestl_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_groestl_cluster_sum(s : CryptohashgroestlCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn crypto_hash_groestl_model_get(s : CryptohashgroestlModel, i : Int) -> Dou
 }
 
 pub fn crypto_hash_groestl_model_set(s : CryptohashgroestlModel, i : Int, v : Double) -> CryptohashgroestlModel {
-  let result = crypto_hash_groestl_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_groestl_model_sum(s : CryptohashgroestlModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn crypto_hash_groestl_layer_get(s : CryptohashgroestlLayer, i : Int) -> Dou
 }
 
 pub fn crypto_hash_groestl_layer_set(s : CryptohashgroestlLayer, i : Int, v : Double) -> CryptohashgroestlLayer {
-  let result = crypto_hash_groestl_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_groestl_layer_sum(s : CryptohashgroestlLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn crypto_hash_groestl_buffer_get(s : CryptohashgroestlBuffer, i : Int) -> D
 }
 
 pub fn crypto_hash_groestl_buffer_set(s : CryptohashgroestlBuffer, i : Int, v : Double) -> CryptohashgroestlBuffer {
-  let result = crypto_hash_groestl_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_groestl_buffer_sum(s : CryptohashgroestlBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn crypto_hash_groestl_cursor_get(s : CryptohashgroestlCursor, i : Int) -> D
 }
 
 pub fn crypto_hash_groestl_cursor_set(s : CryptohashgroestlCursor, i : Int, v : Double) -> CryptohashgroestlCursor {
-  let result = crypto_hash_groestl_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_groestl_cursor_sum(s : CryptohashgroestlCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn crypto_hash_groestl_view_get(s : CryptohashgroestlView, i : Int) -> Doubl
 }
 
 pub fn crypto_hash_groestl_view_set(s : CryptohashgroestlView, i : Int, v : Double) -> CryptohashgroestlView {
-  let result = crypto_hash_groestl_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_groestl_view_sum(s : CryptohashgroestlView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn crypto_hash_groestl_range_get(s : CryptohashgroestlRange, i : Int) -> Dou
 }
 
 pub fn crypto_hash_groestl_range_set(s : CryptohashgroestlRange, i : Int, v : Double) -> CryptohashgroestlRange {
-  let result = crypto_hash_groestl_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_groestl_range_sum(s : CryptohashgroestlRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn crypto_hash_groestl_slice_get(s : CryptohashgroestlSlice, i : Int) -> Dou
 }
 
 pub fn crypto_hash_groestl_slice_set(s : CryptohashgroestlSlice, i : Int, v : Double) -> CryptohashgroestlSlice {
-  let result = crypto_hash_groestl_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_groestl_slice_sum(s : CryptohashgroestlSlice) -> Double { @_common.sum(s.data) }

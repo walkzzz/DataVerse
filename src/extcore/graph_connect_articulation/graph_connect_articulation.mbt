@@ -107,23 +107,15 @@ pub fn graph_connect_articulation_series_std(s : GraphconnectarticulationSeries)
 pub fn graph_connect_articulation_series_median(s : GraphconnectarticulationSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_connect_articulation_series_scale(s : GraphconnectarticulationSeries, f : Double) -> GraphconnectarticulationSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_connect_articulation_series_add(a : GraphconnectarticulationSeries, b : GraphconnectarticulationSeries) -> GraphconnectarticulationSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_connect_articulation_series_sub(a : GraphconnectarticulationSeries, b : GraphconnectarticulationSeries) -> GraphconnectarticulationSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_connect_articulation_series_normalize(s : GraphconnectarticulationSeries) -> GraphconnectarticulationSeries {
@@ -254,22 +246,16 @@ pub fn graph_connect_articulation_vector_zero(dim : Int) -> Graphconnectarticula
 
 pub fn graph_connect_articulation_vector_add(a : GraphconnectarticulationVector, b : GraphconnectarticulationVector) -> GraphconnectarticulationVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_connect_articulation_vector_sub(a : GraphconnectarticulationVector, b : GraphconnectarticulationVector) -> GraphconnectarticulationVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_connect_articulation_vector_scale(v : GraphconnectarticulationVector, s : Double) -> GraphconnectarticulationVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_connect_articulation_vector_dot(a : GraphconnectarticulationVector, b : GraphconnectarticulationVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_connect_articulation_frame_get(s : GraphconnectarticulationFrame, i
 }
 
 pub fn graph_connect_articulation_frame_set(s : GraphconnectarticulationFrame, i : Int, v : Double) -> GraphconnectarticulationFrame {
-  let result = graph_connect_articulation_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_articulation_frame_sum(s : GraphconnectarticulationFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_connect_articulation_table_get(s : GraphconnectarticulationTable, i
 }
 
 pub fn graph_connect_articulation_table_set(s : GraphconnectarticulationTable, i : Int, v : Double) -> GraphconnectarticulationTable {
-  let result = graph_connect_articulation_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_articulation_table_sum(s : GraphconnectarticulationTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_connect_articulation_graphn_get(s : GraphconnectarticulationGraphN,
 }
 
 pub fn graph_connect_articulation_graphn_set(s : GraphconnectarticulationGraphN, i : Int, v : Double) -> GraphconnectarticulationGraphN {
-  let result = graph_connect_articulation_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_articulation_graphn_sum(s : GraphconnectarticulationGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_connect_articulation_node_get(s : GraphconnectarticulationNode, i :
 }
 
 pub fn graph_connect_articulation_node_set(s : GraphconnectarticulationNode, i : Int, v : Double) -> GraphconnectarticulationNode {
-  let result = graph_connect_articulation_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_articulation_node_sum(s : GraphconnectarticulationNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_connect_articulation_edge_get(s : GraphconnectarticulationEdge, i :
 }
 
 pub fn graph_connect_articulation_edge_set(s : GraphconnectarticulationEdge, i : Int, v : Double) -> GraphconnectarticulationEdge {
-  let result = graph_connect_articulation_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_articulation_edge_sum(s : GraphconnectarticulationEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_connect_articulation_path_get(s : GraphconnectarticulationPath, i :
 }
 
 pub fn graph_connect_articulation_path_set(s : GraphconnectarticulationPath, i : Int, v : Double) -> GraphconnectarticulationPath {
-  let result = graph_connect_articulation_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_articulation_path_sum(s : GraphconnectarticulationPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_connect_articulation_cluster_get(s : GraphconnectarticulationCluste
 }
 
 pub fn graph_connect_articulation_cluster_set(s : GraphconnectarticulationCluster, i : Int, v : Double) -> GraphconnectarticulationCluster {
-  let result = graph_connect_articulation_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_articulation_cluster_sum(s : GraphconnectarticulationCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_connect_articulation_model_get(s : GraphconnectarticulationModel, i
 }
 
 pub fn graph_connect_articulation_model_set(s : GraphconnectarticulationModel, i : Int, v : Double) -> GraphconnectarticulationModel {
-  let result = graph_connect_articulation_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_articulation_model_sum(s : GraphconnectarticulationModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_connect_articulation_layer_get(s : GraphconnectarticulationLayer, i
 }
 
 pub fn graph_connect_articulation_layer_set(s : GraphconnectarticulationLayer, i : Int, v : Double) -> GraphconnectarticulationLayer {
-  let result = graph_connect_articulation_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_articulation_layer_sum(s : GraphconnectarticulationLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_connect_articulation_buffer_get(s : GraphconnectarticulationBuffer,
 }
 
 pub fn graph_connect_articulation_buffer_set(s : GraphconnectarticulationBuffer, i : Int, v : Double) -> GraphconnectarticulationBuffer {
-  let result = graph_connect_articulation_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_articulation_buffer_sum(s : GraphconnectarticulationBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_connect_articulation_cursor_get(s : GraphconnectarticulationCursor,
 }
 
 pub fn graph_connect_articulation_cursor_set(s : GraphconnectarticulationCursor, i : Int, v : Double) -> GraphconnectarticulationCursor {
-  let result = graph_connect_articulation_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_articulation_cursor_sum(s : GraphconnectarticulationCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_connect_articulation_view_get(s : GraphconnectarticulationView, i :
 }
 
 pub fn graph_connect_articulation_view_set(s : GraphconnectarticulationView, i : Int, v : Double) -> GraphconnectarticulationView {
-  let result = graph_connect_articulation_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_articulation_view_sum(s : GraphconnectarticulationView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_connect_articulation_range_get(s : GraphconnectarticulationRange, i
 }
 
 pub fn graph_connect_articulation_range_set(s : GraphconnectarticulationRange, i : Int, v : Double) -> GraphconnectarticulationRange {
-  let result = graph_connect_articulation_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_articulation_range_sum(s : GraphconnectarticulationRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_connect_articulation_slice_get(s : GraphconnectarticulationSlice, i
 }
 
 pub fn graph_connect_articulation_slice_set(s : GraphconnectarticulationSlice, i : Int, v : Double) -> GraphconnectarticulationSlice {
-  let result = graph_connect_articulation_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_articulation_slice_sum(s : GraphconnectarticulationSlice) -> Double { @_common.sum(s.data) }

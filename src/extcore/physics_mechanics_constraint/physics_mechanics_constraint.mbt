@@ -107,23 +107,15 @@ pub fn physics_mechanics_constraint_series_std(s : PhysicsmechanicsconstraintSer
 pub fn physics_mechanics_constraint_series_median(s : PhysicsmechanicsconstraintSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_mechanics_constraint_series_scale(s : PhysicsmechanicsconstraintSeries, f : Double) -> PhysicsmechanicsconstraintSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_mechanics_constraint_series_add(a : PhysicsmechanicsconstraintSeries, b : PhysicsmechanicsconstraintSeries) -> PhysicsmechanicsconstraintSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_mechanics_constraint_series_sub(a : PhysicsmechanicsconstraintSeries, b : PhysicsmechanicsconstraintSeries) -> PhysicsmechanicsconstraintSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_mechanics_constraint_series_normalize(s : PhysicsmechanicsconstraintSeries) -> PhysicsmechanicsconstraintSeries {
@@ -254,22 +246,16 @@ pub fn physics_mechanics_constraint_vector_zero(dim : Int) -> Physicsmechanicsco
 
 pub fn physics_mechanics_constraint_vector_add(a : PhysicsmechanicsconstraintVector, b : PhysicsmechanicsconstraintVector) -> PhysicsmechanicsconstraintVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_mechanics_constraint_vector_sub(a : PhysicsmechanicsconstraintVector, b : PhysicsmechanicsconstraintVector) -> PhysicsmechanicsconstraintVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_mechanics_constraint_vector_scale(v : PhysicsmechanicsconstraintVector, s : Double) -> PhysicsmechanicsconstraintVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_mechanics_constraint_vector_dot(a : PhysicsmechanicsconstraintVector, b : PhysicsmechanicsconstraintVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_mechanics_constraint_frame_get(s : PhysicsmechanicsconstraintFram
 }
 
 pub fn physics_mechanics_constraint_frame_set(s : PhysicsmechanicsconstraintFrame, i : Int, v : Double) -> PhysicsmechanicsconstraintFrame {
-  let result = physics_mechanics_constraint_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_constraint_frame_sum(s : PhysicsmechanicsconstraintFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_mechanics_constraint_table_get(s : PhysicsmechanicsconstraintTabl
 }
 
 pub fn physics_mechanics_constraint_table_set(s : PhysicsmechanicsconstraintTable, i : Int, v : Double) -> PhysicsmechanicsconstraintTable {
-  let result = physics_mechanics_constraint_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_constraint_table_sum(s : PhysicsmechanicsconstraintTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_mechanics_constraint_graphn_get(s : PhysicsmechanicsconstraintGra
 }
 
 pub fn physics_mechanics_constraint_graphn_set(s : PhysicsmechanicsconstraintGraphN, i : Int, v : Double) -> PhysicsmechanicsconstraintGraphN {
-  let result = physics_mechanics_constraint_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_constraint_graphn_sum(s : PhysicsmechanicsconstraintGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_mechanics_constraint_node_get(s : PhysicsmechanicsconstraintNode,
 }
 
 pub fn physics_mechanics_constraint_node_set(s : PhysicsmechanicsconstraintNode, i : Int, v : Double) -> PhysicsmechanicsconstraintNode {
-  let result = physics_mechanics_constraint_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_constraint_node_sum(s : PhysicsmechanicsconstraintNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_mechanics_constraint_edge_get(s : PhysicsmechanicsconstraintEdge,
 }
 
 pub fn physics_mechanics_constraint_edge_set(s : PhysicsmechanicsconstraintEdge, i : Int, v : Double) -> PhysicsmechanicsconstraintEdge {
-  let result = physics_mechanics_constraint_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_constraint_edge_sum(s : PhysicsmechanicsconstraintEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_mechanics_constraint_path_get(s : PhysicsmechanicsconstraintPath,
 }
 
 pub fn physics_mechanics_constraint_path_set(s : PhysicsmechanicsconstraintPath, i : Int, v : Double) -> PhysicsmechanicsconstraintPath {
-  let result = physics_mechanics_constraint_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_constraint_path_sum(s : PhysicsmechanicsconstraintPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_mechanics_constraint_cluster_get(s : PhysicsmechanicsconstraintCl
 }
 
 pub fn physics_mechanics_constraint_cluster_set(s : PhysicsmechanicsconstraintCluster, i : Int, v : Double) -> PhysicsmechanicsconstraintCluster {
-  let result = physics_mechanics_constraint_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_constraint_cluster_sum(s : PhysicsmechanicsconstraintCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_mechanics_constraint_model_get(s : PhysicsmechanicsconstraintMode
 }
 
 pub fn physics_mechanics_constraint_model_set(s : PhysicsmechanicsconstraintModel, i : Int, v : Double) -> PhysicsmechanicsconstraintModel {
-  let result = physics_mechanics_constraint_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_constraint_model_sum(s : PhysicsmechanicsconstraintModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_mechanics_constraint_layer_get(s : PhysicsmechanicsconstraintLaye
 }
 
 pub fn physics_mechanics_constraint_layer_set(s : PhysicsmechanicsconstraintLayer, i : Int, v : Double) -> PhysicsmechanicsconstraintLayer {
-  let result = physics_mechanics_constraint_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_constraint_layer_sum(s : PhysicsmechanicsconstraintLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_mechanics_constraint_buffer_get(s : PhysicsmechanicsconstraintBuf
 }
 
 pub fn physics_mechanics_constraint_buffer_set(s : PhysicsmechanicsconstraintBuffer, i : Int, v : Double) -> PhysicsmechanicsconstraintBuffer {
-  let result = physics_mechanics_constraint_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_constraint_buffer_sum(s : PhysicsmechanicsconstraintBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_mechanics_constraint_cursor_get(s : PhysicsmechanicsconstraintCur
 }
 
 pub fn physics_mechanics_constraint_cursor_set(s : PhysicsmechanicsconstraintCursor, i : Int, v : Double) -> PhysicsmechanicsconstraintCursor {
-  let result = physics_mechanics_constraint_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_constraint_cursor_sum(s : PhysicsmechanicsconstraintCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_mechanics_constraint_view_get(s : PhysicsmechanicsconstraintView,
 }
 
 pub fn physics_mechanics_constraint_view_set(s : PhysicsmechanicsconstraintView, i : Int, v : Double) -> PhysicsmechanicsconstraintView {
-  let result = physics_mechanics_constraint_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_constraint_view_sum(s : PhysicsmechanicsconstraintView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_mechanics_constraint_range_get(s : PhysicsmechanicsconstraintRang
 }
 
 pub fn physics_mechanics_constraint_range_set(s : PhysicsmechanicsconstraintRange, i : Int, v : Double) -> PhysicsmechanicsconstraintRange {
-  let result = physics_mechanics_constraint_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_constraint_range_sum(s : PhysicsmechanicsconstraintRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_mechanics_constraint_slice_get(s : PhysicsmechanicsconstraintSlic
 }
 
 pub fn physics_mechanics_constraint_slice_set(s : PhysicsmechanicsconstraintSlice, i : Int, v : Double) -> PhysicsmechanicsconstraintSlice {
-  let result = physics_mechanics_constraint_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_constraint_slice_sum(s : PhysicsmechanicsconstraintSlice) -> Double { @_common.sum(s.data) }

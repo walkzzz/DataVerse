@@ -107,23 +107,15 @@ pub fn graph_tree_encoding_series_std(s : GraphtreeencodingSeries) -> Double { @
 pub fn graph_tree_encoding_series_median(s : GraphtreeencodingSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_tree_encoding_series_scale(s : GraphtreeencodingSeries, f : Double) -> GraphtreeencodingSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_tree_encoding_series_add(a : GraphtreeencodingSeries, b : GraphtreeencodingSeries) -> GraphtreeencodingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_tree_encoding_series_sub(a : GraphtreeencodingSeries, b : GraphtreeencodingSeries) -> GraphtreeencodingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_tree_encoding_series_normalize(s : GraphtreeencodingSeries) -> GraphtreeencodingSeries {
@@ -254,22 +246,16 @@ pub fn graph_tree_encoding_vector_zero(dim : Int) -> GraphtreeencodingVector {
 
 pub fn graph_tree_encoding_vector_add(a : GraphtreeencodingVector, b : GraphtreeencodingVector) -> GraphtreeencodingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_tree_encoding_vector_sub(a : GraphtreeencodingVector, b : GraphtreeencodingVector) -> GraphtreeencodingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_tree_encoding_vector_scale(v : GraphtreeencodingVector, s : Double) -> GraphtreeencodingVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_tree_encoding_vector_dot(a : GraphtreeencodingVector, b : GraphtreeencodingVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_tree_encoding_frame_get(s : GraphtreeencodingFrame, i : Int) -> Dou
 }
 
 pub fn graph_tree_encoding_frame_set(s : GraphtreeencodingFrame, i : Int, v : Double) -> GraphtreeencodingFrame {
-  let result = graph_tree_encoding_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_encoding_frame_sum(s : GraphtreeencodingFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_tree_encoding_table_get(s : GraphtreeencodingTable, i : Int) -> Dou
 }
 
 pub fn graph_tree_encoding_table_set(s : GraphtreeencodingTable, i : Int, v : Double) -> GraphtreeencodingTable {
-  let result = graph_tree_encoding_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_encoding_table_sum(s : GraphtreeencodingTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_tree_encoding_graphn_get(s : GraphtreeencodingGraphN, i : Int) -> D
 }
 
 pub fn graph_tree_encoding_graphn_set(s : GraphtreeencodingGraphN, i : Int, v : Double) -> GraphtreeencodingGraphN {
-  let result = graph_tree_encoding_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_encoding_graphn_sum(s : GraphtreeencodingGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_tree_encoding_node_get(s : GraphtreeencodingNode, i : Int) -> Doubl
 }
 
 pub fn graph_tree_encoding_node_set(s : GraphtreeencodingNode, i : Int, v : Double) -> GraphtreeencodingNode {
-  let result = graph_tree_encoding_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_encoding_node_sum(s : GraphtreeencodingNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_tree_encoding_edge_get(s : GraphtreeencodingEdge, i : Int) -> Doubl
 }
 
 pub fn graph_tree_encoding_edge_set(s : GraphtreeencodingEdge, i : Int, v : Double) -> GraphtreeencodingEdge {
-  let result = graph_tree_encoding_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_encoding_edge_sum(s : GraphtreeencodingEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_tree_encoding_path_get(s : GraphtreeencodingPath, i : Int) -> Doubl
 }
 
 pub fn graph_tree_encoding_path_set(s : GraphtreeencodingPath, i : Int, v : Double) -> GraphtreeencodingPath {
-  let result = graph_tree_encoding_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_encoding_path_sum(s : GraphtreeencodingPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_tree_encoding_cluster_get(s : GraphtreeencodingCluster, i : Int) ->
 }
 
 pub fn graph_tree_encoding_cluster_set(s : GraphtreeencodingCluster, i : Int, v : Double) -> GraphtreeencodingCluster {
-  let result = graph_tree_encoding_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_encoding_cluster_sum(s : GraphtreeencodingCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_tree_encoding_model_get(s : GraphtreeencodingModel, i : Int) -> Dou
 }
 
 pub fn graph_tree_encoding_model_set(s : GraphtreeencodingModel, i : Int, v : Double) -> GraphtreeencodingModel {
-  let result = graph_tree_encoding_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_encoding_model_sum(s : GraphtreeencodingModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_tree_encoding_layer_get(s : GraphtreeencodingLayer, i : Int) -> Dou
 }
 
 pub fn graph_tree_encoding_layer_set(s : GraphtreeencodingLayer, i : Int, v : Double) -> GraphtreeencodingLayer {
-  let result = graph_tree_encoding_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_encoding_layer_sum(s : GraphtreeencodingLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_tree_encoding_buffer_get(s : GraphtreeencodingBuffer, i : Int) -> D
 }
 
 pub fn graph_tree_encoding_buffer_set(s : GraphtreeencodingBuffer, i : Int, v : Double) -> GraphtreeencodingBuffer {
-  let result = graph_tree_encoding_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_encoding_buffer_sum(s : GraphtreeencodingBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_tree_encoding_cursor_get(s : GraphtreeencodingCursor, i : Int) -> D
 }
 
 pub fn graph_tree_encoding_cursor_set(s : GraphtreeencodingCursor, i : Int, v : Double) -> GraphtreeencodingCursor {
-  let result = graph_tree_encoding_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_encoding_cursor_sum(s : GraphtreeencodingCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_tree_encoding_view_get(s : GraphtreeencodingView, i : Int) -> Doubl
 }
 
 pub fn graph_tree_encoding_view_set(s : GraphtreeencodingView, i : Int, v : Double) -> GraphtreeencodingView {
-  let result = graph_tree_encoding_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_encoding_view_sum(s : GraphtreeencodingView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_tree_encoding_range_get(s : GraphtreeencodingRange, i : Int) -> Dou
 }
 
 pub fn graph_tree_encoding_range_set(s : GraphtreeencodingRange, i : Int, v : Double) -> GraphtreeencodingRange {
-  let result = graph_tree_encoding_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_encoding_range_sum(s : GraphtreeencodingRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_tree_encoding_slice_get(s : GraphtreeencodingSlice, i : Int) -> Dou
 }
 
 pub fn graph_tree_encoding_slice_set(s : GraphtreeencodingSlice, i : Int, v : Double) -> GraphtreeencodingSlice {
-  let result = graph_tree_encoding_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_encoding_slice_sum(s : GraphtreeencodingSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn db_query_sort_series_std(s : DbquerysortSeries) -> Double { @_common.std(
 pub fn db_query_sort_series_median(s : DbquerysortSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_query_sort_series_scale(s : DbquerysortSeries, f : Double) -> DbquerysortSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_query_sort_series_add(a : DbquerysortSeries, b : DbquerysortSeries) -> DbquerysortSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_query_sort_series_sub(a : DbquerysortSeries, b : DbquerysortSeries) -> DbquerysortSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_query_sort_series_normalize(s : DbquerysortSeries) -> DbquerysortSeries {
@@ -254,22 +246,16 @@ pub fn db_query_sort_vector_zero(dim : Int) -> DbquerysortVector {
 
 pub fn db_query_sort_vector_add(a : DbquerysortVector, b : DbquerysortVector) -> DbquerysortVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_query_sort_vector_sub(a : DbquerysortVector, b : DbquerysortVector) -> DbquerysortVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_query_sort_vector_scale(v : DbquerysortVector, s : Double) -> DbquerysortVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_query_sort_vector_dot(a : DbquerysortVector, b : DbquerysortVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_query_sort_frame_get(s : DbquerysortFrame, i : Int) -> Double {
 }
 
 pub fn db_query_sort_frame_set(s : DbquerysortFrame, i : Int, v : Double) -> DbquerysortFrame {
-  let result = db_query_sort_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_frame_sum(s : DbquerysortFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_query_sort_table_get(s : DbquerysortTable, i : Int) -> Double {
 }
 
 pub fn db_query_sort_table_set(s : DbquerysortTable, i : Int, v : Double) -> DbquerysortTable {
-  let result = db_query_sort_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_table_sum(s : DbquerysortTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_query_sort_graphn_get(s : DbquerysortGraphN, i : Int) -> Double {
 }
 
 pub fn db_query_sort_graphn_set(s : DbquerysortGraphN, i : Int, v : Double) -> DbquerysortGraphN {
-  let result = db_query_sort_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_graphn_sum(s : DbquerysortGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_query_sort_node_get(s : DbquerysortNode, i : Int) -> Double {
 }
 
 pub fn db_query_sort_node_set(s : DbquerysortNode, i : Int, v : Double) -> DbquerysortNode {
-  let result = db_query_sort_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_node_sum(s : DbquerysortNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_query_sort_edge_get(s : DbquerysortEdge, i : Int) -> Double {
 }
 
 pub fn db_query_sort_edge_set(s : DbquerysortEdge, i : Int, v : Double) -> DbquerysortEdge {
-  let result = db_query_sort_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_edge_sum(s : DbquerysortEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_query_sort_path_get(s : DbquerysortPath, i : Int) -> Double {
 }
 
 pub fn db_query_sort_path_set(s : DbquerysortPath, i : Int, v : Double) -> DbquerysortPath {
-  let result = db_query_sort_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_path_sum(s : DbquerysortPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_query_sort_cluster_get(s : DbquerysortCluster, i : Int) -> Double {
 }
 
 pub fn db_query_sort_cluster_set(s : DbquerysortCluster, i : Int, v : Double) -> DbquerysortCluster {
-  let result = db_query_sort_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_cluster_sum(s : DbquerysortCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_query_sort_model_get(s : DbquerysortModel, i : Int) -> Double {
 }
 
 pub fn db_query_sort_model_set(s : DbquerysortModel, i : Int, v : Double) -> DbquerysortModel {
-  let result = db_query_sort_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_model_sum(s : DbquerysortModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_query_sort_layer_get(s : DbquerysortLayer, i : Int) -> Double {
 }
 
 pub fn db_query_sort_layer_set(s : DbquerysortLayer, i : Int, v : Double) -> DbquerysortLayer {
-  let result = db_query_sort_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_layer_sum(s : DbquerysortLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_query_sort_buffer_get(s : DbquerysortBuffer, i : Int) -> Double {
 }
 
 pub fn db_query_sort_buffer_set(s : DbquerysortBuffer, i : Int, v : Double) -> DbquerysortBuffer {
-  let result = db_query_sort_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_buffer_sum(s : DbquerysortBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_query_sort_cursor_get(s : DbquerysortCursor, i : Int) -> Double {
 }
 
 pub fn db_query_sort_cursor_set(s : DbquerysortCursor, i : Int, v : Double) -> DbquerysortCursor {
-  let result = db_query_sort_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_cursor_sum(s : DbquerysortCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_query_sort_view_get(s : DbquerysortView, i : Int) -> Double {
 }
 
 pub fn db_query_sort_view_set(s : DbquerysortView, i : Int, v : Double) -> DbquerysortView {
-  let result = db_query_sort_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_view_sum(s : DbquerysortView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_query_sort_range_get(s : DbquerysortRange, i : Int) -> Double {
 }
 
 pub fn db_query_sort_range_set(s : DbquerysortRange, i : Int, v : Double) -> DbquerysortRange {
-  let result = db_query_sort_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_range_sum(s : DbquerysortRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_query_sort_slice_get(s : DbquerysortSlice, i : Int) -> Double {
 }
 
 pub fn db_query_sort_slice_set(s : DbquerysortSlice, i : Int, v : Double) -> DbquerysortSlice {
-  let result = db_query_sort_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_sort_slice_sum(s : DbquerysortSlice) -> Double { @_common.sum(s.data) }

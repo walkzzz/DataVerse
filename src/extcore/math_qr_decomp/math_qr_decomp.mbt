@@ -107,23 +107,15 @@ pub fn math_qr_decomp_series_std(s : MathqrdecompSeries) -> Double { @_common.st
 pub fn math_qr_decomp_series_median(s : MathqrdecompSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_qr_decomp_series_scale(s : MathqrdecompSeries, f : Double) -> MathqrdecompSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_qr_decomp_series_add(a : MathqrdecompSeries, b : MathqrdecompSeries) -> MathqrdecompSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_qr_decomp_series_sub(a : MathqrdecompSeries, b : MathqrdecompSeries) -> MathqrdecompSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_qr_decomp_series_normalize(s : MathqrdecompSeries) -> MathqrdecompSeries {
@@ -254,22 +246,16 @@ pub fn math_qr_decomp_vector_zero(dim : Int) -> MathqrdecompVector {
 
 pub fn math_qr_decomp_vector_add(a : MathqrdecompVector, b : MathqrdecompVector) -> MathqrdecompVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_qr_decomp_vector_sub(a : MathqrdecompVector, b : MathqrdecompVector) -> MathqrdecompVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_qr_decomp_vector_scale(v : MathqrdecompVector, s : Double) -> MathqrdecompVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_qr_decomp_vector_dot(a : MathqrdecompVector, b : MathqrdecompVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_qr_decomp_frame_get(s : MathqrdecompFrame, i : Int) -> Double {
 }
 
 pub fn math_qr_decomp_frame_set(s : MathqrdecompFrame, i : Int, v : Double) -> MathqrdecompFrame {
-  let result = math_qr_decomp_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_frame_sum(s : MathqrdecompFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_qr_decomp_table_get(s : MathqrdecompTable, i : Int) -> Double {
 }
 
 pub fn math_qr_decomp_table_set(s : MathqrdecompTable, i : Int, v : Double) -> MathqrdecompTable {
-  let result = math_qr_decomp_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_table_sum(s : MathqrdecompTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_qr_decomp_graphn_get(s : MathqrdecompGraphN, i : Int) -> Double {
 }
 
 pub fn math_qr_decomp_graphn_set(s : MathqrdecompGraphN, i : Int, v : Double) -> MathqrdecompGraphN {
-  let result = math_qr_decomp_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_graphn_sum(s : MathqrdecompGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_qr_decomp_node_get(s : MathqrdecompNode, i : Int) -> Double {
 }
 
 pub fn math_qr_decomp_node_set(s : MathqrdecompNode, i : Int, v : Double) -> MathqrdecompNode {
-  let result = math_qr_decomp_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_node_sum(s : MathqrdecompNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_qr_decomp_edge_get(s : MathqrdecompEdge, i : Int) -> Double {
 }
 
 pub fn math_qr_decomp_edge_set(s : MathqrdecompEdge, i : Int, v : Double) -> MathqrdecompEdge {
-  let result = math_qr_decomp_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_edge_sum(s : MathqrdecompEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_qr_decomp_path_get(s : MathqrdecompPath, i : Int) -> Double {
 }
 
 pub fn math_qr_decomp_path_set(s : MathqrdecompPath, i : Int, v : Double) -> MathqrdecompPath {
-  let result = math_qr_decomp_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_path_sum(s : MathqrdecompPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_qr_decomp_cluster_get(s : MathqrdecompCluster, i : Int) -> Double {
 }
 
 pub fn math_qr_decomp_cluster_set(s : MathqrdecompCluster, i : Int, v : Double) -> MathqrdecompCluster {
-  let result = math_qr_decomp_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_cluster_sum(s : MathqrdecompCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_qr_decomp_model_get(s : MathqrdecompModel, i : Int) -> Double {
 }
 
 pub fn math_qr_decomp_model_set(s : MathqrdecompModel, i : Int, v : Double) -> MathqrdecompModel {
-  let result = math_qr_decomp_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_model_sum(s : MathqrdecompModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_qr_decomp_layer_get(s : MathqrdecompLayer, i : Int) -> Double {
 }
 
 pub fn math_qr_decomp_layer_set(s : MathqrdecompLayer, i : Int, v : Double) -> MathqrdecompLayer {
-  let result = math_qr_decomp_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_layer_sum(s : MathqrdecompLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_qr_decomp_buffer_get(s : MathqrdecompBuffer, i : Int) -> Double {
 }
 
 pub fn math_qr_decomp_buffer_set(s : MathqrdecompBuffer, i : Int, v : Double) -> MathqrdecompBuffer {
-  let result = math_qr_decomp_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_buffer_sum(s : MathqrdecompBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_qr_decomp_cursor_get(s : MathqrdecompCursor, i : Int) -> Double {
 }
 
 pub fn math_qr_decomp_cursor_set(s : MathqrdecompCursor, i : Int, v : Double) -> MathqrdecompCursor {
-  let result = math_qr_decomp_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_cursor_sum(s : MathqrdecompCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_qr_decomp_view_get(s : MathqrdecompView, i : Int) -> Double {
 }
 
 pub fn math_qr_decomp_view_set(s : MathqrdecompView, i : Int, v : Double) -> MathqrdecompView {
-  let result = math_qr_decomp_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_view_sum(s : MathqrdecompView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_qr_decomp_range_get(s : MathqrdecompRange, i : Int) -> Double {
 }
 
 pub fn math_qr_decomp_range_set(s : MathqrdecompRange, i : Int, v : Double) -> MathqrdecompRange {
-  let result = math_qr_decomp_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_range_sum(s : MathqrdecompRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_qr_decomp_slice_get(s : MathqrdecompSlice, i : Int) -> Double {
 }
 
 pub fn math_qr_decomp_slice_set(s : MathqrdecompSlice, i : Int, v : Double) -> MathqrdecompSlice {
-  let result = math_qr_decomp_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_qr_decomp_slice_sum(s : MathqrdecompSlice) -> Double { @_common.sum(s.data) }

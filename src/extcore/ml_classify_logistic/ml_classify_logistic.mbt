@@ -107,23 +107,15 @@ pub fn ml_classify_logistic_series_std(s : MlclassifylogisticSeries) -> Double {
 pub fn ml_classify_logistic_series_median(s : MlclassifylogisticSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_classify_logistic_series_scale(s : MlclassifylogisticSeries, f : Double) -> MlclassifylogisticSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_classify_logistic_series_add(a : MlclassifylogisticSeries, b : MlclassifylogisticSeries) -> MlclassifylogisticSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_classify_logistic_series_sub(a : MlclassifylogisticSeries, b : MlclassifylogisticSeries) -> MlclassifylogisticSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_classify_logistic_series_normalize(s : MlclassifylogisticSeries) -> MlclassifylogisticSeries {
@@ -254,22 +246,16 @@ pub fn ml_classify_logistic_vector_zero(dim : Int) -> MlclassifylogisticVector {
 
 pub fn ml_classify_logistic_vector_add(a : MlclassifylogisticVector, b : MlclassifylogisticVector) -> MlclassifylogisticVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_classify_logistic_vector_sub(a : MlclassifylogisticVector, b : MlclassifylogisticVector) -> MlclassifylogisticVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_classify_logistic_vector_scale(v : MlclassifylogisticVector, s : Double) -> MlclassifylogisticVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_classify_logistic_vector_dot(a : MlclassifylogisticVector, b : MlclassifylogisticVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_classify_logistic_frame_get(s : MlclassifylogisticFrame, i : Int) -> D
 }
 
 pub fn ml_classify_logistic_frame_set(s : MlclassifylogisticFrame, i : Int, v : Double) -> MlclassifylogisticFrame {
-  let result = ml_classify_logistic_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_logistic_frame_sum(s : MlclassifylogisticFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_classify_logistic_table_get(s : MlclassifylogisticTable, i : Int) -> D
 }
 
 pub fn ml_classify_logistic_table_set(s : MlclassifylogisticTable, i : Int, v : Double) -> MlclassifylogisticTable {
-  let result = ml_classify_logistic_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_logistic_table_sum(s : MlclassifylogisticTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_classify_logistic_graphn_get(s : MlclassifylogisticGraphN, i : Int) ->
 }
 
 pub fn ml_classify_logistic_graphn_set(s : MlclassifylogisticGraphN, i : Int, v : Double) -> MlclassifylogisticGraphN {
-  let result = ml_classify_logistic_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_logistic_graphn_sum(s : MlclassifylogisticGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_classify_logistic_node_get(s : MlclassifylogisticNode, i : Int) -> Dou
 }
 
 pub fn ml_classify_logistic_node_set(s : MlclassifylogisticNode, i : Int, v : Double) -> MlclassifylogisticNode {
-  let result = ml_classify_logistic_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_logistic_node_sum(s : MlclassifylogisticNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_classify_logistic_edge_get(s : MlclassifylogisticEdge, i : Int) -> Dou
 }
 
 pub fn ml_classify_logistic_edge_set(s : MlclassifylogisticEdge, i : Int, v : Double) -> MlclassifylogisticEdge {
-  let result = ml_classify_logistic_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_logistic_edge_sum(s : MlclassifylogisticEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_classify_logistic_path_get(s : MlclassifylogisticPath, i : Int) -> Dou
 }
 
 pub fn ml_classify_logistic_path_set(s : MlclassifylogisticPath, i : Int, v : Double) -> MlclassifylogisticPath {
-  let result = ml_classify_logistic_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_logistic_path_sum(s : MlclassifylogisticPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_classify_logistic_cluster_get(s : MlclassifylogisticCluster, i : Int) 
 }
 
 pub fn ml_classify_logistic_cluster_set(s : MlclassifylogisticCluster, i : Int, v : Double) -> MlclassifylogisticCluster {
-  let result = ml_classify_logistic_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_logistic_cluster_sum(s : MlclassifylogisticCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_classify_logistic_model_get(s : MlclassifylogisticModel, i : Int) -> D
 }
 
 pub fn ml_classify_logistic_model_set(s : MlclassifylogisticModel, i : Int, v : Double) -> MlclassifylogisticModel {
-  let result = ml_classify_logistic_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_logistic_model_sum(s : MlclassifylogisticModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_classify_logistic_layer_get(s : MlclassifylogisticLayer, i : Int) -> D
 }
 
 pub fn ml_classify_logistic_layer_set(s : MlclassifylogisticLayer, i : Int, v : Double) -> MlclassifylogisticLayer {
-  let result = ml_classify_logistic_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_logistic_layer_sum(s : MlclassifylogisticLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_classify_logistic_buffer_get(s : MlclassifylogisticBuffer, i : Int) ->
 }
 
 pub fn ml_classify_logistic_buffer_set(s : MlclassifylogisticBuffer, i : Int, v : Double) -> MlclassifylogisticBuffer {
-  let result = ml_classify_logistic_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_logistic_buffer_sum(s : MlclassifylogisticBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_classify_logistic_cursor_get(s : MlclassifylogisticCursor, i : Int) ->
 }
 
 pub fn ml_classify_logistic_cursor_set(s : MlclassifylogisticCursor, i : Int, v : Double) -> MlclassifylogisticCursor {
-  let result = ml_classify_logistic_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_logistic_cursor_sum(s : MlclassifylogisticCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_classify_logistic_view_get(s : MlclassifylogisticView, i : Int) -> Dou
 }
 
 pub fn ml_classify_logistic_view_set(s : MlclassifylogisticView, i : Int, v : Double) -> MlclassifylogisticView {
-  let result = ml_classify_logistic_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_logistic_view_sum(s : MlclassifylogisticView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_classify_logistic_range_get(s : MlclassifylogisticRange, i : Int) -> D
 }
 
 pub fn ml_classify_logistic_range_set(s : MlclassifylogisticRange, i : Int, v : Double) -> MlclassifylogisticRange {
-  let result = ml_classify_logistic_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_logistic_range_sum(s : MlclassifylogisticRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_classify_logistic_slice_get(s : MlclassifylogisticSlice, i : Int) -> D
 }
 
 pub fn ml_classify_logistic_slice_set(s : MlclassifylogisticSlice, i : Int, v : Double) -> MlclassifylogisticSlice {
-  let result = ml_classify_logistic_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_logistic_slice_sum(s : MlclassifylogisticSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn opt_meta_differential_series_std(s : OptmetadifferentialSeries) -> Double
 pub fn opt_meta_differential_series_median(s : OptmetadifferentialSeries) -> Double { @_common.median(s.vals) }
 
 pub fn opt_meta_differential_series_scale(s : OptmetadifferentialSeries, f : Double) -> OptmetadifferentialSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn opt_meta_differential_series_add(a : OptmetadifferentialSeries, b : OptmetadifferentialSeries) -> OptmetadifferentialSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn opt_meta_differential_series_sub(a : OptmetadifferentialSeries, b : OptmetadifferentialSeries) -> OptmetadifferentialSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn opt_meta_differential_series_normalize(s : OptmetadifferentialSeries) -> OptmetadifferentialSeries {
@@ -254,22 +246,16 @@ pub fn opt_meta_differential_vector_zero(dim : Int) -> OptmetadifferentialVector
 
 pub fn opt_meta_differential_vector_add(a : OptmetadifferentialVector, b : OptmetadifferentialVector) -> OptmetadifferentialVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_meta_differential_vector_sub(a : OptmetadifferentialVector, b : OptmetadifferentialVector) -> OptmetadifferentialVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_meta_differential_vector_scale(v : OptmetadifferentialVector, s : Double) -> OptmetadifferentialVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn opt_meta_differential_vector_dot(a : OptmetadifferentialVector, b : OptmetadifferentialVector) -> Double {
@@ -372,10 +358,9 @@ pub fn opt_meta_differential_frame_get(s : OptmetadifferentialFrame, i : Int) ->
 }
 
 pub fn opt_meta_differential_frame_set(s : OptmetadifferentialFrame, i : Int, v : Double) -> OptmetadifferentialFrame {
-  let result = opt_meta_differential_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_differential_frame_sum(s : OptmetadifferentialFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn opt_meta_differential_table_get(s : OptmetadifferentialTable, i : Int) ->
 }
 
 pub fn opt_meta_differential_table_set(s : OptmetadifferentialTable, i : Int, v : Double) -> OptmetadifferentialTable {
-  let result = opt_meta_differential_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_differential_table_sum(s : OptmetadifferentialTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn opt_meta_differential_graphn_get(s : OptmetadifferentialGraphN, i : Int) 
 }
 
 pub fn opt_meta_differential_graphn_set(s : OptmetadifferentialGraphN, i : Int, v : Double) -> OptmetadifferentialGraphN {
-  let result = opt_meta_differential_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_differential_graphn_sum(s : OptmetadifferentialGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn opt_meta_differential_node_get(s : OptmetadifferentialNode, i : Int) -> D
 }
 
 pub fn opt_meta_differential_node_set(s : OptmetadifferentialNode, i : Int, v : Double) -> OptmetadifferentialNode {
-  let result = opt_meta_differential_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_differential_node_sum(s : OptmetadifferentialNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn opt_meta_differential_edge_get(s : OptmetadifferentialEdge, i : Int) -> D
 }
 
 pub fn opt_meta_differential_edge_set(s : OptmetadifferentialEdge, i : Int, v : Double) -> OptmetadifferentialEdge {
-  let result = opt_meta_differential_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_differential_edge_sum(s : OptmetadifferentialEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn opt_meta_differential_path_get(s : OptmetadifferentialPath, i : Int) -> D
 }
 
 pub fn opt_meta_differential_path_set(s : OptmetadifferentialPath, i : Int, v : Double) -> OptmetadifferentialPath {
-  let result = opt_meta_differential_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_differential_path_sum(s : OptmetadifferentialPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn opt_meta_differential_cluster_get(s : OptmetadifferentialCluster, i : Int
 }
 
 pub fn opt_meta_differential_cluster_set(s : OptmetadifferentialCluster, i : Int, v : Double) -> OptmetadifferentialCluster {
-  let result = opt_meta_differential_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_differential_cluster_sum(s : OptmetadifferentialCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn opt_meta_differential_model_get(s : OptmetadifferentialModel, i : Int) ->
 }
 
 pub fn opt_meta_differential_model_set(s : OptmetadifferentialModel, i : Int, v : Double) -> OptmetadifferentialModel {
-  let result = opt_meta_differential_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_differential_model_sum(s : OptmetadifferentialModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn opt_meta_differential_layer_get(s : OptmetadifferentialLayer, i : Int) ->
 }
 
 pub fn opt_meta_differential_layer_set(s : OptmetadifferentialLayer, i : Int, v : Double) -> OptmetadifferentialLayer {
-  let result = opt_meta_differential_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_differential_layer_sum(s : OptmetadifferentialLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn opt_meta_differential_buffer_get(s : OptmetadifferentialBuffer, i : Int) 
 }
 
 pub fn opt_meta_differential_buffer_set(s : OptmetadifferentialBuffer, i : Int, v : Double) -> OptmetadifferentialBuffer {
-  let result = opt_meta_differential_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_differential_buffer_sum(s : OptmetadifferentialBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn opt_meta_differential_cursor_get(s : OptmetadifferentialCursor, i : Int) 
 }
 
 pub fn opt_meta_differential_cursor_set(s : OptmetadifferentialCursor, i : Int, v : Double) -> OptmetadifferentialCursor {
-  let result = opt_meta_differential_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_differential_cursor_sum(s : OptmetadifferentialCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn opt_meta_differential_view_get(s : OptmetadifferentialView, i : Int) -> D
 }
 
 pub fn opt_meta_differential_view_set(s : OptmetadifferentialView, i : Int, v : Double) -> OptmetadifferentialView {
-  let result = opt_meta_differential_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_differential_view_sum(s : OptmetadifferentialView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn opt_meta_differential_range_get(s : OptmetadifferentialRange, i : Int) ->
 }
 
 pub fn opt_meta_differential_range_set(s : OptmetadifferentialRange, i : Int, v : Double) -> OptmetadifferentialRange {
-  let result = opt_meta_differential_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_differential_range_sum(s : OptmetadifferentialRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn opt_meta_differential_slice_get(s : OptmetadifferentialSlice, i : Int) ->
 }
 
 pub fn opt_meta_differential_slice_set(s : OptmetadifferentialSlice, i : Int, v : Double) -> OptmetadifferentialSlice {
-  let result = opt_meta_differential_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_differential_slice_sum(s : OptmetadifferentialSlice) -> Double { @_common.sum(s.data) }

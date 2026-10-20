@@ -107,23 +107,15 @@ pub fn net_proto_quic_series_std(s : NetprotoquicSeries) -> Double { @_common.st
 pub fn net_proto_quic_series_median(s : NetprotoquicSeries) -> Double { @_common.median(s.vals) }
 
 pub fn net_proto_quic_series_scale(s : NetprotoquicSeries, f : Double) -> NetprotoquicSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn net_proto_quic_series_add(a : NetprotoquicSeries, b : NetprotoquicSeries) -> NetprotoquicSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn net_proto_quic_series_sub(a : NetprotoquicSeries, b : NetprotoquicSeries) -> NetprotoquicSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn net_proto_quic_series_normalize(s : NetprotoquicSeries) -> NetprotoquicSeries {
@@ -254,22 +246,16 @@ pub fn net_proto_quic_vector_zero(dim : Int) -> NetprotoquicVector {
 
 pub fn net_proto_quic_vector_add(a : NetprotoquicVector, b : NetprotoquicVector) -> NetprotoquicVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_proto_quic_vector_sub(a : NetprotoquicVector, b : NetprotoquicVector) -> NetprotoquicVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_proto_quic_vector_scale(v : NetprotoquicVector, s : Double) -> NetprotoquicVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn net_proto_quic_vector_dot(a : NetprotoquicVector, b : NetprotoquicVector) -> Double {
@@ -372,10 +358,9 @@ pub fn net_proto_quic_frame_get(s : NetprotoquicFrame, i : Int) -> Double {
 }
 
 pub fn net_proto_quic_frame_set(s : NetprotoquicFrame, i : Int, v : Double) -> NetprotoquicFrame {
-  let result = net_proto_quic_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_frame_sum(s : NetprotoquicFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn net_proto_quic_table_get(s : NetprotoquicTable, i : Int) -> Double {
 }
 
 pub fn net_proto_quic_table_set(s : NetprotoquicTable, i : Int, v : Double) -> NetprotoquicTable {
-  let result = net_proto_quic_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_table_sum(s : NetprotoquicTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn net_proto_quic_graphn_get(s : NetprotoquicGraphN, i : Int) -> Double {
 }
 
 pub fn net_proto_quic_graphn_set(s : NetprotoquicGraphN, i : Int, v : Double) -> NetprotoquicGraphN {
-  let result = net_proto_quic_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_graphn_sum(s : NetprotoquicGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn net_proto_quic_node_get(s : NetprotoquicNode, i : Int) -> Double {
 }
 
 pub fn net_proto_quic_node_set(s : NetprotoquicNode, i : Int, v : Double) -> NetprotoquicNode {
-  let result = net_proto_quic_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_node_sum(s : NetprotoquicNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn net_proto_quic_edge_get(s : NetprotoquicEdge, i : Int) -> Double {
 }
 
 pub fn net_proto_quic_edge_set(s : NetprotoquicEdge, i : Int, v : Double) -> NetprotoquicEdge {
-  let result = net_proto_quic_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_edge_sum(s : NetprotoquicEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn net_proto_quic_path_get(s : NetprotoquicPath, i : Int) -> Double {
 }
 
 pub fn net_proto_quic_path_set(s : NetprotoquicPath, i : Int, v : Double) -> NetprotoquicPath {
-  let result = net_proto_quic_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_path_sum(s : NetprotoquicPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn net_proto_quic_cluster_get(s : NetprotoquicCluster, i : Int) -> Double {
 }
 
 pub fn net_proto_quic_cluster_set(s : NetprotoquicCluster, i : Int, v : Double) -> NetprotoquicCluster {
-  let result = net_proto_quic_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_cluster_sum(s : NetprotoquicCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn net_proto_quic_model_get(s : NetprotoquicModel, i : Int) -> Double {
 }
 
 pub fn net_proto_quic_model_set(s : NetprotoquicModel, i : Int, v : Double) -> NetprotoquicModel {
-  let result = net_proto_quic_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_model_sum(s : NetprotoquicModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn net_proto_quic_layer_get(s : NetprotoquicLayer, i : Int) -> Double {
 }
 
 pub fn net_proto_quic_layer_set(s : NetprotoquicLayer, i : Int, v : Double) -> NetprotoquicLayer {
-  let result = net_proto_quic_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_layer_sum(s : NetprotoquicLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn net_proto_quic_buffer_get(s : NetprotoquicBuffer, i : Int) -> Double {
 }
 
 pub fn net_proto_quic_buffer_set(s : NetprotoquicBuffer, i : Int, v : Double) -> NetprotoquicBuffer {
-  let result = net_proto_quic_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_buffer_sum(s : NetprotoquicBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn net_proto_quic_cursor_get(s : NetprotoquicCursor, i : Int) -> Double {
 }
 
 pub fn net_proto_quic_cursor_set(s : NetprotoquicCursor, i : Int, v : Double) -> NetprotoquicCursor {
-  let result = net_proto_quic_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_cursor_sum(s : NetprotoquicCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn net_proto_quic_view_get(s : NetprotoquicView, i : Int) -> Double {
 }
 
 pub fn net_proto_quic_view_set(s : NetprotoquicView, i : Int, v : Double) -> NetprotoquicView {
-  let result = net_proto_quic_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_view_sum(s : NetprotoquicView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn net_proto_quic_range_get(s : NetprotoquicRange, i : Int) -> Double {
 }
 
 pub fn net_proto_quic_range_set(s : NetprotoquicRange, i : Int, v : Double) -> NetprotoquicRange {
-  let result = net_proto_quic_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_range_sum(s : NetprotoquicRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn net_proto_quic_slice_get(s : NetprotoquicSlice, i : Int) -> Double {
 }
 
 pub fn net_proto_quic_slice_set(s : NetprotoquicSlice, i : Int, v : Double) -> NetprotoquicSlice {
-  let result = net_proto_quic_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_quic_slice_sum(s : NetprotoquicSlice) -> Double { @_common.sum(s.data) }

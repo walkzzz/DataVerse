@@ -107,23 +107,15 @@ pub fn finance_time_crisis_series_std(s : FinancetimecrisisSeries) -> Double { @
 pub fn finance_time_crisis_series_median(s : FinancetimecrisisSeries) -> Double { @_common.median(s.vals) }
 
 pub fn finance_time_crisis_series_scale(s : FinancetimecrisisSeries, f : Double) -> FinancetimecrisisSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn finance_time_crisis_series_add(a : FinancetimecrisisSeries, b : FinancetimecrisisSeries) -> FinancetimecrisisSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn finance_time_crisis_series_sub(a : FinancetimecrisisSeries, b : FinancetimecrisisSeries) -> FinancetimecrisisSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn finance_time_crisis_series_normalize(s : FinancetimecrisisSeries) -> FinancetimecrisisSeries {
@@ -254,22 +246,16 @@ pub fn finance_time_crisis_vector_zero(dim : Int) -> FinancetimecrisisVector {
 
 pub fn finance_time_crisis_vector_add(a : FinancetimecrisisVector, b : FinancetimecrisisVector) -> FinancetimecrisisVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_time_crisis_vector_sub(a : FinancetimecrisisVector, b : FinancetimecrisisVector) -> FinancetimecrisisVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_time_crisis_vector_scale(v : FinancetimecrisisVector, s : Double) -> FinancetimecrisisVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn finance_time_crisis_vector_dot(a : FinancetimecrisisVector, b : FinancetimecrisisVector) -> Double {
@@ -372,10 +358,9 @@ pub fn finance_time_crisis_frame_get(s : FinancetimecrisisFrame, i : Int) -> Dou
 }
 
 pub fn finance_time_crisis_frame_set(s : FinancetimecrisisFrame, i : Int, v : Double) -> FinancetimecrisisFrame {
-  let result = finance_time_crisis_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_crisis_frame_sum(s : FinancetimecrisisFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn finance_time_crisis_table_get(s : FinancetimecrisisTable, i : Int) -> Dou
 }
 
 pub fn finance_time_crisis_table_set(s : FinancetimecrisisTable, i : Int, v : Double) -> FinancetimecrisisTable {
-  let result = finance_time_crisis_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_crisis_table_sum(s : FinancetimecrisisTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn finance_time_crisis_graphn_get(s : FinancetimecrisisGraphN, i : Int) -> D
 }
 
 pub fn finance_time_crisis_graphn_set(s : FinancetimecrisisGraphN, i : Int, v : Double) -> FinancetimecrisisGraphN {
-  let result = finance_time_crisis_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_crisis_graphn_sum(s : FinancetimecrisisGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn finance_time_crisis_node_get(s : FinancetimecrisisNode, i : Int) -> Doubl
 }
 
 pub fn finance_time_crisis_node_set(s : FinancetimecrisisNode, i : Int, v : Double) -> FinancetimecrisisNode {
-  let result = finance_time_crisis_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_crisis_node_sum(s : FinancetimecrisisNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn finance_time_crisis_edge_get(s : FinancetimecrisisEdge, i : Int) -> Doubl
 }
 
 pub fn finance_time_crisis_edge_set(s : FinancetimecrisisEdge, i : Int, v : Double) -> FinancetimecrisisEdge {
-  let result = finance_time_crisis_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_crisis_edge_sum(s : FinancetimecrisisEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn finance_time_crisis_path_get(s : FinancetimecrisisPath, i : Int) -> Doubl
 }
 
 pub fn finance_time_crisis_path_set(s : FinancetimecrisisPath, i : Int, v : Double) -> FinancetimecrisisPath {
-  let result = finance_time_crisis_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_crisis_path_sum(s : FinancetimecrisisPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn finance_time_crisis_cluster_get(s : FinancetimecrisisCluster, i : Int) ->
 }
 
 pub fn finance_time_crisis_cluster_set(s : FinancetimecrisisCluster, i : Int, v : Double) -> FinancetimecrisisCluster {
-  let result = finance_time_crisis_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_crisis_cluster_sum(s : FinancetimecrisisCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn finance_time_crisis_model_get(s : FinancetimecrisisModel, i : Int) -> Dou
 }
 
 pub fn finance_time_crisis_model_set(s : FinancetimecrisisModel, i : Int, v : Double) -> FinancetimecrisisModel {
-  let result = finance_time_crisis_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_crisis_model_sum(s : FinancetimecrisisModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn finance_time_crisis_layer_get(s : FinancetimecrisisLayer, i : Int) -> Dou
 }
 
 pub fn finance_time_crisis_layer_set(s : FinancetimecrisisLayer, i : Int, v : Double) -> FinancetimecrisisLayer {
-  let result = finance_time_crisis_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_crisis_layer_sum(s : FinancetimecrisisLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn finance_time_crisis_buffer_get(s : FinancetimecrisisBuffer, i : Int) -> D
 }
 
 pub fn finance_time_crisis_buffer_set(s : FinancetimecrisisBuffer, i : Int, v : Double) -> FinancetimecrisisBuffer {
-  let result = finance_time_crisis_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_crisis_buffer_sum(s : FinancetimecrisisBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn finance_time_crisis_cursor_get(s : FinancetimecrisisCursor, i : Int) -> D
 }
 
 pub fn finance_time_crisis_cursor_set(s : FinancetimecrisisCursor, i : Int, v : Double) -> FinancetimecrisisCursor {
-  let result = finance_time_crisis_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_crisis_cursor_sum(s : FinancetimecrisisCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn finance_time_crisis_view_get(s : FinancetimecrisisView, i : Int) -> Doubl
 }
 
 pub fn finance_time_crisis_view_set(s : FinancetimecrisisView, i : Int, v : Double) -> FinancetimecrisisView {
-  let result = finance_time_crisis_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_crisis_view_sum(s : FinancetimecrisisView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn finance_time_crisis_range_get(s : FinancetimecrisisRange, i : Int) -> Dou
 }
 
 pub fn finance_time_crisis_range_set(s : FinancetimecrisisRange, i : Int, v : Double) -> FinancetimecrisisRange {
-  let result = finance_time_crisis_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_crisis_range_sum(s : FinancetimecrisisRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn finance_time_crisis_slice_get(s : FinancetimecrisisSlice, i : Int) -> Dou
 }
 
 pub fn finance_time_crisis_slice_set(s : FinancetimecrisisSlice, i : Int, v : Double) -> FinancetimecrisisSlice {
-  let result = finance_time_crisis_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_crisis_slice_sum(s : FinancetimecrisisSlice) -> Double { @_common.sum(s.data) }

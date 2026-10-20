@@ -107,23 +107,15 @@ pub fn physics_fluid_euler_series_std(s : PhysicsfluideulerSeries) -> Double { @
 pub fn physics_fluid_euler_series_median(s : PhysicsfluideulerSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_fluid_euler_series_scale(s : PhysicsfluideulerSeries, f : Double) -> PhysicsfluideulerSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_fluid_euler_series_add(a : PhysicsfluideulerSeries, b : PhysicsfluideulerSeries) -> PhysicsfluideulerSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_fluid_euler_series_sub(a : PhysicsfluideulerSeries, b : PhysicsfluideulerSeries) -> PhysicsfluideulerSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_fluid_euler_series_normalize(s : PhysicsfluideulerSeries) -> PhysicsfluideulerSeries {
@@ -254,22 +246,16 @@ pub fn physics_fluid_euler_vector_zero(dim : Int) -> PhysicsfluideulerVector {
 
 pub fn physics_fluid_euler_vector_add(a : PhysicsfluideulerVector, b : PhysicsfluideulerVector) -> PhysicsfluideulerVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_fluid_euler_vector_sub(a : PhysicsfluideulerVector, b : PhysicsfluideulerVector) -> PhysicsfluideulerVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_fluid_euler_vector_scale(v : PhysicsfluideulerVector, s : Double) -> PhysicsfluideulerVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_fluid_euler_vector_dot(a : PhysicsfluideulerVector, b : PhysicsfluideulerVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_fluid_euler_frame_get(s : PhysicsfluideulerFrame, i : Int) -> Dou
 }
 
 pub fn physics_fluid_euler_frame_set(s : PhysicsfluideulerFrame, i : Int, v : Double) -> PhysicsfluideulerFrame {
-  let result = physics_fluid_euler_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_euler_frame_sum(s : PhysicsfluideulerFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_fluid_euler_table_get(s : PhysicsfluideulerTable, i : Int) -> Dou
 }
 
 pub fn physics_fluid_euler_table_set(s : PhysicsfluideulerTable, i : Int, v : Double) -> PhysicsfluideulerTable {
-  let result = physics_fluid_euler_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_euler_table_sum(s : PhysicsfluideulerTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_fluid_euler_graphn_get(s : PhysicsfluideulerGraphN, i : Int) -> D
 }
 
 pub fn physics_fluid_euler_graphn_set(s : PhysicsfluideulerGraphN, i : Int, v : Double) -> PhysicsfluideulerGraphN {
-  let result = physics_fluid_euler_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_euler_graphn_sum(s : PhysicsfluideulerGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_fluid_euler_node_get(s : PhysicsfluideulerNode, i : Int) -> Doubl
 }
 
 pub fn physics_fluid_euler_node_set(s : PhysicsfluideulerNode, i : Int, v : Double) -> PhysicsfluideulerNode {
-  let result = physics_fluid_euler_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_euler_node_sum(s : PhysicsfluideulerNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_fluid_euler_edge_get(s : PhysicsfluideulerEdge, i : Int) -> Doubl
 }
 
 pub fn physics_fluid_euler_edge_set(s : PhysicsfluideulerEdge, i : Int, v : Double) -> PhysicsfluideulerEdge {
-  let result = physics_fluid_euler_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_euler_edge_sum(s : PhysicsfluideulerEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_fluid_euler_path_get(s : PhysicsfluideulerPath, i : Int) -> Doubl
 }
 
 pub fn physics_fluid_euler_path_set(s : PhysicsfluideulerPath, i : Int, v : Double) -> PhysicsfluideulerPath {
-  let result = physics_fluid_euler_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_euler_path_sum(s : PhysicsfluideulerPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_fluid_euler_cluster_get(s : PhysicsfluideulerCluster, i : Int) ->
 }
 
 pub fn physics_fluid_euler_cluster_set(s : PhysicsfluideulerCluster, i : Int, v : Double) -> PhysicsfluideulerCluster {
-  let result = physics_fluid_euler_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_euler_cluster_sum(s : PhysicsfluideulerCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_fluid_euler_model_get(s : PhysicsfluideulerModel, i : Int) -> Dou
 }
 
 pub fn physics_fluid_euler_model_set(s : PhysicsfluideulerModel, i : Int, v : Double) -> PhysicsfluideulerModel {
-  let result = physics_fluid_euler_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_euler_model_sum(s : PhysicsfluideulerModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_fluid_euler_layer_get(s : PhysicsfluideulerLayer, i : Int) -> Dou
 }
 
 pub fn physics_fluid_euler_layer_set(s : PhysicsfluideulerLayer, i : Int, v : Double) -> PhysicsfluideulerLayer {
-  let result = physics_fluid_euler_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_euler_layer_sum(s : PhysicsfluideulerLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_fluid_euler_buffer_get(s : PhysicsfluideulerBuffer, i : Int) -> D
 }
 
 pub fn physics_fluid_euler_buffer_set(s : PhysicsfluideulerBuffer, i : Int, v : Double) -> PhysicsfluideulerBuffer {
-  let result = physics_fluid_euler_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_euler_buffer_sum(s : PhysicsfluideulerBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_fluid_euler_cursor_get(s : PhysicsfluideulerCursor, i : Int) -> D
 }
 
 pub fn physics_fluid_euler_cursor_set(s : PhysicsfluideulerCursor, i : Int, v : Double) -> PhysicsfluideulerCursor {
-  let result = physics_fluid_euler_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_euler_cursor_sum(s : PhysicsfluideulerCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_fluid_euler_view_get(s : PhysicsfluideulerView, i : Int) -> Doubl
 }
 
 pub fn physics_fluid_euler_view_set(s : PhysicsfluideulerView, i : Int, v : Double) -> PhysicsfluideulerView {
-  let result = physics_fluid_euler_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_euler_view_sum(s : PhysicsfluideulerView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_fluid_euler_range_get(s : PhysicsfluideulerRange, i : Int) -> Dou
 }
 
 pub fn physics_fluid_euler_range_set(s : PhysicsfluideulerRange, i : Int, v : Double) -> PhysicsfluideulerRange {
-  let result = physics_fluid_euler_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_euler_range_sum(s : PhysicsfluideulerRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_fluid_euler_slice_get(s : PhysicsfluideulerSlice, i : Int) -> Dou
 }
 
 pub fn physics_fluid_euler_slice_set(s : PhysicsfluideulerSlice, i : Int, v : Double) -> PhysicsfluideulerSlice {
-  let result = physics_fluid_euler_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_euler_slice_sum(s : PhysicsfluideulerSlice) -> Double { @_common.sum(s.data) }

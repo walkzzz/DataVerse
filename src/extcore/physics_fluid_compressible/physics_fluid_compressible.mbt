@@ -107,23 +107,15 @@ pub fn physics_fluid_compressible_series_std(s : PhysicsfluidcompressibleSeries)
 pub fn physics_fluid_compressible_series_median(s : PhysicsfluidcompressibleSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_fluid_compressible_series_scale(s : PhysicsfluidcompressibleSeries, f : Double) -> PhysicsfluidcompressibleSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_fluid_compressible_series_add(a : PhysicsfluidcompressibleSeries, b : PhysicsfluidcompressibleSeries) -> PhysicsfluidcompressibleSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_fluid_compressible_series_sub(a : PhysicsfluidcompressibleSeries, b : PhysicsfluidcompressibleSeries) -> PhysicsfluidcompressibleSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_fluid_compressible_series_normalize(s : PhysicsfluidcompressibleSeries) -> PhysicsfluidcompressibleSeries {
@@ -254,22 +246,16 @@ pub fn physics_fluid_compressible_vector_zero(dim : Int) -> Physicsfluidcompress
 
 pub fn physics_fluid_compressible_vector_add(a : PhysicsfluidcompressibleVector, b : PhysicsfluidcompressibleVector) -> PhysicsfluidcompressibleVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_fluid_compressible_vector_sub(a : PhysicsfluidcompressibleVector, b : PhysicsfluidcompressibleVector) -> PhysicsfluidcompressibleVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_fluid_compressible_vector_scale(v : PhysicsfluidcompressibleVector, s : Double) -> PhysicsfluidcompressibleVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_fluid_compressible_vector_dot(a : PhysicsfluidcompressibleVector, b : PhysicsfluidcompressibleVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_fluid_compressible_frame_get(s : PhysicsfluidcompressibleFrame, i
 }
 
 pub fn physics_fluid_compressible_frame_set(s : PhysicsfluidcompressibleFrame, i : Int, v : Double) -> PhysicsfluidcompressibleFrame {
-  let result = physics_fluid_compressible_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_frame_sum(s : PhysicsfluidcompressibleFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_fluid_compressible_table_get(s : PhysicsfluidcompressibleTable, i
 }
 
 pub fn physics_fluid_compressible_table_set(s : PhysicsfluidcompressibleTable, i : Int, v : Double) -> PhysicsfluidcompressibleTable {
-  let result = physics_fluid_compressible_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_table_sum(s : PhysicsfluidcompressibleTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_fluid_compressible_graphn_get(s : PhysicsfluidcompressibleGraphN,
 }
 
 pub fn physics_fluid_compressible_graphn_set(s : PhysicsfluidcompressibleGraphN, i : Int, v : Double) -> PhysicsfluidcompressibleGraphN {
-  let result = physics_fluid_compressible_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_graphn_sum(s : PhysicsfluidcompressibleGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_fluid_compressible_node_get(s : PhysicsfluidcompressibleNode, i :
 }
 
 pub fn physics_fluid_compressible_node_set(s : PhysicsfluidcompressibleNode, i : Int, v : Double) -> PhysicsfluidcompressibleNode {
-  let result = physics_fluid_compressible_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_node_sum(s : PhysicsfluidcompressibleNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_fluid_compressible_edge_get(s : PhysicsfluidcompressibleEdge, i :
 }
 
 pub fn physics_fluid_compressible_edge_set(s : PhysicsfluidcompressibleEdge, i : Int, v : Double) -> PhysicsfluidcompressibleEdge {
-  let result = physics_fluid_compressible_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_edge_sum(s : PhysicsfluidcompressibleEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_fluid_compressible_path_get(s : PhysicsfluidcompressiblePath, i :
 }
 
 pub fn physics_fluid_compressible_path_set(s : PhysicsfluidcompressiblePath, i : Int, v : Double) -> PhysicsfluidcompressiblePath {
-  let result = physics_fluid_compressible_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_path_sum(s : PhysicsfluidcompressiblePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_fluid_compressible_cluster_get(s : PhysicsfluidcompressibleCluste
 }
 
 pub fn physics_fluid_compressible_cluster_set(s : PhysicsfluidcompressibleCluster, i : Int, v : Double) -> PhysicsfluidcompressibleCluster {
-  let result = physics_fluid_compressible_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_cluster_sum(s : PhysicsfluidcompressibleCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_fluid_compressible_model_get(s : PhysicsfluidcompressibleModel, i
 }
 
 pub fn physics_fluid_compressible_model_set(s : PhysicsfluidcompressibleModel, i : Int, v : Double) -> PhysicsfluidcompressibleModel {
-  let result = physics_fluid_compressible_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_model_sum(s : PhysicsfluidcompressibleModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_fluid_compressible_layer_get(s : PhysicsfluidcompressibleLayer, i
 }
 
 pub fn physics_fluid_compressible_layer_set(s : PhysicsfluidcompressibleLayer, i : Int, v : Double) -> PhysicsfluidcompressibleLayer {
-  let result = physics_fluid_compressible_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_layer_sum(s : PhysicsfluidcompressibleLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_fluid_compressible_buffer_get(s : PhysicsfluidcompressibleBuffer,
 }
 
 pub fn physics_fluid_compressible_buffer_set(s : PhysicsfluidcompressibleBuffer, i : Int, v : Double) -> PhysicsfluidcompressibleBuffer {
-  let result = physics_fluid_compressible_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_buffer_sum(s : PhysicsfluidcompressibleBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_fluid_compressible_cursor_get(s : PhysicsfluidcompressibleCursor,
 }
 
 pub fn physics_fluid_compressible_cursor_set(s : PhysicsfluidcompressibleCursor, i : Int, v : Double) -> PhysicsfluidcompressibleCursor {
-  let result = physics_fluid_compressible_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_cursor_sum(s : PhysicsfluidcompressibleCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_fluid_compressible_view_get(s : PhysicsfluidcompressibleView, i :
 }
 
 pub fn physics_fluid_compressible_view_set(s : PhysicsfluidcompressibleView, i : Int, v : Double) -> PhysicsfluidcompressibleView {
-  let result = physics_fluid_compressible_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_view_sum(s : PhysicsfluidcompressibleView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_fluid_compressible_range_get(s : PhysicsfluidcompressibleRange, i
 }
 
 pub fn physics_fluid_compressible_range_set(s : PhysicsfluidcompressibleRange, i : Int, v : Double) -> PhysicsfluidcompressibleRange {
-  let result = physics_fluid_compressible_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_range_sum(s : PhysicsfluidcompressibleRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_fluid_compressible_slice_get(s : PhysicsfluidcompressibleSlice, i
 }
 
 pub fn physics_fluid_compressible_slice_set(s : PhysicsfluidcompressibleSlice, i : Int, v : Double) -> PhysicsfluidcompressibleSlice {
-  let result = physics_fluid_compressible_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_compressible_slice_sum(s : PhysicsfluidcompressibleSlice) -> Double { @_common.sum(s.data) }

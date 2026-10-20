@@ -107,23 +107,15 @@ pub fn chem_desc_topological_series_std(s : ChemdesctopologicalSeries) -> Double
 pub fn chem_desc_topological_series_median(s : ChemdesctopologicalSeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_desc_topological_series_scale(s : ChemdesctopologicalSeries, f : Double) -> ChemdesctopologicalSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn chem_desc_topological_series_add(a : ChemdesctopologicalSeries, b : ChemdesctopologicalSeries) -> ChemdesctopologicalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn chem_desc_topological_series_sub(a : ChemdesctopologicalSeries, b : ChemdesctopologicalSeries) -> ChemdesctopologicalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn chem_desc_topological_series_normalize(s : ChemdesctopologicalSeries) -> ChemdesctopologicalSeries {
@@ -254,22 +246,16 @@ pub fn chem_desc_topological_vector_zero(dim : Int) -> ChemdesctopologicalVector
 
 pub fn chem_desc_topological_vector_add(a : ChemdesctopologicalVector, b : ChemdesctopologicalVector) -> ChemdesctopologicalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_desc_topological_vector_sub(a : ChemdesctopologicalVector, b : ChemdesctopologicalVector) -> ChemdesctopologicalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_desc_topological_vector_scale(v : ChemdesctopologicalVector, s : Double) -> ChemdesctopologicalVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn chem_desc_topological_vector_dot(a : ChemdesctopologicalVector, b : ChemdesctopologicalVector) -> Double {
@@ -372,10 +358,9 @@ pub fn chem_desc_topological_frame_get(s : ChemdesctopologicalFrame, i : Int) ->
 }
 
 pub fn chem_desc_topological_frame_set(s : ChemdesctopologicalFrame, i : Int, v : Double) -> ChemdesctopologicalFrame {
-  let result = chem_desc_topological_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_topological_frame_sum(s : ChemdesctopologicalFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn chem_desc_topological_table_get(s : ChemdesctopologicalTable, i : Int) ->
 }
 
 pub fn chem_desc_topological_table_set(s : ChemdesctopologicalTable, i : Int, v : Double) -> ChemdesctopologicalTable {
-  let result = chem_desc_topological_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_topological_table_sum(s : ChemdesctopologicalTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn chem_desc_topological_graphn_get(s : ChemdesctopologicalGraphN, i : Int) 
 }
 
 pub fn chem_desc_topological_graphn_set(s : ChemdesctopologicalGraphN, i : Int, v : Double) -> ChemdesctopologicalGraphN {
-  let result = chem_desc_topological_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_topological_graphn_sum(s : ChemdesctopologicalGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn chem_desc_topological_node_get(s : ChemdesctopologicalNode, i : Int) -> D
 }
 
 pub fn chem_desc_topological_node_set(s : ChemdesctopologicalNode, i : Int, v : Double) -> ChemdesctopologicalNode {
-  let result = chem_desc_topological_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_topological_node_sum(s : ChemdesctopologicalNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn chem_desc_topological_edge_get(s : ChemdesctopologicalEdge, i : Int) -> D
 }
 
 pub fn chem_desc_topological_edge_set(s : ChemdesctopologicalEdge, i : Int, v : Double) -> ChemdesctopologicalEdge {
-  let result = chem_desc_topological_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_topological_edge_sum(s : ChemdesctopologicalEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn chem_desc_topological_path_get(s : ChemdesctopologicalPath, i : Int) -> D
 }
 
 pub fn chem_desc_topological_path_set(s : ChemdesctopologicalPath, i : Int, v : Double) -> ChemdesctopologicalPath {
-  let result = chem_desc_topological_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_topological_path_sum(s : ChemdesctopologicalPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn chem_desc_topological_cluster_get(s : ChemdesctopologicalCluster, i : Int
 }
 
 pub fn chem_desc_topological_cluster_set(s : ChemdesctopologicalCluster, i : Int, v : Double) -> ChemdesctopologicalCluster {
-  let result = chem_desc_topological_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_topological_cluster_sum(s : ChemdesctopologicalCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn chem_desc_topological_model_get(s : ChemdesctopologicalModel, i : Int) ->
 }
 
 pub fn chem_desc_topological_model_set(s : ChemdesctopologicalModel, i : Int, v : Double) -> ChemdesctopologicalModel {
-  let result = chem_desc_topological_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_topological_model_sum(s : ChemdesctopologicalModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn chem_desc_topological_layer_get(s : ChemdesctopologicalLayer, i : Int) ->
 }
 
 pub fn chem_desc_topological_layer_set(s : ChemdesctopologicalLayer, i : Int, v : Double) -> ChemdesctopologicalLayer {
-  let result = chem_desc_topological_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_topological_layer_sum(s : ChemdesctopologicalLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn chem_desc_topological_buffer_get(s : ChemdesctopologicalBuffer, i : Int) 
 }
 
 pub fn chem_desc_topological_buffer_set(s : ChemdesctopologicalBuffer, i : Int, v : Double) -> ChemdesctopologicalBuffer {
-  let result = chem_desc_topological_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_topological_buffer_sum(s : ChemdesctopologicalBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn chem_desc_topological_cursor_get(s : ChemdesctopologicalCursor, i : Int) 
 }
 
 pub fn chem_desc_topological_cursor_set(s : ChemdesctopologicalCursor, i : Int, v : Double) -> ChemdesctopologicalCursor {
-  let result = chem_desc_topological_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_topological_cursor_sum(s : ChemdesctopologicalCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn chem_desc_topological_view_get(s : ChemdesctopologicalView, i : Int) -> D
 }
 
 pub fn chem_desc_topological_view_set(s : ChemdesctopologicalView, i : Int, v : Double) -> ChemdesctopologicalView {
-  let result = chem_desc_topological_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_topological_view_sum(s : ChemdesctopologicalView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn chem_desc_topological_range_get(s : ChemdesctopologicalRange, i : Int) ->
 }
 
 pub fn chem_desc_topological_range_set(s : ChemdesctopologicalRange, i : Int, v : Double) -> ChemdesctopologicalRange {
-  let result = chem_desc_topological_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_topological_range_sum(s : ChemdesctopologicalRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn chem_desc_topological_slice_get(s : ChemdesctopologicalSlice, i : Int) ->
 }
 
 pub fn chem_desc_topological_slice_set(s : ChemdesctopologicalSlice, i : Int, v : Double) -> ChemdesctopologicalSlice {
-  let result = chem_desc_topological_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_topological_slice_sum(s : ChemdesctopologicalSlice) -> Double { @_common.sum(s.data) }

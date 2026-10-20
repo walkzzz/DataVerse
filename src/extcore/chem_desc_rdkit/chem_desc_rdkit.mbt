@@ -107,23 +107,15 @@ pub fn chem_desc_rdkit_series_std(s : ChemdescrdkitSeries) -> Double { @_common.
 pub fn chem_desc_rdkit_series_median(s : ChemdescrdkitSeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_desc_rdkit_series_scale(s : ChemdescrdkitSeries, f : Double) -> ChemdescrdkitSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn chem_desc_rdkit_series_add(a : ChemdescrdkitSeries, b : ChemdescrdkitSeries) -> ChemdescrdkitSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn chem_desc_rdkit_series_sub(a : ChemdescrdkitSeries, b : ChemdescrdkitSeries) -> ChemdescrdkitSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn chem_desc_rdkit_series_normalize(s : ChemdescrdkitSeries) -> ChemdescrdkitSeries {
@@ -254,22 +246,16 @@ pub fn chem_desc_rdkit_vector_zero(dim : Int) -> ChemdescrdkitVector {
 
 pub fn chem_desc_rdkit_vector_add(a : ChemdescrdkitVector, b : ChemdescrdkitVector) -> ChemdescrdkitVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_desc_rdkit_vector_sub(a : ChemdescrdkitVector, b : ChemdescrdkitVector) -> ChemdescrdkitVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_desc_rdkit_vector_scale(v : ChemdescrdkitVector, s : Double) -> ChemdescrdkitVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn chem_desc_rdkit_vector_dot(a : ChemdescrdkitVector, b : ChemdescrdkitVector) -> Double {
@@ -372,10 +358,9 @@ pub fn chem_desc_rdkit_frame_get(s : ChemdescrdkitFrame, i : Int) -> Double {
 }
 
 pub fn chem_desc_rdkit_frame_set(s : ChemdescrdkitFrame, i : Int, v : Double) -> ChemdescrdkitFrame {
-  let result = chem_desc_rdkit_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_rdkit_frame_sum(s : ChemdescrdkitFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn chem_desc_rdkit_table_get(s : ChemdescrdkitTable, i : Int) -> Double {
 }
 
 pub fn chem_desc_rdkit_table_set(s : ChemdescrdkitTable, i : Int, v : Double) -> ChemdescrdkitTable {
-  let result = chem_desc_rdkit_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_rdkit_table_sum(s : ChemdescrdkitTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn chem_desc_rdkit_graphn_get(s : ChemdescrdkitGraphN, i : Int) -> Double {
 }
 
 pub fn chem_desc_rdkit_graphn_set(s : ChemdescrdkitGraphN, i : Int, v : Double) -> ChemdescrdkitGraphN {
-  let result = chem_desc_rdkit_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_rdkit_graphn_sum(s : ChemdescrdkitGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn chem_desc_rdkit_node_get(s : ChemdescrdkitNode, i : Int) -> Double {
 }
 
 pub fn chem_desc_rdkit_node_set(s : ChemdescrdkitNode, i : Int, v : Double) -> ChemdescrdkitNode {
-  let result = chem_desc_rdkit_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_rdkit_node_sum(s : ChemdescrdkitNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn chem_desc_rdkit_edge_get(s : ChemdescrdkitEdge, i : Int) -> Double {
 }
 
 pub fn chem_desc_rdkit_edge_set(s : ChemdescrdkitEdge, i : Int, v : Double) -> ChemdescrdkitEdge {
-  let result = chem_desc_rdkit_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_rdkit_edge_sum(s : ChemdescrdkitEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn chem_desc_rdkit_path_get(s : ChemdescrdkitPath, i : Int) -> Double {
 }
 
 pub fn chem_desc_rdkit_path_set(s : ChemdescrdkitPath, i : Int, v : Double) -> ChemdescrdkitPath {
-  let result = chem_desc_rdkit_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_rdkit_path_sum(s : ChemdescrdkitPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn chem_desc_rdkit_cluster_get(s : ChemdescrdkitCluster, i : Int) -> Double 
 }
 
 pub fn chem_desc_rdkit_cluster_set(s : ChemdescrdkitCluster, i : Int, v : Double) -> ChemdescrdkitCluster {
-  let result = chem_desc_rdkit_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_rdkit_cluster_sum(s : ChemdescrdkitCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn chem_desc_rdkit_model_get(s : ChemdescrdkitModel, i : Int) -> Double {
 }
 
 pub fn chem_desc_rdkit_model_set(s : ChemdescrdkitModel, i : Int, v : Double) -> ChemdescrdkitModel {
-  let result = chem_desc_rdkit_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_rdkit_model_sum(s : ChemdescrdkitModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn chem_desc_rdkit_layer_get(s : ChemdescrdkitLayer, i : Int) -> Double {
 }
 
 pub fn chem_desc_rdkit_layer_set(s : ChemdescrdkitLayer, i : Int, v : Double) -> ChemdescrdkitLayer {
-  let result = chem_desc_rdkit_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_rdkit_layer_sum(s : ChemdescrdkitLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn chem_desc_rdkit_buffer_get(s : ChemdescrdkitBuffer, i : Int) -> Double {
 }
 
 pub fn chem_desc_rdkit_buffer_set(s : ChemdescrdkitBuffer, i : Int, v : Double) -> ChemdescrdkitBuffer {
-  let result = chem_desc_rdkit_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_rdkit_buffer_sum(s : ChemdescrdkitBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn chem_desc_rdkit_cursor_get(s : ChemdescrdkitCursor, i : Int) -> Double {
 }
 
 pub fn chem_desc_rdkit_cursor_set(s : ChemdescrdkitCursor, i : Int, v : Double) -> ChemdescrdkitCursor {
-  let result = chem_desc_rdkit_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_rdkit_cursor_sum(s : ChemdescrdkitCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn chem_desc_rdkit_view_get(s : ChemdescrdkitView, i : Int) -> Double {
 }
 
 pub fn chem_desc_rdkit_view_set(s : ChemdescrdkitView, i : Int, v : Double) -> ChemdescrdkitView {
-  let result = chem_desc_rdkit_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_rdkit_view_sum(s : ChemdescrdkitView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn chem_desc_rdkit_range_get(s : ChemdescrdkitRange, i : Int) -> Double {
 }
 
 pub fn chem_desc_rdkit_range_set(s : ChemdescrdkitRange, i : Int, v : Double) -> ChemdescrdkitRange {
-  let result = chem_desc_rdkit_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_rdkit_range_sum(s : ChemdescrdkitRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn chem_desc_rdkit_slice_get(s : ChemdescrdkitSlice, i : Int) -> Double {
 }
 
 pub fn chem_desc_rdkit_slice_set(s : ChemdescrdkitSlice, i : Int, v : Double) -> ChemdescrdkitSlice {
-  let result = chem_desc_rdkit_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_rdkit_slice_sum(s : ChemdescrdkitSlice) -> Double { @_common.sum(s.data) }

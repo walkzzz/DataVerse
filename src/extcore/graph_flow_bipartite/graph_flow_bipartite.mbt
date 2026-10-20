@@ -107,23 +107,15 @@ pub fn graph_flow_bipartite_series_std(s : GraphflowbipartiteSeries) -> Double {
 pub fn graph_flow_bipartite_series_median(s : GraphflowbipartiteSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_flow_bipartite_series_scale(s : GraphflowbipartiteSeries, f : Double) -> GraphflowbipartiteSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_flow_bipartite_series_add(a : GraphflowbipartiteSeries, b : GraphflowbipartiteSeries) -> GraphflowbipartiteSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_flow_bipartite_series_sub(a : GraphflowbipartiteSeries, b : GraphflowbipartiteSeries) -> GraphflowbipartiteSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_flow_bipartite_series_normalize(s : GraphflowbipartiteSeries) -> GraphflowbipartiteSeries {
@@ -254,22 +246,16 @@ pub fn graph_flow_bipartite_vector_zero(dim : Int) -> GraphflowbipartiteVector {
 
 pub fn graph_flow_bipartite_vector_add(a : GraphflowbipartiteVector, b : GraphflowbipartiteVector) -> GraphflowbipartiteVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_flow_bipartite_vector_sub(a : GraphflowbipartiteVector, b : GraphflowbipartiteVector) -> GraphflowbipartiteVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_flow_bipartite_vector_scale(v : GraphflowbipartiteVector, s : Double) -> GraphflowbipartiteVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_flow_bipartite_vector_dot(a : GraphflowbipartiteVector, b : GraphflowbipartiteVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_flow_bipartite_frame_get(s : GraphflowbipartiteFrame, i : Int) -> D
 }
 
 pub fn graph_flow_bipartite_frame_set(s : GraphflowbipartiteFrame, i : Int, v : Double) -> GraphflowbipartiteFrame {
-  let result = graph_flow_bipartite_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_frame_sum(s : GraphflowbipartiteFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_flow_bipartite_table_get(s : GraphflowbipartiteTable, i : Int) -> D
 }
 
 pub fn graph_flow_bipartite_table_set(s : GraphflowbipartiteTable, i : Int, v : Double) -> GraphflowbipartiteTable {
-  let result = graph_flow_bipartite_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_table_sum(s : GraphflowbipartiteTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_flow_bipartite_graphn_get(s : GraphflowbipartiteGraphN, i : Int) ->
 }
 
 pub fn graph_flow_bipartite_graphn_set(s : GraphflowbipartiteGraphN, i : Int, v : Double) -> GraphflowbipartiteGraphN {
-  let result = graph_flow_bipartite_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_graphn_sum(s : GraphflowbipartiteGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_flow_bipartite_node_get(s : GraphflowbipartiteNode, i : Int) -> Dou
 }
 
 pub fn graph_flow_bipartite_node_set(s : GraphflowbipartiteNode, i : Int, v : Double) -> GraphflowbipartiteNode {
-  let result = graph_flow_bipartite_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_node_sum(s : GraphflowbipartiteNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_flow_bipartite_edge_get(s : GraphflowbipartiteEdge, i : Int) -> Dou
 }
 
 pub fn graph_flow_bipartite_edge_set(s : GraphflowbipartiteEdge, i : Int, v : Double) -> GraphflowbipartiteEdge {
-  let result = graph_flow_bipartite_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_edge_sum(s : GraphflowbipartiteEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_flow_bipartite_path_get(s : GraphflowbipartitePath, i : Int) -> Dou
 }
 
 pub fn graph_flow_bipartite_path_set(s : GraphflowbipartitePath, i : Int, v : Double) -> GraphflowbipartitePath {
-  let result = graph_flow_bipartite_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_path_sum(s : GraphflowbipartitePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_flow_bipartite_cluster_get(s : GraphflowbipartiteCluster, i : Int) 
 }
 
 pub fn graph_flow_bipartite_cluster_set(s : GraphflowbipartiteCluster, i : Int, v : Double) -> GraphflowbipartiteCluster {
-  let result = graph_flow_bipartite_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_cluster_sum(s : GraphflowbipartiteCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_flow_bipartite_model_get(s : GraphflowbipartiteModel, i : Int) -> D
 }
 
 pub fn graph_flow_bipartite_model_set(s : GraphflowbipartiteModel, i : Int, v : Double) -> GraphflowbipartiteModel {
-  let result = graph_flow_bipartite_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_model_sum(s : GraphflowbipartiteModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_flow_bipartite_layer_get(s : GraphflowbipartiteLayer, i : Int) -> D
 }
 
 pub fn graph_flow_bipartite_layer_set(s : GraphflowbipartiteLayer, i : Int, v : Double) -> GraphflowbipartiteLayer {
-  let result = graph_flow_bipartite_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_layer_sum(s : GraphflowbipartiteLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_flow_bipartite_buffer_get(s : GraphflowbipartiteBuffer, i : Int) ->
 }
 
 pub fn graph_flow_bipartite_buffer_set(s : GraphflowbipartiteBuffer, i : Int, v : Double) -> GraphflowbipartiteBuffer {
-  let result = graph_flow_bipartite_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_buffer_sum(s : GraphflowbipartiteBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_flow_bipartite_cursor_get(s : GraphflowbipartiteCursor, i : Int) ->
 }
 
 pub fn graph_flow_bipartite_cursor_set(s : GraphflowbipartiteCursor, i : Int, v : Double) -> GraphflowbipartiteCursor {
-  let result = graph_flow_bipartite_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_cursor_sum(s : GraphflowbipartiteCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_flow_bipartite_view_get(s : GraphflowbipartiteView, i : Int) -> Dou
 }
 
 pub fn graph_flow_bipartite_view_set(s : GraphflowbipartiteView, i : Int, v : Double) -> GraphflowbipartiteView {
-  let result = graph_flow_bipartite_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_view_sum(s : GraphflowbipartiteView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_flow_bipartite_range_get(s : GraphflowbipartiteRange, i : Int) -> D
 }
 
 pub fn graph_flow_bipartite_range_set(s : GraphflowbipartiteRange, i : Int, v : Double) -> GraphflowbipartiteRange {
-  let result = graph_flow_bipartite_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_range_sum(s : GraphflowbipartiteRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_flow_bipartite_slice_get(s : GraphflowbipartiteSlice, i : Int) -> D
 }
 
 pub fn graph_flow_bipartite_slice_set(s : GraphflowbipartiteSlice, i : Int, v : Double) -> GraphflowbipartiteSlice {
-  let result = graph_flow_bipartite_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_bipartite_slice_sum(s : GraphflowbipartiteSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn opt_meta_bayes_series_std(s : OptmetabayesSeries) -> Double { @_common.st
 pub fn opt_meta_bayes_series_median(s : OptmetabayesSeries) -> Double { @_common.median(s.vals) }
 
 pub fn opt_meta_bayes_series_scale(s : OptmetabayesSeries, f : Double) -> OptmetabayesSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn opt_meta_bayes_series_add(a : OptmetabayesSeries, b : OptmetabayesSeries) -> OptmetabayesSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn opt_meta_bayes_series_sub(a : OptmetabayesSeries, b : OptmetabayesSeries) -> OptmetabayesSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn opt_meta_bayes_series_normalize(s : OptmetabayesSeries) -> OptmetabayesSeries {
@@ -254,22 +246,16 @@ pub fn opt_meta_bayes_vector_zero(dim : Int) -> OptmetabayesVector {
 
 pub fn opt_meta_bayes_vector_add(a : OptmetabayesVector, b : OptmetabayesVector) -> OptmetabayesVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_meta_bayes_vector_sub(a : OptmetabayesVector, b : OptmetabayesVector) -> OptmetabayesVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_meta_bayes_vector_scale(v : OptmetabayesVector, s : Double) -> OptmetabayesVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn opt_meta_bayes_vector_dot(a : OptmetabayesVector, b : OptmetabayesVector) -> Double {
@@ -372,10 +358,9 @@ pub fn opt_meta_bayes_frame_get(s : OptmetabayesFrame, i : Int) -> Double {
 }
 
 pub fn opt_meta_bayes_frame_set(s : OptmetabayesFrame, i : Int, v : Double) -> OptmetabayesFrame {
-  let result = opt_meta_bayes_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_bayes_frame_sum(s : OptmetabayesFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn opt_meta_bayes_table_get(s : OptmetabayesTable, i : Int) -> Double {
 }
 
 pub fn opt_meta_bayes_table_set(s : OptmetabayesTable, i : Int, v : Double) -> OptmetabayesTable {
-  let result = opt_meta_bayes_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_bayes_table_sum(s : OptmetabayesTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn opt_meta_bayes_graphn_get(s : OptmetabayesGraphN, i : Int) -> Double {
 }
 
 pub fn opt_meta_bayes_graphn_set(s : OptmetabayesGraphN, i : Int, v : Double) -> OptmetabayesGraphN {
-  let result = opt_meta_bayes_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_bayes_graphn_sum(s : OptmetabayesGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn opt_meta_bayes_node_get(s : OptmetabayesNode, i : Int) -> Double {
 }
 
 pub fn opt_meta_bayes_node_set(s : OptmetabayesNode, i : Int, v : Double) -> OptmetabayesNode {
-  let result = opt_meta_bayes_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_bayes_node_sum(s : OptmetabayesNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn opt_meta_bayes_edge_get(s : OptmetabayesEdge, i : Int) -> Double {
 }
 
 pub fn opt_meta_bayes_edge_set(s : OptmetabayesEdge, i : Int, v : Double) -> OptmetabayesEdge {
-  let result = opt_meta_bayes_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_bayes_edge_sum(s : OptmetabayesEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn opt_meta_bayes_path_get(s : OptmetabayesPath, i : Int) -> Double {
 }
 
 pub fn opt_meta_bayes_path_set(s : OptmetabayesPath, i : Int, v : Double) -> OptmetabayesPath {
-  let result = opt_meta_bayes_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_bayes_path_sum(s : OptmetabayesPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn opt_meta_bayes_cluster_get(s : OptmetabayesCluster, i : Int) -> Double {
 }
 
 pub fn opt_meta_bayes_cluster_set(s : OptmetabayesCluster, i : Int, v : Double) -> OptmetabayesCluster {
-  let result = opt_meta_bayes_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_bayes_cluster_sum(s : OptmetabayesCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn opt_meta_bayes_model_get(s : OptmetabayesModel, i : Int) -> Double {
 }
 
 pub fn opt_meta_bayes_model_set(s : OptmetabayesModel, i : Int, v : Double) -> OptmetabayesModel {
-  let result = opt_meta_bayes_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_bayes_model_sum(s : OptmetabayesModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn opt_meta_bayes_layer_get(s : OptmetabayesLayer, i : Int) -> Double {
 }
 
 pub fn opt_meta_bayes_layer_set(s : OptmetabayesLayer, i : Int, v : Double) -> OptmetabayesLayer {
-  let result = opt_meta_bayes_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_bayes_layer_sum(s : OptmetabayesLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn opt_meta_bayes_buffer_get(s : OptmetabayesBuffer, i : Int) -> Double {
 }
 
 pub fn opt_meta_bayes_buffer_set(s : OptmetabayesBuffer, i : Int, v : Double) -> OptmetabayesBuffer {
-  let result = opt_meta_bayes_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_bayes_buffer_sum(s : OptmetabayesBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn opt_meta_bayes_cursor_get(s : OptmetabayesCursor, i : Int) -> Double {
 }
 
 pub fn opt_meta_bayes_cursor_set(s : OptmetabayesCursor, i : Int, v : Double) -> OptmetabayesCursor {
-  let result = opt_meta_bayes_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_bayes_cursor_sum(s : OptmetabayesCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn opt_meta_bayes_view_get(s : OptmetabayesView, i : Int) -> Double {
 }
 
 pub fn opt_meta_bayes_view_set(s : OptmetabayesView, i : Int, v : Double) -> OptmetabayesView {
-  let result = opt_meta_bayes_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_bayes_view_sum(s : OptmetabayesView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn opt_meta_bayes_range_get(s : OptmetabayesRange, i : Int) -> Double {
 }
 
 pub fn opt_meta_bayes_range_set(s : OptmetabayesRange, i : Int, v : Double) -> OptmetabayesRange {
-  let result = opt_meta_bayes_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_bayes_range_sum(s : OptmetabayesRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn opt_meta_bayes_slice_get(s : OptmetabayesSlice, i : Int) -> Double {
 }
 
 pub fn opt_meta_bayes_slice_set(s : OptmetabayesSlice, i : Int, v : Double) -> OptmetabayesSlice {
-  let result = opt_meta_bayes_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_bayes_slice_sum(s : OptmetabayesSlice) -> Double { @_common.sum(s.data) }

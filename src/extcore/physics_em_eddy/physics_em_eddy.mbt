@@ -107,23 +107,15 @@ pub fn physics_em_eddy_series_std(s : PhysicsemeddySeries) -> Double { @_common.
 pub fn physics_em_eddy_series_median(s : PhysicsemeddySeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_em_eddy_series_scale(s : PhysicsemeddySeries, f : Double) -> PhysicsemeddySeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_em_eddy_series_add(a : PhysicsemeddySeries, b : PhysicsemeddySeries) -> PhysicsemeddySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_em_eddy_series_sub(a : PhysicsemeddySeries, b : PhysicsemeddySeries) -> PhysicsemeddySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_em_eddy_series_normalize(s : PhysicsemeddySeries) -> PhysicsemeddySeries {
@@ -254,22 +246,16 @@ pub fn physics_em_eddy_vector_zero(dim : Int) -> PhysicsemeddyVector {
 
 pub fn physics_em_eddy_vector_add(a : PhysicsemeddyVector, b : PhysicsemeddyVector) -> PhysicsemeddyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_em_eddy_vector_sub(a : PhysicsemeddyVector, b : PhysicsemeddyVector) -> PhysicsemeddyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_em_eddy_vector_scale(v : PhysicsemeddyVector, s : Double) -> PhysicsemeddyVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_em_eddy_vector_dot(a : PhysicsemeddyVector, b : PhysicsemeddyVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_em_eddy_frame_get(s : PhysicsemeddyFrame, i : Int) -> Double {
 }
 
 pub fn physics_em_eddy_frame_set(s : PhysicsemeddyFrame, i : Int, v : Double) -> PhysicsemeddyFrame {
-  let result = physics_em_eddy_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_eddy_frame_sum(s : PhysicsemeddyFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_em_eddy_table_get(s : PhysicsemeddyTable, i : Int) -> Double {
 }
 
 pub fn physics_em_eddy_table_set(s : PhysicsemeddyTable, i : Int, v : Double) -> PhysicsemeddyTable {
-  let result = physics_em_eddy_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_eddy_table_sum(s : PhysicsemeddyTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_em_eddy_graphn_get(s : PhysicsemeddyGraphN, i : Int) -> Double {
 }
 
 pub fn physics_em_eddy_graphn_set(s : PhysicsemeddyGraphN, i : Int, v : Double) -> PhysicsemeddyGraphN {
-  let result = physics_em_eddy_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_eddy_graphn_sum(s : PhysicsemeddyGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_em_eddy_node_get(s : PhysicsemeddyNode, i : Int) -> Double {
 }
 
 pub fn physics_em_eddy_node_set(s : PhysicsemeddyNode, i : Int, v : Double) -> PhysicsemeddyNode {
-  let result = physics_em_eddy_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_eddy_node_sum(s : PhysicsemeddyNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_em_eddy_edge_get(s : PhysicsemeddyEdge, i : Int) -> Double {
 }
 
 pub fn physics_em_eddy_edge_set(s : PhysicsemeddyEdge, i : Int, v : Double) -> PhysicsemeddyEdge {
-  let result = physics_em_eddy_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_eddy_edge_sum(s : PhysicsemeddyEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_em_eddy_path_get(s : PhysicsemeddyPath, i : Int) -> Double {
 }
 
 pub fn physics_em_eddy_path_set(s : PhysicsemeddyPath, i : Int, v : Double) -> PhysicsemeddyPath {
-  let result = physics_em_eddy_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_eddy_path_sum(s : PhysicsemeddyPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_em_eddy_cluster_get(s : PhysicsemeddyCluster, i : Int) -> Double 
 }
 
 pub fn physics_em_eddy_cluster_set(s : PhysicsemeddyCluster, i : Int, v : Double) -> PhysicsemeddyCluster {
-  let result = physics_em_eddy_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_eddy_cluster_sum(s : PhysicsemeddyCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_em_eddy_model_get(s : PhysicsemeddyModel, i : Int) -> Double {
 }
 
 pub fn physics_em_eddy_model_set(s : PhysicsemeddyModel, i : Int, v : Double) -> PhysicsemeddyModel {
-  let result = physics_em_eddy_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_eddy_model_sum(s : PhysicsemeddyModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_em_eddy_layer_get(s : PhysicsemeddyLayer, i : Int) -> Double {
 }
 
 pub fn physics_em_eddy_layer_set(s : PhysicsemeddyLayer, i : Int, v : Double) -> PhysicsemeddyLayer {
-  let result = physics_em_eddy_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_eddy_layer_sum(s : PhysicsemeddyLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_em_eddy_buffer_get(s : PhysicsemeddyBuffer, i : Int) -> Double {
 }
 
 pub fn physics_em_eddy_buffer_set(s : PhysicsemeddyBuffer, i : Int, v : Double) -> PhysicsemeddyBuffer {
-  let result = physics_em_eddy_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_eddy_buffer_sum(s : PhysicsemeddyBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_em_eddy_cursor_get(s : PhysicsemeddyCursor, i : Int) -> Double {
 }
 
 pub fn physics_em_eddy_cursor_set(s : PhysicsemeddyCursor, i : Int, v : Double) -> PhysicsemeddyCursor {
-  let result = physics_em_eddy_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_eddy_cursor_sum(s : PhysicsemeddyCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_em_eddy_view_get(s : PhysicsemeddyView, i : Int) -> Double {
 }
 
 pub fn physics_em_eddy_view_set(s : PhysicsemeddyView, i : Int, v : Double) -> PhysicsemeddyView {
-  let result = physics_em_eddy_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_eddy_view_sum(s : PhysicsemeddyView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_em_eddy_range_get(s : PhysicsemeddyRange, i : Int) -> Double {
 }
 
 pub fn physics_em_eddy_range_set(s : PhysicsemeddyRange, i : Int, v : Double) -> PhysicsemeddyRange {
-  let result = physics_em_eddy_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_eddy_range_sum(s : PhysicsemeddyRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_em_eddy_slice_get(s : PhysicsemeddySlice, i : Int) -> Double {
 }
 
 pub fn physics_em_eddy_slice_set(s : PhysicsemeddySlice, i : Int, v : Double) -> PhysicsemeddySlice {
-  let result = physics_em_eddy_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_eddy_slice_sum(s : PhysicsemeddySlice) -> Double { @_common.sum(s.data) }

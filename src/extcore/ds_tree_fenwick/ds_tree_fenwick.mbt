@@ -107,23 +107,15 @@ pub fn ds_tree_fenwick_series_std(s : DstreefenwickSeries) -> Double { @_common.
 pub fn ds_tree_fenwick_series_median(s : DstreefenwickSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_tree_fenwick_series_scale(s : DstreefenwickSeries, f : Double) -> DstreefenwickSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_tree_fenwick_series_add(a : DstreefenwickSeries, b : DstreefenwickSeries) -> DstreefenwickSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_tree_fenwick_series_sub(a : DstreefenwickSeries, b : DstreefenwickSeries) -> DstreefenwickSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_tree_fenwick_series_normalize(s : DstreefenwickSeries) -> DstreefenwickSeries {
@@ -254,22 +246,16 @@ pub fn ds_tree_fenwick_vector_zero(dim : Int) -> DstreefenwickVector {
 
 pub fn ds_tree_fenwick_vector_add(a : DstreefenwickVector, b : DstreefenwickVector) -> DstreefenwickVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_tree_fenwick_vector_sub(a : DstreefenwickVector, b : DstreefenwickVector) -> DstreefenwickVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_tree_fenwick_vector_scale(v : DstreefenwickVector, s : Double) -> DstreefenwickVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_tree_fenwick_vector_dot(a : DstreefenwickVector, b : DstreefenwickVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_tree_fenwick_frame_get(s : DstreefenwickFrame, i : Int) -> Double {
 }
 
 pub fn ds_tree_fenwick_frame_set(s : DstreefenwickFrame, i : Int, v : Double) -> DstreefenwickFrame {
-  let result = ds_tree_fenwick_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_frame_sum(s : DstreefenwickFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_tree_fenwick_table_get(s : DstreefenwickTable, i : Int) -> Double {
 }
 
 pub fn ds_tree_fenwick_table_set(s : DstreefenwickTable, i : Int, v : Double) -> DstreefenwickTable {
-  let result = ds_tree_fenwick_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_table_sum(s : DstreefenwickTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_tree_fenwick_graphn_get(s : DstreefenwickGraphN, i : Int) -> Double {
 }
 
 pub fn ds_tree_fenwick_graphn_set(s : DstreefenwickGraphN, i : Int, v : Double) -> DstreefenwickGraphN {
-  let result = ds_tree_fenwick_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_graphn_sum(s : DstreefenwickGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_tree_fenwick_node_get(s : DstreefenwickNode, i : Int) -> Double {
 }
 
 pub fn ds_tree_fenwick_node_set(s : DstreefenwickNode, i : Int, v : Double) -> DstreefenwickNode {
-  let result = ds_tree_fenwick_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_node_sum(s : DstreefenwickNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_tree_fenwick_edge_get(s : DstreefenwickEdge, i : Int) -> Double {
 }
 
 pub fn ds_tree_fenwick_edge_set(s : DstreefenwickEdge, i : Int, v : Double) -> DstreefenwickEdge {
-  let result = ds_tree_fenwick_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_edge_sum(s : DstreefenwickEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_tree_fenwick_path_get(s : DstreefenwickPath, i : Int) -> Double {
 }
 
 pub fn ds_tree_fenwick_path_set(s : DstreefenwickPath, i : Int, v : Double) -> DstreefenwickPath {
-  let result = ds_tree_fenwick_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_path_sum(s : DstreefenwickPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_tree_fenwick_cluster_get(s : DstreefenwickCluster, i : Int) -> Double 
 }
 
 pub fn ds_tree_fenwick_cluster_set(s : DstreefenwickCluster, i : Int, v : Double) -> DstreefenwickCluster {
-  let result = ds_tree_fenwick_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_cluster_sum(s : DstreefenwickCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_tree_fenwick_model_get(s : DstreefenwickModel, i : Int) -> Double {
 }
 
 pub fn ds_tree_fenwick_model_set(s : DstreefenwickModel, i : Int, v : Double) -> DstreefenwickModel {
-  let result = ds_tree_fenwick_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_model_sum(s : DstreefenwickModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_tree_fenwick_layer_get(s : DstreefenwickLayer, i : Int) -> Double {
 }
 
 pub fn ds_tree_fenwick_layer_set(s : DstreefenwickLayer, i : Int, v : Double) -> DstreefenwickLayer {
-  let result = ds_tree_fenwick_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_layer_sum(s : DstreefenwickLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_tree_fenwick_buffer_get(s : DstreefenwickBuffer, i : Int) -> Double {
 }
 
 pub fn ds_tree_fenwick_buffer_set(s : DstreefenwickBuffer, i : Int, v : Double) -> DstreefenwickBuffer {
-  let result = ds_tree_fenwick_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_buffer_sum(s : DstreefenwickBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_tree_fenwick_cursor_get(s : DstreefenwickCursor, i : Int) -> Double {
 }
 
 pub fn ds_tree_fenwick_cursor_set(s : DstreefenwickCursor, i : Int, v : Double) -> DstreefenwickCursor {
-  let result = ds_tree_fenwick_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_cursor_sum(s : DstreefenwickCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_tree_fenwick_view_get(s : DstreefenwickView, i : Int) -> Double {
 }
 
 pub fn ds_tree_fenwick_view_set(s : DstreefenwickView, i : Int, v : Double) -> DstreefenwickView {
-  let result = ds_tree_fenwick_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_view_sum(s : DstreefenwickView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_tree_fenwick_range_get(s : DstreefenwickRange, i : Int) -> Double {
 }
 
 pub fn ds_tree_fenwick_range_set(s : DstreefenwickRange, i : Int, v : Double) -> DstreefenwickRange {
-  let result = ds_tree_fenwick_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_range_sum(s : DstreefenwickRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_tree_fenwick_slice_get(s : DstreefenwickSlice, i : Int) -> Double {
 }
 
 pub fn ds_tree_fenwick_slice_set(s : DstreefenwickSlice, i : Int, v : Double) -> DstreefenwickSlice {
-  let result = ds_tree_fenwick_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_fenwick_slice_sum(s : DstreefenwickSlice) -> Double { @_common.sum(s.data) }

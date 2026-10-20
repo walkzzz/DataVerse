@@ -107,23 +107,15 @@ pub fn graph_color_backtrack_series_std(s : GraphcolorbacktrackSeries) -> Double
 pub fn graph_color_backtrack_series_median(s : GraphcolorbacktrackSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_color_backtrack_series_scale(s : GraphcolorbacktrackSeries, f : Double) -> GraphcolorbacktrackSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_color_backtrack_series_add(a : GraphcolorbacktrackSeries, b : GraphcolorbacktrackSeries) -> GraphcolorbacktrackSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_color_backtrack_series_sub(a : GraphcolorbacktrackSeries, b : GraphcolorbacktrackSeries) -> GraphcolorbacktrackSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_color_backtrack_series_normalize(s : GraphcolorbacktrackSeries) -> GraphcolorbacktrackSeries {
@@ -254,22 +246,16 @@ pub fn graph_color_backtrack_vector_zero(dim : Int) -> GraphcolorbacktrackVector
 
 pub fn graph_color_backtrack_vector_add(a : GraphcolorbacktrackVector, b : GraphcolorbacktrackVector) -> GraphcolorbacktrackVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_color_backtrack_vector_sub(a : GraphcolorbacktrackVector, b : GraphcolorbacktrackVector) -> GraphcolorbacktrackVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_color_backtrack_vector_scale(v : GraphcolorbacktrackVector, s : Double) -> GraphcolorbacktrackVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_color_backtrack_vector_dot(a : GraphcolorbacktrackVector, b : GraphcolorbacktrackVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_color_backtrack_frame_get(s : GraphcolorbacktrackFrame, i : Int) ->
 }
 
 pub fn graph_color_backtrack_frame_set(s : GraphcolorbacktrackFrame, i : Int, v : Double) -> GraphcolorbacktrackFrame {
-  let result = graph_color_backtrack_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_frame_sum(s : GraphcolorbacktrackFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_color_backtrack_table_get(s : GraphcolorbacktrackTable, i : Int) ->
 }
 
 pub fn graph_color_backtrack_table_set(s : GraphcolorbacktrackTable, i : Int, v : Double) -> GraphcolorbacktrackTable {
-  let result = graph_color_backtrack_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_table_sum(s : GraphcolorbacktrackTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_color_backtrack_graphn_get(s : GraphcolorbacktrackGraphN, i : Int) 
 }
 
 pub fn graph_color_backtrack_graphn_set(s : GraphcolorbacktrackGraphN, i : Int, v : Double) -> GraphcolorbacktrackGraphN {
-  let result = graph_color_backtrack_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_graphn_sum(s : GraphcolorbacktrackGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_color_backtrack_node_get(s : GraphcolorbacktrackNode, i : Int) -> D
 }
 
 pub fn graph_color_backtrack_node_set(s : GraphcolorbacktrackNode, i : Int, v : Double) -> GraphcolorbacktrackNode {
-  let result = graph_color_backtrack_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_node_sum(s : GraphcolorbacktrackNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_color_backtrack_edge_get(s : GraphcolorbacktrackEdge, i : Int) -> D
 }
 
 pub fn graph_color_backtrack_edge_set(s : GraphcolorbacktrackEdge, i : Int, v : Double) -> GraphcolorbacktrackEdge {
-  let result = graph_color_backtrack_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_edge_sum(s : GraphcolorbacktrackEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_color_backtrack_path_get(s : GraphcolorbacktrackPath, i : Int) -> D
 }
 
 pub fn graph_color_backtrack_path_set(s : GraphcolorbacktrackPath, i : Int, v : Double) -> GraphcolorbacktrackPath {
-  let result = graph_color_backtrack_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_path_sum(s : GraphcolorbacktrackPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_color_backtrack_cluster_get(s : GraphcolorbacktrackCluster, i : Int
 }
 
 pub fn graph_color_backtrack_cluster_set(s : GraphcolorbacktrackCluster, i : Int, v : Double) -> GraphcolorbacktrackCluster {
-  let result = graph_color_backtrack_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_cluster_sum(s : GraphcolorbacktrackCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_color_backtrack_model_get(s : GraphcolorbacktrackModel, i : Int) ->
 }
 
 pub fn graph_color_backtrack_model_set(s : GraphcolorbacktrackModel, i : Int, v : Double) -> GraphcolorbacktrackModel {
-  let result = graph_color_backtrack_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_model_sum(s : GraphcolorbacktrackModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_color_backtrack_layer_get(s : GraphcolorbacktrackLayer, i : Int) ->
 }
 
 pub fn graph_color_backtrack_layer_set(s : GraphcolorbacktrackLayer, i : Int, v : Double) -> GraphcolorbacktrackLayer {
-  let result = graph_color_backtrack_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_layer_sum(s : GraphcolorbacktrackLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_color_backtrack_buffer_get(s : GraphcolorbacktrackBuffer, i : Int) 
 }
 
 pub fn graph_color_backtrack_buffer_set(s : GraphcolorbacktrackBuffer, i : Int, v : Double) -> GraphcolorbacktrackBuffer {
-  let result = graph_color_backtrack_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_buffer_sum(s : GraphcolorbacktrackBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_color_backtrack_cursor_get(s : GraphcolorbacktrackCursor, i : Int) 
 }
 
 pub fn graph_color_backtrack_cursor_set(s : GraphcolorbacktrackCursor, i : Int, v : Double) -> GraphcolorbacktrackCursor {
-  let result = graph_color_backtrack_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_cursor_sum(s : GraphcolorbacktrackCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_color_backtrack_view_get(s : GraphcolorbacktrackView, i : Int) -> D
 }
 
 pub fn graph_color_backtrack_view_set(s : GraphcolorbacktrackView, i : Int, v : Double) -> GraphcolorbacktrackView {
-  let result = graph_color_backtrack_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_view_sum(s : GraphcolorbacktrackView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_color_backtrack_range_get(s : GraphcolorbacktrackRange, i : Int) ->
 }
 
 pub fn graph_color_backtrack_range_set(s : GraphcolorbacktrackRange, i : Int, v : Double) -> GraphcolorbacktrackRange {
-  let result = graph_color_backtrack_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_range_sum(s : GraphcolorbacktrackRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_color_backtrack_slice_get(s : GraphcolorbacktrackSlice, i : Int) ->
 }
 
 pub fn graph_color_backtrack_slice_set(s : GraphcolorbacktrackSlice, i : Int, v : Double) -> GraphcolorbacktrackSlice {
-  let result = graph_color_backtrack_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_backtrack_slice_sum(s : GraphcolorbacktrackSlice) -> Double { @_common.sum(s.data) }

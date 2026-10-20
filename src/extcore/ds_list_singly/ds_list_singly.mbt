@@ -107,23 +107,15 @@ pub fn ds_list_singly_series_std(s : DslistsinglySeries) -> Double { @_common.st
 pub fn ds_list_singly_series_median(s : DslistsinglySeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_list_singly_series_scale(s : DslistsinglySeries, f : Double) -> DslistsinglySeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_list_singly_series_add(a : DslistsinglySeries, b : DslistsinglySeries) -> DslistsinglySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_list_singly_series_sub(a : DslistsinglySeries, b : DslistsinglySeries) -> DslistsinglySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_list_singly_series_normalize(s : DslistsinglySeries) -> DslistsinglySeries {
@@ -254,22 +246,16 @@ pub fn ds_list_singly_vector_zero(dim : Int) -> DslistsinglyVector {
 
 pub fn ds_list_singly_vector_add(a : DslistsinglyVector, b : DslistsinglyVector) -> DslistsinglyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_list_singly_vector_sub(a : DslistsinglyVector, b : DslistsinglyVector) -> DslistsinglyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_list_singly_vector_scale(v : DslistsinglyVector, s : Double) -> DslistsinglyVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_list_singly_vector_dot(a : DslistsinglyVector, b : DslistsinglyVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_list_singly_frame_get(s : DslistsinglyFrame, i : Int) -> Double {
 }
 
 pub fn ds_list_singly_frame_set(s : DslistsinglyFrame, i : Int, v : Double) -> DslistsinglyFrame {
-  let result = ds_list_singly_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_singly_frame_sum(s : DslistsinglyFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_list_singly_table_get(s : DslistsinglyTable, i : Int) -> Double {
 }
 
 pub fn ds_list_singly_table_set(s : DslistsinglyTable, i : Int, v : Double) -> DslistsinglyTable {
-  let result = ds_list_singly_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_singly_table_sum(s : DslistsinglyTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_list_singly_graphn_get(s : DslistsinglyGraphN, i : Int) -> Double {
 }
 
 pub fn ds_list_singly_graphn_set(s : DslistsinglyGraphN, i : Int, v : Double) -> DslistsinglyGraphN {
-  let result = ds_list_singly_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_singly_graphn_sum(s : DslistsinglyGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_list_singly_node_get(s : DslistsinglyNode, i : Int) -> Double {
 }
 
 pub fn ds_list_singly_node_set(s : DslistsinglyNode, i : Int, v : Double) -> DslistsinglyNode {
-  let result = ds_list_singly_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_singly_node_sum(s : DslistsinglyNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_list_singly_edge_get(s : DslistsinglyEdge, i : Int) -> Double {
 }
 
 pub fn ds_list_singly_edge_set(s : DslistsinglyEdge, i : Int, v : Double) -> DslistsinglyEdge {
-  let result = ds_list_singly_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_singly_edge_sum(s : DslistsinglyEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_list_singly_path_get(s : DslistsinglyPath, i : Int) -> Double {
 }
 
 pub fn ds_list_singly_path_set(s : DslistsinglyPath, i : Int, v : Double) -> DslistsinglyPath {
-  let result = ds_list_singly_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_singly_path_sum(s : DslistsinglyPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_list_singly_cluster_get(s : DslistsinglyCluster, i : Int) -> Double {
 }
 
 pub fn ds_list_singly_cluster_set(s : DslistsinglyCluster, i : Int, v : Double) -> DslistsinglyCluster {
-  let result = ds_list_singly_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_singly_cluster_sum(s : DslistsinglyCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_list_singly_model_get(s : DslistsinglyModel, i : Int) -> Double {
 }
 
 pub fn ds_list_singly_model_set(s : DslistsinglyModel, i : Int, v : Double) -> DslistsinglyModel {
-  let result = ds_list_singly_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_singly_model_sum(s : DslistsinglyModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_list_singly_layer_get(s : DslistsinglyLayer, i : Int) -> Double {
 }
 
 pub fn ds_list_singly_layer_set(s : DslistsinglyLayer, i : Int, v : Double) -> DslistsinglyLayer {
-  let result = ds_list_singly_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_singly_layer_sum(s : DslistsinglyLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_list_singly_buffer_get(s : DslistsinglyBuffer, i : Int) -> Double {
 }
 
 pub fn ds_list_singly_buffer_set(s : DslistsinglyBuffer, i : Int, v : Double) -> DslistsinglyBuffer {
-  let result = ds_list_singly_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_singly_buffer_sum(s : DslistsinglyBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_list_singly_cursor_get(s : DslistsinglyCursor, i : Int) -> Double {
 }
 
 pub fn ds_list_singly_cursor_set(s : DslistsinglyCursor, i : Int, v : Double) -> DslistsinglyCursor {
-  let result = ds_list_singly_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_singly_cursor_sum(s : DslistsinglyCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_list_singly_view_get(s : DslistsinglyView, i : Int) -> Double {
 }
 
 pub fn ds_list_singly_view_set(s : DslistsinglyView, i : Int, v : Double) -> DslistsinglyView {
-  let result = ds_list_singly_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_singly_view_sum(s : DslistsinglyView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_list_singly_range_get(s : DslistsinglyRange, i : Int) -> Double {
 }
 
 pub fn ds_list_singly_range_set(s : DslistsinglyRange, i : Int, v : Double) -> DslistsinglyRange {
-  let result = ds_list_singly_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_singly_range_sum(s : DslistsinglyRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_list_singly_slice_get(s : DslistsinglySlice, i : Int) -> Double {
 }
 
 pub fn ds_list_singly_slice_set(s : DslistsinglySlice, i : Int, v : Double) -> DslistsinglySlice {
-  let result = ds_list_singly_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_singly_slice_sum(s : DslistsinglySlice) -> Double { @_common.sum(s.data) }

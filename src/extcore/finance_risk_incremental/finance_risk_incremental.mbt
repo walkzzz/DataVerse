@@ -107,23 +107,15 @@ pub fn finance_risk_incremental_series_std(s : FinanceriskincrementalSeries) -> 
 pub fn finance_risk_incremental_series_median(s : FinanceriskincrementalSeries) -> Double { @_common.median(s.vals) }
 
 pub fn finance_risk_incremental_series_scale(s : FinanceriskincrementalSeries, f : Double) -> FinanceriskincrementalSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn finance_risk_incremental_series_add(a : FinanceriskincrementalSeries, b : FinanceriskincrementalSeries) -> FinanceriskincrementalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn finance_risk_incremental_series_sub(a : FinanceriskincrementalSeries, b : FinanceriskincrementalSeries) -> FinanceriskincrementalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn finance_risk_incremental_series_normalize(s : FinanceriskincrementalSeries) -> FinanceriskincrementalSeries {
@@ -254,22 +246,16 @@ pub fn finance_risk_incremental_vector_zero(dim : Int) -> Financeriskincremental
 
 pub fn finance_risk_incremental_vector_add(a : FinanceriskincrementalVector, b : FinanceriskincrementalVector) -> FinanceriskincrementalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_risk_incremental_vector_sub(a : FinanceriskincrementalVector, b : FinanceriskincrementalVector) -> FinanceriskincrementalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_risk_incremental_vector_scale(v : FinanceriskincrementalVector, s : Double) -> FinanceriskincrementalVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn finance_risk_incremental_vector_dot(a : FinanceriskincrementalVector, b : FinanceriskincrementalVector) -> Double {
@@ -372,10 +358,9 @@ pub fn finance_risk_incremental_frame_get(s : FinanceriskincrementalFrame, i : I
 }
 
 pub fn finance_risk_incremental_frame_set(s : FinanceriskincrementalFrame, i : Int, v : Double) -> FinanceriskincrementalFrame {
-  let result = finance_risk_incremental_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_incremental_frame_sum(s : FinanceriskincrementalFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn finance_risk_incremental_table_get(s : FinanceriskincrementalTable, i : I
 }
 
 pub fn finance_risk_incremental_table_set(s : FinanceriskincrementalTable, i : Int, v : Double) -> FinanceriskincrementalTable {
-  let result = finance_risk_incremental_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_incremental_table_sum(s : FinanceriskincrementalTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn finance_risk_incremental_graphn_get(s : FinanceriskincrementalGraphN, i :
 }
 
 pub fn finance_risk_incremental_graphn_set(s : FinanceriskincrementalGraphN, i : Int, v : Double) -> FinanceriskincrementalGraphN {
-  let result = finance_risk_incremental_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_incremental_graphn_sum(s : FinanceriskincrementalGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn finance_risk_incremental_node_get(s : FinanceriskincrementalNode, i : Int
 }
 
 pub fn finance_risk_incremental_node_set(s : FinanceriskincrementalNode, i : Int, v : Double) -> FinanceriskincrementalNode {
-  let result = finance_risk_incremental_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_incremental_node_sum(s : FinanceriskincrementalNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn finance_risk_incremental_edge_get(s : FinanceriskincrementalEdge, i : Int
 }
 
 pub fn finance_risk_incremental_edge_set(s : FinanceriskincrementalEdge, i : Int, v : Double) -> FinanceriskincrementalEdge {
-  let result = finance_risk_incremental_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_incremental_edge_sum(s : FinanceriskincrementalEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn finance_risk_incremental_path_get(s : FinanceriskincrementalPath, i : Int
 }
 
 pub fn finance_risk_incremental_path_set(s : FinanceriskincrementalPath, i : Int, v : Double) -> FinanceriskincrementalPath {
-  let result = finance_risk_incremental_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_incremental_path_sum(s : FinanceriskincrementalPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn finance_risk_incremental_cluster_get(s : FinanceriskincrementalCluster, i
 }
 
 pub fn finance_risk_incremental_cluster_set(s : FinanceriskincrementalCluster, i : Int, v : Double) -> FinanceriskincrementalCluster {
-  let result = finance_risk_incremental_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_incremental_cluster_sum(s : FinanceriskincrementalCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn finance_risk_incremental_model_get(s : FinanceriskincrementalModel, i : I
 }
 
 pub fn finance_risk_incremental_model_set(s : FinanceriskincrementalModel, i : Int, v : Double) -> FinanceriskincrementalModel {
-  let result = finance_risk_incremental_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_incremental_model_sum(s : FinanceriskincrementalModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn finance_risk_incremental_layer_get(s : FinanceriskincrementalLayer, i : I
 }
 
 pub fn finance_risk_incremental_layer_set(s : FinanceriskincrementalLayer, i : Int, v : Double) -> FinanceriskincrementalLayer {
-  let result = finance_risk_incremental_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_incremental_layer_sum(s : FinanceriskincrementalLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn finance_risk_incremental_buffer_get(s : FinanceriskincrementalBuffer, i :
 }
 
 pub fn finance_risk_incremental_buffer_set(s : FinanceriskincrementalBuffer, i : Int, v : Double) -> FinanceriskincrementalBuffer {
-  let result = finance_risk_incremental_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_incremental_buffer_sum(s : FinanceriskincrementalBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn finance_risk_incremental_cursor_get(s : FinanceriskincrementalCursor, i :
 }
 
 pub fn finance_risk_incremental_cursor_set(s : FinanceriskincrementalCursor, i : Int, v : Double) -> FinanceriskincrementalCursor {
-  let result = finance_risk_incremental_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_incremental_cursor_sum(s : FinanceriskincrementalCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn finance_risk_incremental_view_get(s : FinanceriskincrementalView, i : Int
 }
 
 pub fn finance_risk_incremental_view_set(s : FinanceriskincrementalView, i : Int, v : Double) -> FinanceriskincrementalView {
-  let result = finance_risk_incremental_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_incremental_view_sum(s : FinanceriskincrementalView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn finance_risk_incremental_range_get(s : FinanceriskincrementalRange, i : I
 }
 
 pub fn finance_risk_incremental_range_set(s : FinanceriskincrementalRange, i : Int, v : Double) -> FinanceriskincrementalRange {
-  let result = finance_risk_incremental_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_incremental_range_sum(s : FinanceriskincrementalRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn finance_risk_incremental_slice_get(s : FinanceriskincrementalSlice, i : I
 }
 
 pub fn finance_risk_incremental_slice_set(s : FinanceriskincrementalSlice, i : Int, v : Double) -> FinanceriskincrementalSlice {
-  let result = finance_risk_incremental_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_incremental_slice_sum(s : FinanceriskincrementalSlice) -> Double { @_common.sum(s.data) }

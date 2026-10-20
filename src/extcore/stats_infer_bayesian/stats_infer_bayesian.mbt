@@ -107,23 +107,15 @@ pub fn stats_infer_bayesian_series_std(s : StatsinferbayesianSeries) -> Double {
 pub fn stats_infer_bayesian_series_median(s : StatsinferbayesianSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_infer_bayesian_series_scale(s : StatsinferbayesianSeries, f : Double) -> StatsinferbayesianSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_infer_bayesian_series_add(a : StatsinferbayesianSeries, b : StatsinferbayesianSeries) -> StatsinferbayesianSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_infer_bayesian_series_sub(a : StatsinferbayesianSeries, b : StatsinferbayesianSeries) -> StatsinferbayesianSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_infer_bayesian_series_normalize(s : StatsinferbayesianSeries) -> StatsinferbayesianSeries {
@@ -254,22 +246,16 @@ pub fn stats_infer_bayesian_vector_zero(dim : Int) -> StatsinferbayesianVector {
 
 pub fn stats_infer_bayesian_vector_add(a : StatsinferbayesianVector, b : StatsinferbayesianVector) -> StatsinferbayesianVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_infer_bayesian_vector_sub(a : StatsinferbayesianVector, b : StatsinferbayesianVector) -> StatsinferbayesianVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_infer_bayesian_vector_scale(v : StatsinferbayesianVector, s : Double) -> StatsinferbayesianVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_infer_bayesian_vector_dot(a : StatsinferbayesianVector, b : StatsinferbayesianVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_infer_bayesian_frame_get(s : StatsinferbayesianFrame, i : Int) -> D
 }
 
 pub fn stats_infer_bayesian_frame_set(s : StatsinferbayesianFrame, i : Int, v : Double) -> StatsinferbayesianFrame {
-  let result = stats_infer_bayesian_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_bayesian_frame_sum(s : StatsinferbayesianFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_infer_bayesian_table_get(s : StatsinferbayesianTable, i : Int) -> D
 }
 
 pub fn stats_infer_bayesian_table_set(s : StatsinferbayesianTable, i : Int, v : Double) -> StatsinferbayesianTable {
-  let result = stats_infer_bayesian_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_bayesian_table_sum(s : StatsinferbayesianTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_infer_bayesian_graphn_get(s : StatsinferbayesianGraphN, i : Int) ->
 }
 
 pub fn stats_infer_bayesian_graphn_set(s : StatsinferbayesianGraphN, i : Int, v : Double) -> StatsinferbayesianGraphN {
-  let result = stats_infer_bayesian_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_bayesian_graphn_sum(s : StatsinferbayesianGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_infer_bayesian_node_get(s : StatsinferbayesianNode, i : Int) -> Dou
 }
 
 pub fn stats_infer_bayesian_node_set(s : StatsinferbayesianNode, i : Int, v : Double) -> StatsinferbayesianNode {
-  let result = stats_infer_bayesian_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_bayesian_node_sum(s : StatsinferbayesianNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_infer_bayesian_edge_get(s : StatsinferbayesianEdge, i : Int) -> Dou
 }
 
 pub fn stats_infer_bayesian_edge_set(s : StatsinferbayesianEdge, i : Int, v : Double) -> StatsinferbayesianEdge {
-  let result = stats_infer_bayesian_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_bayesian_edge_sum(s : StatsinferbayesianEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_infer_bayesian_path_get(s : StatsinferbayesianPath, i : Int) -> Dou
 }
 
 pub fn stats_infer_bayesian_path_set(s : StatsinferbayesianPath, i : Int, v : Double) -> StatsinferbayesianPath {
-  let result = stats_infer_bayesian_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_bayesian_path_sum(s : StatsinferbayesianPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_infer_bayesian_cluster_get(s : StatsinferbayesianCluster, i : Int) 
 }
 
 pub fn stats_infer_bayesian_cluster_set(s : StatsinferbayesianCluster, i : Int, v : Double) -> StatsinferbayesianCluster {
-  let result = stats_infer_bayesian_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_bayesian_cluster_sum(s : StatsinferbayesianCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_infer_bayesian_model_get(s : StatsinferbayesianModel, i : Int) -> D
 }
 
 pub fn stats_infer_bayesian_model_set(s : StatsinferbayesianModel, i : Int, v : Double) -> StatsinferbayesianModel {
-  let result = stats_infer_bayesian_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_bayesian_model_sum(s : StatsinferbayesianModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_infer_bayesian_layer_get(s : StatsinferbayesianLayer, i : Int) -> D
 }
 
 pub fn stats_infer_bayesian_layer_set(s : StatsinferbayesianLayer, i : Int, v : Double) -> StatsinferbayesianLayer {
-  let result = stats_infer_bayesian_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_bayesian_layer_sum(s : StatsinferbayesianLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_infer_bayesian_buffer_get(s : StatsinferbayesianBuffer, i : Int) ->
 }
 
 pub fn stats_infer_bayesian_buffer_set(s : StatsinferbayesianBuffer, i : Int, v : Double) -> StatsinferbayesianBuffer {
-  let result = stats_infer_bayesian_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_bayesian_buffer_sum(s : StatsinferbayesianBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_infer_bayesian_cursor_get(s : StatsinferbayesianCursor, i : Int) ->
 }
 
 pub fn stats_infer_bayesian_cursor_set(s : StatsinferbayesianCursor, i : Int, v : Double) -> StatsinferbayesianCursor {
-  let result = stats_infer_bayesian_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_bayesian_cursor_sum(s : StatsinferbayesianCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_infer_bayesian_view_get(s : StatsinferbayesianView, i : Int) -> Dou
 }
 
 pub fn stats_infer_bayesian_view_set(s : StatsinferbayesianView, i : Int, v : Double) -> StatsinferbayesianView {
-  let result = stats_infer_bayesian_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_bayesian_view_sum(s : StatsinferbayesianView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_infer_bayesian_range_get(s : StatsinferbayesianRange, i : Int) -> D
 }
 
 pub fn stats_infer_bayesian_range_set(s : StatsinferbayesianRange, i : Int, v : Double) -> StatsinferbayesianRange {
-  let result = stats_infer_bayesian_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_bayesian_range_sum(s : StatsinferbayesianRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_infer_bayesian_slice_get(s : StatsinferbayesianSlice, i : Int) -> D
 }
 
 pub fn stats_infer_bayesian_slice_set(s : StatsinferbayesianSlice, i : Int, v : Double) -> StatsinferbayesianSlice {
-  let result = stats_infer_bayesian_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_bayesian_slice_sum(s : StatsinferbayesianSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn signal_window_gaussian_series_std(s : SignalwindowgaussianSeries) -> Doub
 pub fn signal_window_gaussian_series_median(s : SignalwindowgaussianSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_window_gaussian_series_scale(s : SignalwindowgaussianSeries, f : Double) -> SignalwindowgaussianSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_window_gaussian_series_add(a : SignalwindowgaussianSeries, b : SignalwindowgaussianSeries) -> SignalwindowgaussianSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_window_gaussian_series_sub(a : SignalwindowgaussianSeries, b : SignalwindowgaussianSeries) -> SignalwindowgaussianSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_window_gaussian_series_normalize(s : SignalwindowgaussianSeries) -> SignalwindowgaussianSeries {
@@ -254,22 +246,16 @@ pub fn signal_window_gaussian_vector_zero(dim : Int) -> SignalwindowgaussianVect
 
 pub fn signal_window_gaussian_vector_add(a : SignalwindowgaussianVector, b : SignalwindowgaussianVector) -> SignalwindowgaussianVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_window_gaussian_vector_sub(a : SignalwindowgaussianVector, b : SignalwindowgaussianVector) -> SignalwindowgaussianVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_window_gaussian_vector_scale(v : SignalwindowgaussianVector, s : Double) -> SignalwindowgaussianVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_window_gaussian_vector_dot(a : SignalwindowgaussianVector, b : SignalwindowgaussianVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_window_gaussian_frame_get(s : SignalwindowgaussianFrame, i : Int) 
 }
 
 pub fn signal_window_gaussian_frame_set(s : SignalwindowgaussianFrame, i : Int, v : Double) -> SignalwindowgaussianFrame {
-  let result = signal_window_gaussian_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_frame_sum(s : SignalwindowgaussianFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_window_gaussian_table_get(s : SignalwindowgaussianTable, i : Int) 
 }
 
 pub fn signal_window_gaussian_table_set(s : SignalwindowgaussianTable, i : Int, v : Double) -> SignalwindowgaussianTable {
-  let result = signal_window_gaussian_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_table_sum(s : SignalwindowgaussianTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_window_gaussian_graphn_get(s : SignalwindowgaussianGraphN, i : Int
 }
 
 pub fn signal_window_gaussian_graphn_set(s : SignalwindowgaussianGraphN, i : Int, v : Double) -> SignalwindowgaussianGraphN {
-  let result = signal_window_gaussian_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_graphn_sum(s : SignalwindowgaussianGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_window_gaussian_node_get(s : SignalwindowgaussianNode, i : Int) ->
 }
 
 pub fn signal_window_gaussian_node_set(s : SignalwindowgaussianNode, i : Int, v : Double) -> SignalwindowgaussianNode {
-  let result = signal_window_gaussian_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_node_sum(s : SignalwindowgaussianNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_window_gaussian_edge_get(s : SignalwindowgaussianEdge, i : Int) ->
 }
 
 pub fn signal_window_gaussian_edge_set(s : SignalwindowgaussianEdge, i : Int, v : Double) -> SignalwindowgaussianEdge {
-  let result = signal_window_gaussian_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_edge_sum(s : SignalwindowgaussianEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_window_gaussian_path_get(s : SignalwindowgaussianPath, i : Int) ->
 }
 
 pub fn signal_window_gaussian_path_set(s : SignalwindowgaussianPath, i : Int, v : Double) -> SignalwindowgaussianPath {
-  let result = signal_window_gaussian_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_path_sum(s : SignalwindowgaussianPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_window_gaussian_cluster_get(s : SignalwindowgaussianCluster, i : I
 }
 
 pub fn signal_window_gaussian_cluster_set(s : SignalwindowgaussianCluster, i : Int, v : Double) -> SignalwindowgaussianCluster {
-  let result = signal_window_gaussian_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_cluster_sum(s : SignalwindowgaussianCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_window_gaussian_model_get(s : SignalwindowgaussianModel, i : Int) 
 }
 
 pub fn signal_window_gaussian_model_set(s : SignalwindowgaussianModel, i : Int, v : Double) -> SignalwindowgaussianModel {
-  let result = signal_window_gaussian_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_model_sum(s : SignalwindowgaussianModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_window_gaussian_layer_get(s : SignalwindowgaussianLayer, i : Int) 
 }
 
 pub fn signal_window_gaussian_layer_set(s : SignalwindowgaussianLayer, i : Int, v : Double) -> SignalwindowgaussianLayer {
-  let result = signal_window_gaussian_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_layer_sum(s : SignalwindowgaussianLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_window_gaussian_buffer_get(s : SignalwindowgaussianBuffer, i : Int
 }
 
 pub fn signal_window_gaussian_buffer_set(s : SignalwindowgaussianBuffer, i : Int, v : Double) -> SignalwindowgaussianBuffer {
-  let result = signal_window_gaussian_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_buffer_sum(s : SignalwindowgaussianBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_window_gaussian_cursor_get(s : SignalwindowgaussianCursor, i : Int
 }
 
 pub fn signal_window_gaussian_cursor_set(s : SignalwindowgaussianCursor, i : Int, v : Double) -> SignalwindowgaussianCursor {
-  let result = signal_window_gaussian_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_cursor_sum(s : SignalwindowgaussianCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_window_gaussian_view_get(s : SignalwindowgaussianView, i : Int) ->
 }
 
 pub fn signal_window_gaussian_view_set(s : SignalwindowgaussianView, i : Int, v : Double) -> SignalwindowgaussianView {
-  let result = signal_window_gaussian_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_view_sum(s : SignalwindowgaussianView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_window_gaussian_range_get(s : SignalwindowgaussianRange, i : Int) 
 }
 
 pub fn signal_window_gaussian_range_set(s : SignalwindowgaussianRange, i : Int, v : Double) -> SignalwindowgaussianRange {
-  let result = signal_window_gaussian_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_range_sum(s : SignalwindowgaussianRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_window_gaussian_slice_get(s : SignalwindowgaussianSlice, i : Int) 
 }
 
 pub fn signal_window_gaussian_slice_set(s : SignalwindowgaussianSlice, i : Int, v : Double) -> SignalwindowgaussianSlice {
-  let result = signal_window_gaussian_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_gaussian_slice_sum(s : SignalwindowgaussianSlice) -> Double { @_common.sum(s.data) }

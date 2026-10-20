@@ -107,23 +107,15 @@ pub fn nlp_pos_brill_series_std(s : NlpposbrillSeries) -> Double { @_common.std(
 pub fn nlp_pos_brill_series_median(s : NlpposbrillSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_pos_brill_series_scale(s : NlpposbrillSeries, f : Double) -> NlpposbrillSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_pos_brill_series_add(a : NlpposbrillSeries, b : NlpposbrillSeries) -> NlpposbrillSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_pos_brill_series_sub(a : NlpposbrillSeries, b : NlpposbrillSeries) -> NlpposbrillSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_pos_brill_series_normalize(s : NlpposbrillSeries) -> NlpposbrillSeries {
@@ -254,22 +246,16 @@ pub fn nlp_pos_brill_vector_zero(dim : Int) -> NlpposbrillVector {
 
 pub fn nlp_pos_brill_vector_add(a : NlpposbrillVector, b : NlpposbrillVector) -> NlpposbrillVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_pos_brill_vector_sub(a : NlpposbrillVector, b : NlpposbrillVector) -> NlpposbrillVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_pos_brill_vector_scale(v : NlpposbrillVector, s : Double) -> NlpposbrillVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_pos_brill_vector_dot(a : NlpposbrillVector, b : NlpposbrillVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_pos_brill_frame_get(s : NlpposbrillFrame, i : Int) -> Double {
 }
 
 pub fn nlp_pos_brill_frame_set(s : NlpposbrillFrame, i : Int, v : Double) -> NlpposbrillFrame {
-  let result = nlp_pos_brill_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_brill_frame_sum(s : NlpposbrillFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_pos_brill_table_get(s : NlpposbrillTable, i : Int) -> Double {
 }
 
 pub fn nlp_pos_brill_table_set(s : NlpposbrillTable, i : Int, v : Double) -> NlpposbrillTable {
-  let result = nlp_pos_brill_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_brill_table_sum(s : NlpposbrillTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_pos_brill_graphn_get(s : NlpposbrillGraphN, i : Int) -> Double {
 }
 
 pub fn nlp_pos_brill_graphn_set(s : NlpposbrillGraphN, i : Int, v : Double) -> NlpposbrillGraphN {
-  let result = nlp_pos_brill_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_brill_graphn_sum(s : NlpposbrillGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_pos_brill_node_get(s : NlpposbrillNode, i : Int) -> Double {
 }
 
 pub fn nlp_pos_brill_node_set(s : NlpposbrillNode, i : Int, v : Double) -> NlpposbrillNode {
-  let result = nlp_pos_brill_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_brill_node_sum(s : NlpposbrillNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_pos_brill_edge_get(s : NlpposbrillEdge, i : Int) -> Double {
 }
 
 pub fn nlp_pos_brill_edge_set(s : NlpposbrillEdge, i : Int, v : Double) -> NlpposbrillEdge {
-  let result = nlp_pos_brill_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_brill_edge_sum(s : NlpposbrillEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_pos_brill_path_get(s : NlpposbrillPath, i : Int) -> Double {
 }
 
 pub fn nlp_pos_brill_path_set(s : NlpposbrillPath, i : Int, v : Double) -> NlpposbrillPath {
-  let result = nlp_pos_brill_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_brill_path_sum(s : NlpposbrillPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_pos_brill_cluster_get(s : NlpposbrillCluster, i : Int) -> Double {
 }
 
 pub fn nlp_pos_brill_cluster_set(s : NlpposbrillCluster, i : Int, v : Double) -> NlpposbrillCluster {
-  let result = nlp_pos_brill_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_brill_cluster_sum(s : NlpposbrillCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_pos_brill_model_get(s : NlpposbrillModel, i : Int) -> Double {
 }
 
 pub fn nlp_pos_brill_model_set(s : NlpposbrillModel, i : Int, v : Double) -> NlpposbrillModel {
-  let result = nlp_pos_brill_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_brill_model_sum(s : NlpposbrillModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_pos_brill_layer_get(s : NlpposbrillLayer, i : Int) -> Double {
 }
 
 pub fn nlp_pos_brill_layer_set(s : NlpposbrillLayer, i : Int, v : Double) -> NlpposbrillLayer {
-  let result = nlp_pos_brill_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_brill_layer_sum(s : NlpposbrillLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_pos_brill_buffer_get(s : NlpposbrillBuffer, i : Int) -> Double {
 }
 
 pub fn nlp_pos_brill_buffer_set(s : NlpposbrillBuffer, i : Int, v : Double) -> NlpposbrillBuffer {
-  let result = nlp_pos_brill_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_brill_buffer_sum(s : NlpposbrillBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_pos_brill_cursor_get(s : NlpposbrillCursor, i : Int) -> Double {
 }
 
 pub fn nlp_pos_brill_cursor_set(s : NlpposbrillCursor, i : Int, v : Double) -> NlpposbrillCursor {
-  let result = nlp_pos_brill_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_brill_cursor_sum(s : NlpposbrillCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_pos_brill_view_get(s : NlpposbrillView, i : Int) -> Double {
 }
 
 pub fn nlp_pos_brill_view_set(s : NlpposbrillView, i : Int, v : Double) -> NlpposbrillView {
-  let result = nlp_pos_brill_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_brill_view_sum(s : NlpposbrillView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_pos_brill_range_get(s : NlpposbrillRange, i : Int) -> Double {
 }
 
 pub fn nlp_pos_brill_range_set(s : NlpposbrillRange, i : Int, v : Double) -> NlpposbrillRange {
-  let result = nlp_pos_brill_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_brill_range_sum(s : NlpposbrillRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_pos_brill_slice_get(s : NlpposbrillSlice, i : Int) -> Double {
 }
 
 pub fn nlp_pos_brill_slice_set(s : NlpposbrillSlice, i : Int, v : Double) -> NlpposbrillSlice {
-  let result = nlp_pos_brill_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_brill_slice_sum(s : NlpposbrillSlice) -> Double { @_common.sum(s.data) }

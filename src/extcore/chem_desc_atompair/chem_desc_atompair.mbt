@@ -107,23 +107,15 @@ pub fn chem_desc_atompair_series_std(s : ChemdescatompairSeries) -> Double { @_c
 pub fn chem_desc_atompair_series_median(s : ChemdescatompairSeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_desc_atompair_series_scale(s : ChemdescatompairSeries, f : Double) -> ChemdescatompairSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn chem_desc_atompair_series_add(a : ChemdescatompairSeries, b : ChemdescatompairSeries) -> ChemdescatompairSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn chem_desc_atompair_series_sub(a : ChemdescatompairSeries, b : ChemdescatompairSeries) -> ChemdescatompairSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn chem_desc_atompair_series_normalize(s : ChemdescatompairSeries) -> ChemdescatompairSeries {
@@ -254,22 +246,16 @@ pub fn chem_desc_atompair_vector_zero(dim : Int) -> ChemdescatompairVector {
 
 pub fn chem_desc_atompair_vector_add(a : ChemdescatompairVector, b : ChemdescatompairVector) -> ChemdescatompairVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_desc_atompair_vector_sub(a : ChemdescatompairVector, b : ChemdescatompairVector) -> ChemdescatompairVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_desc_atompair_vector_scale(v : ChemdescatompairVector, s : Double) -> ChemdescatompairVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn chem_desc_atompair_vector_dot(a : ChemdescatompairVector, b : ChemdescatompairVector) -> Double {
@@ -372,10 +358,9 @@ pub fn chem_desc_atompair_frame_get(s : ChemdescatompairFrame, i : Int) -> Doubl
 }
 
 pub fn chem_desc_atompair_frame_set(s : ChemdescatompairFrame, i : Int, v : Double) -> ChemdescatompairFrame {
-  let result = chem_desc_atompair_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_frame_sum(s : ChemdescatompairFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn chem_desc_atompair_table_get(s : ChemdescatompairTable, i : Int) -> Doubl
 }
 
 pub fn chem_desc_atompair_table_set(s : ChemdescatompairTable, i : Int, v : Double) -> ChemdescatompairTable {
-  let result = chem_desc_atompair_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_table_sum(s : ChemdescatompairTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn chem_desc_atompair_graphn_get(s : ChemdescatompairGraphN, i : Int) -> Dou
 }
 
 pub fn chem_desc_atompair_graphn_set(s : ChemdescatompairGraphN, i : Int, v : Double) -> ChemdescatompairGraphN {
-  let result = chem_desc_atompair_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_graphn_sum(s : ChemdescatompairGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn chem_desc_atompair_node_get(s : ChemdescatompairNode, i : Int) -> Double 
 }
 
 pub fn chem_desc_atompair_node_set(s : ChemdescatompairNode, i : Int, v : Double) -> ChemdescatompairNode {
-  let result = chem_desc_atompair_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_node_sum(s : ChemdescatompairNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn chem_desc_atompair_edge_get(s : ChemdescatompairEdge, i : Int) -> Double 
 }
 
 pub fn chem_desc_atompair_edge_set(s : ChemdescatompairEdge, i : Int, v : Double) -> ChemdescatompairEdge {
-  let result = chem_desc_atompair_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_edge_sum(s : ChemdescatompairEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn chem_desc_atompair_path_get(s : ChemdescatompairPath, i : Int) -> Double 
 }
 
 pub fn chem_desc_atompair_path_set(s : ChemdescatompairPath, i : Int, v : Double) -> ChemdescatompairPath {
-  let result = chem_desc_atompair_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_path_sum(s : ChemdescatompairPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn chem_desc_atompair_cluster_get(s : ChemdescatompairCluster, i : Int) -> D
 }
 
 pub fn chem_desc_atompair_cluster_set(s : ChemdescatompairCluster, i : Int, v : Double) -> ChemdescatompairCluster {
-  let result = chem_desc_atompair_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_cluster_sum(s : ChemdescatompairCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn chem_desc_atompair_model_get(s : ChemdescatompairModel, i : Int) -> Doubl
 }
 
 pub fn chem_desc_atompair_model_set(s : ChemdescatompairModel, i : Int, v : Double) -> ChemdescatompairModel {
-  let result = chem_desc_atompair_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_model_sum(s : ChemdescatompairModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn chem_desc_atompair_layer_get(s : ChemdescatompairLayer, i : Int) -> Doubl
 }
 
 pub fn chem_desc_atompair_layer_set(s : ChemdescatompairLayer, i : Int, v : Double) -> ChemdescatompairLayer {
-  let result = chem_desc_atompair_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_layer_sum(s : ChemdescatompairLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn chem_desc_atompair_buffer_get(s : ChemdescatompairBuffer, i : Int) -> Dou
 }
 
 pub fn chem_desc_atompair_buffer_set(s : ChemdescatompairBuffer, i : Int, v : Double) -> ChemdescatompairBuffer {
-  let result = chem_desc_atompair_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_buffer_sum(s : ChemdescatompairBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn chem_desc_atompair_cursor_get(s : ChemdescatompairCursor, i : Int) -> Dou
 }
 
 pub fn chem_desc_atompair_cursor_set(s : ChemdescatompairCursor, i : Int, v : Double) -> ChemdescatompairCursor {
-  let result = chem_desc_atompair_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_cursor_sum(s : ChemdescatompairCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn chem_desc_atompair_view_get(s : ChemdescatompairView, i : Int) -> Double 
 }
 
 pub fn chem_desc_atompair_view_set(s : ChemdescatompairView, i : Int, v : Double) -> ChemdescatompairView {
-  let result = chem_desc_atompair_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_view_sum(s : ChemdescatompairView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn chem_desc_atompair_range_get(s : ChemdescatompairRange, i : Int) -> Doubl
 }
 
 pub fn chem_desc_atompair_range_set(s : ChemdescatompairRange, i : Int, v : Double) -> ChemdescatompairRange {
-  let result = chem_desc_atompair_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_range_sum(s : ChemdescatompairRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn chem_desc_atompair_slice_get(s : ChemdescatompairSlice, i : Int) -> Doubl
 }
 
 pub fn chem_desc_atompair_slice_set(s : ChemdescatompairSlice, i : Int, v : Double) -> ChemdescatompairSlice {
-  let result = chem_desc_atompair_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_atompair_slice_sum(s : ChemdescatompairSlice) -> Double { @_common.sum(s.data) }

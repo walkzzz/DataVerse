@@ -107,23 +107,15 @@ pub fn chem_mol_repr_canonical_series_std(s : ChemmolreprcanonicalSeries) -> Dou
 pub fn chem_mol_repr_canonical_series_median(s : ChemmolreprcanonicalSeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_mol_repr_canonical_series_scale(s : ChemmolreprcanonicalSeries, f : Double) -> ChemmolreprcanonicalSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn chem_mol_repr_canonical_series_add(a : ChemmolreprcanonicalSeries, b : ChemmolreprcanonicalSeries) -> ChemmolreprcanonicalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn chem_mol_repr_canonical_series_sub(a : ChemmolreprcanonicalSeries, b : ChemmolreprcanonicalSeries) -> ChemmolreprcanonicalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn chem_mol_repr_canonical_series_normalize(s : ChemmolreprcanonicalSeries) -> ChemmolreprcanonicalSeries {
@@ -254,22 +246,16 @@ pub fn chem_mol_repr_canonical_vector_zero(dim : Int) -> ChemmolreprcanonicalVec
 
 pub fn chem_mol_repr_canonical_vector_add(a : ChemmolreprcanonicalVector, b : ChemmolreprcanonicalVector) -> ChemmolreprcanonicalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_mol_repr_canonical_vector_sub(a : ChemmolreprcanonicalVector, b : ChemmolreprcanonicalVector) -> ChemmolreprcanonicalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_mol_repr_canonical_vector_scale(v : ChemmolreprcanonicalVector, s : Double) -> ChemmolreprcanonicalVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn chem_mol_repr_canonical_vector_dot(a : ChemmolreprcanonicalVector, b : ChemmolreprcanonicalVector) -> Double {
@@ -372,10 +358,9 @@ pub fn chem_mol_repr_canonical_frame_get(s : ChemmolreprcanonicalFrame, i : Int)
 }
 
 pub fn chem_mol_repr_canonical_frame_set(s : ChemmolreprcanonicalFrame, i : Int, v : Double) -> ChemmolreprcanonicalFrame {
-  let result = chem_mol_repr_canonical_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_canonical_frame_sum(s : ChemmolreprcanonicalFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn chem_mol_repr_canonical_table_get(s : ChemmolreprcanonicalTable, i : Int)
 }
 
 pub fn chem_mol_repr_canonical_table_set(s : ChemmolreprcanonicalTable, i : Int, v : Double) -> ChemmolreprcanonicalTable {
-  let result = chem_mol_repr_canonical_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_canonical_table_sum(s : ChemmolreprcanonicalTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn chem_mol_repr_canonical_graphn_get(s : ChemmolreprcanonicalGraphN, i : In
 }
 
 pub fn chem_mol_repr_canonical_graphn_set(s : ChemmolreprcanonicalGraphN, i : Int, v : Double) -> ChemmolreprcanonicalGraphN {
-  let result = chem_mol_repr_canonical_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_canonical_graphn_sum(s : ChemmolreprcanonicalGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn chem_mol_repr_canonical_node_get(s : ChemmolreprcanonicalNode, i : Int) -
 }
 
 pub fn chem_mol_repr_canonical_node_set(s : ChemmolreprcanonicalNode, i : Int, v : Double) -> ChemmolreprcanonicalNode {
-  let result = chem_mol_repr_canonical_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_canonical_node_sum(s : ChemmolreprcanonicalNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn chem_mol_repr_canonical_edge_get(s : ChemmolreprcanonicalEdge, i : Int) -
 }
 
 pub fn chem_mol_repr_canonical_edge_set(s : ChemmolreprcanonicalEdge, i : Int, v : Double) -> ChemmolreprcanonicalEdge {
-  let result = chem_mol_repr_canonical_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_canonical_edge_sum(s : ChemmolreprcanonicalEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn chem_mol_repr_canonical_path_get(s : ChemmolreprcanonicalPath, i : Int) -
 }
 
 pub fn chem_mol_repr_canonical_path_set(s : ChemmolreprcanonicalPath, i : Int, v : Double) -> ChemmolreprcanonicalPath {
-  let result = chem_mol_repr_canonical_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_canonical_path_sum(s : ChemmolreprcanonicalPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn chem_mol_repr_canonical_cluster_get(s : ChemmolreprcanonicalCluster, i : 
 }
 
 pub fn chem_mol_repr_canonical_cluster_set(s : ChemmolreprcanonicalCluster, i : Int, v : Double) -> ChemmolreprcanonicalCluster {
-  let result = chem_mol_repr_canonical_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_canonical_cluster_sum(s : ChemmolreprcanonicalCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn chem_mol_repr_canonical_model_get(s : ChemmolreprcanonicalModel, i : Int)
 }
 
 pub fn chem_mol_repr_canonical_model_set(s : ChemmolreprcanonicalModel, i : Int, v : Double) -> ChemmolreprcanonicalModel {
-  let result = chem_mol_repr_canonical_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_canonical_model_sum(s : ChemmolreprcanonicalModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn chem_mol_repr_canonical_layer_get(s : ChemmolreprcanonicalLayer, i : Int)
 }
 
 pub fn chem_mol_repr_canonical_layer_set(s : ChemmolreprcanonicalLayer, i : Int, v : Double) -> ChemmolreprcanonicalLayer {
-  let result = chem_mol_repr_canonical_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_canonical_layer_sum(s : ChemmolreprcanonicalLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn chem_mol_repr_canonical_buffer_get(s : ChemmolreprcanonicalBuffer, i : In
 }
 
 pub fn chem_mol_repr_canonical_buffer_set(s : ChemmolreprcanonicalBuffer, i : Int, v : Double) -> ChemmolreprcanonicalBuffer {
-  let result = chem_mol_repr_canonical_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_canonical_buffer_sum(s : ChemmolreprcanonicalBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn chem_mol_repr_canonical_cursor_get(s : ChemmolreprcanonicalCursor, i : In
 }
 
 pub fn chem_mol_repr_canonical_cursor_set(s : ChemmolreprcanonicalCursor, i : Int, v : Double) -> ChemmolreprcanonicalCursor {
-  let result = chem_mol_repr_canonical_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_canonical_cursor_sum(s : ChemmolreprcanonicalCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn chem_mol_repr_canonical_view_get(s : ChemmolreprcanonicalView, i : Int) -
 }
 
 pub fn chem_mol_repr_canonical_view_set(s : ChemmolreprcanonicalView, i : Int, v : Double) -> ChemmolreprcanonicalView {
-  let result = chem_mol_repr_canonical_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_canonical_view_sum(s : ChemmolreprcanonicalView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn chem_mol_repr_canonical_range_get(s : ChemmolreprcanonicalRange, i : Int)
 }
 
 pub fn chem_mol_repr_canonical_range_set(s : ChemmolreprcanonicalRange, i : Int, v : Double) -> ChemmolreprcanonicalRange {
-  let result = chem_mol_repr_canonical_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_canonical_range_sum(s : ChemmolreprcanonicalRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn chem_mol_repr_canonical_slice_get(s : ChemmolreprcanonicalSlice, i : Int)
 }
 
 pub fn chem_mol_repr_canonical_slice_set(s : ChemmolreprcanonicalSlice, i : Int, v : Double) -> ChemmolreprcanonicalSlice {
-  let result = chem_mol_repr_canonical_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_canonical_slice_sum(s : ChemmolreprcanonicalSlice) -> Double { @_common.sum(s.data) }

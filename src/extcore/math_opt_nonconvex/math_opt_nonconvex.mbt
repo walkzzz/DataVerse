@@ -107,23 +107,15 @@ pub fn math_opt_nonconvex_series_std(s : MathoptnonconvexSeries) -> Double { @_c
 pub fn math_opt_nonconvex_series_median(s : MathoptnonconvexSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_opt_nonconvex_series_scale(s : MathoptnonconvexSeries, f : Double) -> MathoptnonconvexSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_opt_nonconvex_series_add(a : MathoptnonconvexSeries, b : MathoptnonconvexSeries) -> MathoptnonconvexSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_opt_nonconvex_series_sub(a : MathoptnonconvexSeries, b : MathoptnonconvexSeries) -> MathoptnonconvexSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_opt_nonconvex_series_normalize(s : MathoptnonconvexSeries) -> MathoptnonconvexSeries {
@@ -254,22 +246,16 @@ pub fn math_opt_nonconvex_vector_zero(dim : Int) -> MathoptnonconvexVector {
 
 pub fn math_opt_nonconvex_vector_add(a : MathoptnonconvexVector, b : MathoptnonconvexVector) -> MathoptnonconvexVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_opt_nonconvex_vector_sub(a : MathoptnonconvexVector, b : MathoptnonconvexVector) -> MathoptnonconvexVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_opt_nonconvex_vector_scale(v : MathoptnonconvexVector, s : Double) -> MathoptnonconvexVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_opt_nonconvex_vector_dot(a : MathoptnonconvexVector, b : MathoptnonconvexVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_opt_nonconvex_frame_get(s : MathoptnonconvexFrame, i : Int) -> Doubl
 }
 
 pub fn math_opt_nonconvex_frame_set(s : MathoptnonconvexFrame, i : Int, v : Double) -> MathoptnonconvexFrame {
-  let result = math_opt_nonconvex_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_nonconvex_frame_sum(s : MathoptnonconvexFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_opt_nonconvex_table_get(s : MathoptnonconvexTable, i : Int) -> Doubl
 }
 
 pub fn math_opt_nonconvex_table_set(s : MathoptnonconvexTable, i : Int, v : Double) -> MathoptnonconvexTable {
-  let result = math_opt_nonconvex_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_nonconvex_table_sum(s : MathoptnonconvexTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_opt_nonconvex_graphn_get(s : MathoptnonconvexGraphN, i : Int) -> Dou
 }
 
 pub fn math_opt_nonconvex_graphn_set(s : MathoptnonconvexGraphN, i : Int, v : Double) -> MathoptnonconvexGraphN {
-  let result = math_opt_nonconvex_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_nonconvex_graphn_sum(s : MathoptnonconvexGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_opt_nonconvex_node_get(s : MathoptnonconvexNode, i : Int) -> Double 
 }
 
 pub fn math_opt_nonconvex_node_set(s : MathoptnonconvexNode, i : Int, v : Double) -> MathoptnonconvexNode {
-  let result = math_opt_nonconvex_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_nonconvex_node_sum(s : MathoptnonconvexNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_opt_nonconvex_edge_get(s : MathoptnonconvexEdge, i : Int) -> Double 
 }
 
 pub fn math_opt_nonconvex_edge_set(s : MathoptnonconvexEdge, i : Int, v : Double) -> MathoptnonconvexEdge {
-  let result = math_opt_nonconvex_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_nonconvex_edge_sum(s : MathoptnonconvexEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_opt_nonconvex_path_get(s : MathoptnonconvexPath, i : Int) -> Double 
 }
 
 pub fn math_opt_nonconvex_path_set(s : MathoptnonconvexPath, i : Int, v : Double) -> MathoptnonconvexPath {
-  let result = math_opt_nonconvex_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_nonconvex_path_sum(s : MathoptnonconvexPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_opt_nonconvex_cluster_get(s : MathoptnonconvexCluster, i : Int) -> D
 }
 
 pub fn math_opt_nonconvex_cluster_set(s : MathoptnonconvexCluster, i : Int, v : Double) -> MathoptnonconvexCluster {
-  let result = math_opt_nonconvex_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_nonconvex_cluster_sum(s : MathoptnonconvexCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_opt_nonconvex_model_get(s : MathoptnonconvexModel, i : Int) -> Doubl
 }
 
 pub fn math_opt_nonconvex_model_set(s : MathoptnonconvexModel, i : Int, v : Double) -> MathoptnonconvexModel {
-  let result = math_opt_nonconvex_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_nonconvex_model_sum(s : MathoptnonconvexModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_opt_nonconvex_layer_get(s : MathoptnonconvexLayer, i : Int) -> Doubl
 }
 
 pub fn math_opt_nonconvex_layer_set(s : MathoptnonconvexLayer, i : Int, v : Double) -> MathoptnonconvexLayer {
-  let result = math_opt_nonconvex_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_nonconvex_layer_sum(s : MathoptnonconvexLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_opt_nonconvex_buffer_get(s : MathoptnonconvexBuffer, i : Int) -> Dou
 }
 
 pub fn math_opt_nonconvex_buffer_set(s : MathoptnonconvexBuffer, i : Int, v : Double) -> MathoptnonconvexBuffer {
-  let result = math_opt_nonconvex_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_nonconvex_buffer_sum(s : MathoptnonconvexBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_opt_nonconvex_cursor_get(s : MathoptnonconvexCursor, i : Int) -> Dou
 }
 
 pub fn math_opt_nonconvex_cursor_set(s : MathoptnonconvexCursor, i : Int, v : Double) -> MathoptnonconvexCursor {
-  let result = math_opt_nonconvex_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_nonconvex_cursor_sum(s : MathoptnonconvexCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_opt_nonconvex_view_get(s : MathoptnonconvexView, i : Int) -> Double 
 }
 
 pub fn math_opt_nonconvex_view_set(s : MathoptnonconvexView, i : Int, v : Double) -> MathoptnonconvexView {
-  let result = math_opt_nonconvex_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_nonconvex_view_sum(s : MathoptnonconvexView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_opt_nonconvex_range_get(s : MathoptnonconvexRange, i : Int) -> Doubl
 }
 
 pub fn math_opt_nonconvex_range_set(s : MathoptnonconvexRange, i : Int, v : Double) -> MathoptnonconvexRange {
-  let result = math_opt_nonconvex_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_nonconvex_range_sum(s : MathoptnonconvexRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_opt_nonconvex_slice_get(s : MathoptnonconvexSlice, i : Int) -> Doubl
 }
 
 pub fn math_opt_nonconvex_slice_set(s : MathoptnonconvexSlice, i : Int, v : Double) -> MathoptnonconvexSlice {
-  let result = math_opt_nonconvex_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_nonconvex_slice_sum(s : MathoptnonconvexSlice) -> Double { @_common.sum(s.data) }

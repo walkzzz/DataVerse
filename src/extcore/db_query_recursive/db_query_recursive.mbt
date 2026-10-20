@@ -107,23 +107,15 @@ pub fn db_query_recursive_series_std(s : DbqueryrecursiveSeries) -> Double { @_c
 pub fn db_query_recursive_series_median(s : DbqueryrecursiveSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_query_recursive_series_scale(s : DbqueryrecursiveSeries, f : Double) -> DbqueryrecursiveSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_query_recursive_series_add(a : DbqueryrecursiveSeries, b : DbqueryrecursiveSeries) -> DbqueryrecursiveSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_query_recursive_series_sub(a : DbqueryrecursiveSeries, b : DbqueryrecursiveSeries) -> DbqueryrecursiveSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_query_recursive_series_normalize(s : DbqueryrecursiveSeries) -> DbqueryrecursiveSeries {
@@ -254,22 +246,16 @@ pub fn db_query_recursive_vector_zero(dim : Int) -> DbqueryrecursiveVector {
 
 pub fn db_query_recursive_vector_add(a : DbqueryrecursiveVector, b : DbqueryrecursiveVector) -> DbqueryrecursiveVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_query_recursive_vector_sub(a : DbqueryrecursiveVector, b : DbqueryrecursiveVector) -> DbqueryrecursiveVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_query_recursive_vector_scale(v : DbqueryrecursiveVector, s : Double) -> DbqueryrecursiveVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_query_recursive_vector_dot(a : DbqueryrecursiveVector, b : DbqueryrecursiveVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_query_recursive_frame_get(s : DbqueryrecursiveFrame, i : Int) -> Doubl
 }
 
 pub fn db_query_recursive_frame_set(s : DbqueryrecursiveFrame, i : Int, v : Double) -> DbqueryrecursiveFrame {
-  let result = db_query_recursive_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_recursive_frame_sum(s : DbqueryrecursiveFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_query_recursive_table_get(s : DbqueryrecursiveTable, i : Int) -> Doubl
 }
 
 pub fn db_query_recursive_table_set(s : DbqueryrecursiveTable, i : Int, v : Double) -> DbqueryrecursiveTable {
-  let result = db_query_recursive_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_recursive_table_sum(s : DbqueryrecursiveTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_query_recursive_graphn_get(s : DbqueryrecursiveGraphN, i : Int) -> Dou
 }
 
 pub fn db_query_recursive_graphn_set(s : DbqueryrecursiveGraphN, i : Int, v : Double) -> DbqueryrecursiveGraphN {
-  let result = db_query_recursive_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_recursive_graphn_sum(s : DbqueryrecursiveGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_query_recursive_node_get(s : DbqueryrecursiveNode, i : Int) -> Double 
 }
 
 pub fn db_query_recursive_node_set(s : DbqueryrecursiveNode, i : Int, v : Double) -> DbqueryrecursiveNode {
-  let result = db_query_recursive_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_recursive_node_sum(s : DbqueryrecursiveNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_query_recursive_edge_get(s : DbqueryrecursiveEdge, i : Int) -> Double 
 }
 
 pub fn db_query_recursive_edge_set(s : DbqueryrecursiveEdge, i : Int, v : Double) -> DbqueryrecursiveEdge {
-  let result = db_query_recursive_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_recursive_edge_sum(s : DbqueryrecursiveEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_query_recursive_path_get(s : DbqueryrecursivePath, i : Int) -> Double 
 }
 
 pub fn db_query_recursive_path_set(s : DbqueryrecursivePath, i : Int, v : Double) -> DbqueryrecursivePath {
-  let result = db_query_recursive_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_recursive_path_sum(s : DbqueryrecursivePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_query_recursive_cluster_get(s : DbqueryrecursiveCluster, i : Int) -> D
 }
 
 pub fn db_query_recursive_cluster_set(s : DbqueryrecursiveCluster, i : Int, v : Double) -> DbqueryrecursiveCluster {
-  let result = db_query_recursive_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_recursive_cluster_sum(s : DbqueryrecursiveCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_query_recursive_model_get(s : DbqueryrecursiveModel, i : Int) -> Doubl
 }
 
 pub fn db_query_recursive_model_set(s : DbqueryrecursiveModel, i : Int, v : Double) -> DbqueryrecursiveModel {
-  let result = db_query_recursive_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_recursive_model_sum(s : DbqueryrecursiveModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_query_recursive_layer_get(s : DbqueryrecursiveLayer, i : Int) -> Doubl
 }
 
 pub fn db_query_recursive_layer_set(s : DbqueryrecursiveLayer, i : Int, v : Double) -> DbqueryrecursiveLayer {
-  let result = db_query_recursive_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_recursive_layer_sum(s : DbqueryrecursiveLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_query_recursive_buffer_get(s : DbqueryrecursiveBuffer, i : Int) -> Dou
 }
 
 pub fn db_query_recursive_buffer_set(s : DbqueryrecursiveBuffer, i : Int, v : Double) -> DbqueryrecursiveBuffer {
-  let result = db_query_recursive_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_recursive_buffer_sum(s : DbqueryrecursiveBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_query_recursive_cursor_get(s : DbqueryrecursiveCursor, i : Int) -> Dou
 }
 
 pub fn db_query_recursive_cursor_set(s : DbqueryrecursiveCursor, i : Int, v : Double) -> DbqueryrecursiveCursor {
-  let result = db_query_recursive_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_recursive_cursor_sum(s : DbqueryrecursiveCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_query_recursive_view_get(s : DbqueryrecursiveView, i : Int) -> Double 
 }
 
 pub fn db_query_recursive_view_set(s : DbqueryrecursiveView, i : Int, v : Double) -> DbqueryrecursiveView {
-  let result = db_query_recursive_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_recursive_view_sum(s : DbqueryrecursiveView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_query_recursive_range_get(s : DbqueryrecursiveRange, i : Int) -> Doubl
 }
 
 pub fn db_query_recursive_range_set(s : DbqueryrecursiveRange, i : Int, v : Double) -> DbqueryrecursiveRange {
-  let result = db_query_recursive_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_recursive_range_sum(s : DbqueryrecursiveRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_query_recursive_slice_get(s : DbqueryrecursiveSlice, i : Int) -> Doubl
 }
 
 pub fn db_query_recursive_slice_set(s : DbqueryrecursiveSlice, i : Int, v : Double) -> DbqueryrecursiveSlice {
-  let result = db_query_recursive_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_recursive_slice_sum(s : DbqueryrecursiveSlice) -> Double { @_common.sum(s.data) }

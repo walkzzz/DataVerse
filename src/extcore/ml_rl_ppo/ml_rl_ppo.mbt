@@ -107,23 +107,15 @@ pub fn ml_rl_ppo_series_std(s : MlrlppoSeries) -> Double { @_common.std(s.vals) 
 pub fn ml_rl_ppo_series_median(s : MlrlppoSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_rl_ppo_series_scale(s : MlrlppoSeries, f : Double) -> MlrlppoSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_rl_ppo_series_add(a : MlrlppoSeries, b : MlrlppoSeries) -> MlrlppoSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_rl_ppo_series_sub(a : MlrlppoSeries, b : MlrlppoSeries) -> MlrlppoSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_rl_ppo_series_normalize(s : MlrlppoSeries) -> MlrlppoSeries {
@@ -254,22 +246,16 @@ pub fn ml_rl_ppo_vector_zero(dim : Int) -> MlrlppoVector {
 
 pub fn ml_rl_ppo_vector_add(a : MlrlppoVector, b : MlrlppoVector) -> MlrlppoVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_rl_ppo_vector_sub(a : MlrlppoVector, b : MlrlppoVector) -> MlrlppoVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_rl_ppo_vector_scale(v : MlrlppoVector, s : Double) -> MlrlppoVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_rl_ppo_vector_dot(a : MlrlppoVector, b : MlrlppoVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_rl_ppo_frame_get(s : MlrlppoFrame, i : Int) -> Double {
 }
 
 pub fn ml_rl_ppo_frame_set(s : MlrlppoFrame, i : Int, v : Double) -> MlrlppoFrame {
-  let result = ml_rl_ppo_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ppo_frame_sum(s : MlrlppoFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_rl_ppo_table_get(s : MlrlppoTable, i : Int) -> Double {
 }
 
 pub fn ml_rl_ppo_table_set(s : MlrlppoTable, i : Int, v : Double) -> MlrlppoTable {
-  let result = ml_rl_ppo_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ppo_table_sum(s : MlrlppoTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_rl_ppo_graphn_get(s : MlrlppoGraphN, i : Int) -> Double {
 }
 
 pub fn ml_rl_ppo_graphn_set(s : MlrlppoGraphN, i : Int, v : Double) -> MlrlppoGraphN {
-  let result = ml_rl_ppo_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ppo_graphn_sum(s : MlrlppoGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_rl_ppo_node_get(s : MlrlppoNode, i : Int) -> Double {
 }
 
 pub fn ml_rl_ppo_node_set(s : MlrlppoNode, i : Int, v : Double) -> MlrlppoNode {
-  let result = ml_rl_ppo_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ppo_node_sum(s : MlrlppoNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_rl_ppo_edge_get(s : MlrlppoEdge, i : Int) -> Double {
 }
 
 pub fn ml_rl_ppo_edge_set(s : MlrlppoEdge, i : Int, v : Double) -> MlrlppoEdge {
-  let result = ml_rl_ppo_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ppo_edge_sum(s : MlrlppoEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_rl_ppo_path_get(s : MlrlppoPath, i : Int) -> Double {
 }
 
 pub fn ml_rl_ppo_path_set(s : MlrlppoPath, i : Int, v : Double) -> MlrlppoPath {
-  let result = ml_rl_ppo_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ppo_path_sum(s : MlrlppoPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_rl_ppo_cluster_get(s : MlrlppoCluster, i : Int) -> Double {
 }
 
 pub fn ml_rl_ppo_cluster_set(s : MlrlppoCluster, i : Int, v : Double) -> MlrlppoCluster {
-  let result = ml_rl_ppo_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ppo_cluster_sum(s : MlrlppoCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_rl_ppo_model_get(s : MlrlppoModel, i : Int) -> Double {
 }
 
 pub fn ml_rl_ppo_model_set(s : MlrlppoModel, i : Int, v : Double) -> MlrlppoModel {
-  let result = ml_rl_ppo_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ppo_model_sum(s : MlrlppoModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_rl_ppo_layer_get(s : MlrlppoLayer, i : Int) -> Double {
 }
 
 pub fn ml_rl_ppo_layer_set(s : MlrlppoLayer, i : Int, v : Double) -> MlrlppoLayer {
-  let result = ml_rl_ppo_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ppo_layer_sum(s : MlrlppoLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_rl_ppo_buffer_get(s : MlrlppoBuffer, i : Int) -> Double {
 }
 
 pub fn ml_rl_ppo_buffer_set(s : MlrlppoBuffer, i : Int, v : Double) -> MlrlppoBuffer {
-  let result = ml_rl_ppo_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ppo_buffer_sum(s : MlrlppoBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_rl_ppo_cursor_get(s : MlrlppoCursor, i : Int) -> Double {
 }
 
 pub fn ml_rl_ppo_cursor_set(s : MlrlppoCursor, i : Int, v : Double) -> MlrlppoCursor {
-  let result = ml_rl_ppo_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ppo_cursor_sum(s : MlrlppoCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_rl_ppo_view_get(s : MlrlppoView, i : Int) -> Double {
 }
 
 pub fn ml_rl_ppo_view_set(s : MlrlppoView, i : Int, v : Double) -> MlrlppoView {
-  let result = ml_rl_ppo_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ppo_view_sum(s : MlrlppoView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_rl_ppo_range_get(s : MlrlppoRange, i : Int) -> Double {
 }
 
 pub fn ml_rl_ppo_range_set(s : MlrlppoRange, i : Int, v : Double) -> MlrlppoRange {
-  let result = ml_rl_ppo_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ppo_range_sum(s : MlrlppoRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_rl_ppo_slice_get(s : MlrlppoSlice, i : Int) -> Double {
 }
 
 pub fn ml_rl_ppo_slice_set(s : MlrlppoSlice, i : Int, v : Double) -> MlrlppoSlice {
-  let result = ml_rl_ppo_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_ppo_slice_sum(s : MlrlppoSlice) -> Double { @_common.sum(s.data) }

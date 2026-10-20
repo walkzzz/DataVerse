@@ -107,23 +107,15 @@ pub fn signal_spec_welch_series_std(s : SignalspecwelchSeries) -> Double { @_com
 pub fn signal_spec_welch_series_median(s : SignalspecwelchSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_spec_welch_series_scale(s : SignalspecwelchSeries, f : Double) -> SignalspecwelchSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_spec_welch_series_add(a : SignalspecwelchSeries, b : SignalspecwelchSeries) -> SignalspecwelchSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_spec_welch_series_sub(a : SignalspecwelchSeries, b : SignalspecwelchSeries) -> SignalspecwelchSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_spec_welch_series_normalize(s : SignalspecwelchSeries) -> SignalspecwelchSeries {
@@ -254,22 +246,16 @@ pub fn signal_spec_welch_vector_zero(dim : Int) -> SignalspecwelchVector {
 
 pub fn signal_spec_welch_vector_add(a : SignalspecwelchVector, b : SignalspecwelchVector) -> SignalspecwelchVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_spec_welch_vector_sub(a : SignalspecwelchVector, b : SignalspecwelchVector) -> SignalspecwelchVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_spec_welch_vector_scale(v : SignalspecwelchVector, s : Double) -> SignalspecwelchVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_spec_welch_vector_dot(a : SignalspecwelchVector, b : SignalspecwelchVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_spec_welch_frame_get(s : SignalspecwelchFrame, i : Int) -> Double 
 }
 
 pub fn signal_spec_welch_frame_set(s : SignalspecwelchFrame, i : Int, v : Double) -> SignalspecwelchFrame {
-  let result = signal_spec_welch_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_welch_frame_sum(s : SignalspecwelchFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_spec_welch_table_get(s : SignalspecwelchTable, i : Int) -> Double 
 }
 
 pub fn signal_spec_welch_table_set(s : SignalspecwelchTable, i : Int, v : Double) -> SignalspecwelchTable {
-  let result = signal_spec_welch_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_welch_table_sum(s : SignalspecwelchTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_spec_welch_graphn_get(s : SignalspecwelchGraphN, i : Int) -> Doubl
 }
 
 pub fn signal_spec_welch_graphn_set(s : SignalspecwelchGraphN, i : Int, v : Double) -> SignalspecwelchGraphN {
-  let result = signal_spec_welch_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_welch_graphn_sum(s : SignalspecwelchGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_spec_welch_node_get(s : SignalspecwelchNode, i : Int) -> Double {
 }
 
 pub fn signal_spec_welch_node_set(s : SignalspecwelchNode, i : Int, v : Double) -> SignalspecwelchNode {
-  let result = signal_spec_welch_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_welch_node_sum(s : SignalspecwelchNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_spec_welch_edge_get(s : SignalspecwelchEdge, i : Int) -> Double {
 }
 
 pub fn signal_spec_welch_edge_set(s : SignalspecwelchEdge, i : Int, v : Double) -> SignalspecwelchEdge {
-  let result = signal_spec_welch_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_welch_edge_sum(s : SignalspecwelchEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_spec_welch_path_get(s : SignalspecwelchPath, i : Int) -> Double {
 }
 
 pub fn signal_spec_welch_path_set(s : SignalspecwelchPath, i : Int, v : Double) -> SignalspecwelchPath {
-  let result = signal_spec_welch_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_welch_path_sum(s : SignalspecwelchPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_spec_welch_cluster_get(s : SignalspecwelchCluster, i : Int) -> Dou
 }
 
 pub fn signal_spec_welch_cluster_set(s : SignalspecwelchCluster, i : Int, v : Double) -> SignalspecwelchCluster {
-  let result = signal_spec_welch_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_welch_cluster_sum(s : SignalspecwelchCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_spec_welch_model_get(s : SignalspecwelchModel, i : Int) -> Double 
 }
 
 pub fn signal_spec_welch_model_set(s : SignalspecwelchModel, i : Int, v : Double) -> SignalspecwelchModel {
-  let result = signal_spec_welch_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_welch_model_sum(s : SignalspecwelchModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_spec_welch_layer_get(s : SignalspecwelchLayer, i : Int) -> Double 
 }
 
 pub fn signal_spec_welch_layer_set(s : SignalspecwelchLayer, i : Int, v : Double) -> SignalspecwelchLayer {
-  let result = signal_spec_welch_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_welch_layer_sum(s : SignalspecwelchLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_spec_welch_buffer_get(s : SignalspecwelchBuffer, i : Int) -> Doubl
 }
 
 pub fn signal_spec_welch_buffer_set(s : SignalspecwelchBuffer, i : Int, v : Double) -> SignalspecwelchBuffer {
-  let result = signal_spec_welch_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_welch_buffer_sum(s : SignalspecwelchBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_spec_welch_cursor_get(s : SignalspecwelchCursor, i : Int) -> Doubl
 }
 
 pub fn signal_spec_welch_cursor_set(s : SignalspecwelchCursor, i : Int, v : Double) -> SignalspecwelchCursor {
-  let result = signal_spec_welch_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_welch_cursor_sum(s : SignalspecwelchCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_spec_welch_view_get(s : SignalspecwelchView, i : Int) -> Double {
 }
 
 pub fn signal_spec_welch_view_set(s : SignalspecwelchView, i : Int, v : Double) -> SignalspecwelchView {
-  let result = signal_spec_welch_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_welch_view_sum(s : SignalspecwelchView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_spec_welch_range_get(s : SignalspecwelchRange, i : Int) -> Double 
 }
 
 pub fn signal_spec_welch_range_set(s : SignalspecwelchRange, i : Int, v : Double) -> SignalspecwelchRange {
-  let result = signal_spec_welch_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_welch_range_sum(s : SignalspecwelchRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_spec_welch_slice_get(s : SignalspecwelchSlice, i : Int) -> Double 
 }
 
 pub fn signal_spec_welch_slice_set(s : SignalspecwelchSlice, i : Int, v : Double) -> SignalspecwelchSlice {
-  let result = signal_spec_welch_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_welch_slice_sum(s : SignalspecwelchSlice) -> Double { @_common.sum(s.data) }

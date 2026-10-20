@@ -107,23 +107,15 @@ pub fn opt_meta_aco_series_std(s : OptmetaacoSeries) -> Double { @_common.std(s.
 pub fn opt_meta_aco_series_median(s : OptmetaacoSeries) -> Double { @_common.median(s.vals) }
 
 pub fn opt_meta_aco_series_scale(s : OptmetaacoSeries, f : Double) -> OptmetaacoSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn opt_meta_aco_series_add(a : OptmetaacoSeries, b : OptmetaacoSeries) -> OptmetaacoSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn opt_meta_aco_series_sub(a : OptmetaacoSeries, b : OptmetaacoSeries) -> OptmetaacoSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn opt_meta_aco_series_normalize(s : OptmetaacoSeries) -> OptmetaacoSeries {
@@ -254,22 +246,16 @@ pub fn opt_meta_aco_vector_zero(dim : Int) -> OptmetaacoVector {
 
 pub fn opt_meta_aco_vector_add(a : OptmetaacoVector, b : OptmetaacoVector) -> OptmetaacoVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_meta_aco_vector_sub(a : OptmetaacoVector, b : OptmetaacoVector) -> OptmetaacoVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_meta_aco_vector_scale(v : OptmetaacoVector, s : Double) -> OptmetaacoVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn opt_meta_aco_vector_dot(a : OptmetaacoVector, b : OptmetaacoVector) -> Double {
@@ -372,10 +358,9 @@ pub fn opt_meta_aco_frame_get(s : OptmetaacoFrame, i : Int) -> Double {
 }
 
 pub fn opt_meta_aco_frame_set(s : OptmetaacoFrame, i : Int, v : Double) -> OptmetaacoFrame {
-  let result = opt_meta_aco_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_aco_frame_sum(s : OptmetaacoFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn opt_meta_aco_table_get(s : OptmetaacoTable, i : Int) -> Double {
 }
 
 pub fn opt_meta_aco_table_set(s : OptmetaacoTable, i : Int, v : Double) -> OptmetaacoTable {
-  let result = opt_meta_aco_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_aco_table_sum(s : OptmetaacoTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn opt_meta_aco_graphn_get(s : OptmetaacoGraphN, i : Int) -> Double {
 }
 
 pub fn opt_meta_aco_graphn_set(s : OptmetaacoGraphN, i : Int, v : Double) -> OptmetaacoGraphN {
-  let result = opt_meta_aco_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_aco_graphn_sum(s : OptmetaacoGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn opt_meta_aco_node_get(s : OptmetaacoNode, i : Int) -> Double {
 }
 
 pub fn opt_meta_aco_node_set(s : OptmetaacoNode, i : Int, v : Double) -> OptmetaacoNode {
-  let result = opt_meta_aco_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_aco_node_sum(s : OptmetaacoNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn opt_meta_aco_edge_get(s : OptmetaacoEdge, i : Int) -> Double {
 }
 
 pub fn opt_meta_aco_edge_set(s : OptmetaacoEdge, i : Int, v : Double) -> OptmetaacoEdge {
-  let result = opt_meta_aco_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_aco_edge_sum(s : OptmetaacoEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn opt_meta_aco_path_get(s : OptmetaacoPath, i : Int) -> Double {
 }
 
 pub fn opt_meta_aco_path_set(s : OptmetaacoPath, i : Int, v : Double) -> OptmetaacoPath {
-  let result = opt_meta_aco_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_aco_path_sum(s : OptmetaacoPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn opt_meta_aco_cluster_get(s : OptmetaacoCluster, i : Int) -> Double {
 }
 
 pub fn opt_meta_aco_cluster_set(s : OptmetaacoCluster, i : Int, v : Double) -> OptmetaacoCluster {
-  let result = opt_meta_aco_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_aco_cluster_sum(s : OptmetaacoCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn opt_meta_aco_model_get(s : OptmetaacoModel, i : Int) -> Double {
 }
 
 pub fn opt_meta_aco_model_set(s : OptmetaacoModel, i : Int, v : Double) -> OptmetaacoModel {
-  let result = opt_meta_aco_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_aco_model_sum(s : OptmetaacoModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn opt_meta_aco_layer_get(s : OptmetaacoLayer, i : Int) -> Double {
 }
 
 pub fn opt_meta_aco_layer_set(s : OptmetaacoLayer, i : Int, v : Double) -> OptmetaacoLayer {
-  let result = opt_meta_aco_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_aco_layer_sum(s : OptmetaacoLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn opt_meta_aco_buffer_get(s : OptmetaacoBuffer, i : Int) -> Double {
 }
 
 pub fn opt_meta_aco_buffer_set(s : OptmetaacoBuffer, i : Int, v : Double) -> OptmetaacoBuffer {
-  let result = opt_meta_aco_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_aco_buffer_sum(s : OptmetaacoBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn opt_meta_aco_cursor_get(s : OptmetaacoCursor, i : Int) -> Double {
 }
 
 pub fn opt_meta_aco_cursor_set(s : OptmetaacoCursor, i : Int, v : Double) -> OptmetaacoCursor {
-  let result = opt_meta_aco_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_aco_cursor_sum(s : OptmetaacoCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn opt_meta_aco_view_get(s : OptmetaacoView, i : Int) -> Double {
 }
 
 pub fn opt_meta_aco_view_set(s : OptmetaacoView, i : Int, v : Double) -> OptmetaacoView {
-  let result = opt_meta_aco_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_aco_view_sum(s : OptmetaacoView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn opt_meta_aco_range_get(s : OptmetaacoRange, i : Int) -> Double {
 }
 
 pub fn opt_meta_aco_range_set(s : OptmetaacoRange, i : Int, v : Double) -> OptmetaacoRange {
-  let result = opt_meta_aco_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_aco_range_sum(s : OptmetaacoRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn opt_meta_aco_slice_get(s : OptmetaacoSlice, i : Int) -> Double {
 }
 
 pub fn opt_meta_aco_slice_set(s : OptmetaacoSlice, i : Int, v : Double) -> OptmetaacoSlice {
-  let result = opt_meta_aco_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_aco_slice_sum(s : OptmetaacoSlice) -> Double { @_common.sum(s.data) }

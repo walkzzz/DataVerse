@@ -107,23 +107,15 @@ pub fn crypto_hash_md5_series_std(s : Cryptohashmd5Series) -> Double { @_common.
 pub fn crypto_hash_md5_series_median(s : Cryptohashmd5Series) -> Double { @_common.median(s.vals) }
 
 pub fn crypto_hash_md5_series_scale(s : Cryptohashmd5Series, f : Double) -> Cryptohashmd5Series {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn crypto_hash_md5_series_add(a : Cryptohashmd5Series, b : Cryptohashmd5Series) -> Cryptohashmd5Series {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn crypto_hash_md5_series_sub(a : Cryptohashmd5Series, b : Cryptohashmd5Series) -> Cryptohashmd5Series {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn crypto_hash_md5_series_normalize(s : Cryptohashmd5Series) -> Cryptohashmd5Series {
@@ -254,22 +246,16 @@ pub fn crypto_hash_md5_vector_zero(dim : Int) -> Cryptohashmd5Vector {
 
 pub fn crypto_hash_md5_vector_add(a : Cryptohashmd5Vector, b : Cryptohashmd5Vector) -> Cryptohashmd5Vector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_hash_md5_vector_sub(a : Cryptohashmd5Vector, b : Cryptohashmd5Vector) -> Cryptohashmd5Vector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_hash_md5_vector_scale(v : Cryptohashmd5Vector, s : Double) -> Cryptohashmd5Vector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn crypto_hash_md5_vector_dot(a : Cryptohashmd5Vector, b : Cryptohashmd5Vector) -> Double {
@@ -372,10 +358,9 @@ pub fn crypto_hash_md5_frame_get(s : Cryptohashmd5Frame, i : Int) -> Double {
 }
 
 pub fn crypto_hash_md5_frame_set(s : Cryptohashmd5Frame, i : Int, v : Double) -> Cryptohashmd5Frame {
-  let result = crypto_hash_md5_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_md5_frame_sum(s : Cryptohashmd5Frame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn crypto_hash_md5_table_get(s : Cryptohashmd5Table, i : Int) -> Double {
 }
 
 pub fn crypto_hash_md5_table_set(s : Cryptohashmd5Table, i : Int, v : Double) -> Cryptohashmd5Table {
-  let result = crypto_hash_md5_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_md5_table_sum(s : Cryptohashmd5Table) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn crypto_hash_md5_graphn_get(s : Cryptohashmd5GraphN, i : Int) -> Double {
 }
 
 pub fn crypto_hash_md5_graphn_set(s : Cryptohashmd5GraphN, i : Int, v : Double) -> Cryptohashmd5GraphN {
-  let result = crypto_hash_md5_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_md5_graphn_sum(s : Cryptohashmd5GraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn crypto_hash_md5_node_get(s : Cryptohashmd5Node, i : Int) -> Double {
 }
 
 pub fn crypto_hash_md5_node_set(s : Cryptohashmd5Node, i : Int, v : Double) -> Cryptohashmd5Node {
-  let result = crypto_hash_md5_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_md5_node_sum(s : Cryptohashmd5Node) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn crypto_hash_md5_edge_get(s : Cryptohashmd5Edge, i : Int) -> Double {
 }
 
 pub fn crypto_hash_md5_edge_set(s : Cryptohashmd5Edge, i : Int, v : Double) -> Cryptohashmd5Edge {
-  let result = crypto_hash_md5_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_md5_edge_sum(s : Cryptohashmd5Edge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn crypto_hash_md5_path_get(s : Cryptohashmd5Path, i : Int) -> Double {
 }
 
 pub fn crypto_hash_md5_path_set(s : Cryptohashmd5Path, i : Int, v : Double) -> Cryptohashmd5Path {
-  let result = crypto_hash_md5_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_md5_path_sum(s : Cryptohashmd5Path) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn crypto_hash_md5_cluster_get(s : Cryptohashmd5Cluster, i : Int) -> Double 
 }
 
 pub fn crypto_hash_md5_cluster_set(s : Cryptohashmd5Cluster, i : Int, v : Double) -> Cryptohashmd5Cluster {
-  let result = crypto_hash_md5_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_md5_cluster_sum(s : Cryptohashmd5Cluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn crypto_hash_md5_model_get(s : Cryptohashmd5Model, i : Int) -> Double {
 }
 
 pub fn crypto_hash_md5_model_set(s : Cryptohashmd5Model, i : Int, v : Double) -> Cryptohashmd5Model {
-  let result = crypto_hash_md5_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_md5_model_sum(s : Cryptohashmd5Model) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn crypto_hash_md5_layer_get(s : Cryptohashmd5Layer, i : Int) -> Double {
 }
 
 pub fn crypto_hash_md5_layer_set(s : Cryptohashmd5Layer, i : Int, v : Double) -> Cryptohashmd5Layer {
-  let result = crypto_hash_md5_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_md5_layer_sum(s : Cryptohashmd5Layer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn crypto_hash_md5_buffer_get(s : Cryptohashmd5Buffer, i : Int) -> Double {
 }
 
 pub fn crypto_hash_md5_buffer_set(s : Cryptohashmd5Buffer, i : Int, v : Double) -> Cryptohashmd5Buffer {
-  let result = crypto_hash_md5_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_md5_buffer_sum(s : Cryptohashmd5Buffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn crypto_hash_md5_cursor_get(s : Cryptohashmd5Cursor, i : Int) -> Double {
 }
 
 pub fn crypto_hash_md5_cursor_set(s : Cryptohashmd5Cursor, i : Int, v : Double) -> Cryptohashmd5Cursor {
-  let result = crypto_hash_md5_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_md5_cursor_sum(s : Cryptohashmd5Cursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn crypto_hash_md5_view_get(s : Cryptohashmd5View, i : Int) -> Double {
 }
 
 pub fn crypto_hash_md5_view_set(s : Cryptohashmd5View, i : Int, v : Double) -> Cryptohashmd5View {
-  let result = crypto_hash_md5_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_md5_view_sum(s : Cryptohashmd5View) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn crypto_hash_md5_range_get(s : Cryptohashmd5Range, i : Int) -> Double {
 }
 
 pub fn crypto_hash_md5_range_set(s : Cryptohashmd5Range, i : Int, v : Double) -> Cryptohashmd5Range {
-  let result = crypto_hash_md5_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_md5_range_sum(s : Cryptohashmd5Range) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn crypto_hash_md5_slice_get(s : Cryptohashmd5Slice, i : Int) -> Double {
 }
 
 pub fn crypto_hash_md5_slice_set(s : Cryptohashmd5Slice, i : Int, v : Double) -> Cryptohashmd5Slice {
-  let result = crypto_hash_md5_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_md5_slice_sum(s : Cryptohashmd5Slice) -> Double { @_common.sum(s.data) }

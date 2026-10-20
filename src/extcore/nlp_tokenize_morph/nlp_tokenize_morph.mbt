@@ -107,23 +107,15 @@ pub fn nlp_tokenize_morph_series_std(s : NlptokenizemorphSeries) -> Double { @_c
 pub fn nlp_tokenize_morph_series_median(s : NlptokenizemorphSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_tokenize_morph_series_scale(s : NlptokenizemorphSeries, f : Double) -> NlptokenizemorphSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_tokenize_morph_series_add(a : NlptokenizemorphSeries, b : NlptokenizemorphSeries) -> NlptokenizemorphSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_tokenize_morph_series_sub(a : NlptokenizemorphSeries, b : NlptokenizemorphSeries) -> NlptokenizemorphSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_tokenize_morph_series_normalize(s : NlptokenizemorphSeries) -> NlptokenizemorphSeries {
@@ -254,22 +246,16 @@ pub fn nlp_tokenize_morph_vector_zero(dim : Int) -> NlptokenizemorphVector {
 
 pub fn nlp_tokenize_morph_vector_add(a : NlptokenizemorphVector, b : NlptokenizemorphVector) -> NlptokenizemorphVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_tokenize_morph_vector_sub(a : NlptokenizemorphVector, b : NlptokenizemorphVector) -> NlptokenizemorphVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_tokenize_morph_vector_scale(v : NlptokenizemorphVector, s : Double) -> NlptokenizemorphVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_tokenize_morph_vector_dot(a : NlptokenizemorphVector, b : NlptokenizemorphVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_tokenize_morph_frame_get(s : NlptokenizemorphFrame, i : Int) -> Doubl
 }
 
 pub fn nlp_tokenize_morph_frame_set(s : NlptokenizemorphFrame, i : Int, v : Double) -> NlptokenizemorphFrame {
-  let result = nlp_tokenize_morph_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_morph_frame_sum(s : NlptokenizemorphFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_tokenize_morph_table_get(s : NlptokenizemorphTable, i : Int) -> Doubl
 }
 
 pub fn nlp_tokenize_morph_table_set(s : NlptokenizemorphTable, i : Int, v : Double) -> NlptokenizemorphTable {
-  let result = nlp_tokenize_morph_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_morph_table_sum(s : NlptokenizemorphTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_tokenize_morph_graphn_get(s : NlptokenizemorphGraphN, i : Int) -> Dou
 }
 
 pub fn nlp_tokenize_morph_graphn_set(s : NlptokenizemorphGraphN, i : Int, v : Double) -> NlptokenizemorphGraphN {
-  let result = nlp_tokenize_morph_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_morph_graphn_sum(s : NlptokenizemorphGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_tokenize_morph_node_get(s : NlptokenizemorphNode, i : Int) -> Double 
 }
 
 pub fn nlp_tokenize_morph_node_set(s : NlptokenizemorphNode, i : Int, v : Double) -> NlptokenizemorphNode {
-  let result = nlp_tokenize_morph_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_morph_node_sum(s : NlptokenizemorphNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_tokenize_morph_edge_get(s : NlptokenizemorphEdge, i : Int) -> Double 
 }
 
 pub fn nlp_tokenize_morph_edge_set(s : NlptokenizemorphEdge, i : Int, v : Double) -> NlptokenizemorphEdge {
-  let result = nlp_tokenize_morph_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_morph_edge_sum(s : NlptokenizemorphEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_tokenize_morph_path_get(s : NlptokenizemorphPath, i : Int) -> Double 
 }
 
 pub fn nlp_tokenize_morph_path_set(s : NlptokenizemorphPath, i : Int, v : Double) -> NlptokenizemorphPath {
-  let result = nlp_tokenize_morph_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_morph_path_sum(s : NlptokenizemorphPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_tokenize_morph_cluster_get(s : NlptokenizemorphCluster, i : Int) -> D
 }
 
 pub fn nlp_tokenize_morph_cluster_set(s : NlptokenizemorphCluster, i : Int, v : Double) -> NlptokenizemorphCluster {
-  let result = nlp_tokenize_morph_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_morph_cluster_sum(s : NlptokenizemorphCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_tokenize_morph_model_get(s : NlptokenizemorphModel, i : Int) -> Doubl
 }
 
 pub fn nlp_tokenize_morph_model_set(s : NlptokenizemorphModel, i : Int, v : Double) -> NlptokenizemorphModel {
-  let result = nlp_tokenize_morph_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_morph_model_sum(s : NlptokenizemorphModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_tokenize_morph_layer_get(s : NlptokenizemorphLayer, i : Int) -> Doubl
 }
 
 pub fn nlp_tokenize_morph_layer_set(s : NlptokenizemorphLayer, i : Int, v : Double) -> NlptokenizemorphLayer {
-  let result = nlp_tokenize_morph_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_morph_layer_sum(s : NlptokenizemorphLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_tokenize_morph_buffer_get(s : NlptokenizemorphBuffer, i : Int) -> Dou
 }
 
 pub fn nlp_tokenize_morph_buffer_set(s : NlptokenizemorphBuffer, i : Int, v : Double) -> NlptokenizemorphBuffer {
-  let result = nlp_tokenize_morph_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_morph_buffer_sum(s : NlptokenizemorphBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_tokenize_morph_cursor_get(s : NlptokenizemorphCursor, i : Int) -> Dou
 }
 
 pub fn nlp_tokenize_morph_cursor_set(s : NlptokenizemorphCursor, i : Int, v : Double) -> NlptokenizemorphCursor {
-  let result = nlp_tokenize_morph_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_morph_cursor_sum(s : NlptokenizemorphCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_tokenize_morph_view_get(s : NlptokenizemorphView, i : Int) -> Double 
 }
 
 pub fn nlp_tokenize_morph_view_set(s : NlptokenizemorphView, i : Int, v : Double) -> NlptokenizemorphView {
-  let result = nlp_tokenize_morph_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_morph_view_sum(s : NlptokenizemorphView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_tokenize_morph_range_get(s : NlptokenizemorphRange, i : Int) -> Doubl
 }
 
 pub fn nlp_tokenize_morph_range_set(s : NlptokenizemorphRange, i : Int, v : Double) -> NlptokenizemorphRange {
-  let result = nlp_tokenize_morph_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_morph_range_sum(s : NlptokenizemorphRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_tokenize_morph_slice_get(s : NlptokenizemorphSlice, i : Int) -> Doubl
 }
 
 pub fn nlp_tokenize_morph_slice_set(s : NlptokenizemorphSlice, i : Int, v : Double) -> NlptokenizemorphSlice {
-  let result = nlp_tokenize_morph_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_morph_slice_sum(s : NlptokenizemorphSlice) -> Double { @_common.sum(s.data) }

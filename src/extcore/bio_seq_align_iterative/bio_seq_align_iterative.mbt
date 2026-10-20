@@ -107,23 +107,15 @@ pub fn bio_seq_align_iterative_series_std(s : BioseqaligniterativeSeries) -> Dou
 pub fn bio_seq_align_iterative_series_median(s : BioseqaligniterativeSeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_seq_align_iterative_series_scale(s : BioseqaligniterativeSeries, f : Double) -> BioseqaligniterativeSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_seq_align_iterative_series_add(a : BioseqaligniterativeSeries, b : BioseqaligniterativeSeries) -> BioseqaligniterativeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_align_iterative_series_sub(a : BioseqaligniterativeSeries, b : BioseqaligniterativeSeries) -> BioseqaligniterativeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_align_iterative_series_normalize(s : BioseqaligniterativeSeries) -> BioseqaligniterativeSeries {
@@ -254,22 +246,16 @@ pub fn bio_seq_align_iterative_vector_zero(dim : Int) -> BioseqaligniterativeVec
 
 pub fn bio_seq_align_iterative_vector_add(a : BioseqaligniterativeVector, b : BioseqaligniterativeVector) -> BioseqaligniterativeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_align_iterative_vector_sub(a : BioseqaligniterativeVector, b : BioseqaligniterativeVector) -> BioseqaligniterativeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_align_iterative_vector_scale(v : BioseqaligniterativeVector, s : Double) -> BioseqaligniterativeVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_seq_align_iterative_vector_dot(a : BioseqaligniterativeVector, b : BioseqaligniterativeVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_seq_align_iterative_frame_get(s : BioseqaligniterativeFrame, i : Int)
 }
 
 pub fn bio_seq_align_iterative_frame_set(s : BioseqaligniterativeFrame, i : Int, v : Double) -> BioseqaligniterativeFrame {
-  let result = bio_seq_align_iterative_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_iterative_frame_sum(s : BioseqaligniterativeFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_seq_align_iterative_table_get(s : BioseqaligniterativeTable, i : Int)
 }
 
 pub fn bio_seq_align_iterative_table_set(s : BioseqaligniterativeTable, i : Int, v : Double) -> BioseqaligniterativeTable {
-  let result = bio_seq_align_iterative_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_iterative_table_sum(s : BioseqaligniterativeTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_seq_align_iterative_graphn_get(s : BioseqaligniterativeGraphN, i : In
 }
 
 pub fn bio_seq_align_iterative_graphn_set(s : BioseqaligniterativeGraphN, i : Int, v : Double) -> BioseqaligniterativeGraphN {
-  let result = bio_seq_align_iterative_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_iterative_graphn_sum(s : BioseqaligniterativeGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_seq_align_iterative_node_get(s : BioseqaligniterativeNode, i : Int) -
 }
 
 pub fn bio_seq_align_iterative_node_set(s : BioseqaligniterativeNode, i : Int, v : Double) -> BioseqaligniterativeNode {
-  let result = bio_seq_align_iterative_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_iterative_node_sum(s : BioseqaligniterativeNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_seq_align_iterative_edge_get(s : BioseqaligniterativeEdge, i : Int) -
 }
 
 pub fn bio_seq_align_iterative_edge_set(s : BioseqaligniterativeEdge, i : Int, v : Double) -> BioseqaligniterativeEdge {
-  let result = bio_seq_align_iterative_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_iterative_edge_sum(s : BioseqaligniterativeEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_seq_align_iterative_path_get(s : BioseqaligniterativePath, i : Int) -
 }
 
 pub fn bio_seq_align_iterative_path_set(s : BioseqaligniterativePath, i : Int, v : Double) -> BioseqaligniterativePath {
-  let result = bio_seq_align_iterative_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_iterative_path_sum(s : BioseqaligniterativePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_seq_align_iterative_cluster_get(s : BioseqaligniterativeCluster, i : 
 }
 
 pub fn bio_seq_align_iterative_cluster_set(s : BioseqaligniterativeCluster, i : Int, v : Double) -> BioseqaligniterativeCluster {
-  let result = bio_seq_align_iterative_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_iterative_cluster_sum(s : BioseqaligniterativeCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_seq_align_iterative_model_get(s : BioseqaligniterativeModel, i : Int)
 }
 
 pub fn bio_seq_align_iterative_model_set(s : BioseqaligniterativeModel, i : Int, v : Double) -> BioseqaligniterativeModel {
-  let result = bio_seq_align_iterative_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_iterative_model_sum(s : BioseqaligniterativeModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_seq_align_iterative_layer_get(s : BioseqaligniterativeLayer, i : Int)
 }
 
 pub fn bio_seq_align_iterative_layer_set(s : BioseqaligniterativeLayer, i : Int, v : Double) -> BioseqaligniterativeLayer {
-  let result = bio_seq_align_iterative_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_iterative_layer_sum(s : BioseqaligniterativeLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_seq_align_iterative_buffer_get(s : BioseqaligniterativeBuffer, i : In
 }
 
 pub fn bio_seq_align_iterative_buffer_set(s : BioseqaligniterativeBuffer, i : Int, v : Double) -> BioseqaligniterativeBuffer {
-  let result = bio_seq_align_iterative_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_iterative_buffer_sum(s : BioseqaligniterativeBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_seq_align_iterative_cursor_get(s : BioseqaligniterativeCursor, i : In
 }
 
 pub fn bio_seq_align_iterative_cursor_set(s : BioseqaligniterativeCursor, i : Int, v : Double) -> BioseqaligniterativeCursor {
-  let result = bio_seq_align_iterative_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_iterative_cursor_sum(s : BioseqaligniterativeCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_seq_align_iterative_view_get(s : BioseqaligniterativeView, i : Int) -
 }
 
 pub fn bio_seq_align_iterative_view_set(s : BioseqaligniterativeView, i : Int, v : Double) -> BioseqaligniterativeView {
-  let result = bio_seq_align_iterative_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_iterative_view_sum(s : BioseqaligniterativeView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_seq_align_iterative_range_get(s : BioseqaligniterativeRange, i : Int)
 }
 
 pub fn bio_seq_align_iterative_range_set(s : BioseqaligniterativeRange, i : Int, v : Double) -> BioseqaligniterativeRange {
-  let result = bio_seq_align_iterative_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_iterative_range_sum(s : BioseqaligniterativeRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_seq_align_iterative_slice_get(s : BioseqaligniterativeSlice, i : Int)
 }
 
 pub fn bio_seq_align_iterative_slice_set(s : BioseqaligniterativeSlice, i : Int, v : Double) -> BioseqaligniterativeSlice {
-  let result = bio_seq_align_iterative_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_iterative_slice_sum(s : BioseqaligniterativeSlice) -> Double { @_common.sum(s.data) }

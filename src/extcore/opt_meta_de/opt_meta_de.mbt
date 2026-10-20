@@ -107,23 +107,15 @@ pub fn opt_meta_de_series_std(s : OptmetadeSeries) -> Double { @_common.std(s.va
 pub fn opt_meta_de_series_median(s : OptmetadeSeries) -> Double { @_common.median(s.vals) }
 
 pub fn opt_meta_de_series_scale(s : OptmetadeSeries, f : Double) -> OptmetadeSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn opt_meta_de_series_add(a : OptmetadeSeries, b : OptmetadeSeries) -> OptmetadeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn opt_meta_de_series_sub(a : OptmetadeSeries, b : OptmetadeSeries) -> OptmetadeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn opt_meta_de_series_normalize(s : OptmetadeSeries) -> OptmetadeSeries {
@@ -254,22 +246,16 @@ pub fn opt_meta_de_vector_zero(dim : Int) -> OptmetadeVector {
 
 pub fn opt_meta_de_vector_add(a : OptmetadeVector, b : OptmetadeVector) -> OptmetadeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_meta_de_vector_sub(a : OptmetadeVector, b : OptmetadeVector) -> OptmetadeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_meta_de_vector_scale(v : OptmetadeVector, s : Double) -> OptmetadeVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn opt_meta_de_vector_dot(a : OptmetadeVector, b : OptmetadeVector) -> Double {
@@ -372,10 +358,9 @@ pub fn opt_meta_de_frame_get(s : OptmetadeFrame, i : Int) -> Double {
 }
 
 pub fn opt_meta_de_frame_set(s : OptmetadeFrame, i : Int, v : Double) -> OptmetadeFrame {
-  let result = opt_meta_de_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_de_frame_sum(s : OptmetadeFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn opt_meta_de_table_get(s : OptmetadeTable, i : Int) -> Double {
 }
 
 pub fn opt_meta_de_table_set(s : OptmetadeTable, i : Int, v : Double) -> OptmetadeTable {
-  let result = opt_meta_de_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_de_table_sum(s : OptmetadeTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn opt_meta_de_graphn_get(s : OptmetadeGraphN, i : Int) -> Double {
 }
 
 pub fn opt_meta_de_graphn_set(s : OptmetadeGraphN, i : Int, v : Double) -> OptmetadeGraphN {
-  let result = opt_meta_de_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_de_graphn_sum(s : OptmetadeGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn opt_meta_de_node_get(s : OptmetadeNode, i : Int) -> Double {
 }
 
 pub fn opt_meta_de_node_set(s : OptmetadeNode, i : Int, v : Double) -> OptmetadeNode {
-  let result = opt_meta_de_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_de_node_sum(s : OptmetadeNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn opt_meta_de_edge_get(s : OptmetadeEdge, i : Int) -> Double {
 }
 
 pub fn opt_meta_de_edge_set(s : OptmetadeEdge, i : Int, v : Double) -> OptmetadeEdge {
-  let result = opt_meta_de_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_de_edge_sum(s : OptmetadeEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn opt_meta_de_path_get(s : OptmetadePath, i : Int) -> Double {
 }
 
 pub fn opt_meta_de_path_set(s : OptmetadePath, i : Int, v : Double) -> OptmetadePath {
-  let result = opt_meta_de_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_de_path_sum(s : OptmetadePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn opt_meta_de_cluster_get(s : OptmetadeCluster, i : Int) -> Double {
 }
 
 pub fn opt_meta_de_cluster_set(s : OptmetadeCluster, i : Int, v : Double) -> OptmetadeCluster {
-  let result = opt_meta_de_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_de_cluster_sum(s : OptmetadeCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn opt_meta_de_model_get(s : OptmetadeModel, i : Int) -> Double {
 }
 
 pub fn opt_meta_de_model_set(s : OptmetadeModel, i : Int, v : Double) -> OptmetadeModel {
-  let result = opt_meta_de_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_de_model_sum(s : OptmetadeModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn opt_meta_de_layer_get(s : OptmetadeLayer, i : Int) -> Double {
 }
 
 pub fn opt_meta_de_layer_set(s : OptmetadeLayer, i : Int, v : Double) -> OptmetadeLayer {
-  let result = opt_meta_de_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_de_layer_sum(s : OptmetadeLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn opt_meta_de_buffer_get(s : OptmetadeBuffer, i : Int) -> Double {
 }
 
 pub fn opt_meta_de_buffer_set(s : OptmetadeBuffer, i : Int, v : Double) -> OptmetadeBuffer {
-  let result = opt_meta_de_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_de_buffer_sum(s : OptmetadeBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn opt_meta_de_cursor_get(s : OptmetadeCursor, i : Int) -> Double {
 }
 
 pub fn opt_meta_de_cursor_set(s : OptmetadeCursor, i : Int, v : Double) -> OptmetadeCursor {
-  let result = opt_meta_de_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_de_cursor_sum(s : OptmetadeCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn opt_meta_de_view_get(s : OptmetadeView, i : Int) -> Double {
 }
 
 pub fn opt_meta_de_view_set(s : OptmetadeView, i : Int, v : Double) -> OptmetadeView {
-  let result = opt_meta_de_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_de_view_sum(s : OptmetadeView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn opt_meta_de_range_get(s : OptmetadeRange, i : Int) -> Double {
 }
 
 pub fn opt_meta_de_range_set(s : OptmetadeRange, i : Int, v : Double) -> OptmetadeRange {
-  let result = opt_meta_de_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_de_range_sum(s : OptmetadeRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn opt_meta_de_slice_get(s : OptmetadeSlice, i : Int) -> Double {
 }
 
 pub fn opt_meta_de_slice_set(s : OptmetadeSlice, i : Int, v : Double) -> OptmetadeSlice {
-  let result = opt_meta_de_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_de_slice_sum(s : OptmetadeSlice) -> Double { @_common.sum(s.data) }

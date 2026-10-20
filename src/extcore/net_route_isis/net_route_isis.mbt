@@ -107,23 +107,15 @@ pub fn net_route_isis_series_std(s : NetrouteisisSeries) -> Double { @_common.st
 pub fn net_route_isis_series_median(s : NetrouteisisSeries) -> Double { @_common.median(s.vals) }
 
 pub fn net_route_isis_series_scale(s : NetrouteisisSeries, f : Double) -> NetrouteisisSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn net_route_isis_series_add(a : NetrouteisisSeries, b : NetrouteisisSeries) -> NetrouteisisSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn net_route_isis_series_sub(a : NetrouteisisSeries, b : NetrouteisisSeries) -> NetrouteisisSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn net_route_isis_series_normalize(s : NetrouteisisSeries) -> NetrouteisisSeries {
@@ -254,22 +246,16 @@ pub fn net_route_isis_vector_zero(dim : Int) -> NetrouteisisVector {
 
 pub fn net_route_isis_vector_add(a : NetrouteisisVector, b : NetrouteisisVector) -> NetrouteisisVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_route_isis_vector_sub(a : NetrouteisisVector, b : NetrouteisisVector) -> NetrouteisisVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_route_isis_vector_scale(v : NetrouteisisVector, s : Double) -> NetrouteisisVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn net_route_isis_vector_dot(a : NetrouteisisVector, b : NetrouteisisVector) -> Double {
@@ -372,10 +358,9 @@ pub fn net_route_isis_frame_get(s : NetrouteisisFrame, i : Int) -> Double {
 }
 
 pub fn net_route_isis_frame_set(s : NetrouteisisFrame, i : Int, v : Double) -> NetrouteisisFrame {
-  let result = net_route_isis_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_isis_frame_sum(s : NetrouteisisFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn net_route_isis_table_get(s : NetrouteisisTable, i : Int) -> Double {
 }
 
 pub fn net_route_isis_table_set(s : NetrouteisisTable, i : Int, v : Double) -> NetrouteisisTable {
-  let result = net_route_isis_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_isis_table_sum(s : NetrouteisisTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn net_route_isis_graphn_get(s : NetrouteisisGraphN, i : Int) -> Double {
 }
 
 pub fn net_route_isis_graphn_set(s : NetrouteisisGraphN, i : Int, v : Double) -> NetrouteisisGraphN {
-  let result = net_route_isis_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_isis_graphn_sum(s : NetrouteisisGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn net_route_isis_node_get(s : NetrouteisisNode, i : Int) -> Double {
 }
 
 pub fn net_route_isis_node_set(s : NetrouteisisNode, i : Int, v : Double) -> NetrouteisisNode {
-  let result = net_route_isis_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_isis_node_sum(s : NetrouteisisNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn net_route_isis_edge_get(s : NetrouteisisEdge, i : Int) -> Double {
 }
 
 pub fn net_route_isis_edge_set(s : NetrouteisisEdge, i : Int, v : Double) -> NetrouteisisEdge {
-  let result = net_route_isis_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_isis_edge_sum(s : NetrouteisisEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn net_route_isis_path_get(s : NetrouteisisPath, i : Int) -> Double {
 }
 
 pub fn net_route_isis_path_set(s : NetrouteisisPath, i : Int, v : Double) -> NetrouteisisPath {
-  let result = net_route_isis_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_isis_path_sum(s : NetrouteisisPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn net_route_isis_cluster_get(s : NetrouteisisCluster, i : Int) -> Double {
 }
 
 pub fn net_route_isis_cluster_set(s : NetrouteisisCluster, i : Int, v : Double) -> NetrouteisisCluster {
-  let result = net_route_isis_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_isis_cluster_sum(s : NetrouteisisCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn net_route_isis_model_get(s : NetrouteisisModel, i : Int) -> Double {
 }
 
 pub fn net_route_isis_model_set(s : NetrouteisisModel, i : Int, v : Double) -> NetrouteisisModel {
-  let result = net_route_isis_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_isis_model_sum(s : NetrouteisisModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn net_route_isis_layer_get(s : NetrouteisisLayer, i : Int) -> Double {
 }
 
 pub fn net_route_isis_layer_set(s : NetrouteisisLayer, i : Int, v : Double) -> NetrouteisisLayer {
-  let result = net_route_isis_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_isis_layer_sum(s : NetrouteisisLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn net_route_isis_buffer_get(s : NetrouteisisBuffer, i : Int) -> Double {
 }
 
 pub fn net_route_isis_buffer_set(s : NetrouteisisBuffer, i : Int, v : Double) -> NetrouteisisBuffer {
-  let result = net_route_isis_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_isis_buffer_sum(s : NetrouteisisBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn net_route_isis_cursor_get(s : NetrouteisisCursor, i : Int) -> Double {
 }
 
 pub fn net_route_isis_cursor_set(s : NetrouteisisCursor, i : Int, v : Double) -> NetrouteisisCursor {
-  let result = net_route_isis_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_isis_cursor_sum(s : NetrouteisisCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn net_route_isis_view_get(s : NetrouteisisView, i : Int) -> Double {
 }
 
 pub fn net_route_isis_view_set(s : NetrouteisisView, i : Int, v : Double) -> NetrouteisisView {
-  let result = net_route_isis_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_isis_view_sum(s : NetrouteisisView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn net_route_isis_range_get(s : NetrouteisisRange, i : Int) -> Double {
 }
 
 pub fn net_route_isis_range_set(s : NetrouteisisRange, i : Int, v : Double) -> NetrouteisisRange {
-  let result = net_route_isis_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_isis_range_sum(s : NetrouteisisRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn net_route_isis_slice_get(s : NetrouteisisSlice, i : Int) -> Double {
 }
 
 pub fn net_route_isis_slice_set(s : NetrouteisisSlice, i : Int, v : Double) -> NetrouteisisSlice {
-  let result = net_route_isis_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_isis_slice_sum(s : NetrouteisisSlice) -> Double { @_common.sum(s.data) }

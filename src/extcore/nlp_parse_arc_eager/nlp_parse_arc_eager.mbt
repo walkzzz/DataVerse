@@ -107,23 +107,15 @@ pub fn nlp_parse_arc_eager_series_std(s : NlpparsearceagerSeries) -> Double { @_
 pub fn nlp_parse_arc_eager_series_median(s : NlpparsearceagerSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_parse_arc_eager_series_scale(s : NlpparsearceagerSeries, f : Double) -> NlpparsearceagerSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_parse_arc_eager_series_add(a : NlpparsearceagerSeries, b : NlpparsearceagerSeries) -> NlpparsearceagerSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_parse_arc_eager_series_sub(a : NlpparsearceagerSeries, b : NlpparsearceagerSeries) -> NlpparsearceagerSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_parse_arc_eager_series_normalize(s : NlpparsearceagerSeries) -> NlpparsearceagerSeries {
@@ -254,22 +246,16 @@ pub fn nlp_parse_arc_eager_vector_zero(dim : Int) -> NlpparsearceagerVector {
 
 pub fn nlp_parse_arc_eager_vector_add(a : NlpparsearceagerVector, b : NlpparsearceagerVector) -> NlpparsearceagerVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_parse_arc_eager_vector_sub(a : NlpparsearceagerVector, b : NlpparsearceagerVector) -> NlpparsearceagerVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_parse_arc_eager_vector_scale(v : NlpparsearceagerVector, s : Double) -> NlpparsearceagerVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_parse_arc_eager_vector_dot(a : NlpparsearceagerVector, b : NlpparsearceagerVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_parse_arc_eager_frame_get(s : NlpparsearceagerFrame, i : Int) -> Doub
 }
 
 pub fn nlp_parse_arc_eager_frame_set(s : NlpparsearceagerFrame, i : Int, v : Double) -> NlpparsearceagerFrame {
-  let result = nlp_parse_arc_eager_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_eager_frame_sum(s : NlpparsearceagerFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_parse_arc_eager_table_get(s : NlpparsearceagerTable, i : Int) -> Doub
 }
 
 pub fn nlp_parse_arc_eager_table_set(s : NlpparsearceagerTable, i : Int, v : Double) -> NlpparsearceagerTable {
-  let result = nlp_parse_arc_eager_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_eager_table_sum(s : NlpparsearceagerTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_parse_arc_eager_graphn_get(s : NlpparsearceagerGraphN, i : Int) -> Do
 }
 
 pub fn nlp_parse_arc_eager_graphn_set(s : NlpparsearceagerGraphN, i : Int, v : Double) -> NlpparsearceagerGraphN {
-  let result = nlp_parse_arc_eager_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_eager_graphn_sum(s : NlpparsearceagerGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_parse_arc_eager_node_get(s : NlpparsearceagerNode, i : Int) -> Double
 }
 
 pub fn nlp_parse_arc_eager_node_set(s : NlpparsearceagerNode, i : Int, v : Double) -> NlpparsearceagerNode {
-  let result = nlp_parse_arc_eager_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_eager_node_sum(s : NlpparsearceagerNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_parse_arc_eager_edge_get(s : NlpparsearceagerEdge, i : Int) -> Double
 }
 
 pub fn nlp_parse_arc_eager_edge_set(s : NlpparsearceagerEdge, i : Int, v : Double) -> NlpparsearceagerEdge {
-  let result = nlp_parse_arc_eager_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_eager_edge_sum(s : NlpparsearceagerEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_parse_arc_eager_path_get(s : NlpparsearceagerPath, i : Int) -> Double
 }
 
 pub fn nlp_parse_arc_eager_path_set(s : NlpparsearceagerPath, i : Int, v : Double) -> NlpparsearceagerPath {
-  let result = nlp_parse_arc_eager_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_eager_path_sum(s : NlpparsearceagerPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_parse_arc_eager_cluster_get(s : NlpparsearceagerCluster, i : Int) -> 
 }
 
 pub fn nlp_parse_arc_eager_cluster_set(s : NlpparsearceagerCluster, i : Int, v : Double) -> NlpparsearceagerCluster {
-  let result = nlp_parse_arc_eager_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_eager_cluster_sum(s : NlpparsearceagerCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_parse_arc_eager_model_get(s : NlpparsearceagerModel, i : Int) -> Doub
 }
 
 pub fn nlp_parse_arc_eager_model_set(s : NlpparsearceagerModel, i : Int, v : Double) -> NlpparsearceagerModel {
-  let result = nlp_parse_arc_eager_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_eager_model_sum(s : NlpparsearceagerModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_parse_arc_eager_layer_get(s : NlpparsearceagerLayer, i : Int) -> Doub
 }
 
 pub fn nlp_parse_arc_eager_layer_set(s : NlpparsearceagerLayer, i : Int, v : Double) -> NlpparsearceagerLayer {
-  let result = nlp_parse_arc_eager_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_eager_layer_sum(s : NlpparsearceagerLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_parse_arc_eager_buffer_get(s : NlpparsearceagerBuffer, i : Int) -> Do
 }
 
 pub fn nlp_parse_arc_eager_buffer_set(s : NlpparsearceagerBuffer, i : Int, v : Double) -> NlpparsearceagerBuffer {
-  let result = nlp_parse_arc_eager_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_eager_buffer_sum(s : NlpparsearceagerBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_parse_arc_eager_cursor_get(s : NlpparsearceagerCursor, i : Int) -> Do
 }
 
 pub fn nlp_parse_arc_eager_cursor_set(s : NlpparsearceagerCursor, i : Int, v : Double) -> NlpparsearceagerCursor {
-  let result = nlp_parse_arc_eager_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_eager_cursor_sum(s : NlpparsearceagerCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_parse_arc_eager_view_get(s : NlpparsearceagerView, i : Int) -> Double
 }
 
 pub fn nlp_parse_arc_eager_view_set(s : NlpparsearceagerView, i : Int, v : Double) -> NlpparsearceagerView {
-  let result = nlp_parse_arc_eager_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_eager_view_sum(s : NlpparsearceagerView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_parse_arc_eager_range_get(s : NlpparsearceagerRange, i : Int) -> Doub
 }
 
 pub fn nlp_parse_arc_eager_range_set(s : NlpparsearceagerRange, i : Int, v : Double) -> NlpparsearceagerRange {
-  let result = nlp_parse_arc_eager_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_eager_range_sum(s : NlpparsearceagerRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_parse_arc_eager_slice_get(s : NlpparsearceagerSlice, i : Int) -> Doub
 }
 
 pub fn nlp_parse_arc_eager_slice_set(s : NlpparsearceagerSlice, i : Int, v : Double) -> NlpparsearceagerSlice {
-  let result = nlp_parse_arc_eager_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_arc_eager_slice_sum(s : NlpparsearceagerSlice) -> Double { @_common.sum(s.data) }

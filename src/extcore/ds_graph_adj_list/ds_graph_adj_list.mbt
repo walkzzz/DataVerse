@@ -107,23 +107,15 @@ pub fn ds_graph_adj_list_series_std(s : DsgraphadjlistSeries) -> Double { @_comm
 pub fn ds_graph_adj_list_series_median(s : DsgraphadjlistSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_graph_adj_list_series_scale(s : DsgraphadjlistSeries, f : Double) -> DsgraphadjlistSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_graph_adj_list_series_add(a : DsgraphadjlistSeries, b : DsgraphadjlistSeries) -> DsgraphadjlistSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_graph_adj_list_series_sub(a : DsgraphadjlistSeries, b : DsgraphadjlistSeries) -> DsgraphadjlistSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_graph_adj_list_series_normalize(s : DsgraphadjlistSeries) -> DsgraphadjlistSeries {
@@ -254,22 +246,16 @@ pub fn ds_graph_adj_list_vector_zero(dim : Int) -> DsgraphadjlistVector {
 
 pub fn ds_graph_adj_list_vector_add(a : DsgraphadjlistVector, b : DsgraphadjlistVector) -> DsgraphadjlistVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_graph_adj_list_vector_sub(a : DsgraphadjlistVector, b : DsgraphadjlistVector) -> DsgraphadjlistVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_graph_adj_list_vector_scale(v : DsgraphadjlistVector, s : Double) -> DsgraphadjlistVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_graph_adj_list_vector_dot(a : DsgraphadjlistVector, b : DsgraphadjlistVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_graph_adj_list_frame_get(s : DsgraphadjlistFrame, i : Int) -> Double {
 }
 
 pub fn ds_graph_adj_list_frame_set(s : DsgraphadjlistFrame, i : Int, v : Double) -> DsgraphadjlistFrame {
-  let result = ds_graph_adj_list_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_frame_sum(s : DsgraphadjlistFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_graph_adj_list_table_get(s : DsgraphadjlistTable, i : Int) -> Double {
 }
 
 pub fn ds_graph_adj_list_table_set(s : DsgraphadjlistTable, i : Int, v : Double) -> DsgraphadjlistTable {
-  let result = ds_graph_adj_list_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_table_sum(s : DsgraphadjlistTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_graph_adj_list_graphn_get(s : DsgraphadjlistGraphN, i : Int) -> Double
 }
 
 pub fn ds_graph_adj_list_graphn_set(s : DsgraphadjlistGraphN, i : Int, v : Double) -> DsgraphadjlistGraphN {
-  let result = ds_graph_adj_list_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_graphn_sum(s : DsgraphadjlistGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_graph_adj_list_node_get(s : DsgraphadjlistNode, i : Int) -> Double {
 }
 
 pub fn ds_graph_adj_list_node_set(s : DsgraphadjlistNode, i : Int, v : Double) -> DsgraphadjlistNode {
-  let result = ds_graph_adj_list_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_node_sum(s : DsgraphadjlistNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_graph_adj_list_edge_get(s : DsgraphadjlistEdge, i : Int) -> Double {
 }
 
 pub fn ds_graph_adj_list_edge_set(s : DsgraphadjlistEdge, i : Int, v : Double) -> DsgraphadjlistEdge {
-  let result = ds_graph_adj_list_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_edge_sum(s : DsgraphadjlistEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_graph_adj_list_path_get(s : DsgraphadjlistPath, i : Int) -> Double {
 }
 
 pub fn ds_graph_adj_list_path_set(s : DsgraphadjlistPath, i : Int, v : Double) -> DsgraphadjlistPath {
-  let result = ds_graph_adj_list_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_path_sum(s : DsgraphadjlistPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_graph_adj_list_cluster_get(s : DsgraphadjlistCluster, i : Int) -> Doub
 }
 
 pub fn ds_graph_adj_list_cluster_set(s : DsgraphadjlistCluster, i : Int, v : Double) -> DsgraphadjlistCluster {
-  let result = ds_graph_adj_list_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_cluster_sum(s : DsgraphadjlistCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_graph_adj_list_model_get(s : DsgraphadjlistModel, i : Int) -> Double {
 }
 
 pub fn ds_graph_adj_list_model_set(s : DsgraphadjlistModel, i : Int, v : Double) -> DsgraphadjlistModel {
-  let result = ds_graph_adj_list_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_model_sum(s : DsgraphadjlistModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_graph_adj_list_layer_get(s : DsgraphadjlistLayer, i : Int) -> Double {
 }
 
 pub fn ds_graph_adj_list_layer_set(s : DsgraphadjlistLayer, i : Int, v : Double) -> DsgraphadjlistLayer {
-  let result = ds_graph_adj_list_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_layer_sum(s : DsgraphadjlistLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_graph_adj_list_buffer_get(s : DsgraphadjlistBuffer, i : Int) -> Double
 }
 
 pub fn ds_graph_adj_list_buffer_set(s : DsgraphadjlistBuffer, i : Int, v : Double) -> DsgraphadjlistBuffer {
-  let result = ds_graph_adj_list_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_buffer_sum(s : DsgraphadjlistBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_graph_adj_list_cursor_get(s : DsgraphadjlistCursor, i : Int) -> Double
 }
 
 pub fn ds_graph_adj_list_cursor_set(s : DsgraphadjlistCursor, i : Int, v : Double) -> DsgraphadjlistCursor {
-  let result = ds_graph_adj_list_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_cursor_sum(s : DsgraphadjlistCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_graph_adj_list_view_get(s : DsgraphadjlistView, i : Int) -> Double {
 }
 
 pub fn ds_graph_adj_list_view_set(s : DsgraphadjlistView, i : Int, v : Double) -> DsgraphadjlistView {
-  let result = ds_graph_adj_list_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_view_sum(s : DsgraphadjlistView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_graph_adj_list_range_get(s : DsgraphadjlistRange, i : Int) -> Double {
 }
 
 pub fn ds_graph_adj_list_range_set(s : DsgraphadjlistRange, i : Int, v : Double) -> DsgraphadjlistRange {
-  let result = ds_graph_adj_list_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_range_sum(s : DsgraphadjlistRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_graph_adj_list_slice_get(s : DsgraphadjlistSlice, i : Int) -> Double {
 }
 
 pub fn ds_graph_adj_list_slice_set(s : DsgraphadjlistSlice, i : Int, v : Double) -> DsgraphadjlistSlice {
-  let result = ds_graph_adj_list_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_list_slice_sum(s : DsgraphadjlistSlice) -> Double { @_common.sum(s.data) }

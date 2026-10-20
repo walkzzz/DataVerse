@@ -107,23 +107,15 @@ pub fn opt_grad_nesterov_series_std(s : OptgradnesterovSeries) -> Double { @_com
 pub fn opt_grad_nesterov_series_median(s : OptgradnesterovSeries) -> Double { @_common.median(s.vals) }
 
 pub fn opt_grad_nesterov_series_scale(s : OptgradnesterovSeries, f : Double) -> OptgradnesterovSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn opt_grad_nesterov_series_add(a : OptgradnesterovSeries, b : OptgradnesterovSeries) -> OptgradnesterovSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn opt_grad_nesterov_series_sub(a : OptgradnesterovSeries, b : OptgradnesterovSeries) -> OptgradnesterovSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn opt_grad_nesterov_series_normalize(s : OptgradnesterovSeries) -> OptgradnesterovSeries {
@@ -254,22 +246,16 @@ pub fn opt_grad_nesterov_vector_zero(dim : Int) -> OptgradnesterovVector {
 
 pub fn opt_grad_nesterov_vector_add(a : OptgradnesterovVector, b : OptgradnesterovVector) -> OptgradnesterovVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_grad_nesterov_vector_sub(a : OptgradnesterovVector, b : OptgradnesterovVector) -> OptgradnesterovVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_grad_nesterov_vector_scale(v : OptgradnesterovVector, s : Double) -> OptgradnesterovVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn opt_grad_nesterov_vector_dot(a : OptgradnesterovVector, b : OptgradnesterovVector) -> Double {
@@ -372,10 +358,9 @@ pub fn opt_grad_nesterov_frame_get(s : OptgradnesterovFrame, i : Int) -> Double 
 }
 
 pub fn opt_grad_nesterov_frame_set(s : OptgradnesterovFrame, i : Int, v : Double) -> OptgradnesterovFrame {
-  let result = opt_grad_nesterov_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_nesterov_frame_sum(s : OptgradnesterovFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn opt_grad_nesterov_table_get(s : OptgradnesterovTable, i : Int) -> Double 
 }
 
 pub fn opt_grad_nesterov_table_set(s : OptgradnesterovTable, i : Int, v : Double) -> OptgradnesterovTable {
-  let result = opt_grad_nesterov_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_nesterov_table_sum(s : OptgradnesterovTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn opt_grad_nesterov_graphn_get(s : OptgradnesterovGraphN, i : Int) -> Doubl
 }
 
 pub fn opt_grad_nesterov_graphn_set(s : OptgradnesterovGraphN, i : Int, v : Double) -> OptgradnesterovGraphN {
-  let result = opt_grad_nesterov_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_nesterov_graphn_sum(s : OptgradnesterovGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn opt_grad_nesterov_node_get(s : OptgradnesterovNode, i : Int) -> Double {
 }
 
 pub fn opt_grad_nesterov_node_set(s : OptgradnesterovNode, i : Int, v : Double) -> OptgradnesterovNode {
-  let result = opt_grad_nesterov_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_nesterov_node_sum(s : OptgradnesterovNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn opt_grad_nesterov_edge_get(s : OptgradnesterovEdge, i : Int) -> Double {
 }
 
 pub fn opt_grad_nesterov_edge_set(s : OptgradnesterovEdge, i : Int, v : Double) -> OptgradnesterovEdge {
-  let result = opt_grad_nesterov_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_nesterov_edge_sum(s : OptgradnesterovEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn opt_grad_nesterov_path_get(s : OptgradnesterovPath, i : Int) -> Double {
 }
 
 pub fn opt_grad_nesterov_path_set(s : OptgradnesterovPath, i : Int, v : Double) -> OptgradnesterovPath {
-  let result = opt_grad_nesterov_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_nesterov_path_sum(s : OptgradnesterovPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn opt_grad_nesterov_cluster_get(s : OptgradnesterovCluster, i : Int) -> Dou
 }
 
 pub fn opt_grad_nesterov_cluster_set(s : OptgradnesterovCluster, i : Int, v : Double) -> OptgradnesterovCluster {
-  let result = opt_grad_nesterov_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_nesterov_cluster_sum(s : OptgradnesterovCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn opt_grad_nesterov_model_get(s : OptgradnesterovModel, i : Int) -> Double 
 }
 
 pub fn opt_grad_nesterov_model_set(s : OptgradnesterovModel, i : Int, v : Double) -> OptgradnesterovModel {
-  let result = opt_grad_nesterov_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_nesterov_model_sum(s : OptgradnesterovModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn opt_grad_nesterov_layer_get(s : OptgradnesterovLayer, i : Int) -> Double 
 }
 
 pub fn opt_grad_nesterov_layer_set(s : OptgradnesterovLayer, i : Int, v : Double) -> OptgradnesterovLayer {
-  let result = opt_grad_nesterov_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_nesterov_layer_sum(s : OptgradnesterovLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn opt_grad_nesterov_buffer_get(s : OptgradnesterovBuffer, i : Int) -> Doubl
 }
 
 pub fn opt_grad_nesterov_buffer_set(s : OptgradnesterovBuffer, i : Int, v : Double) -> OptgradnesterovBuffer {
-  let result = opt_grad_nesterov_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_nesterov_buffer_sum(s : OptgradnesterovBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn opt_grad_nesterov_cursor_get(s : OptgradnesterovCursor, i : Int) -> Doubl
 }
 
 pub fn opt_grad_nesterov_cursor_set(s : OptgradnesterovCursor, i : Int, v : Double) -> OptgradnesterovCursor {
-  let result = opt_grad_nesterov_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_nesterov_cursor_sum(s : OptgradnesterovCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn opt_grad_nesterov_view_get(s : OptgradnesterovView, i : Int) -> Double {
 }
 
 pub fn opt_grad_nesterov_view_set(s : OptgradnesterovView, i : Int, v : Double) -> OptgradnesterovView {
-  let result = opt_grad_nesterov_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_nesterov_view_sum(s : OptgradnesterovView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn opt_grad_nesterov_range_get(s : OptgradnesterovRange, i : Int) -> Double 
 }
 
 pub fn opt_grad_nesterov_range_set(s : OptgradnesterovRange, i : Int, v : Double) -> OptgradnesterovRange {
-  let result = opt_grad_nesterov_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_nesterov_range_sum(s : OptgradnesterovRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn opt_grad_nesterov_slice_get(s : OptgradnesterovSlice, i : Int) -> Double 
 }
 
 pub fn opt_grad_nesterov_slice_set(s : OptgradnesterovSlice, i : Int, v : Double) -> OptgradnesterovSlice {
-  let result = opt_grad_nesterov_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_nesterov_slice_sum(s : OptgradnesterovSlice) -> Double { @_common.sum(s.data) }

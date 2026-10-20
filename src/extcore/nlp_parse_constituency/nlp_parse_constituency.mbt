@@ -107,23 +107,15 @@ pub fn nlp_parse_constituency_series_std(s : NlpparseconstituencySeries) -> Doub
 pub fn nlp_parse_constituency_series_median(s : NlpparseconstituencySeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_parse_constituency_series_scale(s : NlpparseconstituencySeries, f : Double) -> NlpparseconstituencySeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_parse_constituency_series_add(a : NlpparseconstituencySeries, b : NlpparseconstituencySeries) -> NlpparseconstituencySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_parse_constituency_series_sub(a : NlpparseconstituencySeries, b : NlpparseconstituencySeries) -> NlpparseconstituencySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_parse_constituency_series_normalize(s : NlpparseconstituencySeries) -> NlpparseconstituencySeries {
@@ -254,22 +246,16 @@ pub fn nlp_parse_constituency_vector_zero(dim : Int) -> NlpparseconstituencyVect
 
 pub fn nlp_parse_constituency_vector_add(a : NlpparseconstituencyVector, b : NlpparseconstituencyVector) -> NlpparseconstituencyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_parse_constituency_vector_sub(a : NlpparseconstituencyVector, b : NlpparseconstituencyVector) -> NlpparseconstituencyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_parse_constituency_vector_scale(v : NlpparseconstituencyVector, s : Double) -> NlpparseconstituencyVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_parse_constituency_vector_dot(a : NlpparseconstituencyVector, b : NlpparseconstituencyVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_parse_constituency_frame_get(s : NlpparseconstituencyFrame, i : Int) 
 }
 
 pub fn nlp_parse_constituency_frame_set(s : NlpparseconstituencyFrame, i : Int, v : Double) -> NlpparseconstituencyFrame {
-  let result = nlp_parse_constituency_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_constituency_frame_sum(s : NlpparseconstituencyFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_parse_constituency_table_get(s : NlpparseconstituencyTable, i : Int) 
 }
 
 pub fn nlp_parse_constituency_table_set(s : NlpparseconstituencyTable, i : Int, v : Double) -> NlpparseconstituencyTable {
-  let result = nlp_parse_constituency_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_constituency_table_sum(s : NlpparseconstituencyTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_parse_constituency_graphn_get(s : NlpparseconstituencyGraphN, i : Int
 }
 
 pub fn nlp_parse_constituency_graphn_set(s : NlpparseconstituencyGraphN, i : Int, v : Double) -> NlpparseconstituencyGraphN {
-  let result = nlp_parse_constituency_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_constituency_graphn_sum(s : NlpparseconstituencyGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_parse_constituency_node_get(s : NlpparseconstituencyNode, i : Int) ->
 }
 
 pub fn nlp_parse_constituency_node_set(s : NlpparseconstituencyNode, i : Int, v : Double) -> NlpparseconstituencyNode {
-  let result = nlp_parse_constituency_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_constituency_node_sum(s : NlpparseconstituencyNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_parse_constituency_edge_get(s : NlpparseconstituencyEdge, i : Int) ->
 }
 
 pub fn nlp_parse_constituency_edge_set(s : NlpparseconstituencyEdge, i : Int, v : Double) -> NlpparseconstituencyEdge {
-  let result = nlp_parse_constituency_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_constituency_edge_sum(s : NlpparseconstituencyEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_parse_constituency_path_get(s : NlpparseconstituencyPath, i : Int) ->
 }
 
 pub fn nlp_parse_constituency_path_set(s : NlpparseconstituencyPath, i : Int, v : Double) -> NlpparseconstituencyPath {
-  let result = nlp_parse_constituency_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_constituency_path_sum(s : NlpparseconstituencyPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_parse_constituency_cluster_get(s : NlpparseconstituencyCluster, i : I
 }
 
 pub fn nlp_parse_constituency_cluster_set(s : NlpparseconstituencyCluster, i : Int, v : Double) -> NlpparseconstituencyCluster {
-  let result = nlp_parse_constituency_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_constituency_cluster_sum(s : NlpparseconstituencyCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_parse_constituency_model_get(s : NlpparseconstituencyModel, i : Int) 
 }
 
 pub fn nlp_parse_constituency_model_set(s : NlpparseconstituencyModel, i : Int, v : Double) -> NlpparseconstituencyModel {
-  let result = nlp_parse_constituency_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_constituency_model_sum(s : NlpparseconstituencyModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_parse_constituency_layer_get(s : NlpparseconstituencyLayer, i : Int) 
 }
 
 pub fn nlp_parse_constituency_layer_set(s : NlpparseconstituencyLayer, i : Int, v : Double) -> NlpparseconstituencyLayer {
-  let result = nlp_parse_constituency_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_constituency_layer_sum(s : NlpparseconstituencyLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_parse_constituency_buffer_get(s : NlpparseconstituencyBuffer, i : Int
 }
 
 pub fn nlp_parse_constituency_buffer_set(s : NlpparseconstituencyBuffer, i : Int, v : Double) -> NlpparseconstituencyBuffer {
-  let result = nlp_parse_constituency_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_constituency_buffer_sum(s : NlpparseconstituencyBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_parse_constituency_cursor_get(s : NlpparseconstituencyCursor, i : Int
 }
 
 pub fn nlp_parse_constituency_cursor_set(s : NlpparseconstituencyCursor, i : Int, v : Double) -> NlpparseconstituencyCursor {
-  let result = nlp_parse_constituency_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_constituency_cursor_sum(s : NlpparseconstituencyCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_parse_constituency_view_get(s : NlpparseconstituencyView, i : Int) ->
 }
 
 pub fn nlp_parse_constituency_view_set(s : NlpparseconstituencyView, i : Int, v : Double) -> NlpparseconstituencyView {
-  let result = nlp_parse_constituency_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_constituency_view_sum(s : NlpparseconstituencyView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_parse_constituency_range_get(s : NlpparseconstituencyRange, i : Int) 
 }
 
 pub fn nlp_parse_constituency_range_set(s : NlpparseconstituencyRange, i : Int, v : Double) -> NlpparseconstituencyRange {
-  let result = nlp_parse_constituency_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_constituency_range_sum(s : NlpparseconstituencyRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_parse_constituency_slice_get(s : NlpparseconstituencySlice, i : Int) 
 }
 
 pub fn nlp_parse_constituency_slice_set(s : NlpparseconstituencySlice, i : Int, v : Double) -> NlpparseconstituencySlice {
-  let result = nlp_parse_constituency_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_constituency_slice_sum(s : NlpparseconstituencySlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn physics_heat_convection_series_std(s : PhysicsheatconvectionSeries) -> Do
 pub fn physics_heat_convection_series_median(s : PhysicsheatconvectionSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_heat_convection_series_scale(s : PhysicsheatconvectionSeries, f : Double) -> PhysicsheatconvectionSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_heat_convection_series_add(a : PhysicsheatconvectionSeries, b : PhysicsheatconvectionSeries) -> PhysicsheatconvectionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_heat_convection_series_sub(a : PhysicsheatconvectionSeries, b : PhysicsheatconvectionSeries) -> PhysicsheatconvectionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_heat_convection_series_normalize(s : PhysicsheatconvectionSeries) -> PhysicsheatconvectionSeries {
@@ -254,22 +246,16 @@ pub fn physics_heat_convection_vector_zero(dim : Int) -> PhysicsheatconvectionVe
 
 pub fn physics_heat_convection_vector_add(a : PhysicsheatconvectionVector, b : PhysicsheatconvectionVector) -> PhysicsheatconvectionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_heat_convection_vector_sub(a : PhysicsheatconvectionVector, b : PhysicsheatconvectionVector) -> PhysicsheatconvectionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_heat_convection_vector_scale(v : PhysicsheatconvectionVector, s : Double) -> PhysicsheatconvectionVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_heat_convection_vector_dot(a : PhysicsheatconvectionVector, b : PhysicsheatconvectionVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_heat_convection_frame_get(s : PhysicsheatconvectionFrame, i : Int
 }
 
 pub fn physics_heat_convection_frame_set(s : PhysicsheatconvectionFrame, i : Int, v : Double) -> PhysicsheatconvectionFrame {
-  let result = physics_heat_convection_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_convection_frame_sum(s : PhysicsheatconvectionFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_heat_convection_table_get(s : PhysicsheatconvectionTable, i : Int
 }
 
 pub fn physics_heat_convection_table_set(s : PhysicsheatconvectionTable, i : Int, v : Double) -> PhysicsheatconvectionTable {
-  let result = physics_heat_convection_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_convection_table_sum(s : PhysicsheatconvectionTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_heat_convection_graphn_get(s : PhysicsheatconvectionGraphN, i : I
 }
 
 pub fn physics_heat_convection_graphn_set(s : PhysicsheatconvectionGraphN, i : Int, v : Double) -> PhysicsheatconvectionGraphN {
-  let result = physics_heat_convection_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_convection_graphn_sum(s : PhysicsheatconvectionGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_heat_convection_node_get(s : PhysicsheatconvectionNode, i : Int) 
 }
 
 pub fn physics_heat_convection_node_set(s : PhysicsheatconvectionNode, i : Int, v : Double) -> PhysicsheatconvectionNode {
-  let result = physics_heat_convection_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_convection_node_sum(s : PhysicsheatconvectionNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_heat_convection_edge_get(s : PhysicsheatconvectionEdge, i : Int) 
 }
 
 pub fn physics_heat_convection_edge_set(s : PhysicsheatconvectionEdge, i : Int, v : Double) -> PhysicsheatconvectionEdge {
-  let result = physics_heat_convection_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_convection_edge_sum(s : PhysicsheatconvectionEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_heat_convection_path_get(s : PhysicsheatconvectionPath, i : Int) 
 }
 
 pub fn physics_heat_convection_path_set(s : PhysicsheatconvectionPath, i : Int, v : Double) -> PhysicsheatconvectionPath {
-  let result = physics_heat_convection_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_convection_path_sum(s : PhysicsheatconvectionPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_heat_convection_cluster_get(s : PhysicsheatconvectionCluster, i :
 }
 
 pub fn physics_heat_convection_cluster_set(s : PhysicsheatconvectionCluster, i : Int, v : Double) -> PhysicsheatconvectionCluster {
-  let result = physics_heat_convection_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_convection_cluster_sum(s : PhysicsheatconvectionCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_heat_convection_model_get(s : PhysicsheatconvectionModel, i : Int
 }
 
 pub fn physics_heat_convection_model_set(s : PhysicsheatconvectionModel, i : Int, v : Double) -> PhysicsheatconvectionModel {
-  let result = physics_heat_convection_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_convection_model_sum(s : PhysicsheatconvectionModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_heat_convection_layer_get(s : PhysicsheatconvectionLayer, i : Int
 }
 
 pub fn physics_heat_convection_layer_set(s : PhysicsheatconvectionLayer, i : Int, v : Double) -> PhysicsheatconvectionLayer {
-  let result = physics_heat_convection_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_convection_layer_sum(s : PhysicsheatconvectionLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_heat_convection_buffer_get(s : PhysicsheatconvectionBuffer, i : I
 }
 
 pub fn physics_heat_convection_buffer_set(s : PhysicsheatconvectionBuffer, i : Int, v : Double) -> PhysicsheatconvectionBuffer {
-  let result = physics_heat_convection_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_convection_buffer_sum(s : PhysicsheatconvectionBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_heat_convection_cursor_get(s : PhysicsheatconvectionCursor, i : I
 }
 
 pub fn physics_heat_convection_cursor_set(s : PhysicsheatconvectionCursor, i : Int, v : Double) -> PhysicsheatconvectionCursor {
-  let result = physics_heat_convection_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_convection_cursor_sum(s : PhysicsheatconvectionCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_heat_convection_view_get(s : PhysicsheatconvectionView, i : Int) 
 }
 
 pub fn physics_heat_convection_view_set(s : PhysicsheatconvectionView, i : Int, v : Double) -> PhysicsheatconvectionView {
-  let result = physics_heat_convection_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_convection_view_sum(s : PhysicsheatconvectionView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_heat_convection_range_get(s : PhysicsheatconvectionRange, i : Int
 }
 
 pub fn physics_heat_convection_range_set(s : PhysicsheatconvectionRange, i : Int, v : Double) -> PhysicsheatconvectionRange {
-  let result = physics_heat_convection_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_convection_range_sum(s : PhysicsheatconvectionRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_heat_convection_slice_get(s : PhysicsheatconvectionSlice, i : Int
 }
 
 pub fn physics_heat_convection_slice_set(s : PhysicsheatconvectionSlice, i : Int, v : Double) -> PhysicsheatconvectionSlice {
-  let result = physics_heat_convection_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_convection_slice_sum(s : PhysicsheatconvectionSlice) -> Double { @_common.sum(s.data) }

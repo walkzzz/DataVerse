@@ -107,23 +107,15 @@ pub fn nlp_tokenize_bpe_series_std(s : NlptokenizebpeSeries) -> Double { @_commo
 pub fn nlp_tokenize_bpe_series_median(s : NlptokenizebpeSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_tokenize_bpe_series_scale(s : NlptokenizebpeSeries, f : Double) -> NlptokenizebpeSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_tokenize_bpe_series_add(a : NlptokenizebpeSeries, b : NlptokenizebpeSeries) -> NlptokenizebpeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_tokenize_bpe_series_sub(a : NlptokenizebpeSeries, b : NlptokenizebpeSeries) -> NlptokenizebpeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_tokenize_bpe_series_normalize(s : NlptokenizebpeSeries) -> NlptokenizebpeSeries {
@@ -254,22 +246,16 @@ pub fn nlp_tokenize_bpe_vector_zero(dim : Int) -> NlptokenizebpeVector {
 
 pub fn nlp_tokenize_bpe_vector_add(a : NlptokenizebpeVector, b : NlptokenizebpeVector) -> NlptokenizebpeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_tokenize_bpe_vector_sub(a : NlptokenizebpeVector, b : NlptokenizebpeVector) -> NlptokenizebpeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_tokenize_bpe_vector_scale(v : NlptokenizebpeVector, s : Double) -> NlptokenizebpeVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_tokenize_bpe_vector_dot(a : NlptokenizebpeVector, b : NlptokenizebpeVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_tokenize_bpe_frame_get(s : NlptokenizebpeFrame, i : Int) -> Double {
 }
 
 pub fn nlp_tokenize_bpe_frame_set(s : NlptokenizebpeFrame, i : Int, v : Double) -> NlptokenizebpeFrame {
-  let result = nlp_tokenize_bpe_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_bpe_frame_sum(s : NlptokenizebpeFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_tokenize_bpe_table_get(s : NlptokenizebpeTable, i : Int) -> Double {
 }
 
 pub fn nlp_tokenize_bpe_table_set(s : NlptokenizebpeTable, i : Int, v : Double) -> NlptokenizebpeTable {
-  let result = nlp_tokenize_bpe_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_bpe_table_sum(s : NlptokenizebpeTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_tokenize_bpe_graphn_get(s : NlptokenizebpeGraphN, i : Int) -> Double 
 }
 
 pub fn nlp_tokenize_bpe_graphn_set(s : NlptokenizebpeGraphN, i : Int, v : Double) -> NlptokenizebpeGraphN {
-  let result = nlp_tokenize_bpe_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_bpe_graphn_sum(s : NlptokenizebpeGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_tokenize_bpe_node_get(s : NlptokenizebpeNode, i : Int) -> Double {
 }
 
 pub fn nlp_tokenize_bpe_node_set(s : NlptokenizebpeNode, i : Int, v : Double) -> NlptokenizebpeNode {
-  let result = nlp_tokenize_bpe_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_bpe_node_sum(s : NlptokenizebpeNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_tokenize_bpe_edge_get(s : NlptokenizebpeEdge, i : Int) -> Double {
 }
 
 pub fn nlp_tokenize_bpe_edge_set(s : NlptokenizebpeEdge, i : Int, v : Double) -> NlptokenizebpeEdge {
-  let result = nlp_tokenize_bpe_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_bpe_edge_sum(s : NlptokenizebpeEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_tokenize_bpe_path_get(s : NlptokenizebpePath, i : Int) -> Double {
 }
 
 pub fn nlp_tokenize_bpe_path_set(s : NlptokenizebpePath, i : Int, v : Double) -> NlptokenizebpePath {
-  let result = nlp_tokenize_bpe_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_bpe_path_sum(s : NlptokenizebpePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_tokenize_bpe_cluster_get(s : NlptokenizebpeCluster, i : Int) -> Doubl
 }
 
 pub fn nlp_tokenize_bpe_cluster_set(s : NlptokenizebpeCluster, i : Int, v : Double) -> NlptokenizebpeCluster {
-  let result = nlp_tokenize_bpe_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_bpe_cluster_sum(s : NlptokenizebpeCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_tokenize_bpe_model_get(s : NlptokenizebpeModel, i : Int) -> Double {
 }
 
 pub fn nlp_tokenize_bpe_model_set(s : NlptokenizebpeModel, i : Int, v : Double) -> NlptokenizebpeModel {
-  let result = nlp_tokenize_bpe_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_bpe_model_sum(s : NlptokenizebpeModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_tokenize_bpe_layer_get(s : NlptokenizebpeLayer, i : Int) -> Double {
 }
 
 pub fn nlp_tokenize_bpe_layer_set(s : NlptokenizebpeLayer, i : Int, v : Double) -> NlptokenizebpeLayer {
-  let result = nlp_tokenize_bpe_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_bpe_layer_sum(s : NlptokenizebpeLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_tokenize_bpe_buffer_get(s : NlptokenizebpeBuffer, i : Int) -> Double 
 }
 
 pub fn nlp_tokenize_bpe_buffer_set(s : NlptokenizebpeBuffer, i : Int, v : Double) -> NlptokenizebpeBuffer {
-  let result = nlp_tokenize_bpe_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_bpe_buffer_sum(s : NlptokenizebpeBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_tokenize_bpe_cursor_get(s : NlptokenizebpeCursor, i : Int) -> Double 
 }
 
 pub fn nlp_tokenize_bpe_cursor_set(s : NlptokenizebpeCursor, i : Int, v : Double) -> NlptokenizebpeCursor {
-  let result = nlp_tokenize_bpe_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_bpe_cursor_sum(s : NlptokenizebpeCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_tokenize_bpe_view_get(s : NlptokenizebpeView, i : Int) -> Double {
 }
 
 pub fn nlp_tokenize_bpe_view_set(s : NlptokenizebpeView, i : Int, v : Double) -> NlptokenizebpeView {
-  let result = nlp_tokenize_bpe_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_bpe_view_sum(s : NlptokenizebpeView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_tokenize_bpe_range_get(s : NlptokenizebpeRange, i : Int) -> Double {
 }
 
 pub fn nlp_tokenize_bpe_range_set(s : NlptokenizebpeRange, i : Int, v : Double) -> NlptokenizebpeRange {
-  let result = nlp_tokenize_bpe_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_bpe_range_sum(s : NlptokenizebpeRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_tokenize_bpe_slice_get(s : NlptokenizebpeSlice, i : Int) -> Double {
 }
 
 pub fn nlp_tokenize_bpe_slice_set(s : NlptokenizebpeSlice, i : Int, v : Double) -> NlptokenizebpeSlice {
-  let result = nlp_tokenize_bpe_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_bpe_slice_sum(s : NlptokenizebpeSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn graph_flow_matching_series_std(s : GraphflowmatchingSeries) -> Double { @
 pub fn graph_flow_matching_series_median(s : GraphflowmatchingSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_flow_matching_series_scale(s : GraphflowmatchingSeries, f : Double) -> GraphflowmatchingSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_flow_matching_series_add(a : GraphflowmatchingSeries, b : GraphflowmatchingSeries) -> GraphflowmatchingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_flow_matching_series_sub(a : GraphflowmatchingSeries, b : GraphflowmatchingSeries) -> GraphflowmatchingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_flow_matching_series_normalize(s : GraphflowmatchingSeries) -> GraphflowmatchingSeries {
@@ -254,22 +246,16 @@ pub fn graph_flow_matching_vector_zero(dim : Int) -> GraphflowmatchingVector {
 
 pub fn graph_flow_matching_vector_add(a : GraphflowmatchingVector, b : GraphflowmatchingVector) -> GraphflowmatchingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_flow_matching_vector_sub(a : GraphflowmatchingVector, b : GraphflowmatchingVector) -> GraphflowmatchingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_flow_matching_vector_scale(v : GraphflowmatchingVector, s : Double) -> GraphflowmatchingVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_flow_matching_vector_dot(a : GraphflowmatchingVector, b : GraphflowmatchingVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_flow_matching_frame_get(s : GraphflowmatchingFrame, i : Int) -> Dou
 }
 
 pub fn graph_flow_matching_frame_set(s : GraphflowmatchingFrame, i : Int, v : Double) -> GraphflowmatchingFrame {
-  let result = graph_flow_matching_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_matching_frame_sum(s : GraphflowmatchingFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_flow_matching_table_get(s : GraphflowmatchingTable, i : Int) -> Dou
 }
 
 pub fn graph_flow_matching_table_set(s : GraphflowmatchingTable, i : Int, v : Double) -> GraphflowmatchingTable {
-  let result = graph_flow_matching_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_matching_table_sum(s : GraphflowmatchingTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_flow_matching_graphn_get(s : GraphflowmatchingGraphN, i : Int) -> D
 }
 
 pub fn graph_flow_matching_graphn_set(s : GraphflowmatchingGraphN, i : Int, v : Double) -> GraphflowmatchingGraphN {
-  let result = graph_flow_matching_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_matching_graphn_sum(s : GraphflowmatchingGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_flow_matching_node_get(s : GraphflowmatchingNode, i : Int) -> Doubl
 }
 
 pub fn graph_flow_matching_node_set(s : GraphflowmatchingNode, i : Int, v : Double) -> GraphflowmatchingNode {
-  let result = graph_flow_matching_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_matching_node_sum(s : GraphflowmatchingNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_flow_matching_edge_get(s : GraphflowmatchingEdge, i : Int) -> Doubl
 }
 
 pub fn graph_flow_matching_edge_set(s : GraphflowmatchingEdge, i : Int, v : Double) -> GraphflowmatchingEdge {
-  let result = graph_flow_matching_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_matching_edge_sum(s : GraphflowmatchingEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_flow_matching_path_get(s : GraphflowmatchingPath, i : Int) -> Doubl
 }
 
 pub fn graph_flow_matching_path_set(s : GraphflowmatchingPath, i : Int, v : Double) -> GraphflowmatchingPath {
-  let result = graph_flow_matching_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_matching_path_sum(s : GraphflowmatchingPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_flow_matching_cluster_get(s : GraphflowmatchingCluster, i : Int) ->
 }
 
 pub fn graph_flow_matching_cluster_set(s : GraphflowmatchingCluster, i : Int, v : Double) -> GraphflowmatchingCluster {
-  let result = graph_flow_matching_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_matching_cluster_sum(s : GraphflowmatchingCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_flow_matching_model_get(s : GraphflowmatchingModel, i : Int) -> Dou
 }
 
 pub fn graph_flow_matching_model_set(s : GraphflowmatchingModel, i : Int, v : Double) -> GraphflowmatchingModel {
-  let result = graph_flow_matching_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_matching_model_sum(s : GraphflowmatchingModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_flow_matching_layer_get(s : GraphflowmatchingLayer, i : Int) -> Dou
 }
 
 pub fn graph_flow_matching_layer_set(s : GraphflowmatchingLayer, i : Int, v : Double) -> GraphflowmatchingLayer {
-  let result = graph_flow_matching_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_matching_layer_sum(s : GraphflowmatchingLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_flow_matching_buffer_get(s : GraphflowmatchingBuffer, i : Int) -> D
 }
 
 pub fn graph_flow_matching_buffer_set(s : GraphflowmatchingBuffer, i : Int, v : Double) -> GraphflowmatchingBuffer {
-  let result = graph_flow_matching_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_matching_buffer_sum(s : GraphflowmatchingBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_flow_matching_cursor_get(s : GraphflowmatchingCursor, i : Int) -> D
 }
 
 pub fn graph_flow_matching_cursor_set(s : GraphflowmatchingCursor, i : Int, v : Double) -> GraphflowmatchingCursor {
-  let result = graph_flow_matching_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_matching_cursor_sum(s : GraphflowmatchingCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_flow_matching_view_get(s : GraphflowmatchingView, i : Int) -> Doubl
 }
 
 pub fn graph_flow_matching_view_set(s : GraphflowmatchingView, i : Int, v : Double) -> GraphflowmatchingView {
-  let result = graph_flow_matching_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_matching_view_sum(s : GraphflowmatchingView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_flow_matching_range_get(s : GraphflowmatchingRange, i : Int) -> Dou
 }
 
 pub fn graph_flow_matching_range_set(s : GraphflowmatchingRange, i : Int, v : Double) -> GraphflowmatchingRange {
-  let result = graph_flow_matching_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_matching_range_sum(s : GraphflowmatchingRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_flow_matching_slice_get(s : GraphflowmatchingSlice, i : Int) -> Dou
 }
 
 pub fn graph_flow_matching_slice_set(s : GraphflowmatchingSlice, i : Int, v : Double) -> GraphflowmatchingSlice {
-  let result = graph_flow_matching_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_matching_slice_sum(s : GraphflowmatchingSlice) -> Double { @_common.sum(s.data) }

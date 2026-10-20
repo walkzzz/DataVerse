@@ -107,23 +107,15 @@ pub fn image_transform_scale_series_std(s : ImagetransformscaleSeries) -> Double
 pub fn image_transform_scale_series_median(s : ImagetransformscaleSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_transform_scale_series_scale(s : ImagetransformscaleSeries, f : Double) -> ImagetransformscaleSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_transform_scale_series_add(a : ImagetransformscaleSeries, b : ImagetransformscaleSeries) -> ImagetransformscaleSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_transform_scale_series_sub(a : ImagetransformscaleSeries, b : ImagetransformscaleSeries) -> ImagetransformscaleSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_transform_scale_series_normalize(s : ImagetransformscaleSeries) -> ImagetransformscaleSeries {
@@ -254,22 +246,16 @@ pub fn image_transform_scale_vector_zero(dim : Int) -> ImagetransformscaleVector
 
 pub fn image_transform_scale_vector_add(a : ImagetransformscaleVector, b : ImagetransformscaleVector) -> ImagetransformscaleVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_transform_scale_vector_sub(a : ImagetransformscaleVector, b : ImagetransformscaleVector) -> ImagetransformscaleVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_transform_scale_vector_scale(v : ImagetransformscaleVector, s : Double) -> ImagetransformscaleVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_transform_scale_vector_dot(a : ImagetransformscaleVector, b : ImagetransformscaleVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_transform_scale_frame_get(s : ImagetransformscaleFrame, i : Int) ->
 }
 
 pub fn image_transform_scale_frame_set(s : ImagetransformscaleFrame, i : Int, v : Double) -> ImagetransformscaleFrame {
-  let result = image_transform_scale_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_frame_sum(s : ImagetransformscaleFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_transform_scale_table_get(s : ImagetransformscaleTable, i : Int) ->
 }
 
 pub fn image_transform_scale_table_set(s : ImagetransformscaleTable, i : Int, v : Double) -> ImagetransformscaleTable {
-  let result = image_transform_scale_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_table_sum(s : ImagetransformscaleTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_transform_scale_graphn_get(s : ImagetransformscaleGraphN, i : Int) 
 }
 
 pub fn image_transform_scale_graphn_set(s : ImagetransformscaleGraphN, i : Int, v : Double) -> ImagetransformscaleGraphN {
-  let result = image_transform_scale_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_graphn_sum(s : ImagetransformscaleGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_transform_scale_node_get(s : ImagetransformscaleNode, i : Int) -> D
 }
 
 pub fn image_transform_scale_node_set(s : ImagetransformscaleNode, i : Int, v : Double) -> ImagetransformscaleNode {
-  let result = image_transform_scale_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_node_sum(s : ImagetransformscaleNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_transform_scale_edge_get(s : ImagetransformscaleEdge, i : Int) -> D
 }
 
 pub fn image_transform_scale_edge_set(s : ImagetransformscaleEdge, i : Int, v : Double) -> ImagetransformscaleEdge {
-  let result = image_transform_scale_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_edge_sum(s : ImagetransformscaleEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_transform_scale_path_get(s : ImagetransformscalePath, i : Int) -> D
 }
 
 pub fn image_transform_scale_path_set(s : ImagetransformscalePath, i : Int, v : Double) -> ImagetransformscalePath {
-  let result = image_transform_scale_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_path_sum(s : ImagetransformscalePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_transform_scale_cluster_get(s : ImagetransformscaleCluster, i : Int
 }
 
 pub fn image_transform_scale_cluster_set(s : ImagetransformscaleCluster, i : Int, v : Double) -> ImagetransformscaleCluster {
-  let result = image_transform_scale_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_cluster_sum(s : ImagetransformscaleCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_transform_scale_model_get(s : ImagetransformscaleModel, i : Int) ->
 }
 
 pub fn image_transform_scale_model_set(s : ImagetransformscaleModel, i : Int, v : Double) -> ImagetransformscaleModel {
-  let result = image_transform_scale_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_model_sum(s : ImagetransformscaleModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_transform_scale_layer_get(s : ImagetransformscaleLayer, i : Int) ->
 }
 
 pub fn image_transform_scale_layer_set(s : ImagetransformscaleLayer, i : Int, v : Double) -> ImagetransformscaleLayer {
-  let result = image_transform_scale_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_layer_sum(s : ImagetransformscaleLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_transform_scale_buffer_get(s : ImagetransformscaleBuffer, i : Int) 
 }
 
 pub fn image_transform_scale_buffer_set(s : ImagetransformscaleBuffer, i : Int, v : Double) -> ImagetransformscaleBuffer {
-  let result = image_transform_scale_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_buffer_sum(s : ImagetransformscaleBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_transform_scale_cursor_get(s : ImagetransformscaleCursor, i : Int) 
 }
 
 pub fn image_transform_scale_cursor_set(s : ImagetransformscaleCursor, i : Int, v : Double) -> ImagetransformscaleCursor {
-  let result = image_transform_scale_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_cursor_sum(s : ImagetransformscaleCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_transform_scale_view_get(s : ImagetransformscaleView, i : Int) -> D
 }
 
 pub fn image_transform_scale_view_set(s : ImagetransformscaleView, i : Int, v : Double) -> ImagetransformscaleView {
-  let result = image_transform_scale_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_view_sum(s : ImagetransformscaleView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_transform_scale_range_get(s : ImagetransformscaleRange, i : Int) ->
 }
 
 pub fn image_transform_scale_range_set(s : ImagetransformscaleRange, i : Int, v : Double) -> ImagetransformscaleRange {
-  let result = image_transform_scale_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_range_sum(s : ImagetransformscaleRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_transform_scale_slice_get(s : ImagetransformscaleSlice, i : Int) ->
 }
 
 pub fn image_transform_scale_slice_set(s : ImagetransformscaleSlice, i : Int, v : Double) -> ImagetransformscaleSlice {
-  let result = image_transform_scale_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_scale_slice_sum(s : ImagetransformscaleSlice) -> Double { @_common.sum(s.data) }

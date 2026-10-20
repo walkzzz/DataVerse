@@ -107,23 +107,15 @@ pub fn finance_risk_coherent_series_std(s : FinanceriskcoherentSeries) -> Double
 pub fn finance_risk_coherent_series_median(s : FinanceriskcoherentSeries) -> Double { @_common.median(s.vals) }
 
 pub fn finance_risk_coherent_series_scale(s : FinanceriskcoherentSeries, f : Double) -> FinanceriskcoherentSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn finance_risk_coherent_series_add(a : FinanceriskcoherentSeries, b : FinanceriskcoherentSeries) -> FinanceriskcoherentSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn finance_risk_coherent_series_sub(a : FinanceriskcoherentSeries, b : FinanceriskcoherentSeries) -> FinanceriskcoherentSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn finance_risk_coherent_series_normalize(s : FinanceriskcoherentSeries) -> FinanceriskcoherentSeries {
@@ -254,22 +246,16 @@ pub fn finance_risk_coherent_vector_zero(dim : Int) -> FinanceriskcoherentVector
 
 pub fn finance_risk_coherent_vector_add(a : FinanceriskcoherentVector, b : FinanceriskcoherentVector) -> FinanceriskcoherentVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_risk_coherent_vector_sub(a : FinanceriskcoherentVector, b : FinanceriskcoherentVector) -> FinanceriskcoherentVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_risk_coherent_vector_scale(v : FinanceriskcoherentVector, s : Double) -> FinanceriskcoherentVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn finance_risk_coherent_vector_dot(a : FinanceriskcoherentVector, b : FinanceriskcoherentVector) -> Double {
@@ -372,10 +358,9 @@ pub fn finance_risk_coherent_frame_get(s : FinanceriskcoherentFrame, i : Int) ->
 }
 
 pub fn finance_risk_coherent_frame_set(s : FinanceriskcoherentFrame, i : Int, v : Double) -> FinanceriskcoherentFrame {
-  let result = finance_risk_coherent_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_coherent_frame_sum(s : FinanceriskcoherentFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn finance_risk_coherent_table_get(s : FinanceriskcoherentTable, i : Int) ->
 }
 
 pub fn finance_risk_coherent_table_set(s : FinanceriskcoherentTable, i : Int, v : Double) -> FinanceriskcoherentTable {
-  let result = finance_risk_coherent_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_coherent_table_sum(s : FinanceriskcoherentTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn finance_risk_coherent_graphn_get(s : FinanceriskcoherentGraphN, i : Int) 
 }
 
 pub fn finance_risk_coherent_graphn_set(s : FinanceriskcoherentGraphN, i : Int, v : Double) -> FinanceriskcoherentGraphN {
-  let result = finance_risk_coherent_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_coherent_graphn_sum(s : FinanceriskcoherentGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn finance_risk_coherent_node_get(s : FinanceriskcoherentNode, i : Int) -> D
 }
 
 pub fn finance_risk_coherent_node_set(s : FinanceriskcoherentNode, i : Int, v : Double) -> FinanceriskcoherentNode {
-  let result = finance_risk_coherent_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_coherent_node_sum(s : FinanceriskcoherentNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn finance_risk_coherent_edge_get(s : FinanceriskcoherentEdge, i : Int) -> D
 }
 
 pub fn finance_risk_coherent_edge_set(s : FinanceriskcoherentEdge, i : Int, v : Double) -> FinanceriskcoherentEdge {
-  let result = finance_risk_coherent_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_coherent_edge_sum(s : FinanceriskcoherentEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn finance_risk_coherent_path_get(s : FinanceriskcoherentPath, i : Int) -> D
 }
 
 pub fn finance_risk_coherent_path_set(s : FinanceriskcoherentPath, i : Int, v : Double) -> FinanceriskcoherentPath {
-  let result = finance_risk_coherent_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_coherent_path_sum(s : FinanceriskcoherentPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn finance_risk_coherent_cluster_get(s : FinanceriskcoherentCluster, i : Int
 }
 
 pub fn finance_risk_coherent_cluster_set(s : FinanceriskcoherentCluster, i : Int, v : Double) -> FinanceriskcoherentCluster {
-  let result = finance_risk_coherent_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_coherent_cluster_sum(s : FinanceriskcoherentCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn finance_risk_coherent_model_get(s : FinanceriskcoherentModel, i : Int) ->
 }
 
 pub fn finance_risk_coherent_model_set(s : FinanceriskcoherentModel, i : Int, v : Double) -> FinanceriskcoherentModel {
-  let result = finance_risk_coherent_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_coherent_model_sum(s : FinanceriskcoherentModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn finance_risk_coherent_layer_get(s : FinanceriskcoherentLayer, i : Int) ->
 }
 
 pub fn finance_risk_coherent_layer_set(s : FinanceriskcoherentLayer, i : Int, v : Double) -> FinanceriskcoherentLayer {
-  let result = finance_risk_coherent_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_coherent_layer_sum(s : FinanceriskcoherentLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn finance_risk_coherent_buffer_get(s : FinanceriskcoherentBuffer, i : Int) 
 }
 
 pub fn finance_risk_coherent_buffer_set(s : FinanceriskcoherentBuffer, i : Int, v : Double) -> FinanceriskcoherentBuffer {
-  let result = finance_risk_coherent_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_coherent_buffer_sum(s : FinanceriskcoherentBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn finance_risk_coherent_cursor_get(s : FinanceriskcoherentCursor, i : Int) 
 }
 
 pub fn finance_risk_coherent_cursor_set(s : FinanceriskcoherentCursor, i : Int, v : Double) -> FinanceriskcoherentCursor {
-  let result = finance_risk_coherent_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_coherent_cursor_sum(s : FinanceriskcoherentCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn finance_risk_coherent_view_get(s : FinanceriskcoherentView, i : Int) -> D
 }
 
 pub fn finance_risk_coherent_view_set(s : FinanceriskcoherentView, i : Int, v : Double) -> FinanceriskcoherentView {
-  let result = finance_risk_coherent_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_coherent_view_sum(s : FinanceriskcoherentView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn finance_risk_coherent_range_get(s : FinanceriskcoherentRange, i : Int) ->
 }
 
 pub fn finance_risk_coherent_range_set(s : FinanceriskcoherentRange, i : Int, v : Double) -> FinanceriskcoherentRange {
-  let result = finance_risk_coherent_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_coherent_range_sum(s : FinanceriskcoherentRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn finance_risk_coherent_slice_get(s : FinanceriskcoherentSlice, i : Int) ->
 }
 
 pub fn finance_risk_coherent_slice_set(s : FinanceriskcoherentSlice, i : Int, v : Double) -> FinanceriskcoherentSlice {
-  let result = finance_risk_coherent_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_coherent_slice_sum(s : FinanceriskcoherentSlice) -> Double { @_common.sum(s.data) }

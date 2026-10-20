@@ -107,23 +107,15 @@ pub fn physics_fluid_navier_series_std(s : PhysicsfluidnavierSeries) -> Double {
 pub fn physics_fluid_navier_series_median(s : PhysicsfluidnavierSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_fluid_navier_series_scale(s : PhysicsfluidnavierSeries, f : Double) -> PhysicsfluidnavierSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_fluid_navier_series_add(a : PhysicsfluidnavierSeries, b : PhysicsfluidnavierSeries) -> PhysicsfluidnavierSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_fluid_navier_series_sub(a : PhysicsfluidnavierSeries, b : PhysicsfluidnavierSeries) -> PhysicsfluidnavierSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_fluid_navier_series_normalize(s : PhysicsfluidnavierSeries) -> PhysicsfluidnavierSeries {
@@ -254,22 +246,16 @@ pub fn physics_fluid_navier_vector_zero(dim : Int) -> PhysicsfluidnavierVector {
 
 pub fn physics_fluid_navier_vector_add(a : PhysicsfluidnavierVector, b : PhysicsfluidnavierVector) -> PhysicsfluidnavierVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_fluid_navier_vector_sub(a : PhysicsfluidnavierVector, b : PhysicsfluidnavierVector) -> PhysicsfluidnavierVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_fluid_navier_vector_scale(v : PhysicsfluidnavierVector, s : Double) -> PhysicsfluidnavierVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_fluid_navier_vector_dot(a : PhysicsfluidnavierVector, b : PhysicsfluidnavierVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_fluid_navier_frame_get(s : PhysicsfluidnavierFrame, i : Int) -> D
 }
 
 pub fn physics_fluid_navier_frame_set(s : PhysicsfluidnavierFrame, i : Int, v : Double) -> PhysicsfluidnavierFrame {
-  let result = physics_fluid_navier_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_navier_frame_sum(s : PhysicsfluidnavierFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_fluid_navier_table_get(s : PhysicsfluidnavierTable, i : Int) -> D
 }
 
 pub fn physics_fluid_navier_table_set(s : PhysicsfluidnavierTable, i : Int, v : Double) -> PhysicsfluidnavierTable {
-  let result = physics_fluid_navier_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_navier_table_sum(s : PhysicsfluidnavierTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_fluid_navier_graphn_get(s : PhysicsfluidnavierGraphN, i : Int) ->
 }
 
 pub fn physics_fluid_navier_graphn_set(s : PhysicsfluidnavierGraphN, i : Int, v : Double) -> PhysicsfluidnavierGraphN {
-  let result = physics_fluid_navier_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_navier_graphn_sum(s : PhysicsfluidnavierGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_fluid_navier_node_get(s : PhysicsfluidnavierNode, i : Int) -> Dou
 }
 
 pub fn physics_fluid_navier_node_set(s : PhysicsfluidnavierNode, i : Int, v : Double) -> PhysicsfluidnavierNode {
-  let result = physics_fluid_navier_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_navier_node_sum(s : PhysicsfluidnavierNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_fluid_navier_edge_get(s : PhysicsfluidnavierEdge, i : Int) -> Dou
 }
 
 pub fn physics_fluid_navier_edge_set(s : PhysicsfluidnavierEdge, i : Int, v : Double) -> PhysicsfluidnavierEdge {
-  let result = physics_fluid_navier_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_navier_edge_sum(s : PhysicsfluidnavierEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_fluid_navier_path_get(s : PhysicsfluidnavierPath, i : Int) -> Dou
 }
 
 pub fn physics_fluid_navier_path_set(s : PhysicsfluidnavierPath, i : Int, v : Double) -> PhysicsfluidnavierPath {
-  let result = physics_fluid_navier_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_navier_path_sum(s : PhysicsfluidnavierPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_fluid_navier_cluster_get(s : PhysicsfluidnavierCluster, i : Int) 
 }
 
 pub fn physics_fluid_navier_cluster_set(s : PhysicsfluidnavierCluster, i : Int, v : Double) -> PhysicsfluidnavierCluster {
-  let result = physics_fluid_navier_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_navier_cluster_sum(s : PhysicsfluidnavierCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_fluid_navier_model_get(s : PhysicsfluidnavierModel, i : Int) -> D
 }
 
 pub fn physics_fluid_navier_model_set(s : PhysicsfluidnavierModel, i : Int, v : Double) -> PhysicsfluidnavierModel {
-  let result = physics_fluid_navier_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_navier_model_sum(s : PhysicsfluidnavierModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_fluid_navier_layer_get(s : PhysicsfluidnavierLayer, i : Int) -> D
 }
 
 pub fn physics_fluid_navier_layer_set(s : PhysicsfluidnavierLayer, i : Int, v : Double) -> PhysicsfluidnavierLayer {
-  let result = physics_fluid_navier_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_navier_layer_sum(s : PhysicsfluidnavierLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_fluid_navier_buffer_get(s : PhysicsfluidnavierBuffer, i : Int) ->
 }
 
 pub fn physics_fluid_navier_buffer_set(s : PhysicsfluidnavierBuffer, i : Int, v : Double) -> PhysicsfluidnavierBuffer {
-  let result = physics_fluid_navier_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_navier_buffer_sum(s : PhysicsfluidnavierBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_fluid_navier_cursor_get(s : PhysicsfluidnavierCursor, i : Int) ->
 }
 
 pub fn physics_fluid_navier_cursor_set(s : PhysicsfluidnavierCursor, i : Int, v : Double) -> PhysicsfluidnavierCursor {
-  let result = physics_fluid_navier_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_navier_cursor_sum(s : PhysicsfluidnavierCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_fluid_navier_view_get(s : PhysicsfluidnavierView, i : Int) -> Dou
 }
 
 pub fn physics_fluid_navier_view_set(s : PhysicsfluidnavierView, i : Int, v : Double) -> PhysicsfluidnavierView {
-  let result = physics_fluid_navier_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_navier_view_sum(s : PhysicsfluidnavierView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_fluid_navier_range_get(s : PhysicsfluidnavierRange, i : Int) -> D
 }
 
 pub fn physics_fluid_navier_range_set(s : PhysicsfluidnavierRange, i : Int, v : Double) -> PhysicsfluidnavierRange {
-  let result = physics_fluid_navier_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_navier_range_sum(s : PhysicsfluidnavierRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_fluid_navier_slice_get(s : PhysicsfluidnavierSlice, i : Int) -> D
 }
 
 pub fn physics_fluid_navier_slice_set(s : PhysicsfluidnavierSlice, i : Int, v : Double) -> PhysicsfluidnavierSlice {
-  let result = physics_fluid_navier_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_navier_slice_sum(s : PhysicsfluidnavierSlice) -> Double { @_common.sum(s.data) }

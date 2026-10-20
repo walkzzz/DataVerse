@@ -107,23 +107,15 @@ pub fn ml_neural_autoencoder_series_std(s : MlneuralautoencoderSeries) -> Double
 pub fn ml_neural_autoencoder_series_median(s : MlneuralautoencoderSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_neural_autoencoder_series_scale(s : MlneuralautoencoderSeries, f : Double) -> MlneuralautoencoderSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_neural_autoencoder_series_add(a : MlneuralautoencoderSeries, b : MlneuralautoencoderSeries) -> MlneuralautoencoderSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_neural_autoencoder_series_sub(a : MlneuralautoencoderSeries, b : MlneuralautoencoderSeries) -> MlneuralautoencoderSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_neural_autoencoder_series_normalize(s : MlneuralautoencoderSeries) -> MlneuralautoencoderSeries {
@@ -254,22 +246,16 @@ pub fn ml_neural_autoencoder_vector_zero(dim : Int) -> MlneuralautoencoderVector
 
 pub fn ml_neural_autoencoder_vector_add(a : MlneuralautoencoderVector, b : MlneuralautoencoderVector) -> MlneuralautoencoderVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_neural_autoencoder_vector_sub(a : MlneuralautoencoderVector, b : MlneuralautoencoderVector) -> MlneuralautoencoderVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_neural_autoencoder_vector_scale(v : MlneuralautoencoderVector, s : Double) -> MlneuralautoencoderVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_neural_autoencoder_vector_dot(a : MlneuralautoencoderVector, b : MlneuralautoencoderVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_neural_autoencoder_frame_get(s : MlneuralautoencoderFrame, i : Int) ->
 }
 
 pub fn ml_neural_autoencoder_frame_set(s : MlneuralautoencoderFrame, i : Int, v : Double) -> MlneuralautoencoderFrame {
-  let result = ml_neural_autoencoder_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_autoencoder_frame_sum(s : MlneuralautoencoderFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_neural_autoencoder_table_get(s : MlneuralautoencoderTable, i : Int) ->
 }
 
 pub fn ml_neural_autoencoder_table_set(s : MlneuralautoencoderTable, i : Int, v : Double) -> MlneuralautoencoderTable {
-  let result = ml_neural_autoencoder_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_autoencoder_table_sum(s : MlneuralautoencoderTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_neural_autoencoder_graphn_get(s : MlneuralautoencoderGraphN, i : Int) 
 }
 
 pub fn ml_neural_autoencoder_graphn_set(s : MlneuralautoencoderGraphN, i : Int, v : Double) -> MlneuralautoencoderGraphN {
-  let result = ml_neural_autoencoder_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_autoencoder_graphn_sum(s : MlneuralautoencoderGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_neural_autoencoder_node_get(s : MlneuralautoencoderNode, i : Int) -> D
 }
 
 pub fn ml_neural_autoencoder_node_set(s : MlneuralautoencoderNode, i : Int, v : Double) -> MlneuralautoencoderNode {
-  let result = ml_neural_autoencoder_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_autoencoder_node_sum(s : MlneuralautoencoderNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_neural_autoencoder_edge_get(s : MlneuralautoencoderEdge, i : Int) -> D
 }
 
 pub fn ml_neural_autoencoder_edge_set(s : MlneuralautoencoderEdge, i : Int, v : Double) -> MlneuralautoencoderEdge {
-  let result = ml_neural_autoencoder_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_autoencoder_edge_sum(s : MlneuralautoencoderEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_neural_autoencoder_path_get(s : MlneuralautoencoderPath, i : Int) -> D
 }
 
 pub fn ml_neural_autoencoder_path_set(s : MlneuralautoencoderPath, i : Int, v : Double) -> MlneuralautoencoderPath {
-  let result = ml_neural_autoencoder_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_autoencoder_path_sum(s : MlneuralautoencoderPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_neural_autoencoder_cluster_get(s : MlneuralautoencoderCluster, i : Int
 }
 
 pub fn ml_neural_autoencoder_cluster_set(s : MlneuralautoencoderCluster, i : Int, v : Double) -> MlneuralautoencoderCluster {
-  let result = ml_neural_autoencoder_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_autoencoder_cluster_sum(s : MlneuralautoencoderCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_neural_autoencoder_model_get(s : MlneuralautoencoderModel, i : Int) ->
 }
 
 pub fn ml_neural_autoencoder_model_set(s : MlneuralautoencoderModel, i : Int, v : Double) -> MlneuralautoencoderModel {
-  let result = ml_neural_autoencoder_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_autoencoder_model_sum(s : MlneuralautoencoderModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_neural_autoencoder_layer_get(s : MlneuralautoencoderLayer, i : Int) ->
 }
 
 pub fn ml_neural_autoencoder_layer_set(s : MlneuralautoencoderLayer, i : Int, v : Double) -> MlneuralautoencoderLayer {
-  let result = ml_neural_autoencoder_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_autoencoder_layer_sum(s : MlneuralautoencoderLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_neural_autoencoder_buffer_get(s : MlneuralautoencoderBuffer, i : Int) 
 }
 
 pub fn ml_neural_autoencoder_buffer_set(s : MlneuralautoencoderBuffer, i : Int, v : Double) -> MlneuralautoencoderBuffer {
-  let result = ml_neural_autoencoder_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_autoencoder_buffer_sum(s : MlneuralautoencoderBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_neural_autoencoder_cursor_get(s : MlneuralautoencoderCursor, i : Int) 
 }
 
 pub fn ml_neural_autoencoder_cursor_set(s : MlneuralautoencoderCursor, i : Int, v : Double) -> MlneuralautoencoderCursor {
-  let result = ml_neural_autoencoder_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_autoencoder_cursor_sum(s : MlneuralautoencoderCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_neural_autoencoder_view_get(s : MlneuralautoencoderView, i : Int) -> D
 }
 
 pub fn ml_neural_autoencoder_view_set(s : MlneuralautoencoderView, i : Int, v : Double) -> MlneuralautoencoderView {
-  let result = ml_neural_autoencoder_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_autoencoder_view_sum(s : MlneuralautoencoderView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_neural_autoencoder_range_get(s : MlneuralautoencoderRange, i : Int) ->
 }
 
 pub fn ml_neural_autoencoder_range_set(s : MlneuralautoencoderRange, i : Int, v : Double) -> MlneuralautoencoderRange {
-  let result = ml_neural_autoencoder_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_autoencoder_range_sum(s : MlneuralautoencoderRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_neural_autoencoder_slice_get(s : MlneuralautoencoderSlice, i : Int) ->
 }
 
 pub fn ml_neural_autoencoder_slice_set(s : MlneuralautoencoderSlice, i : Int, v : Double) -> MlneuralautoencoderSlice {
-  let result = ml_neural_autoencoder_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_autoencoder_slice_sum(s : MlneuralautoencoderSlice) -> Double { @_common.sum(s.data) }

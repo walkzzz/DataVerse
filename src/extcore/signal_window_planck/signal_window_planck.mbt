@@ -107,23 +107,15 @@ pub fn signal_window_planck_series_std(s : SignalwindowplanckSeries) -> Double {
 pub fn signal_window_planck_series_median(s : SignalwindowplanckSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_window_planck_series_scale(s : SignalwindowplanckSeries, f : Double) -> SignalwindowplanckSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_window_planck_series_add(a : SignalwindowplanckSeries, b : SignalwindowplanckSeries) -> SignalwindowplanckSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_window_planck_series_sub(a : SignalwindowplanckSeries, b : SignalwindowplanckSeries) -> SignalwindowplanckSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_window_planck_series_normalize(s : SignalwindowplanckSeries) -> SignalwindowplanckSeries {
@@ -254,22 +246,16 @@ pub fn signal_window_planck_vector_zero(dim : Int) -> SignalwindowplanckVector {
 
 pub fn signal_window_planck_vector_add(a : SignalwindowplanckVector, b : SignalwindowplanckVector) -> SignalwindowplanckVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_window_planck_vector_sub(a : SignalwindowplanckVector, b : SignalwindowplanckVector) -> SignalwindowplanckVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_window_planck_vector_scale(v : SignalwindowplanckVector, s : Double) -> SignalwindowplanckVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_window_planck_vector_dot(a : SignalwindowplanckVector, b : SignalwindowplanckVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_window_planck_frame_get(s : SignalwindowplanckFrame, i : Int) -> D
 }
 
 pub fn signal_window_planck_frame_set(s : SignalwindowplanckFrame, i : Int, v : Double) -> SignalwindowplanckFrame {
-  let result = signal_window_planck_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_planck_frame_sum(s : SignalwindowplanckFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_window_planck_table_get(s : SignalwindowplanckTable, i : Int) -> D
 }
 
 pub fn signal_window_planck_table_set(s : SignalwindowplanckTable, i : Int, v : Double) -> SignalwindowplanckTable {
-  let result = signal_window_planck_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_planck_table_sum(s : SignalwindowplanckTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_window_planck_graphn_get(s : SignalwindowplanckGraphN, i : Int) ->
 }
 
 pub fn signal_window_planck_graphn_set(s : SignalwindowplanckGraphN, i : Int, v : Double) -> SignalwindowplanckGraphN {
-  let result = signal_window_planck_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_planck_graphn_sum(s : SignalwindowplanckGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_window_planck_node_get(s : SignalwindowplanckNode, i : Int) -> Dou
 }
 
 pub fn signal_window_planck_node_set(s : SignalwindowplanckNode, i : Int, v : Double) -> SignalwindowplanckNode {
-  let result = signal_window_planck_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_planck_node_sum(s : SignalwindowplanckNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_window_planck_edge_get(s : SignalwindowplanckEdge, i : Int) -> Dou
 }
 
 pub fn signal_window_planck_edge_set(s : SignalwindowplanckEdge, i : Int, v : Double) -> SignalwindowplanckEdge {
-  let result = signal_window_planck_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_planck_edge_sum(s : SignalwindowplanckEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_window_planck_path_get(s : SignalwindowplanckPath, i : Int) -> Dou
 }
 
 pub fn signal_window_planck_path_set(s : SignalwindowplanckPath, i : Int, v : Double) -> SignalwindowplanckPath {
-  let result = signal_window_planck_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_planck_path_sum(s : SignalwindowplanckPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_window_planck_cluster_get(s : SignalwindowplanckCluster, i : Int) 
 }
 
 pub fn signal_window_planck_cluster_set(s : SignalwindowplanckCluster, i : Int, v : Double) -> SignalwindowplanckCluster {
-  let result = signal_window_planck_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_planck_cluster_sum(s : SignalwindowplanckCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_window_planck_model_get(s : SignalwindowplanckModel, i : Int) -> D
 }
 
 pub fn signal_window_planck_model_set(s : SignalwindowplanckModel, i : Int, v : Double) -> SignalwindowplanckModel {
-  let result = signal_window_planck_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_planck_model_sum(s : SignalwindowplanckModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_window_planck_layer_get(s : SignalwindowplanckLayer, i : Int) -> D
 }
 
 pub fn signal_window_planck_layer_set(s : SignalwindowplanckLayer, i : Int, v : Double) -> SignalwindowplanckLayer {
-  let result = signal_window_planck_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_planck_layer_sum(s : SignalwindowplanckLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_window_planck_buffer_get(s : SignalwindowplanckBuffer, i : Int) ->
 }
 
 pub fn signal_window_planck_buffer_set(s : SignalwindowplanckBuffer, i : Int, v : Double) -> SignalwindowplanckBuffer {
-  let result = signal_window_planck_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_planck_buffer_sum(s : SignalwindowplanckBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_window_planck_cursor_get(s : SignalwindowplanckCursor, i : Int) ->
 }
 
 pub fn signal_window_planck_cursor_set(s : SignalwindowplanckCursor, i : Int, v : Double) -> SignalwindowplanckCursor {
-  let result = signal_window_planck_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_planck_cursor_sum(s : SignalwindowplanckCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_window_planck_view_get(s : SignalwindowplanckView, i : Int) -> Dou
 }
 
 pub fn signal_window_planck_view_set(s : SignalwindowplanckView, i : Int, v : Double) -> SignalwindowplanckView {
-  let result = signal_window_planck_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_planck_view_sum(s : SignalwindowplanckView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_window_planck_range_get(s : SignalwindowplanckRange, i : Int) -> D
 }
 
 pub fn signal_window_planck_range_set(s : SignalwindowplanckRange, i : Int, v : Double) -> SignalwindowplanckRange {
-  let result = signal_window_planck_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_planck_range_sum(s : SignalwindowplanckRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_window_planck_slice_get(s : SignalwindowplanckSlice, i : Int) -> D
 }
 
 pub fn signal_window_planck_slice_set(s : SignalwindowplanckSlice, i : Int, v : Double) -> SignalwindowplanckSlice {
-  let result = signal_window_planck_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_planck_slice_sum(s : SignalwindowplanckSlice) -> Double { @_common.sum(s.data) }

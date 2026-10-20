@@ -107,23 +107,15 @@ pub fn stats_desc_multivariate_series_std(s : StatsdescmultivariateSeries) -> Do
 pub fn stats_desc_multivariate_series_median(s : StatsdescmultivariateSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_desc_multivariate_series_scale(s : StatsdescmultivariateSeries, f : Double) -> StatsdescmultivariateSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_desc_multivariate_series_add(a : StatsdescmultivariateSeries, b : StatsdescmultivariateSeries) -> StatsdescmultivariateSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_desc_multivariate_series_sub(a : StatsdescmultivariateSeries, b : StatsdescmultivariateSeries) -> StatsdescmultivariateSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_desc_multivariate_series_normalize(s : StatsdescmultivariateSeries) -> StatsdescmultivariateSeries {
@@ -254,22 +246,16 @@ pub fn stats_desc_multivariate_vector_zero(dim : Int) -> StatsdescmultivariateVe
 
 pub fn stats_desc_multivariate_vector_add(a : StatsdescmultivariateVector, b : StatsdescmultivariateVector) -> StatsdescmultivariateVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_desc_multivariate_vector_sub(a : StatsdescmultivariateVector, b : StatsdescmultivariateVector) -> StatsdescmultivariateVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_desc_multivariate_vector_scale(v : StatsdescmultivariateVector, s : Double) -> StatsdescmultivariateVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_desc_multivariate_vector_dot(a : StatsdescmultivariateVector, b : StatsdescmultivariateVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_desc_multivariate_frame_get(s : StatsdescmultivariateFrame, i : Int
 }
 
 pub fn stats_desc_multivariate_frame_set(s : StatsdescmultivariateFrame, i : Int, v : Double) -> StatsdescmultivariateFrame {
-  let result = stats_desc_multivariate_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_frame_sum(s : StatsdescmultivariateFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_desc_multivariate_table_get(s : StatsdescmultivariateTable, i : Int
 }
 
 pub fn stats_desc_multivariate_table_set(s : StatsdescmultivariateTable, i : Int, v : Double) -> StatsdescmultivariateTable {
-  let result = stats_desc_multivariate_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_table_sum(s : StatsdescmultivariateTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_desc_multivariate_graphn_get(s : StatsdescmultivariateGraphN, i : I
 }
 
 pub fn stats_desc_multivariate_graphn_set(s : StatsdescmultivariateGraphN, i : Int, v : Double) -> StatsdescmultivariateGraphN {
-  let result = stats_desc_multivariate_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_graphn_sum(s : StatsdescmultivariateGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_desc_multivariate_node_get(s : StatsdescmultivariateNode, i : Int) 
 }
 
 pub fn stats_desc_multivariate_node_set(s : StatsdescmultivariateNode, i : Int, v : Double) -> StatsdescmultivariateNode {
-  let result = stats_desc_multivariate_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_node_sum(s : StatsdescmultivariateNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_desc_multivariate_edge_get(s : StatsdescmultivariateEdge, i : Int) 
 }
 
 pub fn stats_desc_multivariate_edge_set(s : StatsdescmultivariateEdge, i : Int, v : Double) -> StatsdescmultivariateEdge {
-  let result = stats_desc_multivariate_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_edge_sum(s : StatsdescmultivariateEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_desc_multivariate_path_get(s : StatsdescmultivariatePath, i : Int) 
 }
 
 pub fn stats_desc_multivariate_path_set(s : StatsdescmultivariatePath, i : Int, v : Double) -> StatsdescmultivariatePath {
-  let result = stats_desc_multivariate_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_path_sum(s : StatsdescmultivariatePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_desc_multivariate_cluster_get(s : StatsdescmultivariateCluster, i :
 }
 
 pub fn stats_desc_multivariate_cluster_set(s : StatsdescmultivariateCluster, i : Int, v : Double) -> StatsdescmultivariateCluster {
-  let result = stats_desc_multivariate_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_cluster_sum(s : StatsdescmultivariateCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_desc_multivariate_model_get(s : StatsdescmultivariateModel, i : Int
 }
 
 pub fn stats_desc_multivariate_model_set(s : StatsdescmultivariateModel, i : Int, v : Double) -> StatsdescmultivariateModel {
-  let result = stats_desc_multivariate_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_model_sum(s : StatsdescmultivariateModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_desc_multivariate_layer_get(s : StatsdescmultivariateLayer, i : Int
 }
 
 pub fn stats_desc_multivariate_layer_set(s : StatsdescmultivariateLayer, i : Int, v : Double) -> StatsdescmultivariateLayer {
-  let result = stats_desc_multivariate_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_layer_sum(s : StatsdescmultivariateLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_desc_multivariate_buffer_get(s : StatsdescmultivariateBuffer, i : I
 }
 
 pub fn stats_desc_multivariate_buffer_set(s : StatsdescmultivariateBuffer, i : Int, v : Double) -> StatsdescmultivariateBuffer {
-  let result = stats_desc_multivariate_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_buffer_sum(s : StatsdescmultivariateBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_desc_multivariate_cursor_get(s : StatsdescmultivariateCursor, i : I
 }
 
 pub fn stats_desc_multivariate_cursor_set(s : StatsdescmultivariateCursor, i : Int, v : Double) -> StatsdescmultivariateCursor {
-  let result = stats_desc_multivariate_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_cursor_sum(s : StatsdescmultivariateCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_desc_multivariate_view_get(s : StatsdescmultivariateView, i : Int) 
 }
 
 pub fn stats_desc_multivariate_view_set(s : StatsdescmultivariateView, i : Int, v : Double) -> StatsdescmultivariateView {
-  let result = stats_desc_multivariate_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_view_sum(s : StatsdescmultivariateView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_desc_multivariate_range_get(s : StatsdescmultivariateRange, i : Int
 }
 
 pub fn stats_desc_multivariate_range_set(s : StatsdescmultivariateRange, i : Int, v : Double) -> StatsdescmultivariateRange {
-  let result = stats_desc_multivariate_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_range_sum(s : StatsdescmultivariateRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_desc_multivariate_slice_get(s : StatsdescmultivariateSlice, i : Int
 }
 
 pub fn stats_desc_multivariate_slice_set(s : StatsdescmultivariateSlice, i : Int, v : Double) -> StatsdescmultivariateSlice {
-  let result = stats_desc_multivariate_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_multivariate_slice_sum(s : StatsdescmultivariateSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn physics_heat_source_series_std(s : PhysicsheatsourceSeries) -> Double { @
 pub fn physics_heat_source_series_median(s : PhysicsheatsourceSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_heat_source_series_scale(s : PhysicsheatsourceSeries, f : Double) -> PhysicsheatsourceSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_heat_source_series_add(a : PhysicsheatsourceSeries, b : PhysicsheatsourceSeries) -> PhysicsheatsourceSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_heat_source_series_sub(a : PhysicsheatsourceSeries, b : PhysicsheatsourceSeries) -> PhysicsheatsourceSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_heat_source_series_normalize(s : PhysicsheatsourceSeries) -> PhysicsheatsourceSeries {
@@ -254,22 +246,16 @@ pub fn physics_heat_source_vector_zero(dim : Int) -> PhysicsheatsourceVector {
 
 pub fn physics_heat_source_vector_add(a : PhysicsheatsourceVector, b : PhysicsheatsourceVector) -> PhysicsheatsourceVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_heat_source_vector_sub(a : PhysicsheatsourceVector, b : PhysicsheatsourceVector) -> PhysicsheatsourceVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_heat_source_vector_scale(v : PhysicsheatsourceVector, s : Double) -> PhysicsheatsourceVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_heat_source_vector_dot(a : PhysicsheatsourceVector, b : PhysicsheatsourceVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_heat_source_frame_get(s : PhysicsheatsourceFrame, i : Int) -> Dou
 }
 
 pub fn physics_heat_source_frame_set(s : PhysicsheatsourceFrame, i : Int, v : Double) -> PhysicsheatsourceFrame {
-  let result = physics_heat_source_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_frame_sum(s : PhysicsheatsourceFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_heat_source_table_get(s : PhysicsheatsourceTable, i : Int) -> Dou
 }
 
 pub fn physics_heat_source_table_set(s : PhysicsheatsourceTable, i : Int, v : Double) -> PhysicsheatsourceTable {
-  let result = physics_heat_source_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_table_sum(s : PhysicsheatsourceTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_heat_source_graphn_get(s : PhysicsheatsourceGraphN, i : Int) -> D
 }
 
 pub fn physics_heat_source_graphn_set(s : PhysicsheatsourceGraphN, i : Int, v : Double) -> PhysicsheatsourceGraphN {
-  let result = physics_heat_source_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_graphn_sum(s : PhysicsheatsourceGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_heat_source_node_get(s : PhysicsheatsourceNode, i : Int) -> Doubl
 }
 
 pub fn physics_heat_source_node_set(s : PhysicsheatsourceNode, i : Int, v : Double) -> PhysicsheatsourceNode {
-  let result = physics_heat_source_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_node_sum(s : PhysicsheatsourceNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_heat_source_edge_get(s : PhysicsheatsourceEdge, i : Int) -> Doubl
 }
 
 pub fn physics_heat_source_edge_set(s : PhysicsheatsourceEdge, i : Int, v : Double) -> PhysicsheatsourceEdge {
-  let result = physics_heat_source_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_edge_sum(s : PhysicsheatsourceEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_heat_source_path_get(s : PhysicsheatsourcePath, i : Int) -> Doubl
 }
 
 pub fn physics_heat_source_path_set(s : PhysicsheatsourcePath, i : Int, v : Double) -> PhysicsheatsourcePath {
-  let result = physics_heat_source_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_path_sum(s : PhysicsheatsourcePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_heat_source_cluster_get(s : PhysicsheatsourceCluster, i : Int) ->
 }
 
 pub fn physics_heat_source_cluster_set(s : PhysicsheatsourceCluster, i : Int, v : Double) -> PhysicsheatsourceCluster {
-  let result = physics_heat_source_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_cluster_sum(s : PhysicsheatsourceCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_heat_source_model_get(s : PhysicsheatsourceModel, i : Int) -> Dou
 }
 
 pub fn physics_heat_source_model_set(s : PhysicsheatsourceModel, i : Int, v : Double) -> PhysicsheatsourceModel {
-  let result = physics_heat_source_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_model_sum(s : PhysicsheatsourceModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_heat_source_layer_get(s : PhysicsheatsourceLayer, i : Int) -> Dou
 }
 
 pub fn physics_heat_source_layer_set(s : PhysicsheatsourceLayer, i : Int, v : Double) -> PhysicsheatsourceLayer {
-  let result = physics_heat_source_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_layer_sum(s : PhysicsheatsourceLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_heat_source_buffer_get(s : PhysicsheatsourceBuffer, i : Int) -> D
 }
 
 pub fn physics_heat_source_buffer_set(s : PhysicsheatsourceBuffer, i : Int, v : Double) -> PhysicsheatsourceBuffer {
-  let result = physics_heat_source_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_buffer_sum(s : PhysicsheatsourceBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_heat_source_cursor_get(s : PhysicsheatsourceCursor, i : Int) -> D
 }
 
 pub fn physics_heat_source_cursor_set(s : PhysicsheatsourceCursor, i : Int, v : Double) -> PhysicsheatsourceCursor {
-  let result = physics_heat_source_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_cursor_sum(s : PhysicsheatsourceCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_heat_source_view_get(s : PhysicsheatsourceView, i : Int) -> Doubl
 }
 
 pub fn physics_heat_source_view_set(s : PhysicsheatsourceView, i : Int, v : Double) -> PhysicsheatsourceView {
-  let result = physics_heat_source_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_view_sum(s : PhysicsheatsourceView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_heat_source_range_get(s : PhysicsheatsourceRange, i : Int) -> Dou
 }
 
 pub fn physics_heat_source_range_set(s : PhysicsheatsourceRange, i : Int, v : Double) -> PhysicsheatsourceRange {
-  let result = physics_heat_source_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_range_sum(s : PhysicsheatsourceRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_heat_source_slice_get(s : PhysicsheatsourceSlice, i : Int) -> Dou
 }
 
 pub fn physics_heat_source_slice_set(s : PhysicsheatsourceSlice, i : Int, v : Double) -> PhysicsheatsourceSlice {
-  let result = physics_heat_source_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_source_slice_sum(s : PhysicsheatsourceSlice) -> Double { @_common.sum(s.data) }

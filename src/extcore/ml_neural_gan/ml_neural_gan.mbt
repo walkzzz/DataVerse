@@ -107,23 +107,15 @@ pub fn ml_neural_gan_series_std(s : MlneuralganSeries) -> Double { @_common.std(
 pub fn ml_neural_gan_series_median(s : MlneuralganSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_neural_gan_series_scale(s : MlneuralganSeries, f : Double) -> MlneuralganSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_neural_gan_series_add(a : MlneuralganSeries, b : MlneuralganSeries) -> MlneuralganSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_neural_gan_series_sub(a : MlneuralganSeries, b : MlneuralganSeries) -> MlneuralganSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_neural_gan_series_normalize(s : MlneuralganSeries) -> MlneuralganSeries {
@@ -254,22 +246,16 @@ pub fn ml_neural_gan_vector_zero(dim : Int) -> MlneuralganVector {
 
 pub fn ml_neural_gan_vector_add(a : MlneuralganVector, b : MlneuralganVector) -> MlneuralganVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_neural_gan_vector_sub(a : MlneuralganVector, b : MlneuralganVector) -> MlneuralganVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_neural_gan_vector_scale(v : MlneuralganVector, s : Double) -> MlneuralganVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_neural_gan_vector_dot(a : MlneuralganVector, b : MlneuralganVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_neural_gan_frame_get(s : MlneuralganFrame, i : Int) -> Double {
 }
 
 pub fn ml_neural_gan_frame_set(s : MlneuralganFrame, i : Int, v : Double) -> MlneuralganFrame {
-  let result = ml_neural_gan_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gan_frame_sum(s : MlneuralganFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_neural_gan_table_get(s : MlneuralganTable, i : Int) -> Double {
 }
 
 pub fn ml_neural_gan_table_set(s : MlneuralganTable, i : Int, v : Double) -> MlneuralganTable {
-  let result = ml_neural_gan_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gan_table_sum(s : MlneuralganTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_neural_gan_graphn_get(s : MlneuralganGraphN, i : Int) -> Double {
 }
 
 pub fn ml_neural_gan_graphn_set(s : MlneuralganGraphN, i : Int, v : Double) -> MlneuralganGraphN {
-  let result = ml_neural_gan_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gan_graphn_sum(s : MlneuralganGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_neural_gan_node_get(s : MlneuralganNode, i : Int) -> Double {
 }
 
 pub fn ml_neural_gan_node_set(s : MlneuralganNode, i : Int, v : Double) -> MlneuralganNode {
-  let result = ml_neural_gan_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gan_node_sum(s : MlneuralganNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_neural_gan_edge_get(s : MlneuralganEdge, i : Int) -> Double {
 }
 
 pub fn ml_neural_gan_edge_set(s : MlneuralganEdge, i : Int, v : Double) -> MlneuralganEdge {
-  let result = ml_neural_gan_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gan_edge_sum(s : MlneuralganEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_neural_gan_path_get(s : MlneuralganPath, i : Int) -> Double {
 }
 
 pub fn ml_neural_gan_path_set(s : MlneuralganPath, i : Int, v : Double) -> MlneuralganPath {
-  let result = ml_neural_gan_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gan_path_sum(s : MlneuralganPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_neural_gan_cluster_get(s : MlneuralganCluster, i : Int) -> Double {
 }
 
 pub fn ml_neural_gan_cluster_set(s : MlneuralganCluster, i : Int, v : Double) -> MlneuralganCluster {
-  let result = ml_neural_gan_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gan_cluster_sum(s : MlneuralganCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_neural_gan_model_get(s : MlneuralganModel, i : Int) -> Double {
 }
 
 pub fn ml_neural_gan_model_set(s : MlneuralganModel, i : Int, v : Double) -> MlneuralganModel {
-  let result = ml_neural_gan_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gan_model_sum(s : MlneuralganModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_neural_gan_layer_get(s : MlneuralganLayer, i : Int) -> Double {
 }
 
 pub fn ml_neural_gan_layer_set(s : MlneuralganLayer, i : Int, v : Double) -> MlneuralganLayer {
-  let result = ml_neural_gan_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gan_layer_sum(s : MlneuralganLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_neural_gan_buffer_get(s : MlneuralganBuffer, i : Int) -> Double {
 }
 
 pub fn ml_neural_gan_buffer_set(s : MlneuralganBuffer, i : Int, v : Double) -> MlneuralganBuffer {
-  let result = ml_neural_gan_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gan_buffer_sum(s : MlneuralganBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_neural_gan_cursor_get(s : MlneuralganCursor, i : Int) -> Double {
 }
 
 pub fn ml_neural_gan_cursor_set(s : MlneuralganCursor, i : Int, v : Double) -> MlneuralganCursor {
-  let result = ml_neural_gan_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gan_cursor_sum(s : MlneuralganCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_neural_gan_view_get(s : MlneuralganView, i : Int) -> Double {
 }
 
 pub fn ml_neural_gan_view_set(s : MlneuralganView, i : Int, v : Double) -> MlneuralganView {
-  let result = ml_neural_gan_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gan_view_sum(s : MlneuralganView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_neural_gan_range_get(s : MlneuralganRange, i : Int) -> Double {
 }
 
 pub fn ml_neural_gan_range_set(s : MlneuralganRange, i : Int, v : Double) -> MlneuralganRange {
-  let result = ml_neural_gan_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gan_range_sum(s : MlneuralganRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_neural_gan_slice_get(s : MlneuralganSlice, i : Int) -> Double {
 }
 
 pub fn ml_neural_gan_slice_set(s : MlneuralganSlice, i : Int, v : Double) -> MlneuralganSlice {
-  let result = ml_neural_gan_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_gan_slice_sum(s : MlneuralganSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn signal_window_hann_series_std(s : SignalwindowhannSeries) -> Double { @_c
 pub fn signal_window_hann_series_median(s : SignalwindowhannSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_window_hann_series_scale(s : SignalwindowhannSeries, f : Double) -> SignalwindowhannSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_window_hann_series_add(a : SignalwindowhannSeries, b : SignalwindowhannSeries) -> SignalwindowhannSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_window_hann_series_sub(a : SignalwindowhannSeries, b : SignalwindowhannSeries) -> SignalwindowhannSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_window_hann_series_normalize(s : SignalwindowhannSeries) -> SignalwindowhannSeries {
@@ -254,22 +246,16 @@ pub fn signal_window_hann_vector_zero(dim : Int) -> SignalwindowhannVector {
 
 pub fn signal_window_hann_vector_add(a : SignalwindowhannVector, b : SignalwindowhannVector) -> SignalwindowhannVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_window_hann_vector_sub(a : SignalwindowhannVector, b : SignalwindowhannVector) -> SignalwindowhannVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_window_hann_vector_scale(v : SignalwindowhannVector, s : Double) -> SignalwindowhannVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_window_hann_vector_dot(a : SignalwindowhannVector, b : SignalwindowhannVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_window_hann_frame_get(s : SignalwindowhannFrame, i : Int) -> Doubl
 }
 
 pub fn signal_window_hann_frame_set(s : SignalwindowhannFrame, i : Int, v : Double) -> SignalwindowhannFrame {
-  let result = signal_window_hann_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hann_frame_sum(s : SignalwindowhannFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_window_hann_table_get(s : SignalwindowhannTable, i : Int) -> Doubl
 }
 
 pub fn signal_window_hann_table_set(s : SignalwindowhannTable, i : Int, v : Double) -> SignalwindowhannTable {
-  let result = signal_window_hann_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hann_table_sum(s : SignalwindowhannTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_window_hann_graphn_get(s : SignalwindowhannGraphN, i : Int) -> Dou
 }
 
 pub fn signal_window_hann_graphn_set(s : SignalwindowhannGraphN, i : Int, v : Double) -> SignalwindowhannGraphN {
-  let result = signal_window_hann_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hann_graphn_sum(s : SignalwindowhannGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_window_hann_node_get(s : SignalwindowhannNode, i : Int) -> Double 
 }
 
 pub fn signal_window_hann_node_set(s : SignalwindowhannNode, i : Int, v : Double) -> SignalwindowhannNode {
-  let result = signal_window_hann_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hann_node_sum(s : SignalwindowhannNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_window_hann_edge_get(s : SignalwindowhannEdge, i : Int) -> Double 
 }
 
 pub fn signal_window_hann_edge_set(s : SignalwindowhannEdge, i : Int, v : Double) -> SignalwindowhannEdge {
-  let result = signal_window_hann_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hann_edge_sum(s : SignalwindowhannEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_window_hann_path_get(s : SignalwindowhannPath, i : Int) -> Double 
 }
 
 pub fn signal_window_hann_path_set(s : SignalwindowhannPath, i : Int, v : Double) -> SignalwindowhannPath {
-  let result = signal_window_hann_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hann_path_sum(s : SignalwindowhannPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_window_hann_cluster_get(s : SignalwindowhannCluster, i : Int) -> D
 }
 
 pub fn signal_window_hann_cluster_set(s : SignalwindowhannCluster, i : Int, v : Double) -> SignalwindowhannCluster {
-  let result = signal_window_hann_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hann_cluster_sum(s : SignalwindowhannCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_window_hann_model_get(s : SignalwindowhannModel, i : Int) -> Doubl
 }
 
 pub fn signal_window_hann_model_set(s : SignalwindowhannModel, i : Int, v : Double) -> SignalwindowhannModel {
-  let result = signal_window_hann_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hann_model_sum(s : SignalwindowhannModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_window_hann_layer_get(s : SignalwindowhannLayer, i : Int) -> Doubl
 }
 
 pub fn signal_window_hann_layer_set(s : SignalwindowhannLayer, i : Int, v : Double) -> SignalwindowhannLayer {
-  let result = signal_window_hann_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hann_layer_sum(s : SignalwindowhannLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_window_hann_buffer_get(s : SignalwindowhannBuffer, i : Int) -> Dou
 }
 
 pub fn signal_window_hann_buffer_set(s : SignalwindowhannBuffer, i : Int, v : Double) -> SignalwindowhannBuffer {
-  let result = signal_window_hann_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hann_buffer_sum(s : SignalwindowhannBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_window_hann_cursor_get(s : SignalwindowhannCursor, i : Int) -> Dou
 }
 
 pub fn signal_window_hann_cursor_set(s : SignalwindowhannCursor, i : Int, v : Double) -> SignalwindowhannCursor {
-  let result = signal_window_hann_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hann_cursor_sum(s : SignalwindowhannCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_window_hann_view_get(s : SignalwindowhannView, i : Int) -> Double 
 }
 
 pub fn signal_window_hann_view_set(s : SignalwindowhannView, i : Int, v : Double) -> SignalwindowhannView {
-  let result = signal_window_hann_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hann_view_sum(s : SignalwindowhannView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_window_hann_range_get(s : SignalwindowhannRange, i : Int) -> Doubl
 }
 
 pub fn signal_window_hann_range_set(s : SignalwindowhannRange, i : Int, v : Double) -> SignalwindowhannRange {
-  let result = signal_window_hann_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hann_range_sum(s : SignalwindowhannRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_window_hann_slice_get(s : SignalwindowhannSlice, i : Int) -> Doubl
 }
 
 pub fn signal_window_hann_slice_set(s : SignalwindowhannSlice, i : Int, v : Double) -> SignalwindowhannSlice {
-  let result = signal_window_hann_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_hann_slice_sum(s : SignalwindowhannSlice) -> Double { @_common.sum(s.data) }

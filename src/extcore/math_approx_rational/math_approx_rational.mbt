@@ -107,23 +107,15 @@ pub fn math_approx_rational_series_std(s : MathapproxrationalSeries) -> Double {
 pub fn math_approx_rational_series_median(s : MathapproxrationalSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_approx_rational_series_scale(s : MathapproxrationalSeries, f : Double) -> MathapproxrationalSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_approx_rational_series_add(a : MathapproxrationalSeries, b : MathapproxrationalSeries) -> MathapproxrationalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_approx_rational_series_sub(a : MathapproxrationalSeries, b : MathapproxrationalSeries) -> MathapproxrationalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_approx_rational_series_normalize(s : MathapproxrationalSeries) -> MathapproxrationalSeries {
@@ -254,22 +246,16 @@ pub fn math_approx_rational_vector_zero(dim : Int) -> MathapproxrationalVector {
 
 pub fn math_approx_rational_vector_add(a : MathapproxrationalVector, b : MathapproxrationalVector) -> MathapproxrationalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_approx_rational_vector_sub(a : MathapproxrationalVector, b : MathapproxrationalVector) -> MathapproxrationalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_approx_rational_vector_scale(v : MathapproxrationalVector, s : Double) -> MathapproxrationalVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_approx_rational_vector_dot(a : MathapproxrationalVector, b : MathapproxrationalVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_approx_rational_frame_get(s : MathapproxrationalFrame, i : Int) -> D
 }
 
 pub fn math_approx_rational_frame_set(s : MathapproxrationalFrame, i : Int, v : Double) -> MathapproxrationalFrame {
-  let result = math_approx_rational_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_rational_frame_sum(s : MathapproxrationalFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_approx_rational_table_get(s : MathapproxrationalTable, i : Int) -> D
 }
 
 pub fn math_approx_rational_table_set(s : MathapproxrationalTable, i : Int, v : Double) -> MathapproxrationalTable {
-  let result = math_approx_rational_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_rational_table_sum(s : MathapproxrationalTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_approx_rational_graphn_get(s : MathapproxrationalGraphN, i : Int) ->
 }
 
 pub fn math_approx_rational_graphn_set(s : MathapproxrationalGraphN, i : Int, v : Double) -> MathapproxrationalGraphN {
-  let result = math_approx_rational_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_rational_graphn_sum(s : MathapproxrationalGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_approx_rational_node_get(s : MathapproxrationalNode, i : Int) -> Dou
 }
 
 pub fn math_approx_rational_node_set(s : MathapproxrationalNode, i : Int, v : Double) -> MathapproxrationalNode {
-  let result = math_approx_rational_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_rational_node_sum(s : MathapproxrationalNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_approx_rational_edge_get(s : MathapproxrationalEdge, i : Int) -> Dou
 }
 
 pub fn math_approx_rational_edge_set(s : MathapproxrationalEdge, i : Int, v : Double) -> MathapproxrationalEdge {
-  let result = math_approx_rational_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_rational_edge_sum(s : MathapproxrationalEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_approx_rational_path_get(s : MathapproxrationalPath, i : Int) -> Dou
 }
 
 pub fn math_approx_rational_path_set(s : MathapproxrationalPath, i : Int, v : Double) -> MathapproxrationalPath {
-  let result = math_approx_rational_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_rational_path_sum(s : MathapproxrationalPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_approx_rational_cluster_get(s : MathapproxrationalCluster, i : Int) 
 }
 
 pub fn math_approx_rational_cluster_set(s : MathapproxrationalCluster, i : Int, v : Double) -> MathapproxrationalCluster {
-  let result = math_approx_rational_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_rational_cluster_sum(s : MathapproxrationalCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_approx_rational_model_get(s : MathapproxrationalModel, i : Int) -> D
 }
 
 pub fn math_approx_rational_model_set(s : MathapproxrationalModel, i : Int, v : Double) -> MathapproxrationalModel {
-  let result = math_approx_rational_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_rational_model_sum(s : MathapproxrationalModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_approx_rational_layer_get(s : MathapproxrationalLayer, i : Int) -> D
 }
 
 pub fn math_approx_rational_layer_set(s : MathapproxrationalLayer, i : Int, v : Double) -> MathapproxrationalLayer {
-  let result = math_approx_rational_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_rational_layer_sum(s : MathapproxrationalLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_approx_rational_buffer_get(s : MathapproxrationalBuffer, i : Int) ->
 }
 
 pub fn math_approx_rational_buffer_set(s : MathapproxrationalBuffer, i : Int, v : Double) -> MathapproxrationalBuffer {
-  let result = math_approx_rational_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_rational_buffer_sum(s : MathapproxrationalBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_approx_rational_cursor_get(s : MathapproxrationalCursor, i : Int) ->
 }
 
 pub fn math_approx_rational_cursor_set(s : MathapproxrationalCursor, i : Int, v : Double) -> MathapproxrationalCursor {
-  let result = math_approx_rational_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_rational_cursor_sum(s : MathapproxrationalCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_approx_rational_view_get(s : MathapproxrationalView, i : Int) -> Dou
 }
 
 pub fn math_approx_rational_view_set(s : MathapproxrationalView, i : Int, v : Double) -> MathapproxrationalView {
-  let result = math_approx_rational_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_rational_view_sum(s : MathapproxrationalView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_approx_rational_range_get(s : MathapproxrationalRange, i : Int) -> D
 }
 
 pub fn math_approx_rational_range_set(s : MathapproxrationalRange, i : Int, v : Double) -> MathapproxrationalRange {
-  let result = math_approx_rational_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_rational_range_sum(s : MathapproxrationalRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_approx_rational_slice_get(s : MathapproxrationalSlice, i : Int) -> D
 }
 
 pub fn math_approx_rational_slice_set(s : MathapproxrationalSlice, i : Int, v : Double) -> MathapproxrationalSlice {
-  let result = math_approx_rational_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_rational_slice_sum(s : MathapproxrationalSlice) -> Double { @_common.sum(s.data) }

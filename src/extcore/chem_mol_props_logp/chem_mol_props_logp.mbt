@@ -107,23 +107,15 @@ pub fn chem_mol_props_logp_series_std(s : ChemmolpropslogpSeries) -> Double { @_
 pub fn chem_mol_props_logp_series_median(s : ChemmolpropslogpSeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_mol_props_logp_series_scale(s : ChemmolpropslogpSeries, f : Double) -> ChemmolpropslogpSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn chem_mol_props_logp_series_add(a : ChemmolpropslogpSeries, b : ChemmolpropslogpSeries) -> ChemmolpropslogpSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn chem_mol_props_logp_series_sub(a : ChemmolpropslogpSeries, b : ChemmolpropslogpSeries) -> ChemmolpropslogpSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn chem_mol_props_logp_series_normalize(s : ChemmolpropslogpSeries) -> ChemmolpropslogpSeries {
@@ -254,22 +246,16 @@ pub fn chem_mol_props_logp_vector_zero(dim : Int) -> ChemmolpropslogpVector {
 
 pub fn chem_mol_props_logp_vector_add(a : ChemmolpropslogpVector, b : ChemmolpropslogpVector) -> ChemmolpropslogpVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_mol_props_logp_vector_sub(a : ChemmolpropslogpVector, b : ChemmolpropslogpVector) -> ChemmolpropslogpVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_mol_props_logp_vector_scale(v : ChemmolpropslogpVector, s : Double) -> ChemmolpropslogpVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn chem_mol_props_logp_vector_dot(a : ChemmolpropslogpVector, b : ChemmolpropslogpVector) -> Double {
@@ -372,10 +358,9 @@ pub fn chem_mol_props_logp_frame_get(s : ChemmolpropslogpFrame, i : Int) -> Doub
 }
 
 pub fn chem_mol_props_logp_frame_set(s : ChemmolpropslogpFrame, i : Int, v : Double) -> ChemmolpropslogpFrame {
-  let result = chem_mol_props_logp_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_logp_frame_sum(s : ChemmolpropslogpFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn chem_mol_props_logp_table_get(s : ChemmolpropslogpTable, i : Int) -> Doub
 }
 
 pub fn chem_mol_props_logp_table_set(s : ChemmolpropslogpTable, i : Int, v : Double) -> ChemmolpropslogpTable {
-  let result = chem_mol_props_logp_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_logp_table_sum(s : ChemmolpropslogpTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn chem_mol_props_logp_graphn_get(s : ChemmolpropslogpGraphN, i : Int) -> Do
 }
 
 pub fn chem_mol_props_logp_graphn_set(s : ChemmolpropslogpGraphN, i : Int, v : Double) -> ChemmolpropslogpGraphN {
-  let result = chem_mol_props_logp_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_logp_graphn_sum(s : ChemmolpropslogpGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn chem_mol_props_logp_node_get(s : ChemmolpropslogpNode, i : Int) -> Double
 }
 
 pub fn chem_mol_props_logp_node_set(s : ChemmolpropslogpNode, i : Int, v : Double) -> ChemmolpropslogpNode {
-  let result = chem_mol_props_logp_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_logp_node_sum(s : ChemmolpropslogpNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn chem_mol_props_logp_edge_get(s : ChemmolpropslogpEdge, i : Int) -> Double
 }
 
 pub fn chem_mol_props_logp_edge_set(s : ChemmolpropslogpEdge, i : Int, v : Double) -> ChemmolpropslogpEdge {
-  let result = chem_mol_props_logp_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_logp_edge_sum(s : ChemmolpropslogpEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn chem_mol_props_logp_path_get(s : ChemmolpropslogpPath, i : Int) -> Double
 }
 
 pub fn chem_mol_props_logp_path_set(s : ChemmolpropslogpPath, i : Int, v : Double) -> ChemmolpropslogpPath {
-  let result = chem_mol_props_logp_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_logp_path_sum(s : ChemmolpropslogpPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn chem_mol_props_logp_cluster_get(s : ChemmolpropslogpCluster, i : Int) -> 
 }
 
 pub fn chem_mol_props_logp_cluster_set(s : ChemmolpropslogpCluster, i : Int, v : Double) -> ChemmolpropslogpCluster {
-  let result = chem_mol_props_logp_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_logp_cluster_sum(s : ChemmolpropslogpCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn chem_mol_props_logp_model_get(s : ChemmolpropslogpModel, i : Int) -> Doub
 }
 
 pub fn chem_mol_props_logp_model_set(s : ChemmolpropslogpModel, i : Int, v : Double) -> ChemmolpropslogpModel {
-  let result = chem_mol_props_logp_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_logp_model_sum(s : ChemmolpropslogpModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn chem_mol_props_logp_layer_get(s : ChemmolpropslogpLayer, i : Int) -> Doub
 }
 
 pub fn chem_mol_props_logp_layer_set(s : ChemmolpropslogpLayer, i : Int, v : Double) -> ChemmolpropslogpLayer {
-  let result = chem_mol_props_logp_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_logp_layer_sum(s : ChemmolpropslogpLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn chem_mol_props_logp_buffer_get(s : ChemmolpropslogpBuffer, i : Int) -> Do
 }
 
 pub fn chem_mol_props_logp_buffer_set(s : ChemmolpropslogpBuffer, i : Int, v : Double) -> ChemmolpropslogpBuffer {
-  let result = chem_mol_props_logp_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_logp_buffer_sum(s : ChemmolpropslogpBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn chem_mol_props_logp_cursor_get(s : ChemmolpropslogpCursor, i : Int) -> Do
 }
 
 pub fn chem_mol_props_logp_cursor_set(s : ChemmolpropslogpCursor, i : Int, v : Double) -> ChemmolpropslogpCursor {
-  let result = chem_mol_props_logp_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_logp_cursor_sum(s : ChemmolpropslogpCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn chem_mol_props_logp_view_get(s : ChemmolpropslogpView, i : Int) -> Double
 }
 
 pub fn chem_mol_props_logp_view_set(s : ChemmolpropslogpView, i : Int, v : Double) -> ChemmolpropslogpView {
-  let result = chem_mol_props_logp_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_logp_view_sum(s : ChemmolpropslogpView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn chem_mol_props_logp_range_get(s : ChemmolpropslogpRange, i : Int) -> Doub
 }
 
 pub fn chem_mol_props_logp_range_set(s : ChemmolpropslogpRange, i : Int, v : Double) -> ChemmolpropslogpRange {
-  let result = chem_mol_props_logp_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_logp_range_sum(s : ChemmolpropslogpRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn chem_mol_props_logp_slice_get(s : ChemmolpropslogpSlice, i : Int) -> Doub
 }
 
 pub fn chem_mol_props_logp_slice_set(s : ChemmolpropslogpSlice, i : Int, v : Double) -> ChemmolpropslogpSlice {
-  let result = chem_mol_props_logp_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_logp_slice_sum(s : ChemmolpropslogpSlice) -> Double { @_common.sum(s.data) }

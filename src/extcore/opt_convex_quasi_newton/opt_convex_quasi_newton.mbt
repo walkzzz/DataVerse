@@ -107,23 +107,15 @@ pub fn opt_convex_quasi_newton_series_std(s : OptconvexquasinewtonSeries) -> Dou
 pub fn opt_convex_quasi_newton_series_median(s : OptconvexquasinewtonSeries) -> Double { @_common.median(s.vals) }
 
 pub fn opt_convex_quasi_newton_series_scale(s : OptconvexquasinewtonSeries, f : Double) -> OptconvexquasinewtonSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn opt_convex_quasi_newton_series_add(a : OptconvexquasinewtonSeries, b : OptconvexquasinewtonSeries) -> OptconvexquasinewtonSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn opt_convex_quasi_newton_series_sub(a : OptconvexquasinewtonSeries, b : OptconvexquasinewtonSeries) -> OptconvexquasinewtonSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn opt_convex_quasi_newton_series_normalize(s : OptconvexquasinewtonSeries) -> OptconvexquasinewtonSeries {
@@ -254,22 +246,16 @@ pub fn opt_convex_quasi_newton_vector_zero(dim : Int) -> OptconvexquasinewtonVec
 
 pub fn opt_convex_quasi_newton_vector_add(a : OptconvexquasinewtonVector, b : OptconvexquasinewtonVector) -> OptconvexquasinewtonVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_convex_quasi_newton_vector_sub(a : OptconvexquasinewtonVector, b : OptconvexquasinewtonVector) -> OptconvexquasinewtonVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_convex_quasi_newton_vector_scale(v : OptconvexquasinewtonVector, s : Double) -> OptconvexquasinewtonVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn opt_convex_quasi_newton_vector_dot(a : OptconvexquasinewtonVector, b : OptconvexquasinewtonVector) -> Double {
@@ -372,10 +358,9 @@ pub fn opt_convex_quasi_newton_frame_get(s : OptconvexquasinewtonFrame, i : Int)
 }
 
 pub fn opt_convex_quasi_newton_frame_set(s : OptconvexquasinewtonFrame, i : Int, v : Double) -> OptconvexquasinewtonFrame {
-  let result = opt_convex_quasi_newton_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_quasi_newton_frame_sum(s : OptconvexquasinewtonFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn opt_convex_quasi_newton_table_get(s : OptconvexquasinewtonTable, i : Int)
 }
 
 pub fn opt_convex_quasi_newton_table_set(s : OptconvexquasinewtonTable, i : Int, v : Double) -> OptconvexquasinewtonTable {
-  let result = opt_convex_quasi_newton_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_quasi_newton_table_sum(s : OptconvexquasinewtonTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn opt_convex_quasi_newton_graphn_get(s : OptconvexquasinewtonGraphN, i : In
 }
 
 pub fn opt_convex_quasi_newton_graphn_set(s : OptconvexquasinewtonGraphN, i : Int, v : Double) -> OptconvexquasinewtonGraphN {
-  let result = opt_convex_quasi_newton_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_quasi_newton_graphn_sum(s : OptconvexquasinewtonGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn opt_convex_quasi_newton_node_get(s : OptconvexquasinewtonNode, i : Int) -
 }
 
 pub fn opt_convex_quasi_newton_node_set(s : OptconvexquasinewtonNode, i : Int, v : Double) -> OptconvexquasinewtonNode {
-  let result = opt_convex_quasi_newton_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_quasi_newton_node_sum(s : OptconvexquasinewtonNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn opt_convex_quasi_newton_edge_get(s : OptconvexquasinewtonEdge, i : Int) -
 }
 
 pub fn opt_convex_quasi_newton_edge_set(s : OptconvexquasinewtonEdge, i : Int, v : Double) -> OptconvexquasinewtonEdge {
-  let result = opt_convex_quasi_newton_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_quasi_newton_edge_sum(s : OptconvexquasinewtonEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn opt_convex_quasi_newton_path_get(s : OptconvexquasinewtonPath, i : Int) -
 }
 
 pub fn opt_convex_quasi_newton_path_set(s : OptconvexquasinewtonPath, i : Int, v : Double) -> OptconvexquasinewtonPath {
-  let result = opt_convex_quasi_newton_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_quasi_newton_path_sum(s : OptconvexquasinewtonPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn opt_convex_quasi_newton_cluster_get(s : OptconvexquasinewtonCluster, i : 
 }
 
 pub fn opt_convex_quasi_newton_cluster_set(s : OptconvexquasinewtonCluster, i : Int, v : Double) -> OptconvexquasinewtonCluster {
-  let result = opt_convex_quasi_newton_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_quasi_newton_cluster_sum(s : OptconvexquasinewtonCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn opt_convex_quasi_newton_model_get(s : OptconvexquasinewtonModel, i : Int)
 }
 
 pub fn opt_convex_quasi_newton_model_set(s : OptconvexquasinewtonModel, i : Int, v : Double) -> OptconvexquasinewtonModel {
-  let result = opt_convex_quasi_newton_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_quasi_newton_model_sum(s : OptconvexquasinewtonModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn opt_convex_quasi_newton_layer_get(s : OptconvexquasinewtonLayer, i : Int)
 }
 
 pub fn opt_convex_quasi_newton_layer_set(s : OptconvexquasinewtonLayer, i : Int, v : Double) -> OptconvexquasinewtonLayer {
-  let result = opt_convex_quasi_newton_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_quasi_newton_layer_sum(s : OptconvexquasinewtonLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn opt_convex_quasi_newton_buffer_get(s : OptconvexquasinewtonBuffer, i : In
 }
 
 pub fn opt_convex_quasi_newton_buffer_set(s : OptconvexquasinewtonBuffer, i : Int, v : Double) -> OptconvexquasinewtonBuffer {
-  let result = opt_convex_quasi_newton_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_quasi_newton_buffer_sum(s : OptconvexquasinewtonBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn opt_convex_quasi_newton_cursor_get(s : OptconvexquasinewtonCursor, i : In
 }
 
 pub fn opt_convex_quasi_newton_cursor_set(s : OptconvexquasinewtonCursor, i : Int, v : Double) -> OptconvexquasinewtonCursor {
-  let result = opt_convex_quasi_newton_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_quasi_newton_cursor_sum(s : OptconvexquasinewtonCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn opt_convex_quasi_newton_view_get(s : OptconvexquasinewtonView, i : Int) -
 }
 
 pub fn opt_convex_quasi_newton_view_set(s : OptconvexquasinewtonView, i : Int, v : Double) -> OptconvexquasinewtonView {
-  let result = opt_convex_quasi_newton_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_quasi_newton_view_sum(s : OptconvexquasinewtonView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn opt_convex_quasi_newton_range_get(s : OptconvexquasinewtonRange, i : Int)
 }
 
 pub fn opt_convex_quasi_newton_range_set(s : OptconvexquasinewtonRange, i : Int, v : Double) -> OptconvexquasinewtonRange {
-  let result = opt_convex_quasi_newton_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_quasi_newton_range_sum(s : OptconvexquasinewtonRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn opt_convex_quasi_newton_slice_get(s : OptconvexquasinewtonSlice, i : Int)
 }
 
 pub fn opt_convex_quasi_newton_slice_set(s : OptconvexquasinewtonSlice, i : Int, v : Double) -> OptconvexquasinewtonSlice {
-  let result = opt_convex_quasi_newton_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_quasi_newton_slice_sum(s : OptconvexquasinewtonSlice) -> Double { @_common.sum(s.data) }

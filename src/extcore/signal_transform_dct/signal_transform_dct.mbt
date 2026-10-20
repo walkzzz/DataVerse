@@ -107,23 +107,15 @@ pub fn signal_transform_dct_series_std(s : SignaltransformdctSeries) -> Double {
 pub fn signal_transform_dct_series_median(s : SignaltransformdctSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_transform_dct_series_scale(s : SignaltransformdctSeries, f : Double) -> SignaltransformdctSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_transform_dct_series_add(a : SignaltransformdctSeries, b : SignaltransformdctSeries) -> SignaltransformdctSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_transform_dct_series_sub(a : SignaltransformdctSeries, b : SignaltransformdctSeries) -> SignaltransformdctSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_transform_dct_series_normalize(s : SignaltransformdctSeries) -> SignaltransformdctSeries {
@@ -254,22 +246,16 @@ pub fn signal_transform_dct_vector_zero(dim : Int) -> SignaltransformdctVector {
 
 pub fn signal_transform_dct_vector_add(a : SignaltransformdctVector, b : SignaltransformdctVector) -> SignaltransformdctVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_transform_dct_vector_sub(a : SignaltransformdctVector, b : SignaltransformdctVector) -> SignaltransformdctVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_transform_dct_vector_scale(v : SignaltransformdctVector, s : Double) -> SignaltransformdctVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_transform_dct_vector_dot(a : SignaltransformdctVector, b : SignaltransformdctVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_transform_dct_frame_get(s : SignaltransformdctFrame, i : Int) -> D
 }
 
 pub fn signal_transform_dct_frame_set(s : SignaltransformdctFrame, i : Int, v : Double) -> SignaltransformdctFrame {
-  let result = signal_transform_dct_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_frame_sum(s : SignaltransformdctFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_transform_dct_table_get(s : SignaltransformdctTable, i : Int) -> D
 }
 
 pub fn signal_transform_dct_table_set(s : SignaltransformdctTable, i : Int, v : Double) -> SignaltransformdctTable {
-  let result = signal_transform_dct_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_table_sum(s : SignaltransformdctTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_transform_dct_graphn_get(s : SignaltransformdctGraphN, i : Int) ->
 }
 
 pub fn signal_transform_dct_graphn_set(s : SignaltransformdctGraphN, i : Int, v : Double) -> SignaltransformdctGraphN {
-  let result = signal_transform_dct_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_graphn_sum(s : SignaltransformdctGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_transform_dct_node_get(s : SignaltransformdctNode, i : Int) -> Dou
 }
 
 pub fn signal_transform_dct_node_set(s : SignaltransformdctNode, i : Int, v : Double) -> SignaltransformdctNode {
-  let result = signal_transform_dct_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_node_sum(s : SignaltransformdctNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_transform_dct_edge_get(s : SignaltransformdctEdge, i : Int) -> Dou
 }
 
 pub fn signal_transform_dct_edge_set(s : SignaltransformdctEdge, i : Int, v : Double) -> SignaltransformdctEdge {
-  let result = signal_transform_dct_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_edge_sum(s : SignaltransformdctEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_transform_dct_path_get(s : SignaltransformdctPath, i : Int) -> Dou
 }
 
 pub fn signal_transform_dct_path_set(s : SignaltransformdctPath, i : Int, v : Double) -> SignaltransformdctPath {
-  let result = signal_transform_dct_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_path_sum(s : SignaltransformdctPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_transform_dct_cluster_get(s : SignaltransformdctCluster, i : Int) 
 }
 
 pub fn signal_transform_dct_cluster_set(s : SignaltransformdctCluster, i : Int, v : Double) -> SignaltransformdctCluster {
-  let result = signal_transform_dct_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_cluster_sum(s : SignaltransformdctCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_transform_dct_model_get(s : SignaltransformdctModel, i : Int) -> D
 }
 
 pub fn signal_transform_dct_model_set(s : SignaltransformdctModel, i : Int, v : Double) -> SignaltransformdctModel {
-  let result = signal_transform_dct_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_model_sum(s : SignaltransformdctModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_transform_dct_layer_get(s : SignaltransformdctLayer, i : Int) -> D
 }
 
 pub fn signal_transform_dct_layer_set(s : SignaltransformdctLayer, i : Int, v : Double) -> SignaltransformdctLayer {
-  let result = signal_transform_dct_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_layer_sum(s : SignaltransformdctLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_transform_dct_buffer_get(s : SignaltransformdctBuffer, i : Int) ->
 }
 
 pub fn signal_transform_dct_buffer_set(s : SignaltransformdctBuffer, i : Int, v : Double) -> SignaltransformdctBuffer {
-  let result = signal_transform_dct_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_buffer_sum(s : SignaltransformdctBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_transform_dct_cursor_get(s : SignaltransformdctCursor, i : Int) ->
 }
 
 pub fn signal_transform_dct_cursor_set(s : SignaltransformdctCursor, i : Int, v : Double) -> SignaltransformdctCursor {
-  let result = signal_transform_dct_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_cursor_sum(s : SignaltransformdctCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_transform_dct_view_get(s : SignaltransformdctView, i : Int) -> Dou
 }
 
 pub fn signal_transform_dct_view_set(s : SignaltransformdctView, i : Int, v : Double) -> SignaltransformdctView {
-  let result = signal_transform_dct_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_view_sum(s : SignaltransformdctView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_transform_dct_range_get(s : SignaltransformdctRange, i : Int) -> D
 }
 
 pub fn signal_transform_dct_range_set(s : SignaltransformdctRange, i : Int, v : Double) -> SignaltransformdctRange {
-  let result = signal_transform_dct_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_range_sum(s : SignaltransformdctRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_transform_dct_slice_get(s : SignaltransformdctSlice, i : Int) -> D
 }
 
 pub fn signal_transform_dct_slice_set(s : SignaltransformdctSlice, i : Int, v : Double) -> SignaltransformdctSlice {
-  let result = signal_transform_dct_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dct_slice_sum(s : SignaltransformdctSlice) -> Double { @_common.sum(s.data) }

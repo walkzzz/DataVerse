@@ -107,23 +107,15 @@ pub fn crypto_sym_twofish_series_std(s : CryptosymtwofishSeries) -> Double { @_c
 pub fn crypto_sym_twofish_series_median(s : CryptosymtwofishSeries) -> Double { @_common.median(s.vals) }
 
 pub fn crypto_sym_twofish_series_scale(s : CryptosymtwofishSeries, f : Double) -> CryptosymtwofishSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn crypto_sym_twofish_series_add(a : CryptosymtwofishSeries, b : CryptosymtwofishSeries) -> CryptosymtwofishSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn crypto_sym_twofish_series_sub(a : CryptosymtwofishSeries, b : CryptosymtwofishSeries) -> CryptosymtwofishSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn crypto_sym_twofish_series_normalize(s : CryptosymtwofishSeries) -> CryptosymtwofishSeries {
@@ -254,22 +246,16 @@ pub fn crypto_sym_twofish_vector_zero(dim : Int) -> CryptosymtwofishVector {
 
 pub fn crypto_sym_twofish_vector_add(a : CryptosymtwofishVector, b : CryptosymtwofishVector) -> CryptosymtwofishVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_sym_twofish_vector_sub(a : CryptosymtwofishVector, b : CryptosymtwofishVector) -> CryptosymtwofishVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_sym_twofish_vector_scale(v : CryptosymtwofishVector, s : Double) -> CryptosymtwofishVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn crypto_sym_twofish_vector_dot(a : CryptosymtwofishVector, b : CryptosymtwofishVector) -> Double {
@@ -372,10 +358,9 @@ pub fn crypto_sym_twofish_frame_get(s : CryptosymtwofishFrame, i : Int) -> Doubl
 }
 
 pub fn crypto_sym_twofish_frame_set(s : CryptosymtwofishFrame, i : Int, v : Double) -> CryptosymtwofishFrame {
-  let result = crypto_sym_twofish_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_twofish_frame_sum(s : CryptosymtwofishFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn crypto_sym_twofish_table_get(s : CryptosymtwofishTable, i : Int) -> Doubl
 }
 
 pub fn crypto_sym_twofish_table_set(s : CryptosymtwofishTable, i : Int, v : Double) -> CryptosymtwofishTable {
-  let result = crypto_sym_twofish_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_twofish_table_sum(s : CryptosymtwofishTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn crypto_sym_twofish_graphn_get(s : CryptosymtwofishGraphN, i : Int) -> Dou
 }
 
 pub fn crypto_sym_twofish_graphn_set(s : CryptosymtwofishGraphN, i : Int, v : Double) -> CryptosymtwofishGraphN {
-  let result = crypto_sym_twofish_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_twofish_graphn_sum(s : CryptosymtwofishGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn crypto_sym_twofish_node_get(s : CryptosymtwofishNode, i : Int) -> Double 
 }
 
 pub fn crypto_sym_twofish_node_set(s : CryptosymtwofishNode, i : Int, v : Double) -> CryptosymtwofishNode {
-  let result = crypto_sym_twofish_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_twofish_node_sum(s : CryptosymtwofishNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn crypto_sym_twofish_edge_get(s : CryptosymtwofishEdge, i : Int) -> Double 
 }
 
 pub fn crypto_sym_twofish_edge_set(s : CryptosymtwofishEdge, i : Int, v : Double) -> CryptosymtwofishEdge {
-  let result = crypto_sym_twofish_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_twofish_edge_sum(s : CryptosymtwofishEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn crypto_sym_twofish_path_get(s : CryptosymtwofishPath, i : Int) -> Double 
 }
 
 pub fn crypto_sym_twofish_path_set(s : CryptosymtwofishPath, i : Int, v : Double) -> CryptosymtwofishPath {
-  let result = crypto_sym_twofish_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_twofish_path_sum(s : CryptosymtwofishPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn crypto_sym_twofish_cluster_get(s : CryptosymtwofishCluster, i : Int) -> D
 }
 
 pub fn crypto_sym_twofish_cluster_set(s : CryptosymtwofishCluster, i : Int, v : Double) -> CryptosymtwofishCluster {
-  let result = crypto_sym_twofish_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_twofish_cluster_sum(s : CryptosymtwofishCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn crypto_sym_twofish_model_get(s : CryptosymtwofishModel, i : Int) -> Doubl
 }
 
 pub fn crypto_sym_twofish_model_set(s : CryptosymtwofishModel, i : Int, v : Double) -> CryptosymtwofishModel {
-  let result = crypto_sym_twofish_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_twofish_model_sum(s : CryptosymtwofishModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn crypto_sym_twofish_layer_get(s : CryptosymtwofishLayer, i : Int) -> Doubl
 }
 
 pub fn crypto_sym_twofish_layer_set(s : CryptosymtwofishLayer, i : Int, v : Double) -> CryptosymtwofishLayer {
-  let result = crypto_sym_twofish_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_twofish_layer_sum(s : CryptosymtwofishLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn crypto_sym_twofish_buffer_get(s : CryptosymtwofishBuffer, i : Int) -> Dou
 }
 
 pub fn crypto_sym_twofish_buffer_set(s : CryptosymtwofishBuffer, i : Int, v : Double) -> CryptosymtwofishBuffer {
-  let result = crypto_sym_twofish_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_twofish_buffer_sum(s : CryptosymtwofishBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn crypto_sym_twofish_cursor_get(s : CryptosymtwofishCursor, i : Int) -> Dou
 }
 
 pub fn crypto_sym_twofish_cursor_set(s : CryptosymtwofishCursor, i : Int, v : Double) -> CryptosymtwofishCursor {
-  let result = crypto_sym_twofish_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_twofish_cursor_sum(s : CryptosymtwofishCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn crypto_sym_twofish_view_get(s : CryptosymtwofishView, i : Int) -> Double 
 }
 
 pub fn crypto_sym_twofish_view_set(s : CryptosymtwofishView, i : Int, v : Double) -> CryptosymtwofishView {
-  let result = crypto_sym_twofish_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_twofish_view_sum(s : CryptosymtwofishView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn crypto_sym_twofish_range_get(s : CryptosymtwofishRange, i : Int) -> Doubl
 }
 
 pub fn crypto_sym_twofish_range_set(s : CryptosymtwofishRange, i : Int, v : Double) -> CryptosymtwofishRange {
-  let result = crypto_sym_twofish_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_twofish_range_sum(s : CryptosymtwofishRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn crypto_sym_twofish_slice_get(s : CryptosymtwofishSlice, i : Int) -> Doubl
 }
 
 pub fn crypto_sym_twofish_slice_set(s : CryptosymtwofishSlice, i : Int, v : Double) -> CryptosymtwofishSlice {
-  let result = crypto_sym_twofish_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_twofish_slice_sum(s : CryptosymtwofishSlice) -> Double { @_common.sum(s.data) }

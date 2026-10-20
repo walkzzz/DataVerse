@@ -107,23 +107,15 @@ pub fn signal_filter_butterworth_series_std(s : SignalfilterbutterworthSeries) -
 pub fn signal_filter_butterworth_series_median(s : SignalfilterbutterworthSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_filter_butterworth_series_scale(s : SignalfilterbutterworthSeries, f : Double) -> SignalfilterbutterworthSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_filter_butterworth_series_add(a : SignalfilterbutterworthSeries, b : SignalfilterbutterworthSeries) -> SignalfilterbutterworthSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_filter_butterworth_series_sub(a : SignalfilterbutterworthSeries, b : SignalfilterbutterworthSeries) -> SignalfilterbutterworthSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_filter_butterworth_series_normalize(s : SignalfilterbutterworthSeries) -> SignalfilterbutterworthSeries {
@@ -254,22 +246,16 @@ pub fn signal_filter_butterworth_vector_zero(dim : Int) -> Signalfilterbutterwor
 
 pub fn signal_filter_butterworth_vector_add(a : SignalfilterbutterworthVector, b : SignalfilterbutterworthVector) -> SignalfilterbutterworthVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_filter_butterworth_vector_sub(a : SignalfilterbutterworthVector, b : SignalfilterbutterworthVector) -> SignalfilterbutterworthVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_filter_butterworth_vector_scale(v : SignalfilterbutterworthVector, s : Double) -> SignalfilterbutterworthVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_filter_butterworth_vector_dot(a : SignalfilterbutterworthVector, b : SignalfilterbutterworthVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_filter_butterworth_frame_get(s : SignalfilterbutterworthFrame, i :
 }
 
 pub fn signal_filter_butterworth_frame_set(s : SignalfilterbutterworthFrame, i : Int, v : Double) -> SignalfilterbutterworthFrame {
-  let result = signal_filter_butterworth_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_butterworth_frame_sum(s : SignalfilterbutterworthFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_filter_butterworth_table_get(s : SignalfilterbutterworthTable, i :
 }
 
 pub fn signal_filter_butterworth_table_set(s : SignalfilterbutterworthTable, i : Int, v : Double) -> SignalfilterbutterworthTable {
-  let result = signal_filter_butterworth_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_butterworth_table_sum(s : SignalfilterbutterworthTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_filter_butterworth_graphn_get(s : SignalfilterbutterworthGraphN, i
 }
 
 pub fn signal_filter_butterworth_graphn_set(s : SignalfilterbutterworthGraphN, i : Int, v : Double) -> SignalfilterbutterworthGraphN {
-  let result = signal_filter_butterworth_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_butterworth_graphn_sum(s : SignalfilterbutterworthGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_filter_butterworth_node_get(s : SignalfilterbutterworthNode, i : I
 }
 
 pub fn signal_filter_butterworth_node_set(s : SignalfilterbutterworthNode, i : Int, v : Double) -> SignalfilterbutterworthNode {
-  let result = signal_filter_butterworth_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_butterworth_node_sum(s : SignalfilterbutterworthNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_filter_butterworth_edge_get(s : SignalfilterbutterworthEdge, i : I
 }
 
 pub fn signal_filter_butterworth_edge_set(s : SignalfilterbutterworthEdge, i : Int, v : Double) -> SignalfilterbutterworthEdge {
-  let result = signal_filter_butterworth_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_butterworth_edge_sum(s : SignalfilterbutterworthEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_filter_butterworth_path_get(s : SignalfilterbutterworthPath, i : I
 }
 
 pub fn signal_filter_butterworth_path_set(s : SignalfilterbutterworthPath, i : Int, v : Double) -> SignalfilterbutterworthPath {
-  let result = signal_filter_butterworth_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_butterworth_path_sum(s : SignalfilterbutterworthPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_filter_butterworth_cluster_get(s : SignalfilterbutterworthCluster,
 }
 
 pub fn signal_filter_butterworth_cluster_set(s : SignalfilterbutterworthCluster, i : Int, v : Double) -> SignalfilterbutterworthCluster {
-  let result = signal_filter_butterworth_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_butterworth_cluster_sum(s : SignalfilterbutterworthCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_filter_butterworth_model_get(s : SignalfilterbutterworthModel, i :
 }
 
 pub fn signal_filter_butterworth_model_set(s : SignalfilterbutterworthModel, i : Int, v : Double) -> SignalfilterbutterworthModel {
-  let result = signal_filter_butterworth_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_butterworth_model_sum(s : SignalfilterbutterworthModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_filter_butterworth_layer_get(s : SignalfilterbutterworthLayer, i :
 }
 
 pub fn signal_filter_butterworth_layer_set(s : SignalfilterbutterworthLayer, i : Int, v : Double) -> SignalfilterbutterworthLayer {
-  let result = signal_filter_butterworth_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_butterworth_layer_sum(s : SignalfilterbutterworthLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_filter_butterworth_buffer_get(s : SignalfilterbutterworthBuffer, i
 }
 
 pub fn signal_filter_butterworth_buffer_set(s : SignalfilterbutterworthBuffer, i : Int, v : Double) -> SignalfilterbutterworthBuffer {
-  let result = signal_filter_butterworth_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_butterworth_buffer_sum(s : SignalfilterbutterworthBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_filter_butterworth_cursor_get(s : SignalfilterbutterworthCursor, i
 }
 
 pub fn signal_filter_butterworth_cursor_set(s : SignalfilterbutterworthCursor, i : Int, v : Double) -> SignalfilterbutterworthCursor {
-  let result = signal_filter_butterworth_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_butterworth_cursor_sum(s : SignalfilterbutterworthCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_filter_butterworth_view_get(s : SignalfilterbutterworthView, i : I
 }
 
 pub fn signal_filter_butterworth_view_set(s : SignalfilterbutterworthView, i : Int, v : Double) -> SignalfilterbutterworthView {
-  let result = signal_filter_butterworth_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_butterworth_view_sum(s : SignalfilterbutterworthView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_filter_butterworth_range_get(s : SignalfilterbutterworthRange, i :
 }
 
 pub fn signal_filter_butterworth_range_set(s : SignalfilterbutterworthRange, i : Int, v : Double) -> SignalfilterbutterworthRange {
-  let result = signal_filter_butterworth_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_butterworth_range_sum(s : SignalfilterbutterworthRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_filter_butterworth_slice_get(s : SignalfilterbutterworthSlice, i :
 }
 
 pub fn signal_filter_butterworth_slice_set(s : SignalfilterbutterworthSlice, i : Int, v : Double) -> SignalfilterbutterworthSlice {
-  let result = signal_filter_butterworth_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_butterworth_slice_sum(s : SignalfilterbutterworthSlice) -> Double { @_common.sum(s.data) }

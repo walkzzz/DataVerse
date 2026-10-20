@@ -107,23 +107,15 @@ pub fn opt_meta_evolution_series_std(s : OptmetaevolutionSeries) -> Double { @_c
 pub fn opt_meta_evolution_series_median(s : OptmetaevolutionSeries) -> Double { @_common.median(s.vals) }
 
 pub fn opt_meta_evolution_series_scale(s : OptmetaevolutionSeries, f : Double) -> OptmetaevolutionSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn opt_meta_evolution_series_add(a : OptmetaevolutionSeries, b : OptmetaevolutionSeries) -> OptmetaevolutionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn opt_meta_evolution_series_sub(a : OptmetaevolutionSeries, b : OptmetaevolutionSeries) -> OptmetaevolutionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn opt_meta_evolution_series_normalize(s : OptmetaevolutionSeries) -> OptmetaevolutionSeries {
@@ -254,22 +246,16 @@ pub fn opt_meta_evolution_vector_zero(dim : Int) -> OptmetaevolutionVector {
 
 pub fn opt_meta_evolution_vector_add(a : OptmetaevolutionVector, b : OptmetaevolutionVector) -> OptmetaevolutionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_meta_evolution_vector_sub(a : OptmetaevolutionVector, b : OptmetaevolutionVector) -> OptmetaevolutionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_meta_evolution_vector_scale(v : OptmetaevolutionVector, s : Double) -> OptmetaevolutionVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn opt_meta_evolution_vector_dot(a : OptmetaevolutionVector, b : OptmetaevolutionVector) -> Double {
@@ -372,10 +358,9 @@ pub fn opt_meta_evolution_frame_get(s : OptmetaevolutionFrame, i : Int) -> Doubl
 }
 
 pub fn opt_meta_evolution_frame_set(s : OptmetaevolutionFrame, i : Int, v : Double) -> OptmetaevolutionFrame {
-  let result = opt_meta_evolution_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_evolution_frame_sum(s : OptmetaevolutionFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn opt_meta_evolution_table_get(s : OptmetaevolutionTable, i : Int) -> Doubl
 }
 
 pub fn opt_meta_evolution_table_set(s : OptmetaevolutionTable, i : Int, v : Double) -> OptmetaevolutionTable {
-  let result = opt_meta_evolution_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_evolution_table_sum(s : OptmetaevolutionTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn opt_meta_evolution_graphn_get(s : OptmetaevolutionGraphN, i : Int) -> Dou
 }
 
 pub fn opt_meta_evolution_graphn_set(s : OptmetaevolutionGraphN, i : Int, v : Double) -> OptmetaevolutionGraphN {
-  let result = opt_meta_evolution_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_evolution_graphn_sum(s : OptmetaevolutionGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn opt_meta_evolution_node_get(s : OptmetaevolutionNode, i : Int) -> Double 
 }
 
 pub fn opt_meta_evolution_node_set(s : OptmetaevolutionNode, i : Int, v : Double) -> OptmetaevolutionNode {
-  let result = opt_meta_evolution_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_evolution_node_sum(s : OptmetaevolutionNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn opt_meta_evolution_edge_get(s : OptmetaevolutionEdge, i : Int) -> Double 
 }
 
 pub fn opt_meta_evolution_edge_set(s : OptmetaevolutionEdge, i : Int, v : Double) -> OptmetaevolutionEdge {
-  let result = opt_meta_evolution_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_evolution_edge_sum(s : OptmetaevolutionEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn opt_meta_evolution_path_get(s : OptmetaevolutionPath, i : Int) -> Double 
 }
 
 pub fn opt_meta_evolution_path_set(s : OptmetaevolutionPath, i : Int, v : Double) -> OptmetaevolutionPath {
-  let result = opt_meta_evolution_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_evolution_path_sum(s : OptmetaevolutionPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn opt_meta_evolution_cluster_get(s : OptmetaevolutionCluster, i : Int) -> D
 }
 
 pub fn opt_meta_evolution_cluster_set(s : OptmetaevolutionCluster, i : Int, v : Double) -> OptmetaevolutionCluster {
-  let result = opt_meta_evolution_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_evolution_cluster_sum(s : OptmetaevolutionCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn opt_meta_evolution_model_get(s : OptmetaevolutionModel, i : Int) -> Doubl
 }
 
 pub fn opt_meta_evolution_model_set(s : OptmetaevolutionModel, i : Int, v : Double) -> OptmetaevolutionModel {
-  let result = opt_meta_evolution_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_evolution_model_sum(s : OptmetaevolutionModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn opt_meta_evolution_layer_get(s : OptmetaevolutionLayer, i : Int) -> Doubl
 }
 
 pub fn opt_meta_evolution_layer_set(s : OptmetaevolutionLayer, i : Int, v : Double) -> OptmetaevolutionLayer {
-  let result = opt_meta_evolution_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_evolution_layer_sum(s : OptmetaevolutionLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn opt_meta_evolution_buffer_get(s : OptmetaevolutionBuffer, i : Int) -> Dou
 }
 
 pub fn opt_meta_evolution_buffer_set(s : OptmetaevolutionBuffer, i : Int, v : Double) -> OptmetaevolutionBuffer {
-  let result = opt_meta_evolution_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_evolution_buffer_sum(s : OptmetaevolutionBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn opt_meta_evolution_cursor_get(s : OptmetaevolutionCursor, i : Int) -> Dou
 }
 
 pub fn opt_meta_evolution_cursor_set(s : OptmetaevolutionCursor, i : Int, v : Double) -> OptmetaevolutionCursor {
-  let result = opt_meta_evolution_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_evolution_cursor_sum(s : OptmetaevolutionCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn opt_meta_evolution_view_get(s : OptmetaevolutionView, i : Int) -> Double 
 }
 
 pub fn opt_meta_evolution_view_set(s : OptmetaevolutionView, i : Int, v : Double) -> OptmetaevolutionView {
-  let result = opt_meta_evolution_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_evolution_view_sum(s : OptmetaevolutionView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn opt_meta_evolution_range_get(s : OptmetaevolutionRange, i : Int) -> Doubl
 }
 
 pub fn opt_meta_evolution_range_set(s : OptmetaevolutionRange, i : Int, v : Double) -> OptmetaevolutionRange {
-  let result = opt_meta_evolution_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_evolution_range_sum(s : OptmetaevolutionRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn opt_meta_evolution_slice_get(s : OptmetaevolutionSlice, i : Int) -> Doubl
 }
 
 pub fn opt_meta_evolution_slice_set(s : OptmetaevolutionSlice, i : Int, v : Double) -> OptmetaevolutionSlice {
-  let result = opt_meta_evolution_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_evolution_slice_sum(s : OptmetaevolutionSlice) -> Double { @_common.sum(s.data) }

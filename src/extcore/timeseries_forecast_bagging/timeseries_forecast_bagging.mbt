@@ -107,23 +107,15 @@ pub fn timeseries_forecast_bagging_series_std(s : TimeseriesforecastbaggingSerie
 pub fn timeseries_forecast_bagging_series_median(s : TimeseriesforecastbaggingSeries) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_forecast_bagging_series_scale(s : TimeseriesforecastbaggingSeries, f : Double) -> TimeseriesforecastbaggingSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn timeseries_forecast_bagging_series_add(a : TimeseriesforecastbaggingSeries, b : TimeseriesforecastbaggingSeries) -> TimeseriesforecastbaggingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_forecast_bagging_series_sub(a : TimeseriesforecastbaggingSeries, b : TimeseriesforecastbaggingSeries) -> TimeseriesforecastbaggingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_forecast_bagging_series_normalize(s : TimeseriesforecastbaggingSeries) -> TimeseriesforecastbaggingSeries {
@@ -254,22 +246,16 @@ pub fn timeseries_forecast_bagging_vector_zero(dim : Int) -> Timeseriesforecastb
 
 pub fn timeseries_forecast_bagging_vector_add(a : TimeseriesforecastbaggingVector, b : TimeseriesforecastbaggingVector) -> TimeseriesforecastbaggingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_forecast_bagging_vector_sub(a : TimeseriesforecastbaggingVector, b : TimeseriesforecastbaggingVector) -> TimeseriesforecastbaggingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_forecast_bagging_vector_scale(v : TimeseriesforecastbaggingVector, s : Double) -> TimeseriesforecastbaggingVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn timeseries_forecast_bagging_vector_dot(a : TimeseriesforecastbaggingVector, b : TimeseriesforecastbaggingVector) -> Double {
@@ -372,10 +358,9 @@ pub fn timeseries_forecast_bagging_frame_get(s : TimeseriesforecastbaggingFrame,
 }
 
 pub fn timeseries_forecast_bagging_frame_set(s : TimeseriesforecastbaggingFrame, i : Int, v : Double) -> TimeseriesforecastbaggingFrame {
-  let result = timeseries_forecast_bagging_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_bagging_frame_sum(s : TimeseriesforecastbaggingFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn timeseries_forecast_bagging_table_get(s : TimeseriesforecastbaggingTable,
 }
 
 pub fn timeseries_forecast_bagging_table_set(s : TimeseriesforecastbaggingTable, i : Int, v : Double) -> TimeseriesforecastbaggingTable {
-  let result = timeseries_forecast_bagging_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_bagging_table_sum(s : TimeseriesforecastbaggingTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn timeseries_forecast_bagging_graphn_get(s : TimeseriesforecastbaggingGraph
 }
 
 pub fn timeseries_forecast_bagging_graphn_set(s : TimeseriesforecastbaggingGraphN, i : Int, v : Double) -> TimeseriesforecastbaggingGraphN {
-  let result = timeseries_forecast_bagging_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_bagging_graphn_sum(s : TimeseriesforecastbaggingGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn timeseries_forecast_bagging_node_get(s : TimeseriesforecastbaggingNode, i
 }
 
 pub fn timeseries_forecast_bagging_node_set(s : TimeseriesforecastbaggingNode, i : Int, v : Double) -> TimeseriesforecastbaggingNode {
-  let result = timeseries_forecast_bagging_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_bagging_node_sum(s : TimeseriesforecastbaggingNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn timeseries_forecast_bagging_edge_get(s : TimeseriesforecastbaggingEdge, i
 }
 
 pub fn timeseries_forecast_bagging_edge_set(s : TimeseriesforecastbaggingEdge, i : Int, v : Double) -> TimeseriesforecastbaggingEdge {
-  let result = timeseries_forecast_bagging_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_bagging_edge_sum(s : TimeseriesforecastbaggingEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn timeseries_forecast_bagging_path_get(s : TimeseriesforecastbaggingPath, i
 }
 
 pub fn timeseries_forecast_bagging_path_set(s : TimeseriesforecastbaggingPath, i : Int, v : Double) -> TimeseriesforecastbaggingPath {
-  let result = timeseries_forecast_bagging_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_bagging_path_sum(s : TimeseriesforecastbaggingPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn timeseries_forecast_bagging_cluster_get(s : TimeseriesforecastbaggingClus
 }
 
 pub fn timeseries_forecast_bagging_cluster_set(s : TimeseriesforecastbaggingCluster, i : Int, v : Double) -> TimeseriesforecastbaggingCluster {
-  let result = timeseries_forecast_bagging_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_bagging_cluster_sum(s : TimeseriesforecastbaggingCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn timeseries_forecast_bagging_model_get(s : TimeseriesforecastbaggingModel,
 }
 
 pub fn timeseries_forecast_bagging_model_set(s : TimeseriesforecastbaggingModel, i : Int, v : Double) -> TimeseriesforecastbaggingModel {
-  let result = timeseries_forecast_bagging_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_bagging_model_sum(s : TimeseriesforecastbaggingModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn timeseries_forecast_bagging_layer_get(s : TimeseriesforecastbaggingLayer,
 }
 
 pub fn timeseries_forecast_bagging_layer_set(s : TimeseriesforecastbaggingLayer, i : Int, v : Double) -> TimeseriesforecastbaggingLayer {
-  let result = timeseries_forecast_bagging_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_bagging_layer_sum(s : TimeseriesforecastbaggingLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn timeseries_forecast_bagging_buffer_get(s : TimeseriesforecastbaggingBuffe
 }
 
 pub fn timeseries_forecast_bagging_buffer_set(s : TimeseriesforecastbaggingBuffer, i : Int, v : Double) -> TimeseriesforecastbaggingBuffer {
-  let result = timeseries_forecast_bagging_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_bagging_buffer_sum(s : TimeseriesforecastbaggingBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn timeseries_forecast_bagging_cursor_get(s : TimeseriesforecastbaggingCurso
 }
 
 pub fn timeseries_forecast_bagging_cursor_set(s : TimeseriesforecastbaggingCursor, i : Int, v : Double) -> TimeseriesforecastbaggingCursor {
-  let result = timeseries_forecast_bagging_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_bagging_cursor_sum(s : TimeseriesforecastbaggingCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn timeseries_forecast_bagging_view_get(s : TimeseriesforecastbaggingView, i
 }
 
 pub fn timeseries_forecast_bagging_view_set(s : TimeseriesforecastbaggingView, i : Int, v : Double) -> TimeseriesforecastbaggingView {
-  let result = timeseries_forecast_bagging_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_bagging_view_sum(s : TimeseriesforecastbaggingView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn timeseries_forecast_bagging_range_get(s : TimeseriesforecastbaggingRange,
 }
 
 pub fn timeseries_forecast_bagging_range_set(s : TimeseriesforecastbaggingRange, i : Int, v : Double) -> TimeseriesforecastbaggingRange {
-  let result = timeseries_forecast_bagging_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_bagging_range_sum(s : TimeseriesforecastbaggingRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn timeseries_forecast_bagging_slice_get(s : TimeseriesforecastbaggingSlice,
 }
 
 pub fn timeseries_forecast_bagging_slice_set(s : TimeseriesforecastbaggingSlice, i : Int, v : Double) -> TimeseriesforecastbaggingSlice {
-  let result = timeseries_forecast_bagging_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_bagging_slice_sum(s : TimeseriesforecastbaggingSlice) -> Double { @_common.sum(s.data) }

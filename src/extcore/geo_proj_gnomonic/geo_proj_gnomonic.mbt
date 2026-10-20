@@ -107,23 +107,15 @@ pub fn geo_proj_gnomonic_series_std(s : GeoprojgnomonicSeries) -> Double { @_com
 pub fn geo_proj_gnomonic_series_median(s : GeoprojgnomonicSeries) -> Double { @_common.median(s.vals) }
 
 pub fn geo_proj_gnomonic_series_scale(s : GeoprojgnomonicSeries, f : Double) -> GeoprojgnomonicSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn geo_proj_gnomonic_series_add(a : GeoprojgnomonicSeries, b : GeoprojgnomonicSeries) -> GeoprojgnomonicSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn geo_proj_gnomonic_series_sub(a : GeoprojgnomonicSeries, b : GeoprojgnomonicSeries) -> GeoprojgnomonicSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn geo_proj_gnomonic_series_normalize(s : GeoprojgnomonicSeries) -> GeoprojgnomonicSeries {
@@ -254,22 +246,16 @@ pub fn geo_proj_gnomonic_vector_zero(dim : Int) -> GeoprojgnomonicVector {
 
 pub fn geo_proj_gnomonic_vector_add(a : GeoprojgnomonicVector, b : GeoprojgnomonicVector) -> GeoprojgnomonicVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_proj_gnomonic_vector_sub(a : GeoprojgnomonicVector, b : GeoprojgnomonicVector) -> GeoprojgnomonicVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_proj_gnomonic_vector_scale(v : GeoprojgnomonicVector, s : Double) -> GeoprojgnomonicVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn geo_proj_gnomonic_vector_dot(a : GeoprojgnomonicVector, b : GeoprojgnomonicVector) -> Double {
@@ -372,10 +358,9 @@ pub fn geo_proj_gnomonic_frame_get(s : GeoprojgnomonicFrame, i : Int) -> Double 
 }
 
 pub fn geo_proj_gnomonic_frame_set(s : GeoprojgnomonicFrame, i : Int, v : Double) -> GeoprojgnomonicFrame {
-  let result = geo_proj_gnomonic_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_gnomonic_frame_sum(s : GeoprojgnomonicFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn geo_proj_gnomonic_table_get(s : GeoprojgnomonicTable, i : Int) -> Double 
 }
 
 pub fn geo_proj_gnomonic_table_set(s : GeoprojgnomonicTable, i : Int, v : Double) -> GeoprojgnomonicTable {
-  let result = geo_proj_gnomonic_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_gnomonic_table_sum(s : GeoprojgnomonicTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn geo_proj_gnomonic_graphn_get(s : GeoprojgnomonicGraphN, i : Int) -> Doubl
 }
 
 pub fn geo_proj_gnomonic_graphn_set(s : GeoprojgnomonicGraphN, i : Int, v : Double) -> GeoprojgnomonicGraphN {
-  let result = geo_proj_gnomonic_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_gnomonic_graphn_sum(s : GeoprojgnomonicGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn geo_proj_gnomonic_node_get(s : GeoprojgnomonicNode, i : Int) -> Double {
 }
 
 pub fn geo_proj_gnomonic_node_set(s : GeoprojgnomonicNode, i : Int, v : Double) -> GeoprojgnomonicNode {
-  let result = geo_proj_gnomonic_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_gnomonic_node_sum(s : GeoprojgnomonicNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn geo_proj_gnomonic_edge_get(s : GeoprojgnomonicEdge, i : Int) -> Double {
 }
 
 pub fn geo_proj_gnomonic_edge_set(s : GeoprojgnomonicEdge, i : Int, v : Double) -> GeoprojgnomonicEdge {
-  let result = geo_proj_gnomonic_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_gnomonic_edge_sum(s : GeoprojgnomonicEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn geo_proj_gnomonic_path_get(s : GeoprojgnomonicPath, i : Int) -> Double {
 }
 
 pub fn geo_proj_gnomonic_path_set(s : GeoprojgnomonicPath, i : Int, v : Double) -> GeoprojgnomonicPath {
-  let result = geo_proj_gnomonic_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_gnomonic_path_sum(s : GeoprojgnomonicPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn geo_proj_gnomonic_cluster_get(s : GeoprojgnomonicCluster, i : Int) -> Dou
 }
 
 pub fn geo_proj_gnomonic_cluster_set(s : GeoprojgnomonicCluster, i : Int, v : Double) -> GeoprojgnomonicCluster {
-  let result = geo_proj_gnomonic_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_gnomonic_cluster_sum(s : GeoprojgnomonicCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn geo_proj_gnomonic_model_get(s : GeoprojgnomonicModel, i : Int) -> Double 
 }
 
 pub fn geo_proj_gnomonic_model_set(s : GeoprojgnomonicModel, i : Int, v : Double) -> GeoprojgnomonicModel {
-  let result = geo_proj_gnomonic_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_gnomonic_model_sum(s : GeoprojgnomonicModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn geo_proj_gnomonic_layer_get(s : GeoprojgnomonicLayer, i : Int) -> Double 
 }
 
 pub fn geo_proj_gnomonic_layer_set(s : GeoprojgnomonicLayer, i : Int, v : Double) -> GeoprojgnomonicLayer {
-  let result = geo_proj_gnomonic_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_gnomonic_layer_sum(s : GeoprojgnomonicLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn geo_proj_gnomonic_buffer_get(s : GeoprojgnomonicBuffer, i : Int) -> Doubl
 }
 
 pub fn geo_proj_gnomonic_buffer_set(s : GeoprojgnomonicBuffer, i : Int, v : Double) -> GeoprojgnomonicBuffer {
-  let result = geo_proj_gnomonic_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_gnomonic_buffer_sum(s : GeoprojgnomonicBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn geo_proj_gnomonic_cursor_get(s : GeoprojgnomonicCursor, i : Int) -> Doubl
 }
 
 pub fn geo_proj_gnomonic_cursor_set(s : GeoprojgnomonicCursor, i : Int, v : Double) -> GeoprojgnomonicCursor {
-  let result = geo_proj_gnomonic_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_gnomonic_cursor_sum(s : GeoprojgnomonicCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn geo_proj_gnomonic_view_get(s : GeoprojgnomonicView, i : Int) -> Double {
 }
 
 pub fn geo_proj_gnomonic_view_set(s : GeoprojgnomonicView, i : Int, v : Double) -> GeoprojgnomonicView {
-  let result = geo_proj_gnomonic_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_gnomonic_view_sum(s : GeoprojgnomonicView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn geo_proj_gnomonic_range_get(s : GeoprojgnomonicRange, i : Int) -> Double 
 }
 
 pub fn geo_proj_gnomonic_range_set(s : GeoprojgnomonicRange, i : Int, v : Double) -> GeoprojgnomonicRange {
-  let result = geo_proj_gnomonic_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_gnomonic_range_sum(s : GeoprojgnomonicRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn geo_proj_gnomonic_slice_get(s : GeoprojgnomonicSlice, i : Int) -> Double 
 }
 
 pub fn geo_proj_gnomonic_slice_set(s : GeoprojgnomonicSlice, i : Int, v : Double) -> GeoprojgnomonicSlice {
-  let result = geo_proj_gnomonic_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_gnomonic_slice_sum(s : GeoprojgnomonicSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn ds_tree_binary_series_std(s : DstreebinarySeries) -> Double { @_common.st
 pub fn ds_tree_binary_series_median(s : DstreebinarySeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_tree_binary_series_scale(s : DstreebinarySeries, f : Double) -> DstreebinarySeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_tree_binary_series_add(a : DstreebinarySeries, b : DstreebinarySeries) -> DstreebinarySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_tree_binary_series_sub(a : DstreebinarySeries, b : DstreebinarySeries) -> DstreebinarySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_tree_binary_series_normalize(s : DstreebinarySeries) -> DstreebinarySeries {
@@ -254,22 +246,16 @@ pub fn ds_tree_binary_vector_zero(dim : Int) -> DstreebinaryVector {
 
 pub fn ds_tree_binary_vector_add(a : DstreebinaryVector, b : DstreebinaryVector) -> DstreebinaryVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_tree_binary_vector_sub(a : DstreebinaryVector, b : DstreebinaryVector) -> DstreebinaryVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_tree_binary_vector_scale(v : DstreebinaryVector, s : Double) -> DstreebinaryVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_tree_binary_vector_dot(a : DstreebinaryVector, b : DstreebinaryVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_tree_binary_frame_get(s : DstreebinaryFrame, i : Int) -> Double {
 }
 
 pub fn ds_tree_binary_frame_set(s : DstreebinaryFrame, i : Int, v : Double) -> DstreebinaryFrame {
-  let result = ds_tree_binary_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_binary_frame_sum(s : DstreebinaryFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_tree_binary_table_get(s : DstreebinaryTable, i : Int) -> Double {
 }
 
 pub fn ds_tree_binary_table_set(s : DstreebinaryTable, i : Int, v : Double) -> DstreebinaryTable {
-  let result = ds_tree_binary_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_binary_table_sum(s : DstreebinaryTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_tree_binary_graphn_get(s : DstreebinaryGraphN, i : Int) -> Double {
 }
 
 pub fn ds_tree_binary_graphn_set(s : DstreebinaryGraphN, i : Int, v : Double) -> DstreebinaryGraphN {
-  let result = ds_tree_binary_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_binary_graphn_sum(s : DstreebinaryGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_tree_binary_node_get(s : DstreebinaryNode, i : Int) -> Double {
 }
 
 pub fn ds_tree_binary_node_set(s : DstreebinaryNode, i : Int, v : Double) -> DstreebinaryNode {
-  let result = ds_tree_binary_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_binary_node_sum(s : DstreebinaryNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_tree_binary_edge_get(s : DstreebinaryEdge, i : Int) -> Double {
 }
 
 pub fn ds_tree_binary_edge_set(s : DstreebinaryEdge, i : Int, v : Double) -> DstreebinaryEdge {
-  let result = ds_tree_binary_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_binary_edge_sum(s : DstreebinaryEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_tree_binary_path_get(s : DstreebinaryPath, i : Int) -> Double {
 }
 
 pub fn ds_tree_binary_path_set(s : DstreebinaryPath, i : Int, v : Double) -> DstreebinaryPath {
-  let result = ds_tree_binary_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_binary_path_sum(s : DstreebinaryPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_tree_binary_cluster_get(s : DstreebinaryCluster, i : Int) -> Double {
 }
 
 pub fn ds_tree_binary_cluster_set(s : DstreebinaryCluster, i : Int, v : Double) -> DstreebinaryCluster {
-  let result = ds_tree_binary_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_binary_cluster_sum(s : DstreebinaryCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_tree_binary_model_get(s : DstreebinaryModel, i : Int) -> Double {
 }
 
 pub fn ds_tree_binary_model_set(s : DstreebinaryModel, i : Int, v : Double) -> DstreebinaryModel {
-  let result = ds_tree_binary_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_binary_model_sum(s : DstreebinaryModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_tree_binary_layer_get(s : DstreebinaryLayer, i : Int) -> Double {
 }
 
 pub fn ds_tree_binary_layer_set(s : DstreebinaryLayer, i : Int, v : Double) -> DstreebinaryLayer {
-  let result = ds_tree_binary_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_binary_layer_sum(s : DstreebinaryLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_tree_binary_buffer_get(s : DstreebinaryBuffer, i : Int) -> Double {
 }
 
 pub fn ds_tree_binary_buffer_set(s : DstreebinaryBuffer, i : Int, v : Double) -> DstreebinaryBuffer {
-  let result = ds_tree_binary_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_binary_buffer_sum(s : DstreebinaryBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_tree_binary_cursor_get(s : DstreebinaryCursor, i : Int) -> Double {
 }
 
 pub fn ds_tree_binary_cursor_set(s : DstreebinaryCursor, i : Int, v : Double) -> DstreebinaryCursor {
-  let result = ds_tree_binary_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_binary_cursor_sum(s : DstreebinaryCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_tree_binary_view_get(s : DstreebinaryView, i : Int) -> Double {
 }
 
 pub fn ds_tree_binary_view_set(s : DstreebinaryView, i : Int, v : Double) -> DstreebinaryView {
-  let result = ds_tree_binary_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_binary_view_sum(s : DstreebinaryView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_tree_binary_range_get(s : DstreebinaryRange, i : Int) -> Double {
 }
 
 pub fn ds_tree_binary_range_set(s : DstreebinaryRange, i : Int, v : Double) -> DstreebinaryRange {
-  let result = ds_tree_binary_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_binary_range_sum(s : DstreebinaryRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_tree_binary_slice_get(s : DstreebinarySlice, i : Int) -> Double {
 }
 
 pub fn ds_tree_binary_slice_set(s : DstreebinarySlice, i : Int, v : Double) -> DstreebinarySlice {
-  let result = ds_tree_binary_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_binary_slice_sum(s : DstreebinarySlice) -> Double { @_common.sum(s.data) }

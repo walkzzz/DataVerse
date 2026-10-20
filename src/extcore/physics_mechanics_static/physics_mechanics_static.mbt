@@ -107,23 +107,15 @@ pub fn physics_mechanics_static_series_std(s : PhysicsmechanicsstaticSeries) -> 
 pub fn physics_mechanics_static_series_median(s : PhysicsmechanicsstaticSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_mechanics_static_series_scale(s : PhysicsmechanicsstaticSeries, f : Double) -> PhysicsmechanicsstaticSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_mechanics_static_series_add(a : PhysicsmechanicsstaticSeries, b : PhysicsmechanicsstaticSeries) -> PhysicsmechanicsstaticSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_mechanics_static_series_sub(a : PhysicsmechanicsstaticSeries, b : PhysicsmechanicsstaticSeries) -> PhysicsmechanicsstaticSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_mechanics_static_series_normalize(s : PhysicsmechanicsstaticSeries) -> PhysicsmechanicsstaticSeries {
@@ -254,22 +246,16 @@ pub fn physics_mechanics_static_vector_zero(dim : Int) -> Physicsmechanicsstatic
 
 pub fn physics_mechanics_static_vector_add(a : PhysicsmechanicsstaticVector, b : PhysicsmechanicsstaticVector) -> PhysicsmechanicsstaticVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_mechanics_static_vector_sub(a : PhysicsmechanicsstaticVector, b : PhysicsmechanicsstaticVector) -> PhysicsmechanicsstaticVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_mechanics_static_vector_scale(v : PhysicsmechanicsstaticVector, s : Double) -> PhysicsmechanicsstaticVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_mechanics_static_vector_dot(a : PhysicsmechanicsstaticVector, b : PhysicsmechanicsstaticVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_mechanics_static_frame_get(s : PhysicsmechanicsstaticFrame, i : I
 }
 
 pub fn physics_mechanics_static_frame_set(s : PhysicsmechanicsstaticFrame, i : Int, v : Double) -> PhysicsmechanicsstaticFrame {
-  let result = physics_mechanics_static_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_frame_sum(s : PhysicsmechanicsstaticFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_mechanics_static_table_get(s : PhysicsmechanicsstaticTable, i : I
 }
 
 pub fn physics_mechanics_static_table_set(s : PhysicsmechanicsstaticTable, i : Int, v : Double) -> PhysicsmechanicsstaticTable {
-  let result = physics_mechanics_static_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_table_sum(s : PhysicsmechanicsstaticTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_mechanics_static_graphn_get(s : PhysicsmechanicsstaticGraphN, i :
 }
 
 pub fn physics_mechanics_static_graphn_set(s : PhysicsmechanicsstaticGraphN, i : Int, v : Double) -> PhysicsmechanicsstaticGraphN {
-  let result = physics_mechanics_static_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_graphn_sum(s : PhysicsmechanicsstaticGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_mechanics_static_node_get(s : PhysicsmechanicsstaticNode, i : Int
 }
 
 pub fn physics_mechanics_static_node_set(s : PhysicsmechanicsstaticNode, i : Int, v : Double) -> PhysicsmechanicsstaticNode {
-  let result = physics_mechanics_static_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_node_sum(s : PhysicsmechanicsstaticNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_mechanics_static_edge_get(s : PhysicsmechanicsstaticEdge, i : Int
 }
 
 pub fn physics_mechanics_static_edge_set(s : PhysicsmechanicsstaticEdge, i : Int, v : Double) -> PhysicsmechanicsstaticEdge {
-  let result = physics_mechanics_static_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_edge_sum(s : PhysicsmechanicsstaticEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_mechanics_static_path_get(s : PhysicsmechanicsstaticPath, i : Int
 }
 
 pub fn physics_mechanics_static_path_set(s : PhysicsmechanicsstaticPath, i : Int, v : Double) -> PhysicsmechanicsstaticPath {
-  let result = physics_mechanics_static_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_path_sum(s : PhysicsmechanicsstaticPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_mechanics_static_cluster_get(s : PhysicsmechanicsstaticCluster, i
 }
 
 pub fn physics_mechanics_static_cluster_set(s : PhysicsmechanicsstaticCluster, i : Int, v : Double) -> PhysicsmechanicsstaticCluster {
-  let result = physics_mechanics_static_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_cluster_sum(s : PhysicsmechanicsstaticCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_mechanics_static_model_get(s : PhysicsmechanicsstaticModel, i : I
 }
 
 pub fn physics_mechanics_static_model_set(s : PhysicsmechanicsstaticModel, i : Int, v : Double) -> PhysicsmechanicsstaticModel {
-  let result = physics_mechanics_static_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_model_sum(s : PhysicsmechanicsstaticModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_mechanics_static_layer_get(s : PhysicsmechanicsstaticLayer, i : I
 }
 
 pub fn physics_mechanics_static_layer_set(s : PhysicsmechanicsstaticLayer, i : Int, v : Double) -> PhysicsmechanicsstaticLayer {
-  let result = physics_mechanics_static_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_layer_sum(s : PhysicsmechanicsstaticLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_mechanics_static_buffer_get(s : PhysicsmechanicsstaticBuffer, i :
 }
 
 pub fn physics_mechanics_static_buffer_set(s : PhysicsmechanicsstaticBuffer, i : Int, v : Double) -> PhysicsmechanicsstaticBuffer {
-  let result = physics_mechanics_static_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_buffer_sum(s : PhysicsmechanicsstaticBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_mechanics_static_cursor_get(s : PhysicsmechanicsstaticCursor, i :
 }
 
 pub fn physics_mechanics_static_cursor_set(s : PhysicsmechanicsstaticCursor, i : Int, v : Double) -> PhysicsmechanicsstaticCursor {
-  let result = physics_mechanics_static_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_cursor_sum(s : PhysicsmechanicsstaticCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_mechanics_static_view_get(s : PhysicsmechanicsstaticView, i : Int
 }
 
 pub fn physics_mechanics_static_view_set(s : PhysicsmechanicsstaticView, i : Int, v : Double) -> PhysicsmechanicsstaticView {
-  let result = physics_mechanics_static_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_view_sum(s : PhysicsmechanicsstaticView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_mechanics_static_range_get(s : PhysicsmechanicsstaticRange, i : I
 }
 
 pub fn physics_mechanics_static_range_set(s : PhysicsmechanicsstaticRange, i : Int, v : Double) -> PhysicsmechanicsstaticRange {
-  let result = physics_mechanics_static_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_range_sum(s : PhysicsmechanicsstaticRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_mechanics_static_slice_get(s : PhysicsmechanicsstaticSlice, i : I
 }
 
 pub fn physics_mechanics_static_slice_set(s : PhysicsmechanicsstaticSlice, i : Int, v : Double) -> PhysicsmechanicsstaticSlice {
-  let result = physics_mechanics_static_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_static_slice_sum(s : PhysicsmechanicsstaticSlice) -> Double { @_common.sum(s.data) }

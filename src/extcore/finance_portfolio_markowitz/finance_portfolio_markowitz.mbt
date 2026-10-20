@@ -107,23 +107,15 @@ pub fn finance_portfolio_markowitz_series_std(s : FinanceportfoliomarkowitzSerie
 pub fn finance_portfolio_markowitz_series_median(s : FinanceportfoliomarkowitzSeries) -> Double { @_common.median(s.vals) }
 
 pub fn finance_portfolio_markowitz_series_scale(s : FinanceportfoliomarkowitzSeries, f : Double) -> FinanceportfoliomarkowitzSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn finance_portfolio_markowitz_series_add(a : FinanceportfoliomarkowitzSeries, b : FinanceportfoliomarkowitzSeries) -> FinanceportfoliomarkowitzSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn finance_portfolio_markowitz_series_sub(a : FinanceportfoliomarkowitzSeries, b : FinanceportfoliomarkowitzSeries) -> FinanceportfoliomarkowitzSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn finance_portfolio_markowitz_series_normalize(s : FinanceportfoliomarkowitzSeries) -> FinanceportfoliomarkowitzSeries {
@@ -254,22 +246,16 @@ pub fn finance_portfolio_markowitz_vector_zero(dim : Int) -> Financeportfoliomar
 
 pub fn finance_portfolio_markowitz_vector_add(a : FinanceportfoliomarkowitzVector, b : FinanceportfoliomarkowitzVector) -> FinanceportfoliomarkowitzVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_portfolio_markowitz_vector_sub(a : FinanceportfoliomarkowitzVector, b : FinanceportfoliomarkowitzVector) -> FinanceportfoliomarkowitzVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_portfolio_markowitz_vector_scale(v : FinanceportfoliomarkowitzVector, s : Double) -> FinanceportfoliomarkowitzVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn finance_portfolio_markowitz_vector_dot(a : FinanceportfoliomarkowitzVector, b : FinanceportfoliomarkowitzVector) -> Double {
@@ -372,10 +358,9 @@ pub fn finance_portfolio_markowitz_frame_get(s : FinanceportfoliomarkowitzFrame,
 }
 
 pub fn finance_portfolio_markowitz_frame_set(s : FinanceportfoliomarkowitzFrame, i : Int, v : Double) -> FinanceportfoliomarkowitzFrame {
-  let result = finance_portfolio_markowitz_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_markowitz_frame_sum(s : FinanceportfoliomarkowitzFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn finance_portfolio_markowitz_table_get(s : FinanceportfoliomarkowitzTable,
 }
 
 pub fn finance_portfolio_markowitz_table_set(s : FinanceportfoliomarkowitzTable, i : Int, v : Double) -> FinanceportfoliomarkowitzTable {
-  let result = finance_portfolio_markowitz_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_markowitz_table_sum(s : FinanceportfoliomarkowitzTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn finance_portfolio_markowitz_graphn_get(s : FinanceportfoliomarkowitzGraph
 }
 
 pub fn finance_portfolio_markowitz_graphn_set(s : FinanceportfoliomarkowitzGraphN, i : Int, v : Double) -> FinanceportfoliomarkowitzGraphN {
-  let result = finance_portfolio_markowitz_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_markowitz_graphn_sum(s : FinanceportfoliomarkowitzGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn finance_portfolio_markowitz_node_get(s : FinanceportfoliomarkowitzNode, i
 }
 
 pub fn finance_portfolio_markowitz_node_set(s : FinanceportfoliomarkowitzNode, i : Int, v : Double) -> FinanceportfoliomarkowitzNode {
-  let result = finance_portfolio_markowitz_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_markowitz_node_sum(s : FinanceportfoliomarkowitzNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn finance_portfolio_markowitz_edge_get(s : FinanceportfoliomarkowitzEdge, i
 }
 
 pub fn finance_portfolio_markowitz_edge_set(s : FinanceportfoliomarkowitzEdge, i : Int, v : Double) -> FinanceportfoliomarkowitzEdge {
-  let result = finance_portfolio_markowitz_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_markowitz_edge_sum(s : FinanceportfoliomarkowitzEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn finance_portfolio_markowitz_path_get(s : FinanceportfoliomarkowitzPath, i
 }
 
 pub fn finance_portfolio_markowitz_path_set(s : FinanceportfoliomarkowitzPath, i : Int, v : Double) -> FinanceportfoliomarkowitzPath {
-  let result = finance_portfolio_markowitz_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_markowitz_path_sum(s : FinanceportfoliomarkowitzPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn finance_portfolio_markowitz_cluster_get(s : FinanceportfoliomarkowitzClus
 }
 
 pub fn finance_portfolio_markowitz_cluster_set(s : FinanceportfoliomarkowitzCluster, i : Int, v : Double) -> FinanceportfoliomarkowitzCluster {
-  let result = finance_portfolio_markowitz_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_markowitz_cluster_sum(s : FinanceportfoliomarkowitzCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn finance_portfolio_markowitz_model_get(s : FinanceportfoliomarkowitzModel,
 }
 
 pub fn finance_portfolio_markowitz_model_set(s : FinanceportfoliomarkowitzModel, i : Int, v : Double) -> FinanceportfoliomarkowitzModel {
-  let result = finance_portfolio_markowitz_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_markowitz_model_sum(s : FinanceportfoliomarkowitzModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn finance_portfolio_markowitz_layer_get(s : FinanceportfoliomarkowitzLayer,
 }
 
 pub fn finance_portfolio_markowitz_layer_set(s : FinanceportfoliomarkowitzLayer, i : Int, v : Double) -> FinanceportfoliomarkowitzLayer {
-  let result = finance_portfolio_markowitz_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_markowitz_layer_sum(s : FinanceportfoliomarkowitzLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn finance_portfolio_markowitz_buffer_get(s : FinanceportfoliomarkowitzBuffe
 }
 
 pub fn finance_portfolio_markowitz_buffer_set(s : FinanceportfoliomarkowitzBuffer, i : Int, v : Double) -> FinanceportfoliomarkowitzBuffer {
-  let result = finance_portfolio_markowitz_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_markowitz_buffer_sum(s : FinanceportfoliomarkowitzBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn finance_portfolio_markowitz_cursor_get(s : FinanceportfoliomarkowitzCurso
 }
 
 pub fn finance_portfolio_markowitz_cursor_set(s : FinanceportfoliomarkowitzCursor, i : Int, v : Double) -> FinanceportfoliomarkowitzCursor {
-  let result = finance_portfolio_markowitz_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_markowitz_cursor_sum(s : FinanceportfoliomarkowitzCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn finance_portfolio_markowitz_view_get(s : FinanceportfoliomarkowitzView, i
 }
 
 pub fn finance_portfolio_markowitz_view_set(s : FinanceportfoliomarkowitzView, i : Int, v : Double) -> FinanceportfoliomarkowitzView {
-  let result = finance_portfolio_markowitz_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_markowitz_view_sum(s : FinanceportfoliomarkowitzView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn finance_portfolio_markowitz_range_get(s : FinanceportfoliomarkowitzRange,
 }
 
 pub fn finance_portfolio_markowitz_range_set(s : FinanceportfoliomarkowitzRange, i : Int, v : Double) -> FinanceportfoliomarkowitzRange {
-  let result = finance_portfolio_markowitz_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_markowitz_range_sum(s : FinanceportfoliomarkowitzRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn finance_portfolio_markowitz_slice_get(s : FinanceportfoliomarkowitzSlice,
 }
 
 pub fn finance_portfolio_markowitz_slice_set(s : FinanceportfoliomarkowitzSlice, i : Int, v : Double) -> FinanceportfoliomarkowitzSlice {
-  let result = finance_portfolio_markowitz_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_markowitz_slice_sum(s : FinanceportfoliomarkowitzSlice) -> Double { @_common.sum(s.data) }

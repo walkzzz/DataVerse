@@ -107,23 +107,15 @@ pub fn ds_hash_open_series_std(s : DshashopenSeries) -> Double { @_common.std(s.
 pub fn ds_hash_open_series_median(s : DshashopenSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_hash_open_series_scale(s : DshashopenSeries, f : Double) -> DshashopenSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_hash_open_series_add(a : DshashopenSeries, b : DshashopenSeries) -> DshashopenSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_hash_open_series_sub(a : DshashopenSeries, b : DshashopenSeries) -> DshashopenSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_hash_open_series_normalize(s : DshashopenSeries) -> DshashopenSeries {
@@ -254,22 +246,16 @@ pub fn ds_hash_open_vector_zero(dim : Int) -> DshashopenVector {
 
 pub fn ds_hash_open_vector_add(a : DshashopenVector, b : DshashopenVector) -> DshashopenVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_hash_open_vector_sub(a : DshashopenVector, b : DshashopenVector) -> DshashopenVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_hash_open_vector_scale(v : DshashopenVector, s : Double) -> DshashopenVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_hash_open_vector_dot(a : DshashopenVector, b : DshashopenVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_hash_open_frame_get(s : DshashopenFrame, i : Int) -> Double {
 }
 
 pub fn ds_hash_open_frame_set(s : DshashopenFrame, i : Int, v : Double) -> DshashopenFrame {
-  let result = ds_hash_open_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_frame_sum(s : DshashopenFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_hash_open_table_get(s : DshashopenTable, i : Int) -> Double {
 }
 
 pub fn ds_hash_open_table_set(s : DshashopenTable, i : Int, v : Double) -> DshashopenTable {
-  let result = ds_hash_open_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_table_sum(s : DshashopenTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_hash_open_graphn_get(s : DshashopenGraphN, i : Int) -> Double {
 }
 
 pub fn ds_hash_open_graphn_set(s : DshashopenGraphN, i : Int, v : Double) -> DshashopenGraphN {
-  let result = ds_hash_open_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_graphn_sum(s : DshashopenGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_hash_open_node_get(s : DshashopenNode, i : Int) -> Double {
 }
 
 pub fn ds_hash_open_node_set(s : DshashopenNode, i : Int, v : Double) -> DshashopenNode {
-  let result = ds_hash_open_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_node_sum(s : DshashopenNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_hash_open_edge_get(s : DshashopenEdge, i : Int) -> Double {
 }
 
 pub fn ds_hash_open_edge_set(s : DshashopenEdge, i : Int, v : Double) -> DshashopenEdge {
-  let result = ds_hash_open_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_edge_sum(s : DshashopenEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_hash_open_path_get(s : DshashopenPath, i : Int) -> Double {
 }
 
 pub fn ds_hash_open_path_set(s : DshashopenPath, i : Int, v : Double) -> DshashopenPath {
-  let result = ds_hash_open_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_path_sum(s : DshashopenPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_hash_open_cluster_get(s : DshashopenCluster, i : Int) -> Double {
 }
 
 pub fn ds_hash_open_cluster_set(s : DshashopenCluster, i : Int, v : Double) -> DshashopenCluster {
-  let result = ds_hash_open_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_cluster_sum(s : DshashopenCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_hash_open_model_get(s : DshashopenModel, i : Int) -> Double {
 }
 
 pub fn ds_hash_open_model_set(s : DshashopenModel, i : Int, v : Double) -> DshashopenModel {
-  let result = ds_hash_open_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_model_sum(s : DshashopenModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_hash_open_layer_get(s : DshashopenLayer, i : Int) -> Double {
 }
 
 pub fn ds_hash_open_layer_set(s : DshashopenLayer, i : Int, v : Double) -> DshashopenLayer {
-  let result = ds_hash_open_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_layer_sum(s : DshashopenLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_hash_open_buffer_get(s : DshashopenBuffer, i : Int) -> Double {
 }
 
 pub fn ds_hash_open_buffer_set(s : DshashopenBuffer, i : Int, v : Double) -> DshashopenBuffer {
-  let result = ds_hash_open_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_buffer_sum(s : DshashopenBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_hash_open_cursor_get(s : DshashopenCursor, i : Int) -> Double {
 }
 
 pub fn ds_hash_open_cursor_set(s : DshashopenCursor, i : Int, v : Double) -> DshashopenCursor {
-  let result = ds_hash_open_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_cursor_sum(s : DshashopenCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_hash_open_view_get(s : DshashopenView, i : Int) -> Double {
 }
 
 pub fn ds_hash_open_view_set(s : DshashopenView, i : Int, v : Double) -> DshashopenView {
-  let result = ds_hash_open_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_view_sum(s : DshashopenView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_hash_open_range_get(s : DshashopenRange, i : Int) -> Double {
 }
 
 pub fn ds_hash_open_range_set(s : DshashopenRange, i : Int, v : Double) -> DshashopenRange {
-  let result = ds_hash_open_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_range_sum(s : DshashopenRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_hash_open_slice_get(s : DshashopenSlice, i : Int) -> Double {
 }
 
 pub fn ds_hash_open_slice_set(s : DshashopenSlice, i : Int, v : Double) -> DshashopenSlice {
-  let result = ds_hash_open_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_open_slice_sum(s : DshashopenSlice) -> Double { @_common.sum(s.data) }

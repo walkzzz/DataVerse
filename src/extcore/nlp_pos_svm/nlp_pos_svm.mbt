@@ -107,23 +107,15 @@ pub fn nlp_pos_svm_series_std(s : NlppossvmSeries) -> Double { @_common.std(s.va
 pub fn nlp_pos_svm_series_median(s : NlppossvmSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_pos_svm_series_scale(s : NlppossvmSeries, f : Double) -> NlppossvmSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_pos_svm_series_add(a : NlppossvmSeries, b : NlppossvmSeries) -> NlppossvmSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_pos_svm_series_sub(a : NlppossvmSeries, b : NlppossvmSeries) -> NlppossvmSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_pos_svm_series_normalize(s : NlppossvmSeries) -> NlppossvmSeries {
@@ -254,22 +246,16 @@ pub fn nlp_pos_svm_vector_zero(dim : Int) -> NlppossvmVector {
 
 pub fn nlp_pos_svm_vector_add(a : NlppossvmVector, b : NlppossvmVector) -> NlppossvmVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_pos_svm_vector_sub(a : NlppossvmVector, b : NlppossvmVector) -> NlppossvmVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_pos_svm_vector_scale(v : NlppossvmVector, s : Double) -> NlppossvmVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_pos_svm_vector_dot(a : NlppossvmVector, b : NlppossvmVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_pos_svm_frame_get(s : NlppossvmFrame, i : Int) -> Double {
 }
 
 pub fn nlp_pos_svm_frame_set(s : NlppossvmFrame, i : Int, v : Double) -> NlppossvmFrame {
-  let result = nlp_pos_svm_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_svm_frame_sum(s : NlppossvmFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_pos_svm_table_get(s : NlppossvmTable, i : Int) -> Double {
 }
 
 pub fn nlp_pos_svm_table_set(s : NlppossvmTable, i : Int, v : Double) -> NlppossvmTable {
-  let result = nlp_pos_svm_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_svm_table_sum(s : NlppossvmTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_pos_svm_graphn_get(s : NlppossvmGraphN, i : Int) -> Double {
 }
 
 pub fn nlp_pos_svm_graphn_set(s : NlppossvmGraphN, i : Int, v : Double) -> NlppossvmGraphN {
-  let result = nlp_pos_svm_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_svm_graphn_sum(s : NlppossvmGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_pos_svm_node_get(s : NlppossvmNode, i : Int) -> Double {
 }
 
 pub fn nlp_pos_svm_node_set(s : NlppossvmNode, i : Int, v : Double) -> NlppossvmNode {
-  let result = nlp_pos_svm_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_svm_node_sum(s : NlppossvmNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_pos_svm_edge_get(s : NlppossvmEdge, i : Int) -> Double {
 }
 
 pub fn nlp_pos_svm_edge_set(s : NlppossvmEdge, i : Int, v : Double) -> NlppossvmEdge {
-  let result = nlp_pos_svm_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_svm_edge_sum(s : NlppossvmEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_pos_svm_path_get(s : NlppossvmPath, i : Int) -> Double {
 }
 
 pub fn nlp_pos_svm_path_set(s : NlppossvmPath, i : Int, v : Double) -> NlppossvmPath {
-  let result = nlp_pos_svm_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_svm_path_sum(s : NlppossvmPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_pos_svm_cluster_get(s : NlppossvmCluster, i : Int) -> Double {
 }
 
 pub fn nlp_pos_svm_cluster_set(s : NlppossvmCluster, i : Int, v : Double) -> NlppossvmCluster {
-  let result = nlp_pos_svm_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_svm_cluster_sum(s : NlppossvmCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_pos_svm_model_get(s : NlppossvmModel, i : Int) -> Double {
 }
 
 pub fn nlp_pos_svm_model_set(s : NlppossvmModel, i : Int, v : Double) -> NlppossvmModel {
-  let result = nlp_pos_svm_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_svm_model_sum(s : NlppossvmModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_pos_svm_layer_get(s : NlppossvmLayer, i : Int) -> Double {
 }
 
 pub fn nlp_pos_svm_layer_set(s : NlppossvmLayer, i : Int, v : Double) -> NlppossvmLayer {
-  let result = nlp_pos_svm_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_svm_layer_sum(s : NlppossvmLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_pos_svm_buffer_get(s : NlppossvmBuffer, i : Int) -> Double {
 }
 
 pub fn nlp_pos_svm_buffer_set(s : NlppossvmBuffer, i : Int, v : Double) -> NlppossvmBuffer {
-  let result = nlp_pos_svm_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_svm_buffer_sum(s : NlppossvmBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_pos_svm_cursor_get(s : NlppossvmCursor, i : Int) -> Double {
 }
 
 pub fn nlp_pos_svm_cursor_set(s : NlppossvmCursor, i : Int, v : Double) -> NlppossvmCursor {
-  let result = nlp_pos_svm_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_svm_cursor_sum(s : NlppossvmCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_pos_svm_view_get(s : NlppossvmView, i : Int) -> Double {
 }
 
 pub fn nlp_pos_svm_view_set(s : NlppossvmView, i : Int, v : Double) -> NlppossvmView {
-  let result = nlp_pos_svm_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_svm_view_sum(s : NlppossvmView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_pos_svm_range_get(s : NlppossvmRange, i : Int) -> Double {
 }
 
 pub fn nlp_pos_svm_range_set(s : NlppossvmRange, i : Int, v : Double) -> NlppossvmRange {
-  let result = nlp_pos_svm_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_svm_range_sum(s : NlppossvmRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_pos_svm_slice_get(s : NlppossvmSlice, i : Int) -> Double {
 }
 
 pub fn nlp_pos_svm_slice_set(s : NlppossvmSlice, i : Int, v : Double) -> NlppossvmSlice {
-  let result = nlp_pos_svm_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_svm_slice_sum(s : NlppossvmSlice) -> Double { @_common.sum(s.data) }

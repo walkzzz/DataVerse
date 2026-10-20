@@ -107,23 +107,15 @@ pub fn geo_buffer_ellipse_series_std(s : GeobufferellipseSeries) -> Double { @_c
 pub fn geo_buffer_ellipse_series_median(s : GeobufferellipseSeries) -> Double { @_common.median(s.vals) }
 
 pub fn geo_buffer_ellipse_series_scale(s : GeobufferellipseSeries, f : Double) -> GeobufferellipseSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn geo_buffer_ellipse_series_add(a : GeobufferellipseSeries, b : GeobufferellipseSeries) -> GeobufferellipseSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn geo_buffer_ellipse_series_sub(a : GeobufferellipseSeries, b : GeobufferellipseSeries) -> GeobufferellipseSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn geo_buffer_ellipse_series_normalize(s : GeobufferellipseSeries) -> GeobufferellipseSeries {
@@ -254,22 +246,16 @@ pub fn geo_buffer_ellipse_vector_zero(dim : Int) -> GeobufferellipseVector {
 
 pub fn geo_buffer_ellipse_vector_add(a : GeobufferellipseVector, b : GeobufferellipseVector) -> GeobufferellipseVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_buffer_ellipse_vector_sub(a : GeobufferellipseVector, b : GeobufferellipseVector) -> GeobufferellipseVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_buffer_ellipse_vector_scale(v : GeobufferellipseVector, s : Double) -> GeobufferellipseVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn geo_buffer_ellipse_vector_dot(a : GeobufferellipseVector, b : GeobufferellipseVector) -> Double {
@@ -372,10 +358,9 @@ pub fn geo_buffer_ellipse_frame_get(s : GeobufferellipseFrame, i : Int) -> Doubl
 }
 
 pub fn geo_buffer_ellipse_frame_set(s : GeobufferellipseFrame, i : Int, v : Double) -> GeobufferellipseFrame {
-  let result = geo_buffer_ellipse_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_ellipse_frame_sum(s : GeobufferellipseFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn geo_buffer_ellipse_table_get(s : GeobufferellipseTable, i : Int) -> Doubl
 }
 
 pub fn geo_buffer_ellipse_table_set(s : GeobufferellipseTable, i : Int, v : Double) -> GeobufferellipseTable {
-  let result = geo_buffer_ellipse_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_ellipse_table_sum(s : GeobufferellipseTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn geo_buffer_ellipse_graphn_get(s : GeobufferellipseGraphN, i : Int) -> Dou
 }
 
 pub fn geo_buffer_ellipse_graphn_set(s : GeobufferellipseGraphN, i : Int, v : Double) -> GeobufferellipseGraphN {
-  let result = geo_buffer_ellipse_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_ellipse_graphn_sum(s : GeobufferellipseGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn geo_buffer_ellipse_node_get(s : GeobufferellipseNode, i : Int) -> Double 
 }
 
 pub fn geo_buffer_ellipse_node_set(s : GeobufferellipseNode, i : Int, v : Double) -> GeobufferellipseNode {
-  let result = geo_buffer_ellipse_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_ellipse_node_sum(s : GeobufferellipseNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn geo_buffer_ellipse_edge_get(s : GeobufferellipseEdge, i : Int) -> Double 
 }
 
 pub fn geo_buffer_ellipse_edge_set(s : GeobufferellipseEdge, i : Int, v : Double) -> GeobufferellipseEdge {
-  let result = geo_buffer_ellipse_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_ellipse_edge_sum(s : GeobufferellipseEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn geo_buffer_ellipse_path_get(s : GeobufferellipsePath, i : Int) -> Double 
 }
 
 pub fn geo_buffer_ellipse_path_set(s : GeobufferellipsePath, i : Int, v : Double) -> GeobufferellipsePath {
-  let result = geo_buffer_ellipse_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_ellipse_path_sum(s : GeobufferellipsePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn geo_buffer_ellipse_cluster_get(s : GeobufferellipseCluster, i : Int) -> D
 }
 
 pub fn geo_buffer_ellipse_cluster_set(s : GeobufferellipseCluster, i : Int, v : Double) -> GeobufferellipseCluster {
-  let result = geo_buffer_ellipse_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_ellipse_cluster_sum(s : GeobufferellipseCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn geo_buffer_ellipse_model_get(s : GeobufferellipseModel, i : Int) -> Doubl
 }
 
 pub fn geo_buffer_ellipse_model_set(s : GeobufferellipseModel, i : Int, v : Double) -> GeobufferellipseModel {
-  let result = geo_buffer_ellipse_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_ellipse_model_sum(s : GeobufferellipseModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn geo_buffer_ellipse_layer_get(s : GeobufferellipseLayer, i : Int) -> Doubl
 }
 
 pub fn geo_buffer_ellipse_layer_set(s : GeobufferellipseLayer, i : Int, v : Double) -> GeobufferellipseLayer {
-  let result = geo_buffer_ellipse_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_ellipse_layer_sum(s : GeobufferellipseLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn geo_buffer_ellipse_buffer_get(s : GeobufferellipseBuffer, i : Int) -> Dou
 }
 
 pub fn geo_buffer_ellipse_buffer_set(s : GeobufferellipseBuffer, i : Int, v : Double) -> GeobufferellipseBuffer {
-  let result = geo_buffer_ellipse_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_ellipse_buffer_sum(s : GeobufferellipseBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn geo_buffer_ellipse_cursor_get(s : GeobufferellipseCursor, i : Int) -> Dou
 }
 
 pub fn geo_buffer_ellipse_cursor_set(s : GeobufferellipseCursor, i : Int, v : Double) -> GeobufferellipseCursor {
-  let result = geo_buffer_ellipse_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_ellipse_cursor_sum(s : GeobufferellipseCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn geo_buffer_ellipse_view_get(s : GeobufferellipseView, i : Int) -> Double 
 }
 
 pub fn geo_buffer_ellipse_view_set(s : GeobufferellipseView, i : Int, v : Double) -> GeobufferellipseView {
-  let result = geo_buffer_ellipse_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_ellipse_view_sum(s : GeobufferellipseView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn geo_buffer_ellipse_range_get(s : GeobufferellipseRange, i : Int) -> Doubl
 }
 
 pub fn geo_buffer_ellipse_range_set(s : GeobufferellipseRange, i : Int, v : Double) -> GeobufferellipseRange {
-  let result = geo_buffer_ellipse_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_ellipse_range_sum(s : GeobufferellipseRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn geo_buffer_ellipse_slice_get(s : GeobufferellipseSlice, i : Int) -> Doubl
 }
 
 pub fn geo_buffer_ellipse_slice_set(s : GeobufferellipseSlice, i : Int, v : Double) -> GeobufferellipseSlice {
-  let result = geo_buffer_ellipse_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_ellipse_slice_sum(s : GeobufferellipseSlice) -> Double { @_common.sum(s.data) }

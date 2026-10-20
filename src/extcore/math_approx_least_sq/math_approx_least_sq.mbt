@@ -107,23 +107,15 @@ pub fn math_approx_least_sq_series_std(s : MathapproxleastsqSeries) -> Double { 
 pub fn math_approx_least_sq_series_median(s : MathapproxleastsqSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_approx_least_sq_series_scale(s : MathapproxleastsqSeries, f : Double) -> MathapproxleastsqSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_approx_least_sq_series_add(a : MathapproxleastsqSeries, b : MathapproxleastsqSeries) -> MathapproxleastsqSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_approx_least_sq_series_sub(a : MathapproxleastsqSeries, b : MathapproxleastsqSeries) -> MathapproxleastsqSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_approx_least_sq_series_normalize(s : MathapproxleastsqSeries) -> MathapproxleastsqSeries {
@@ -254,22 +246,16 @@ pub fn math_approx_least_sq_vector_zero(dim : Int) -> MathapproxleastsqVector {
 
 pub fn math_approx_least_sq_vector_add(a : MathapproxleastsqVector, b : MathapproxleastsqVector) -> MathapproxleastsqVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_approx_least_sq_vector_sub(a : MathapproxleastsqVector, b : MathapproxleastsqVector) -> MathapproxleastsqVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_approx_least_sq_vector_scale(v : MathapproxleastsqVector, s : Double) -> MathapproxleastsqVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_approx_least_sq_vector_dot(a : MathapproxleastsqVector, b : MathapproxleastsqVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_approx_least_sq_frame_get(s : MathapproxleastsqFrame, i : Int) -> Do
 }
 
 pub fn math_approx_least_sq_frame_set(s : MathapproxleastsqFrame, i : Int, v : Double) -> MathapproxleastsqFrame {
-  let result = math_approx_least_sq_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_least_sq_frame_sum(s : MathapproxleastsqFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_approx_least_sq_table_get(s : MathapproxleastsqTable, i : Int) -> Do
 }
 
 pub fn math_approx_least_sq_table_set(s : MathapproxleastsqTable, i : Int, v : Double) -> MathapproxleastsqTable {
-  let result = math_approx_least_sq_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_least_sq_table_sum(s : MathapproxleastsqTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_approx_least_sq_graphn_get(s : MathapproxleastsqGraphN, i : Int) -> 
 }
 
 pub fn math_approx_least_sq_graphn_set(s : MathapproxleastsqGraphN, i : Int, v : Double) -> MathapproxleastsqGraphN {
-  let result = math_approx_least_sq_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_least_sq_graphn_sum(s : MathapproxleastsqGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_approx_least_sq_node_get(s : MathapproxleastsqNode, i : Int) -> Doub
 }
 
 pub fn math_approx_least_sq_node_set(s : MathapproxleastsqNode, i : Int, v : Double) -> MathapproxleastsqNode {
-  let result = math_approx_least_sq_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_least_sq_node_sum(s : MathapproxleastsqNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_approx_least_sq_edge_get(s : MathapproxleastsqEdge, i : Int) -> Doub
 }
 
 pub fn math_approx_least_sq_edge_set(s : MathapproxleastsqEdge, i : Int, v : Double) -> MathapproxleastsqEdge {
-  let result = math_approx_least_sq_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_least_sq_edge_sum(s : MathapproxleastsqEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_approx_least_sq_path_get(s : MathapproxleastsqPath, i : Int) -> Doub
 }
 
 pub fn math_approx_least_sq_path_set(s : MathapproxleastsqPath, i : Int, v : Double) -> MathapproxleastsqPath {
-  let result = math_approx_least_sq_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_least_sq_path_sum(s : MathapproxleastsqPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_approx_least_sq_cluster_get(s : MathapproxleastsqCluster, i : Int) -
 }
 
 pub fn math_approx_least_sq_cluster_set(s : MathapproxleastsqCluster, i : Int, v : Double) -> MathapproxleastsqCluster {
-  let result = math_approx_least_sq_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_least_sq_cluster_sum(s : MathapproxleastsqCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_approx_least_sq_model_get(s : MathapproxleastsqModel, i : Int) -> Do
 }
 
 pub fn math_approx_least_sq_model_set(s : MathapproxleastsqModel, i : Int, v : Double) -> MathapproxleastsqModel {
-  let result = math_approx_least_sq_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_least_sq_model_sum(s : MathapproxleastsqModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_approx_least_sq_layer_get(s : MathapproxleastsqLayer, i : Int) -> Do
 }
 
 pub fn math_approx_least_sq_layer_set(s : MathapproxleastsqLayer, i : Int, v : Double) -> MathapproxleastsqLayer {
-  let result = math_approx_least_sq_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_least_sq_layer_sum(s : MathapproxleastsqLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_approx_least_sq_buffer_get(s : MathapproxleastsqBuffer, i : Int) -> 
 }
 
 pub fn math_approx_least_sq_buffer_set(s : MathapproxleastsqBuffer, i : Int, v : Double) -> MathapproxleastsqBuffer {
-  let result = math_approx_least_sq_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_least_sq_buffer_sum(s : MathapproxleastsqBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_approx_least_sq_cursor_get(s : MathapproxleastsqCursor, i : Int) -> 
 }
 
 pub fn math_approx_least_sq_cursor_set(s : MathapproxleastsqCursor, i : Int, v : Double) -> MathapproxleastsqCursor {
-  let result = math_approx_least_sq_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_least_sq_cursor_sum(s : MathapproxleastsqCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_approx_least_sq_view_get(s : MathapproxleastsqView, i : Int) -> Doub
 }
 
 pub fn math_approx_least_sq_view_set(s : MathapproxleastsqView, i : Int, v : Double) -> MathapproxleastsqView {
-  let result = math_approx_least_sq_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_least_sq_view_sum(s : MathapproxleastsqView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_approx_least_sq_range_get(s : MathapproxleastsqRange, i : Int) -> Do
 }
 
 pub fn math_approx_least_sq_range_set(s : MathapproxleastsqRange, i : Int, v : Double) -> MathapproxleastsqRange {
-  let result = math_approx_least_sq_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_least_sq_range_sum(s : MathapproxleastsqRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_approx_least_sq_slice_get(s : MathapproxleastsqSlice, i : Int) -> Do
 }
 
 pub fn math_approx_least_sq_slice_set(s : MathapproxleastsqSlice, i : Int, v : Double) -> MathapproxleastsqSlice {
-  let result = math_approx_least_sq_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_least_sq_slice_sum(s : MathapproxleastsqSlice) -> Double { @_common.sum(s.data) }

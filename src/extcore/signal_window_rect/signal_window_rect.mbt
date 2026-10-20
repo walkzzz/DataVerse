@@ -107,23 +107,15 @@ pub fn signal_window_rect_series_std(s : SignalwindowrectSeries) -> Double { @_c
 pub fn signal_window_rect_series_median(s : SignalwindowrectSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_window_rect_series_scale(s : SignalwindowrectSeries, f : Double) -> SignalwindowrectSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_window_rect_series_add(a : SignalwindowrectSeries, b : SignalwindowrectSeries) -> SignalwindowrectSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_window_rect_series_sub(a : SignalwindowrectSeries, b : SignalwindowrectSeries) -> SignalwindowrectSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_window_rect_series_normalize(s : SignalwindowrectSeries) -> SignalwindowrectSeries {
@@ -254,22 +246,16 @@ pub fn signal_window_rect_vector_zero(dim : Int) -> SignalwindowrectVector {
 
 pub fn signal_window_rect_vector_add(a : SignalwindowrectVector, b : SignalwindowrectVector) -> SignalwindowrectVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_window_rect_vector_sub(a : SignalwindowrectVector, b : SignalwindowrectVector) -> SignalwindowrectVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_window_rect_vector_scale(v : SignalwindowrectVector, s : Double) -> SignalwindowrectVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_window_rect_vector_dot(a : SignalwindowrectVector, b : SignalwindowrectVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_window_rect_frame_get(s : SignalwindowrectFrame, i : Int) -> Doubl
 }
 
 pub fn signal_window_rect_frame_set(s : SignalwindowrectFrame, i : Int, v : Double) -> SignalwindowrectFrame {
-  let result = signal_window_rect_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_rect_frame_sum(s : SignalwindowrectFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_window_rect_table_get(s : SignalwindowrectTable, i : Int) -> Doubl
 }
 
 pub fn signal_window_rect_table_set(s : SignalwindowrectTable, i : Int, v : Double) -> SignalwindowrectTable {
-  let result = signal_window_rect_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_rect_table_sum(s : SignalwindowrectTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_window_rect_graphn_get(s : SignalwindowrectGraphN, i : Int) -> Dou
 }
 
 pub fn signal_window_rect_graphn_set(s : SignalwindowrectGraphN, i : Int, v : Double) -> SignalwindowrectGraphN {
-  let result = signal_window_rect_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_rect_graphn_sum(s : SignalwindowrectGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_window_rect_node_get(s : SignalwindowrectNode, i : Int) -> Double 
 }
 
 pub fn signal_window_rect_node_set(s : SignalwindowrectNode, i : Int, v : Double) -> SignalwindowrectNode {
-  let result = signal_window_rect_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_rect_node_sum(s : SignalwindowrectNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_window_rect_edge_get(s : SignalwindowrectEdge, i : Int) -> Double 
 }
 
 pub fn signal_window_rect_edge_set(s : SignalwindowrectEdge, i : Int, v : Double) -> SignalwindowrectEdge {
-  let result = signal_window_rect_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_rect_edge_sum(s : SignalwindowrectEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_window_rect_path_get(s : SignalwindowrectPath, i : Int) -> Double 
 }
 
 pub fn signal_window_rect_path_set(s : SignalwindowrectPath, i : Int, v : Double) -> SignalwindowrectPath {
-  let result = signal_window_rect_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_rect_path_sum(s : SignalwindowrectPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_window_rect_cluster_get(s : SignalwindowrectCluster, i : Int) -> D
 }
 
 pub fn signal_window_rect_cluster_set(s : SignalwindowrectCluster, i : Int, v : Double) -> SignalwindowrectCluster {
-  let result = signal_window_rect_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_rect_cluster_sum(s : SignalwindowrectCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_window_rect_model_get(s : SignalwindowrectModel, i : Int) -> Doubl
 }
 
 pub fn signal_window_rect_model_set(s : SignalwindowrectModel, i : Int, v : Double) -> SignalwindowrectModel {
-  let result = signal_window_rect_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_rect_model_sum(s : SignalwindowrectModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_window_rect_layer_get(s : SignalwindowrectLayer, i : Int) -> Doubl
 }
 
 pub fn signal_window_rect_layer_set(s : SignalwindowrectLayer, i : Int, v : Double) -> SignalwindowrectLayer {
-  let result = signal_window_rect_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_rect_layer_sum(s : SignalwindowrectLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_window_rect_buffer_get(s : SignalwindowrectBuffer, i : Int) -> Dou
 }
 
 pub fn signal_window_rect_buffer_set(s : SignalwindowrectBuffer, i : Int, v : Double) -> SignalwindowrectBuffer {
-  let result = signal_window_rect_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_rect_buffer_sum(s : SignalwindowrectBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_window_rect_cursor_get(s : SignalwindowrectCursor, i : Int) -> Dou
 }
 
 pub fn signal_window_rect_cursor_set(s : SignalwindowrectCursor, i : Int, v : Double) -> SignalwindowrectCursor {
-  let result = signal_window_rect_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_rect_cursor_sum(s : SignalwindowrectCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_window_rect_view_get(s : SignalwindowrectView, i : Int) -> Double 
 }
 
 pub fn signal_window_rect_view_set(s : SignalwindowrectView, i : Int, v : Double) -> SignalwindowrectView {
-  let result = signal_window_rect_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_rect_view_sum(s : SignalwindowrectView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_window_rect_range_get(s : SignalwindowrectRange, i : Int) -> Doubl
 }
 
 pub fn signal_window_rect_range_set(s : SignalwindowrectRange, i : Int, v : Double) -> SignalwindowrectRange {
-  let result = signal_window_rect_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_rect_range_sum(s : SignalwindowrectRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_window_rect_slice_get(s : SignalwindowrectSlice, i : Int) -> Doubl
 }
 
 pub fn signal_window_rect_slice_set(s : SignalwindowrectSlice, i : Int, v : Double) -> SignalwindowrectSlice {
-  let result = signal_window_rect_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_rect_slice_sum(s : SignalwindowrectSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn nlp_embed_glove_series_std(s : NlpembedgloveSeries) -> Double { @_common.
 pub fn nlp_embed_glove_series_median(s : NlpembedgloveSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_embed_glove_series_scale(s : NlpembedgloveSeries, f : Double) -> NlpembedgloveSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_embed_glove_series_add(a : NlpembedgloveSeries, b : NlpembedgloveSeries) -> NlpembedgloveSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_embed_glove_series_sub(a : NlpembedgloveSeries, b : NlpembedgloveSeries) -> NlpembedgloveSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_embed_glove_series_normalize(s : NlpembedgloveSeries) -> NlpembedgloveSeries {
@@ -254,22 +246,16 @@ pub fn nlp_embed_glove_vector_zero(dim : Int) -> NlpembedgloveVector {
 
 pub fn nlp_embed_glove_vector_add(a : NlpembedgloveVector, b : NlpembedgloveVector) -> NlpembedgloveVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_embed_glove_vector_sub(a : NlpembedgloveVector, b : NlpembedgloveVector) -> NlpembedgloveVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_embed_glove_vector_scale(v : NlpembedgloveVector, s : Double) -> NlpembedgloveVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_embed_glove_vector_dot(a : NlpembedgloveVector, b : NlpembedgloveVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_embed_glove_frame_get(s : NlpembedgloveFrame, i : Int) -> Double {
 }
 
 pub fn nlp_embed_glove_frame_set(s : NlpembedgloveFrame, i : Int, v : Double) -> NlpembedgloveFrame {
-  let result = nlp_embed_glove_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_glove_frame_sum(s : NlpembedgloveFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_embed_glove_table_get(s : NlpembedgloveTable, i : Int) -> Double {
 }
 
 pub fn nlp_embed_glove_table_set(s : NlpembedgloveTable, i : Int, v : Double) -> NlpembedgloveTable {
-  let result = nlp_embed_glove_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_glove_table_sum(s : NlpembedgloveTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_embed_glove_graphn_get(s : NlpembedgloveGraphN, i : Int) -> Double {
 }
 
 pub fn nlp_embed_glove_graphn_set(s : NlpembedgloveGraphN, i : Int, v : Double) -> NlpembedgloveGraphN {
-  let result = nlp_embed_glove_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_glove_graphn_sum(s : NlpembedgloveGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_embed_glove_node_get(s : NlpembedgloveNode, i : Int) -> Double {
 }
 
 pub fn nlp_embed_glove_node_set(s : NlpembedgloveNode, i : Int, v : Double) -> NlpembedgloveNode {
-  let result = nlp_embed_glove_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_glove_node_sum(s : NlpembedgloveNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_embed_glove_edge_get(s : NlpembedgloveEdge, i : Int) -> Double {
 }
 
 pub fn nlp_embed_glove_edge_set(s : NlpembedgloveEdge, i : Int, v : Double) -> NlpembedgloveEdge {
-  let result = nlp_embed_glove_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_glove_edge_sum(s : NlpembedgloveEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_embed_glove_path_get(s : NlpembedglovePath, i : Int) -> Double {
 }
 
 pub fn nlp_embed_glove_path_set(s : NlpembedglovePath, i : Int, v : Double) -> NlpembedglovePath {
-  let result = nlp_embed_glove_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_glove_path_sum(s : NlpembedglovePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_embed_glove_cluster_get(s : NlpembedgloveCluster, i : Int) -> Double 
 }
 
 pub fn nlp_embed_glove_cluster_set(s : NlpembedgloveCluster, i : Int, v : Double) -> NlpembedgloveCluster {
-  let result = nlp_embed_glove_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_glove_cluster_sum(s : NlpembedgloveCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_embed_glove_model_get(s : NlpembedgloveModel, i : Int) -> Double {
 }
 
 pub fn nlp_embed_glove_model_set(s : NlpembedgloveModel, i : Int, v : Double) -> NlpembedgloveModel {
-  let result = nlp_embed_glove_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_glove_model_sum(s : NlpembedgloveModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_embed_glove_layer_get(s : NlpembedgloveLayer, i : Int) -> Double {
 }
 
 pub fn nlp_embed_glove_layer_set(s : NlpembedgloveLayer, i : Int, v : Double) -> NlpembedgloveLayer {
-  let result = nlp_embed_glove_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_glove_layer_sum(s : NlpembedgloveLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_embed_glove_buffer_get(s : NlpembedgloveBuffer, i : Int) -> Double {
 }
 
 pub fn nlp_embed_glove_buffer_set(s : NlpembedgloveBuffer, i : Int, v : Double) -> NlpembedgloveBuffer {
-  let result = nlp_embed_glove_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_glove_buffer_sum(s : NlpembedgloveBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_embed_glove_cursor_get(s : NlpembedgloveCursor, i : Int) -> Double {
 }
 
 pub fn nlp_embed_glove_cursor_set(s : NlpembedgloveCursor, i : Int, v : Double) -> NlpembedgloveCursor {
-  let result = nlp_embed_glove_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_glove_cursor_sum(s : NlpembedgloveCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_embed_glove_view_get(s : NlpembedgloveView, i : Int) -> Double {
 }
 
 pub fn nlp_embed_glove_view_set(s : NlpembedgloveView, i : Int, v : Double) -> NlpembedgloveView {
-  let result = nlp_embed_glove_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_glove_view_sum(s : NlpembedgloveView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_embed_glove_range_get(s : NlpembedgloveRange, i : Int) -> Double {
 }
 
 pub fn nlp_embed_glove_range_set(s : NlpembedgloveRange, i : Int, v : Double) -> NlpembedgloveRange {
-  let result = nlp_embed_glove_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_glove_range_sum(s : NlpembedgloveRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_embed_glove_slice_get(s : NlpembedgloveSlice, i : Int) -> Double {
 }
 
 pub fn nlp_embed_glove_slice_set(s : NlpembedgloveSlice, i : Int, v : Double) -> NlpembedgloveSlice {
-  let result = nlp_embed_glove_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_glove_slice_sum(s : NlpembedgloveSlice) -> Double { @_common.sum(s.data) }

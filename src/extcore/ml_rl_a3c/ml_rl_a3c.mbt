@@ -107,23 +107,15 @@ pub fn ml_rl_a3c_series_std(s : Mlrla3cSeries) -> Double { @_common.std(s.vals) 
 pub fn ml_rl_a3c_series_median(s : Mlrla3cSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_rl_a3c_series_scale(s : Mlrla3cSeries, f : Double) -> Mlrla3cSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_rl_a3c_series_add(a : Mlrla3cSeries, b : Mlrla3cSeries) -> Mlrla3cSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_rl_a3c_series_sub(a : Mlrla3cSeries, b : Mlrla3cSeries) -> Mlrla3cSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_rl_a3c_series_normalize(s : Mlrla3cSeries) -> Mlrla3cSeries {
@@ -254,22 +246,16 @@ pub fn ml_rl_a3c_vector_zero(dim : Int) -> Mlrla3cVector {
 
 pub fn ml_rl_a3c_vector_add(a : Mlrla3cVector, b : Mlrla3cVector) -> Mlrla3cVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_rl_a3c_vector_sub(a : Mlrla3cVector, b : Mlrla3cVector) -> Mlrla3cVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_rl_a3c_vector_scale(v : Mlrla3cVector, s : Double) -> Mlrla3cVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_rl_a3c_vector_dot(a : Mlrla3cVector, b : Mlrla3cVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_rl_a3c_frame_get(s : Mlrla3cFrame, i : Int) -> Double {
 }
 
 pub fn ml_rl_a3c_frame_set(s : Mlrla3cFrame, i : Int, v : Double) -> Mlrla3cFrame {
-  let result = ml_rl_a3c_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_frame_sum(s : Mlrla3cFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_rl_a3c_table_get(s : Mlrla3cTable, i : Int) -> Double {
 }
 
 pub fn ml_rl_a3c_table_set(s : Mlrla3cTable, i : Int, v : Double) -> Mlrla3cTable {
-  let result = ml_rl_a3c_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_table_sum(s : Mlrla3cTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_rl_a3c_graphn_get(s : Mlrla3cGraphN, i : Int) -> Double {
 }
 
 pub fn ml_rl_a3c_graphn_set(s : Mlrla3cGraphN, i : Int, v : Double) -> Mlrla3cGraphN {
-  let result = ml_rl_a3c_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_graphn_sum(s : Mlrla3cGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_rl_a3c_node_get(s : Mlrla3cNode, i : Int) -> Double {
 }
 
 pub fn ml_rl_a3c_node_set(s : Mlrla3cNode, i : Int, v : Double) -> Mlrla3cNode {
-  let result = ml_rl_a3c_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_node_sum(s : Mlrla3cNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_rl_a3c_edge_get(s : Mlrla3cEdge, i : Int) -> Double {
 }
 
 pub fn ml_rl_a3c_edge_set(s : Mlrla3cEdge, i : Int, v : Double) -> Mlrla3cEdge {
-  let result = ml_rl_a3c_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_edge_sum(s : Mlrla3cEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_rl_a3c_path_get(s : Mlrla3cPath, i : Int) -> Double {
 }
 
 pub fn ml_rl_a3c_path_set(s : Mlrla3cPath, i : Int, v : Double) -> Mlrla3cPath {
-  let result = ml_rl_a3c_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_path_sum(s : Mlrla3cPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_rl_a3c_cluster_get(s : Mlrla3cCluster, i : Int) -> Double {
 }
 
 pub fn ml_rl_a3c_cluster_set(s : Mlrla3cCluster, i : Int, v : Double) -> Mlrla3cCluster {
-  let result = ml_rl_a3c_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_cluster_sum(s : Mlrla3cCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_rl_a3c_model_get(s : Mlrla3cModel, i : Int) -> Double {
 }
 
 pub fn ml_rl_a3c_model_set(s : Mlrla3cModel, i : Int, v : Double) -> Mlrla3cModel {
-  let result = ml_rl_a3c_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_model_sum(s : Mlrla3cModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_rl_a3c_layer_get(s : Mlrla3cLayer, i : Int) -> Double {
 }
 
 pub fn ml_rl_a3c_layer_set(s : Mlrla3cLayer, i : Int, v : Double) -> Mlrla3cLayer {
-  let result = ml_rl_a3c_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_layer_sum(s : Mlrla3cLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_rl_a3c_buffer_get(s : Mlrla3cBuffer, i : Int) -> Double {
 }
 
 pub fn ml_rl_a3c_buffer_set(s : Mlrla3cBuffer, i : Int, v : Double) -> Mlrla3cBuffer {
-  let result = ml_rl_a3c_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_buffer_sum(s : Mlrla3cBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_rl_a3c_cursor_get(s : Mlrla3cCursor, i : Int) -> Double {
 }
 
 pub fn ml_rl_a3c_cursor_set(s : Mlrla3cCursor, i : Int, v : Double) -> Mlrla3cCursor {
-  let result = ml_rl_a3c_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_cursor_sum(s : Mlrla3cCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_rl_a3c_view_get(s : Mlrla3cView, i : Int) -> Double {
 }
 
 pub fn ml_rl_a3c_view_set(s : Mlrla3cView, i : Int, v : Double) -> Mlrla3cView {
-  let result = ml_rl_a3c_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_view_sum(s : Mlrla3cView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_rl_a3c_range_get(s : Mlrla3cRange, i : Int) -> Double {
 }
 
 pub fn ml_rl_a3c_range_set(s : Mlrla3cRange, i : Int, v : Double) -> Mlrla3cRange {
-  let result = ml_rl_a3c_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_range_sum(s : Mlrla3cRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_rl_a3c_slice_get(s : Mlrla3cSlice, i : Int) -> Double {
 }
 
 pub fn ml_rl_a3c_slice_set(s : Mlrla3cSlice, i : Int, v : Double) -> Mlrla3cSlice {
-  let result = ml_rl_a3c_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_a3c_slice_sum(s : Mlrla3cSlice) -> Double { @_common.sum(s.data) }

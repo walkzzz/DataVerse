@@ -107,23 +107,15 @@ pub fn nlp_pos_crf_series_std(s : NlpposcrfSeries) -> Double { @_common.std(s.va
 pub fn nlp_pos_crf_series_median(s : NlpposcrfSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_pos_crf_series_scale(s : NlpposcrfSeries, f : Double) -> NlpposcrfSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_pos_crf_series_add(a : NlpposcrfSeries, b : NlpposcrfSeries) -> NlpposcrfSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_pos_crf_series_sub(a : NlpposcrfSeries, b : NlpposcrfSeries) -> NlpposcrfSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_pos_crf_series_normalize(s : NlpposcrfSeries) -> NlpposcrfSeries {
@@ -254,22 +246,16 @@ pub fn nlp_pos_crf_vector_zero(dim : Int) -> NlpposcrfVector {
 
 pub fn nlp_pos_crf_vector_add(a : NlpposcrfVector, b : NlpposcrfVector) -> NlpposcrfVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_pos_crf_vector_sub(a : NlpposcrfVector, b : NlpposcrfVector) -> NlpposcrfVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_pos_crf_vector_scale(v : NlpposcrfVector, s : Double) -> NlpposcrfVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_pos_crf_vector_dot(a : NlpposcrfVector, b : NlpposcrfVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_pos_crf_frame_get(s : NlpposcrfFrame, i : Int) -> Double {
 }
 
 pub fn nlp_pos_crf_frame_set(s : NlpposcrfFrame, i : Int, v : Double) -> NlpposcrfFrame {
-  let result = nlp_pos_crf_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_frame_sum(s : NlpposcrfFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_pos_crf_table_get(s : NlpposcrfTable, i : Int) -> Double {
 }
 
 pub fn nlp_pos_crf_table_set(s : NlpposcrfTable, i : Int, v : Double) -> NlpposcrfTable {
-  let result = nlp_pos_crf_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_table_sum(s : NlpposcrfTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_pos_crf_graphn_get(s : NlpposcrfGraphN, i : Int) -> Double {
 }
 
 pub fn nlp_pos_crf_graphn_set(s : NlpposcrfGraphN, i : Int, v : Double) -> NlpposcrfGraphN {
-  let result = nlp_pos_crf_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_graphn_sum(s : NlpposcrfGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_pos_crf_node_get(s : NlpposcrfNode, i : Int) -> Double {
 }
 
 pub fn nlp_pos_crf_node_set(s : NlpposcrfNode, i : Int, v : Double) -> NlpposcrfNode {
-  let result = nlp_pos_crf_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_node_sum(s : NlpposcrfNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_pos_crf_edge_get(s : NlpposcrfEdge, i : Int) -> Double {
 }
 
 pub fn nlp_pos_crf_edge_set(s : NlpposcrfEdge, i : Int, v : Double) -> NlpposcrfEdge {
-  let result = nlp_pos_crf_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_edge_sum(s : NlpposcrfEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_pos_crf_path_get(s : NlpposcrfPath, i : Int) -> Double {
 }
 
 pub fn nlp_pos_crf_path_set(s : NlpposcrfPath, i : Int, v : Double) -> NlpposcrfPath {
-  let result = nlp_pos_crf_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_path_sum(s : NlpposcrfPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_pos_crf_cluster_get(s : NlpposcrfCluster, i : Int) -> Double {
 }
 
 pub fn nlp_pos_crf_cluster_set(s : NlpposcrfCluster, i : Int, v : Double) -> NlpposcrfCluster {
-  let result = nlp_pos_crf_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_cluster_sum(s : NlpposcrfCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_pos_crf_model_get(s : NlpposcrfModel, i : Int) -> Double {
 }
 
 pub fn nlp_pos_crf_model_set(s : NlpposcrfModel, i : Int, v : Double) -> NlpposcrfModel {
-  let result = nlp_pos_crf_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_model_sum(s : NlpposcrfModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_pos_crf_layer_get(s : NlpposcrfLayer, i : Int) -> Double {
 }
 
 pub fn nlp_pos_crf_layer_set(s : NlpposcrfLayer, i : Int, v : Double) -> NlpposcrfLayer {
-  let result = nlp_pos_crf_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_layer_sum(s : NlpposcrfLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_pos_crf_buffer_get(s : NlpposcrfBuffer, i : Int) -> Double {
 }
 
 pub fn nlp_pos_crf_buffer_set(s : NlpposcrfBuffer, i : Int, v : Double) -> NlpposcrfBuffer {
-  let result = nlp_pos_crf_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_buffer_sum(s : NlpposcrfBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_pos_crf_cursor_get(s : NlpposcrfCursor, i : Int) -> Double {
 }
 
 pub fn nlp_pos_crf_cursor_set(s : NlpposcrfCursor, i : Int, v : Double) -> NlpposcrfCursor {
-  let result = nlp_pos_crf_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_cursor_sum(s : NlpposcrfCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_pos_crf_view_get(s : NlpposcrfView, i : Int) -> Double {
 }
 
 pub fn nlp_pos_crf_view_set(s : NlpposcrfView, i : Int, v : Double) -> NlpposcrfView {
-  let result = nlp_pos_crf_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_view_sum(s : NlpposcrfView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_pos_crf_range_get(s : NlpposcrfRange, i : Int) -> Double {
 }
 
 pub fn nlp_pos_crf_range_set(s : NlpposcrfRange, i : Int, v : Double) -> NlpposcrfRange {
-  let result = nlp_pos_crf_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_range_sum(s : NlpposcrfRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_pos_crf_slice_get(s : NlpposcrfSlice, i : Int) -> Double {
 }
 
 pub fn nlp_pos_crf_slice_set(s : NlpposcrfSlice, i : Int, v : Double) -> NlpposcrfSlice {
-  let result = nlp_pos_crf_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_crf_slice_sum(s : NlpposcrfSlice) -> Double { @_common.sum(s.data) }

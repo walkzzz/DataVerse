@@ -107,23 +107,15 @@ pub fn signal_window_kaiser_series_std(s : SignalwindowkaiserSeries) -> Double {
 pub fn signal_window_kaiser_series_median(s : SignalwindowkaiserSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_window_kaiser_series_scale(s : SignalwindowkaiserSeries, f : Double) -> SignalwindowkaiserSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_window_kaiser_series_add(a : SignalwindowkaiserSeries, b : SignalwindowkaiserSeries) -> SignalwindowkaiserSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_window_kaiser_series_sub(a : SignalwindowkaiserSeries, b : SignalwindowkaiserSeries) -> SignalwindowkaiserSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_window_kaiser_series_normalize(s : SignalwindowkaiserSeries) -> SignalwindowkaiserSeries {
@@ -254,22 +246,16 @@ pub fn signal_window_kaiser_vector_zero(dim : Int) -> SignalwindowkaiserVector {
 
 pub fn signal_window_kaiser_vector_add(a : SignalwindowkaiserVector, b : SignalwindowkaiserVector) -> SignalwindowkaiserVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_window_kaiser_vector_sub(a : SignalwindowkaiserVector, b : SignalwindowkaiserVector) -> SignalwindowkaiserVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_window_kaiser_vector_scale(v : SignalwindowkaiserVector, s : Double) -> SignalwindowkaiserVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_window_kaiser_vector_dot(a : SignalwindowkaiserVector, b : SignalwindowkaiserVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_window_kaiser_frame_get(s : SignalwindowkaiserFrame, i : Int) -> D
 }
 
 pub fn signal_window_kaiser_frame_set(s : SignalwindowkaiserFrame, i : Int, v : Double) -> SignalwindowkaiserFrame {
-  let result = signal_window_kaiser_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_kaiser_frame_sum(s : SignalwindowkaiserFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_window_kaiser_table_get(s : SignalwindowkaiserTable, i : Int) -> D
 }
 
 pub fn signal_window_kaiser_table_set(s : SignalwindowkaiserTable, i : Int, v : Double) -> SignalwindowkaiserTable {
-  let result = signal_window_kaiser_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_kaiser_table_sum(s : SignalwindowkaiserTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_window_kaiser_graphn_get(s : SignalwindowkaiserGraphN, i : Int) ->
 }
 
 pub fn signal_window_kaiser_graphn_set(s : SignalwindowkaiserGraphN, i : Int, v : Double) -> SignalwindowkaiserGraphN {
-  let result = signal_window_kaiser_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_kaiser_graphn_sum(s : SignalwindowkaiserGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_window_kaiser_node_get(s : SignalwindowkaiserNode, i : Int) -> Dou
 }
 
 pub fn signal_window_kaiser_node_set(s : SignalwindowkaiserNode, i : Int, v : Double) -> SignalwindowkaiserNode {
-  let result = signal_window_kaiser_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_kaiser_node_sum(s : SignalwindowkaiserNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_window_kaiser_edge_get(s : SignalwindowkaiserEdge, i : Int) -> Dou
 }
 
 pub fn signal_window_kaiser_edge_set(s : SignalwindowkaiserEdge, i : Int, v : Double) -> SignalwindowkaiserEdge {
-  let result = signal_window_kaiser_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_kaiser_edge_sum(s : SignalwindowkaiserEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_window_kaiser_path_get(s : SignalwindowkaiserPath, i : Int) -> Dou
 }
 
 pub fn signal_window_kaiser_path_set(s : SignalwindowkaiserPath, i : Int, v : Double) -> SignalwindowkaiserPath {
-  let result = signal_window_kaiser_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_kaiser_path_sum(s : SignalwindowkaiserPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_window_kaiser_cluster_get(s : SignalwindowkaiserCluster, i : Int) 
 }
 
 pub fn signal_window_kaiser_cluster_set(s : SignalwindowkaiserCluster, i : Int, v : Double) -> SignalwindowkaiserCluster {
-  let result = signal_window_kaiser_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_kaiser_cluster_sum(s : SignalwindowkaiserCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_window_kaiser_model_get(s : SignalwindowkaiserModel, i : Int) -> D
 }
 
 pub fn signal_window_kaiser_model_set(s : SignalwindowkaiserModel, i : Int, v : Double) -> SignalwindowkaiserModel {
-  let result = signal_window_kaiser_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_kaiser_model_sum(s : SignalwindowkaiserModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_window_kaiser_layer_get(s : SignalwindowkaiserLayer, i : Int) -> D
 }
 
 pub fn signal_window_kaiser_layer_set(s : SignalwindowkaiserLayer, i : Int, v : Double) -> SignalwindowkaiserLayer {
-  let result = signal_window_kaiser_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_kaiser_layer_sum(s : SignalwindowkaiserLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_window_kaiser_buffer_get(s : SignalwindowkaiserBuffer, i : Int) ->
 }
 
 pub fn signal_window_kaiser_buffer_set(s : SignalwindowkaiserBuffer, i : Int, v : Double) -> SignalwindowkaiserBuffer {
-  let result = signal_window_kaiser_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_kaiser_buffer_sum(s : SignalwindowkaiserBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_window_kaiser_cursor_get(s : SignalwindowkaiserCursor, i : Int) ->
 }
 
 pub fn signal_window_kaiser_cursor_set(s : SignalwindowkaiserCursor, i : Int, v : Double) -> SignalwindowkaiserCursor {
-  let result = signal_window_kaiser_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_kaiser_cursor_sum(s : SignalwindowkaiserCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_window_kaiser_view_get(s : SignalwindowkaiserView, i : Int) -> Dou
 }
 
 pub fn signal_window_kaiser_view_set(s : SignalwindowkaiserView, i : Int, v : Double) -> SignalwindowkaiserView {
-  let result = signal_window_kaiser_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_kaiser_view_sum(s : SignalwindowkaiserView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_window_kaiser_range_get(s : SignalwindowkaiserRange, i : Int) -> D
 }
 
 pub fn signal_window_kaiser_range_set(s : SignalwindowkaiserRange, i : Int, v : Double) -> SignalwindowkaiserRange {
-  let result = signal_window_kaiser_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_kaiser_range_sum(s : SignalwindowkaiserRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_window_kaiser_slice_get(s : SignalwindowkaiserSlice, i : Int) -> D
 }
 
 pub fn signal_window_kaiser_slice_set(s : SignalwindowkaiserSlice, i : Int, v : Double) -> SignalwindowkaiserSlice {
-  let result = signal_window_kaiser_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_kaiser_slice_sum(s : SignalwindowkaiserSlice) -> Double { @_common.sum(s.data) }

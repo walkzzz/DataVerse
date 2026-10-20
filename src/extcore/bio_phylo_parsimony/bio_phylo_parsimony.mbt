@@ -107,23 +107,15 @@ pub fn bio_phylo_parsimony_series_std(s : BiophyloparsimonySeries) -> Double { @
 pub fn bio_phylo_parsimony_series_median(s : BiophyloparsimonySeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_phylo_parsimony_series_scale(s : BiophyloparsimonySeries, f : Double) -> BiophyloparsimonySeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_phylo_parsimony_series_add(a : BiophyloparsimonySeries, b : BiophyloparsimonySeries) -> BiophyloparsimonySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_phylo_parsimony_series_sub(a : BiophyloparsimonySeries, b : BiophyloparsimonySeries) -> BiophyloparsimonySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_phylo_parsimony_series_normalize(s : BiophyloparsimonySeries) -> BiophyloparsimonySeries {
@@ -254,22 +246,16 @@ pub fn bio_phylo_parsimony_vector_zero(dim : Int) -> BiophyloparsimonyVector {
 
 pub fn bio_phylo_parsimony_vector_add(a : BiophyloparsimonyVector, b : BiophyloparsimonyVector) -> BiophyloparsimonyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_phylo_parsimony_vector_sub(a : BiophyloparsimonyVector, b : BiophyloparsimonyVector) -> BiophyloparsimonyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_phylo_parsimony_vector_scale(v : BiophyloparsimonyVector, s : Double) -> BiophyloparsimonyVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_phylo_parsimony_vector_dot(a : BiophyloparsimonyVector, b : BiophyloparsimonyVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_phylo_parsimony_frame_get(s : BiophyloparsimonyFrame, i : Int) -> Dou
 }
 
 pub fn bio_phylo_parsimony_frame_set(s : BiophyloparsimonyFrame, i : Int, v : Double) -> BiophyloparsimonyFrame {
-  let result = bio_phylo_parsimony_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_frame_sum(s : BiophyloparsimonyFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_phylo_parsimony_table_get(s : BiophyloparsimonyTable, i : Int) -> Dou
 }
 
 pub fn bio_phylo_parsimony_table_set(s : BiophyloparsimonyTable, i : Int, v : Double) -> BiophyloparsimonyTable {
-  let result = bio_phylo_parsimony_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_table_sum(s : BiophyloparsimonyTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_phylo_parsimony_graphn_get(s : BiophyloparsimonyGraphN, i : Int) -> D
 }
 
 pub fn bio_phylo_parsimony_graphn_set(s : BiophyloparsimonyGraphN, i : Int, v : Double) -> BiophyloparsimonyGraphN {
-  let result = bio_phylo_parsimony_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_graphn_sum(s : BiophyloparsimonyGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_phylo_parsimony_node_get(s : BiophyloparsimonyNode, i : Int) -> Doubl
 }
 
 pub fn bio_phylo_parsimony_node_set(s : BiophyloparsimonyNode, i : Int, v : Double) -> BiophyloparsimonyNode {
-  let result = bio_phylo_parsimony_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_node_sum(s : BiophyloparsimonyNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_phylo_parsimony_edge_get(s : BiophyloparsimonyEdge, i : Int) -> Doubl
 }
 
 pub fn bio_phylo_parsimony_edge_set(s : BiophyloparsimonyEdge, i : Int, v : Double) -> BiophyloparsimonyEdge {
-  let result = bio_phylo_parsimony_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_edge_sum(s : BiophyloparsimonyEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_phylo_parsimony_path_get(s : BiophyloparsimonyPath, i : Int) -> Doubl
 }
 
 pub fn bio_phylo_parsimony_path_set(s : BiophyloparsimonyPath, i : Int, v : Double) -> BiophyloparsimonyPath {
-  let result = bio_phylo_parsimony_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_path_sum(s : BiophyloparsimonyPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_phylo_parsimony_cluster_get(s : BiophyloparsimonyCluster, i : Int) ->
 }
 
 pub fn bio_phylo_parsimony_cluster_set(s : BiophyloparsimonyCluster, i : Int, v : Double) -> BiophyloparsimonyCluster {
-  let result = bio_phylo_parsimony_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_cluster_sum(s : BiophyloparsimonyCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_phylo_parsimony_model_get(s : BiophyloparsimonyModel, i : Int) -> Dou
 }
 
 pub fn bio_phylo_parsimony_model_set(s : BiophyloparsimonyModel, i : Int, v : Double) -> BiophyloparsimonyModel {
-  let result = bio_phylo_parsimony_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_model_sum(s : BiophyloparsimonyModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_phylo_parsimony_layer_get(s : BiophyloparsimonyLayer, i : Int) -> Dou
 }
 
 pub fn bio_phylo_parsimony_layer_set(s : BiophyloparsimonyLayer, i : Int, v : Double) -> BiophyloparsimonyLayer {
-  let result = bio_phylo_parsimony_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_layer_sum(s : BiophyloparsimonyLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_phylo_parsimony_buffer_get(s : BiophyloparsimonyBuffer, i : Int) -> D
 }
 
 pub fn bio_phylo_parsimony_buffer_set(s : BiophyloparsimonyBuffer, i : Int, v : Double) -> BiophyloparsimonyBuffer {
-  let result = bio_phylo_parsimony_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_buffer_sum(s : BiophyloparsimonyBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_phylo_parsimony_cursor_get(s : BiophyloparsimonyCursor, i : Int) -> D
 }
 
 pub fn bio_phylo_parsimony_cursor_set(s : BiophyloparsimonyCursor, i : Int, v : Double) -> BiophyloparsimonyCursor {
-  let result = bio_phylo_parsimony_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_cursor_sum(s : BiophyloparsimonyCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_phylo_parsimony_view_get(s : BiophyloparsimonyView, i : Int) -> Doubl
 }
 
 pub fn bio_phylo_parsimony_view_set(s : BiophyloparsimonyView, i : Int, v : Double) -> BiophyloparsimonyView {
-  let result = bio_phylo_parsimony_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_view_sum(s : BiophyloparsimonyView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_phylo_parsimony_range_get(s : BiophyloparsimonyRange, i : Int) -> Dou
 }
 
 pub fn bio_phylo_parsimony_range_set(s : BiophyloparsimonyRange, i : Int, v : Double) -> BiophyloparsimonyRange {
-  let result = bio_phylo_parsimony_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_range_sum(s : BiophyloparsimonyRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_phylo_parsimony_slice_get(s : BiophyloparsimonySlice, i : Int) -> Dou
 }
 
 pub fn bio_phylo_parsimony_slice_set(s : BiophyloparsimonySlice, i : Int, v : Double) -> BiophyloparsimonySlice {
-  let result = bio_phylo_parsimony_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_parsimony_slice_sum(s : BiophyloparsimonySlice) -> Double { @_common.sum(s.data) }

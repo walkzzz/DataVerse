@@ -107,23 +107,15 @@ pub fn math_special_hypergeo_series_std(s : MathspecialhypergeoSeries) -> Double
 pub fn math_special_hypergeo_series_median(s : MathspecialhypergeoSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_special_hypergeo_series_scale(s : MathspecialhypergeoSeries, f : Double) -> MathspecialhypergeoSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_special_hypergeo_series_add(a : MathspecialhypergeoSeries, b : MathspecialhypergeoSeries) -> MathspecialhypergeoSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_special_hypergeo_series_sub(a : MathspecialhypergeoSeries, b : MathspecialhypergeoSeries) -> MathspecialhypergeoSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_special_hypergeo_series_normalize(s : MathspecialhypergeoSeries) -> MathspecialhypergeoSeries {
@@ -254,22 +246,16 @@ pub fn math_special_hypergeo_vector_zero(dim : Int) -> MathspecialhypergeoVector
 
 pub fn math_special_hypergeo_vector_add(a : MathspecialhypergeoVector, b : MathspecialhypergeoVector) -> MathspecialhypergeoVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_special_hypergeo_vector_sub(a : MathspecialhypergeoVector, b : MathspecialhypergeoVector) -> MathspecialhypergeoVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_special_hypergeo_vector_scale(v : MathspecialhypergeoVector, s : Double) -> MathspecialhypergeoVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_special_hypergeo_vector_dot(a : MathspecialhypergeoVector, b : MathspecialhypergeoVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_special_hypergeo_frame_get(s : MathspecialhypergeoFrame, i : Int) ->
 }
 
 pub fn math_special_hypergeo_frame_set(s : MathspecialhypergeoFrame, i : Int, v : Double) -> MathspecialhypergeoFrame {
-  let result = math_special_hypergeo_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hypergeo_frame_sum(s : MathspecialhypergeoFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_special_hypergeo_table_get(s : MathspecialhypergeoTable, i : Int) ->
 }
 
 pub fn math_special_hypergeo_table_set(s : MathspecialhypergeoTable, i : Int, v : Double) -> MathspecialhypergeoTable {
-  let result = math_special_hypergeo_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hypergeo_table_sum(s : MathspecialhypergeoTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_special_hypergeo_graphn_get(s : MathspecialhypergeoGraphN, i : Int) 
 }
 
 pub fn math_special_hypergeo_graphn_set(s : MathspecialhypergeoGraphN, i : Int, v : Double) -> MathspecialhypergeoGraphN {
-  let result = math_special_hypergeo_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hypergeo_graphn_sum(s : MathspecialhypergeoGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_special_hypergeo_node_get(s : MathspecialhypergeoNode, i : Int) -> D
 }
 
 pub fn math_special_hypergeo_node_set(s : MathspecialhypergeoNode, i : Int, v : Double) -> MathspecialhypergeoNode {
-  let result = math_special_hypergeo_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hypergeo_node_sum(s : MathspecialhypergeoNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_special_hypergeo_edge_get(s : MathspecialhypergeoEdge, i : Int) -> D
 }
 
 pub fn math_special_hypergeo_edge_set(s : MathspecialhypergeoEdge, i : Int, v : Double) -> MathspecialhypergeoEdge {
-  let result = math_special_hypergeo_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hypergeo_edge_sum(s : MathspecialhypergeoEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_special_hypergeo_path_get(s : MathspecialhypergeoPath, i : Int) -> D
 }
 
 pub fn math_special_hypergeo_path_set(s : MathspecialhypergeoPath, i : Int, v : Double) -> MathspecialhypergeoPath {
-  let result = math_special_hypergeo_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hypergeo_path_sum(s : MathspecialhypergeoPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_special_hypergeo_cluster_get(s : MathspecialhypergeoCluster, i : Int
 }
 
 pub fn math_special_hypergeo_cluster_set(s : MathspecialhypergeoCluster, i : Int, v : Double) -> MathspecialhypergeoCluster {
-  let result = math_special_hypergeo_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hypergeo_cluster_sum(s : MathspecialhypergeoCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_special_hypergeo_model_get(s : MathspecialhypergeoModel, i : Int) ->
 }
 
 pub fn math_special_hypergeo_model_set(s : MathspecialhypergeoModel, i : Int, v : Double) -> MathspecialhypergeoModel {
-  let result = math_special_hypergeo_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hypergeo_model_sum(s : MathspecialhypergeoModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_special_hypergeo_layer_get(s : MathspecialhypergeoLayer, i : Int) ->
 }
 
 pub fn math_special_hypergeo_layer_set(s : MathspecialhypergeoLayer, i : Int, v : Double) -> MathspecialhypergeoLayer {
-  let result = math_special_hypergeo_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hypergeo_layer_sum(s : MathspecialhypergeoLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_special_hypergeo_buffer_get(s : MathspecialhypergeoBuffer, i : Int) 
 }
 
 pub fn math_special_hypergeo_buffer_set(s : MathspecialhypergeoBuffer, i : Int, v : Double) -> MathspecialhypergeoBuffer {
-  let result = math_special_hypergeo_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hypergeo_buffer_sum(s : MathspecialhypergeoBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_special_hypergeo_cursor_get(s : MathspecialhypergeoCursor, i : Int) 
 }
 
 pub fn math_special_hypergeo_cursor_set(s : MathspecialhypergeoCursor, i : Int, v : Double) -> MathspecialhypergeoCursor {
-  let result = math_special_hypergeo_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hypergeo_cursor_sum(s : MathspecialhypergeoCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_special_hypergeo_view_get(s : MathspecialhypergeoView, i : Int) -> D
 }
 
 pub fn math_special_hypergeo_view_set(s : MathspecialhypergeoView, i : Int, v : Double) -> MathspecialhypergeoView {
-  let result = math_special_hypergeo_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hypergeo_view_sum(s : MathspecialhypergeoView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_special_hypergeo_range_get(s : MathspecialhypergeoRange, i : Int) ->
 }
 
 pub fn math_special_hypergeo_range_set(s : MathspecialhypergeoRange, i : Int, v : Double) -> MathspecialhypergeoRange {
-  let result = math_special_hypergeo_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hypergeo_range_sum(s : MathspecialhypergeoRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_special_hypergeo_slice_get(s : MathspecialhypergeoSlice, i : Int) ->
 }
 
 pub fn math_special_hypergeo_slice_set(s : MathspecialhypergeoSlice, i : Int, v : Double) -> MathspecialhypergeoSlice {
-  let result = math_special_hypergeo_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hypergeo_slice_sum(s : MathspecialhypergeoSlice) -> Double { @_common.sum(s.data) }

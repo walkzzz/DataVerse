@@ -107,23 +107,15 @@ pub fn image_filter_mean_series_std(s : ImagefiltermeanSeries) -> Double { @_com
 pub fn image_filter_mean_series_median(s : ImagefiltermeanSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_filter_mean_series_scale(s : ImagefiltermeanSeries, f : Double) -> ImagefiltermeanSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_filter_mean_series_add(a : ImagefiltermeanSeries, b : ImagefiltermeanSeries) -> ImagefiltermeanSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_filter_mean_series_sub(a : ImagefiltermeanSeries, b : ImagefiltermeanSeries) -> ImagefiltermeanSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_filter_mean_series_normalize(s : ImagefiltermeanSeries) -> ImagefiltermeanSeries {
@@ -254,22 +246,16 @@ pub fn image_filter_mean_vector_zero(dim : Int) -> ImagefiltermeanVector {
 
 pub fn image_filter_mean_vector_add(a : ImagefiltermeanVector, b : ImagefiltermeanVector) -> ImagefiltermeanVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_filter_mean_vector_sub(a : ImagefiltermeanVector, b : ImagefiltermeanVector) -> ImagefiltermeanVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_filter_mean_vector_scale(v : ImagefiltermeanVector, s : Double) -> ImagefiltermeanVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_filter_mean_vector_dot(a : ImagefiltermeanVector, b : ImagefiltermeanVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_filter_mean_frame_get(s : ImagefiltermeanFrame, i : Int) -> Double 
 }
 
 pub fn image_filter_mean_frame_set(s : ImagefiltermeanFrame, i : Int, v : Double) -> ImagefiltermeanFrame {
-  let result = image_filter_mean_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_mean_frame_sum(s : ImagefiltermeanFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_filter_mean_table_get(s : ImagefiltermeanTable, i : Int) -> Double 
 }
 
 pub fn image_filter_mean_table_set(s : ImagefiltermeanTable, i : Int, v : Double) -> ImagefiltermeanTable {
-  let result = image_filter_mean_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_mean_table_sum(s : ImagefiltermeanTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_filter_mean_graphn_get(s : ImagefiltermeanGraphN, i : Int) -> Doubl
 }
 
 pub fn image_filter_mean_graphn_set(s : ImagefiltermeanGraphN, i : Int, v : Double) -> ImagefiltermeanGraphN {
-  let result = image_filter_mean_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_mean_graphn_sum(s : ImagefiltermeanGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_filter_mean_node_get(s : ImagefiltermeanNode, i : Int) -> Double {
 }
 
 pub fn image_filter_mean_node_set(s : ImagefiltermeanNode, i : Int, v : Double) -> ImagefiltermeanNode {
-  let result = image_filter_mean_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_mean_node_sum(s : ImagefiltermeanNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_filter_mean_edge_get(s : ImagefiltermeanEdge, i : Int) -> Double {
 }
 
 pub fn image_filter_mean_edge_set(s : ImagefiltermeanEdge, i : Int, v : Double) -> ImagefiltermeanEdge {
-  let result = image_filter_mean_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_mean_edge_sum(s : ImagefiltermeanEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_filter_mean_path_get(s : ImagefiltermeanPath, i : Int) -> Double {
 }
 
 pub fn image_filter_mean_path_set(s : ImagefiltermeanPath, i : Int, v : Double) -> ImagefiltermeanPath {
-  let result = image_filter_mean_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_mean_path_sum(s : ImagefiltermeanPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_filter_mean_cluster_get(s : ImagefiltermeanCluster, i : Int) -> Dou
 }
 
 pub fn image_filter_mean_cluster_set(s : ImagefiltermeanCluster, i : Int, v : Double) -> ImagefiltermeanCluster {
-  let result = image_filter_mean_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_mean_cluster_sum(s : ImagefiltermeanCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_filter_mean_model_get(s : ImagefiltermeanModel, i : Int) -> Double 
 }
 
 pub fn image_filter_mean_model_set(s : ImagefiltermeanModel, i : Int, v : Double) -> ImagefiltermeanModel {
-  let result = image_filter_mean_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_mean_model_sum(s : ImagefiltermeanModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_filter_mean_layer_get(s : ImagefiltermeanLayer, i : Int) -> Double 
 }
 
 pub fn image_filter_mean_layer_set(s : ImagefiltermeanLayer, i : Int, v : Double) -> ImagefiltermeanLayer {
-  let result = image_filter_mean_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_mean_layer_sum(s : ImagefiltermeanLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_filter_mean_buffer_get(s : ImagefiltermeanBuffer, i : Int) -> Doubl
 }
 
 pub fn image_filter_mean_buffer_set(s : ImagefiltermeanBuffer, i : Int, v : Double) -> ImagefiltermeanBuffer {
-  let result = image_filter_mean_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_mean_buffer_sum(s : ImagefiltermeanBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_filter_mean_cursor_get(s : ImagefiltermeanCursor, i : Int) -> Doubl
 }
 
 pub fn image_filter_mean_cursor_set(s : ImagefiltermeanCursor, i : Int, v : Double) -> ImagefiltermeanCursor {
-  let result = image_filter_mean_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_mean_cursor_sum(s : ImagefiltermeanCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_filter_mean_view_get(s : ImagefiltermeanView, i : Int) -> Double {
 }
 
 pub fn image_filter_mean_view_set(s : ImagefiltermeanView, i : Int, v : Double) -> ImagefiltermeanView {
-  let result = image_filter_mean_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_mean_view_sum(s : ImagefiltermeanView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_filter_mean_range_get(s : ImagefiltermeanRange, i : Int) -> Double 
 }
 
 pub fn image_filter_mean_range_set(s : ImagefiltermeanRange, i : Int, v : Double) -> ImagefiltermeanRange {
-  let result = image_filter_mean_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_mean_range_sum(s : ImagefiltermeanRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_filter_mean_slice_get(s : ImagefiltermeanSlice, i : Int) -> Double 
 }
 
 pub fn image_filter_mean_slice_set(s : ImagefiltermeanSlice, i : Int, v : Double) -> ImagefiltermeanSlice {
-  let result = image_filter_mean_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_mean_slice_sum(s : ImagefiltermeanSlice) -> Double { @_common.sum(s.data) }

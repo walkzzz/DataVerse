@@ -107,23 +107,15 @@ pub fn stats_infer_param_series_std(s : StatsinferparamSeries) -> Double { @_com
 pub fn stats_infer_param_series_median(s : StatsinferparamSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_infer_param_series_scale(s : StatsinferparamSeries, f : Double) -> StatsinferparamSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_infer_param_series_add(a : StatsinferparamSeries, b : StatsinferparamSeries) -> StatsinferparamSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_infer_param_series_sub(a : StatsinferparamSeries, b : StatsinferparamSeries) -> StatsinferparamSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_infer_param_series_normalize(s : StatsinferparamSeries) -> StatsinferparamSeries {
@@ -254,22 +246,16 @@ pub fn stats_infer_param_vector_zero(dim : Int) -> StatsinferparamVector {
 
 pub fn stats_infer_param_vector_add(a : StatsinferparamVector, b : StatsinferparamVector) -> StatsinferparamVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_infer_param_vector_sub(a : StatsinferparamVector, b : StatsinferparamVector) -> StatsinferparamVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_infer_param_vector_scale(v : StatsinferparamVector, s : Double) -> StatsinferparamVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_infer_param_vector_dot(a : StatsinferparamVector, b : StatsinferparamVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_infer_param_frame_get(s : StatsinferparamFrame, i : Int) -> Double 
 }
 
 pub fn stats_infer_param_frame_set(s : StatsinferparamFrame, i : Int, v : Double) -> StatsinferparamFrame {
-  let result = stats_infer_param_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_frame_sum(s : StatsinferparamFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_infer_param_table_get(s : StatsinferparamTable, i : Int) -> Double 
 }
 
 pub fn stats_infer_param_table_set(s : StatsinferparamTable, i : Int, v : Double) -> StatsinferparamTable {
-  let result = stats_infer_param_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_table_sum(s : StatsinferparamTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_infer_param_graphn_get(s : StatsinferparamGraphN, i : Int) -> Doubl
 }
 
 pub fn stats_infer_param_graphn_set(s : StatsinferparamGraphN, i : Int, v : Double) -> StatsinferparamGraphN {
-  let result = stats_infer_param_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_graphn_sum(s : StatsinferparamGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_infer_param_node_get(s : StatsinferparamNode, i : Int) -> Double {
 }
 
 pub fn stats_infer_param_node_set(s : StatsinferparamNode, i : Int, v : Double) -> StatsinferparamNode {
-  let result = stats_infer_param_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_node_sum(s : StatsinferparamNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_infer_param_edge_get(s : StatsinferparamEdge, i : Int) -> Double {
 }
 
 pub fn stats_infer_param_edge_set(s : StatsinferparamEdge, i : Int, v : Double) -> StatsinferparamEdge {
-  let result = stats_infer_param_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_edge_sum(s : StatsinferparamEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_infer_param_path_get(s : StatsinferparamPath, i : Int) -> Double {
 }
 
 pub fn stats_infer_param_path_set(s : StatsinferparamPath, i : Int, v : Double) -> StatsinferparamPath {
-  let result = stats_infer_param_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_path_sum(s : StatsinferparamPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_infer_param_cluster_get(s : StatsinferparamCluster, i : Int) -> Dou
 }
 
 pub fn stats_infer_param_cluster_set(s : StatsinferparamCluster, i : Int, v : Double) -> StatsinferparamCluster {
-  let result = stats_infer_param_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_cluster_sum(s : StatsinferparamCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_infer_param_model_get(s : StatsinferparamModel, i : Int) -> Double 
 }
 
 pub fn stats_infer_param_model_set(s : StatsinferparamModel, i : Int, v : Double) -> StatsinferparamModel {
-  let result = stats_infer_param_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_model_sum(s : StatsinferparamModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_infer_param_layer_get(s : StatsinferparamLayer, i : Int) -> Double 
 }
 
 pub fn stats_infer_param_layer_set(s : StatsinferparamLayer, i : Int, v : Double) -> StatsinferparamLayer {
-  let result = stats_infer_param_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_layer_sum(s : StatsinferparamLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_infer_param_buffer_get(s : StatsinferparamBuffer, i : Int) -> Doubl
 }
 
 pub fn stats_infer_param_buffer_set(s : StatsinferparamBuffer, i : Int, v : Double) -> StatsinferparamBuffer {
-  let result = stats_infer_param_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_buffer_sum(s : StatsinferparamBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_infer_param_cursor_get(s : StatsinferparamCursor, i : Int) -> Doubl
 }
 
 pub fn stats_infer_param_cursor_set(s : StatsinferparamCursor, i : Int, v : Double) -> StatsinferparamCursor {
-  let result = stats_infer_param_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_cursor_sum(s : StatsinferparamCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_infer_param_view_get(s : StatsinferparamView, i : Int) -> Double {
 }
 
 pub fn stats_infer_param_view_set(s : StatsinferparamView, i : Int, v : Double) -> StatsinferparamView {
-  let result = stats_infer_param_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_view_sum(s : StatsinferparamView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_infer_param_range_get(s : StatsinferparamRange, i : Int) -> Double 
 }
 
 pub fn stats_infer_param_range_set(s : StatsinferparamRange, i : Int, v : Double) -> StatsinferparamRange {
-  let result = stats_infer_param_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_range_sum(s : StatsinferparamRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_infer_param_slice_get(s : StatsinferparamSlice, i : Int) -> Double 
 }
 
 pub fn stats_infer_param_slice_set(s : StatsinferparamSlice, i : Int, v : Double) -> StatsinferparamSlice {
-  let result = stats_infer_param_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_param_slice_sum(s : StatsinferparamSlice) -> Double { @_common.sum(s.data) }

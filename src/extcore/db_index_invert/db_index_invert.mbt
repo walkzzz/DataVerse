@@ -107,23 +107,15 @@ pub fn db_index_invert_series_std(s : DbindexinvertSeries) -> Double { @_common.
 pub fn db_index_invert_series_median(s : DbindexinvertSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_index_invert_series_scale(s : DbindexinvertSeries, f : Double) -> DbindexinvertSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_index_invert_series_add(a : DbindexinvertSeries, b : DbindexinvertSeries) -> DbindexinvertSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_index_invert_series_sub(a : DbindexinvertSeries, b : DbindexinvertSeries) -> DbindexinvertSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_index_invert_series_normalize(s : DbindexinvertSeries) -> DbindexinvertSeries {
@@ -254,22 +246,16 @@ pub fn db_index_invert_vector_zero(dim : Int) -> DbindexinvertVector {
 
 pub fn db_index_invert_vector_add(a : DbindexinvertVector, b : DbindexinvertVector) -> DbindexinvertVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_index_invert_vector_sub(a : DbindexinvertVector, b : DbindexinvertVector) -> DbindexinvertVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_index_invert_vector_scale(v : DbindexinvertVector, s : Double) -> DbindexinvertVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_index_invert_vector_dot(a : DbindexinvertVector, b : DbindexinvertVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_index_invert_frame_get(s : DbindexinvertFrame, i : Int) -> Double {
 }
 
 pub fn db_index_invert_frame_set(s : DbindexinvertFrame, i : Int, v : Double) -> DbindexinvertFrame {
-  let result = db_index_invert_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_frame_sum(s : DbindexinvertFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_index_invert_table_get(s : DbindexinvertTable, i : Int) -> Double {
 }
 
 pub fn db_index_invert_table_set(s : DbindexinvertTable, i : Int, v : Double) -> DbindexinvertTable {
-  let result = db_index_invert_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_table_sum(s : DbindexinvertTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_index_invert_graphn_get(s : DbindexinvertGraphN, i : Int) -> Double {
 }
 
 pub fn db_index_invert_graphn_set(s : DbindexinvertGraphN, i : Int, v : Double) -> DbindexinvertGraphN {
-  let result = db_index_invert_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_graphn_sum(s : DbindexinvertGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_index_invert_node_get(s : DbindexinvertNode, i : Int) -> Double {
 }
 
 pub fn db_index_invert_node_set(s : DbindexinvertNode, i : Int, v : Double) -> DbindexinvertNode {
-  let result = db_index_invert_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_node_sum(s : DbindexinvertNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_index_invert_edge_get(s : DbindexinvertEdge, i : Int) -> Double {
 }
 
 pub fn db_index_invert_edge_set(s : DbindexinvertEdge, i : Int, v : Double) -> DbindexinvertEdge {
-  let result = db_index_invert_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_edge_sum(s : DbindexinvertEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_index_invert_path_get(s : DbindexinvertPath, i : Int) -> Double {
 }
 
 pub fn db_index_invert_path_set(s : DbindexinvertPath, i : Int, v : Double) -> DbindexinvertPath {
-  let result = db_index_invert_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_path_sum(s : DbindexinvertPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_index_invert_cluster_get(s : DbindexinvertCluster, i : Int) -> Double 
 }
 
 pub fn db_index_invert_cluster_set(s : DbindexinvertCluster, i : Int, v : Double) -> DbindexinvertCluster {
-  let result = db_index_invert_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_cluster_sum(s : DbindexinvertCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_index_invert_model_get(s : DbindexinvertModel, i : Int) -> Double {
 }
 
 pub fn db_index_invert_model_set(s : DbindexinvertModel, i : Int, v : Double) -> DbindexinvertModel {
-  let result = db_index_invert_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_model_sum(s : DbindexinvertModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_index_invert_layer_get(s : DbindexinvertLayer, i : Int) -> Double {
 }
 
 pub fn db_index_invert_layer_set(s : DbindexinvertLayer, i : Int, v : Double) -> DbindexinvertLayer {
-  let result = db_index_invert_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_layer_sum(s : DbindexinvertLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_index_invert_buffer_get(s : DbindexinvertBuffer, i : Int) -> Double {
 }
 
 pub fn db_index_invert_buffer_set(s : DbindexinvertBuffer, i : Int, v : Double) -> DbindexinvertBuffer {
-  let result = db_index_invert_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_buffer_sum(s : DbindexinvertBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_index_invert_cursor_get(s : DbindexinvertCursor, i : Int) -> Double {
 }
 
 pub fn db_index_invert_cursor_set(s : DbindexinvertCursor, i : Int, v : Double) -> DbindexinvertCursor {
-  let result = db_index_invert_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_cursor_sum(s : DbindexinvertCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_index_invert_view_get(s : DbindexinvertView, i : Int) -> Double {
 }
 
 pub fn db_index_invert_view_set(s : DbindexinvertView, i : Int, v : Double) -> DbindexinvertView {
-  let result = db_index_invert_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_view_sum(s : DbindexinvertView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_index_invert_range_get(s : DbindexinvertRange, i : Int) -> Double {
 }
 
 pub fn db_index_invert_range_set(s : DbindexinvertRange, i : Int, v : Double) -> DbindexinvertRange {
-  let result = db_index_invert_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_range_sum(s : DbindexinvertRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_index_invert_slice_get(s : DbindexinvertSlice, i : Int) -> Double {
 }
 
 pub fn db_index_invert_slice_set(s : DbindexinvertSlice, i : Int, v : Double) -> DbindexinvertSlice {
-  let result = db_index_invert_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_invert_slice_sum(s : DbindexinvertSlice) -> Double { @_common.sum(s.data) }

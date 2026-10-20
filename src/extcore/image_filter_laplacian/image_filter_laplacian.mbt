@@ -107,23 +107,15 @@ pub fn image_filter_laplacian_series_std(s : ImagefilterlaplacianSeries) -> Doub
 pub fn image_filter_laplacian_series_median(s : ImagefilterlaplacianSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_filter_laplacian_series_scale(s : ImagefilterlaplacianSeries, f : Double) -> ImagefilterlaplacianSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_filter_laplacian_series_add(a : ImagefilterlaplacianSeries, b : ImagefilterlaplacianSeries) -> ImagefilterlaplacianSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_filter_laplacian_series_sub(a : ImagefilterlaplacianSeries, b : ImagefilterlaplacianSeries) -> ImagefilterlaplacianSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_filter_laplacian_series_normalize(s : ImagefilterlaplacianSeries) -> ImagefilterlaplacianSeries {
@@ -254,22 +246,16 @@ pub fn image_filter_laplacian_vector_zero(dim : Int) -> ImagefilterlaplacianVect
 
 pub fn image_filter_laplacian_vector_add(a : ImagefilterlaplacianVector, b : ImagefilterlaplacianVector) -> ImagefilterlaplacianVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_filter_laplacian_vector_sub(a : ImagefilterlaplacianVector, b : ImagefilterlaplacianVector) -> ImagefilterlaplacianVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_filter_laplacian_vector_scale(v : ImagefilterlaplacianVector, s : Double) -> ImagefilterlaplacianVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_filter_laplacian_vector_dot(a : ImagefilterlaplacianVector, b : ImagefilterlaplacianVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_filter_laplacian_frame_get(s : ImagefilterlaplacianFrame, i : Int) 
 }
 
 pub fn image_filter_laplacian_frame_set(s : ImagefilterlaplacianFrame, i : Int, v : Double) -> ImagefilterlaplacianFrame {
-  let result = image_filter_laplacian_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_frame_sum(s : ImagefilterlaplacianFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_filter_laplacian_table_get(s : ImagefilterlaplacianTable, i : Int) 
 }
 
 pub fn image_filter_laplacian_table_set(s : ImagefilterlaplacianTable, i : Int, v : Double) -> ImagefilterlaplacianTable {
-  let result = image_filter_laplacian_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_table_sum(s : ImagefilterlaplacianTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_filter_laplacian_graphn_get(s : ImagefilterlaplacianGraphN, i : Int
 }
 
 pub fn image_filter_laplacian_graphn_set(s : ImagefilterlaplacianGraphN, i : Int, v : Double) -> ImagefilterlaplacianGraphN {
-  let result = image_filter_laplacian_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_graphn_sum(s : ImagefilterlaplacianGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_filter_laplacian_node_get(s : ImagefilterlaplacianNode, i : Int) ->
 }
 
 pub fn image_filter_laplacian_node_set(s : ImagefilterlaplacianNode, i : Int, v : Double) -> ImagefilterlaplacianNode {
-  let result = image_filter_laplacian_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_node_sum(s : ImagefilterlaplacianNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_filter_laplacian_edge_get(s : ImagefilterlaplacianEdge, i : Int) ->
 }
 
 pub fn image_filter_laplacian_edge_set(s : ImagefilterlaplacianEdge, i : Int, v : Double) -> ImagefilterlaplacianEdge {
-  let result = image_filter_laplacian_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_edge_sum(s : ImagefilterlaplacianEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_filter_laplacian_path_get(s : ImagefilterlaplacianPath, i : Int) ->
 }
 
 pub fn image_filter_laplacian_path_set(s : ImagefilterlaplacianPath, i : Int, v : Double) -> ImagefilterlaplacianPath {
-  let result = image_filter_laplacian_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_path_sum(s : ImagefilterlaplacianPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_filter_laplacian_cluster_get(s : ImagefilterlaplacianCluster, i : I
 }
 
 pub fn image_filter_laplacian_cluster_set(s : ImagefilterlaplacianCluster, i : Int, v : Double) -> ImagefilterlaplacianCluster {
-  let result = image_filter_laplacian_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_cluster_sum(s : ImagefilterlaplacianCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_filter_laplacian_model_get(s : ImagefilterlaplacianModel, i : Int) 
 }
 
 pub fn image_filter_laplacian_model_set(s : ImagefilterlaplacianModel, i : Int, v : Double) -> ImagefilterlaplacianModel {
-  let result = image_filter_laplacian_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_model_sum(s : ImagefilterlaplacianModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_filter_laplacian_layer_get(s : ImagefilterlaplacianLayer, i : Int) 
 }
 
 pub fn image_filter_laplacian_layer_set(s : ImagefilterlaplacianLayer, i : Int, v : Double) -> ImagefilterlaplacianLayer {
-  let result = image_filter_laplacian_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_layer_sum(s : ImagefilterlaplacianLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_filter_laplacian_buffer_get(s : ImagefilterlaplacianBuffer, i : Int
 }
 
 pub fn image_filter_laplacian_buffer_set(s : ImagefilterlaplacianBuffer, i : Int, v : Double) -> ImagefilterlaplacianBuffer {
-  let result = image_filter_laplacian_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_buffer_sum(s : ImagefilterlaplacianBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_filter_laplacian_cursor_get(s : ImagefilterlaplacianCursor, i : Int
 }
 
 pub fn image_filter_laplacian_cursor_set(s : ImagefilterlaplacianCursor, i : Int, v : Double) -> ImagefilterlaplacianCursor {
-  let result = image_filter_laplacian_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_cursor_sum(s : ImagefilterlaplacianCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_filter_laplacian_view_get(s : ImagefilterlaplacianView, i : Int) ->
 }
 
 pub fn image_filter_laplacian_view_set(s : ImagefilterlaplacianView, i : Int, v : Double) -> ImagefilterlaplacianView {
-  let result = image_filter_laplacian_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_view_sum(s : ImagefilterlaplacianView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_filter_laplacian_range_get(s : ImagefilterlaplacianRange, i : Int) 
 }
 
 pub fn image_filter_laplacian_range_set(s : ImagefilterlaplacianRange, i : Int, v : Double) -> ImagefilterlaplacianRange {
-  let result = image_filter_laplacian_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_range_sum(s : ImagefilterlaplacianRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_filter_laplacian_slice_get(s : ImagefilterlaplacianSlice, i : Int) 
 }
 
 pub fn image_filter_laplacian_slice_set(s : ImagefilterlaplacianSlice, i : Int, v : Double) -> ImagefilterlaplacianSlice {
-  let result = image_filter_laplacian_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_laplacian_slice_sum(s : ImagefilterlaplacianSlice) -> Double { @_common.sum(s.data) }

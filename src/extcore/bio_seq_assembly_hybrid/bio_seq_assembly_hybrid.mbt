@@ -107,23 +107,15 @@ pub fn bio_seq_assembly_hybrid_series_std(s : BioseqassemblyhybridSeries) -> Dou
 pub fn bio_seq_assembly_hybrid_series_median(s : BioseqassemblyhybridSeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_seq_assembly_hybrid_series_scale(s : BioseqassemblyhybridSeries, f : Double) -> BioseqassemblyhybridSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_seq_assembly_hybrid_series_add(a : BioseqassemblyhybridSeries, b : BioseqassemblyhybridSeries) -> BioseqassemblyhybridSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_assembly_hybrid_series_sub(a : BioseqassemblyhybridSeries, b : BioseqassemblyhybridSeries) -> BioseqassemblyhybridSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_assembly_hybrid_series_normalize(s : BioseqassemblyhybridSeries) -> BioseqassemblyhybridSeries {
@@ -254,22 +246,16 @@ pub fn bio_seq_assembly_hybrid_vector_zero(dim : Int) -> BioseqassemblyhybridVec
 
 pub fn bio_seq_assembly_hybrid_vector_add(a : BioseqassemblyhybridVector, b : BioseqassemblyhybridVector) -> BioseqassemblyhybridVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_assembly_hybrid_vector_sub(a : BioseqassemblyhybridVector, b : BioseqassemblyhybridVector) -> BioseqassemblyhybridVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_assembly_hybrid_vector_scale(v : BioseqassemblyhybridVector, s : Double) -> BioseqassemblyhybridVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_seq_assembly_hybrid_vector_dot(a : BioseqassemblyhybridVector, b : BioseqassemblyhybridVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_seq_assembly_hybrid_frame_get(s : BioseqassemblyhybridFrame, i : Int)
 }
 
 pub fn bio_seq_assembly_hybrid_frame_set(s : BioseqassemblyhybridFrame, i : Int, v : Double) -> BioseqassemblyhybridFrame {
-  let result = bio_seq_assembly_hybrid_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_frame_sum(s : BioseqassemblyhybridFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_seq_assembly_hybrid_table_get(s : BioseqassemblyhybridTable, i : Int)
 }
 
 pub fn bio_seq_assembly_hybrid_table_set(s : BioseqassemblyhybridTable, i : Int, v : Double) -> BioseqassemblyhybridTable {
-  let result = bio_seq_assembly_hybrid_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_table_sum(s : BioseqassemblyhybridTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_seq_assembly_hybrid_graphn_get(s : BioseqassemblyhybridGraphN, i : In
 }
 
 pub fn bio_seq_assembly_hybrid_graphn_set(s : BioseqassemblyhybridGraphN, i : Int, v : Double) -> BioseqassemblyhybridGraphN {
-  let result = bio_seq_assembly_hybrid_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_graphn_sum(s : BioseqassemblyhybridGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_seq_assembly_hybrid_node_get(s : BioseqassemblyhybridNode, i : Int) -
 }
 
 pub fn bio_seq_assembly_hybrid_node_set(s : BioseqassemblyhybridNode, i : Int, v : Double) -> BioseqassemblyhybridNode {
-  let result = bio_seq_assembly_hybrid_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_node_sum(s : BioseqassemblyhybridNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_seq_assembly_hybrid_edge_get(s : BioseqassemblyhybridEdge, i : Int) -
 }
 
 pub fn bio_seq_assembly_hybrid_edge_set(s : BioseqassemblyhybridEdge, i : Int, v : Double) -> BioseqassemblyhybridEdge {
-  let result = bio_seq_assembly_hybrid_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_edge_sum(s : BioseqassemblyhybridEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_seq_assembly_hybrid_path_get(s : BioseqassemblyhybridPath, i : Int) -
 }
 
 pub fn bio_seq_assembly_hybrid_path_set(s : BioseqassemblyhybridPath, i : Int, v : Double) -> BioseqassemblyhybridPath {
-  let result = bio_seq_assembly_hybrid_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_path_sum(s : BioseqassemblyhybridPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_seq_assembly_hybrid_cluster_get(s : BioseqassemblyhybridCluster, i : 
 }
 
 pub fn bio_seq_assembly_hybrid_cluster_set(s : BioseqassemblyhybridCluster, i : Int, v : Double) -> BioseqassemblyhybridCluster {
-  let result = bio_seq_assembly_hybrid_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_cluster_sum(s : BioseqassemblyhybridCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_seq_assembly_hybrid_model_get(s : BioseqassemblyhybridModel, i : Int)
 }
 
 pub fn bio_seq_assembly_hybrid_model_set(s : BioseqassemblyhybridModel, i : Int, v : Double) -> BioseqassemblyhybridModel {
-  let result = bio_seq_assembly_hybrid_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_model_sum(s : BioseqassemblyhybridModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_seq_assembly_hybrid_layer_get(s : BioseqassemblyhybridLayer, i : Int)
 }
 
 pub fn bio_seq_assembly_hybrid_layer_set(s : BioseqassemblyhybridLayer, i : Int, v : Double) -> BioseqassemblyhybridLayer {
-  let result = bio_seq_assembly_hybrid_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_layer_sum(s : BioseqassemblyhybridLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_seq_assembly_hybrid_buffer_get(s : BioseqassemblyhybridBuffer, i : In
 }
 
 pub fn bio_seq_assembly_hybrid_buffer_set(s : BioseqassemblyhybridBuffer, i : Int, v : Double) -> BioseqassemblyhybridBuffer {
-  let result = bio_seq_assembly_hybrid_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_buffer_sum(s : BioseqassemblyhybridBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_seq_assembly_hybrid_cursor_get(s : BioseqassemblyhybridCursor, i : In
 }
 
 pub fn bio_seq_assembly_hybrid_cursor_set(s : BioseqassemblyhybridCursor, i : Int, v : Double) -> BioseqassemblyhybridCursor {
-  let result = bio_seq_assembly_hybrid_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_cursor_sum(s : BioseqassemblyhybridCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_seq_assembly_hybrid_view_get(s : BioseqassemblyhybridView, i : Int) -
 }
 
 pub fn bio_seq_assembly_hybrid_view_set(s : BioseqassemblyhybridView, i : Int, v : Double) -> BioseqassemblyhybridView {
-  let result = bio_seq_assembly_hybrid_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_view_sum(s : BioseqassemblyhybridView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_seq_assembly_hybrid_range_get(s : BioseqassemblyhybridRange, i : Int)
 }
 
 pub fn bio_seq_assembly_hybrid_range_set(s : BioseqassemblyhybridRange, i : Int, v : Double) -> BioseqassemblyhybridRange {
-  let result = bio_seq_assembly_hybrid_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_range_sum(s : BioseqassemblyhybridRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_seq_assembly_hybrid_slice_get(s : BioseqassemblyhybridSlice, i : Int)
 }
 
 pub fn bio_seq_assembly_hybrid_slice_set(s : BioseqassemblyhybridSlice, i : Int, v : Double) -> BioseqassemblyhybridSlice {
-  let result = bio_seq_assembly_hybrid_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_hybrid_slice_sum(s : BioseqassemblyhybridSlice) -> Double { @_common.sum(s.data) }

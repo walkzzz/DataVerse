@@ -107,23 +107,15 @@ pub fn crypto_hash_sha256_series_std(s : Cryptohashsha256Series) -> Double { @_c
 pub fn crypto_hash_sha256_series_median(s : Cryptohashsha256Series) -> Double { @_common.median(s.vals) }
 
 pub fn crypto_hash_sha256_series_scale(s : Cryptohashsha256Series, f : Double) -> Cryptohashsha256Series {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn crypto_hash_sha256_series_add(a : Cryptohashsha256Series, b : Cryptohashsha256Series) -> Cryptohashsha256Series {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn crypto_hash_sha256_series_sub(a : Cryptohashsha256Series, b : Cryptohashsha256Series) -> Cryptohashsha256Series {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn crypto_hash_sha256_series_normalize(s : Cryptohashsha256Series) -> Cryptohashsha256Series {
@@ -254,22 +246,16 @@ pub fn crypto_hash_sha256_vector_zero(dim : Int) -> Cryptohashsha256Vector {
 
 pub fn crypto_hash_sha256_vector_add(a : Cryptohashsha256Vector, b : Cryptohashsha256Vector) -> Cryptohashsha256Vector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_hash_sha256_vector_sub(a : Cryptohashsha256Vector, b : Cryptohashsha256Vector) -> Cryptohashsha256Vector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_hash_sha256_vector_scale(v : Cryptohashsha256Vector, s : Double) -> Cryptohashsha256Vector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn crypto_hash_sha256_vector_dot(a : Cryptohashsha256Vector, b : Cryptohashsha256Vector) -> Double {
@@ -372,10 +358,9 @@ pub fn crypto_hash_sha256_frame_get(s : Cryptohashsha256Frame, i : Int) -> Doubl
 }
 
 pub fn crypto_hash_sha256_frame_set(s : Cryptohashsha256Frame, i : Int, v : Double) -> Cryptohashsha256Frame {
-  let result = crypto_hash_sha256_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha256_frame_sum(s : Cryptohashsha256Frame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn crypto_hash_sha256_table_get(s : Cryptohashsha256Table, i : Int) -> Doubl
 }
 
 pub fn crypto_hash_sha256_table_set(s : Cryptohashsha256Table, i : Int, v : Double) -> Cryptohashsha256Table {
-  let result = crypto_hash_sha256_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha256_table_sum(s : Cryptohashsha256Table) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn crypto_hash_sha256_graphn_get(s : Cryptohashsha256GraphN, i : Int) -> Dou
 }
 
 pub fn crypto_hash_sha256_graphn_set(s : Cryptohashsha256GraphN, i : Int, v : Double) -> Cryptohashsha256GraphN {
-  let result = crypto_hash_sha256_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha256_graphn_sum(s : Cryptohashsha256GraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn crypto_hash_sha256_node_get(s : Cryptohashsha256Node, i : Int) -> Double 
 }
 
 pub fn crypto_hash_sha256_node_set(s : Cryptohashsha256Node, i : Int, v : Double) -> Cryptohashsha256Node {
-  let result = crypto_hash_sha256_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha256_node_sum(s : Cryptohashsha256Node) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn crypto_hash_sha256_edge_get(s : Cryptohashsha256Edge, i : Int) -> Double 
 }
 
 pub fn crypto_hash_sha256_edge_set(s : Cryptohashsha256Edge, i : Int, v : Double) -> Cryptohashsha256Edge {
-  let result = crypto_hash_sha256_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha256_edge_sum(s : Cryptohashsha256Edge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn crypto_hash_sha256_path_get(s : Cryptohashsha256Path, i : Int) -> Double 
 }
 
 pub fn crypto_hash_sha256_path_set(s : Cryptohashsha256Path, i : Int, v : Double) -> Cryptohashsha256Path {
-  let result = crypto_hash_sha256_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha256_path_sum(s : Cryptohashsha256Path) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn crypto_hash_sha256_cluster_get(s : Cryptohashsha256Cluster, i : Int) -> D
 }
 
 pub fn crypto_hash_sha256_cluster_set(s : Cryptohashsha256Cluster, i : Int, v : Double) -> Cryptohashsha256Cluster {
-  let result = crypto_hash_sha256_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha256_cluster_sum(s : Cryptohashsha256Cluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn crypto_hash_sha256_model_get(s : Cryptohashsha256Model, i : Int) -> Doubl
 }
 
 pub fn crypto_hash_sha256_model_set(s : Cryptohashsha256Model, i : Int, v : Double) -> Cryptohashsha256Model {
-  let result = crypto_hash_sha256_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha256_model_sum(s : Cryptohashsha256Model) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn crypto_hash_sha256_layer_get(s : Cryptohashsha256Layer, i : Int) -> Doubl
 }
 
 pub fn crypto_hash_sha256_layer_set(s : Cryptohashsha256Layer, i : Int, v : Double) -> Cryptohashsha256Layer {
-  let result = crypto_hash_sha256_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha256_layer_sum(s : Cryptohashsha256Layer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn crypto_hash_sha256_buffer_get(s : Cryptohashsha256Buffer, i : Int) -> Dou
 }
 
 pub fn crypto_hash_sha256_buffer_set(s : Cryptohashsha256Buffer, i : Int, v : Double) -> Cryptohashsha256Buffer {
-  let result = crypto_hash_sha256_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha256_buffer_sum(s : Cryptohashsha256Buffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn crypto_hash_sha256_cursor_get(s : Cryptohashsha256Cursor, i : Int) -> Dou
 }
 
 pub fn crypto_hash_sha256_cursor_set(s : Cryptohashsha256Cursor, i : Int, v : Double) -> Cryptohashsha256Cursor {
-  let result = crypto_hash_sha256_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha256_cursor_sum(s : Cryptohashsha256Cursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn crypto_hash_sha256_view_get(s : Cryptohashsha256View, i : Int) -> Double 
 }
 
 pub fn crypto_hash_sha256_view_set(s : Cryptohashsha256View, i : Int, v : Double) -> Cryptohashsha256View {
-  let result = crypto_hash_sha256_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha256_view_sum(s : Cryptohashsha256View) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn crypto_hash_sha256_range_get(s : Cryptohashsha256Range, i : Int) -> Doubl
 }
 
 pub fn crypto_hash_sha256_range_set(s : Cryptohashsha256Range, i : Int, v : Double) -> Cryptohashsha256Range {
-  let result = crypto_hash_sha256_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha256_range_sum(s : Cryptohashsha256Range) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn crypto_hash_sha256_slice_get(s : Cryptohashsha256Slice, i : Int) -> Doubl
 }
 
 pub fn crypto_hash_sha256_slice_set(s : Cryptohashsha256Slice, i : Int, v : Double) -> Cryptohashsha256Slice {
-  let result = crypto_hash_sha256_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_sha256_slice_sum(s : Cryptohashsha256Slice) -> Double { @_common.sum(s.data) }

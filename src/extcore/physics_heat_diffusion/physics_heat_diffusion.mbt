@@ -107,23 +107,15 @@ pub fn physics_heat_diffusion_series_std(s : PhysicsheatdiffusionSeries) -> Doub
 pub fn physics_heat_diffusion_series_median(s : PhysicsheatdiffusionSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_heat_diffusion_series_scale(s : PhysicsheatdiffusionSeries, f : Double) -> PhysicsheatdiffusionSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_heat_diffusion_series_add(a : PhysicsheatdiffusionSeries, b : PhysicsheatdiffusionSeries) -> PhysicsheatdiffusionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_heat_diffusion_series_sub(a : PhysicsheatdiffusionSeries, b : PhysicsheatdiffusionSeries) -> PhysicsheatdiffusionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_heat_diffusion_series_normalize(s : PhysicsheatdiffusionSeries) -> PhysicsheatdiffusionSeries {
@@ -254,22 +246,16 @@ pub fn physics_heat_diffusion_vector_zero(dim : Int) -> PhysicsheatdiffusionVect
 
 pub fn physics_heat_diffusion_vector_add(a : PhysicsheatdiffusionVector, b : PhysicsheatdiffusionVector) -> PhysicsheatdiffusionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_heat_diffusion_vector_sub(a : PhysicsheatdiffusionVector, b : PhysicsheatdiffusionVector) -> PhysicsheatdiffusionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_heat_diffusion_vector_scale(v : PhysicsheatdiffusionVector, s : Double) -> PhysicsheatdiffusionVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_heat_diffusion_vector_dot(a : PhysicsheatdiffusionVector, b : PhysicsheatdiffusionVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_heat_diffusion_frame_get(s : PhysicsheatdiffusionFrame, i : Int) 
 }
 
 pub fn physics_heat_diffusion_frame_set(s : PhysicsheatdiffusionFrame, i : Int, v : Double) -> PhysicsheatdiffusionFrame {
-  let result = physics_heat_diffusion_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_diffusion_frame_sum(s : PhysicsheatdiffusionFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_heat_diffusion_table_get(s : PhysicsheatdiffusionTable, i : Int) 
 }
 
 pub fn physics_heat_diffusion_table_set(s : PhysicsheatdiffusionTable, i : Int, v : Double) -> PhysicsheatdiffusionTable {
-  let result = physics_heat_diffusion_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_diffusion_table_sum(s : PhysicsheatdiffusionTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_heat_diffusion_graphn_get(s : PhysicsheatdiffusionGraphN, i : Int
 }
 
 pub fn physics_heat_diffusion_graphn_set(s : PhysicsheatdiffusionGraphN, i : Int, v : Double) -> PhysicsheatdiffusionGraphN {
-  let result = physics_heat_diffusion_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_diffusion_graphn_sum(s : PhysicsheatdiffusionGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_heat_diffusion_node_get(s : PhysicsheatdiffusionNode, i : Int) ->
 }
 
 pub fn physics_heat_diffusion_node_set(s : PhysicsheatdiffusionNode, i : Int, v : Double) -> PhysicsheatdiffusionNode {
-  let result = physics_heat_diffusion_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_diffusion_node_sum(s : PhysicsheatdiffusionNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_heat_diffusion_edge_get(s : PhysicsheatdiffusionEdge, i : Int) ->
 }
 
 pub fn physics_heat_diffusion_edge_set(s : PhysicsheatdiffusionEdge, i : Int, v : Double) -> PhysicsheatdiffusionEdge {
-  let result = physics_heat_diffusion_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_diffusion_edge_sum(s : PhysicsheatdiffusionEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_heat_diffusion_path_get(s : PhysicsheatdiffusionPath, i : Int) ->
 }
 
 pub fn physics_heat_diffusion_path_set(s : PhysicsheatdiffusionPath, i : Int, v : Double) -> PhysicsheatdiffusionPath {
-  let result = physics_heat_diffusion_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_diffusion_path_sum(s : PhysicsheatdiffusionPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_heat_diffusion_cluster_get(s : PhysicsheatdiffusionCluster, i : I
 }
 
 pub fn physics_heat_diffusion_cluster_set(s : PhysicsheatdiffusionCluster, i : Int, v : Double) -> PhysicsheatdiffusionCluster {
-  let result = physics_heat_diffusion_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_diffusion_cluster_sum(s : PhysicsheatdiffusionCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_heat_diffusion_model_get(s : PhysicsheatdiffusionModel, i : Int) 
 }
 
 pub fn physics_heat_diffusion_model_set(s : PhysicsheatdiffusionModel, i : Int, v : Double) -> PhysicsheatdiffusionModel {
-  let result = physics_heat_diffusion_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_diffusion_model_sum(s : PhysicsheatdiffusionModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_heat_diffusion_layer_get(s : PhysicsheatdiffusionLayer, i : Int) 
 }
 
 pub fn physics_heat_diffusion_layer_set(s : PhysicsheatdiffusionLayer, i : Int, v : Double) -> PhysicsheatdiffusionLayer {
-  let result = physics_heat_diffusion_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_diffusion_layer_sum(s : PhysicsheatdiffusionLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_heat_diffusion_buffer_get(s : PhysicsheatdiffusionBuffer, i : Int
 }
 
 pub fn physics_heat_diffusion_buffer_set(s : PhysicsheatdiffusionBuffer, i : Int, v : Double) -> PhysicsheatdiffusionBuffer {
-  let result = physics_heat_diffusion_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_diffusion_buffer_sum(s : PhysicsheatdiffusionBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_heat_diffusion_cursor_get(s : PhysicsheatdiffusionCursor, i : Int
 }
 
 pub fn physics_heat_diffusion_cursor_set(s : PhysicsheatdiffusionCursor, i : Int, v : Double) -> PhysicsheatdiffusionCursor {
-  let result = physics_heat_diffusion_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_diffusion_cursor_sum(s : PhysicsheatdiffusionCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_heat_diffusion_view_get(s : PhysicsheatdiffusionView, i : Int) ->
 }
 
 pub fn physics_heat_diffusion_view_set(s : PhysicsheatdiffusionView, i : Int, v : Double) -> PhysicsheatdiffusionView {
-  let result = physics_heat_diffusion_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_diffusion_view_sum(s : PhysicsheatdiffusionView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_heat_diffusion_range_get(s : PhysicsheatdiffusionRange, i : Int) 
 }
 
 pub fn physics_heat_diffusion_range_set(s : PhysicsheatdiffusionRange, i : Int, v : Double) -> PhysicsheatdiffusionRange {
-  let result = physics_heat_diffusion_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_diffusion_range_sum(s : PhysicsheatdiffusionRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_heat_diffusion_slice_get(s : PhysicsheatdiffusionSlice, i : Int) 
 }
 
 pub fn physics_heat_diffusion_slice_set(s : PhysicsheatdiffusionSlice, i : Int, v : Double) -> PhysicsheatdiffusionSlice {
-  let result = physics_heat_diffusion_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_diffusion_slice_sum(s : PhysicsheatdiffusionSlice) -> Double { @_common.sum(s.data) }

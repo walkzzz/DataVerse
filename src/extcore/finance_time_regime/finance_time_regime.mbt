@@ -107,23 +107,15 @@ pub fn finance_time_regime_series_std(s : FinancetimeregimeSeries) -> Double { @
 pub fn finance_time_regime_series_median(s : FinancetimeregimeSeries) -> Double { @_common.median(s.vals) }
 
 pub fn finance_time_regime_series_scale(s : FinancetimeregimeSeries, f : Double) -> FinancetimeregimeSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn finance_time_regime_series_add(a : FinancetimeregimeSeries, b : FinancetimeregimeSeries) -> FinancetimeregimeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn finance_time_regime_series_sub(a : FinancetimeregimeSeries, b : FinancetimeregimeSeries) -> FinancetimeregimeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn finance_time_regime_series_normalize(s : FinancetimeregimeSeries) -> FinancetimeregimeSeries {
@@ -254,22 +246,16 @@ pub fn finance_time_regime_vector_zero(dim : Int) -> FinancetimeregimeVector {
 
 pub fn finance_time_regime_vector_add(a : FinancetimeregimeVector, b : FinancetimeregimeVector) -> FinancetimeregimeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_time_regime_vector_sub(a : FinancetimeregimeVector, b : FinancetimeregimeVector) -> FinancetimeregimeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_time_regime_vector_scale(v : FinancetimeregimeVector, s : Double) -> FinancetimeregimeVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn finance_time_regime_vector_dot(a : FinancetimeregimeVector, b : FinancetimeregimeVector) -> Double {
@@ -372,10 +358,9 @@ pub fn finance_time_regime_frame_get(s : FinancetimeregimeFrame, i : Int) -> Dou
 }
 
 pub fn finance_time_regime_frame_set(s : FinancetimeregimeFrame, i : Int, v : Double) -> FinancetimeregimeFrame {
-  let result = finance_time_regime_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_regime_frame_sum(s : FinancetimeregimeFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn finance_time_regime_table_get(s : FinancetimeregimeTable, i : Int) -> Dou
 }
 
 pub fn finance_time_regime_table_set(s : FinancetimeregimeTable, i : Int, v : Double) -> FinancetimeregimeTable {
-  let result = finance_time_regime_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_regime_table_sum(s : FinancetimeregimeTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn finance_time_regime_graphn_get(s : FinancetimeregimeGraphN, i : Int) -> D
 }
 
 pub fn finance_time_regime_graphn_set(s : FinancetimeregimeGraphN, i : Int, v : Double) -> FinancetimeregimeGraphN {
-  let result = finance_time_regime_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_regime_graphn_sum(s : FinancetimeregimeGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn finance_time_regime_node_get(s : FinancetimeregimeNode, i : Int) -> Doubl
 }
 
 pub fn finance_time_regime_node_set(s : FinancetimeregimeNode, i : Int, v : Double) -> FinancetimeregimeNode {
-  let result = finance_time_regime_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_regime_node_sum(s : FinancetimeregimeNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn finance_time_regime_edge_get(s : FinancetimeregimeEdge, i : Int) -> Doubl
 }
 
 pub fn finance_time_regime_edge_set(s : FinancetimeregimeEdge, i : Int, v : Double) -> FinancetimeregimeEdge {
-  let result = finance_time_regime_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_regime_edge_sum(s : FinancetimeregimeEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn finance_time_regime_path_get(s : FinancetimeregimePath, i : Int) -> Doubl
 }
 
 pub fn finance_time_regime_path_set(s : FinancetimeregimePath, i : Int, v : Double) -> FinancetimeregimePath {
-  let result = finance_time_regime_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_regime_path_sum(s : FinancetimeregimePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn finance_time_regime_cluster_get(s : FinancetimeregimeCluster, i : Int) ->
 }
 
 pub fn finance_time_regime_cluster_set(s : FinancetimeregimeCluster, i : Int, v : Double) -> FinancetimeregimeCluster {
-  let result = finance_time_regime_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_regime_cluster_sum(s : FinancetimeregimeCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn finance_time_regime_model_get(s : FinancetimeregimeModel, i : Int) -> Dou
 }
 
 pub fn finance_time_regime_model_set(s : FinancetimeregimeModel, i : Int, v : Double) -> FinancetimeregimeModel {
-  let result = finance_time_regime_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_regime_model_sum(s : FinancetimeregimeModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn finance_time_regime_layer_get(s : FinancetimeregimeLayer, i : Int) -> Dou
 }
 
 pub fn finance_time_regime_layer_set(s : FinancetimeregimeLayer, i : Int, v : Double) -> FinancetimeregimeLayer {
-  let result = finance_time_regime_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_regime_layer_sum(s : FinancetimeregimeLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn finance_time_regime_buffer_get(s : FinancetimeregimeBuffer, i : Int) -> D
 }
 
 pub fn finance_time_regime_buffer_set(s : FinancetimeregimeBuffer, i : Int, v : Double) -> FinancetimeregimeBuffer {
-  let result = finance_time_regime_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_regime_buffer_sum(s : FinancetimeregimeBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn finance_time_regime_cursor_get(s : FinancetimeregimeCursor, i : Int) -> D
 }
 
 pub fn finance_time_regime_cursor_set(s : FinancetimeregimeCursor, i : Int, v : Double) -> FinancetimeregimeCursor {
-  let result = finance_time_regime_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_regime_cursor_sum(s : FinancetimeregimeCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn finance_time_regime_view_get(s : FinancetimeregimeView, i : Int) -> Doubl
 }
 
 pub fn finance_time_regime_view_set(s : FinancetimeregimeView, i : Int, v : Double) -> FinancetimeregimeView {
-  let result = finance_time_regime_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_regime_view_sum(s : FinancetimeregimeView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn finance_time_regime_range_get(s : FinancetimeregimeRange, i : Int) -> Dou
 }
 
 pub fn finance_time_regime_range_set(s : FinancetimeregimeRange, i : Int, v : Double) -> FinancetimeregimeRange {
-  let result = finance_time_regime_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_regime_range_sum(s : FinancetimeregimeRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn finance_time_regime_slice_get(s : FinancetimeregimeSlice, i : Int) -> Dou
 }
 
 pub fn finance_time_regime_slice_set(s : FinancetimeregimeSlice, i : Int, v : Double) -> FinancetimeregimeSlice {
-  let result = finance_time_regime_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_regime_slice_sum(s : FinancetimeregimeSlice) -> Double { @_common.sum(s.data) }

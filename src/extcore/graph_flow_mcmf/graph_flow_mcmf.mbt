@@ -107,23 +107,15 @@ pub fn graph_flow_mcmf_series_std(s : GraphflowmcmfSeries) -> Double { @_common.
 pub fn graph_flow_mcmf_series_median(s : GraphflowmcmfSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_flow_mcmf_series_scale(s : GraphflowmcmfSeries, f : Double) -> GraphflowmcmfSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_flow_mcmf_series_add(a : GraphflowmcmfSeries, b : GraphflowmcmfSeries) -> GraphflowmcmfSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_flow_mcmf_series_sub(a : GraphflowmcmfSeries, b : GraphflowmcmfSeries) -> GraphflowmcmfSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_flow_mcmf_series_normalize(s : GraphflowmcmfSeries) -> GraphflowmcmfSeries {
@@ -254,22 +246,16 @@ pub fn graph_flow_mcmf_vector_zero(dim : Int) -> GraphflowmcmfVector {
 
 pub fn graph_flow_mcmf_vector_add(a : GraphflowmcmfVector, b : GraphflowmcmfVector) -> GraphflowmcmfVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_flow_mcmf_vector_sub(a : GraphflowmcmfVector, b : GraphflowmcmfVector) -> GraphflowmcmfVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_flow_mcmf_vector_scale(v : GraphflowmcmfVector, s : Double) -> GraphflowmcmfVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_flow_mcmf_vector_dot(a : GraphflowmcmfVector, b : GraphflowmcmfVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_flow_mcmf_frame_get(s : GraphflowmcmfFrame, i : Int) -> Double {
 }
 
 pub fn graph_flow_mcmf_frame_set(s : GraphflowmcmfFrame, i : Int, v : Double) -> GraphflowmcmfFrame {
-  let result = graph_flow_mcmf_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mcmf_frame_sum(s : GraphflowmcmfFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_flow_mcmf_table_get(s : GraphflowmcmfTable, i : Int) -> Double {
 }
 
 pub fn graph_flow_mcmf_table_set(s : GraphflowmcmfTable, i : Int, v : Double) -> GraphflowmcmfTable {
-  let result = graph_flow_mcmf_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mcmf_table_sum(s : GraphflowmcmfTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_flow_mcmf_graphn_get(s : GraphflowmcmfGraphN, i : Int) -> Double {
 }
 
 pub fn graph_flow_mcmf_graphn_set(s : GraphflowmcmfGraphN, i : Int, v : Double) -> GraphflowmcmfGraphN {
-  let result = graph_flow_mcmf_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mcmf_graphn_sum(s : GraphflowmcmfGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_flow_mcmf_node_get(s : GraphflowmcmfNode, i : Int) -> Double {
 }
 
 pub fn graph_flow_mcmf_node_set(s : GraphflowmcmfNode, i : Int, v : Double) -> GraphflowmcmfNode {
-  let result = graph_flow_mcmf_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mcmf_node_sum(s : GraphflowmcmfNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_flow_mcmf_edge_get(s : GraphflowmcmfEdge, i : Int) -> Double {
 }
 
 pub fn graph_flow_mcmf_edge_set(s : GraphflowmcmfEdge, i : Int, v : Double) -> GraphflowmcmfEdge {
-  let result = graph_flow_mcmf_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mcmf_edge_sum(s : GraphflowmcmfEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_flow_mcmf_path_get(s : GraphflowmcmfPath, i : Int) -> Double {
 }
 
 pub fn graph_flow_mcmf_path_set(s : GraphflowmcmfPath, i : Int, v : Double) -> GraphflowmcmfPath {
-  let result = graph_flow_mcmf_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mcmf_path_sum(s : GraphflowmcmfPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_flow_mcmf_cluster_get(s : GraphflowmcmfCluster, i : Int) -> Double 
 }
 
 pub fn graph_flow_mcmf_cluster_set(s : GraphflowmcmfCluster, i : Int, v : Double) -> GraphflowmcmfCluster {
-  let result = graph_flow_mcmf_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mcmf_cluster_sum(s : GraphflowmcmfCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_flow_mcmf_model_get(s : GraphflowmcmfModel, i : Int) -> Double {
 }
 
 pub fn graph_flow_mcmf_model_set(s : GraphflowmcmfModel, i : Int, v : Double) -> GraphflowmcmfModel {
-  let result = graph_flow_mcmf_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mcmf_model_sum(s : GraphflowmcmfModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_flow_mcmf_layer_get(s : GraphflowmcmfLayer, i : Int) -> Double {
 }
 
 pub fn graph_flow_mcmf_layer_set(s : GraphflowmcmfLayer, i : Int, v : Double) -> GraphflowmcmfLayer {
-  let result = graph_flow_mcmf_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mcmf_layer_sum(s : GraphflowmcmfLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_flow_mcmf_buffer_get(s : GraphflowmcmfBuffer, i : Int) -> Double {
 }
 
 pub fn graph_flow_mcmf_buffer_set(s : GraphflowmcmfBuffer, i : Int, v : Double) -> GraphflowmcmfBuffer {
-  let result = graph_flow_mcmf_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mcmf_buffer_sum(s : GraphflowmcmfBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_flow_mcmf_cursor_get(s : GraphflowmcmfCursor, i : Int) -> Double {
 }
 
 pub fn graph_flow_mcmf_cursor_set(s : GraphflowmcmfCursor, i : Int, v : Double) -> GraphflowmcmfCursor {
-  let result = graph_flow_mcmf_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mcmf_cursor_sum(s : GraphflowmcmfCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_flow_mcmf_view_get(s : GraphflowmcmfView, i : Int) -> Double {
 }
 
 pub fn graph_flow_mcmf_view_set(s : GraphflowmcmfView, i : Int, v : Double) -> GraphflowmcmfView {
-  let result = graph_flow_mcmf_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mcmf_view_sum(s : GraphflowmcmfView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_flow_mcmf_range_get(s : GraphflowmcmfRange, i : Int) -> Double {
 }
 
 pub fn graph_flow_mcmf_range_set(s : GraphflowmcmfRange, i : Int, v : Double) -> GraphflowmcmfRange {
-  let result = graph_flow_mcmf_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mcmf_range_sum(s : GraphflowmcmfRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_flow_mcmf_slice_get(s : GraphflowmcmfSlice, i : Int) -> Double {
 }
 
 pub fn graph_flow_mcmf_slice_set(s : GraphflowmcmfSlice, i : Int, v : Double) -> GraphflowmcmfSlice {
-  let result = graph_flow_mcmf_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mcmf_slice_sum(s : GraphflowmcmfSlice) -> Double { @_common.sum(s.data) }

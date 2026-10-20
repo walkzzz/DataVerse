@@ -107,23 +107,15 @@ pub fn math_approx_interp_series_std(s : MathapproxinterpSeries) -> Double { @_c
 pub fn math_approx_interp_series_median(s : MathapproxinterpSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_approx_interp_series_scale(s : MathapproxinterpSeries, f : Double) -> MathapproxinterpSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_approx_interp_series_add(a : MathapproxinterpSeries, b : MathapproxinterpSeries) -> MathapproxinterpSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_approx_interp_series_sub(a : MathapproxinterpSeries, b : MathapproxinterpSeries) -> MathapproxinterpSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_approx_interp_series_normalize(s : MathapproxinterpSeries) -> MathapproxinterpSeries {
@@ -254,22 +246,16 @@ pub fn math_approx_interp_vector_zero(dim : Int) -> MathapproxinterpVector {
 
 pub fn math_approx_interp_vector_add(a : MathapproxinterpVector, b : MathapproxinterpVector) -> MathapproxinterpVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_approx_interp_vector_sub(a : MathapproxinterpVector, b : MathapproxinterpVector) -> MathapproxinterpVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_approx_interp_vector_scale(v : MathapproxinterpVector, s : Double) -> MathapproxinterpVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_approx_interp_vector_dot(a : MathapproxinterpVector, b : MathapproxinterpVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_approx_interp_frame_get(s : MathapproxinterpFrame, i : Int) -> Doubl
 }
 
 pub fn math_approx_interp_frame_set(s : MathapproxinterpFrame, i : Int, v : Double) -> MathapproxinterpFrame {
-  let result = math_approx_interp_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_interp_frame_sum(s : MathapproxinterpFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_approx_interp_table_get(s : MathapproxinterpTable, i : Int) -> Doubl
 }
 
 pub fn math_approx_interp_table_set(s : MathapproxinterpTable, i : Int, v : Double) -> MathapproxinterpTable {
-  let result = math_approx_interp_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_interp_table_sum(s : MathapproxinterpTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_approx_interp_graphn_get(s : MathapproxinterpGraphN, i : Int) -> Dou
 }
 
 pub fn math_approx_interp_graphn_set(s : MathapproxinterpGraphN, i : Int, v : Double) -> MathapproxinterpGraphN {
-  let result = math_approx_interp_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_interp_graphn_sum(s : MathapproxinterpGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_approx_interp_node_get(s : MathapproxinterpNode, i : Int) -> Double 
 }
 
 pub fn math_approx_interp_node_set(s : MathapproxinterpNode, i : Int, v : Double) -> MathapproxinterpNode {
-  let result = math_approx_interp_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_interp_node_sum(s : MathapproxinterpNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_approx_interp_edge_get(s : MathapproxinterpEdge, i : Int) -> Double 
 }
 
 pub fn math_approx_interp_edge_set(s : MathapproxinterpEdge, i : Int, v : Double) -> MathapproxinterpEdge {
-  let result = math_approx_interp_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_interp_edge_sum(s : MathapproxinterpEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_approx_interp_path_get(s : MathapproxinterpPath, i : Int) -> Double 
 }
 
 pub fn math_approx_interp_path_set(s : MathapproxinterpPath, i : Int, v : Double) -> MathapproxinterpPath {
-  let result = math_approx_interp_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_interp_path_sum(s : MathapproxinterpPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_approx_interp_cluster_get(s : MathapproxinterpCluster, i : Int) -> D
 }
 
 pub fn math_approx_interp_cluster_set(s : MathapproxinterpCluster, i : Int, v : Double) -> MathapproxinterpCluster {
-  let result = math_approx_interp_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_interp_cluster_sum(s : MathapproxinterpCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_approx_interp_model_get(s : MathapproxinterpModel, i : Int) -> Doubl
 }
 
 pub fn math_approx_interp_model_set(s : MathapproxinterpModel, i : Int, v : Double) -> MathapproxinterpModel {
-  let result = math_approx_interp_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_interp_model_sum(s : MathapproxinterpModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_approx_interp_layer_get(s : MathapproxinterpLayer, i : Int) -> Doubl
 }
 
 pub fn math_approx_interp_layer_set(s : MathapproxinterpLayer, i : Int, v : Double) -> MathapproxinterpLayer {
-  let result = math_approx_interp_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_interp_layer_sum(s : MathapproxinterpLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_approx_interp_buffer_get(s : MathapproxinterpBuffer, i : Int) -> Dou
 }
 
 pub fn math_approx_interp_buffer_set(s : MathapproxinterpBuffer, i : Int, v : Double) -> MathapproxinterpBuffer {
-  let result = math_approx_interp_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_interp_buffer_sum(s : MathapproxinterpBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_approx_interp_cursor_get(s : MathapproxinterpCursor, i : Int) -> Dou
 }
 
 pub fn math_approx_interp_cursor_set(s : MathapproxinterpCursor, i : Int, v : Double) -> MathapproxinterpCursor {
-  let result = math_approx_interp_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_interp_cursor_sum(s : MathapproxinterpCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_approx_interp_view_get(s : MathapproxinterpView, i : Int) -> Double 
 }
 
 pub fn math_approx_interp_view_set(s : MathapproxinterpView, i : Int, v : Double) -> MathapproxinterpView {
-  let result = math_approx_interp_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_interp_view_sum(s : MathapproxinterpView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_approx_interp_range_get(s : MathapproxinterpRange, i : Int) -> Doubl
 }
 
 pub fn math_approx_interp_range_set(s : MathapproxinterpRange, i : Int, v : Double) -> MathapproxinterpRange {
-  let result = math_approx_interp_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_interp_range_sum(s : MathapproxinterpRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_approx_interp_slice_get(s : MathapproxinterpSlice, i : Int) -> Doubl
 }
 
 pub fn math_approx_interp_slice_set(s : MathapproxinterpSlice, i : Int, v : Double) -> MathapproxinterpSlice {
-  let result = math_approx_interp_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_interp_slice_sum(s : MathapproxinterpSlice) -> Double { @_common.sum(s.data) }

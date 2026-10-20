@@ -107,23 +107,15 @@ pub fn timeseries_winters_series_std(s : TimeserieswintersSeries) -> Double { @_
 pub fn timeseries_winters_series_median(s : TimeserieswintersSeries) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_winters_series_scale(s : TimeserieswintersSeries, f : Double) -> TimeserieswintersSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn timeseries_winters_series_add(a : TimeserieswintersSeries, b : TimeserieswintersSeries) -> TimeserieswintersSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_winters_series_sub(a : TimeserieswintersSeries, b : TimeserieswintersSeries) -> TimeserieswintersSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_winters_series_normalize(s : TimeserieswintersSeries) -> TimeserieswintersSeries {
@@ -254,22 +246,16 @@ pub fn timeseries_winters_vector_zero(dim : Int) -> TimeserieswintersVector {
 
 pub fn timeseries_winters_vector_add(a : TimeserieswintersVector, b : TimeserieswintersVector) -> TimeserieswintersVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_winters_vector_sub(a : TimeserieswintersVector, b : TimeserieswintersVector) -> TimeserieswintersVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_winters_vector_scale(v : TimeserieswintersVector, s : Double) -> TimeserieswintersVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn timeseries_winters_vector_dot(a : TimeserieswintersVector, b : TimeserieswintersVector) -> Double {
@@ -372,10 +358,9 @@ pub fn timeseries_winters_frame_get(s : TimeserieswintersFrame, i : Int) -> Doub
 }
 
 pub fn timeseries_winters_frame_set(s : TimeserieswintersFrame, i : Int, v : Double) -> TimeserieswintersFrame {
-  let result = timeseries_winters_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_winters_frame_sum(s : TimeserieswintersFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn timeseries_winters_table_get(s : TimeserieswintersTable, i : Int) -> Doub
 }
 
 pub fn timeseries_winters_table_set(s : TimeserieswintersTable, i : Int, v : Double) -> TimeserieswintersTable {
-  let result = timeseries_winters_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_winters_table_sum(s : TimeserieswintersTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn timeseries_winters_graphn_get(s : TimeserieswintersGraphN, i : Int) -> Do
 }
 
 pub fn timeseries_winters_graphn_set(s : TimeserieswintersGraphN, i : Int, v : Double) -> TimeserieswintersGraphN {
-  let result = timeseries_winters_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_winters_graphn_sum(s : TimeserieswintersGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn timeseries_winters_node_get(s : TimeserieswintersNode, i : Int) -> Double
 }
 
 pub fn timeseries_winters_node_set(s : TimeserieswintersNode, i : Int, v : Double) -> TimeserieswintersNode {
-  let result = timeseries_winters_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_winters_node_sum(s : TimeserieswintersNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn timeseries_winters_edge_get(s : TimeserieswintersEdge, i : Int) -> Double
 }
 
 pub fn timeseries_winters_edge_set(s : TimeserieswintersEdge, i : Int, v : Double) -> TimeserieswintersEdge {
-  let result = timeseries_winters_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_winters_edge_sum(s : TimeserieswintersEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn timeseries_winters_path_get(s : TimeserieswintersPath, i : Int) -> Double
 }
 
 pub fn timeseries_winters_path_set(s : TimeserieswintersPath, i : Int, v : Double) -> TimeserieswintersPath {
-  let result = timeseries_winters_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_winters_path_sum(s : TimeserieswintersPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn timeseries_winters_cluster_get(s : TimeserieswintersCluster, i : Int) -> 
 }
 
 pub fn timeseries_winters_cluster_set(s : TimeserieswintersCluster, i : Int, v : Double) -> TimeserieswintersCluster {
-  let result = timeseries_winters_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_winters_cluster_sum(s : TimeserieswintersCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn timeseries_winters_model_get(s : TimeserieswintersModel, i : Int) -> Doub
 }
 
 pub fn timeseries_winters_model_set(s : TimeserieswintersModel, i : Int, v : Double) -> TimeserieswintersModel {
-  let result = timeseries_winters_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_winters_model_sum(s : TimeserieswintersModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn timeseries_winters_layer_get(s : TimeserieswintersLayer, i : Int) -> Doub
 }
 
 pub fn timeseries_winters_layer_set(s : TimeserieswintersLayer, i : Int, v : Double) -> TimeserieswintersLayer {
-  let result = timeseries_winters_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_winters_layer_sum(s : TimeserieswintersLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn timeseries_winters_buffer_get(s : TimeserieswintersBuffer, i : Int) -> Do
 }
 
 pub fn timeseries_winters_buffer_set(s : TimeserieswintersBuffer, i : Int, v : Double) -> TimeserieswintersBuffer {
-  let result = timeseries_winters_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_winters_buffer_sum(s : TimeserieswintersBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn timeseries_winters_cursor_get(s : TimeserieswintersCursor, i : Int) -> Do
 }
 
 pub fn timeseries_winters_cursor_set(s : TimeserieswintersCursor, i : Int, v : Double) -> TimeserieswintersCursor {
-  let result = timeseries_winters_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_winters_cursor_sum(s : TimeserieswintersCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn timeseries_winters_view_get(s : TimeserieswintersView, i : Int) -> Double
 }
 
 pub fn timeseries_winters_view_set(s : TimeserieswintersView, i : Int, v : Double) -> TimeserieswintersView {
-  let result = timeseries_winters_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_winters_view_sum(s : TimeserieswintersView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn timeseries_winters_range_get(s : TimeserieswintersRange, i : Int) -> Doub
 }
 
 pub fn timeseries_winters_range_set(s : TimeserieswintersRange, i : Int, v : Double) -> TimeserieswintersRange {
-  let result = timeseries_winters_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_winters_range_sum(s : TimeserieswintersRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn timeseries_winters_slice_get(s : TimeserieswintersSlice, i : Int) -> Doub
 }
 
 pub fn timeseries_winters_slice_set(s : TimeserieswintersSlice, i : Int, v : Double) -> TimeserieswintersSlice {
-  let result = timeseries_winters_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_winters_slice_sum(s : TimeserieswintersSlice) -> Double { @_common.sum(s.data) }

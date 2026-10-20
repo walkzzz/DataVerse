@@ -107,23 +107,15 @@ pub fn bio_phylo_upgma_series_std(s : BiophyloupgmaSeries) -> Double { @_common.
 pub fn bio_phylo_upgma_series_median(s : BiophyloupgmaSeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_phylo_upgma_series_scale(s : BiophyloupgmaSeries, f : Double) -> BiophyloupgmaSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_phylo_upgma_series_add(a : BiophyloupgmaSeries, b : BiophyloupgmaSeries) -> BiophyloupgmaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_phylo_upgma_series_sub(a : BiophyloupgmaSeries, b : BiophyloupgmaSeries) -> BiophyloupgmaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_phylo_upgma_series_normalize(s : BiophyloupgmaSeries) -> BiophyloupgmaSeries {
@@ -254,22 +246,16 @@ pub fn bio_phylo_upgma_vector_zero(dim : Int) -> BiophyloupgmaVector {
 
 pub fn bio_phylo_upgma_vector_add(a : BiophyloupgmaVector, b : BiophyloupgmaVector) -> BiophyloupgmaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_phylo_upgma_vector_sub(a : BiophyloupgmaVector, b : BiophyloupgmaVector) -> BiophyloupgmaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_phylo_upgma_vector_scale(v : BiophyloupgmaVector, s : Double) -> BiophyloupgmaVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_phylo_upgma_vector_dot(a : BiophyloupgmaVector, b : BiophyloupgmaVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_phylo_upgma_frame_get(s : BiophyloupgmaFrame, i : Int) -> Double {
 }
 
 pub fn bio_phylo_upgma_frame_set(s : BiophyloupgmaFrame, i : Int, v : Double) -> BiophyloupgmaFrame {
-  let result = bio_phylo_upgma_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_frame_sum(s : BiophyloupgmaFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_phylo_upgma_table_get(s : BiophyloupgmaTable, i : Int) -> Double {
 }
 
 pub fn bio_phylo_upgma_table_set(s : BiophyloupgmaTable, i : Int, v : Double) -> BiophyloupgmaTable {
-  let result = bio_phylo_upgma_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_table_sum(s : BiophyloupgmaTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_phylo_upgma_graphn_get(s : BiophyloupgmaGraphN, i : Int) -> Double {
 }
 
 pub fn bio_phylo_upgma_graphn_set(s : BiophyloupgmaGraphN, i : Int, v : Double) -> BiophyloupgmaGraphN {
-  let result = bio_phylo_upgma_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_graphn_sum(s : BiophyloupgmaGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_phylo_upgma_node_get(s : BiophyloupgmaNode, i : Int) -> Double {
 }
 
 pub fn bio_phylo_upgma_node_set(s : BiophyloupgmaNode, i : Int, v : Double) -> BiophyloupgmaNode {
-  let result = bio_phylo_upgma_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_node_sum(s : BiophyloupgmaNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_phylo_upgma_edge_get(s : BiophyloupgmaEdge, i : Int) -> Double {
 }
 
 pub fn bio_phylo_upgma_edge_set(s : BiophyloupgmaEdge, i : Int, v : Double) -> BiophyloupgmaEdge {
-  let result = bio_phylo_upgma_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_edge_sum(s : BiophyloupgmaEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_phylo_upgma_path_get(s : BiophyloupgmaPath, i : Int) -> Double {
 }
 
 pub fn bio_phylo_upgma_path_set(s : BiophyloupgmaPath, i : Int, v : Double) -> BiophyloupgmaPath {
-  let result = bio_phylo_upgma_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_path_sum(s : BiophyloupgmaPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_phylo_upgma_cluster_get(s : BiophyloupgmaCluster, i : Int) -> Double 
 }
 
 pub fn bio_phylo_upgma_cluster_set(s : BiophyloupgmaCluster, i : Int, v : Double) -> BiophyloupgmaCluster {
-  let result = bio_phylo_upgma_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_cluster_sum(s : BiophyloupgmaCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_phylo_upgma_model_get(s : BiophyloupgmaModel, i : Int) -> Double {
 }
 
 pub fn bio_phylo_upgma_model_set(s : BiophyloupgmaModel, i : Int, v : Double) -> BiophyloupgmaModel {
-  let result = bio_phylo_upgma_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_model_sum(s : BiophyloupgmaModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_phylo_upgma_layer_get(s : BiophyloupgmaLayer, i : Int) -> Double {
 }
 
 pub fn bio_phylo_upgma_layer_set(s : BiophyloupgmaLayer, i : Int, v : Double) -> BiophyloupgmaLayer {
-  let result = bio_phylo_upgma_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_layer_sum(s : BiophyloupgmaLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_phylo_upgma_buffer_get(s : BiophyloupgmaBuffer, i : Int) -> Double {
 }
 
 pub fn bio_phylo_upgma_buffer_set(s : BiophyloupgmaBuffer, i : Int, v : Double) -> BiophyloupgmaBuffer {
-  let result = bio_phylo_upgma_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_buffer_sum(s : BiophyloupgmaBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_phylo_upgma_cursor_get(s : BiophyloupgmaCursor, i : Int) -> Double {
 }
 
 pub fn bio_phylo_upgma_cursor_set(s : BiophyloupgmaCursor, i : Int, v : Double) -> BiophyloupgmaCursor {
-  let result = bio_phylo_upgma_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_cursor_sum(s : BiophyloupgmaCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_phylo_upgma_view_get(s : BiophyloupgmaView, i : Int) -> Double {
 }
 
 pub fn bio_phylo_upgma_view_set(s : BiophyloupgmaView, i : Int, v : Double) -> BiophyloupgmaView {
-  let result = bio_phylo_upgma_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_view_sum(s : BiophyloupgmaView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_phylo_upgma_range_get(s : BiophyloupgmaRange, i : Int) -> Double {
 }
 
 pub fn bio_phylo_upgma_range_set(s : BiophyloupgmaRange, i : Int, v : Double) -> BiophyloupgmaRange {
-  let result = bio_phylo_upgma_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_range_sum(s : BiophyloupgmaRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_phylo_upgma_slice_get(s : BiophyloupgmaSlice, i : Int) -> Double {
 }
 
 pub fn bio_phylo_upgma_slice_set(s : BiophyloupgmaSlice, i : Int, v : Double) -> BiophyloupgmaSlice {
-  let result = bio_phylo_upgma_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_upgma_slice_sum(s : BiophyloupgmaSlice) -> Double { @_common.sum(s.data) }

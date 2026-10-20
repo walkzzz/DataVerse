@@ -107,23 +107,15 @@ pub fn net_route_static_series_std(s : NetroutestaticSeries) -> Double { @_commo
 pub fn net_route_static_series_median(s : NetroutestaticSeries) -> Double { @_common.median(s.vals) }
 
 pub fn net_route_static_series_scale(s : NetroutestaticSeries, f : Double) -> NetroutestaticSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn net_route_static_series_add(a : NetroutestaticSeries, b : NetroutestaticSeries) -> NetroutestaticSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn net_route_static_series_sub(a : NetroutestaticSeries, b : NetroutestaticSeries) -> NetroutestaticSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn net_route_static_series_normalize(s : NetroutestaticSeries) -> NetroutestaticSeries {
@@ -254,22 +246,16 @@ pub fn net_route_static_vector_zero(dim : Int) -> NetroutestaticVector {
 
 pub fn net_route_static_vector_add(a : NetroutestaticVector, b : NetroutestaticVector) -> NetroutestaticVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_route_static_vector_sub(a : NetroutestaticVector, b : NetroutestaticVector) -> NetroutestaticVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_route_static_vector_scale(v : NetroutestaticVector, s : Double) -> NetroutestaticVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn net_route_static_vector_dot(a : NetroutestaticVector, b : NetroutestaticVector) -> Double {
@@ -372,10 +358,9 @@ pub fn net_route_static_frame_get(s : NetroutestaticFrame, i : Int) -> Double {
 }
 
 pub fn net_route_static_frame_set(s : NetroutestaticFrame, i : Int, v : Double) -> NetroutestaticFrame {
-  let result = net_route_static_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_static_frame_sum(s : NetroutestaticFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn net_route_static_table_get(s : NetroutestaticTable, i : Int) -> Double {
 }
 
 pub fn net_route_static_table_set(s : NetroutestaticTable, i : Int, v : Double) -> NetroutestaticTable {
-  let result = net_route_static_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_static_table_sum(s : NetroutestaticTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn net_route_static_graphn_get(s : NetroutestaticGraphN, i : Int) -> Double 
 }
 
 pub fn net_route_static_graphn_set(s : NetroutestaticGraphN, i : Int, v : Double) -> NetroutestaticGraphN {
-  let result = net_route_static_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_static_graphn_sum(s : NetroutestaticGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn net_route_static_node_get(s : NetroutestaticNode, i : Int) -> Double {
 }
 
 pub fn net_route_static_node_set(s : NetroutestaticNode, i : Int, v : Double) -> NetroutestaticNode {
-  let result = net_route_static_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_static_node_sum(s : NetroutestaticNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn net_route_static_edge_get(s : NetroutestaticEdge, i : Int) -> Double {
 }
 
 pub fn net_route_static_edge_set(s : NetroutestaticEdge, i : Int, v : Double) -> NetroutestaticEdge {
-  let result = net_route_static_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_static_edge_sum(s : NetroutestaticEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn net_route_static_path_get(s : NetroutestaticPath, i : Int) -> Double {
 }
 
 pub fn net_route_static_path_set(s : NetroutestaticPath, i : Int, v : Double) -> NetroutestaticPath {
-  let result = net_route_static_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_static_path_sum(s : NetroutestaticPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn net_route_static_cluster_get(s : NetroutestaticCluster, i : Int) -> Doubl
 }
 
 pub fn net_route_static_cluster_set(s : NetroutestaticCluster, i : Int, v : Double) -> NetroutestaticCluster {
-  let result = net_route_static_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_static_cluster_sum(s : NetroutestaticCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn net_route_static_model_get(s : NetroutestaticModel, i : Int) -> Double {
 }
 
 pub fn net_route_static_model_set(s : NetroutestaticModel, i : Int, v : Double) -> NetroutestaticModel {
-  let result = net_route_static_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_static_model_sum(s : NetroutestaticModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn net_route_static_layer_get(s : NetroutestaticLayer, i : Int) -> Double {
 }
 
 pub fn net_route_static_layer_set(s : NetroutestaticLayer, i : Int, v : Double) -> NetroutestaticLayer {
-  let result = net_route_static_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_static_layer_sum(s : NetroutestaticLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn net_route_static_buffer_get(s : NetroutestaticBuffer, i : Int) -> Double 
 }
 
 pub fn net_route_static_buffer_set(s : NetroutestaticBuffer, i : Int, v : Double) -> NetroutestaticBuffer {
-  let result = net_route_static_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_static_buffer_sum(s : NetroutestaticBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn net_route_static_cursor_get(s : NetroutestaticCursor, i : Int) -> Double 
 }
 
 pub fn net_route_static_cursor_set(s : NetroutestaticCursor, i : Int, v : Double) -> NetroutestaticCursor {
-  let result = net_route_static_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_static_cursor_sum(s : NetroutestaticCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn net_route_static_view_get(s : NetroutestaticView, i : Int) -> Double {
 }
 
 pub fn net_route_static_view_set(s : NetroutestaticView, i : Int, v : Double) -> NetroutestaticView {
-  let result = net_route_static_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_static_view_sum(s : NetroutestaticView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn net_route_static_range_get(s : NetroutestaticRange, i : Int) -> Double {
 }
 
 pub fn net_route_static_range_set(s : NetroutestaticRange, i : Int, v : Double) -> NetroutestaticRange {
-  let result = net_route_static_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_static_range_sum(s : NetroutestaticRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn net_route_static_slice_get(s : NetroutestaticSlice, i : Int) -> Double {
 }
 
 pub fn net_route_static_slice_set(s : NetroutestaticSlice, i : Int, v : Double) -> NetroutestaticSlice {
-  let result = net_route_static_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_static_slice_sum(s : NetroutestaticSlice) -> Double { @_common.sum(s.data) }

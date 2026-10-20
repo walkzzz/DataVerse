@@ -107,23 +107,15 @@ pub fn db_query_select_series_std(s : DbqueryselectSeries) -> Double { @_common.
 pub fn db_query_select_series_median(s : DbqueryselectSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_query_select_series_scale(s : DbqueryselectSeries, f : Double) -> DbqueryselectSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_query_select_series_add(a : DbqueryselectSeries, b : DbqueryselectSeries) -> DbqueryselectSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_query_select_series_sub(a : DbqueryselectSeries, b : DbqueryselectSeries) -> DbqueryselectSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_query_select_series_normalize(s : DbqueryselectSeries) -> DbqueryselectSeries {
@@ -254,22 +246,16 @@ pub fn db_query_select_vector_zero(dim : Int) -> DbqueryselectVector {
 
 pub fn db_query_select_vector_add(a : DbqueryselectVector, b : DbqueryselectVector) -> DbqueryselectVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_query_select_vector_sub(a : DbqueryselectVector, b : DbqueryselectVector) -> DbqueryselectVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_query_select_vector_scale(v : DbqueryselectVector, s : Double) -> DbqueryselectVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_query_select_vector_dot(a : DbqueryselectVector, b : DbqueryselectVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_query_select_frame_get(s : DbqueryselectFrame, i : Int) -> Double {
 }
 
 pub fn db_query_select_frame_set(s : DbqueryselectFrame, i : Int, v : Double) -> DbqueryselectFrame {
-  let result = db_query_select_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_select_frame_sum(s : DbqueryselectFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_query_select_table_get(s : DbqueryselectTable, i : Int) -> Double {
 }
 
 pub fn db_query_select_table_set(s : DbqueryselectTable, i : Int, v : Double) -> DbqueryselectTable {
-  let result = db_query_select_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_select_table_sum(s : DbqueryselectTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_query_select_graphn_get(s : DbqueryselectGraphN, i : Int) -> Double {
 }
 
 pub fn db_query_select_graphn_set(s : DbqueryselectGraphN, i : Int, v : Double) -> DbqueryselectGraphN {
-  let result = db_query_select_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_select_graphn_sum(s : DbqueryselectGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_query_select_node_get(s : DbqueryselectNode, i : Int) -> Double {
 }
 
 pub fn db_query_select_node_set(s : DbqueryselectNode, i : Int, v : Double) -> DbqueryselectNode {
-  let result = db_query_select_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_select_node_sum(s : DbqueryselectNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_query_select_edge_get(s : DbqueryselectEdge, i : Int) -> Double {
 }
 
 pub fn db_query_select_edge_set(s : DbqueryselectEdge, i : Int, v : Double) -> DbqueryselectEdge {
-  let result = db_query_select_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_select_edge_sum(s : DbqueryselectEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_query_select_path_get(s : DbqueryselectPath, i : Int) -> Double {
 }
 
 pub fn db_query_select_path_set(s : DbqueryselectPath, i : Int, v : Double) -> DbqueryselectPath {
-  let result = db_query_select_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_select_path_sum(s : DbqueryselectPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_query_select_cluster_get(s : DbqueryselectCluster, i : Int) -> Double 
 }
 
 pub fn db_query_select_cluster_set(s : DbqueryselectCluster, i : Int, v : Double) -> DbqueryselectCluster {
-  let result = db_query_select_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_select_cluster_sum(s : DbqueryselectCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_query_select_model_get(s : DbqueryselectModel, i : Int) -> Double {
 }
 
 pub fn db_query_select_model_set(s : DbqueryselectModel, i : Int, v : Double) -> DbqueryselectModel {
-  let result = db_query_select_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_select_model_sum(s : DbqueryselectModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_query_select_layer_get(s : DbqueryselectLayer, i : Int) -> Double {
 }
 
 pub fn db_query_select_layer_set(s : DbqueryselectLayer, i : Int, v : Double) -> DbqueryselectLayer {
-  let result = db_query_select_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_select_layer_sum(s : DbqueryselectLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_query_select_buffer_get(s : DbqueryselectBuffer, i : Int) -> Double {
 }
 
 pub fn db_query_select_buffer_set(s : DbqueryselectBuffer, i : Int, v : Double) -> DbqueryselectBuffer {
-  let result = db_query_select_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_select_buffer_sum(s : DbqueryselectBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_query_select_cursor_get(s : DbqueryselectCursor, i : Int) -> Double {
 }
 
 pub fn db_query_select_cursor_set(s : DbqueryselectCursor, i : Int, v : Double) -> DbqueryselectCursor {
-  let result = db_query_select_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_select_cursor_sum(s : DbqueryselectCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_query_select_view_get(s : DbqueryselectView, i : Int) -> Double {
 }
 
 pub fn db_query_select_view_set(s : DbqueryselectView, i : Int, v : Double) -> DbqueryselectView {
-  let result = db_query_select_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_select_view_sum(s : DbqueryselectView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_query_select_range_get(s : DbqueryselectRange, i : Int) -> Double {
 }
 
 pub fn db_query_select_range_set(s : DbqueryselectRange, i : Int, v : Double) -> DbqueryselectRange {
-  let result = db_query_select_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_select_range_sum(s : DbqueryselectRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_query_select_slice_get(s : DbqueryselectSlice, i : Int) -> Double {
 }
 
 pub fn db_query_select_slice_set(s : DbqueryselectSlice, i : Int, v : Double) -> DbqueryselectSlice {
-  let result = db_query_select_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_select_slice_sum(s : DbqueryselectSlice) -> Double { @_common.sum(s.data) }

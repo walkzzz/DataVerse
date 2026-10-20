@@ -107,23 +107,15 @@ pub fn math_simplex_series_std(s : MathsimplexSeries) -> Double { @_common.std(s
 pub fn math_simplex_series_median(s : MathsimplexSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_simplex_series_scale(s : MathsimplexSeries, f : Double) -> MathsimplexSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_simplex_series_add(a : MathsimplexSeries, b : MathsimplexSeries) -> MathsimplexSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_simplex_series_sub(a : MathsimplexSeries, b : MathsimplexSeries) -> MathsimplexSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_simplex_series_normalize(s : MathsimplexSeries) -> MathsimplexSeries {
@@ -254,22 +246,16 @@ pub fn math_simplex_vector_zero(dim : Int) -> MathsimplexVector {
 
 pub fn math_simplex_vector_add(a : MathsimplexVector, b : MathsimplexVector) -> MathsimplexVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_simplex_vector_sub(a : MathsimplexVector, b : MathsimplexVector) -> MathsimplexVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_simplex_vector_scale(v : MathsimplexVector, s : Double) -> MathsimplexVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_simplex_vector_dot(a : MathsimplexVector, b : MathsimplexVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_simplex_frame_get(s : MathsimplexFrame, i : Int) -> Double {
 }
 
 pub fn math_simplex_frame_set(s : MathsimplexFrame, i : Int, v : Double) -> MathsimplexFrame {
-  let result = math_simplex_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_simplex_frame_sum(s : MathsimplexFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_simplex_table_get(s : MathsimplexTable, i : Int) -> Double {
 }
 
 pub fn math_simplex_table_set(s : MathsimplexTable, i : Int, v : Double) -> MathsimplexTable {
-  let result = math_simplex_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_simplex_table_sum(s : MathsimplexTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_simplex_graphn_get(s : MathsimplexGraphN, i : Int) -> Double {
 }
 
 pub fn math_simplex_graphn_set(s : MathsimplexGraphN, i : Int, v : Double) -> MathsimplexGraphN {
-  let result = math_simplex_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_simplex_graphn_sum(s : MathsimplexGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_simplex_node_get(s : MathsimplexNode, i : Int) -> Double {
 }
 
 pub fn math_simplex_node_set(s : MathsimplexNode, i : Int, v : Double) -> MathsimplexNode {
-  let result = math_simplex_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_simplex_node_sum(s : MathsimplexNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_simplex_edge_get(s : MathsimplexEdge, i : Int) -> Double {
 }
 
 pub fn math_simplex_edge_set(s : MathsimplexEdge, i : Int, v : Double) -> MathsimplexEdge {
-  let result = math_simplex_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_simplex_edge_sum(s : MathsimplexEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_simplex_path_get(s : MathsimplexPath, i : Int) -> Double {
 }
 
 pub fn math_simplex_path_set(s : MathsimplexPath, i : Int, v : Double) -> MathsimplexPath {
-  let result = math_simplex_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_simplex_path_sum(s : MathsimplexPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_simplex_cluster_get(s : MathsimplexCluster, i : Int) -> Double {
 }
 
 pub fn math_simplex_cluster_set(s : MathsimplexCluster, i : Int, v : Double) -> MathsimplexCluster {
-  let result = math_simplex_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_simplex_cluster_sum(s : MathsimplexCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_simplex_model_get(s : MathsimplexModel, i : Int) -> Double {
 }
 
 pub fn math_simplex_model_set(s : MathsimplexModel, i : Int, v : Double) -> MathsimplexModel {
-  let result = math_simplex_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_simplex_model_sum(s : MathsimplexModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_simplex_layer_get(s : MathsimplexLayer, i : Int) -> Double {
 }
 
 pub fn math_simplex_layer_set(s : MathsimplexLayer, i : Int, v : Double) -> MathsimplexLayer {
-  let result = math_simplex_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_simplex_layer_sum(s : MathsimplexLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_simplex_buffer_get(s : MathsimplexBuffer, i : Int) -> Double {
 }
 
 pub fn math_simplex_buffer_set(s : MathsimplexBuffer, i : Int, v : Double) -> MathsimplexBuffer {
-  let result = math_simplex_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_simplex_buffer_sum(s : MathsimplexBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_simplex_cursor_get(s : MathsimplexCursor, i : Int) -> Double {
 }
 
 pub fn math_simplex_cursor_set(s : MathsimplexCursor, i : Int, v : Double) -> MathsimplexCursor {
-  let result = math_simplex_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_simplex_cursor_sum(s : MathsimplexCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_simplex_view_get(s : MathsimplexView, i : Int) -> Double {
 }
 
 pub fn math_simplex_view_set(s : MathsimplexView, i : Int, v : Double) -> MathsimplexView {
-  let result = math_simplex_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_simplex_view_sum(s : MathsimplexView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_simplex_range_get(s : MathsimplexRange, i : Int) -> Double {
 }
 
 pub fn math_simplex_range_set(s : MathsimplexRange, i : Int, v : Double) -> MathsimplexRange {
-  let result = math_simplex_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_simplex_range_sum(s : MathsimplexRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_simplex_slice_get(s : MathsimplexSlice, i : Int) -> Double {
 }
 
 pub fn math_simplex_slice_set(s : MathsimplexSlice, i : Int, v : Double) -> MathsimplexSlice {
-  let result = math_simplex_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_simplex_slice_sum(s : MathsimplexSlice) -> Double { @_common.sum(s.data) }

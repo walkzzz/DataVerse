@@ -107,23 +107,15 @@ pub fn ml_ensemble_bagging_series_std(s : MlensemblebaggingSeries) -> Double { @
 pub fn ml_ensemble_bagging_series_median(s : MlensemblebaggingSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_ensemble_bagging_series_scale(s : MlensemblebaggingSeries, f : Double) -> MlensemblebaggingSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_ensemble_bagging_series_add(a : MlensemblebaggingSeries, b : MlensemblebaggingSeries) -> MlensemblebaggingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_ensemble_bagging_series_sub(a : MlensemblebaggingSeries, b : MlensemblebaggingSeries) -> MlensemblebaggingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_ensemble_bagging_series_normalize(s : MlensemblebaggingSeries) -> MlensemblebaggingSeries {
@@ -254,22 +246,16 @@ pub fn ml_ensemble_bagging_vector_zero(dim : Int) -> MlensemblebaggingVector {
 
 pub fn ml_ensemble_bagging_vector_add(a : MlensemblebaggingVector, b : MlensemblebaggingVector) -> MlensemblebaggingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_ensemble_bagging_vector_sub(a : MlensemblebaggingVector, b : MlensemblebaggingVector) -> MlensemblebaggingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_ensemble_bagging_vector_scale(v : MlensemblebaggingVector, s : Double) -> MlensemblebaggingVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_ensemble_bagging_vector_dot(a : MlensemblebaggingVector, b : MlensemblebaggingVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_ensemble_bagging_frame_get(s : MlensemblebaggingFrame, i : Int) -> Dou
 }
 
 pub fn ml_ensemble_bagging_frame_set(s : MlensemblebaggingFrame, i : Int, v : Double) -> MlensemblebaggingFrame {
-  let result = ml_ensemble_bagging_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_frame_sum(s : MlensemblebaggingFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_ensemble_bagging_table_get(s : MlensemblebaggingTable, i : Int) -> Dou
 }
 
 pub fn ml_ensemble_bagging_table_set(s : MlensemblebaggingTable, i : Int, v : Double) -> MlensemblebaggingTable {
-  let result = ml_ensemble_bagging_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_table_sum(s : MlensemblebaggingTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_ensemble_bagging_graphn_get(s : MlensemblebaggingGraphN, i : Int) -> D
 }
 
 pub fn ml_ensemble_bagging_graphn_set(s : MlensemblebaggingGraphN, i : Int, v : Double) -> MlensemblebaggingGraphN {
-  let result = ml_ensemble_bagging_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_graphn_sum(s : MlensemblebaggingGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_ensemble_bagging_node_get(s : MlensemblebaggingNode, i : Int) -> Doubl
 }
 
 pub fn ml_ensemble_bagging_node_set(s : MlensemblebaggingNode, i : Int, v : Double) -> MlensemblebaggingNode {
-  let result = ml_ensemble_bagging_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_node_sum(s : MlensemblebaggingNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_ensemble_bagging_edge_get(s : MlensemblebaggingEdge, i : Int) -> Doubl
 }
 
 pub fn ml_ensemble_bagging_edge_set(s : MlensemblebaggingEdge, i : Int, v : Double) -> MlensemblebaggingEdge {
-  let result = ml_ensemble_bagging_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_edge_sum(s : MlensemblebaggingEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_ensemble_bagging_path_get(s : MlensemblebaggingPath, i : Int) -> Doubl
 }
 
 pub fn ml_ensemble_bagging_path_set(s : MlensemblebaggingPath, i : Int, v : Double) -> MlensemblebaggingPath {
-  let result = ml_ensemble_bagging_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_path_sum(s : MlensemblebaggingPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_ensemble_bagging_cluster_get(s : MlensemblebaggingCluster, i : Int) ->
 }
 
 pub fn ml_ensemble_bagging_cluster_set(s : MlensemblebaggingCluster, i : Int, v : Double) -> MlensemblebaggingCluster {
-  let result = ml_ensemble_bagging_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_cluster_sum(s : MlensemblebaggingCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_ensemble_bagging_model_get(s : MlensemblebaggingModel, i : Int) -> Dou
 }
 
 pub fn ml_ensemble_bagging_model_set(s : MlensemblebaggingModel, i : Int, v : Double) -> MlensemblebaggingModel {
-  let result = ml_ensemble_bagging_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_model_sum(s : MlensemblebaggingModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_ensemble_bagging_layer_get(s : MlensemblebaggingLayer, i : Int) -> Dou
 }
 
 pub fn ml_ensemble_bagging_layer_set(s : MlensemblebaggingLayer, i : Int, v : Double) -> MlensemblebaggingLayer {
-  let result = ml_ensemble_bagging_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_layer_sum(s : MlensemblebaggingLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_ensemble_bagging_buffer_get(s : MlensemblebaggingBuffer, i : Int) -> D
 }
 
 pub fn ml_ensemble_bagging_buffer_set(s : MlensemblebaggingBuffer, i : Int, v : Double) -> MlensemblebaggingBuffer {
-  let result = ml_ensemble_bagging_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_buffer_sum(s : MlensemblebaggingBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_ensemble_bagging_cursor_get(s : MlensemblebaggingCursor, i : Int) -> D
 }
 
 pub fn ml_ensemble_bagging_cursor_set(s : MlensemblebaggingCursor, i : Int, v : Double) -> MlensemblebaggingCursor {
-  let result = ml_ensemble_bagging_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_cursor_sum(s : MlensemblebaggingCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_ensemble_bagging_view_get(s : MlensemblebaggingView, i : Int) -> Doubl
 }
 
 pub fn ml_ensemble_bagging_view_set(s : MlensemblebaggingView, i : Int, v : Double) -> MlensemblebaggingView {
-  let result = ml_ensemble_bagging_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_view_sum(s : MlensemblebaggingView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_ensemble_bagging_range_get(s : MlensemblebaggingRange, i : Int) -> Dou
 }
 
 pub fn ml_ensemble_bagging_range_set(s : MlensemblebaggingRange, i : Int, v : Double) -> MlensemblebaggingRange {
-  let result = ml_ensemble_bagging_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_range_sum(s : MlensemblebaggingRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_ensemble_bagging_slice_get(s : MlensemblebaggingSlice, i : Int) -> Dou
 }
 
 pub fn ml_ensemble_bagging_slice_set(s : MlensemblebaggingSlice, i : Int, v : Double) -> MlensemblebaggingSlice {
-  let result = ml_ensemble_bagging_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_bagging_slice_sum(s : MlensemblebaggingSlice) -> Double { @_common.sum(s.data) }

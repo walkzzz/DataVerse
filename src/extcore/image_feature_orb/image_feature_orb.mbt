@@ -107,23 +107,15 @@ pub fn image_feature_orb_series_std(s : ImagefeatureorbSeries) -> Double { @_com
 pub fn image_feature_orb_series_median(s : ImagefeatureorbSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_feature_orb_series_scale(s : ImagefeatureorbSeries, f : Double) -> ImagefeatureorbSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_feature_orb_series_add(a : ImagefeatureorbSeries, b : ImagefeatureorbSeries) -> ImagefeatureorbSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_feature_orb_series_sub(a : ImagefeatureorbSeries, b : ImagefeatureorbSeries) -> ImagefeatureorbSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_feature_orb_series_normalize(s : ImagefeatureorbSeries) -> ImagefeatureorbSeries {
@@ -254,22 +246,16 @@ pub fn image_feature_orb_vector_zero(dim : Int) -> ImagefeatureorbVector {
 
 pub fn image_feature_orb_vector_add(a : ImagefeatureorbVector, b : ImagefeatureorbVector) -> ImagefeatureorbVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_feature_orb_vector_sub(a : ImagefeatureorbVector, b : ImagefeatureorbVector) -> ImagefeatureorbVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_feature_orb_vector_scale(v : ImagefeatureorbVector, s : Double) -> ImagefeatureorbVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_feature_orb_vector_dot(a : ImagefeatureorbVector, b : ImagefeatureorbVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_feature_orb_frame_get(s : ImagefeatureorbFrame, i : Int) -> Double 
 }
 
 pub fn image_feature_orb_frame_set(s : ImagefeatureorbFrame, i : Int, v : Double) -> ImagefeatureorbFrame {
-  let result = image_feature_orb_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_orb_frame_sum(s : ImagefeatureorbFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_feature_orb_table_get(s : ImagefeatureorbTable, i : Int) -> Double 
 }
 
 pub fn image_feature_orb_table_set(s : ImagefeatureorbTable, i : Int, v : Double) -> ImagefeatureorbTable {
-  let result = image_feature_orb_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_orb_table_sum(s : ImagefeatureorbTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_feature_orb_graphn_get(s : ImagefeatureorbGraphN, i : Int) -> Doubl
 }
 
 pub fn image_feature_orb_graphn_set(s : ImagefeatureorbGraphN, i : Int, v : Double) -> ImagefeatureorbGraphN {
-  let result = image_feature_orb_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_orb_graphn_sum(s : ImagefeatureorbGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_feature_orb_node_get(s : ImagefeatureorbNode, i : Int) -> Double {
 }
 
 pub fn image_feature_orb_node_set(s : ImagefeatureorbNode, i : Int, v : Double) -> ImagefeatureorbNode {
-  let result = image_feature_orb_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_orb_node_sum(s : ImagefeatureorbNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_feature_orb_edge_get(s : ImagefeatureorbEdge, i : Int) -> Double {
 }
 
 pub fn image_feature_orb_edge_set(s : ImagefeatureorbEdge, i : Int, v : Double) -> ImagefeatureorbEdge {
-  let result = image_feature_orb_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_orb_edge_sum(s : ImagefeatureorbEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_feature_orb_path_get(s : ImagefeatureorbPath, i : Int) -> Double {
 }
 
 pub fn image_feature_orb_path_set(s : ImagefeatureorbPath, i : Int, v : Double) -> ImagefeatureorbPath {
-  let result = image_feature_orb_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_orb_path_sum(s : ImagefeatureorbPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_feature_orb_cluster_get(s : ImagefeatureorbCluster, i : Int) -> Dou
 }
 
 pub fn image_feature_orb_cluster_set(s : ImagefeatureorbCluster, i : Int, v : Double) -> ImagefeatureorbCluster {
-  let result = image_feature_orb_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_orb_cluster_sum(s : ImagefeatureorbCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_feature_orb_model_get(s : ImagefeatureorbModel, i : Int) -> Double 
 }
 
 pub fn image_feature_orb_model_set(s : ImagefeatureorbModel, i : Int, v : Double) -> ImagefeatureorbModel {
-  let result = image_feature_orb_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_orb_model_sum(s : ImagefeatureorbModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_feature_orb_layer_get(s : ImagefeatureorbLayer, i : Int) -> Double 
 }
 
 pub fn image_feature_orb_layer_set(s : ImagefeatureorbLayer, i : Int, v : Double) -> ImagefeatureorbLayer {
-  let result = image_feature_orb_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_orb_layer_sum(s : ImagefeatureorbLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_feature_orb_buffer_get(s : ImagefeatureorbBuffer, i : Int) -> Doubl
 }
 
 pub fn image_feature_orb_buffer_set(s : ImagefeatureorbBuffer, i : Int, v : Double) -> ImagefeatureorbBuffer {
-  let result = image_feature_orb_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_orb_buffer_sum(s : ImagefeatureorbBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_feature_orb_cursor_get(s : ImagefeatureorbCursor, i : Int) -> Doubl
 }
 
 pub fn image_feature_orb_cursor_set(s : ImagefeatureorbCursor, i : Int, v : Double) -> ImagefeatureorbCursor {
-  let result = image_feature_orb_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_orb_cursor_sum(s : ImagefeatureorbCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_feature_orb_view_get(s : ImagefeatureorbView, i : Int) -> Double {
 }
 
 pub fn image_feature_orb_view_set(s : ImagefeatureorbView, i : Int, v : Double) -> ImagefeatureorbView {
-  let result = image_feature_orb_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_orb_view_sum(s : ImagefeatureorbView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_feature_orb_range_get(s : ImagefeatureorbRange, i : Int) -> Double 
 }
 
 pub fn image_feature_orb_range_set(s : ImagefeatureorbRange, i : Int, v : Double) -> ImagefeatureorbRange {
-  let result = image_feature_orb_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_orb_range_sum(s : ImagefeatureorbRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_feature_orb_slice_get(s : ImagefeatureorbSlice, i : Int) -> Double 
 }
 
 pub fn image_feature_orb_slice_set(s : ImagefeatureorbSlice, i : Int, v : Double) -> ImagefeatureorbSlice {
-  let result = image_feature_orb_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_orb_slice_sum(s : ImagefeatureorbSlice) -> Double { @_common.sum(s.data) }

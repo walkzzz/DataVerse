@@ -107,23 +107,15 @@ pub fn bio_seq_assembly_validate_series_std(s : BioseqassemblyvalidateSeries) ->
 pub fn bio_seq_assembly_validate_series_median(s : BioseqassemblyvalidateSeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_seq_assembly_validate_series_scale(s : BioseqassemblyvalidateSeries, f : Double) -> BioseqassemblyvalidateSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_seq_assembly_validate_series_add(a : BioseqassemblyvalidateSeries, b : BioseqassemblyvalidateSeries) -> BioseqassemblyvalidateSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_assembly_validate_series_sub(a : BioseqassemblyvalidateSeries, b : BioseqassemblyvalidateSeries) -> BioseqassemblyvalidateSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_assembly_validate_series_normalize(s : BioseqassemblyvalidateSeries) -> BioseqassemblyvalidateSeries {
@@ -254,22 +246,16 @@ pub fn bio_seq_assembly_validate_vector_zero(dim : Int) -> Bioseqassemblyvalidat
 
 pub fn bio_seq_assembly_validate_vector_add(a : BioseqassemblyvalidateVector, b : BioseqassemblyvalidateVector) -> BioseqassemblyvalidateVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_assembly_validate_vector_sub(a : BioseqassemblyvalidateVector, b : BioseqassemblyvalidateVector) -> BioseqassemblyvalidateVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_assembly_validate_vector_scale(v : BioseqassemblyvalidateVector, s : Double) -> BioseqassemblyvalidateVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_seq_assembly_validate_vector_dot(a : BioseqassemblyvalidateVector, b : BioseqassemblyvalidateVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_seq_assembly_validate_frame_get(s : BioseqassemblyvalidateFrame, i : 
 }
 
 pub fn bio_seq_assembly_validate_frame_set(s : BioseqassemblyvalidateFrame, i : Int, v : Double) -> BioseqassemblyvalidateFrame {
-  let result = bio_seq_assembly_validate_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_validate_frame_sum(s : BioseqassemblyvalidateFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_seq_assembly_validate_table_get(s : BioseqassemblyvalidateTable, i : 
 }
 
 pub fn bio_seq_assembly_validate_table_set(s : BioseqassemblyvalidateTable, i : Int, v : Double) -> BioseqassemblyvalidateTable {
-  let result = bio_seq_assembly_validate_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_validate_table_sum(s : BioseqassemblyvalidateTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_seq_assembly_validate_graphn_get(s : BioseqassemblyvalidateGraphN, i 
 }
 
 pub fn bio_seq_assembly_validate_graphn_set(s : BioseqassemblyvalidateGraphN, i : Int, v : Double) -> BioseqassemblyvalidateGraphN {
-  let result = bio_seq_assembly_validate_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_validate_graphn_sum(s : BioseqassemblyvalidateGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_seq_assembly_validate_node_get(s : BioseqassemblyvalidateNode, i : In
 }
 
 pub fn bio_seq_assembly_validate_node_set(s : BioseqassemblyvalidateNode, i : Int, v : Double) -> BioseqassemblyvalidateNode {
-  let result = bio_seq_assembly_validate_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_validate_node_sum(s : BioseqassemblyvalidateNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_seq_assembly_validate_edge_get(s : BioseqassemblyvalidateEdge, i : In
 }
 
 pub fn bio_seq_assembly_validate_edge_set(s : BioseqassemblyvalidateEdge, i : Int, v : Double) -> BioseqassemblyvalidateEdge {
-  let result = bio_seq_assembly_validate_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_validate_edge_sum(s : BioseqassemblyvalidateEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_seq_assembly_validate_path_get(s : BioseqassemblyvalidatePath, i : In
 }
 
 pub fn bio_seq_assembly_validate_path_set(s : BioseqassemblyvalidatePath, i : Int, v : Double) -> BioseqassemblyvalidatePath {
-  let result = bio_seq_assembly_validate_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_validate_path_sum(s : BioseqassemblyvalidatePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_seq_assembly_validate_cluster_get(s : BioseqassemblyvalidateCluster, 
 }
 
 pub fn bio_seq_assembly_validate_cluster_set(s : BioseqassemblyvalidateCluster, i : Int, v : Double) -> BioseqassemblyvalidateCluster {
-  let result = bio_seq_assembly_validate_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_validate_cluster_sum(s : BioseqassemblyvalidateCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_seq_assembly_validate_model_get(s : BioseqassemblyvalidateModel, i : 
 }
 
 pub fn bio_seq_assembly_validate_model_set(s : BioseqassemblyvalidateModel, i : Int, v : Double) -> BioseqassemblyvalidateModel {
-  let result = bio_seq_assembly_validate_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_validate_model_sum(s : BioseqassemblyvalidateModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_seq_assembly_validate_layer_get(s : BioseqassemblyvalidateLayer, i : 
 }
 
 pub fn bio_seq_assembly_validate_layer_set(s : BioseqassemblyvalidateLayer, i : Int, v : Double) -> BioseqassemblyvalidateLayer {
-  let result = bio_seq_assembly_validate_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_validate_layer_sum(s : BioseqassemblyvalidateLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_seq_assembly_validate_buffer_get(s : BioseqassemblyvalidateBuffer, i 
 }
 
 pub fn bio_seq_assembly_validate_buffer_set(s : BioseqassemblyvalidateBuffer, i : Int, v : Double) -> BioseqassemblyvalidateBuffer {
-  let result = bio_seq_assembly_validate_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_validate_buffer_sum(s : BioseqassemblyvalidateBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_seq_assembly_validate_cursor_get(s : BioseqassemblyvalidateCursor, i 
 }
 
 pub fn bio_seq_assembly_validate_cursor_set(s : BioseqassemblyvalidateCursor, i : Int, v : Double) -> BioseqassemblyvalidateCursor {
-  let result = bio_seq_assembly_validate_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_validate_cursor_sum(s : BioseqassemblyvalidateCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_seq_assembly_validate_view_get(s : BioseqassemblyvalidateView, i : In
 }
 
 pub fn bio_seq_assembly_validate_view_set(s : BioseqassemblyvalidateView, i : Int, v : Double) -> BioseqassemblyvalidateView {
-  let result = bio_seq_assembly_validate_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_validate_view_sum(s : BioseqassemblyvalidateView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_seq_assembly_validate_range_get(s : BioseqassemblyvalidateRange, i : 
 }
 
 pub fn bio_seq_assembly_validate_range_set(s : BioseqassemblyvalidateRange, i : Int, v : Double) -> BioseqassemblyvalidateRange {
-  let result = bio_seq_assembly_validate_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_validate_range_sum(s : BioseqassemblyvalidateRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_seq_assembly_validate_slice_get(s : BioseqassemblyvalidateSlice, i : 
 }
 
 pub fn bio_seq_assembly_validate_slice_set(s : BioseqassemblyvalidateSlice, i : Int, v : Double) -> BioseqassemblyvalidateSlice {
-  let result = bio_seq_assembly_validate_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_validate_slice_sum(s : BioseqassemblyvalidateSlice) -> Double { @_common.sum(s.data) }

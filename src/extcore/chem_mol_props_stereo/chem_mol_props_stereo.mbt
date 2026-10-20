@@ -107,23 +107,15 @@ pub fn chem_mol_props_stereo_series_std(s : ChemmolpropsstereoSeries) -> Double 
 pub fn chem_mol_props_stereo_series_median(s : ChemmolpropsstereoSeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_mol_props_stereo_series_scale(s : ChemmolpropsstereoSeries, f : Double) -> ChemmolpropsstereoSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn chem_mol_props_stereo_series_add(a : ChemmolpropsstereoSeries, b : ChemmolpropsstereoSeries) -> ChemmolpropsstereoSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn chem_mol_props_stereo_series_sub(a : ChemmolpropsstereoSeries, b : ChemmolpropsstereoSeries) -> ChemmolpropsstereoSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn chem_mol_props_stereo_series_normalize(s : ChemmolpropsstereoSeries) -> ChemmolpropsstereoSeries {
@@ -254,22 +246,16 @@ pub fn chem_mol_props_stereo_vector_zero(dim : Int) -> ChemmolpropsstereoVector 
 
 pub fn chem_mol_props_stereo_vector_add(a : ChemmolpropsstereoVector, b : ChemmolpropsstereoVector) -> ChemmolpropsstereoVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_mol_props_stereo_vector_sub(a : ChemmolpropsstereoVector, b : ChemmolpropsstereoVector) -> ChemmolpropsstereoVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_mol_props_stereo_vector_scale(v : ChemmolpropsstereoVector, s : Double) -> ChemmolpropsstereoVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn chem_mol_props_stereo_vector_dot(a : ChemmolpropsstereoVector, b : ChemmolpropsstereoVector) -> Double {
@@ -372,10 +358,9 @@ pub fn chem_mol_props_stereo_frame_get(s : ChemmolpropsstereoFrame, i : Int) -> 
 }
 
 pub fn chem_mol_props_stereo_frame_set(s : ChemmolpropsstereoFrame, i : Int, v : Double) -> ChemmolpropsstereoFrame {
-  let result = chem_mol_props_stereo_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_stereo_frame_sum(s : ChemmolpropsstereoFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn chem_mol_props_stereo_table_get(s : ChemmolpropsstereoTable, i : Int) -> 
 }
 
 pub fn chem_mol_props_stereo_table_set(s : ChemmolpropsstereoTable, i : Int, v : Double) -> ChemmolpropsstereoTable {
-  let result = chem_mol_props_stereo_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_stereo_table_sum(s : ChemmolpropsstereoTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn chem_mol_props_stereo_graphn_get(s : ChemmolpropsstereoGraphN, i : Int) -
 }
 
 pub fn chem_mol_props_stereo_graphn_set(s : ChemmolpropsstereoGraphN, i : Int, v : Double) -> ChemmolpropsstereoGraphN {
-  let result = chem_mol_props_stereo_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_stereo_graphn_sum(s : ChemmolpropsstereoGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn chem_mol_props_stereo_node_get(s : ChemmolpropsstereoNode, i : Int) -> Do
 }
 
 pub fn chem_mol_props_stereo_node_set(s : ChemmolpropsstereoNode, i : Int, v : Double) -> ChemmolpropsstereoNode {
-  let result = chem_mol_props_stereo_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_stereo_node_sum(s : ChemmolpropsstereoNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn chem_mol_props_stereo_edge_get(s : ChemmolpropsstereoEdge, i : Int) -> Do
 }
 
 pub fn chem_mol_props_stereo_edge_set(s : ChemmolpropsstereoEdge, i : Int, v : Double) -> ChemmolpropsstereoEdge {
-  let result = chem_mol_props_stereo_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_stereo_edge_sum(s : ChemmolpropsstereoEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn chem_mol_props_stereo_path_get(s : ChemmolpropsstereoPath, i : Int) -> Do
 }
 
 pub fn chem_mol_props_stereo_path_set(s : ChemmolpropsstereoPath, i : Int, v : Double) -> ChemmolpropsstereoPath {
-  let result = chem_mol_props_stereo_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_stereo_path_sum(s : ChemmolpropsstereoPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn chem_mol_props_stereo_cluster_get(s : ChemmolpropsstereoCluster, i : Int)
 }
 
 pub fn chem_mol_props_stereo_cluster_set(s : ChemmolpropsstereoCluster, i : Int, v : Double) -> ChemmolpropsstereoCluster {
-  let result = chem_mol_props_stereo_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_stereo_cluster_sum(s : ChemmolpropsstereoCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn chem_mol_props_stereo_model_get(s : ChemmolpropsstereoModel, i : Int) -> 
 }
 
 pub fn chem_mol_props_stereo_model_set(s : ChemmolpropsstereoModel, i : Int, v : Double) -> ChemmolpropsstereoModel {
-  let result = chem_mol_props_stereo_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_stereo_model_sum(s : ChemmolpropsstereoModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn chem_mol_props_stereo_layer_get(s : ChemmolpropsstereoLayer, i : Int) -> 
 }
 
 pub fn chem_mol_props_stereo_layer_set(s : ChemmolpropsstereoLayer, i : Int, v : Double) -> ChemmolpropsstereoLayer {
-  let result = chem_mol_props_stereo_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_stereo_layer_sum(s : ChemmolpropsstereoLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn chem_mol_props_stereo_buffer_get(s : ChemmolpropsstereoBuffer, i : Int) -
 }
 
 pub fn chem_mol_props_stereo_buffer_set(s : ChemmolpropsstereoBuffer, i : Int, v : Double) -> ChemmolpropsstereoBuffer {
-  let result = chem_mol_props_stereo_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_stereo_buffer_sum(s : ChemmolpropsstereoBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn chem_mol_props_stereo_cursor_get(s : ChemmolpropsstereoCursor, i : Int) -
 }
 
 pub fn chem_mol_props_stereo_cursor_set(s : ChemmolpropsstereoCursor, i : Int, v : Double) -> ChemmolpropsstereoCursor {
-  let result = chem_mol_props_stereo_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_stereo_cursor_sum(s : ChemmolpropsstereoCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn chem_mol_props_stereo_view_get(s : ChemmolpropsstereoView, i : Int) -> Do
 }
 
 pub fn chem_mol_props_stereo_view_set(s : ChemmolpropsstereoView, i : Int, v : Double) -> ChemmolpropsstereoView {
-  let result = chem_mol_props_stereo_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_stereo_view_sum(s : ChemmolpropsstereoView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn chem_mol_props_stereo_range_get(s : ChemmolpropsstereoRange, i : Int) -> 
 }
 
 pub fn chem_mol_props_stereo_range_set(s : ChemmolpropsstereoRange, i : Int, v : Double) -> ChemmolpropsstereoRange {
-  let result = chem_mol_props_stereo_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_stereo_range_sum(s : ChemmolpropsstereoRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn chem_mol_props_stereo_slice_get(s : ChemmolpropsstereoSlice, i : Int) -> 
 }
 
 pub fn chem_mol_props_stereo_slice_set(s : ChemmolpropsstereoSlice, i : Int, v : Double) -> ChemmolpropsstereoSlice {
-  let result = chem_mol_props_stereo_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_stereo_slice_sum(s : ChemmolpropsstereoSlice) -> Double { @_common.sum(s.data) }

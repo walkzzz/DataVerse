@@ -107,23 +107,15 @@ pub fn crypto_sign_group_series_std(s : CryptosigngroupSeries) -> Double { @_com
 pub fn crypto_sign_group_series_median(s : CryptosigngroupSeries) -> Double { @_common.median(s.vals) }
 
 pub fn crypto_sign_group_series_scale(s : CryptosigngroupSeries, f : Double) -> CryptosigngroupSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn crypto_sign_group_series_add(a : CryptosigngroupSeries, b : CryptosigngroupSeries) -> CryptosigngroupSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn crypto_sign_group_series_sub(a : CryptosigngroupSeries, b : CryptosigngroupSeries) -> CryptosigngroupSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn crypto_sign_group_series_normalize(s : CryptosigngroupSeries) -> CryptosigngroupSeries {
@@ -254,22 +246,16 @@ pub fn crypto_sign_group_vector_zero(dim : Int) -> CryptosigngroupVector {
 
 pub fn crypto_sign_group_vector_add(a : CryptosigngroupVector, b : CryptosigngroupVector) -> CryptosigngroupVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_sign_group_vector_sub(a : CryptosigngroupVector, b : CryptosigngroupVector) -> CryptosigngroupVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_sign_group_vector_scale(v : CryptosigngroupVector, s : Double) -> CryptosigngroupVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn crypto_sign_group_vector_dot(a : CryptosigngroupVector, b : CryptosigngroupVector) -> Double {
@@ -372,10 +358,9 @@ pub fn crypto_sign_group_frame_get(s : CryptosigngroupFrame, i : Int) -> Double 
 }
 
 pub fn crypto_sign_group_frame_set(s : CryptosigngroupFrame, i : Int, v : Double) -> CryptosigngroupFrame {
-  let result = crypto_sign_group_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_group_frame_sum(s : CryptosigngroupFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn crypto_sign_group_table_get(s : CryptosigngroupTable, i : Int) -> Double 
 }
 
 pub fn crypto_sign_group_table_set(s : CryptosigngroupTable, i : Int, v : Double) -> CryptosigngroupTable {
-  let result = crypto_sign_group_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_group_table_sum(s : CryptosigngroupTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn crypto_sign_group_graphn_get(s : CryptosigngroupGraphN, i : Int) -> Doubl
 }
 
 pub fn crypto_sign_group_graphn_set(s : CryptosigngroupGraphN, i : Int, v : Double) -> CryptosigngroupGraphN {
-  let result = crypto_sign_group_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_group_graphn_sum(s : CryptosigngroupGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn crypto_sign_group_node_get(s : CryptosigngroupNode, i : Int) -> Double {
 }
 
 pub fn crypto_sign_group_node_set(s : CryptosigngroupNode, i : Int, v : Double) -> CryptosigngroupNode {
-  let result = crypto_sign_group_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_group_node_sum(s : CryptosigngroupNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn crypto_sign_group_edge_get(s : CryptosigngroupEdge, i : Int) -> Double {
 }
 
 pub fn crypto_sign_group_edge_set(s : CryptosigngroupEdge, i : Int, v : Double) -> CryptosigngroupEdge {
-  let result = crypto_sign_group_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_group_edge_sum(s : CryptosigngroupEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn crypto_sign_group_path_get(s : CryptosigngroupPath, i : Int) -> Double {
 }
 
 pub fn crypto_sign_group_path_set(s : CryptosigngroupPath, i : Int, v : Double) -> CryptosigngroupPath {
-  let result = crypto_sign_group_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_group_path_sum(s : CryptosigngroupPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn crypto_sign_group_cluster_get(s : CryptosigngroupCluster, i : Int) -> Dou
 }
 
 pub fn crypto_sign_group_cluster_set(s : CryptosigngroupCluster, i : Int, v : Double) -> CryptosigngroupCluster {
-  let result = crypto_sign_group_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_group_cluster_sum(s : CryptosigngroupCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn crypto_sign_group_model_get(s : CryptosigngroupModel, i : Int) -> Double 
 }
 
 pub fn crypto_sign_group_model_set(s : CryptosigngroupModel, i : Int, v : Double) -> CryptosigngroupModel {
-  let result = crypto_sign_group_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_group_model_sum(s : CryptosigngroupModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn crypto_sign_group_layer_get(s : CryptosigngroupLayer, i : Int) -> Double 
 }
 
 pub fn crypto_sign_group_layer_set(s : CryptosigngroupLayer, i : Int, v : Double) -> CryptosigngroupLayer {
-  let result = crypto_sign_group_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_group_layer_sum(s : CryptosigngroupLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn crypto_sign_group_buffer_get(s : CryptosigngroupBuffer, i : Int) -> Doubl
 }
 
 pub fn crypto_sign_group_buffer_set(s : CryptosigngroupBuffer, i : Int, v : Double) -> CryptosigngroupBuffer {
-  let result = crypto_sign_group_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_group_buffer_sum(s : CryptosigngroupBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn crypto_sign_group_cursor_get(s : CryptosigngroupCursor, i : Int) -> Doubl
 }
 
 pub fn crypto_sign_group_cursor_set(s : CryptosigngroupCursor, i : Int, v : Double) -> CryptosigngroupCursor {
-  let result = crypto_sign_group_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_group_cursor_sum(s : CryptosigngroupCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn crypto_sign_group_view_get(s : CryptosigngroupView, i : Int) -> Double {
 }
 
 pub fn crypto_sign_group_view_set(s : CryptosigngroupView, i : Int, v : Double) -> CryptosigngroupView {
-  let result = crypto_sign_group_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_group_view_sum(s : CryptosigngroupView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn crypto_sign_group_range_get(s : CryptosigngroupRange, i : Int) -> Double 
 }
 
 pub fn crypto_sign_group_range_set(s : CryptosigngroupRange, i : Int, v : Double) -> CryptosigngroupRange {
-  let result = crypto_sign_group_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_group_range_sum(s : CryptosigngroupRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn crypto_sign_group_slice_get(s : CryptosigngroupSlice, i : Int) -> Double 
 }
 
 pub fn crypto_sign_group_slice_set(s : CryptosigngroupSlice, i : Int, v : Double) -> CryptosigngroupSlice {
-  let result = crypto_sign_group_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_group_slice_sum(s : CryptosigngroupSlice) -> Double { @_common.sum(s.data) }

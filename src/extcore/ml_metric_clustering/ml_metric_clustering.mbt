@@ -107,23 +107,15 @@ pub fn ml_metric_clustering_series_std(s : MlmetricclusteringSeries) -> Double {
 pub fn ml_metric_clustering_series_median(s : MlmetricclusteringSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_metric_clustering_series_scale(s : MlmetricclusteringSeries, f : Double) -> MlmetricclusteringSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_metric_clustering_series_add(a : MlmetricclusteringSeries, b : MlmetricclusteringSeries) -> MlmetricclusteringSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_metric_clustering_series_sub(a : MlmetricclusteringSeries, b : MlmetricclusteringSeries) -> MlmetricclusteringSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_metric_clustering_series_normalize(s : MlmetricclusteringSeries) -> MlmetricclusteringSeries {
@@ -254,22 +246,16 @@ pub fn ml_metric_clustering_vector_zero(dim : Int) -> MlmetricclusteringVector {
 
 pub fn ml_metric_clustering_vector_add(a : MlmetricclusteringVector, b : MlmetricclusteringVector) -> MlmetricclusteringVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_metric_clustering_vector_sub(a : MlmetricclusteringVector, b : MlmetricclusteringVector) -> MlmetricclusteringVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_metric_clustering_vector_scale(v : MlmetricclusteringVector, s : Double) -> MlmetricclusteringVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_metric_clustering_vector_dot(a : MlmetricclusteringVector, b : MlmetricclusteringVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_metric_clustering_frame_get(s : MlmetricclusteringFrame, i : Int) -> D
 }
 
 pub fn ml_metric_clustering_frame_set(s : MlmetricclusteringFrame, i : Int, v : Double) -> MlmetricclusteringFrame {
-  let result = ml_metric_clustering_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_clustering_frame_sum(s : MlmetricclusteringFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_metric_clustering_table_get(s : MlmetricclusteringTable, i : Int) -> D
 }
 
 pub fn ml_metric_clustering_table_set(s : MlmetricclusteringTable, i : Int, v : Double) -> MlmetricclusteringTable {
-  let result = ml_metric_clustering_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_clustering_table_sum(s : MlmetricclusteringTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_metric_clustering_graphn_get(s : MlmetricclusteringGraphN, i : Int) ->
 }
 
 pub fn ml_metric_clustering_graphn_set(s : MlmetricclusteringGraphN, i : Int, v : Double) -> MlmetricclusteringGraphN {
-  let result = ml_metric_clustering_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_clustering_graphn_sum(s : MlmetricclusteringGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_metric_clustering_node_get(s : MlmetricclusteringNode, i : Int) -> Dou
 }
 
 pub fn ml_metric_clustering_node_set(s : MlmetricclusteringNode, i : Int, v : Double) -> MlmetricclusteringNode {
-  let result = ml_metric_clustering_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_clustering_node_sum(s : MlmetricclusteringNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_metric_clustering_edge_get(s : MlmetricclusteringEdge, i : Int) -> Dou
 }
 
 pub fn ml_metric_clustering_edge_set(s : MlmetricclusteringEdge, i : Int, v : Double) -> MlmetricclusteringEdge {
-  let result = ml_metric_clustering_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_clustering_edge_sum(s : MlmetricclusteringEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_metric_clustering_path_get(s : MlmetricclusteringPath, i : Int) -> Dou
 }
 
 pub fn ml_metric_clustering_path_set(s : MlmetricclusteringPath, i : Int, v : Double) -> MlmetricclusteringPath {
-  let result = ml_metric_clustering_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_clustering_path_sum(s : MlmetricclusteringPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_metric_clustering_cluster_get(s : MlmetricclusteringCluster, i : Int) 
 }
 
 pub fn ml_metric_clustering_cluster_set(s : MlmetricclusteringCluster, i : Int, v : Double) -> MlmetricclusteringCluster {
-  let result = ml_metric_clustering_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_clustering_cluster_sum(s : MlmetricclusteringCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_metric_clustering_model_get(s : MlmetricclusteringModel, i : Int) -> D
 }
 
 pub fn ml_metric_clustering_model_set(s : MlmetricclusteringModel, i : Int, v : Double) -> MlmetricclusteringModel {
-  let result = ml_metric_clustering_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_clustering_model_sum(s : MlmetricclusteringModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_metric_clustering_layer_get(s : MlmetricclusteringLayer, i : Int) -> D
 }
 
 pub fn ml_metric_clustering_layer_set(s : MlmetricclusteringLayer, i : Int, v : Double) -> MlmetricclusteringLayer {
-  let result = ml_metric_clustering_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_clustering_layer_sum(s : MlmetricclusteringLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_metric_clustering_buffer_get(s : MlmetricclusteringBuffer, i : Int) ->
 }
 
 pub fn ml_metric_clustering_buffer_set(s : MlmetricclusteringBuffer, i : Int, v : Double) -> MlmetricclusteringBuffer {
-  let result = ml_metric_clustering_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_clustering_buffer_sum(s : MlmetricclusteringBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_metric_clustering_cursor_get(s : MlmetricclusteringCursor, i : Int) ->
 }
 
 pub fn ml_metric_clustering_cursor_set(s : MlmetricclusteringCursor, i : Int, v : Double) -> MlmetricclusteringCursor {
-  let result = ml_metric_clustering_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_clustering_cursor_sum(s : MlmetricclusteringCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_metric_clustering_view_get(s : MlmetricclusteringView, i : Int) -> Dou
 }
 
 pub fn ml_metric_clustering_view_set(s : MlmetricclusteringView, i : Int, v : Double) -> MlmetricclusteringView {
-  let result = ml_metric_clustering_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_clustering_view_sum(s : MlmetricclusteringView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_metric_clustering_range_get(s : MlmetricclusteringRange, i : Int) -> D
 }
 
 pub fn ml_metric_clustering_range_set(s : MlmetricclusteringRange, i : Int, v : Double) -> MlmetricclusteringRange {
-  let result = ml_metric_clustering_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_clustering_range_sum(s : MlmetricclusteringRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_metric_clustering_slice_get(s : MlmetricclusteringSlice, i : Int) -> D
 }
 
 pub fn ml_metric_clustering_slice_set(s : MlmetricclusteringSlice, i : Int, v : Double) -> MlmetricclusteringSlice {
-  let result = ml_metric_clustering_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_clustering_slice_sum(s : MlmetricclusteringSlice) -> Double { @_common.sum(s.data) }

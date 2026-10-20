@@ -107,23 +107,15 @@ pub fn nlp_embed_fasttext_series_std(s : NlpembedfasttextSeries) -> Double { @_c
 pub fn nlp_embed_fasttext_series_median(s : NlpembedfasttextSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_embed_fasttext_series_scale(s : NlpembedfasttextSeries, f : Double) -> NlpembedfasttextSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_embed_fasttext_series_add(a : NlpembedfasttextSeries, b : NlpembedfasttextSeries) -> NlpembedfasttextSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_embed_fasttext_series_sub(a : NlpembedfasttextSeries, b : NlpembedfasttextSeries) -> NlpembedfasttextSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_embed_fasttext_series_normalize(s : NlpembedfasttextSeries) -> NlpembedfasttextSeries {
@@ -254,22 +246,16 @@ pub fn nlp_embed_fasttext_vector_zero(dim : Int) -> NlpembedfasttextVector {
 
 pub fn nlp_embed_fasttext_vector_add(a : NlpembedfasttextVector, b : NlpembedfasttextVector) -> NlpembedfasttextVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_embed_fasttext_vector_sub(a : NlpembedfasttextVector, b : NlpembedfasttextVector) -> NlpembedfasttextVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_embed_fasttext_vector_scale(v : NlpembedfasttextVector, s : Double) -> NlpembedfasttextVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_embed_fasttext_vector_dot(a : NlpembedfasttextVector, b : NlpembedfasttextVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_embed_fasttext_frame_get(s : NlpembedfasttextFrame, i : Int) -> Doubl
 }
 
 pub fn nlp_embed_fasttext_frame_set(s : NlpembedfasttextFrame, i : Int, v : Double) -> NlpembedfasttextFrame {
-  let result = nlp_embed_fasttext_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_fasttext_frame_sum(s : NlpembedfasttextFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_embed_fasttext_table_get(s : NlpembedfasttextTable, i : Int) -> Doubl
 }
 
 pub fn nlp_embed_fasttext_table_set(s : NlpembedfasttextTable, i : Int, v : Double) -> NlpembedfasttextTable {
-  let result = nlp_embed_fasttext_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_fasttext_table_sum(s : NlpembedfasttextTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_embed_fasttext_graphn_get(s : NlpembedfasttextGraphN, i : Int) -> Dou
 }
 
 pub fn nlp_embed_fasttext_graphn_set(s : NlpembedfasttextGraphN, i : Int, v : Double) -> NlpembedfasttextGraphN {
-  let result = nlp_embed_fasttext_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_fasttext_graphn_sum(s : NlpembedfasttextGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_embed_fasttext_node_get(s : NlpembedfasttextNode, i : Int) -> Double 
 }
 
 pub fn nlp_embed_fasttext_node_set(s : NlpembedfasttextNode, i : Int, v : Double) -> NlpembedfasttextNode {
-  let result = nlp_embed_fasttext_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_fasttext_node_sum(s : NlpembedfasttextNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_embed_fasttext_edge_get(s : NlpembedfasttextEdge, i : Int) -> Double 
 }
 
 pub fn nlp_embed_fasttext_edge_set(s : NlpembedfasttextEdge, i : Int, v : Double) -> NlpembedfasttextEdge {
-  let result = nlp_embed_fasttext_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_fasttext_edge_sum(s : NlpembedfasttextEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_embed_fasttext_path_get(s : NlpembedfasttextPath, i : Int) -> Double 
 }
 
 pub fn nlp_embed_fasttext_path_set(s : NlpembedfasttextPath, i : Int, v : Double) -> NlpembedfasttextPath {
-  let result = nlp_embed_fasttext_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_fasttext_path_sum(s : NlpembedfasttextPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_embed_fasttext_cluster_get(s : NlpembedfasttextCluster, i : Int) -> D
 }
 
 pub fn nlp_embed_fasttext_cluster_set(s : NlpembedfasttextCluster, i : Int, v : Double) -> NlpembedfasttextCluster {
-  let result = nlp_embed_fasttext_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_fasttext_cluster_sum(s : NlpembedfasttextCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_embed_fasttext_model_get(s : NlpembedfasttextModel, i : Int) -> Doubl
 }
 
 pub fn nlp_embed_fasttext_model_set(s : NlpembedfasttextModel, i : Int, v : Double) -> NlpembedfasttextModel {
-  let result = nlp_embed_fasttext_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_fasttext_model_sum(s : NlpembedfasttextModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_embed_fasttext_layer_get(s : NlpembedfasttextLayer, i : Int) -> Doubl
 }
 
 pub fn nlp_embed_fasttext_layer_set(s : NlpembedfasttextLayer, i : Int, v : Double) -> NlpembedfasttextLayer {
-  let result = nlp_embed_fasttext_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_fasttext_layer_sum(s : NlpembedfasttextLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_embed_fasttext_buffer_get(s : NlpembedfasttextBuffer, i : Int) -> Dou
 }
 
 pub fn nlp_embed_fasttext_buffer_set(s : NlpembedfasttextBuffer, i : Int, v : Double) -> NlpembedfasttextBuffer {
-  let result = nlp_embed_fasttext_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_fasttext_buffer_sum(s : NlpembedfasttextBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_embed_fasttext_cursor_get(s : NlpembedfasttextCursor, i : Int) -> Dou
 }
 
 pub fn nlp_embed_fasttext_cursor_set(s : NlpembedfasttextCursor, i : Int, v : Double) -> NlpembedfasttextCursor {
-  let result = nlp_embed_fasttext_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_fasttext_cursor_sum(s : NlpembedfasttextCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_embed_fasttext_view_get(s : NlpembedfasttextView, i : Int) -> Double 
 }
 
 pub fn nlp_embed_fasttext_view_set(s : NlpembedfasttextView, i : Int, v : Double) -> NlpembedfasttextView {
-  let result = nlp_embed_fasttext_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_fasttext_view_sum(s : NlpembedfasttextView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_embed_fasttext_range_get(s : NlpembedfasttextRange, i : Int) -> Doubl
 }
 
 pub fn nlp_embed_fasttext_range_set(s : NlpembedfasttextRange, i : Int, v : Double) -> NlpembedfasttextRange {
-  let result = nlp_embed_fasttext_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_fasttext_range_sum(s : NlpembedfasttextRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_embed_fasttext_slice_get(s : NlpembedfasttextSlice, i : Int) -> Doubl
 }
 
 pub fn nlp_embed_fasttext_slice_set(s : NlpembedfasttextSlice, i : Int, v : Double) -> NlpembedfasttextSlice {
-  let result = nlp_embed_fasttext_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_fasttext_slice_sum(s : NlpembedfasttextSlice) -> Double { @_common.sum(s.data) }

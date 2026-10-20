@@ -107,23 +107,15 @@ pub fn chem_rxn_yield_series_std(s : ChemrxnyieldSeries) -> Double { @_common.st
 pub fn chem_rxn_yield_series_median(s : ChemrxnyieldSeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_rxn_yield_series_scale(s : ChemrxnyieldSeries, f : Double) -> ChemrxnyieldSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn chem_rxn_yield_series_add(a : ChemrxnyieldSeries, b : ChemrxnyieldSeries) -> ChemrxnyieldSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn chem_rxn_yield_series_sub(a : ChemrxnyieldSeries, b : ChemrxnyieldSeries) -> ChemrxnyieldSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn chem_rxn_yield_series_normalize(s : ChemrxnyieldSeries) -> ChemrxnyieldSeries {
@@ -254,22 +246,16 @@ pub fn chem_rxn_yield_vector_zero(dim : Int) -> ChemrxnyieldVector {
 
 pub fn chem_rxn_yield_vector_add(a : ChemrxnyieldVector, b : ChemrxnyieldVector) -> ChemrxnyieldVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_rxn_yield_vector_sub(a : ChemrxnyieldVector, b : ChemrxnyieldVector) -> ChemrxnyieldVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_rxn_yield_vector_scale(v : ChemrxnyieldVector, s : Double) -> ChemrxnyieldVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn chem_rxn_yield_vector_dot(a : ChemrxnyieldVector, b : ChemrxnyieldVector) -> Double {
@@ -372,10 +358,9 @@ pub fn chem_rxn_yield_frame_get(s : ChemrxnyieldFrame, i : Int) -> Double {
 }
 
 pub fn chem_rxn_yield_frame_set(s : ChemrxnyieldFrame, i : Int, v : Double) -> ChemrxnyieldFrame {
-  let result = chem_rxn_yield_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_yield_frame_sum(s : ChemrxnyieldFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn chem_rxn_yield_table_get(s : ChemrxnyieldTable, i : Int) -> Double {
 }
 
 pub fn chem_rxn_yield_table_set(s : ChemrxnyieldTable, i : Int, v : Double) -> ChemrxnyieldTable {
-  let result = chem_rxn_yield_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_yield_table_sum(s : ChemrxnyieldTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn chem_rxn_yield_graphn_get(s : ChemrxnyieldGraphN, i : Int) -> Double {
 }
 
 pub fn chem_rxn_yield_graphn_set(s : ChemrxnyieldGraphN, i : Int, v : Double) -> ChemrxnyieldGraphN {
-  let result = chem_rxn_yield_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_yield_graphn_sum(s : ChemrxnyieldGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn chem_rxn_yield_node_get(s : ChemrxnyieldNode, i : Int) -> Double {
 }
 
 pub fn chem_rxn_yield_node_set(s : ChemrxnyieldNode, i : Int, v : Double) -> ChemrxnyieldNode {
-  let result = chem_rxn_yield_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_yield_node_sum(s : ChemrxnyieldNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn chem_rxn_yield_edge_get(s : ChemrxnyieldEdge, i : Int) -> Double {
 }
 
 pub fn chem_rxn_yield_edge_set(s : ChemrxnyieldEdge, i : Int, v : Double) -> ChemrxnyieldEdge {
-  let result = chem_rxn_yield_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_yield_edge_sum(s : ChemrxnyieldEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn chem_rxn_yield_path_get(s : ChemrxnyieldPath, i : Int) -> Double {
 }
 
 pub fn chem_rxn_yield_path_set(s : ChemrxnyieldPath, i : Int, v : Double) -> ChemrxnyieldPath {
-  let result = chem_rxn_yield_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_yield_path_sum(s : ChemrxnyieldPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn chem_rxn_yield_cluster_get(s : ChemrxnyieldCluster, i : Int) -> Double {
 }
 
 pub fn chem_rxn_yield_cluster_set(s : ChemrxnyieldCluster, i : Int, v : Double) -> ChemrxnyieldCluster {
-  let result = chem_rxn_yield_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_yield_cluster_sum(s : ChemrxnyieldCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn chem_rxn_yield_model_get(s : ChemrxnyieldModel, i : Int) -> Double {
 }
 
 pub fn chem_rxn_yield_model_set(s : ChemrxnyieldModel, i : Int, v : Double) -> ChemrxnyieldModel {
-  let result = chem_rxn_yield_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_yield_model_sum(s : ChemrxnyieldModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn chem_rxn_yield_layer_get(s : ChemrxnyieldLayer, i : Int) -> Double {
 }
 
 pub fn chem_rxn_yield_layer_set(s : ChemrxnyieldLayer, i : Int, v : Double) -> ChemrxnyieldLayer {
-  let result = chem_rxn_yield_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_yield_layer_sum(s : ChemrxnyieldLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn chem_rxn_yield_buffer_get(s : ChemrxnyieldBuffer, i : Int) -> Double {
 }
 
 pub fn chem_rxn_yield_buffer_set(s : ChemrxnyieldBuffer, i : Int, v : Double) -> ChemrxnyieldBuffer {
-  let result = chem_rxn_yield_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_yield_buffer_sum(s : ChemrxnyieldBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn chem_rxn_yield_cursor_get(s : ChemrxnyieldCursor, i : Int) -> Double {
 }
 
 pub fn chem_rxn_yield_cursor_set(s : ChemrxnyieldCursor, i : Int, v : Double) -> ChemrxnyieldCursor {
-  let result = chem_rxn_yield_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_yield_cursor_sum(s : ChemrxnyieldCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn chem_rxn_yield_view_get(s : ChemrxnyieldView, i : Int) -> Double {
 }
 
 pub fn chem_rxn_yield_view_set(s : ChemrxnyieldView, i : Int, v : Double) -> ChemrxnyieldView {
-  let result = chem_rxn_yield_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_yield_view_sum(s : ChemrxnyieldView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn chem_rxn_yield_range_get(s : ChemrxnyieldRange, i : Int) -> Double {
 }
 
 pub fn chem_rxn_yield_range_set(s : ChemrxnyieldRange, i : Int, v : Double) -> ChemrxnyieldRange {
-  let result = chem_rxn_yield_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_yield_range_sum(s : ChemrxnyieldRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn chem_rxn_yield_slice_get(s : ChemrxnyieldSlice, i : Int) -> Double {
 }
 
 pub fn chem_rxn_yield_slice_set(s : ChemrxnyieldSlice, i : Int, v : Double) -> ChemrxnyieldSlice {
-  let result = chem_rxn_yield_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_yield_slice_sum(s : ChemrxnyieldSlice) -> Double { @_common.sum(s.data) }

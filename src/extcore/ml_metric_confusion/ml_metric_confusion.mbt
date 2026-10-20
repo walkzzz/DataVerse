@@ -107,23 +107,15 @@ pub fn ml_metric_confusion_series_std(s : MlmetricconfusionSeries) -> Double { @
 pub fn ml_metric_confusion_series_median(s : MlmetricconfusionSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_metric_confusion_series_scale(s : MlmetricconfusionSeries, f : Double) -> MlmetricconfusionSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_metric_confusion_series_add(a : MlmetricconfusionSeries, b : MlmetricconfusionSeries) -> MlmetricconfusionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_metric_confusion_series_sub(a : MlmetricconfusionSeries, b : MlmetricconfusionSeries) -> MlmetricconfusionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_metric_confusion_series_normalize(s : MlmetricconfusionSeries) -> MlmetricconfusionSeries {
@@ -254,22 +246,16 @@ pub fn ml_metric_confusion_vector_zero(dim : Int) -> MlmetricconfusionVector {
 
 pub fn ml_metric_confusion_vector_add(a : MlmetricconfusionVector, b : MlmetricconfusionVector) -> MlmetricconfusionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_metric_confusion_vector_sub(a : MlmetricconfusionVector, b : MlmetricconfusionVector) -> MlmetricconfusionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_metric_confusion_vector_scale(v : MlmetricconfusionVector, s : Double) -> MlmetricconfusionVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_metric_confusion_vector_dot(a : MlmetricconfusionVector, b : MlmetricconfusionVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_metric_confusion_frame_get(s : MlmetricconfusionFrame, i : Int) -> Dou
 }
 
 pub fn ml_metric_confusion_frame_set(s : MlmetricconfusionFrame, i : Int, v : Double) -> MlmetricconfusionFrame {
-  let result = ml_metric_confusion_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_confusion_frame_sum(s : MlmetricconfusionFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_metric_confusion_table_get(s : MlmetricconfusionTable, i : Int) -> Dou
 }
 
 pub fn ml_metric_confusion_table_set(s : MlmetricconfusionTable, i : Int, v : Double) -> MlmetricconfusionTable {
-  let result = ml_metric_confusion_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_confusion_table_sum(s : MlmetricconfusionTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_metric_confusion_graphn_get(s : MlmetricconfusionGraphN, i : Int) -> D
 }
 
 pub fn ml_metric_confusion_graphn_set(s : MlmetricconfusionGraphN, i : Int, v : Double) -> MlmetricconfusionGraphN {
-  let result = ml_metric_confusion_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_confusion_graphn_sum(s : MlmetricconfusionGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_metric_confusion_node_get(s : MlmetricconfusionNode, i : Int) -> Doubl
 }
 
 pub fn ml_metric_confusion_node_set(s : MlmetricconfusionNode, i : Int, v : Double) -> MlmetricconfusionNode {
-  let result = ml_metric_confusion_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_confusion_node_sum(s : MlmetricconfusionNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_metric_confusion_edge_get(s : MlmetricconfusionEdge, i : Int) -> Doubl
 }
 
 pub fn ml_metric_confusion_edge_set(s : MlmetricconfusionEdge, i : Int, v : Double) -> MlmetricconfusionEdge {
-  let result = ml_metric_confusion_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_confusion_edge_sum(s : MlmetricconfusionEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_metric_confusion_path_get(s : MlmetricconfusionPath, i : Int) -> Doubl
 }
 
 pub fn ml_metric_confusion_path_set(s : MlmetricconfusionPath, i : Int, v : Double) -> MlmetricconfusionPath {
-  let result = ml_metric_confusion_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_confusion_path_sum(s : MlmetricconfusionPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_metric_confusion_cluster_get(s : MlmetricconfusionCluster, i : Int) ->
 }
 
 pub fn ml_metric_confusion_cluster_set(s : MlmetricconfusionCluster, i : Int, v : Double) -> MlmetricconfusionCluster {
-  let result = ml_metric_confusion_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_confusion_cluster_sum(s : MlmetricconfusionCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_metric_confusion_model_get(s : MlmetricconfusionModel, i : Int) -> Dou
 }
 
 pub fn ml_metric_confusion_model_set(s : MlmetricconfusionModel, i : Int, v : Double) -> MlmetricconfusionModel {
-  let result = ml_metric_confusion_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_confusion_model_sum(s : MlmetricconfusionModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_metric_confusion_layer_get(s : MlmetricconfusionLayer, i : Int) -> Dou
 }
 
 pub fn ml_metric_confusion_layer_set(s : MlmetricconfusionLayer, i : Int, v : Double) -> MlmetricconfusionLayer {
-  let result = ml_metric_confusion_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_confusion_layer_sum(s : MlmetricconfusionLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_metric_confusion_buffer_get(s : MlmetricconfusionBuffer, i : Int) -> D
 }
 
 pub fn ml_metric_confusion_buffer_set(s : MlmetricconfusionBuffer, i : Int, v : Double) -> MlmetricconfusionBuffer {
-  let result = ml_metric_confusion_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_confusion_buffer_sum(s : MlmetricconfusionBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_metric_confusion_cursor_get(s : MlmetricconfusionCursor, i : Int) -> D
 }
 
 pub fn ml_metric_confusion_cursor_set(s : MlmetricconfusionCursor, i : Int, v : Double) -> MlmetricconfusionCursor {
-  let result = ml_metric_confusion_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_confusion_cursor_sum(s : MlmetricconfusionCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_metric_confusion_view_get(s : MlmetricconfusionView, i : Int) -> Doubl
 }
 
 pub fn ml_metric_confusion_view_set(s : MlmetricconfusionView, i : Int, v : Double) -> MlmetricconfusionView {
-  let result = ml_metric_confusion_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_confusion_view_sum(s : MlmetricconfusionView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_metric_confusion_range_get(s : MlmetricconfusionRange, i : Int) -> Dou
 }
 
 pub fn ml_metric_confusion_range_set(s : MlmetricconfusionRange, i : Int, v : Double) -> MlmetricconfusionRange {
-  let result = ml_metric_confusion_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_confusion_range_sum(s : MlmetricconfusionRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_metric_confusion_slice_get(s : MlmetricconfusionSlice, i : Int) -> Dou
 }
 
 pub fn ml_metric_confusion_slice_set(s : MlmetricconfusionSlice, i : Int, v : Double) -> MlmetricconfusionSlice {
-  let result = ml_metric_confusion_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_confusion_slice_sum(s : MlmetricconfusionSlice) -> Double { @_common.sum(s.data) }

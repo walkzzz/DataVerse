@@ -107,23 +107,15 @@ pub fn ml_feature_factor_series_std(s : MlfeaturefactorSeries) -> Double { @_com
 pub fn ml_feature_factor_series_median(s : MlfeaturefactorSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_feature_factor_series_scale(s : MlfeaturefactorSeries, f : Double) -> MlfeaturefactorSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_feature_factor_series_add(a : MlfeaturefactorSeries, b : MlfeaturefactorSeries) -> MlfeaturefactorSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_feature_factor_series_sub(a : MlfeaturefactorSeries, b : MlfeaturefactorSeries) -> MlfeaturefactorSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_feature_factor_series_normalize(s : MlfeaturefactorSeries) -> MlfeaturefactorSeries {
@@ -254,22 +246,16 @@ pub fn ml_feature_factor_vector_zero(dim : Int) -> MlfeaturefactorVector {
 
 pub fn ml_feature_factor_vector_add(a : MlfeaturefactorVector, b : MlfeaturefactorVector) -> MlfeaturefactorVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_feature_factor_vector_sub(a : MlfeaturefactorVector, b : MlfeaturefactorVector) -> MlfeaturefactorVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_feature_factor_vector_scale(v : MlfeaturefactorVector, s : Double) -> MlfeaturefactorVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_feature_factor_vector_dot(a : MlfeaturefactorVector, b : MlfeaturefactorVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_feature_factor_frame_get(s : MlfeaturefactorFrame, i : Int) -> Double 
 }
 
 pub fn ml_feature_factor_frame_set(s : MlfeaturefactorFrame, i : Int, v : Double) -> MlfeaturefactorFrame {
-  let result = ml_feature_factor_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_factor_frame_sum(s : MlfeaturefactorFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_feature_factor_table_get(s : MlfeaturefactorTable, i : Int) -> Double 
 }
 
 pub fn ml_feature_factor_table_set(s : MlfeaturefactorTable, i : Int, v : Double) -> MlfeaturefactorTable {
-  let result = ml_feature_factor_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_factor_table_sum(s : MlfeaturefactorTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_feature_factor_graphn_get(s : MlfeaturefactorGraphN, i : Int) -> Doubl
 }
 
 pub fn ml_feature_factor_graphn_set(s : MlfeaturefactorGraphN, i : Int, v : Double) -> MlfeaturefactorGraphN {
-  let result = ml_feature_factor_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_factor_graphn_sum(s : MlfeaturefactorGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_feature_factor_node_get(s : MlfeaturefactorNode, i : Int) -> Double {
 }
 
 pub fn ml_feature_factor_node_set(s : MlfeaturefactorNode, i : Int, v : Double) -> MlfeaturefactorNode {
-  let result = ml_feature_factor_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_factor_node_sum(s : MlfeaturefactorNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_feature_factor_edge_get(s : MlfeaturefactorEdge, i : Int) -> Double {
 }
 
 pub fn ml_feature_factor_edge_set(s : MlfeaturefactorEdge, i : Int, v : Double) -> MlfeaturefactorEdge {
-  let result = ml_feature_factor_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_factor_edge_sum(s : MlfeaturefactorEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_feature_factor_path_get(s : MlfeaturefactorPath, i : Int) -> Double {
 }
 
 pub fn ml_feature_factor_path_set(s : MlfeaturefactorPath, i : Int, v : Double) -> MlfeaturefactorPath {
-  let result = ml_feature_factor_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_factor_path_sum(s : MlfeaturefactorPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_feature_factor_cluster_get(s : MlfeaturefactorCluster, i : Int) -> Dou
 }
 
 pub fn ml_feature_factor_cluster_set(s : MlfeaturefactorCluster, i : Int, v : Double) -> MlfeaturefactorCluster {
-  let result = ml_feature_factor_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_factor_cluster_sum(s : MlfeaturefactorCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_feature_factor_model_get(s : MlfeaturefactorModel, i : Int) -> Double 
 }
 
 pub fn ml_feature_factor_model_set(s : MlfeaturefactorModel, i : Int, v : Double) -> MlfeaturefactorModel {
-  let result = ml_feature_factor_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_factor_model_sum(s : MlfeaturefactorModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_feature_factor_layer_get(s : MlfeaturefactorLayer, i : Int) -> Double 
 }
 
 pub fn ml_feature_factor_layer_set(s : MlfeaturefactorLayer, i : Int, v : Double) -> MlfeaturefactorLayer {
-  let result = ml_feature_factor_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_factor_layer_sum(s : MlfeaturefactorLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_feature_factor_buffer_get(s : MlfeaturefactorBuffer, i : Int) -> Doubl
 }
 
 pub fn ml_feature_factor_buffer_set(s : MlfeaturefactorBuffer, i : Int, v : Double) -> MlfeaturefactorBuffer {
-  let result = ml_feature_factor_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_factor_buffer_sum(s : MlfeaturefactorBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_feature_factor_cursor_get(s : MlfeaturefactorCursor, i : Int) -> Doubl
 }
 
 pub fn ml_feature_factor_cursor_set(s : MlfeaturefactorCursor, i : Int, v : Double) -> MlfeaturefactorCursor {
-  let result = ml_feature_factor_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_factor_cursor_sum(s : MlfeaturefactorCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_feature_factor_view_get(s : MlfeaturefactorView, i : Int) -> Double {
 }
 
 pub fn ml_feature_factor_view_set(s : MlfeaturefactorView, i : Int, v : Double) -> MlfeaturefactorView {
-  let result = ml_feature_factor_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_factor_view_sum(s : MlfeaturefactorView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_feature_factor_range_get(s : MlfeaturefactorRange, i : Int) -> Double 
 }
 
 pub fn ml_feature_factor_range_set(s : MlfeaturefactorRange, i : Int, v : Double) -> MlfeaturefactorRange {
-  let result = ml_feature_factor_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_factor_range_sum(s : MlfeaturefactorRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_feature_factor_slice_get(s : MlfeaturefactorSlice, i : Int) -> Double 
 }
 
 pub fn ml_feature_factor_slice_set(s : MlfeaturefactorSlice, i : Int, v : Double) -> MlfeaturefactorSlice {
-  let result = ml_feature_factor_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_factor_slice_sum(s : MlfeaturefactorSlice) -> Double { @_common.sum(s.data) }

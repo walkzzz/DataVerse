@@ -107,23 +107,15 @@ pub fn db_index_gist_series_std(s : DbindexgistSeries) -> Double { @_common.std(
 pub fn db_index_gist_series_median(s : DbindexgistSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_index_gist_series_scale(s : DbindexgistSeries, f : Double) -> DbindexgistSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_index_gist_series_add(a : DbindexgistSeries, b : DbindexgistSeries) -> DbindexgistSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_index_gist_series_sub(a : DbindexgistSeries, b : DbindexgistSeries) -> DbindexgistSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_index_gist_series_normalize(s : DbindexgistSeries) -> DbindexgistSeries {
@@ -254,22 +246,16 @@ pub fn db_index_gist_vector_zero(dim : Int) -> DbindexgistVector {
 
 pub fn db_index_gist_vector_add(a : DbindexgistVector, b : DbindexgistVector) -> DbindexgistVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_index_gist_vector_sub(a : DbindexgistVector, b : DbindexgistVector) -> DbindexgistVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_index_gist_vector_scale(v : DbindexgistVector, s : Double) -> DbindexgistVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_index_gist_vector_dot(a : DbindexgistVector, b : DbindexgistVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_index_gist_frame_get(s : DbindexgistFrame, i : Int) -> Double {
 }
 
 pub fn db_index_gist_frame_set(s : DbindexgistFrame, i : Int, v : Double) -> DbindexgistFrame {
-  let result = db_index_gist_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_frame_sum(s : DbindexgistFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_index_gist_table_get(s : DbindexgistTable, i : Int) -> Double {
 }
 
 pub fn db_index_gist_table_set(s : DbindexgistTable, i : Int, v : Double) -> DbindexgistTable {
-  let result = db_index_gist_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_table_sum(s : DbindexgistTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_index_gist_graphn_get(s : DbindexgistGraphN, i : Int) -> Double {
 }
 
 pub fn db_index_gist_graphn_set(s : DbindexgistGraphN, i : Int, v : Double) -> DbindexgistGraphN {
-  let result = db_index_gist_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_graphn_sum(s : DbindexgistGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_index_gist_node_get(s : DbindexgistNode, i : Int) -> Double {
 }
 
 pub fn db_index_gist_node_set(s : DbindexgistNode, i : Int, v : Double) -> DbindexgistNode {
-  let result = db_index_gist_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_node_sum(s : DbindexgistNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_index_gist_edge_get(s : DbindexgistEdge, i : Int) -> Double {
 }
 
 pub fn db_index_gist_edge_set(s : DbindexgistEdge, i : Int, v : Double) -> DbindexgistEdge {
-  let result = db_index_gist_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_edge_sum(s : DbindexgistEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_index_gist_path_get(s : DbindexgistPath, i : Int) -> Double {
 }
 
 pub fn db_index_gist_path_set(s : DbindexgistPath, i : Int, v : Double) -> DbindexgistPath {
-  let result = db_index_gist_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_path_sum(s : DbindexgistPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_index_gist_cluster_get(s : DbindexgistCluster, i : Int) -> Double {
 }
 
 pub fn db_index_gist_cluster_set(s : DbindexgistCluster, i : Int, v : Double) -> DbindexgistCluster {
-  let result = db_index_gist_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_cluster_sum(s : DbindexgistCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_index_gist_model_get(s : DbindexgistModel, i : Int) -> Double {
 }
 
 pub fn db_index_gist_model_set(s : DbindexgistModel, i : Int, v : Double) -> DbindexgistModel {
-  let result = db_index_gist_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_model_sum(s : DbindexgistModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_index_gist_layer_get(s : DbindexgistLayer, i : Int) -> Double {
 }
 
 pub fn db_index_gist_layer_set(s : DbindexgistLayer, i : Int, v : Double) -> DbindexgistLayer {
-  let result = db_index_gist_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_layer_sum(s : DbindexgistLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_index_gist_buffer_get(s : DbindexgistBuffer, i : Int) -> Double {
 }
 
 pub fn db_index_gist_buffer_set(s : DbindexgistBuffer, i : Int, v : Double) -> DbindexgistBuffer {
-  let result = db_index_gist_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_buffer_sum(s : DbindexgistBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_index_gist_cursor_get(s : DbindexgistCursor, i : Int) -> Double {
 }
 
 pub fn db_index_gist_cursor_set(s : DbindexgistCursor, i : Int, v : Double) -> DbindexgistCursor {
-  let result = db_index_gist_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_cursor_sum(s : DbindexgistCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_index_gist_view_get(s : DbindexgistView, i : Int) -> Double {
 }
 
 pub fn db_index_gist_view_set(s : DbindexgistView, i : Int, v : Double) -> DbindexgistView {
-  let result = db_index_gist_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_view_sum(s : DbindexgistView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_index_gist_range_get(s : DbindexgistRange, i : Int) -> Double {
 }
 
 pub fn db_index_gist_range_set(s : DbindexgistRange, i : Int, v : Double) -> DbindexgistRange {
-  let result = db_index_gist_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_range_sum(s : DbindexgistRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_index_gist_slice_get(s : DbindexgistSlice, i : Int) -> Double {
 }
 
 pub fn db_index_gist_slice_set(s : DbindexgistSlice, i : Int, v : Double) -> DbindexgistSlice {
-  let result = db_index_gist_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gist_slice_sum(s : DbindexgistSlice) -> Double { @_common.sum(s.data) }

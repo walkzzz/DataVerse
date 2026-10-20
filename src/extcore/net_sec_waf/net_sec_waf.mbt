@@ -107,23 +107,15 @@ pub fn net_sec_waf_series_std(s : NetsecwafSeries) -> Double { @_common.std(s.va
 pub fn net_sec_waf_series_median(s : NetsecwafSeries) -> Double { @_common.median(s.vals) }
 
 pub fn net_sec_waf_series_scale(s : NetsecwafSeries, f : Double) -> NetsecwafSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn net_sec_waf_series_add(a : NetsecwafSeries, b : NetsecwafSeries) -> NetsecwafSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn net_sec_waf_series_sub(a : NetsecwafSeries, b : NetsecwafSeries) -> NetsecwafSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn net_sec_waf_series_normalize(s : NetsecwafSeries) -> NetsecwafSeries {
@@ -254,22 +246,16 @@ pub fn net_sec_waf_vector_zero(dim : Int) -> NetsecwafVector {
 
 pub fn net_sec_waf_vector_add(a : NetsecwafVector, b : NetsecwafVector) -> NetsecwafVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_sec_waf_vector_sub(a : NetsecwafVector, b : NetsecwafVector) -> NetsecwafVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_sec_waf_vector_scale(v : NetsecwafVector, s : Double) -> NetsecwafVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn net_sec_waf_vector_dot(a : NetsecwafVector, b : NetsecwafVector) -> Double {
@@ -372,10 +358,9 @@ pub fn net_sec_waf_frame_get(s : NetsecwafFrame, i : Int) -> Double {
 }
 
 pub fn net_sec_waf_frame_set(s : NetsecwafFrame, i : Int, v : Double) -> NetsecwafFrame {
-  let result = net_sec_waf_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_waf_frame_sum(s : NetsecwafFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn net_sec_waf_table_get(s : NetsecwafTable, i : Int) -> Double {
 }
 
 pub fn net_sec_waf_table_set(s : NetsecwafTable, i : Int, v : Double) -> NetsecwafTable {
-  let result = net_sec_waf_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_waf_table_sum(s : NetsecwafTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn net_sec_waf_graphn_get(s : NetsecwafGraphN, i : Int) -> Double {
 }
 
 pub fn net_sec_waf_graphn_set(s : NetsecwafGraphN, i : Int, v : Double) -> NetsecwafGraphN {
-  let result = net_sec_waf_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_waf_graphn_sum(s : NetsecwafGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn net_sec_waf_node_get(s : NetsecwafNode, i : Int) -> Double {
 }
 
 pub fn net_sec_waf_node_set(s : NetsecwafNode, i : Int, v : Double) -> NetsecwafNode {
-  let result = net_sec_waf_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_waf_node_sum(s : NetsecwafNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn net_sec_waf_edge_get(s : NetsecwafEdge, i : Int) -> Double {
 }
 
 pub fn net_sec_waf_edge_set(s : NetsecwafEdge, i : Int, v : Double) -> NetsecwafEdge {
-  let result = net_sec_waf_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_waf_edge_sum(s : NetsecwafEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn net_sec_waf_path_get(s : NetsecwafPath, i : Int) -> Double {
 }
 
 pub fn net_sec_waf_path_set(s : NetsecwafPath, i : Int, v : Double) -> NetsecwafPath {
-  let result = net_sec_waf_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_waf_path_sum(s : NetsecwafPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn net_sec_waf_cluster_get(s : NetsecwafCluster, i : Int) -> Double {
 }
 
 pub fn net_sec_waf_cluster_set(s : NetsecwafCluster, i : Int, v : Double) -> NetsecwafCluster {
-  let result = net_sec_waf_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_waf_cluster_sum(s : NetsecwafCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn net_sec_waf_model_get(s : NetsecwafModel, i : Int) -> Double {
 }
 
 pub fn net_sec_waf_model_set(s : NetsecwafModel, i : Int, v : Double) -> NetsecwafModel {
-  let result = net_sec_waf_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_waf_model_sum(s : NetsecwafModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn net_sec_waf_layer_get(s : NetsecwafLayer, i : Int) -> Double {
 }
 
 pub fn net_sec_waf_layer_set(s : NetsecwafLayer, i : Int, v : Double) -> NetsecwafLayer {
-  let result = net_sec_waf_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_waf_layer_sum(s : NetsecwafLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn net_sec_waf_buffer_get(s : NetsecwafBuffer, i : Int) -> Double {
 }
 
 pub fn net_sec_waf_buffer_set(s : NetsecwafBuffer, i : Int, v : Double) -> NetsecwafBuffer {
-  let result = net_sec_waf_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_waf_buffer_sum(s : NetsecwafBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn net_sec_waf_cursor_get(s : NetsecwafCursor, i : Int) -> Double {
 }
 
 pub fn net_sec_waf_cursor_set(s : NetsecwafCursor, i : Int, v : Double) -> NetsecwafCursor {
-  let result = net_sec_waf_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_waf_cursor_sum(s : NetsecwafCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn net_sec_waf_view_get(s : NetsecwafView, i : Int) -> Double {
 }
 
 pub fn net_sec_waf_view_set(s : NetsecwafView, i : Int, v : Double) -> NetsecwafView {
-  let result = net_sec_waf_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_waf_view_sum(s : NetsecwafView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn net_sec_waf_range_get(s : NetsecwafRange, i : Int) -> Double {
 }
 
 pub fn net_sec_waf_range_set(s : NetsecwafRange, i : Int, v : Double) -> NetsecwafRange {
-  let result = net_sec_waf_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_waf_range_sum(s : NetsecwafRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn net_sec_waf_slice_get(s : NetsecwafSlice, i : Int) -> Double {
 }
 
 pub fn net_sec_waf_slice_set(s : NetsecwafSlice, i : Int, v : Double) -> NetsecwafSlice {
-  let result = net_sec_waf_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_waf_slice_sum(s : NetsecwafSlice) -> Double { @_common.sum(s.data) }

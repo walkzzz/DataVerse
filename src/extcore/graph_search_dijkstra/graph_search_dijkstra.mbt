@@ -107,23 +107,15 @@ pub fn graph_search_dijkstra_series_std(s : GraphsearchdijkstraSeries) -> Double
 pub fn graph_search_dijkstra_series_median(s : GraphsearchdijkstraSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_search_dijkstra_series_scale(s : GraphsearchdijkstraSeries, f : Double) -> GraphsearchdijkstraSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_search_dijkstra_series_add(a : GraphsearchdijkstraSeries, b : GraphsearchdijkstraSeries) -> GraphsearchdijkstraSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_search_dijkstra_series_sub(a : GraphsearchdijkstraSeries, b : GraphsearchdijkstraSeries) -> GraphsearchdijkstraSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_search_dijkstra_series_normalize(s : GraphsearchdijkstraSeries) -> GraphsearchdijkstraSeries {
@@ -254,22 +246,16 @@ pub fn graph_search_dijkstra_vector_zero(dim : Int) -> GraphsearchdijkstraVector
 
 pub fn graph_search_dijkstra_vector_add(a : GraphsearchdijkstraVector, b : GraphsearchdijkstraVector) -> GraphsearchdijkstraVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_search_dijkstra_vector_sub(a : GraphsearchdijkstraVector, b : GraphsearchdijkstraVector) -> GraphsearchdijkstraVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_search_dijkstra_vector_scale(v : GraphsearchdijkstraVector, s : Double) -> GraphsearchdijkstraVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_search_dijkstra_vector_dot(a : GraphsearchdijkstraVector, b : GraphsearchdijkstraVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_search_dijkstra_frame_get(s : GraphsearchdijkstraFrame, i : Int) ->
 }
 
 pub fn graph_search_dijkstra_frame_set(s : GraphsearchdijkstraFrame, i : Int, v : Double) -> GraphsearchdijkstraFrame {
-  let result = graph_search_dijkstra_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_frame_sum(s : GraphsearchdijkstraFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_search_dijkstra_table_get(s : GraphsearchdijkstraTable, i : Int) ->
 }
 
 pub fn graph_search_dijkstra_table_set(s : GraphsearchdijkstraTable, i : Int, v : Double) -> GraphsearchdijkstraTable {
-  let result = graph_search_dijkstra_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_table_sum(s : GraphsearchdijkstraTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_search_dijkstra_graphn_get(s : GraphsearchdijkstraGraphN, i : Int) 
 }
 
 pub fn graph_search_dijkstra_graphn_set(s : GraphsearchdijkstraGraphN, i : Int, v : Double) -> GraphsearchdijkstraGraphN {
-  let result = graph_search_dijkstra_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_graphn_sum(s : GraphsearchdijkstraGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_search_dijkstra_node_get(s : GraphsearchdijkstraNode, i : Int) -> D
 }
 
 pub fn graph_search_dijkstra_node_set(s : GraphsearchdijkstraNode, i : Int, v : Double) -> GraphsearchdijkstraNode {
-  let result = graph_search_dijkstra_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_node_sum(s : GraphsearchdijkstraNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_search_dijkstra_edge_get(s : GraphsearchdijkstraEdge, i : Int) -> D
 }
 
 pub fn graph_search_dijkstra_edge_set(s : GraphsearchdijkstraEdge, i : Int, v : Double) -> GraphsearchdijkstraEdge {
-  let result = graph_search_dijkstra_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_edge_sum(s : GraphsearchdijkstraEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_search_dijkstra_path_get(s : GraphsearchdijkstraPath, i : Int) -> D
 }
 
 pub fn graph_search_dijkstra_path_set(s : GraphsearchdijkstraPath, i : Int, v : Double) -> GraphsearchdijkstraPath {
-  let result = graph_search_dijkstra_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_path_sum(s : GraphsearchdijkstraPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_search_dijkstra_cluster_get(s : GraphsearchdijkstraCluster, i : Int
 }
 
 pub fn graph_search_dijkstra_cluster_set(s : GraphsearchdijkstraCluster, i : Int, v : Double) -> GraphsearchdijkstraCluster {
-  let result = graph_search_dijkstra_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_cluster_sum(s : GraphsearchdijkstraCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_search_dijkstra_model_get(s : GraphsearchdijkstraModel, i : Int) ->
 }
 
 pub fn graph_search_dijkstra_model_set(s : GraphsearchdijkstraModel, i : Int, v : Double) -> GraphsearchdijkstraModel {
-  let result = graph_search_dijkstra_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_model_sum(s : GraphsearchdijkstraModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_search_dijkstra_layer_get(s : GraphsearchdijkstraLayer, i : Int) ->
 }
 
 pub fn graph_search_dijkstra_layer_set(s : GraphsearchdijkstraLayer, i : Int, v : Double) -> GraphsearchdijkstraLayer {
-  let result = graph_search_dijkstra_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_layer_sum(s : GraphsearchdijkstraLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_search_dijkstra_buffer_get(s : GraphsearchdijkstraBuffer, i : Int) 
 }
 
 pub fn graph_search_dijkstra_buffer_set(s : GraphsearchdijkstraBuffer, i : Int, v : Double) -> GraphsearchdijkstraBuffer {
-  let result = graph_search_dijkstra_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_buffer_sum(s : GraphsearchdijkstraBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_search_dijkstra_cursor_get(s : GraphsearchdijkstraCursor, i : Int) 
 }
 
 pub fn graph_search_dijkstra_cursor_set(s : GraphsearchdijkstraCursor, i : Int, v : Double) -> GraphsearchdijkstraCursor {
-  let result = graph_search_dijkstra_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_cursor_sum(s : GraphsearchdijkstraCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_search_dijkstra_view_get(s : GraphsearchdijkstraView, i : Int) -> D
 }
 
 pub fn graph_search_dijkstra_view_set(s : GraphsearchdijkstraView, i : Int, v : Double) -> GraphsearchdijkstraView {
-  let result = graph_search_dijkstra_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_view_sum(s : GraphsearchdijkstraView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_search_dijkstra_range_get(s : GraphsearchdijkstraRange, i : Int) ->
 }
 
 pub fn graph_search_dijkstra_range_set(s : GraphsearchdijkstraRange, i : Int, v : Double) -> GraphsearchdijkstraRange {
-  let result = graph_search_dijkstra_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_range_sum(s : GraphsearchdijkstraRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_search_dijkstra_slice_get(s : GraphsearchdijkstraSlice, i : Int) ->
 }
 
 pub fn graph_search_dijkstra_slice_set(s : GraphsearchdijkstraSlice, i : Int, v : Double) -> GraphsearchdijkstraSlice {
-  let result = graph_search_dijkstra_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_dijkstra_slice_sum(s : GraphsearchdijkstraSlice) -> Double { @_common.sum(s.data) }

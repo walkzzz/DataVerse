@@ -107,23 +107,15 @@ pub fn chem_desc_ecfp_series_std(s : ChemdescecfpSeries) -> Double { @_common.st
 pub fn chem_desc_ecfp_series_median(s : ChemdescecfpSeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_desc_ecfp_series_scale(s : ChemdescecfpSeries, f : Double) -> ChemdescecfpSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn chem_desc_ecfp_series_add(a : ChemdescecfpSeries, b : ChemdescecfpSeries) -> ChemdescecfpSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn chem_desc_ecfp_series_sub(a : ChemdescecfpSeries, b : ChemdescecfpSeries) -> ChemdescecfpSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn chem_desc_ecfp_series_normalize(s : ChemdescecfpSeries) -> ChemdescecfpSeries {
@@ -254,22 +246,16 @@ pub fn chem_desc_ecfp_vector_zero(dim : Int) -> ChemdescecfpVector {
 
 pub fn chem_desc_ecfp_vector_add(a : ChemdescecfpVector, b : ChemdescecfpVector) -> ChemdescecfpVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_desc_ecfp_vector_sub(a : ChemdescecfpVector, b : ChemdescecfpVector) -> ChemdescecfpVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_desc_ecfp_vector_scale(v : ChemdescecfpVector, s : Double) -> ChemdescecfpVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn chem_desc_ecfp_vector_dot(a : ChemdescecfpVector, b : ChemdescecfpVector) -> Double {
@@ -372,10 +358,9 @@ pub fn chem_desc_ecfp_frame_get(s : ChemdescecfpFrame, i : Int) -> Double {
 }
 
 pub fn chem_desc_ecfp_frame_set(s : ChemdescecfpFrame, i : Int, v : Double) -> ChemdescecfpFrame {
-  let result = chem_desc_ecfp_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_ecfp_frame_sum(s : ChemdescecfpFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn chem_desc_ecfp_table_get(s : ChemdescecfpTable, i : Int) -> Double {
 }
 
 pub fn chem_desc_ecfp_table_set(s : ChemdescecfpTable, i : Int, v : Double) -> ChemdescecfpTable {
-  let result = chem_desc_ecfp_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_ecfp_table_sum(s : ChemdescecfpTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn chem_desc_ecfp_graphn_get(s : ChemdescecfpGraphN, i : Int) -> Double {
 }
 
 pub fn chem_desc_ecfp_graphn_set(s : ChemdescecfpGraphN, i : Int, v : Double) -> ChemdescecfpGraphN {
-  let result = chem_desc_ecfp_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_ecfp_graphn_sum(s : ChemdescecfpGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn chem_desc_ecfp_node_get(s : ChemdescecfpNode, i : Int) -> Double {
 }
 
 pub fn chem_desc_ecfp_node_set(s : ChemdescecfpNode, i : Int, v : Double) -> ChemdescecfpNode {
-  let result = chem_desc_ecfp_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_ecfp_node_sum(s : ChemdescecfpNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn chem_desc_ecfp_edge_get(s : ChemdescecfpEdge, i : Int) -> Double {
 }
 
 pub fn chem_desc_ecfp_edge_set(s : ChemdescecfpEdge, i : Int, v : Double) -> ChemdescecfpEdge {
-  let result = chem_desc_ecfp_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_ecfp_edge_sum(s : ChemdescecfpEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn chem_desc_ecfp_path_get(s : ChemdescecfpPath, i : Int) -> Double {
 }
 
 pub fn chem_desc_ecfp_path_set(s : ChemdescecfpPath, i : Int, v : Double) -> ChemdescecfpPath {
-  let result = chem_desc_ecfp_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_ecfp_path_sum(s : ChemdescecfpPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn chem_desc_ecfp_cluster_get(s : ChemdescecfpCluster, i : Int) -> Double {
 }
 
 pub fn chem_desc_ecfp_cluster_set(s : ChemdescecfpCluster, i : Int, v : Double) -> ChemdescecfpCluster {
-  let result = chem_desc_ecfp_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_ecfp_cluster_sum(s : ChemdescecfpCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn chem_desc_ecfp_model_get(s : ChemdescecfpModel, i : Int) -> Double {
 }
 
 pub fn chem_desc_ecfp_model_set(s : ChemdescecfpModel, i : Int, v : Double) -> ChemdescecfpModel {
-  let result = chem_desc_ecfp_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_ecfp_model_sum(s : ChemdescecfpModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn chem_desc_ecfp_layer_get(s : ChemdescecfpLayer, i : Int) -> Double {
 }
 
 pub fn chem_desc_ecfp_layer_set(s : ChemdescecfpLayer, i : Int, v : Double) -> ChemdescecfpLayer {
-  let result = chem_desc_ecfp_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_ecfp_layer_sum(s : ChemdescecfpLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn chem_desc_ecfp_buffer_get(s : ChemdescecfpBuffer, i : Int) -> Double {
 }
 
 pub fn chem_desc_ecfp_buffer_set(s : ChemdescecfpBuffer, i : Int, v : Double) -> ChemdescecfpBuffer {
-  let result = chem_desc_ecfp_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_ecfp_buffer_sum(s : ChemdescecfpBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn chem_desc_ecfp_cursor_get(s : ChemdescecfpCursor, i : Int) -> Double {
 }
 
 pub fn chem_desc_ecfp_cursor_set(s : ChemdescecfpCursor, i : Int, v : Double) -> ChemdescecfpCursor {
-  let result = chem_desc_ecfp_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_ecfp_cursor_sum(s : ChemdescecfpCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn chem_desc_ecfp_view_get(s : ChemdescecfpView, i : Int) -> Double {
 }
 
 pub fn chem_desc_ecfp_view_set(s : ChemdescecfpView, i : Int, v : Double) -> ChemdescecfpView {
-  let result = chem_desc_ecfp_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_ecfp_view_sum(s : ChemdescecfpView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn chem_desc_ecfp_range_get(s : ChemdescecfpRange, i : Int) -> Double {
 }
 
 pub fn chem_desc_ecfp_range_set(s : ChemdescecfpRange, i : Int, v : Double) -> ChemdescecfpRange {
-  let result = chem_desc_ecfp_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_ecfp_range_sum(s : ChemdescecfpRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn chem_desc_ecfp_slice_get(s : ChemdescecfpSlice, i : Int) -> Double {
 }
 
 pub fn chem_desc_ecfp_slice_set(s : ChemdescecfpSlice, i : Int, v : Double) -> ChemdescecfpSlice {
-  let result = chem_desc_ecfp_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_ecfp_slice_sum(s : ChemdescecfpSlice) -> Double { @_common.sum(s.data) }

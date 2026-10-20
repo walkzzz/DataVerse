@@ -107,23 +107,15 @@ pub fn db_index_hash_series_std(s : DbindexhashSeries) -> Double { @_common.std(
 pub fn db_index_hash_series_median(s : DbindexhashSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_index_hash_series_scale(s : DbindexhashSeries, f : Double) -> DbindexhashSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_index_hash_series_add(a : DbindexhashSeries, b : DbindexhashSeries) -> DbindexhashSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_index_hash_series_sub(a : DbindexhashSeries, b : DbindexhashSeries) -> DbindexhashSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_index_hash_series_normalize(s : DbindexhashSeries) -> DbindexhashSeries {
@@ -254,22 +246,16 @@ pub fn db_index_hash_vector_zero(dim : Int) -> DbindexhashVector {
 
 pub fn db_index_hash_vector_add(a : DbindexhashVector, b : DbindexhashVector) -> DbindexhashVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_index_hash_vector_sub(a : DbindexhashVector, b : DbindexhashVector) -> DbindexhashVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_index_hash_vector_scale(v : DbindexhashVector, s : Double) -> DbindexhashVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_index_hash_vector_dot(a : DbindexhashVector, b : DbindexhashVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_index_hash_frame_get(s : DbindexhashFrame, i : Int) -> Double {
 }
 
 pub fn db_index_hash_frame_set(s : DbindexhashFrame, i : Int, v : Double) -> DbindexhashFrame {
-  let result = db_index_hash_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_hash_frame_sum(s : DbindexhashFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_index_hash_table_get(s : DbindexhashTable, i : Int) -> Double {
 }
 
 pub fn db_index_hash_table_set(s : DbindexhashTable, i : Int, v : Double) -> DbindexhashTable {
-  let result = db_index_hash_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_hash_table_sum(s : DbindexhashTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_index_hash_graphn_get(s : DbindexhashGraphN, i : Int) -> Double {
 }
 
 pub fn db_index_hash_graphn_set(s : DbindexhashGraphN, i : Int, v : Double) -> DbindexhashGraphN {
-  let result = db_index_hash_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_hash_graphn_sum(s : DbindexhashGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_index_hash_node_get(s : DbindexhashNode, i : Int) -> Double {
 }
 
 pub fn db_index_hash_node_set(s : DbindexhashNode, i : Int, v : Double) -> DbindexhashNode {
-  let result = db_index_hash_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_hash_node_sum(s : DbindexhashNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_index_hash_edge_get(s : DbindexhashEdge, i : Int) -> Double {
 }
 
 pub fn db_index_hash_edge_set(s : DbindexhashEdge, i : Int, v : Double) -> DbindexhashEdge {
-  let result = db_index_hash_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_hash_edge_sum(s : DbindexhashEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_index_hash_path_get(s : DbindexhashPath, i : Int) -> Double {
 }
 
 pub fn db_index_hash_path_set(s : DbindexhashPath, i : Int, v : Double) -> DbindexhashPath {
-  let result = db_index_hash_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_hash_path_sum(s : DbindexhashPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_index_hash_cluster_get(s : DbindexhashCluster, i : Int) -> Double {
 }
 
 pub fn db_index_hash_cluster_set(s : DbindexhashCluster, i : Int, v : Double) -> DbindexhashCluster {
-  let result = db_index_hash_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_hash_cluster_sum(s : DbindexhashCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_index_hash_model_get(s : DbindexhashModel, i : Int) -> Double {
 }
 
 pub fn db_index_hash_model_set(s : DbindexhashModel, i : Int, v : Double) -> DbindexhashModel {
-  let result = db_index_hash_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_hash_model_sum(s : DbindexhashModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_index_hash_layer_get(s : DbindexhashLayer, i : Int) -> Double {
 }
 
 pub fn db_index_hash_layer_set(s : DbindexhashLayer, i : Int, v : Double) -> DbindexhashLayer {
-  let result = db_index_hash_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_hash_layer_sum(s : DbindexhashLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_index_hash_buffer_get(s : DbindexhashBuffer, i : Int) -> Double {
 }
 
 pub fn db_index_hash_buffer_set(s : DbindexhashBuffer, i : Int, v : Double) -> DbindexhashBuffer {
-  let result = db_index_hash_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_hash_buffer_sum(s : DbindexhashBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_index_hash_cursor_get(s : DbindexhashCursor, i : Int) -> Double {
 }
 
 pub fn db_index_hash_cursor_set(s : DbindexhashCursor, i : Int, v : Double) -> DbindexhashCursor {
-  let result = db_index_hash_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_hash_cursor_sum(s : DbindexhashCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_index_hash_view_get(s : DbindexhashView, i : Int) -> Double {
 }
 
 pub fn db_index_hash_view_set(s : DbindexhashView, i : Int, v : Double) -> DbindexhashView {
-  let result = db_index_hash_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_hash_view_sum(s : DbindexhashView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_index_hash_range_get(s : DbindexhashRange, i : Int) -> Double {
 }
 
 pub fn db_index_hash_range_set(s : DbindexhashRange, i : Int, v : Double) -> DbindexhashRange {
-  let result = db_index_hash_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_hash_range_sum(s : DbindexhashRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_index_hash_slice_get(s : DbindexhashSlice, i : Int) -> Double {
 }
 
 pub fn db_index_hash_slice_set(s : DbindexhashSlice, i : Int, v : Double) -> DbindexhashSlice {
-  let result = db_index_hash_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_hash_slice_sum(s : DbindexhashSlice) -> Double { @_common.sum(s.data) }

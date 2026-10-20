@@ -107,23 +107,15 @@ pub fn ds_graph_directed_series_std(s : DsgraphdirectedSeries) -> Double { @_com
 pub fn ds_graph_directed_series_median(s : DsgraphdirectedSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_graph_directed_series_scale(s : DsgraphdirectedSeries, f : Double) -> DsgraphdirectedSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_graph_directed_series_add(a : DsgraphdirectedSeries, b : DsgraphdirectedSeries) -> DsgraphdirectedSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_graph_directed_series_sub(a : DsgraphdirectedSeries, b : DsgraphdirectedSeries) -> DsgraphdirectedSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_graph_directed_series_normalize(s : DsgraphdirectedSeries) -> DsgraphdirectedSeries {
@@ -254,22 +246,16 @@ pub fn ds_graph_directed_vector_zero(dim : Int) -> DsgraphdirectedVector {
 
 pub fn ds_graph_directed_vector_add(a : DsgraphdirectedVector, b : DsgraphdirectedVector) -> DsgraphdirectedVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_graph_directed_vector_sub(a : DsgraphdirectedVector, b : DsgraphdirectedVector) -> DsgraphdirectedVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_graph_directed_vector_scale(v : DsgraphdirectedVector, s : Double) -> DsgraphdirectedVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_graph_directed_vector_dot(a : DsgraphdirectedVector, b : DsgraphdirectedVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_graph_directed_frame_get(s : DsgraphdirectedFrame, i : Int) -> Double 
 }
 
 pub fn ds_graph_directed_frame_set(s : DsgraphdirectedFrame, i : Int, v : Double) -> DsgraphdirectedFrame {
-  let result = ds_graph_directed_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_directed_frame_sum(s : DsgraphdirectedFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_graph_directed_table_get(s : DsgraphdirectedTable, i : Int) -> Double 
 }
 
 pub fn ds_graph_directed_table_set(s : DsgraphdirectedTable, i : Int, v : Double) -> DsgraphdirectedTable {
-  let result = ds_graph_directed_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_directed_table_sum(s : DsgraphdirectedTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_graph_directed_graphn_get(s : DsgraphdirectedGraphN, i : Int) -> Doubl
 }
 
 pub fn ds_graph_directed_graphn_set(s : DsgraphdirectedGraphN, i : Int, v : Double) -> DsgraphdirectedGraphN {
-  let result = ds_graph_directed_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_directed_graphn_sum(s : DsgraphdirectedGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_graph_directed_node_get(s : DsgraphdirectedNode, i : Int) -> Double {
 }
 
 pub fn ds_graph_directed_node_set(s : DsgraphdirectedNode, i : Int, v : Double) -> DsgraphdirectedNode {
-  let result = ds_graph_directed_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_directed_node_sum(s : DsgraphdirectedNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_graph_directed_edge_get(s : DsgraphdirectedEdge, i : Int) -> Double {
 }
 
 pub fn ds_graph_directed_edge_set(s : DsgraphdirectedEdge, i : Int, v : Double) -> DsgraphdirectedEdge {
-  let result = ds_graph_directed_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_directed_edge_sum(s : DsgraphdirectedEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_graph_directed_path_get(s : DsgraphdirectedPath, i : Int) -> Double {
 }
 
 pub fn ds_graph_directed_path_set(s : DsgraphdirectedPath, i : Int, v : Double) -> DsgraphdirectedPath {
-  let result = ds_graph_directed_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_directed_path_sum(s : DsgraphdirectedPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_graph_directed_cluster_get(s : DsgraphdirectedCluster, i : Int) -> Dou
 }
 
 pub fn ds_graph_directed_cluster_set(s : DsgraphdirectedCluster, i : Int, v : Double) -> DsgraphdirectedCluster {
-  let result = ds_graph_directed_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_directed_cluster_sum(s : DsgraphdirectedCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_graph_directed_model_get(s : DsgraphdirectedModel, i : Int) -> Double 
 }
 
 pub fn ds_graph_directed_model_set(s : DsgraphdirectedModel, i : Int, v : Double) -> DsgraphdirectedModel {
-  let result = ds_graph_directed_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_directed_model_sum(s : DsgraphdirectedModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_graph_directed_layer_get(s : DsgraphdirectedLayer, i : Int) -> Double 
 }
 
 pub fn ds_graph_directed_layer_set(s : DsgraphdirectedLayer, i : Int, v : Double) -> DsgraphdirectedLayer {
-  let result = ds_graph_directed_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_directed_layer_sum(s : DsgraphdirectedLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_graph_directed_buffer_get(s : DsgraphdirectedBuffer, i : Int) -> Doubl
 }
 
 pub fn ds_graph_directed_buffer_set(s : DsgraphdirectedBuffer, i : Int, v : Double) -> DsgraphdirectedBuffer {
-  let result = ds_graph_directed_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_directed_buffer_sum(s : DsgraphdirectedBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_graph_directed_cursor_get(s : DsgraphdirectedCursor, i : Int) -> Doubl
 }
 
 pub fn ds_graph_directed_cursor_set(s : DsgraphdirectedCursor, i : Int, v : Double) -> DsgraphdirectedCursor {
-  let result = ds_graph_directed_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_directed_cursor_sum(s : DsgraphdirectedCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_graph_directed_view_get(s : DsgraphdirectedView, i : Int) -> Double {
 }
 
 pub fn ds_graph_directed_view_set(s : DsgraphdirectedView, i : Int, v : Double) -> DsgraphdirectedView {
-  let result = ds_graph_directed_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_directed_view_sum(s : DsgraphdirectedView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_graph_directed_range_get(s : DsgraphdirectedRange, i : Int) -> Double 
 }
 
 pub fn ds_graph_directed_range_set(s : DsgraphdirectedRange, i : Int, v : Double) -> DsgraphdirectedRange {
-  let result = ds_graph_directed_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_directed_range_sum(s : DsgraphdirectedRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_graph_directed_slice_get(s : DsgraphdirectedSlice, i : Int) -> Double 
 }
 
 pub fn ds_graph_directed_slice_set(s : DsgraphdirectedSlice, i : Int, v : Double) -> DsgraphdirectedSlice {
-  let result = ds_graph_directed_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_directed_slice_sum(s : DsgraphdirectedSlice) -> Double { @_common.sum(s.data) }

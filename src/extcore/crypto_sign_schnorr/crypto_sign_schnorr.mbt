@@ -107,23 +107,15 @@ pub fn crypto_sign_schnorr_series_std(s : CryptosignschnorrSeries) -> Double { @
 pub fn crypto_sign_schnorr_series_median(s : CryptosignschnorrSeries) -> Double { @_common.median(s.vals) }
 
 pub fn crypto_sign_schnorr_series_scale(s : CryptosignschnorrSeries, f : Double) -> CryptosignschnorrSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn crypto_sign_schnorr_series_add(a : CryptosignschnorrSeries, b : CryptosignschnorrSeries) -> CryptosignschnorrSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn crypto_sign_schnorr_series_sub(a : CryptosignschnorrSeries, b : CryptosignschnorrSeries) -> CryptosignschnorrSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn crypto_sign_schnorr_series_normalize(s : CryptosignschnorrSeries) -> CryptosignschnorrSeries {
@@ -254,22 +246,16 @@ pub fn crypto_sign_schnorr_vector_zero(dim : Int) -> CryptosignschnorrVector {
 
 pub fn crypto_sign_schnorr_vector_add(a : CryptosignschnorrVector, b : CryptosignschnorrVector) -> CryptosignschnorrVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_sign_schnorr_vector_sub(a : CryptosignschnorrVector, b : CryptosignschnorrVector) -> CryptosignschnorrVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_sign_schnorr_vector_scale(v : CryptosignschnorrVector, s : Double) -> CryptosignschnorrVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn crypto_sign_schnorr_vector_dot(a : CryptosignschnorrVector, b : CryptosignschnorrVector) -> Double {
@@ -372,10 +358,9 @@ pub fn crypto_sign_schnorr_frame_get(s : CryptosignschnorrFrame, i : Int) -> Dou
 }
 
 pub fn crypto_sign_schnorr_frame_set(s : CryptosignschnorrFrame, i : Int, v : Double) -> CryptosignschnorrFrame {
-  let result = crypto_sign_schnorr_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_schnorr_frame_sum(s : CryptosignschnorrFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn crypto_sign_schnorr_table_get(s : CryptosignschnorrTable, i : Int) -> Dou
 }
 
 pub fn crypto_sign_schnorr_table_set(s : CryptosignschnorrTable, i : Int, v : Double) -> CryptosignschnorrTable {
-  let result = crypto_sign_schnorr_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_schnorr_table_sum(s : CryptosignschnorrTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn crypto_sign_schnorr_graphn_get(s : CryptosignschnorrGraphN, i : Int) -> D
 }
 
 pub fn crypto_sign_schnorr_graphn_set(s : CryptosignschnorrGraphN, i : Int, v : Double) -> CryptosignschnorrGraphN {
-  let result = crypto_sign_schnorr_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_schnorr_graphn_sum(s : CryptosignschnorrGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn crypto_sign_schnorr_node_get(s : CryptosignschnorrNode, i : Int) -> Doubl
 }
 
 pub fn crypto_sign_schnorr_node_set(s : CryptosignschnorrNode, i : Int, v : Double) -> CryptosignschnorrNode {
-  let result = crypto_sign_schnorr_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_schnorr_node_sum(s : CryptosignschnorrNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn crypto_sign_schnorr_edge_get(s : CryptosignschnorrEdge, i : Int) -> Doubl
 }
 
 pub fn crypto_sign_schnorr_edge_set(s : CryptosignschnorrEdge, i : Int, v : Double) -> CryptosignschnorrEdge {
-  let result = crypto_sign_schnorr_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_schnorr_edge_sum(s : CryptosignschnorrEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn crypto_sign_schnorr_path_get(s : CryptosignschnorrPath, i : Int) -> Doubl
 }
 
 pub fn crypto_sign_schnorr_path_set(s : CryptosignschnorrPath, i : Int, v : Double) -> CryptosignschnorrPath {
-  let result = crypto_sign_schnorr_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_schnorr_path_sum(s : CryptosignschnorrPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn crypto_sign_schnorr_cluster_get(s : CryptosignschnorrCluster, i : Int) ->
 }
 
 pub fn crypto_sign_schnorr_cluster_set(s : CryptosignschnorrCluster, i : Int, v : Double) -> CryptosignschnorrCluster {
-  let result = crypto_sign_schnorr_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_schnorr_cluster_sum(s : CryptosignschnorrCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn crypto_sign_schnorr_model_get(s : CryptosignschnorrModel, i : Int) -> Dou
 }
 
 pub fn crypto_sign_schnorr_model_set(s : CryptosignschnorrModel, i : Int, v : Double) -> CryptosignschnorrModel {
-  let result = crypto_sign_schnorr_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_schnorr_model_sum(s : CryptosignschnorrModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn crypto_sign_schnorr_layer_get(s : CryptosignschnorrLayer, i : Int) -> Dou
 }
 
 pub fn crypto_sign_schnorr_layer_set(s : CryptosignschnorrLayer, i : Int, v : Double) -> CryptosignschnorrLayer {
-  let result = crypto_sign_schnorr_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_schnorr_layer_sum(s : CryptosignschnorrLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn crypto_sign_schnorr_buffer_get(s : CryptosignschnorrBuffer, i : Int) -> D
 }
 
 pub fn crypto_sign_schnorr_buffer_set(s : CryptosignschnorrBuffer, i : Int, v : Double) -> CryptosignschnorrBuffer {
-  let result = crypto_sign_schnorr_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_schnorr_buffer_sum(s : CryptosignschnorrBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn crypto_sign_schnorr_cursor_get(s : CryptosignschnorrCursor, i : Int) -> D
 }
 
 pub fn crypto_sign_schnorr_cursor_set(s : CryptosignschnorrCursor, i : Int, v : Double) -> CryptosignschnorrCursor {
-  let result = crypto_sign_schnorr_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_schnorr_cursor_sum(s : CryptosignschnorrCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn crypto_sign_schnorr_view_get(s : CryptosignschnorrView, i : Int) -> Doubl
 }
 
 pub fn crypto_sign_schnorr_view_set(s : CryptosignschnorrView, i : Int, v : Double) -> CryptosignschnorrView {
-  let result = crypto_sign_schnorr_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_schnorr_view_sum(s : CryptosignschnorrView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn crypto_sign_schnorr_range_get(s : CryptosignschnorrRange, i : Int) -> Dou
 }
 
 pub fn crypto_sign_schnorr_range_set(s : CryptosignschnorrRange, i : Int, v : Double) -> CryptosignschnorrRange {
-  let result = crypto_sign_schnorr_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_schnorr_range_sum(s : CryptosignschnorrRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn crypto_sign_schnorr_slice_get(s : CryptosignschnorrSlice, i : Int) -> Dou
 }
 
 pub fn crypto_sign_schnorr_slice_set(s : CryptosignschnorrSlice, i : Int, v : Double) -> CryptosignschnorrSlice {
-  let result = crypto_sign_schnorr_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_schnorr_slice_sum(s : CryptosignschnorrSlice) -> Double { @_common.sum(s.data) }

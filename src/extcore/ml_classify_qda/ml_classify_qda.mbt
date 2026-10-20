@@ -107,23 +107,15 @@ pub fn ml_classify_qda_series_std(s : MlclassifyqdaSeries) -> Double { @_common.
 pub fn ml_classify_qda_series_median(s : MlclassifyqdaSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_classify_qda_series_scale(s : MlclassifyqdaSeries, f : Double) -> MlclassifyqdaSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_classify_qda_series_add(a : MlclassifyqdaSeries, b : MlclassifyqdaSeries) -> MlclassifyqdaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_classify_qda_series_sub(a : MlclassifyqdaSeries, b : MlclassifyqdaSeries) -> MlclassifyqdaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_classify_qda_series_normalize(s : MlclassifyqdaSeries) -> MlclassifyqdaSeries {
@@ -254,22 +246,16 @@ pub fn ml_classify_qda_vector_zero(dim : Int) -> MlclassifyqdaVector {
 
 pub fn ml_classify_qda_vector_add(a : MlclassifyqdaVector, b : MlclassifyqdaVector) -> MlclassifyqdaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_classify_qda_vector_sub(a : MlclassifyqdaVector, b : MlclassifyqdaVector) -> MlclassifyqdaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_classify_qda_vector_scale(v : MlclassifyqdaVector, s : Double) -> MlclassifyqdaVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_classify_qda_vector_dot(a : MlclassifyqdaVector, b : MlclassifyqdaVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_classify_qda_frame_get(s : MlclassifyqdaFrame, i : Int) -> Double {
 }
 
 pub fn ml_classify_qda_frame_set(s : MlclassifyqdaFrame, i : Int, v : Double) -> MlclassifyqdaFrame {
-  let result = ml_classify_qda_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_qda_frame_sum(s : MlclassifyqdaFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_classify_qda_table_get(s : MlclassifyqdaTable, i : Int) -> Double {
 }
 
 pub fn ml_classify_qda_table_set(s : MlclassifyqdaTable, i : Int, v : Double) -> MlclassifyqdaTable {
-  let result = ml_classify_qda_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_qda_table_sum(s : MlclassifyqdaTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_classify_qda_graphn_get(s : MlclassifyqdaGraphN, i : Int) -> Double {
 }
 
 pub fn ml_classify_qda_graphn_set(s : MlclassifyqdaGraphN, i : Int, v : Double) -> MlclassifyqdaGraphN {
-  let result = ml_classify_qda_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_qda_graphn_sum(s : MlclassifyqdaGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_classify_qda_node_get(s : MlclassifyqdaNode, i : Int) -> Double {
 }
 
 pub fn ml_classify_qda_node_set(s : MlclassifyqdaNode, i : Int, v : Double) -> MlclassifyqdaNode {
-  let result = ml_classify_qda_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_qda_node_sum(s : MlclassifyqdaNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_classify_qda_edge_get(s : MlclassifyqdaEdge, i : Int) -> Double {
 }
 
 pub fn ml_classify_qda_edge_set(s : MlclassifyqdaEdge, i : Int, v : Double) -> MlclassifyqdaEdge {
-  let result = ml_classify_qda_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_qda_edge_sum(s : MlclassifyqdaEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_classify_qda_path_get(s : MlclassifyqdaPath, i : Int) -> Double {
 }
 
 pub fn ml_classify_qda_path_set(s : MlclassifyqdaPath, i : Int, v : Double) -> MlclassifyqdaPath {
-  let result = ml_classify_qda_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_qda_path_sum(s : MlclassifyqdaPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_classify_qda_cluster_get(s : MlclassifyqdaCluster, i : Int) -> Double 
 }
 
 pub fn ml_classify_qda_cluster_set(s : MlclassifyqdaCluster, i : Int, v : Double) -> MlclassifyqdaCluster {
-  let result = ml_classify_qda_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_qda_cluster_sum(s : MlclassifyqdaCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_classify_qda_model_get(s : MlclassifyqdaModel, i : Int) -> Double {
 }
 
 pub fn ml_classify_qda_model_set(s : MlclassifyqdaModel, i : Int, v : Double) -> MlclassifyqdaModel {
-  let result = ml_classify_qda_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_qda_model_sum(s : MlclassifyqdaModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_classify_qda_layer_get(s : MlclassifyqdaLayer, i : Int) -> Double {
 }
 
 pub fn ml_classify_qda_layer_set(s : MlclassifyqdaLayer, i : Int, v : Double) -> MlclassifyqdaLayer {
-  let result = ml_classify_qda_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_qda_layer_sum(s : MlclassifyqdaLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_classify_qda_buffer_get(s : MlclassifyqdaBuffer, i : Int) -> Double {
 }
 
 pub fn ml_classify_qda_buffer_set(s : MlclassifyqdaBuffer, i : Int, v : Double) -> MlclassifyqdaBuffer {
-  let result = ml_classify_qda_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_qda_buffer_sum(s : MlclassifyqdaBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_classify_qda_cursor_get(s : MlclassifyqdaCursor, i : Int) -> Double {
 }
 
 pub fn ml_classify_qda_cursor_set(s : MlclassifyqdaCursor, i : Int, v : Double) -> MlclassifyqdaCursor {
-  let result = ml_classify_qda_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_qda_cursor_sum(s : MlclassifyqdaCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_classify_qda_view_get(s : MlclassifyqdaView, i : Int) -> Double {
 }
 
 pub fn ml_classify_qda_view_set(s : MlclassifyqdaView, i : Int, v : Double) -> MlclassifyqdaView {
-  let result = ml_classify_qda_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_qda_view_sum(s : MlclassifyqdaView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_classify_qda_range_get(s : MlclassifyqdaRange, i : Int) -> Double {
 }
 
 pub fn ml_classify_qda_range_set(s : MlclassifyqdaRange, i : Int, v : Double) -> MlclassifyqdaRange {
-  let result = ml_classify_qda_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_qda_range_sum(s : MlclassifyqdaRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_classify_qda_slice_get(s : MlclassifyqdaSlice, i : Int) -> Double {
 }
 
 pub fn ml_classify_qda_slice_set(s : MlclassifyqdaSlice, i : Int, v : Double) -> MlclassifyqdaSlice {
-  let result = ml_classify_qda_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_qda_slice_sum(s : MlclassifyqdaSlice) -> Double { @_common.sum(s.data) }

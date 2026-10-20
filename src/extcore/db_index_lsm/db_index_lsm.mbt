@@ -107,23 +107,15 @@ pub fn db_index_lsm_series_std(s : DbindexlsmSeries) -> Double { @_common.std(s.
 pub fn db_index_lsm_series_median(s : DbindexlsmSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_index_lsm_series_scale(s : DbindexlsmSeries, f : Double) -> DbindexlsmSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_index_lsm_series_add(a : DbindexlsmSeries, b : DbindexlsmSeries) -> DbindexlsmSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_index_lsm_series_sub(a : DbindexlsmSeries, b : DbindexlsmSeries) -> DbindexlsmSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_index_lsm_series_normalize(s : DbindexlsmSeries) -> DbindexlsmSeries {
@@ -254,22 +246,16 @@ pub fn db_index_lsm_vector_zero(dim : Int) -> DbindexlsmVector {
 
 pub fn db_index_lsm_vector_add(a : DbindexlsmVector, b : DbindexlsmVector) -> DbindexlsmVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_index_lsm_vector_sub(a : DbindexlsmVector, b : DbindexlsmVector) -> DbindexlsmVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_index_lsm_vector_scale(v : DbindexlsmVector, s : Double) -> DbindexlsmVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_index_lsm_vector_dot(a : DbindexlsmVector, b : DbindexlsmVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_index_lsm_frame_get(s : DbindexlsmFrame, i : Int) -> Double {
 }
 
 pub fn db_index_lsm_frame_set(s : DbindexlsmFrame, i : Int, v : Double) -> DbindexlsmFrame {
-  let result = db_index_lsm_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_lsm_frame_sum(s : DbindexlsmFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_index_lsm_table_get(s : DbindexlsmTable, i : Int) -> Double {
 }
 
 pub fn db_index_lsm_table_set(s : DbindexlsmTable, i : Int, v : Double) -> DbindexlsmTable {
-  let result = db_index_lsm_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_lsm_table_sum(s : DbindexlsmTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_index_lsm_graphn_get(s : DbindexlsmGraphN, i : Int) -> Double {
 }
 
 pub fn db_index_lsm_graphn_set(s : DbindexlsmGraphN, i : Int, v : Double) -> DbindexlsmGraphN {
-  let result = db_index_lsm_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_lsm_graphn_sum(s : DbindexlsmGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_index_lsm_node_get(s : DbindexlsmNode, i : Int) -> Double {
 }
 
 pub fn db_index_lsm_node_set(s : DbindexlsmNode, i : Int, v : Double) -> DbindexlsmNode {
-  let result = db_index_lsm_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_lsm_node_sum(s : DbindexlsmNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_index_lsm_edge_get(s : DbindexlsmEdge, i : Int) -> Double {
 }
 
 pub fn db_index_lsm_edge_set(s : DbindexlsmEdge, i : Int, v : Double) -> DbindexlsmEdge {
-  let result = db_index_lsm_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_lsm_edge_sum(s : DbindexlsmEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_index_lsm_path_get(s : DbindexlsmPath, i : Int) -> Double {
 }
 
 pub fn db_index_lsm_path_set(s : DbindexlsmPath, i : Int, v : Double) -> DbindexlsmPath {
-  let result = db_index_lsm_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_lsm_path_sum(s : DbindexlsmPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_index_lsm_cluster_get(s : DbindexlsmCluster, i : Int) -> Double {
 }
 
 pub fn db_index_lsm_cluster_set(s : DbindexlsmCluster, i : Int, v : Double) -> DbindexlsmCluster {
-  let result = db_index_lsm_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_lsm_cluster_sum(s : DbindexlsmCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_index_lsm_model_get(s : DbindexlsmModel, i : Int) -> Double {
 }
 
 pub fn db_index_lsm_model_set(s : DbindexlsmModel, i : Int, v : Double) -> DbindexlsmModel {
-  let result = db_index_lsm_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_lsm_model_sum(s : DbindexlsmModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_index_lsm_layer_get(s : DbindexlsmLayer, i : Int) -> Double {
 }
 
 pub fn db_index_lsm_layer_set(s : DbindexlsmLayer, i : Int, v : Double) -> DbindexlsmLayer {
-  let result = db_index_lsm_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_lsm_layer_sum(s : DbindexlsmLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_index_lsm_buffer_get(s : DbindexlsmBuffer, i : Int) -> Double {
 }
 
 pub fn db_index_lsm_buffer_set(s : DbindexlsmBuffer, i : Int, v : Double) -> DbindexlsmBuffer {
-  let result = db_index_lsm_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_lsm_buffer_sum(s : DbindexlsmBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_index_lsm_cursor_get(s : DbindexlsmCursor, i : Int) -> Double {
 }
 
 pub fn db_index_lsm_cursor_set(s : DbindexlsmCursor, i : Int, v : Double) -> DbindexlsmCursor {
-  let result = db_index_lsm_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_lsm_cursor_sum(s : DbindexlsmCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_index_lsm_view_get(s : DbindexlsmView, i : Int) -> Double {
 }
 
 pub fn db_index_lsm_view_set(s : DbindexlsmView, i : Int, v : Double) -> DbindexlsmView {
-  let result = db_index_lsm_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_lsm_view_sum(s : DbindexlsmView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_index_lsm_range_get(s : DbindexlsmRange, i : Int) -> Double {
 }
 
 pub fn db_index_lsm_range_set(s : DbindexlsmRange, i : Int, v : Double) -> DbindexlsmRange {
-  let result = db_index_lsm_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_lsm_range_sum(s : DbindexlsmRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_index_lsm_slice_get(s : DbindexlsmSlice, i : Int) -> Double {
 }
 
 pub fn db_index_lsm_slice_set(s : DbindexlsmSlice, i : Int, v : Double) -> DbindexlsmSlice {
-  let result = db_index_lsm_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_lsm_slice_sum(s : DbindexlsmSlice) -> Double { @_common.sum(s.data) }

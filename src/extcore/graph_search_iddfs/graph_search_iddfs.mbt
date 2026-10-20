@@ -107,23 +107,15 @@ pub fn graph_search_iddfs_series_std(s : GraphsearchiddfsSeries) -> Double { @_c
 pub fn graph_search_iddfs_series_median(s : GraphsearchiddfsSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_search_iddfs_series_scale(s : GraphsearchiddfsSeries, f : Double) -> GraphsearchiddfsSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_search_iddfs_series_add(a : GraphsearchiddfsSeries, b : GraphsearchiddfsSeries) -> GraphsearchiddfsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_search_iddfs_series_sub(a : GraphsearchiddfsSeries, b : GraphsearchiddfsSeries) -> GraphsearchiddfsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_search_iddfs_series_normalize(s : GraphsearchiddfsSeries) -> GraphsearchiddfsSeries {
@@ -254,22 +246,16 @@ pub fn graph_search_iddfs_vector_zero(dim : Int) -> GraphsearchiddfsVector {
 
 pub fn graph_search_iddfs_vector_add(a : GraphsearchiddfsVector, b : GraphsearchiddfsVector) -> GraphsearchiddfsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_search_iddfs_vector_sub(a : GraphsearchiddfsVector, b : GraphsearchiddfsVector) -> GraphsearchiddfsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_search_iddfs_vector_scale(v : GraphsearchiddfsVector, s : Double) -> GraphsearchiddfsVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_search_iddfs_vector_dot(a : GraphsearchiddfsVector, b : GraphsearchiddfsVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_search_iddfs_frame_get(s : GraphsearchiddfsFrame, i : Int) -> Doubl
 }
 
 pub fn graph_search_iddfs_frame_set(s : GraphsearchiddfsFrame, i : Int, v : Double) -> GraphsearchiddfsFrame {
-  let result = graph_search_iddfs_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_iddfs_frame_sum(s : GraphsearchiddfsFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_search_iddfs_table_get(s : GraphsearchiddfsTable, i : Int) -> Doubl
 }
 
 pub fn graph_search_iddfs_table_set(s : GraphsearchiddfsTable, i : Int, v : Double) -> GraphsearchiddfsTable {
-  let result = graph_search_iddfs_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_iddfs_table_sum(s : GraphsearchiddfsTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_search_iddfs_graphn_get(s : GraphsearchiddfsGraphN, i : Int) -> Dou
 }
 
 pub fn graph_search_iddfs_graphn_set(s : GraphsearchiddfsGraphN, i : Int, v : Double) -> GraphsearchiddfsGraphN {
-  let result = graph_search_iddfs_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_iddfs_graphn_sum(s : GraphsearchiddfsGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_search_iddfs_node_get(s : GraphsearchiddfsNode, i : Int) -> Double 
 }
 
 pub fn graph_search_iddfs_node_set(s : GraphsearchiddfsNode, i : Int, v : Double) -> GraphsearchiddfsNode {
-  let result = graph_search_iddfs_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_iddfs_node_sum(s : GraphsearchiddfsNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_search_iddfs_edge_get(s : GraphsearchiddfsEdge, i : Int) -> Double 
 }
 
 pub fn graph_search_iddfs_edge_set(s : GraphsearchiddfsEdge, i : Int, v : Double) -> GraphsearchiddfsEdge {
-  let result = graph_search_iddfs_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_iddfs_edge_sum(s : GraphsearchiddfsEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_search_iddfs_path_get(s : GraphsearchiddfsPath, i : Int) -> Double 
 }
 
 pub fn graph_search_iddfs_path_set(s : GraphsearchiddfsPath, i : Int, v : Double) -> GraphsearchiddfsPath {
-  let result = graph_search_iddfs_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_iddfs_path_sum(s : GraphsearchiddfsPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_search_iddfs_cluster_get(s : GraphsearchiddfsCluster, i : Int) -> D
 }
 
 pub fn graph_search_iddfs_cluster_set(s : GraphsearchiddfsCluster, i : Int, v : Double) -> GraphsearchiddfsCluster {
-  let result = graph_search_iddfs_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_iddfs_cluster_sum(s : GraphsearchiddfsCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_search_iddfs_model_get(s : GraphsearchiddfsModel, i : Int) -> Doubl
 }
 
 pub fn graph_search_iddfs_model_set(s : GraphsearchiddfsModel, i : Int, v : Double) -> GraphsearchiddfsModel {
-  let result = graph_search_iddfs_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_iddfs_model_sum(s : GraphsearchiddfsModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_search_iddfs_layer_get(s : GraphsearchiddfsLayer, i : Int) -> Doubl
 }
 
 pub fn graph_search_iddfs_layer_set(s : GraphsearchiddfsLayer, i : Int, v : Double) -> GraphsearchiddfsLayer {
-  let result = graph_search_iddfs_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_iddfs_layer_sum(s : GraphsearchiddfsLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_search_iddfs_buffer_get(s : GraphsearchiddfsBuffer, i : Int) -> Dou
 }
 
 pub fn graph_search_iddfs_buffer_set(s : GraphsearchiddfsBuffer, i : Int, v : Double) -> GraphsearchiddfsBuffer {
-  let result = graph_search_iddfs_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_iddfs_buffer_sum(s : GraphsearchiddfsBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_search_iddfs_cursor_get(s : GraphsearchiddfsCursor, i : Int) -> Dou
 }
 
 pub fn graph_search_iddfs_cursor_set(s : GraphsearchiddfsCursor, i : Int, v : Double) -> GraphsearchiddfsCursor {
-  let result = graph_search_iddfs_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_iddfs_cursor_sum(s : GraphsearchiddfsCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_search_iddfs_view_get(s : GraphsearchiddfsView, i : Int) -> Double 
 }
 
 pub fn graph_search_iddfs_view_set(s : GraphsearchiddfsView, i : Int, v : Double) -> GraphsearchiddfsView {
-  let result = graph_search_iddfs_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_iddfs_view_sum(s : GraphsearchiddfsView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_search_iddfs_range_get(s : GraphsearchiddfsRange, i : Int) -> Doubl
 }
 
 pub fn graph_search_iddfs_range_set(s : GraphsearchiddfsRange, i : Int, v : Double) -> GraphsearchiddfsRange {
-  let result = graph_search_iddfs_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_iddfs_range_sum(s : GraphsearchiddfsRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_search_iddfs_slice_get(s : GraphsearchiddfsSlice, i : Int) -> Doubl
 }
 
 pub fn graph_search_iddfs_slice_set(s : GraphsearchiddfsSlice, i : Int, v : Double) -> GraphsearchiddfsSlice {
-  let result = graph_search_iddfs_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_iddfs_slice_sum(s : GraphsearchiddfsSlice) -> Double { @_common.sum(s.data) }

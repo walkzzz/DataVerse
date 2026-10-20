@@ -107,23 +107,15 @@ pub fn graph_search_bellman_series_std(s : GraphsearchbellmanSeries) -> Double {
 pub fn graph_search_bellman_series_median(s : GraphsearchbellmanSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_search_bellman_series_scale(s : GraphsearchbellmanSeries, f : Double) -> GraphsearchbellmanSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_search_bellman_series_add(a : GraphsearchbellmanSeries, b : GraphsearchbellmanSeries) -> GraphsearchbellmanSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_search_bellman_series_sub(a : GraphsearchbellmanSeries, b : GraphsearchbellmanSeries) -> GraphsearchbellmanSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_search_bellman_series_normalize(s : GraphsearchbellmanSeries) -> GraphsearchbellmanSeries {
@@ -254,22 +246,16 @@ pub fn graph_search_bellman_vector_zero(dim : Int) -> GraphsearchbellmanVector {
 
 pub fn graph_search_bellman_vector_add(a : GraphsearchbellmanVector, b : GraphsearchbellmanVector) -> GraphsearchbellmanVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_search_bellman_vector_sub(a : GraphsearchbellmanVector, b : GraphsearchbellmanVector) -> GraphsearchbellmanVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_search_bellman_vector_scale(v : GraphsearchbellmanVector, s : Double) -> GraphsearchbellmanVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_search_bellman_vector_dot(a : GraphsearchbellmanVector, b : GraphsearchbellmanVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_search_bellman_frame_get(s : GraphsearchbellmanFrame, i : Int) -> D
 }
 
 pub fn graph_search_bellman_frame_set(s : GraphsearchbellmanFrame, i : Int, v : Double) -> GraphsearchbellmanFrame {
-  let result = graph_search_bellman_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_frame_sum(s : GraphsearchbellmanFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_search_bellman_table_get(s : GraphsearchbellmanTable, i : Int) -> D
 }
 
 pub fn graph_search_bellman_table_set(s : GraphsearchbellmanTable, i : Int, v : Double) -> GraphsearchbellmanTable {
-  let result = graph_search_bellman_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_table_sum(s : GraphsearchbellmanTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_search_bellman_graphn_get(s : GraphsearchbellmanGraphN, i : Int) ->
 }
 
 pub fn graph_search_bellman_graphn_set(s : GraphsearchbellmanGraphN, i : Int, v : Double) -> GraphsearchbellmanGraphN {
-  let result = graph_search_bellman_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_graphn_sum(s : GraphsearchbellmanGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_search_bellman_node_get(s : GraphsearchbellmanNode, i : Int) -> Dou
 }
 
 pub fn graph_search_bellman_node_set(s : GraphsearchbellmanNode, i : Int, v : Double) -> GraphsearchbellmanNode {
-  let result = graph_search_bellman_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_node_sum(s : GraphsearchbellmanNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_search_bellman_edge_get(s : GraphsearchbellmanEdge, i : Int) -> Dou
 }
 
 pub fn graph_search_bellman_edge_set(s : GraphsearchbellmanEdge, i : Int, v : Double) -> GraphsearchbellmanEdge {
-  let result = graph_search_bellman_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_edge_sum(s : GraphsearchbellmanEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_search_bellman_path_get(s : GraphsearchbellmanPath, i : Int) -> Dou
 }
 
 pub fn graph_search_bellman_path_set(s : GraphsearchbellmanPath, i : Int, v : Double) -> GraphsearchbellmanPath {
-  let result = graph_search_bellman_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_path_sum(s : GraphsearchbellmanPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_search_bellman_cluster_get(s : GraphsearchbellmanCluster, i : Int) 
 }
 
 pub fn graph_search_bellman_cluster_set(s : GraphsearchbellmanCluster, i : Int, v : Double) -> GraphsearchbellmanCluster {
-  let result = graph_search_bellman_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_cluster_sum(s : GraphsearchbellmanCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_search_bellman_model_get(s : GraphsearchbellmanModel, i : Int) -> D
 }
 
 pub fn graph_search_bellman_model_set(s : GraphsearchbellmanModel, i : Int, v : Double) -> GraphsearchbellmanModel {
-  let result = graph_search_bellman_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_model_sum(s : GraphsearchbellmanModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_search_bellman_layer_get(s : GraphsearchbellmanLayer, i : Int) -> D
 }
 
 pub fn graph_search_bellman_layer_set(s : GraphsearchbellmanLayer, i : Int, v : Double) -> GraphsearchbellmanLayer {
-  let result = graph_search_bellman_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_layer_sum(s : GraphsearchbellmanLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_search_bellman_buffer_get(s : GraphsearchbellmanBuffer, i : Int) ->
 }
 
 pub fn graph_search_bellman_buffer_set(s : GraphsearchbellmanBuffer, i : Int, v : Double) -> GraphsearchbellmanBuffer {
-  let result = graph_search_bellman_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_buffer_sum(s : GraphsearchbellmanBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_search_bellman_cursor_get(s : GraphsearchbellmanCursor, i : Int) ->
 }
 
 pub fn graph_search_bellman_cursor_set(s : GraphsearchbellmanCursor, i : Int, v : Double) -> GraphsearchbellmanCursor {
-  let result = graph_search_bellman_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_cursor_sum(s : GraphsearchbellmanCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_search_bellman_view_get(s : GraphsearchbellmanView, i : Int) -> Dou
 }
 
 pub fn graph_search_bellman_view_set(s : GraphsearchbellmanView, i : Int, v : Double) -> GraphsearchbellmanView {
-  let result = graph_search_bellman_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_view_sum(s : GraphsearchbellmanView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_search_bellman_range_get(s : GraphsearchbellmanRange, i : Int) -> D
 }
 
 pub fn graph_search_bellman_range_set(s : GraphsearchbellmanRange, i : Int, v : Double) -> GraphsearchbellmanRange {
-  let result = graph_search_bellman_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_range_sum(s : GraphsearchbellmanRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_search_bellman_slice_get(s : GraphsearchbellmanSlice, i : Int) -> D
 }
 
 pub fn graph_search_bellman_slice_set(s : GraphsearchbellmanSlice, i : Int, v : Double) -> GraphsearchbellmanSlice {
-  let result = graph_search_bellman_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_bellman_slice_sum(s : GraphsearchbellmanSlice) -> Double { @_common.sum(s.data) }

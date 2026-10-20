@@ -107,23 +107,15 @@ pub fn ds_heap_leftist_series_std(s : DsheapleftistSeries) -> Double { @_common.
 pub fn ds_heap_leftist_series_median(s : DsheapleftistSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_heap_leftist_series_scale(s : DsheapleftistSeries, f : Double) -> DsheapleftistSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_heap_leftist_series_add(a : DsheapleftistSeries, b : DsheapleftistSeries) -> DsheapleftistSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_heap_leftist_series_sub(a : DsheapleftistSeries, b : DsheapleftistSeries) -> DsheapleftistSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_heap_leftist_series_normalize(s : DsheapleftistSeries) -> DsheapleftistSeries {
@@ -254,22 +246,16 @@ pub fn ds_heap_leftist_vector_zero(dim : Int) -> DsheapleftistVector {
 
 pub fn ds_heap_leftist_vector_add(a : DsheapleftistVector, b : DsheapleftistVector) -> DsheapleftistVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_heap_leftist_vector_sub(a : DsheapleftistVector, b : DsheapleftistVector) -> DsheapleftistVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_heap_leftist_vector_scale(v : DsheapleftistVector, s : Double) -> DsheapleftistVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_heap_leftist_vector_dot(a : DsheapleftistVector, b : DsheapleftistVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_heap_leftist_frame_get(s : DsheapleftistFrame, i : Int) -> Double {
 }
 
 pub fn ds_heap_leftist_frame_set(s : DsheapleftistFrame, i : Int, v : Double) -> DsheapleftistFrame {
-  let result = ds_heap_leftist_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_leftist_frame_sum(s : DsheapleftistFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_heap_leftist_table_get(s : DsheapleftistTable, i : Int) -> Double {
 }
 
 pub fn ds_heap_leftist_table_set(s : DsheapleftistTable, i : Int, v : Double) -> DsheapleftistTable {
-  let result = ds_heap_leftist_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_leftist_table_sum(s : DsheapleftistTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_heap_leftist_graphn_get(s : DsheapleftistGraphN, i : Int) -> Double {
 }
 
 pub fn ds_heap_leftist_graphn_set(s : DsheapleftistGraphN, i : Int, v : Double) -> DsheapleftistGraphN {
-  let result = ds_heap_leftist_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_leftist_graphn_sum(s : DsheapleftistGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_heap_leftist_node_get(s : DsheapleftistNode, i : Int) -> Double {
 }
 
 pub fn ds_heap_leftist_node_set(s : DsheapleftistNode, i : Int, v : Double) -> DsheapleftistNode {
-  let result = ds_heap_leftist_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_leftist_node_sum(s : DsheapleftistNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_heap_leftist_edge_get(s : DsheapleftistEdge, i : Int) -> Double {
 }
 
 pub fn ds_heap_leftist_edge_set(s : DsheapleftistEdge, i : Int, v : Double) -> DsheapleftistEdge {
-  let result = ds_heap_leftist_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_leftist_edge_sum(s : DsheapleftistEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_heap_leftist_path_get(s : DsheapleftistPath, i : Int) -> Double {
 }
 
 pub fn ds_heap_leftist_path_set(s : DsheapleftistPath, i : Int, v : Double) -> DsheapleftistPath {
-  let result = ds_heap_leftist_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_leftist_path_sum(s : DsheapleftistPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_heap_leftist_cluster_get(s : DsheapleftistCluster, i : Int) -> Double 
 }
 
 pub fn ds_heap_leftist_cluster_set(s : DsheapleftistCluster, i : Int, v : Double) -> DsheapleftistCluster {
-  let result = ds_heap_leftist_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_leftist_cluster_sum(s : DsheapleftistCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_heap_leftist_model_get(s : DsheapleftistModel, i : Int) -> Double {
 }
 
 pub fn ds_heap_leftist_model_set(s : DsheapleftistModel, i : Int, v : Double) -> DsheapleftistModel {
-  let result = ds_heap_leftist_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_leftist_model_sum(s : DsheapleftistModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_heap_leftist_layer_get(s : DsheapleftistLayer, i : Int) -> Double {
 }
 
 pub fn ds_heap_leftist_layer_set(s : DsheapleftistLayer, i : Int, v : Double) -> DsheapleftistLayer {
-  let result = ds_heap_leftist_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_leftist_layer_sum(s : DsheapleftistLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_heap_leftist_buffer_get(s : DsheapleftistBuffer, i : Int) -> Double {
 }
 
 pub fn ds_heap_leftist_buffer_set(s : DsheapleftistBuffer, i : Int, v : Double) -> DsheapleftistBuffer {
-  let result = ds_heap_leftist_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_leftist_buffer_sum(s : DsheapleftistBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_heap_leftist_cursor_get(s : DsheapleftistCursor, i : Int) -> Double {
 }
 
 pub fn ds_heap_leftist_cursor_set(s : DsheapleftistCursor, i : Int, v : Double) -> DsheapleftistCursor {
-  let result = ds_heap_leftist_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_leftist_cursor_sum(s : DsheapleftistCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_heap_leftist_view_get(s : DsheapleftistView, i : Int) -> Double {
 }
 
 pub fn ds_heap_leftist_view_set(s : DsheapleftistView, i : Int, v : Double) -> DsheapleftistView {
-  let result = ds_heap_leftist_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_leftist_view_sum(s : DsheapleftistView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_heap_leftist_range_get(s : DsheapleftistRange, i : Int) -> Double {
 }
 
 pub fn ds_heap_leftist_range_set(s : DsheapleftistRange, i : Int, v : Double) -> DsheapleftistRange {
-  let result = ds_heap_leftist_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_leftist_range_sum(s : DsheapleftistRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_heap_leftist_slice_get(s : DsheapleftistSlice, i : Int) -> Double {
 }
 
 pub fn ds_heap_leftist_slice_set(s : DsheapleftistSlice, i : Int, v : Double) -> DsheapleftistSlice {
-  let result = ds_heap_leftist_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_leftist_slice_sum(s : DsheapleftistSlice) -> Double { @_common.sum(s.data) }

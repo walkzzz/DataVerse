@@ -107,23 +107,15 @@ pub fn ml_cluster_kmeans_series_std(s : MlclusterkmeansSeries) -> Double { @_com
 pub fn ml_cluster_kmeans_series_median(s : MlclusterkmeansSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_cluster_kmeans_series_scale(s : MlclusterkmeansSeries, f : Double) -> MlclusterkmeansSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_cluster_kmeans_series_add(a : MlclusterkmeansSeries, b : MlclusterkmeansSeries) -> MlclusterkmeansSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_cluster_kmeans_series_sub(a : MlclusterkmeansSeries, b : MlclusterkmeansSeries) -> MlclusterkmeansSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_cluster_kmeans_series_normalize(s : MlclusterkmeansSeries) -> MlclusterkmeansSeries {
@@ -254,22 +246,16 @@ pub fn ml_cluster_kmeans_vector_zero(dim : Int) -> MlclusterkmeansVector {
 
 pub fn ml_cluster_kmeans_vector_add(a : MlclusterkmeansVector, b : MlclusterkmeansVector) -> MlclusterkmeansVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_cluster_kmeans_vector_sub(a : MlclusterkmeansVector, b : MlclusterkmeansVector) -> MlclusterkmeansVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_cluster_kmeans_vector_scale(v : MlclusterkmeansVector, s : Double) -> MlclusterkmeansVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_cluster_kmeans_vector_dot(a : MlclusterkmeansVector, b : MlclusterkmeansVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_cluster_kmeans_frame_get(s : MlclusterkmeansFrame, i : Int) -> Double 
 }
 
 pub fn ml_cluster_kmeans_frame_set(s : MlclusterkmeansFrame, i : Int, v : Double) -> MlclusterkmeansFrame {
-  let result = ml_cluster_kmeans_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_frame_sum(s : MlclusterkmeansFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_cluster_kmeans_table_get(s : MlclusterkmeansTable, i : Int) -> Double 
 }
 
 pub fn ml_cluster_kmeans_table_set(s : MlclusterkmeansTable, i : Int, v : Double) -> MlclusterkmeansTable {
-  let result = ml_cluster_kmeans_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_table_sum(s : MlclusterkmeansTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_cluster_kmeans_graphn_get(s : MlclusterkmeansGraphN, i : Int) -> Doubl
 }
 
 pub fn ml_cluster_kmeans_graphn_set(s : MlclusterkmeansGraphN, i : Int, v : Double) -> MlclusterkmeansGraphN {
-  let result = ml_cluster_kmeans_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_graphn_sum(s : MlclusterkmeansGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_cluster_kmeans_node_get(s : MlclusterkmeansNode, i : Int) -> Double {
 }
 
 pub fn ml_cluster_kmeans_node_set(s : MlclusterkmeansNode, i : Int, v : Double) -> MlclusterkmeansNode {
-  let result = ml_cluster_kmeans_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_node_sum(s : MlclusterkmeansNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_cluster_kmeans_edge_get(s : MlclusterkmeansEdge, i : Int) -> Double {
 }
 
 pub fn ml_cluster_kmeans_edge_set(s : MlclusterkmeansEdge, i : Int, v : Double) -> MlclusterkmeansEdge {
-  let result = ml_cluster_kmeans_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_edge_sum(s : MlclusterkmeansEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_cluster_kmeans_path_get(s : MlclusterkmeansPath, i : Int) -> Double {
 }
 
 pub fn ml_cluster_kmeans_path_set(s : MlclusterkmeansPath, i : Int, v : Double) -> MlclusterkmeansPath {
-  let result = ml_cluster_kmeans_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_path_sum(s : MlclusterkmeansPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_cluster_kmeans_cluster_get(s : MlclusterkmeansCluster, i : Int) -> Dou
 }
 
 pub fn ml_cluster_kmeans_cluster_set(s : MlclusterkmeansCluster, i : Int, v : Double) -> MlclusterkmeansCluster {
-  let result = ml_cluster_kmeans_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_cluster_sum(s : MlclusterkmeansCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_cluster_kmeans_model_get(s : MlclusterkmeansModel, i : Int) -> Double 
 }
 
 pub fn ml_cluster_kmeans_model_set(s : MlclusterkmeansModel, i : Int, v : Double) -> MlclusterkmeansModel {
-  let result = ml_cluster_kmeans_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_model_sum(s : MlclusterkmeansModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_cluster_kmeans_layer_get(s : MlclusterkmeansLayer, i : Int) -> Double 
 }
 
 pub fn ml_cluster_kmeans_layer_set(s : MlclusterkmeansLayer, i : Int, v : Double) -> MlclusterkmeansLayer {
-  let result = ml_cluster_kmeans_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_layer_sum(s : MlclusterkmeansLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_cluster_kmeans_buffer_get(s : MlclusterkmeansBuffer, i : Int) -> Doubl
 }
 
 pub fn ml_cluster_kmeans_buffer_set(s : MlclusterkmeansBuffer, i : Int, v : Double) -> MlclusterkmeansBuffer {
-  let result = ml_cluster_kmeans_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_buffer_sum(s : MlclusterkmeansBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_cluster_kmeans_cursor_get(s : MlclusterkmeansCursor, i : Int) -> Doubl
 }
 
 pub fn ml_cluster_kmeans_cursor_set(s : MlclusterkmeansCursor, i : Int, v : Double) -> MlclusterkmeansCursor {
-  let result = ml_cluster_kmeans_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_cursor_sum(s : MlclusterkmeansCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_cluster_kmeans_view_get(s : MlclusterkmeansView, i : Int) -> Double {
 }
 
 pub fn ml_cluster_kmeans_view_set(s : MlclusterkmeansView, i : Int, v : Double) -> MlclusterkmeansView {
-  let result = ml_cluster_kmeans_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_view_sum(s : MlclusterkmeansView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_cluster_kmeans_range_get(s : MlclusterkmeansRange, i : Int) -> Double 
 }
 
 pub fn ml_cluster_kmeans_range_set(s : MlclusterkmeansRange, i : Int, v : Double) -> MlclusterkmeansRange {
-  let result = ml_cluster_kmeans_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_range_sum(s : MlclusterkmeansRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_cluster_kmeans_slice_get(s : MlclusterkmeansSlice, i : Int) -> Double 
 }
 
 pub fn ml_cluster_kmeans_slice_set(s : MlclusterkmeansSlice, i : Int, v : Double) -> MlclusterkmeansSlice {
-  let result = ml_cluster_kmeans_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_kmeans_slice_sum(s : MlclusterkmeansSlice) -> Double { @_common.sum(s.data) }

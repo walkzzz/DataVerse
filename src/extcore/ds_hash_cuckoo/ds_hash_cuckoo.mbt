@@ -107,23 +107,15 @@ pub fn ds_hash_cuckoo_series_std(s : DshashcuckooSeries) -> Double { @_common.st
 pub fn ds_hash_cuckoo_series_median(s : DshashcuckooSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_hash_cuckoo_series_scale(s : DshashcuckooSeries, f : Double) -> DshashcuckooSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_hash_cuckoo_series_add(a : DshashcuckooSeries, b : DshashcuckooSeries) -> DshashcuckooSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_hash_cuckoo_series_sub(a : DshashcuckooSeries, b : DshashcuckooSeries) -> DshashcuckooSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_hash_cuckoo_series_normalize(s : DshashcuckooSeries) -> DshashcuckooSeries {
@@ -254,22 +246,16 @@ pub fn ds_hash_cuckoo_vector_zero(dim : Int) -> DshashcuckooVector {
 
 pub fn ds_hash_cuckoo_vector_add(a : DshashcuckooVector, b : DshashcuckooVector) -> DshashcuckooVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_hash_cuckoo_vector_sub(a : DshashcuckooVector, b : DshashcuckooVector) -> DshashcuckooVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_hash_cuckoo_vector_scale(v : DshashcuckooVector, s : Double) -> DshashcuckooVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_hash_cuckoo_vector_dot(a : DshashcuckooVector, b : DshashcuckooVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_hash_cuckoo_frame_get(s : DshashcuckooFrame, i : Int) -> Double {
 }
 
 pub fn ds_hash_cuckoo_frame_set(s : DshashcuckooFrame, i : Int, v : Double) -> DshashcuckooFrame {
-  let result = ds_hash_cuckoo_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_frame_sum(s : DshashcuckooFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_hash_cuckoo_table_get(s : DshashcuckooTable, i : Int) -> Double {
 }
 
 pub fn ds_hash_cuckoo_table_set(s : DshashcuckooTable, i : Int, v : Double) -> DshashcuckooTable {
-  let result = ds_hash_cuckoo_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_table_sum(s : DshashcuckooTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_hash_cuckoo_graphn_get(s : DshashcuckooGraphN, i : Int) -> Double {
 }
 
 pub fn ds_hash_cuckoo_graphn_set(s : DshashcuckooGraphN, i : Int, v : Double) -> DshashcuckooGraphN {
-  let result = ds_hash_cuckoo_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_graphn_sum(s : DshashcuckooGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_hash_cuckoo_node_get(s : DshashcuckooNode, i : Int) -> Double {
 }
 
 pub fn ds_hash_cuckoo_node_set(s : DshashcuckooNode, i : Int, v : Double) -> DshashcuckooNode {
-  let result = ds_hash_cuckoo_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_node_sum(s : DshashcuckooNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_hash_cuckoo_edge_get(s : DshashcuckooEdge, i : Int) -> Double {
 }
 
 pub fn ds_hash_cuckoo_edge_set(s : DshashcuckooEdge, i : Int, v : Double) -> DshashcuckooEdge {
-  let result = ds_hash_cuckoo_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_edge_sum(s : DshashcuckooEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_hash_cuckoo_path_get(s : DshashcuckooPath, i : Int) -> Double {
 }
 
 pub fn ds_hash_cuckoo_path_set(s : DshashcuckooPath, i : Int, v : Double) -> DshashcuckooPath {
-  let result = ds_hash_cuckoo_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_path_sum(s : DshashcuckooPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_hash_cuckoo_cluster_get(s : DshashcuckooCluster, i : Int) -> Double {
 }
 
 pub fn ds_hash_cuckoo_cluster_set(s : DshashcuckooCluster, i : Int, v : Double) -> DshashcuckooCluster {
-  let result = ds_hash_cuckoo_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_cluster_sum(s : DshashcuckooCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_hash_cuckoo_model_get(s : DshashcuckooModel, i : Int) -> Double {
 }
 
 pub fn ds_hash_cuckoo_model_set(s : DshashcuckooModel, i : Int, v : Double) -> DshashcuckooModel {
-  let result = ds_hash_cuckoo_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_model_sum(s : DshashcuckooModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_hash_cuckoo_layer_get(s : DshashcuckooLayer, i : Int) -> Double {
 }
 
 pub fn ds_hash_cuckoo_layer_set(s : DshashcuckooLayer, i : Int, v : Double) -> DshashcuckooLayer {
-  let result = ds_hash_cuckoo_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_layer_sum(s : DshashcuckooLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_hash_cuckoo_buffer_get(s : DshashcuckooBuffer, i : Int) -> Double {
 }
 
 pub fn ds_hash_cuckoo_buffer_set(s : DshashcuckooBuffer, i : Int, v : Double) -> DshashcuckooBuffer {
-  let result = ds_hash_cuckoo_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_buffer_sum(s : DshashcuckooBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_hash_cuckoo_cursor_get(s : DshashcuckooCursor, i : Int) -> Double {
 }
 
 pub fn ds_hash_cuckoo_cursor_set(s : DshashcuckooCursor, i : Int, v : Double) -> DshashcuckooCursor {
-  let result = ds_hash_cuckoo_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_cursor_sum(s : DshashcuckooCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_hash_cuckoo_view_get(s : DshashcuckooView, i : Int) -> Double {
 }
 
 pub fn ds_hash_cuckoo_view_set(s : DshashcuckooView, i : Int, v : Double) -> DshashcuckooView {
-  let result = ds_hash_cuckoo_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_view_sum(s : DshashcuckooView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_hash_cuckoo_range_get(s : DshashcuckooRange, i : Int) -> Double {
 }
 
 pub fn ds_hash_cuckoo_range_set(s : DshashcuckooRange, i : Int, v : Double) -> DshashcuckooRange {
-  let result = ds_hash_cuckoo_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_range_sum(s : DshashcuckooRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_hash_cuckoo_slice_get(s : DshashcuckooSlice, i : Int) -> Double {
 }
 
 pub fn ds_hash_cuckoo_slice_set(s : DshashcuckooSlice, i : Int, v : Double) -> DshashcuckooSlice {
-  let result = ds_hash_cuckoo_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_cuckoo_slice_sum(s : DshashcuckooSlice) -> Double { @_common.sum(s.data) }

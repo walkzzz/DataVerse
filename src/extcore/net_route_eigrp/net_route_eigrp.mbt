@@ -107,23 +107,15 @@ pub fn net_route_eigrp_series_std(s : NetrouteeigrpSeries) -> Double { @_common.
 pub fn net_route_eigrp_series_median(s : NetrouteeigrpSeries) -> Double { @_common.median(s.vals) }
 
 pub fn net_route_eigrp_series_scale(s : NetrouteeigrpSeries, f : Double) -> NetrouteeigrpSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn net_route_eigrp_series_add(a : NetrouteeigrpSeries, b : NetrouteeigrpSeries) -> NetrouteeigrpSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn net_route_eigrp_series_sub(a : NetrouteeigrpSeries, b : NetrouteeigrpSeries) -> NetrouteeigrpSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn net_route_eigrp_series_normalize(s : NetrouteeigrpSeries) -> NetrouteeigrpSeries {
@@ -254,22 +246,16 @@ pub fn net_route_eigrp_vector_zero(dim : Int) -> NetrouteeigrpVector {
 
 pub fn net_route_eigrp_vector_add(a : NetrouteeigrpVector, b : NetrouteeigrpVector) -> NetrouteeigrpVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_route_eigrp_vector_sub(a : NetrouteeigrpVector, b : NetrouteeigrpVector) -> NetrouteeigrpVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_route_eigrp_vector_scale(v : NetrouteeigrpVector, s : Double) -> NetrouteeigrpVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn net_route_eigrp_vector_dot(a : NetrouteeigrpVector, b : NetrouteeigrpVector) -> Double {
@@ -372,10 +358,9 @@ pub fn net_route_eigrp_frame_get(s : NetrouteeigrpFrame, i : Int) -> Double {
 }
 
 pub fn net_route_eigrp_frame_set(s : NetrouteeigrpFrame, i : Int, v : Double) -> NetrouteeigrpFrame {
-  let result = net_route_eigrp_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_eigrp_frame_sum(s : NetrouteeigrpFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn net_route_eigrp_table_get(s : NetrouteeigrpTable, i : Int) -> Double {
 }
 
 pub fn net_route_eigrp_table_set(s : NetrouteeigrpTable, i : Int, v : Double) -> NetrouteeigrpTable {
-  let result = net_route_eigrp_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_eigrp_table_sum(s : NetrouteeigrpTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn net_route_eigrp_graphn_get(s : NetrouteeigrpGraphN, i : Int) -> Double {
 }
 
 pub fn net_route_eigrp_graphn_set(s : NetrouteeigrpGraphN, i : Int, v : Double) -> NetrouteeigrpGraphN {
-  let result = net_route_eigrp_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_eigrp_graphn_sum(s : NetrouteeigrpGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn net_route_eigrp_node_get(s : NetrouteeigrpNode, i : Int) -> Double {
 }
 
 pub fn net_route_eigrp_node_set(s : NetrouteeigrpNode, i : Int, v : Double) -> NetrouteeigrpNode {
-  let result = net_route_eigrp_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_eigrp_node_sum(s : NetrouteeigrpNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn net_route_eigrp_edge_get(s : NetrouteeigrpEdge, i : Int) -> Double {
 }
 
 pub fn net_route_eigrp_edge_set(s : NetrouteeigrpEdge, i : Int, v : Double) -> NetrouteeigrpEdge {
-  let result = net_route_eigrp_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_eigrp_edge_sum(s : NetrouteeigrpEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn net_route_eigrp_path_get(s : NetrouteeigrpPath, i : Int) -> Double {
 }
 
 pub fn net_route_eigrp_path_set(s : NetrouteeigrpPath, i : Int, v : Double) -> NetrouteeigrpPath {
-  let result = net_route_eigrp_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_eigrp_path_sum(s : NetrouteeigrpPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn net_route_eigrp_cluster_get(s : NetrouteeigrpCluster, i : Int) -> Double 
 }
 
 pub fn net_route_eigrp_cluster_set(s : NetrouteeigrpCluster, i : Int, v : Double) -> NetrouteeigrpCluster {
-  let result = net_route_eigrp_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_eigrp_cluster_sum(s : NetrouteeigrpCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn net_route_eigrp_model_get(s : NetrouteeigrpModel, i : Int) -> Double {
 }
 
 pub fn net_route_eigrp_model_set(s : NetrouteeigrpModel, i : Int, v : Double) -> NetrouteeigrpModel {
-  let result = net_route_eigrp_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_eigrp_model_sum(s : NetrouteeigrpModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn net_route_eigrp_layer_get(s : NetrouteeigrpLayer, i : Int) -> Double {
 }
 
 pub fn net_route_eigrp_layer_set(s : NetrouteeigrpLayer, i : Int, v : Double) -> NetrouteeigrpLayer {
-  let result = net_route_eigrp_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_eigrp_layer_sum(s : NetrouteeigrpLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn net_route_eigrp_buffer_get(s : NetrouteeigrpBuffer, i : Int) -> Double {
 }
 
 pub fn net_route_eigrp_buffer_set(s : NetrouteeigrpBuffer, i : Int, v : Double) -> NetrouteeigrpBuffer {
-  let result = net_route_eigrp_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_eigrp_buffer_sum(s : NetrouteeigrpBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn net_route_eigrp_cursor_get(s : NetrouteeigrpCursor, i : Int) -> Double {
 }
 
 pub fn net_route_eigrp_cursor_set(s : NetrouteeigrpCursor, i : Int, v : Double) -> NetrouteeigrpCursor {
-  let result = net_route_eigrp_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_eigrp_cursor_sum(s : NetrouteeigrpCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn net_route_eigrp_view_get(s : NetrouteeigrpView, i : Int) -> Double {
 }
 
 pub fn net_route_eigrp_view_set(s : NetrouteeigrpView, i : Int, v : Double) -> NetrouteeigrpView {
-  let result = net_route_eigrp_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_eigrp_view_sum(s : NetrouteeigrpView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn net_route_eigrp_range_get(s : NetrouteeigrpRange, i : Int) -> Double {
 }
 
 pub fn net_route_eigrp_range_set(s : NetrouteeigrpRange, i : Int, v : Double) -> NetrouteeigrpRange {
-  let result = net_route_eigrp_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_eigrp_range_sum(s : NetrouteeigrpRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn net_route_eigrp_slice_get(s : NetrouteeigrpSlice, i : Int) -> Double {
 }
 
 pub fn net_route_eigrp_slice_set(s : NetrouteeigrpSlice, i : Int, v : Double) -> NetrouteeigrpSlice {
-  let result = net_route_eigrp_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_eigrp_slice_sum(s : NetrouteeigrpSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn graph_connect_circuit_series_std(s : GraphconnectcircuitSeries) -> Double
 pub fn graph_connect_circuit_series_median(s : GraphconnectcircuitSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_connect_circuit_series_scale(s : GraphconnectcircuitSeries, f : Double) -> GraphconnectcircuitSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_connect_circuit_series_add(a : GraphconnectcircuitSeries, b : GraphconnectcircuitSeries) -> GraphconnectcircuitSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_connect_circuit_series_sub(a : GraphconnectcircuitSeries, b : GraphconnectcircuitSeries) -> GraphconnectcircuitSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_connect_circuit_series_normalize(s : GraphconnectcircuitSeries) -> GraphconnectcircuitSeries {
@@ -254,22 +246,16 @@ pub fn graph_connect_circuit_vector_zero(dim : Int) -> GraphconnectcircuitVector
 
 pub fn graph_connect_circuit_vector_add(a : GraphconnectcircuitVector, b : GraphconnectcircuitVector) -> GraphconnectcircuitVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_connect_circuit_vector_sub(a : GraphconnectcircuitVector, b : GraphconnectcircuitVector) -> GraphconnectcircuitVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_connect_circuit_vector_scale(v : GraphconnectcircuitVector, s : Double) -> GraphconnectcircuitVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_connect_circuit_vector_dot(a : GraphconnectcircuitVector, b : GraphconnectcircuitVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_connect_circuit_frame_get(s : GraphconnectcircuitFrame, i : Int) ->
 }
 
 pub fn graph_connect_circuit_frame_set(s : GraphconnectcircuitFrame, i : Int, v : Double) -> GraphconnectcircuitFrame {
-  let result = graph_connect_circuit_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_circuit_frame_sum(s : GraphconnectcircuitFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_connect_circuit_table_get(s : GraphconnectcircuitTable, i : Int) ->
 }
 
 pub fn graph_connect_circuit_table_set(s : GraphconnectcircuitTable, i : Int, v : Double) -> GraphconnectcircuitTable {
-  let result = graph_connect_circuit_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_circuit_table_sum(s : GraphconnectcircuitTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_connect_circuit_graphn_get(s : GraphconnectcircuitGraphN, i : Int) 
 }
 
 pub fn graph_connect_circuit_graphn_set(s : GraphconnectcircuitGraphN, i : Int, v : Double) -> GraphconnectcircuitGraphN {
-  let result = graph_connect_circuit_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_circuit_graphn_sum(s : GraphconnectcircuitGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_connect_circuit_node_get(s : GraphconnectcircuitNode, i : Int) -> D
 }
 
 pub fn graph_connect_circuit_node_set(s : GraphconnectcircuitNode, i : Int, v : Double) -> GraphconnectcircuitNode {
-  let result = graph_connect_circuit_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_circuit_node_sum(s : GraphconnectcircuitNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_connect_circuit_edge_get(s : GraphconnectcircuitEdge, i : Int) -> D
 }
 
 pub fn graph_connect_circuit_edge_set(s : GraphconnectcircuitEdge, i : Int, v : Double) -> GraphconnectcircuitEdge {
-  let result = graph_connect_circuit_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_circuit_edge_sum(s : GraphconnectcircuitEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_connect_circuit_path_get(s : GraphconnectcircuitPath, i : Int) -> D
 }
 
 pub fn graph_connect_circuit_path_set(s : GraphconnectcircuitPath, i : Int, v : Double) -> GraphconnectcircuitPath {
-  let result = graph_connect_circuit_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_circuit_path_sum(s : GraphconnectcircuitPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_connect_circuit_cluster_get(s : GraphconnectcircuitCluster, i : Int
 }
 
 pub fn graph_connect_circuit_cluster_set(s : GraphconnectcircuitCluster, i : Int, v : Double) -> GraphconnectcircuitCluster {
-  let result = graph_connect_circuit_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_circuit_cluster_sum(s : GraphconnectcircuitCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_connect_circuit_model_get(s : GraphconnectcircuitModel, i : Int) ->
 }
 
 pub fn graph_connect_circuit_model_set(s : GraphconnectcircuitModel, i : Int, v : Double) -> GraphconnectcircuitModel {
-  let result = graph_connect_circuit_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_circuit_model_sum(s : GraphconnectcircuitModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_connect_circuit_layer_get(s : GraphconnectcircuitLayer, i : Int) ->
 }
 
 pub fn graph_connect_circuit_layer_set(s : GraphconnectcircuitLayer, i : Int, v : Double) -> GraphconnectcircuitLayer {
-  let result = graph_connect_circuit_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_circuit_layer_sum(s : GraphconnectcircuitLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_connect_circuit_buffer_get(s : GraphconnectcircuitBuffer, i : Int) 
 }
 
 pub fn graph_connect_circuit_buffer_set(s : GraphconnectcircuitBuffer, i : Int, v : Double) -> GraphconnectcircuitBuffer {
-  let result = graph_connect_circuit_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_circuit_buffer_sum(s : GraphconnectcircuitBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_connect_circuit_cursor_get(s : GraphconnectcircuitCursor, i : Int) 
 }
 
 pub fn graph_connect_circuit_cursor_set(s : GraphconnectcircuitCursor, i : Int, v : Double) -> GraphconnectcircuitCursor {
-  let result = graph_connect_circuit_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_circuit_cursor_sum(s : GraphconnectcircuitCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_connect_circuit_view_get(s : GraphconnectcircuitView, i : Int) -> D
 }
 
 pub fn graph_connect_circuit_view_set(s : GraphconnectcircuitView, i : Int, v : Double) -> GraphconnectcircuitView {
-  let result = graph_connect_circuit_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_circuit_view_sum(s : GraphconnectcircuitView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_connect_circuit_range_get(s : GraphconnectcircuitRange, i : Int) ->
 }
 
 pub fn graph_connect_circuit_range_set(s : GraphconnectcircuitRange, i : Int, v : Double) -> GraphconnectcircuitRange {
-  let result = graph_connect_circuit_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_circuit_range_sum(s : GraphconnectcircuitRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_connect_circuit_slice_get(s : GraphconnectcircuitSlice, i : Int) ->
 }
 
 pub fn graph_connect_circuit_slice_set(s : GraphconnectcircuitSlice, i : Int, v : Double) -> GraphconnectcircuitSlice {
-  let result = graph_connect_circuit_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_circuit_slice_sum(s : GraphconnectcircuitSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn finance_portfolio_apt_series_std(s : FinanceportfolioaptSeries) -> Double
 pub fn finance_portfolio_apt_series_median(s : FinanceportfolioaptSeries) -> Double { @_common.median(s.vals) }
 
 pub fn finance_portfolio_apt_series_scale(s : FinanceportfolioaptSeries, f : Double) -> FinanceportfolioaptSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn finance_portfolio_apt_series_add(a : FinanceportfolioaptSeries, b : FinanceportfolioaptSeries) -> FinanceportfolioaptSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn finance_portfolio_apt_series_sub(a : FinanceportfolioaptSeries, b : FinanceportfolioaptSeries) -> FinanceportfolioaptSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn finance_portfolio_apt_series_normalize(s : FinanceportfolioaptSeries) -> FinanceportfolioaptSeries {
@@ -254,22 +246,16 @@ pub fn finance_portfolio_apt_vector_zero(dim : Int) -> FinanceportfolioaptVector
 
 pub fn finance_portfolio_apt_vector_add(a : FinanceportfolioaptVector, b : FinanceportfolioaptVector) -> FinanceportfolioaptVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_portfolio_apt_vector_sub(a : FinanceportfolioaptVector, b : FinanceportfolioaptVector) -> FinanceportfolioaptVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_portfolio_apt_vector_scale(v : FinanceportfolioaptVector, s : Double) -> FinanceportfolioaptVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn finance_portfolio_apt_vector_dot(a : FinanceportfolioaptVector, b : FinanceportfolioaptVector) -> Double {
@@ -372,10 +358,9 @@ pub fn finance_portfolio_apt_frame_get(s : FinanceportfolioaptFrame, i : Int) ->
 }
 
 pub fn finance_portfolio_apt_frame_set(s : FinanceportfolioaptFrame, i : Int, v : Double) -> FinanceportfolioaptFrame {
-  let result = finance_portfolio_apt_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_apt_frame_sum(s : FinanceportfolioaptFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn finance_portfolio_apt_table_get(s : FinanceportfolioaptTable, i : Int) ->
 }
 
 pub fn finance_portfolio_apt_table_set(s : FinanceportfolioaptTable, i : Int, v : Double) -> FinanceportfolioaptTable {
-  let result = finance_portfolio_apt_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_apt_table_sum(s : FinanceportfolioaptTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn finance_portfolio_apt_graphn_get(s : FinanceportfolioaptGraphN, i : Int) 
 }
 
 pub fn finance_portfolio_apt_graphn_set(s : FinanceportfolioaptGraphN, i : Int, v : Double) -> FinanceportfolioaptGraphN {
-  let result = finance_portfolio_apt_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_apt_graphn_sum(s : FinanceportfolioaptGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn finance_portfolio_apt_node_get(s : FinanceportfolioaptNode, i : Int) -> D
 }
 
 pub fn finance_portfolio_apt_node_set(s : FinanceportfolioaptNode, i : Int, v : Double) -> FinanceportfolioaptNode {
-  let result = finance_portfolio_apt_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_apt_node_sum(s : FinanceportfolioaptNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn finance_portfolio_apt_edge_get(s : FinanceportfolioaptEdge, i : Int) -> D
 }
 
 pub fn finance_portfolio_apt_edge_set(s : FinanceportfolioaptEdge, i : Int, v : Double) -> FinanceportfolioaptEdge {
-  let result = finance_portfolio_apt_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_apt_edge_sum(s : FinanceportfolioaptEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn finance_portfolio_apt_path_get(s : FinanceportfolioaptPath, i : Int) -> D
 }
 
 pub fn finance_portfolio_apt_path_set(s : FinanceportfolioaptPath, i : Int, v : Double) -> FinanceportfolioaptPath {
-  let result = finance_portfolio_apt_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_apt_path_sum(s : FinanceportfolioaptPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn finance_portfolio_apt_cluster_get(s : FinanceportfolioaptCluster, i : Int
 }
 
 pub fn finance_portfolio_apt_cluster_set(s : FinanceportfolioaptCluster, i : Int, v : Double) -> FinanceportfolioaptCluster {
-  let result = finance_portfolio_apt_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_apt_cluster_sum(s : FinanceportfolioaptCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn finance_portfolio_apt_model_get(s : FinanceportfolioaptModel, i : Int) ->
 }
 
 pub fn finance_portfolio_apt_model_set(s : FinanceportfolioaptModel, i : Int, v : Double) -> FinanceportfolioaptModel {
-  let result = finance_portfolio_apt_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_apt_model_sum(s : FinanceportfolioaptModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn finance_portfolio_apt_layer_get(s : FinanceportfolioaptLayer, i : Int) ->
 }
 
 pub fn finance_portfolio_apt_layer_set(s : FinanceportfolioaptLayer, i : Int, v : Double) -> FinanceportfolioaptLayer {
-  let result = finance_portfolio_apt_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_apt_layer_sum(s : FinanceportfolioaptLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn finance_portfolio_apt_buffer_get(s : FinanceportfolioaptBuffer, i : Int) 
 }
 
 pub fn finance_portfolio_apt_buffer_set(s : FinanceportfolioaptBuffer, i : Int, v : Double) -> FinanceportfolioaptBuffer {
-  let result = finance_portfolio_apt_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_apt_buffer_sum(s : FinanceportfolioaptBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn finance_portfolio_apt_cursor_get(s : FinanceportfolioaptCursor, i : Int) 
 }
 
 pub fn finance_portfolio_apt_cursor_set(s : FinanceportfolioaptCursor, i : Int, v : Double) -> FinanceportfolioaptCursor {
-  let result = finance_portfolio_apt_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_apt_cursor_sum(s : FinanceportfolioaptCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn finance_portfolio_apt_view_get(s : FinanceportfolioaptView, i : Int) -> D
 }
 
 pub fn finance_portfolio_apt_view_set(s : FinanceportfolioaptView, i : Int, v : Double) -> FinanceportfolioaptView {
-  let result = finance_portfolio_apt_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_apt_view_sum(s : FinanceportfolioaptView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn finance_portfolio_apt_range_get(s : FinanceportfolioaptRange, i : Int) ->
 }
 
 pub fn finance_portfolio_apt_range_set(s : FinanceportfolioaptRange, i : Int, v : Double) -> FinanceportfolioaptRange {
-  let result = finance_portfolio_apt_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_apt_range_sum(s : FinanceportfolioaptRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn finance_portfolio_apt_slice_get(s : FinanceportfolioaptSlice, i : Int) ->
 }
 
 pub fn finance_portfolio_apt_slice_set(s : FinanceportfolioaptSlice, i : Int, v : Double) -> FinanceportfolioaptSlice {
-  let result = finance_portfolio_apt_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_apt_slice_sum(s : FinanceportfolioaptSlice) -> Double { @_common.sum(s.data) }

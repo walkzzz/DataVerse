@@ -107,23 +107,15 @@ pub fn math_special_chebyshev_series_std(s : MathspecialchebyshevSeries) -> Doub
 pub fn math_special_chebyshev_series_median(s : MathspecialchebyshevSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_special_chebyshev_series_scale(s : MathspecialchebyshevSeries, f : Double) -> MathspecialchebyshevSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_special_chebyshev_series_add(a : MathspecialchebyshevSeries, b : MathspecialchebyshevSeries) -> MathspecialchebyshevSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_special_chebyshev_series_sub(a : MathspecialchebyshevSeries, b : MathspecialchebyshevSeries) -> MathspecialchebyshevSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_special_chebyshev_series_normalize(s : MathspecialchebyshevSeries) -> MathspecialchebyshevSeries {
@@ -254,22 +246,16 @@ pub fn math_special_chebyshev_vector_zero(dim : Int) -> MathspecialchebyshevVect
 
 pub fn math_special_chebyshev_vector_add(a : MathspecialchebyshevVector, b : MathspecialchebyshevVector) -> MathspecialchebyshevVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_special_chebyshev_vector_sub(a : MathspecialchebyshevVector, b : MathspecialchebyshevVector) -> MathspecialchebyshevVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_special_chebyshev_vector_scale(v : MathspecialchebyshevVector, s : Double) -> MathspecialchebyshevVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_special_chebyshev_vector_dot(a : MathspecialchebyshevVector, b : MathspecialchebyshevVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_special_chebyshev_frame_get(s : MathspecialchebyshevFrame, i : Int) 
 }
 
 pub fn math_special_chebyshev_frame_set(s : MathspecialchebyshevFrame, i : Int, v : Double) -> MathspecialchebyshevFrame {
-  let result = math_special_chebyshev_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_chebyshev_frame_sum(s : MathspecialchebyshevFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_special_chebyshev_table_get(s : MathspecialchebyshevTable, i : Int) 
 }
 
 pub fn math_special_chebyshev_table_set(s : MathspecialchebyshevTable, i : Int, v : Double) -> MathspecialchebyshevTable {
-  let result = math_special_chebyshev_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_chebyshev_table_sum(s : MathspecialchebyshevTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_special_chebyshev_graphn_get(s : MathspecialchebyshevGraphN, i : Int
 }
 
 pub fn math_special_chebyshev_graphn_set(s : MathspecialchebyshevGraphN, i : Int, v : Double) -> MathspecialchebyshevGraphN {
-  let result = math_special_chebyshev_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_chebyshev_graphn_sum(s : MathspecialchebyshevGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_special_chebyshev_node_get(s : MathspecialchebyshevNode, i : Int) ->
 }
 
 pub fn math_special_chebyshev_node_set(s : MathspecialchebyshevNode, i : Int, v : Double) -> MathspecialchebyshevNode {
-  let result = math_special_chebyshev_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_chebyshev_node_sum(s : MathspecialchebyshevNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_special_chebyshev_edge_get(s : MathspecialchebyshevEdge, i : Int) ->
 }
 
 pub fn math_special_chebyshev_edge_set(s : MathspecialchebyshevEdge, i : Int, v : Double) -> MathspecialchebyshevEdge {
-  let result = math_special_chebyshev_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_chebyshev_edge_sum(s : MathspecialchebyshevEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_special_chebyshev_path_get(s : MathspecialchebyshevPath, i : Int) ->
 }
 
 pub fn math_special_chebyshev_path_set(s : MathspecialchebyshevPath, i : Int, v : Double) -> MathspecialchebyshevPath {
-  let result = math_special_chebyshev_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_chebyshev_path_sum(s : MathspecialchebyshevPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_special_chebyshev_cluster_get(s : MathspecialchebyshevCluster, i : I
 }
 
 pub fn math_special_chebyshev_cluster_set(s : MathspecialchebyshevCluster, i : Int, v : Double) -> MathspecialchebyshevCluster {
-  let result = math_special_chebyshev_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_chebyshev_cluster_sum(s : MathspecialchebyshevCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_special_chebyshev_model_get(s : MathspecialchebyshevModel, i : Int) 
 }
 
 pub fn math_special_chebyshev_model_set(s : MathspecialchebyshevModel, i : Int, v : Double) -> MathspecialchebyshevModel {
-  let result = math_special_chebyshev_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_chebyshev_model_sum(s : MathspecialchebyshevModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_special_chebyshev_layer_get(s : MathspecialchebyshevLayer, i : Int) 
 }
 
 pub fn math_special_chebyshev_layer_set(s : MathspecialchebyshevLayer, i : Int, v : Double) -> MathspecialchebyshevLayer {
-  let result = math_special_chebyshev_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_chebyshev_layer_sum(s : MathspecialchebyshevLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_special_chebyshev_buffer_get(s : MathspecialchebyshevBuffer, i : Int
 }
 
 pub fn math_special_chebyshev_buffer_set(s : MathspecialchebyshevBuffer, i : Int, v : Double) -> MathspecialchebyshevBuffer {
-  let result = math_special_chebyshev_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_chebyshev_buffer_sum(s : MathspecialchebyshevBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_special_chebyshev_cursor_get(s : MathspecialchebyshevCursor, i : Int
 }
 
 pub fn math_special_chebyshev_cursor_set(s : MathspecialchebyshevCursor, i : Int, v : Double) -> MathspecialchebyshevCursor {
-  let result = math_special_chebyshev_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_chebyshev_cursor_sum(s : MathspecialchebyshevCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_special_chebyshev_view_get(s : MathspecialchebyshevView, i : Int) ->
 }
 
 pub fn math_special_chebyshev_view_set(s : MathspecialchebyshevView, i : Int, v : Double) -> MathspecialchebyshevView {
-  let result = math_special_chebyshev_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_chebyshev_view_sum(s : MathspecialchebyshevView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_special_chebyshev_range_get(s : MathspecialchebyshevRange, i : Int) 
 }
 
 pub fn math_special_chebyshev_range_set(s : MathspecialchebyshevRange, i : Int, v : Double) -> MathspecialchebyshevRange {
-  let result = math_special_chebyshev_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_chebyshev_range_sum(s : MathspecialchebyshevRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_special_chebyshev_slice_get(s : MathspecialchebyshevSlice, i : Int) 
 }
 
 pub fn math_special_chebyshev_slice_set(s : MathspecialchebyshevSlice, i : Int, v : Double) -> MathspecialchebyshevSlice {
-  let result = math_special_chebyshev_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_chebyshev_slice_sum(s : MathspecialchebyshevSlice) -> Double { @_common.sum(s.data) }

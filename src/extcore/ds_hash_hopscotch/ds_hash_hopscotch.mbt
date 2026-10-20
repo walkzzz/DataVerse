@@ -107,23 +107,15 @@ pub fn ds_hash_hopscotch_series_std(s : DshashhopscotchSeries) -> Double { @_com
 pub fn ds_hash_hopscotch_series_median(s : DshashhopscotchSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_hash_hopscotch_series_scale(s : DshashhopscotchSeries, f : Double) -> DshashhopscotchSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_hash_hopscotch_series_add(a : DshashhopscotchSeries, b : DshashhopscotchSeries) -> DshashhopscotchSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_hash_hopscotch_series_sub(a : DshashhopscotchSeries, b : DshashhopscotchSeries) -> DshashhopscotchSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_hash_hopscotch_series_normalize(s : DshashhopscotchSeries) -> DshashhopscotchSeries {
@@ -254,22 +246,16 @@ pub fn ds_hash_hopscotch_vector_zero(dim : Int) -> DshashhopscotchVector {
 
 pub fn ds_hash_hopscotch_vector_add(a : DshashhopscotchVector, b : DshashhopscotchVector) -> DshashhopscotchVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_hash_hopscotch_vector_sub(a : DshashhopscotchVector, b : DshashhopscotchVector) -> DshashhopscotchVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_hash_hopscotch_vector_scale(v : DshashhopscotchVector, s : Double) -> DshashhopscotchVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_hash_hopscotch_vector_dot(a : DshashhopscotchVector, b : DshashhopscotchVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_hash_hopscotch_frame_get(s : DshashhopscotchFrame, i : Int) -> Double 
 }
 
 pub fn ds_hash_hopscotch_frame_set(s : DshashhopscotchFrame, i : Int, v : Double) -> DshashhopscotchFrame {
-  let result = ds_hash_hopscotch_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_hopscotch_frame_sum(s : DshashhopscotchFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_hash_hopscotch_table_get(s : DshashhopscotchTable, i : Int) -> Double 
 }
 
 pub fn ds_hash_hopscotch_table_set(s : DshashhopscotchTable, i : Int, v : Double) -> DshashhopscotchTable {
-  let result = ds_hash_hopscotch_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_hopscotch_table_sum(s : DshashhopscotchTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_hash_hopscotch_graphn_get(s : DshashhopscotchGraphN, i : Int) -> Doubl
 }
 
 pub fn ds_hash_hopscotch_graphn_set(s : DshashhopscotchGraphN, i : Int, v : Double) -> DshashhopscotchGraphN {
-  let result = ds_hash_hopscotch_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_hopscotch_graphn_sum(s : DshashhopscotchGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_hash_hopscotch_node_get(s : DshashhopscotchNode, i : Int) -> Double {
 }
 
 pub fn ds_hash_hopscotch_node_set(s : DshashhopscotchNode, i : Int, v : Double) -> DshashhopscotchNode {
-  let result = ds_hash_hopscotch_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_hopscotch_node_sum(s : DshashhopscotchNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_hash_hopscotch_edge_get(s : DshashhopscotchEdge, i : Int) -> Double {
 }
 
 pub fn ds_hash_hopscotch_edge_set(s : DshashhopscotchEdge, i : Int, v : Double) -> DshashhopscotchEdge {
-  let result = ds_hash_hopscotch_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_hopscotch_edge_sum(s : DshashhopscotchEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_hash_hopscotch_path_get(s : DshashhopscotchPath, i : Int) -> Double {
 }
 
 pub fn ds_hash_hopscotch_path_set(s : DshashhopscotchPath, i : Int, v : Double) -> DshashhopscotchPath {
-  let result = ds_hash_hopscotch_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_hopscotch_path_sum(s : DshashhopscotchPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_hash_hopscotch_cluster_get(s : DshashhopscotchCluster, i : Int) -> Dou
 }
 
 pub fn ds_hash_hopscotch_cluster_set(s : DshashhopscotchCluster, i : Int, v : Double) -> DshashhopscotchCluster {
-  let result = ds_hash_hopscotch_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_hopscotch_cluster_sum(s : DshashhopscotchCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_hash_hopscotch_model_get(s : DshashhopscotchModel, i : Int) -> Double 
 }
 
 pub fn ds_hash_hopscotch_model_set(s : DshashhopscotchModel, i : Int, v : Double) -> DshashhopscotchModel {
-  let result = ds_hash_hopscotch_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_hopscotch_model_sum(s : DshashhopscotchModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_hash_hopscotch_layer_get(s : DshashhopscotchLayer, i : Int) -> Double 
 }
 
 pub fn ds_hash_hopscotch_layer_set(s : DshashhopscotchLayer, i : Int, v : Double) -> DshashhopscotchLayer {
-  let result = ds_hash_hopscotch_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_hopscotch_layer_sum(s : DshashhopscotchLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_hash_hopscotch_buffer_get(s : DshashhopscotchBuffer, i : Int) -> Doubl
 }
 
 pub fn ds_hash_hopscotch_buffer_set(s : DshashhopscotchBuffer, i : Int, v : Double) -> DshashhopscotchBuffer {
-  let result = ds_hash_hopscotch_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_hopscotch_buffer_sum(s : DshashhopscotchBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_hash_hopscotch_cursor_get(s : DshashhopscotchCursor, i : Int) -> Doubl
 }
 
 pub fn ds_hash_hopscotch_cursor_set(s : DshashhopscotchCursor, i : Int, v : Double) -> DshashhopscotchCursor {
-  let result = ds_hash_hopscotch_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_hopscotch_cursor_sum(s : DshashhopscotchCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_hash_hopscotch_view_get(s : DshashhopscotchView, i : Int) -> Double {
 }
 
 pub fn ds_hash_hopscotch_view_set(s : DshashhopscotchView, i : Int, v : Double) -> DshashhopscotchView {
-  let result = ds_hash_hopscotch_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_hopscotch_view_sum(s : DshashhopscotchView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_hash_hopscotch_range_get(s : DshashhopscotchRange, i : Int) -> Double 
 }
 
 pub fn ds_hash_hopscotch_range_set(s : DshashhopscotchRange, i : Int, v : Double) -> DshashhopscotchRange {
-  let result = ds_hash_hopscotch_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_hopscotch_range_sum(s : DshashhopscotchRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_hash_hopscotch_slice_get(s : DshashhopscotchSlice, i : Int) -> Double 
 }
 
 pub fn ds_hash_hopscotch_slice_set(s : DshashhopscotchSlice, i : Int, v : Double) -> DshashhopscotchSlice {
-  let result = ds_hash_hopscotch_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_hopscotch_slice_sum(s : DshashhopscotchSlice) -> Double { @_common.sum(s.data) }

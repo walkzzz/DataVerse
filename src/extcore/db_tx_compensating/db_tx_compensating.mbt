@@ -107,23 +107,15 @@ pub fn db_tx_compensating_series_std(s : DbtxcompensatingSeries) -> Double { @_c
 pub fn db_tx_compensating_series_median(s : DbtxcompensatingSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_tx_compensating_series_scale(s : DbtxcompensatingSeries, f : Double) -> DbtxcompensatingSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_tx_compensating_series_add(a : DbtxcompensatingSeries, b : DbtxcompensatingSeries) -> DbtxcompensatingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_tx_compensating_series_sub(a : DbtxcompensatingSeries, b : DbtxcompensatingSeries) -> DbtxcompensatingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_tx_compensating_series_normalize(s : DbtxcompensatingSeries) -> DbtxcompensatingSeries {
@@ -254,22 +246,16 @@ pub fn db_tx_compensating_vector_zero(dim : Int) -> DbtxcompensatingVector {
 
 pub fn db_tx_compensating_vector_add(a : DbtxcompensatingVector, b : DbtxcompensatingVector) -> DbtxcompensatingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_tx_compensating_vector_sub(a : DbtxcompensatingVector, b : DbtxcompensatingVector) -> DbtxcompensatingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_tx_compensating_vector_scale(v : DbtxcompensatingVector, s : Double) -> DbtxcompensatingVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_tx_compensating_vector_dot(a : DbtxcompensatingVector, b : DbtxcompensatingVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_tx_compensating_frame_get(s : DbtxcompensatingFrame, i : Int) -> Doubl
 }
 
 pub fn db_tx_compensating_frame_set(s : DbtxcompensatingFrame, i : Int, v : Double) -> DbtxcompensatingFrame {
-  let result = db_tx_compensating_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_compensating_frame_sum(s : DbtxcompensatingFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_tx_compensating_table_get(s : DbtxcompensatingTable, i : Int) -> Doubl
 }
 
 pub fn db_tx_compensating_table_set(s : DbtxcompensatingTable, i : Int, v : Double) -> DbtxcompensatingTable {
-  let result = db_tx_compensating_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_compensating_table_sum(s : DbtxcompensatingTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_tx_compensating_graphn_get(s : DbtxcompensatingGraphN, i : Int) -> Dou
 }
 
 pub fn db_tx_compensating_graphn_set(s : DbtxcompensatingGraphN, i : Int, v : Double) -> DbtxcompensatingGraphN {
-  let result = db_tx_compensating_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_compensating_graphn_sum(s : DbtxcompensatingGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_tx_compensating_node_get(s : DbtxcompensatingNode, i : Int) -> Double 
 }
 
 pub fn db_tx_compensating_node_set(s : DbtxcompensatingNode, i : Int, v : Double) -> DbtxcompensatingNode {
-  let result = db_tx_compensating_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_compensating_node_sum(s : DbtxcompensatingNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_tx_compensating_edge_get(s : DbtxcompensatingEdge, i : Int) -> Double 
 }
 
 pub fn db_tx_compensating_edge_set(s : DbtxcompensatingEdge, i : Int, v : Double) -> DbtxcompensatingEdge {
-  let result = db_tx_compensating_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_compensating_edge_sum(s : DbtxcompensatingEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_tx_compensating_path_get(s : DbtxcompensatingPath, i : Int) -> Double 
 }
 
 pub fn db_tx_compensating_path_set(s : DbtxcompensatingPath, i : Int, v : Double) -> DbtxcompensatingPath {
-  let result = db_tx_compensating_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_compensating_path_sum(s : DbtxcompensatingPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_tx_compensating_cluster_get(s : DbtxcompensatingCluster, i : Int) -> D
 }
 
 pub fn db_tx_compensating_cluster_set(s : DbtxcompensatingCluster, i : Int, v : Double) -> DbtxcompensatingCluster {
-  let result = db_tx_compensating_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_compensating_cluster_sum(s : DbtxcompensatingCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_tx_compensating_model_get(s : DbtxcompensatingModel, i : Int) -> Doubl
 }
 
 pub fn db_tx_compensating_model_set(s : DbtxcompensatingModel, i : Int, v : Double) -> DbtxcompensatingModel {
-  let result = db_tx_compensating_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_compensating_model_sum(s : DbtxcompensatingModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_tx_compensating_layer_get(s : DbtxcompensatingLayer, i : Int) -> Doubl
 }
 
 pub fn db_tx_compensating_layer_set(s : DbtxcompensatingLayer, i : Int, v : Double) -> DbtxcompensatingLayer {
-  let result = db_tx_compensating_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_compensating_layer_sum(s : DbtxcompensatingLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_tx_compensating_buffer_get(s : DbtxcompensatingBuffer, i : Int) -> Dou
 }
 
 pub fn db_tx_compensating_buffer_set(s : DbtxcompensatingBuffer, i : Int, v : Double) -> DbtxcompensatingBuffer {
-  let result = db_tx_compensating_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_compensating_buffer_sum(s : DbtxcompensatingBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_tx_compensating_cursor_get(s : DbtxcompensatingCursor, i : Int) -> Dou
 }
 
 pub fn db_tx_compensating_cursor_set(s : DbtxcompensatingCursor, i : Int, v : Double) -> DbtxcompensatingCursor {
-  let result = db_tx_compensating_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_compensating_cursor_sum(s : DbtxcompensatingCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_tx_compensating_view_get(s : DbtxcompensatingView, i : Int) -> Double 
 }
 
 pub fn db_tx_compensating_view_set(s : DbtxcompensatingView, i : Int, v : Double) -> DbtxcompensatingView {
-  let result = db_tx_compensating_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_compensating_view_sum(s : DbtxcompensatingView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_tx_compensating_range_get(s : DbtxcompensatingRange, i : Int) -> Doubl
 }
 
 pub fn db_tx_compensating_range_set(s : DbtxcompensatingRange, i : Int, v : Double) -> DbtxcompensatingRange {
-  let result = db_tx_compensating_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_compensating_range_sum(s : DbtxcompensatingRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_tx_compensating_slice_get(s : DbtxcompensatingSlice, i : Int) -> Doubl
 }
 
 pub fn db_tx_compensating_slice_set(s : DbtxcompensatingSlice, i : Int, v : Double) -> DbtxcompensatingSlice {
-  let result = db_tx_compensating_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_compensating_slice_sum(s : DbtxcompensatingSlice) -> Double { @_common.sum(s.data) }

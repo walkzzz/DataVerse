@@ -107,23 +107,15 @@ pub fn geo_dist_rhumb_series_std(s : GeodistrhumbSeries) -> Double { @_common.st
 pub fn geo_dist_rhumb_series_median(s : GeodistrhumbSeries) -> Double { @_common.median(s.vals) }
 
 pub fn geo_dist_rhumb_series_scale(s : GeodistrhumbSeries, f : Double) -> GeodistrhumbSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn geo_dist_rhumb_series_add(a : GeodistrhumbSeries, b : GeodistrhumbSeries) -> GeodistrhumbSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn geo_dist_rhumb_series_sub(a : GeodistrhumbSeries, b : GeodistrhumbSeries) -> GeodistrhumbSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn geo_dist_rhumb_series_normalize(s : GeodistrhumbSeries) -> GeodistrhumbSeries {
@@ -254,22 +246,16 @@ pub fn geo_dist_rhumb_vector_zero(dim : Int) -> GeodistrhumbVector {
 
 pub fn geo_dist_rhumb_vector_add(a : GeodistrhumbVector, b : GeodistrhumbVector) -> GeodistrhumbVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_dist_rhumb_vector_sub(a : GeodistrhumbVector, b : GeodistrhumbVector) -> GeodistrhumbVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_dist_rhumb_vector_scale(v : GeodistrhumbVector, s : Double) -> GeodistrhumbVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn geo_dist_rhumb_vector_dot(a : GeodistrhumbVector, b : GeodistrhumbVector) -> Double {
@@ -372,10 +358,9 @@ pub fn geo_dist_rhumb_frame_get(s : GeodistrhumbFrame, i : Int) -> Double {
 }
 
 pub fn geo_dist_rhumb_frame_set(s : GeodistrhumbFrame, i : Int, v : Double) -> GeodistrhumbFrame {
-  let result = geo_dist_rhumb_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_rhumb_frame_sum(s : GeodistrhumbFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn geo_dist_rhumb_table_get(s : GeodistrhumbTable, i : Int) -> Double {
 }
 
 pub fn geo_dist_rhumb_table_set(s : GeodistrhumbTable, i : Int, v : Double) -> GeodistrhumbTable {
-  let result = geo_dist_rhumb_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_rhumb_table_sum(s : GeodistrhumbTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn geo_dist_rhumb_graphn_get(s : GeodistrhumbGraphN, i : Int) -> Double {
 }
 
 pub fn geo_dist_rhumb_graphn_set(s : GeodistrhumbGraphN, i : Int, v : Double) -> GeodistrhumbGraphN {
-  let result = geo_dist_rhumb_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_rhumb_graphn_sum(s : GeodistrhumbGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn geo_dist_rhumb_node_get(s : GeodistrhumbNode, i : Int) -> Double {
 }
 
 pub fn geo_dist_rhumb_node_set(s : GeodistrhumbNode, i : Int, v : Double) -> GeodistrhumbNode {
-  let result = geo_dist_rhumb_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_rhumb_node_sum(s : GeodistrhumbNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn geo_dist_rhumb_edge_get(s : GeodistrhumbEdge, i : Int) -> Double {
 }
 
 pub fn geo_dist_rhumb_edge_set(s : GeodistrhumbEdge, i : Int, v : Double) -> GeodistrhumbEdge {
-  let result = geo_dist_rhumb_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_rhumb_edge_sum(s : GeodistrhumbEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn geo_dist_rhumb_path_get(s : GeodistrhumbPath, i : Int) -> Double {
 }
 
 pub fn geo_dist_rhumb_path_set(s : GeodistrhumbPath, i : Int, v : Double) -> GeodistrhumbPath {
-  let result = geo_dist_rhumb_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_rhumb_path_sum(s : GeodistrhumbPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn geo_dist_rhumb_cluster_get(s : GeodistrhumbCluster, i : Int) -> Double {
 }
 
 pub fn geo_dist_rhumb_cluster_set(s : GeodistrhumbCluster, i : Int, v : Double) -> GeodistrhumbCluster {
-  let result = geo_dist_rhumb_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_rhumb_cluster_sum(s : GeodistrhumbCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn geo_dist_rhumb_model_get(s : GeodistrhumbModel, i : Int) -> Double {
 }
 
 pub fn geo_dist_rhumb_model_set(s : GeodistrhumbModel, i : Int, v : Double) -> GeodistrhumbModel {
-  let result = geo_dist_rhumb_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_rhumb_model_sum(s : GeodistrhumbModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn geo_dist_rhumb_layer_get(s : GeodistrhumbLayer, i : Int) -> Double {
 }
 
 pub fn geo_dist_rhumb_layer_set(s : GeodistrhumbLayer, i : Int, v : Double) -> GeodistrhumbLayer {
-  let result = geo_dist_rhumb_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_rhumb_layer_sum(s : GeodistrhumbLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn geo_dist_rhumb_buffer_get(s : GeodistrhumbBuffer, i : Int) -> Double {
 }
 
 pub fn geo_dist_rhumb_buffer_set(s : GeodistrhumbBuffer, i : Int, v : Double) -> GeodistrhumbBuffer {
-  let result = geo_dist_rhumb_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_rhumb_buffer_sum(s : GeodistrhumbBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn geo_dist_rhumb_cursor_get(s : GeodistrhumbCursor, i : Int) -> Double {
 }
 
 pub fn geo_dist_rhumb_cursor_set(s : GeodistrhumbCursor, i : Int, v : Double) -> GeodistrhumbCursor {
-  let result = geo_dist_rhumb_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_rhumb_cursor_sum(s : GeodistrhumbCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn geo_dist_rhumb_view_get(s : GeodistrhumbView, i : Int) -> Double {
 }
 
 pub fn geo_dist_rhumb_view_set(s : GeodistrhumbView, i : Int, v : Double) -> GeodistrhumbView {
-  let result = geo_dist_rhumb_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_rhumb_view_sum(s : GeodistrhumbView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn geo_dist_rhumb_range_get(s : GeodistrhumbRange, i : Int) -> Double {
 }
 
 pub fn geo_dist_rhumb_range_set(s : GeodistrhumbRange, i : Int, v : Double) -> GeodistrhumbRange {
-  let result = geo_dist_rhumb_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_rhumb_range_sum(s : GeodistrhumbRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn geo_dist_rhumb_slice_get(s : GeodistrhumbSlice, i : Int) -> Double {
 }
 
 pub fn geo_dist_rhumb_slice_set(s : GeodistrhumbSlice, i : Int, v : Double) -> GeodistrhumbSlice {
-  let result = geo_dist_rhumb_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_rhumb_slice_sum(s : GeodistrhumbSlice) -> Double { @_common.sum(s.data) }

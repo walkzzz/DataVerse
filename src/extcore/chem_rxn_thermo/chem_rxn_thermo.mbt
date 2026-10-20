@@ -107,23 +107,15 @@ pub fn chem_rxn_thermo_series_std(s : ChemrxnthermoSeries) -> Double { @_common.
 pub fn chem_rxn_thermo_series_median(s : ChemrxnthermoSeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_rxn_thermo_series_scale(s : ChemrxnthermoSeries, f : Double) -> ChemrxnthermoSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn chem_rxn_thermo_series_add(a : ChemrxnthermoSeries, b : ChemrxnthermoSeries) -> ChemrxnthermoSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn chem_rxn_thermo_series_sub(a : ChemrxnthermoSeries, b : ChemrxnthermoSeries) -> ChemrxnthermoSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn chem_rxn_thermo_series_normalize(s : ChemrxnthermoSeries) -> ChemrxnthermoSeries {
@@ -254,22 +246,16 @@ pub fn chem_rxn_thermo_vector_zero(dim : Int) -> ChemrxnthermoVector {
 
 pub fn chem_rxn_thermo_vector_add(a : ChemrxnthermoVector, b : ChemrxnthermoVector) -> ChemrxnthermoVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_rxn_thermo_vector_sub(a : ChemrxnthermoVector, b : ChemrxnthermoVector) -> ChemrxnthermoVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_rxn_thermo_vector_scale(v : ChemrxnthermoVector, s : Double) -> ChemrxnthermoVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn chem_rxn_thermo_vector_dot(a : ChemrxnthermoVector, b : ChemrxnthermoVector) -> Double {
@@ -372,10 +358,9 @@ pub fn chem_rxn_thermo_frame_get(s : ChemrxnthermoFrame, i : Int) -> Double {
 }
 
 pub fn chem_rxn_thermo_frame_set(s : ChemrxnthermoFrame, i : Int, v : Double) -> ChemrxnthermoFrame {
-  let result = chem_rxn_thermo_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_frame_sum(s : ChemrxnthermoFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn chem_rxn_thermo_table_get(s : ChemrxnthermoTable, i : Int) -> Double {
 }
 
 pub fn chem_rxn_thermo_table_set(s : ChemrxnthermoTable, i : Int, v : Double) -> ChemrxnthermoTable {
-  let result = chem_rxn_thermo_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_table_sum(s : ChemrxnthermoTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn chem_rxn_thermo_graphn_get(s : ChemrxnthermoGraphN, i : Int) -> Double {
 }
 
 pub fn chem_rxn_thermo_graphn_set(s : ChemrxnthermoGraphN, i : Int, v : Double) -> ChemrxnthermoGraphN {
-  let result = chem_rxn_thermo_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_graphn_sum(s : ChemrxnthermoGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn chem_rxn_thermo_node_get(s : ChemrxnthermoNode, i : Int) -> Double {
 }
 
 pub fn chem_rxn_thermo_node_set(s : ChemrxnthermoNode, i : Int, v : Double) -> ChemrxnthermoNode {
-  let result = chem_rxn_thermo_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_node_sum(s : ChemrxnthermoNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn chem_rxn_thermo_edge_get(s : ChemrxnthermoEdge, i : Int) -> Double {
 }
 
 pub fn chem_rxn_thermo_edge_set(s : ChemrxnthermoEdge, i : Int, v : Double) -> ChemrxnthermoEdge {
-  let result = chem_rxn_thermo_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_edge_sum(s : ChemrxnthermoEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn chem_rxn_thermo_path_get(s : ChemrxnthermoPath, i : Int) -> Double {
 }
 
 pub fn chem_rxn_thermo_path_set(s : ChemrxnthermoPath, i : Int, v : Double) -> ChemrxnthermoPath {
-  let result = chem_rxn_thermo_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_path_sum(s : ChemrxnthermoPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn chem_rxn_thermo_cluster_get(s : ChemrxnthermoCluster, i : Int) -> Double 
 }
 
 pub fn chem_rxn_thermo_cluster_set(s : ChemrxnthermoCluster, i : Int, v : Double) -> ChemrxnthermoCluster {
-  let result = chem_rxn_thermo_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_cluster_sum(s : ChemrxnthermoCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn chem_rxn_thermo_model_get(s : ChemrxnthermoModel, i : Int) -> Double {
 }
 
 pub fn chem_rxn_thermo_model_set(s : ChemrxnthermoModel, i : Int, v : Double) -> ChemrxnthermoModel {
-  let result = chem_rxn_thermo_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_model_sum(s : ChemrxnthermoModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn chem_rxn_thermo_layer_get(s : ChemrxnthermoLayer, i : Int) -> Double {
 }
 
 pub fn chem_rxn_thermo_layer_set(s : ChemrxnthermoLayer, i : Int, v : Double) -> ChemrxnthermoLayer {
-  let result = chem_rxn_thermo_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_layer_sum(s : ChemrxnthermoLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn chem_rxn_thermo_buffer_get(s : ChemrxnthermoBuffer, i : Int) -> Double {
 }
 
 pub fn chem_rxn_thermo_buffer_set(s : ChemrxnthermoBuffer, i : Int, v : Double) -> ChemrxnthermoBuffer {
-  let result = chem_rxn_thermo_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_buffer_sum(s : ChemrxnthermoBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn chem_rxn_thermo_cursor_get(s : ChemrxnthermoCursor, i : Int) -> Double {
 }
 
 pub fn chem_rxn_thermo_cursor_set(s : ChemrxnthermoCursor, i : Int, v : Double) -> ChemrxnthermoCursor {
-  let result = chem_rxn_thermo_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_cursor_sum(s : ChemrxnthermoCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn chem_rxn_thermo_view_get(s : ChemrxnthermoView, i : Int) -> Double {
 }
 
 pub fn chem_rxn_thermo_view_set(s : ChemrxnthermoView, i : Int, v : Double) -> ChemrxnthermoView {
-  let result = chem_rxn_thermo_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_view_sum(s : ChemrxnthermoView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn chem_rxn_thermo_range_get(s : ChemrxnthermoRange, i : Int) -> Double {
 }
 
 pub fn chem_rxn_thermo_range_set(s : ChemrxnthermoRange, i : Int, v : Double) -> ChemrxnthermoRange {
-  let result = chem_rxn_thermo_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_range_sum(s : ChemrxnthermoRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn chem_rxn_thermo_slice_get(s : ChemrxnthermoSlice, i : Int) -> Double {
 }
 
 pub fn chem_rxn_thermo_slice_set(s : ChemrxnthermoSlice, i : Int, v : Double) -> ChemrxnthermoSlice {
-  let result = chem_rxn_thermo_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_thermo_slice_sum(s : ChemrxnthermoSlice) -> Double { @_common.sum(s.data) }

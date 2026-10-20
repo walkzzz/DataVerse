@@ -107,23 +107,15 @@ pub fn db_tx_3pc_series_std(s : Dbtx3pcSeries) -> Double { @_common.std(s.vals) 
 pub fn db_tx_3pc_series_median(s : Dbtx3pcSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_tx_3pc_series_scale(s : Dbtx3pcSeries, f : Double) -> Dbtx3pcSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_tx_3pc_series_add(a : Dbtx3pcSeries, b : Dbtx3pcSeries) -> Dbtx3pcSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_tx_3pc_series_sub(a : Dbtx3pcSeries, b : Dbtx3pcSeries) -> Dbtx3pcSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_tx_3pc_series_normalize(s : Dbtx3pcSeries) -> Dbtx3pcSeries {
@@ -254,22 +246,16 @@ pub fn db_tx_3pc_vector_zero(dim : Int) -> Dbtx3pcVector {
 
 pub fn db_tx_3pc_vector_add(a : Dbtx3pcVector, b : Dbtx3pcVector) -> Dbtx3pcVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_tx_3pc_vector_sub(a : Dbtx3pcVector, b : Dbtx3pcVector) -> Dbtx3pcVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_tx_3pc_vector_scale(v : Dbtx3pcVector, s : Double) -> Dbtx3pcVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_tx_3pc_vector_dot(a : Dbtx3pcVector, b : Dbtx3pcVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_tx_3pc_frame_get(s : Dbtx3pcFrame, i : Int) -> Double {
 }
 
 pub fn db_tx_3pc_frame_set(s : Dbtx3pcFrame, i : Int, v : Double) -> Dbtx3pcFrame {
-  let result = db_tx_3pc_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_frame_sum(s : Dbtx3pcFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_tx_3pc_table_get(s : Dbtx3pcTable, i : Int) -> Double {
 }
 
 pub fn db_tx_3pc_table_set(s : Dbtx3pcTable, i : Int, v : Double) -> Dbtx3pcTable {
-  let result = db_tx_3pc_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_table_sum(s : Dbtx3pcTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_tx_3pc_graphn_get(s : Dbtx3pcGraphN, i : Int) -> Double {
 }
 
 pub fn db_tx_3pc_graphn_set(s : Dbtx3pcGraphN, i : Int, v : Double) -> Dbtx3pcGraphN {
-  let result = db_tx_3pc_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_graphn_sum(s : Dbtx3pcGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_tx_3pc_node_get(s : Dbtx3pcNode, i : Int) -> Double {
 }
 
 pub fn db_tx_3pc_node_set(s : Dbtx3pcNode, i : Int, v : Double) -> Dbtx3pcNode {
-  let result = db_tx_3pc_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_node_sum(s : Dbtx3pcNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_tx_3pc_edge_get(s : Dbtx3pcEdge, i : Int) -> Double {
 }
 
 pub fn db_tx_3pc_edge_set(s : Dbtx3pcEdge, i : Int, v : Double) -> Dbtx3pcEdge {
-  let result = db_tx_3pc_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_edge_sum(s : Dbtx3pcEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_tx_3pc_path_get(s : Dbtx3pcPath, i : Int) -> Double {
 }
 
 pub fn db_tx_3pc_path_set(s : Dbtx3pcPath, i : Int, v : Double) -> Dbtx3pcPath {
-  let result = db_tx_3pc_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_path_sum(s : Dbtx3pcPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_tx_3pc_cluster_get(s : Dbtx3pcCluster, i : Int) -> Double {
 }
 
 pub fn db_tx_3pc_cluster_set(s : Dbtx3pcCluster, i : Int, v : Double) -> Dbtx3pcCluster {
-  let result = db_tx_3pc_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_cluster_sum(s : Dbtx3pcCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_tx_3pc_model_get(s : Dbtx3pcModel, i : Int) -> Double {
 }
 
 pub fn db_tx_3pc_model_set(s : Dbtx3pcModel, i : Int, v : Double) -> Dbtx3pcModel {
-  let result = db_tx_3pc_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_model_sum(s : Dbtx3pcModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_tx_3pc_layer_get(s : Dbtx3pcLayer, i : Int) -> Double {
 }
 
 pub fn db_tx_3pc_layer_set(s : Dbtx3pcLayer, i : Int, v : Double) -> Dbtx3pcLayer {
-  let result = db_tx_3pc_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_layer_sum(s : Dbtx3pcLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_tx_3pc_buffer_get(s : Dbtx3pcBuffer, i : Int) -> Double {
 }
 
 pub fn db_tx_3pc_buffer_set(s : Dbtx3pcBuffer, i : Int, v : Double) -> Dbtx3pcBuffer {
-  let result = db_tx_3pc_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_buffer_sum(s : Dbtx3pcBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_tx_3pc_cursor_get(s : Dbtx3pcCursor, i : Int) -> Double {
 }
 
 pub fn db_tx_3pc_cursor_set(s : Dbtx3pcCursor, i : Int, v : Double) -> Dbtx3pcCursor {
-  let result = db_tx_3pc_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_cursor_sum(s : Dbtx3pcCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_tx_3pc_view_get(s : Dbtx3pcView, i : Int) -> Double {
 }
 
 pub fn db_tx_3pc_view_set(s : Dbtx3pcView, i : Int, v : Double) -> Dbtx3pcView {
-  let result = db_tx_3pc_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_view_sum(s : Dbtx3pcView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_tx_3pc_range_get(s : Dbtx3pcRange, i : Int) -> Double {
 }
 
 pub fn db_tx_3pc_range_set(s : Dbtx3pcRange, i : Int, v : Double) -> Dbtx3pcRange {
-  let result = db_tx_3pc_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_range_sum(s : Dbtx3pcRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_tx_3pc_slice_get(s : Dbtx3pcSlice, i : Int) -> Double {
 }
 
 pub fn db_tx_3pc_slice_set(s : Dbtx3pcSlice, i : Int, v : Double) -> Dbtx3pcSlice {
-  let result = db_tx_3pc_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_3pc_slice_sum(s : Dbtx3pcSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn graph_flow_stable_marriage_series_std(s : GraphflowstablemarriageSeries) 
 pub fn graph_flow_stable_marriage_series_median(s : GraphflowstablemarriageSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_flow_stable_marriage_series_scale(s : GraphflowstablemarriageSeries, f : Double) -> GraphflowstablemarriageSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_flow_stable_marriage_series_add(a : GraphflowstablemarriageSeries, b : GraphflowstablemarriageSeries) -> GraphflowstablemarriageSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_flow_stable_marriage_series_sub(a : GraphflowstablemarriageSeries, b : GraphflowstablemarriageSeries) -> GraphflowstablemarriageSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_flow_stable_marriage_series_normalize(s : GraphflowstablemarriageSeries) -> GraphflowstablemarriageSeries {
@@ -254,22 +246,16 @@ pub fn graph_flow_stable_marriage_vector_zero(dim : Int) -> Graphflowstablemarri
 
 pub fn graph_flow_stable_marriage_vector_add(a : GraphflowstablemarriageVector, b : GraphflowstablemarriageVector) -> GraphflowstablemarriageVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_flow_stable_marriage_vector_sub(a : GraphflowstablemarriageVector, b : GraphflowstablemarriageVector) -> GraphflowstablemarriageVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_flow_stable_marriage_vector_scale(v : GraphflowstablemarriageVector, s : Double) -> GraphflowstablemarriageVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_flow_stable_marriage_vector_dot(a : GraphflowstablemarriageVector, b : GraphflowstablemarriageVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_flow_stable_marriage_frame_get(s : GraphflowstablemarriageFrame, i 
 }
 
 pub fn graph_flow_stable_marriage_frame_set(s : GraphflowstablemarriageFrame, i : Int, v : Double) -> GraphflowstablemarriageFrame {
-  let result = graph_flow_stable_marriage_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_stable_marriage_frame_sum(s : GraphflowstablemarriageFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_flow_stable_marriage_table_get(s : GraphflowstablemarriageTable, i 
 }
 
 pub fn graph_flow_stable_marriage_table_set(s : GraphflowstablemarriageTable, i : Int, v : Double) -> GraphflowstablemarriageTable {
-  let result = graph_flow_stable_marriage_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_stable_marriage_table_sum(s : GraphflowstablemarriageTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_flow_stable_marriage_graphn_get(s : GraphflowstablemarriageGraphN, 
 }
 
 pub fn graph_flow_stable_marriage_graphn_set(s : GraphflowstablemarriageGraphN, i : Int, v : Double) -> GraphflowstablemarriageGraphN {
-  let result = graph_flow_stable_marriage_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_stable_marriage_graphn_sum(s : GraphflowstablemarriageGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_flow_stable_marriage_node_get(s : GraphflowstablemarriageNode, i : 
 }
 
 pub fn graph_flow_stable_marriage_node_set(s : GraphflowstablemarriageNode, i : Int, v : Double) -> GraphflowstablemarriageNode {
-  let result = graph_flow_stable_marriage_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_stable_marriage_node_sum(s : GraphflowstablemarriageNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_flow_stable_marriage_edge_get(s : GraphflowstablemarriageEdge, i : 
 }
 
 pub fn graph_flow_stable_marriage_edge_set(s : GraphflowstablemarriageEdge, i : Int, v : Double) -> GraphflowstablemarriageEdge {
-  let result = graph_flow_stable_marriage_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_stable_marriage_edge_sum(s : GraphflowstablemarriageEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_flow_stable_marriage_path_get(s : GraphflowstablemarriagePath, i : 
 }
 
 pub fn graph_flow_stable_marriage_path_set(s : GraphflowstablemarriagePath, i : Int, v : Double) -> GraphflowstablemarriagePath {
-  let result = graph_flow_stable_marriage_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_stable_marriage_path_sum(s : GraphflowstablemarriagePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_flow_stable_marriage_cluster_get(s : GraphflowstablemarriageCluster
 }
 
 pub fn graph_flow_stable_marriage_cluster_set(s : GraphflowstablemarriageCluster, i : Int, v : Double) -> GraphflowstablemarriageCluster {
-  let result = graph_flow_stable_marriage_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_stable_marriage_cluster_sum(s : GraphflowstablemarriageCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_flow_stable_marriage_model_get(s : GraphflowstablemarriageModel, i 
 }
 
 pub fn graph_flow_stable_marriage_model_set(s : GraphflowstablemarriageModel, i : Int, v : Double) -> GraphflowstablemarriageModel {
-  let result = graph_flow_stable_marriage_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_stable_marriage_model_sum(s : GraphflowstablemarriageModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_flow_stable_marriage_layer_get(s : GraphflowstablemarriageLayer, i 
 }
 
 pub fn graph_flow_stable_marriage_layer_set(s : GraphflowstablemarriageLayer, i : Int, v : Double) -> GraphflowstablemarriageLayer {
-  let result = graph_flow_stable_marriage_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_stable_marriage_layer_sum(s : GraphflowstablemarriageLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_flow_stable_marriage_buffer_get(s : GraphflowstablemarriageBuffer, 
 }
 
 pub fn graph_flow_stable_marriage_buffer_set(s : GraphflowstablemarriageBuffer, i : Int, v : Double) -> GraphflowstablemarriageBuffer {
-  let result = graph_flow_stable_marriage_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_stable_marriage_buffer_sum(s : GraphflowstablemarriageBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_flow_stable_marriage_cursor_get(s : GraphflowstablemarriageCursor, 
 }
 
 pub fn graph_flow_stable_marriage_cursor_set(s : GraphflowstablemarriageCursor, i : Int, v : Double) -> GraphflowstablemarriageCursor {
-  let result = graph_flow_stable_marriage_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_stable_marriage_cursor_sum(s : GraphflowstablemarriageCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_flow_stable_marriage_view_get(s : GraphflowstablemarriageView, i : 
 }
 
 pub fn graph_flow_stable_marriage_view_set(s : GraphflowstablemarriageView, i : Int, v : Double) -> GraphflowstablemarriageView {
-  let result = graph_flow_stable_marriage_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_stable_marriage_view_sum(s : GraphflowstablemarriageView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_flow_stable_marriage_range_get(s : GraphflowstablemarriageRange, i 
 }
 
 pub fn graph_flow_stable_marriage_range_set(s : GraphflowstablemarriageRange, i : Int, v : Double) -> GraphflowstablemarriageRange {
-  let result = graph_flow_stable_marriage_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_stable_marriage_range_sum(s : GraphflowstablemarriageRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_flow_stable_marriage_slice_get(s : GraphflowstablemarriageSlice, i 
 }
 
 pub fn graph_flow_stable_marriage_slice_set(s : GraphflowstablemarriageSlice, i : Int, v : Double) -> GraphflowstablemarriageSlice {
-  let result = graph_flow_stable_marriage_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_stable_marriage_slice_sum(s : GraphflowstablemarriageSlice) -> Double { @_common.sum(s.data) }

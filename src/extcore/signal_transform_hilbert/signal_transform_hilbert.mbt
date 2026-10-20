@@ -107,23 +107,15 @@ pub fn signal_transform_hilbert_series_std(s : SignaltransformhilbertSeries) -> 
 pub fn signal_transform_hilbert_series_median(s : SignaltransformhilbertSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_transform_hilbert_series_scale(s : SignaltransformhilbertSeries, f : Double) -> SignaltransformhilbertSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_transform_hilbert_series_add(a : SignaltransformhilbertSeries, b : SignaltransformhilbertSeries) -> SignaltransformhilbertSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_transform_hilbert_series_sub(a : SignaltransformhilbertSeries, b : SignaltransformhilbertSeries) -> SignaltransformhilbertSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_transform_hilbert_series_normalize(s : SignaltransformhilbertSeries) -> SignaltransformhilbertSeries {
@@ -254,22 +246,16 @@ pub fn signal_transform_hilbert_vector_zero(dim : Int) -> Signaltransformhilbert
 
 pub fn signal_transform_hilbert_vector_add(a : SignaltransformhilbertVector, b : SignaltransformhilbertVector) -> SignaltransformhilbertVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_transform_hilbert_vector_sub(a : SignaltransformhilbertVector, b : SignaltransformhilbertVector) -> SignaltransformhilbertVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_transform_hilbert_vector_scale(v : SignaltransformhilbertVector, s : Double) -> SignaltransformhilbertVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_transform_hilbert_vector_dot(a : SignaltransformhilbertVector, b : SignaltransformhilbertVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_transform_hilbert_frame_get(s : SignaltransformhilbertFrame, i : I
 }
 
 pub fn signal_transform_hilbert_frame_set(s : SignaltransformhilbertFrame, i : Int, v : Double) -> SignaltransformhilbertFrame {
-  let result = signal_transform_hilbert_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_hilbert_frame_sum(s : SignaltransformhilbertFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_transform_hilbert_table_get(s : SignaltransformhilbertTable, i : I
 }
 
 pub fn signal_transform_hilbert_table_set(s : SignaltransformhilbertTable, i : Int, v : Double) -> SignaltransformhilbertTable {
-  let result = signal_transform_hilbert_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_hilbert_table_sum(s : SignaltransformhilbertTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_transform_hilbert_graphn_get(s : SignaltransformhilbertGraphN, i :
 }
 
 pub fn signal_transform_hilbert_graphn_set(s : SignaltransformhilbertGraphN, i : Int, v : Double) -> SignaltransformhilbertGraphN {
-  let result = signal_transform_hilbert_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_hilbert_graphn_sum(s : SignaltransformhilbertGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_transform_hilbert_node_get(s : SignaltransformhilbertNode, i : Int
 }
 
 pub fn signal_transform_hilbert_node_set(s : SignaltransformhilbertNode, i : Int, v : Double) -> SignaltransformhilbertNode {
-  let result = signal_transform_hilbert_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_hilbert_node_sum(s : SignaltransformhilbertNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_transform_hilbert_edge_get(s : SignaltransformhilbertEdge, i : Int
 }
 
 pub fn signal_transform_hilbert_edge_set(s : SignaltransformhilbertEdge, i : Int, v : Double) -> SignaltransformhilbertEdge {
-  let result = signal_transform_hilbert_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_hilbert_edge_sum(s : SignaltransformhilbertEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_transform_hilbert_path_get(s : SignaltransformhilbertPath, i : Int
 }
 
 pub fn signal_transform_hilbert_path_set(s : SignaltransformhilbertPath, i : Int, v : Double) -> SignaltransformhilbertPath {
-  let result = signal_transform_hilbert_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_hilbert_path_sum(s : SignaltransformhilbertPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_transform_hilbert_cluster_get(s : SignaltransformhilbertCluster, i
 }
 
 pub fn signal_transform_hilbert_cluster_set(s : SignaltransformhilbertCluster, i : Int, v : Double) -> SignaltransformhilbertCluster {
-  let result = signal_transform_hilbert_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_hilbert_cluster_sum(s : SignaltransformhilbertCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_transform_hilbert_model_get(s : SignaltransformhilbertModel, i : I
 }
 
 pub fn signal_transform_hilbert_model_set(s : SignaltransformhilbertModel, i : Int, v : Double) -> SignaltransformhilbertModel {
-  let result = signal_transform_hilbert_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_hilbert_model_sum(s : SignaltransformhilbertModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_transform_hilbert_layer_get(s : SignaltransformhilbertLayer, i : I
 }
 
 pub fn signal_transform_hilbert_layer_set(s : SignaltransformhilbertLayer, i : Int, v : Double) -> SignaltransformhilbertLayer {
-  let result = signal_transform_hilbert_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_hilbert_layer_sum(s : SignaltransformhilbertLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_transform_hilbert_buffer_get(s : SignaltransformhilbertBuffer, i :
 }
 
 pub fn signal_transform_hilbert_buffer_set(s : SignaltransformhilbertBuffer, i : Int, v : Double) -> SignaltransformhilbertBuffer {
-  let result = signal_transform_hilbert_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_hilbert_buffer_sum(s : SignaltransformhilbertBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_transform_hilbert_cursor_get(s : SignaltransformhilbertCursor, i :
 }
 
 pub fn signal_transform_hilbert_cursor_set(s : SignaltransformhilbertCursor, i : Int, v : Double) -> SignaltransformhilbertCursor {
-  let result = signal_transform_hilbert_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_hilbert_cursor_sum(s : SignaltransformhilbertCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_transform_hilbert_view_get(s : SignaltransformhilbertView, i : Int
 }
 
 pub fn signal_transform_hilbert_view_set(s : SignaltransformhilbertView, i : Int, v : Double) -> SignaltransformhilbertView {
-  let result = signal_transform_hilbert_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_hilbert_view_sum(s : SignaltransformhilbertView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_transform_hilbert_range_get(s : SignaltransformhilbertRange, i : I
 }
 
 pub fn signal_transform_hilbert_range_set(s : SignaltransformhilbertRange, i : Int, v : Double) -> SignaltransformhilbertRange {
-  let result = signal_transform_hilbert_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_hilbert_range_sum(s : SignaltransformhilbertRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_transform_hilbert_slice_get(s : SignaltransformhilbertSlice, i : I
 }
 
 pub fn signal_transform_hilbert_slice_set(s : SignaltransformhilbertSlice, i : Int, v : Double) -> SignaltransformhilbertSlice {
-  let result = signal_transform_hilbert_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_hilbert_slice_sum(s : SignaltransformhilbertSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn ml_neural_vae_series_std(s : MlneuralvaeSeries) -> Double { @_common.std(
 pub fn ml_neural_vae_series_median(s : MlneuralvaeSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_neural_vae_series_scale(s : MlneuralvaeSeries, f : Double) -> MlneuralvaeSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_neural_vae_series_add(a : MlneuralvaeSeries, b : MlneuralvaeSeries) -> MlneuralvaeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_neural_vae_series_sub(a : MlneuralvaeSeries, b : MlneuralvaeSeries) -> MlneuralvaeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_neural_vae_series_normalize(s : MlneuralvaeSeries) -> MlneuralvaeSeries {
@@ -254,22 +246,16 @@ pub fn ml_neural_vae_vector_zero(dim : Int) -> MlneuralvaeVector {
 
 pub fn ml_neural_vae_vector_add(a : MlneuralvaeVector, b : MlneuralvaeVector) -> MlneuralvaeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_neural_vae_vector_sub(a : MlneuralvaeVector, b : MlneuralvaeVector) -> MlneuralvaeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_neural_vae_vector_scale(v : MlneuralvaeVector, s : Double) -> MlneuralvaeVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_neural_vae_vector_dot(a : MlneuralvaeVector, b : MlneuralvaeVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_neural_vae_frame_get(s : MlneuralvaeFrame, i : Int) -> Double {
 }
 
 pub fn ml_neural_vae_frame_set(s : MlneuralvaeFrame, i : Int, v : Double) -> MlneuralvaeFrame {
-  let result = ml_neural_vae_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_frame_sum(s : MlneuralvaeFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_neural_vae_table_get(s : MlneuralvaeTable, i : Int) -> Double {
 }
 
 pub fn ml_neural_vae_table_set(s : MlneuralvaeTable, i : Int, v : Double) -> MlneuralvaeTable {
-  let result = ml_neural_vae_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_table_sum(s : MlneuralvaeTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_neural_vae_graphn_get(s : MlneuralvaeGraphN, i : Int) -> Double {
 }
 
 pub fn ml_neural_vae_graphn_set(s : MlneuralvaeGraphN, i : Int, v : Double) -> MlneuralvaeGraphN {
-  let result = ml_neural_vae_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_graphn_sum(s : MlneuralvaeGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_neural_vae_node_get(s : MlneuralvaeNode, i : Int) -> Double {
 }
 
 pub fn ml_neural_vae_node_set(s : MlneuralvaeNode, i : Int, v : Double) -> MlneuralvaeNode {
-  let result = ml_neural_vae_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_node_sum(s : MlneuralvaeNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_neural_vae_edge_get(s : MlneuralvaeEdge, i : Int) -> Double {
 }
 
 pub fn ml_neural_vae_edge_set(s : MlneuralvaeEdge, i : Int, v : Double) -> MlneuralvaeEdge {
-  let result = ml_neural_vae_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_edge_sum(s : MlneuralvaeEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_neural_vae_path_get(s : MlneuralvaePath, i : Int) -> Double {
 }
 
 pub fn ml_neural_vae_path_set(s : MlneuralvaePath, i : Int, v : Double) -> MlneuralvaePath {
-  let result = ml_neural_vae_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_path_sum(s : MlneuralvaePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_neural_vae_cluster_get(s : MlneuralvaeCluster, i : Int) -> Double {
 }
 
 pub fn ml_neural_vae_cluster_set(s : MlneuralvaeCluster, i : Int, v : Double) -> MlneuralvaeCluster {
-  let result = ml_neural_vae_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_cluster_sum(s : MlneuralvaeCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_neural_vae_model_get(s : MlneuralvaeModel, i : Int) -> Double {
 }
 
 pub fn ml_neural_vae_model_set(s : MlneuralvaeModel, i : Int, v : Double) -> MlneuralvaeModel {
-  let result = ml_neural_vae_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_model_sum(s : MlneuralvaeModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_neural_vae_layer_get(s : MlneuralvaeLayer, i : Int) -> Double {
 }
 
 pub fn ml_neural_vae_layer_set(s : MlneuralvaeLayer, i : Int, v : Double) -> MlneuralvaeLayer {
-  let result = ml_neural_vae_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_layer_sum(s : MlneuralvaeLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_neural_vae_buffer_get(s : MlneuralvaeBuffer, i : Int) -> Double {
 }
 
 pub fn ml_neural_vae_buffer_set(s : MlneuralvaeBuffer, i : Int, v : Double) -> MlneuralvaeBuffer {
-  let result = ml_neural_vae_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_buffer_sum(s : MlneuralvaeBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_neural_vae_cursor_get(s : MlneuralvaeCursor, i : Int) -> Double {
 }
 
 pub fn ml_neural_vae_cursor_set(s : MlneuralvaeCursor, i : Int, v : Double) -> MlneuralvaeCursor {
-  let result = ml_neural_vae_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_cursor_sum(s : MlneuralvaeCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_neural_vae_view_get(s : MlneuralvaeView, i : Int) -> Double {
 }
 
 pub fn ml_neural_vae_view_set(s : MlneuralvaeView, i : Int, v : Double) -> MlneuralvaeView {
-  let result = ml_neural_vae_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_view_sum(s : MlneuralvaeView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_neural_vae_range_get(s : MlneuralvaeRange, i : Int) -> Double {
 }
 
 pub fn ml_neural_vae_range_set(s : MlneuralvaeRange, i : Int, v : Double) -> MlneuralvaeRange {
-  let result = ml_neural_vae_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_range_sum(s : MlneuralvaeRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_neural_vae_slice_get(s : MlneuralvaeSlice, i : Int) -> Double {
 }
 
 pub fn ml_neural_vae_slice_set(s : MlneuralvaeSlice, i : Int, v : Double) -> MlneuralvaeSlice {
-  let result = ml_neural_vae_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_vae_slice_sum(s : MlneuralvaeSlice) -> Double { @_common.sum(s.data) }

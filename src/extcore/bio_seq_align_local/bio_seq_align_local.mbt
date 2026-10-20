@@ -107,23 +107,15 @@ pub fn bio_seq_align_local_series_std(s : BioseqalignlocalSeries) -> Double { @_
 pub fn bio_seq_align_local_series_median(s : BioseqalignlocalSeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_seq_align_local_series_scale(s : BioseqalignlocalSeries, f : Double) -> BioseqalignlocalSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_seq_align_local_series_add(a : BioseqalignlocalSeries, b : BioseqalignlocalSeries) -> BioseqalignlocalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_align_local_series_sub(a : BioseqalignlocalSeries, b : BioseqalignlocalSeries) -> BioseqalignlocalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_align_local_series_normalize(s : BioseqalignlocalSeries) -> BioseqalignlocalSeries {
@@ -254,22 +246,16 @@ pub fn bio_seq_align_local_vector_zero(dim : Int) -> BioseqalignlocalVector {
 
 pub fn bio_seq_align_local_vector_add(a : BioseqalignlocalVector, b : BioseqalignlocalVector) -> BioseqalignlocalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_align_local_vector_sub(a : BioseqalignlocalVector, b : BioseqalignlocalVector) -> BioseqalignlocalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_align_local_vector_scale(v : BioseqalignlocalVector, s : Double) -> BioseqalignlocalVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_seq_align_local_vector_dot(a : BioseqalignlocalVector, b : BioseqalignlocalVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_seq_align_local_frame_get(s : BioseqalignlocalFrame, i : Int) -> Doub
 }
 
 pub fn bio_seq_align_local_frame_set(s : BioseqalignlocalFrame, i : Int, v : Double) -> BioseqalignlocalFrame {
-  let result = bio_seq_align_local_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_local_frame_sum(s : BioseqalignlocalFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_seq_align_local_table_get(s : BioseqalignlocalTable, i : Int) -> Doub
 }
 
 pub fn bio_seq_align_local_table_set(s : BioseqalignlocalTable, i : Int, v : Double) -> BioseqalignlocalTable {
-  let result = bio_seq_align_local_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_local_table_sum(s : BioseqalignlocalTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_seq_align_local_graphn_get(s : BioseqalignlocalGraphN, i : Int) -> Do
 }
 
 pub fn bio_seq_align_local_graphn_set(s : BioseqalignlocalGraphN, i : Int, v : Double) -> BioseqalignlocalGraphN {
-  let result = bio_seq_align_local_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_local_graphn_sum(s : BioseqalignlocalGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_seq_align_local_node_get(s : BioseqalignlocalNode, i : Int) -> Double
 }
 
 pub fn bio_seq_align_local_node_set(s : BioseqalignlocalNode, i : Int, v : Double) -> BioseqalignlocalNode {
-  let result = bio_seq_align_local_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_local_node_sum(s : BioseqalignlocalNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_seq_align_local_edge_get(s : BioseqalignlocalEdge, i : Int) -> Double
 }
 
 pub fn bio_seq_align_local_edge_set(s : BioseqalignlocalEdge, i : Int, v : Double) -> BioseqalignlocalEdge {
-  let result = bio_seq_align_local_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_local_edge_sum(s : BioseqalignlocalEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_seq_align_local_path_get(s : BioseqalignlocalPath, i : Int) -> Double
 }
 
 pub fn bio_seq_align_local_path_set(s : BioseqalignlocalPath, i : Int, v : Double) -> BioseqalignlocalPath {
-  let result = bio_seq_align_local_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_local_path_sum(s : BioseqalignlocalPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_seq_align_local_cluster_get(s : BioseqalignlocalCluster, i : Int) -> 
 }
 
 pub fn bio_seq_align_local_cluster_set(s : BioseqalignlocalCluster, i : Int, v : Double) -> BioseqalignlocalCluster {
-  let result = bio_seq_align_local_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_local_cluster_sum(s : BioseqalignlocalCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_seq_align_local_model_get(s : BioseqalignlocalModel, i : Int) -> Doub
 }
 
 pub fn bio_seq_align_local_model_set(s : BioseqalignlocalModel, i : Int, v : Double) -> BioseqalignlocalModel {
-  let result = bio_seq_align_local_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_local_model_sum(s : BioseqalignlocalModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_seq_align_local_layer_get(s : BioseqalignlocalLayer, i : Int) -> Doub
 }
 
 pub fn bio_seq_align_local_layer_set(s : BioseqalignlocalLayer, i : Int, v : Double) -> BioseqalignlocalLayer {
-  let result = bio_seq_align_local_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_local_layer_sum(s : BioseqalignlocalLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_seq_align_local_buffer_get(s : BioseqalignlocalBuffer, i : Int) -> Do
 }
 
 pub fn bio_seq_align_local_buffer_set(s : BioseqalignlocalBuffer, i : Int, v : Double) -> BioseqalignlocalBuffer {
-  let result = bio_seq_align_local_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_local_buffer_sum(s : BioseqalignlocalBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_seq_align_local_cursor_get(s : BioseqalignlocalCursor, i : Int) -> Do
 }
 
 pub fn bio_seq_align_local_cursor_set(s : BioseqalignlocalCursor, i : Int, v : Double) -> BioseqalignlocalCursor {
-  let result = bio_seq_align_local_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_local_cursor_sum(s : BioseqalignlocalCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_seq_align_local_view_get(s : BioseqalignlocalView, i : Int) -> Double
 }
 
 pub fn bio_seq_align_local_view_set(s : BioseqalignlocalView, i : Int, v : Double) -> BioseqalignlocalView {
-  let result = bio_seq_align_local_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_local_view_sum(s : BioseqalignlocalView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_seq_align_local_range_get(s : BioseqalignlocalRange, i : Int) -> Doub
 }
 
 pub fn bio_seq_align_local_range_set(s : BioseqalignlocalRange, i : Int, v : Double) -> BioseqalignlocalRange {
-  let result = bio_seq_align_local_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_local_range_sum(s : BioseqalignlocalRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_seq_align_local_slice_get(s : BioseqalignlocalSlice, i : Int) -> Doub
 }
 
 pub fn bio_seq_align_local_slice_set(s : BioseqalignlocalSlice, i : Int, v : Double) -> BioseqalignlocalSlice {
-  let result = bio_seq_align_local_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_local_slice_sum(s : BioseqalignlocalSlice) -> Double { @_common.sum(s.data) }

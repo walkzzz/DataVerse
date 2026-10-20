@@ -107,23 +107,15 @@ pub fn geo_proj_stereographic_series_std(s : GeoprojstereographicSeries) -> Doub
 pub fn geo_proj_stereographic_series_median(s : GeoprojstereographicSeries) -> Double { @_common.median(s.vals) }
 
 pub fn geo_proj_stereographic_series_scale(s : GeoprojstereographicSeries, f : Double) -> GeoprojstereographicSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn geo_proj_stereographic_series_add(a : GeoprojstereographicSeries, b : GeoprojstereographicSeries) -> GeoprojstereographicSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn geo_proj_stereographic_series_sub(a : GeoprojstereographicSeries, b : GeoprojstereographicSeries) -> GeoprojstereographicSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn geo_proj_stereographic_series_normalize(s : GeoprojstereographicSeries) -> GeoprojstereographicSeries {
@@ -254,22 +246,16 @@ pub fn geo_proj_stereographic_vector_zero(dim : Int) -> GeoprojstereographicVect
 
 pub fn geo_proj_stereographic_vector_add(a : GeoprojstereographicVector, b : GeoprojstereographicVector) -> GeoprojstereographicVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_proj_stereographic_vector_sub(a : GeoprojstereographicVector, b : GeoprojstereographicVector) -> GeoprojstereographicVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_proj_stereographic_vector_scale(v : GeoprojstereographicVector, s : Double) -> GeoprojstereographicVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn geo_proj_stereographic_vector_dot(a : GeoprojstereographicVector, b : GeoprojstereographicVector) -> Double {
@@ -372,10 +358,9 @@ pub fn geo_proj_stereographic_frame_get(s : GeoprojstereographicFrame, i : Int) 
 }
 
 pub fn geo_proj_stereographic_frame_set(s : GeoprojstereographicFrame, i : Int, v : Double) -> GeoprojstereographicFrame {
-  let result = geo_proj_stereographic_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_stereographic_frame_sum(s : GeoprojstereographicFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn geo_proj_stereographic_table_get(s : GeoprojstereographicTable, i : Int) 
 }
 
 pub fn geo_proj_stereographic_table_set(s : GeoprojstereographicTable, i : Int, v : Double) -> GeoprojstereographicTable {
-  let result = geo_proj_stereographic_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_stereographic_table_sum(s : GeoprojstereographicTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn geo_proj_stereographic_graphn_get(s : GeoprojstereographicGraphN, i : Int
 }
 
 pub fn geo_proj_stereographic_graphn_set(s : GeoprojstereographicGraphN, i : Int, v : Double) -> GeoprojstereographicGraphN {
-  let result = geo_proj_stereographic_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_stereographic_graphn_sum(s : GeoprojstereographicGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn geo_proj_stereographic_node_get(s : GeoprojstereographicNode, i : Int) ->
 }
 
 pub fn geo_proj_stereographic_node_set(s : GeoprojstereographicNode, i : Int, v : Double) -> GeoprojstereographicNode {
-  let result = geo_proj_stereographic_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_stereographic_node_sum(s : GeoprojstereographicNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn geo_proj_stereographic_edge_get(s : GeoprojstereographicEdge, i : Int) ->
 }
 
 pub fn geo_proj_stereographic_edge_set(s : GeoprojstereographicEdge, i : Int, v : Double) -> GeoprojstereographicEdge {
-  let result = geo_proj_stereographic_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_stereographic_edge_sum(s : GeoprojstereographicEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn geo_proj_stereographic_path_get(s : GeoprojstereographicPath, i : Int) ->
 }
 
 pub fn geo_proj_stereographic_path_set(s : GeoprojstereographicPath, i : Int, v : Double) -> GeoprojstereographicPath {
-  let result = geo_proj_stereographic_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_stereographic_path_sum(s : GeoprojstereographicPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn geo_proj_stereographic_cluster_get(s : GeoprojstereographicCluster, i : I
 }
 
 pub fn geo_proj_stereographic_cluster_set(s : GeoprojstereographicCluster, i : Int, v : Double) -> GeoprojstereographicCluster {
-  let result = geo_proj_stereographic_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_stereographic_cluster_sum(s : GeoprojstereographicCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn geo_proj_stereographic_model_get(s : GeoprojstereographicModel, i : Int) 
 }
 
 pub fn geo_proj_stereographic_model_set(s : GeoprojstereographicModel, i : Int, v : Double) -> GeoprojstereographicModel {
-  let result = geo_proj_stereographic_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_stereographic_model_sum(s : GeoprojstereographicModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn geo_proj_stereographic_layer_get(s : GeoprojstereographicLayer, i : Int) 
 }
 
 pub fn geo_proj_stereographic_layer_set(s : GeoprojstereographicLayer, i : Int, v : Double) -> GeoprojstereographicLayer {
-  let result = geo_proj_stereographic_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_stereographic_layer_sum(s : GeoprojstereographicLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn geo_proj_stereographic_buffer_get(s : GeoprojstereographicBuffer, i : Int
 }
 
 pub fn geo_proj_stereographic_buffer_set(s : GeoprojstereographicBuffer, i : Int, v : Double) -> GeoprojstereographicBuffer {
-  let result = geo_proj_stereographic_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_stereographic_buffer_sum(s : GeoprojstereographicBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn geo_proj_stereographic_cursor_get(s : GeoprojstereographicCursor, i : Int
 }
 
 pub fn geo_proj_stereographic_cursor_set(s : GeoprojstereographicCursor, i : Int, v : Double) -> GeoprojstereographicCursor {
-  let result = geo_proj_stereographic_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_stereographic_cursor_sum(s : GeoprojstereographicCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn geo_proj_stereographic_view_get(s : GeoprojstereographicView, i : Int) ->
 }
 
 pub fn geo_proj_stereographic_view_set(s : GeoprojstereographicView, i : Int, v : Double) -> GeoprojstereographicView {
-  let result = geo_proj_stereographic_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_stereographic_view_sum(s : GeoprojstereographicView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn geo_proj_stereographic_range_get(s : GeoprojstereographicRange, i : Int) 
 }
 
 pub fn geo_proj_stereographic_range_set(s : GeoprojstereographicRange, i : Int, v : Double) -> GeoprojstereographicRange {
-  let result = geo_proj_stereographic_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_stereographic_range_sum(s : GeoprojstereographicRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn geo_proj_stereographic_slice_get(s : GeoprojstereographicSlice, i : Int) 
 }
 
 pub fn geo_proj_stereographic_slice_set(s : GeoprojstereographicSlice, i : Int, v : Double) -> GeoprojstereographicSlice {
-  let result = geo_proj_stereographic_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_stereographic_slice_sum(s : GeoprojstereographicSlice) -> Double { @_common.sum(s.data) }

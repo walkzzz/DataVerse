@@ -107,23 +107,15 @@ pub fn db_query_filter_series_std(s : DbqueryfilterSeries) -> Double { @_common.
 pub fn db_query_filter_series_median(s : DbqueryfilterSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_query_filter_series_scale(s : DbqueryfilterSeries, f : Double) -> DbqueryfilterSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_query_filter_series_add(a : DbqueryfilterSeries, b : DbqueryfilterSeries) -> DbqueryfilterSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_query_filter_series_sub(a : DbqueryfilterSeries, b : DbqueryfilterSeries) -> DbqueryfilterSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_query_filter_series_normalize(s : DbqueryfilterSeries) -> DbqueryfilterSeries {
@@ -254,22 +246,16 @@ pub fn db_query_filter_vector_zero(dim : Int) -> DbqueryfilterVector {
 
 pub fn db_query_filter_vector_add(a : DbqueryfilterVector, b : DbqueryfilterVector) -> DbqueryfilterVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_query_filter_vector_sub(a : DbqueryfilterVector, b : DbqueryfilterVector) -> DbqueryfilterVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_query_filter_vector_scale(v : DbqueryfilterVector, s : Double) -> DbqueryfilterVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_query_filter_vector_dot(a : DbqueryfilterVector, b : DbqueryfilterVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_query_filter_frame_get(s : DbqueryfilterFrame, i : Int) -> Double {
 }
 
 pub fn db_query_filter_frame_set(s : DbqueryfilterFrame, i : Int, v : Double) -> DbqueryfilterFrame {
-  let result = db_query_filter_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_frame_sum(s : DbqueryfilterFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_query_filter_table_get(s : DbqueryfilterTable, i : Int) -> Double {
 }
 
 pub fn db_query_filter_table_set(s : DbqueryfilterTable, i : Int, v : Double) -> DbqueryfilterTable {
-  let result = db_query_filter_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_table_sum(s : DbqueryfilterTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_query_filter_graphn_get(s : DbqueryfilterGraphN, i : Int) -> Double {
 }
 
 pub fn db_query_filter_graphn_set(s : DbqueryfilterGraphN, i : Int, v : Double) -> DbqueryfilterGraphN {
-  let result = db_query_filter_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_graphn_sum(s : DbqueryfilterGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_query_filter_node_get(s : DbqueryfilterNode, i : Int) -> Double {
 }
 
 pub fn db_query_filter_node_set(s : DbqueryfilterNode, i : Int, v : Double) -> DbqueryfilterNode {
-  let result = db_query_filter_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_node_sum(s : DbqueryfilterNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_query_filter_edge_get(s : DbqueryfilterEdge, i : Int) -> Double {
 }
 
 pub fn db_query_filter_edge_set(s : DbqueryfilterEdge, i : Int, v : Double) -> DbqueryfilterEdge {
-  let result = db_query_filter_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_edge_sum(s : DbqueryfilterEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_query_filter_path_get(s : DbqueryfilterPath, i : Int) -> Double {
 }
 
 pub fn db_query_filter_path_set(s : DbqueryfilterPath, i : Int, v : Double) -> DbqueryfilterPath {
-  let result = db_query_filter_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_path_sum(s : DbqueryfilterPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_query_filter_cluster_get(s : DbqueryfilterCluster, i : Int) -> Double 
 }
 
 pub fn db_query_filter_cluster_set(s : DbqueryfilterCluster, i : Int, v : Double) -> DbqueryfilterCluster {
-  let result = db_query_filter_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_cluster_sum(s : DbqueryfilterCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_query_filter_model_get(s : DbqueryfilterModel, i : Int) -> Double {
 }
 
 pub fn db_query_filter_model_set(s : DbqueryfilterModel, i : Int, v : Double) -> DbqueryfilterModel {
-  let result = db_query_filter_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_model_sum(s : DbqueryfilterModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_query_filter_layer_get(s : DbqueryfilterLayer, i : Int) -> Double {
 }
 
 pub fn db_query_filter_layer_set(s : DbqueryfilterLayer, i : Int, v : Double) -> DbqueryfilterLayer {
-  let result = db_query_filter_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_layer_sum(s : DbqueryfilterLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_query_filter_buffer_get(s : DbqueryfilterBuffer, i : Int) -> Double {
 }
 
 pub fn db_query_filter_buffer_set(s : DbqueryfilterBuffer, i : Int, v : Double) -> DbqueryfilterBuffer {
-  let result = db_query_filter_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_buffer_sum(s : DbqueryfilterBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_query_filter_cursor_get(s : DbqueryfilterCursor, i : Int) -> Double {
 }
 
 pub fn db_query_filter_cursor_set(s : DbqueryfilterCursor, i : Int, v : Double) -> DbqueryfilterCursor {
-  let result = db_query_filter_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_cursor_sum(s : DbqueryfilterCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_query_filter_view_get(s : DbqueryfilterView, i : Int) -> Double {
 }
 
 pub fn db_query_filter_view_set(s : DbqueryfilterView, i : Int, v : Double) -> DbqueryfilterView {
-  let result = db_query_filter_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_view_sum(s : DbqueryfilterView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_query_filter_range_get(s : DbqueryfilterRange, i : Int) -> Double {
 }
 
 pub fn db_query_filter_range_set(s : DbqueryfilterRange, i : Int, v : Double) -> DbqueryfilterRange {
-  let result = db_query_filter_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_range_sum(s : DbqueryfilterRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_query_filter_slice_get(s : DbqueryfilterSlice, i : Int) -> Double {
 }
 
 pub fn db_query_filter_slice_set(s : DbqueryfilterSlice, i : Int, v : Double) -> DbqueryfilterSlice {
-  let result = db_query_filter_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_filter_slice_sum(s : DbqueryfilterSlice) -> Double { @_common.sum(s.data) }

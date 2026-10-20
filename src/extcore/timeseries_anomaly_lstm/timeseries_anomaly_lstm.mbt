@@ -107,23 +107,15 @@ pub fn timeseries_anomaly_lstm_series_std(s : TimeseriesanomalylstmSeries) -> Do
 pub fn timeseries_anomaly_lstm_series_median(s : TimeseriesanomalylstmSeries) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_anomaly_lstm_series_scale(s : TimeseriesanomalylstmSeries, f : Double) -> TimeseriesanomalylstmSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn timeseries_anomaly_lstm_series_add(a : TimeseriesanomalylstmSeries, b : TimeseriesanomalylstmSeries) -> TimeseriesanomalylstmSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_anomaly_lstm_series_sub(a : TimeseriesanomalylstmSeries, b : TimeseriesanomalylstmSeries) -> TimeseriesanomalylstmSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_anomaly_lstm_series_normalize(s : TimeseriesanomalylstmSeries) -> TimeseriesanomalylstmSeries {
@@ -254,22 +246,16 @@ pub fn timeseries_anomaly_lstm_vector_zero(dim : Int) -> TimeseriesanomalylstmVe
 
 pub fn timeseries_anomaly_lstm_vector_add(a : TimeseriesanomalylstmVector, b : TimeseriesanomalylstmVector) -> TimeseriesanomalylstmVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_anomaly_lstm_vector_sub(a : TimeseriesanomalylstmVector, b : TimeseriesanomalylstmVector) -> TimeseriesanomalylstmVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_anomaly_lstm_vector_scale(v : TimeseriesanomalylstmVector, s : Double) -> TimeseriesanomalylstmVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn timeseries_anomaly_lstm_vector_dot(a : TimeseriesanomalylstmVector, b : TimeseriesanomalylstmVector) -> Double {
@@ -372,10 +358,9 @@ pub fn timeseries_anomaly_lstm_frame_get(s : TimeseriesanomalylstmFrame, i : Int
 }
 
 pub fn timeseries_anomaly_lstm_frame_set(s : TimeseriesanomalylstmFrame, i : Int, v : Double) -> TimeseriesanomalylstmFrame {
-  let result = timeseries_anomaly_lstm_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_lstm_frame_sum(s : TimeseriesanomalylstmFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn timeseries_anomaly_lstm_table_get(s : TimeseriesanomalylstmTable, i : Int
 }
 
 pub fn timeseries_anomaly_lstm_table_set(s : TimeseriesanomalylstmTable, i : Int, v : Double) -> TimeseriesanomalylstmTable {
-  let result = timeseries_anomaly_lstm_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_lstm_table_sum(s : TimeseriesanomalylstmTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn timeseries_anomaly_lstm_graphn_get(s : TimeseriesanomalylstmGraphN, i : I
 }
 
 pub fn timeseries_anomaly_lstm_graphn_set(s : TimeseriesanomalylstmGraphN, i : Int, v : Double) -> TimeseriesanomalylstmGraphN {
-  let result = timeseries_anomaly_lstm_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_lstm_graphn_sum(s : TimeseriesanomalylstmGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn timeseries_anomaly_lstm_node_get(s : TimeseriesanomalylstmNode, i : Int) 
 }
 
 pub fn timeseries_anomaly_lstm_node_set(s : TimeseriesanomalylstmNode, i : Int, v : Double) -> TimeseriesanomalylstmNode {
-  let result = timeseries_anomaly_lstm_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_lstm_node_sum(s : TimeseriesanomalylstmNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn timeseries_anomaly_lstm_edge_get(s : TimeseriesanomalylstmEdge, i : Int) 
 }
 
 pub fn timeseries_anomaly_lstm_edge_set(s : TimeseriesanomalylstmEdge, i : Int, v : Double) -> TimeseriesanomalylstmEdge {
-  let result = timeseries_anomaly_lstm_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_lstm_edge_sum(s : TimeseriesanomalylstmEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn timeseries_anomaly_lstm_path_get(s : TimeseriesanomalylstmPath, i : Int) 
 }
 
 pub fn timeseries_anomaly_lstm_path_set(s : TimeseriesanomalylstmPath, i : Int, v : Double) -> TimeseriesanomalylstmPath {
-  let result = timeseries_anomaly_lstm_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_lstm_path_sum(s : TimeseriesanomalylstmPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn timeseries_anomaly_lstm_cluster_get(s : TimeseriesanomalylstmCluster, i :
 }
 
 pub fn timeseries_anomaly_lstm_cluster_set(s : TimeseriesanomalylstmCluster, i : Int, v : Double) -> TimeseriesanomalylstmCluster {
-  let result = timeseries_anomaly_lstm_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_lstm_cluster_sum(s : TimeseriesanomalylstmCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn timeseries_anomaly_lstm_model_get(s : TimeseriesanomalylstmModel, i : Int
 }
 
 pub fn timeseries_anomaly_lstm_model_set(s : TimeseriesanomalylstmModel, i : Int, v : Double) -> TimeseriesanomalylstmModel {
-  let result = timeseries_anomaly_lstm_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_lstm_model_sum(s : TimeseriesanomalylstmModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn timeseries_anomaly_lstm_layer_get(s : TimeseriesanomalylstmLayer, i : Int
 }
 
 pub fn timeseries_anomaly_lstm_layer_set(s : TimeseriesanomalylstmLayer, i : Int, v : Double) -> TimeseriesanomalylstmLayer {
-  let result = timeseries_anomaly_lstm_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_lstm_layer_sum(s : TimeseriesanomalylstmLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn timeseries_anomaly_lstm_buffer_get(s : TimeseriesanomalylstmBuffer, i : I
 }
 
 pub fn timeseries_anomaly_lstm_buffer_set(s : TimeseriesanomalylstmBuffer, i : Int, v : Double) -> TimeseriesanomalylstmBuffer {
-  let result = timeseries_anomaly_lstm_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_lstm_buffer_sum(s : TimeseriesanomalylstmBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn timeseries_anomaly_lstm_cursor_get(s : TimeseriesanomalylstmCursor, i : I
 }
 
 pub fn timeseries_anomaly_lstm_cursor_set(s : TimeseriesanomalylstmCursor, i : Int, v : Double) -> TimeseriesanomalylstmCursor {
-  let result = timeseries_anomaly_lstm_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_lstm_cursor_sum(s : TimeseriesanomalylstmCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn timeseries_anomaly_lstm_view_get(s : TimeseriesanomalylstmView, i : Int) 
 }
 
 pub fn timeseries_anomaly_lstm_view_set(s : TimeseriesanomalylstmView, i : Int, v : Double) -> TimeseriesanomalylstmView {
-  let result = timeseries_anomaly_lstm_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_lstm_view_sum(s : TimeseriesanomalylstmView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn timeseries_anomaly_lstm_range_get(s : TimeseriesanomalylstmRange, i : Int
 }
 
 pub fn timeseries_anomaly_lstm_range_set(s : TimeseriesanomalylstmRange, i : Int, v : Double) -> TimeseriesanomalylstmRange {
-  let result = timeseries_anomaly_lstm_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_lstm_range_sum(s : TimeseriesanomalylstmRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn timeseries_anomaly_lstm_slice_get(s : TimeseriesanomalylstmSlice, i : Int
 }
 
 pub fn timeseries_anomaly_lstm_slice_set(s : TimeseriesanomalylstmSlice, i : Int, v : Double) -> TimeseriesanomalylstmSlice {
-  let result = timeseries_anomaly_lstm_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_lstm_slice_sum(s : TimeseriesanomalylstmSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn math_pde_solver_series_std(s : MathpdesolverSeries) -> Double { @_common.
 pub fn math_pde_solver_series_median(s : MathpdesolverSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_pde_solver_series_scale(s : MathpdesolverSeries, f : Double) -> MathpdesolverSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_pde_solver_series_add(a : MathpdesolverSeries, b : MathpdesolverSeries) -> MathpdesolverSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_pde_solver_series_sub(a : MathpdesolverSeries, b : MathpdesolverSeries) -> MathpdesolverSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_pde_solver_series_normalize(s : MathpdesolverSeries) -> MathpdesolverSeries {
@@ -254,22 +246,16 @@ pub fn math_pde_solver_vector_zero(dim : Int) -> MathpdesolverVector {
 
 pub fn math_pde_solver_vector_add(a : MathpdesolverVector, b : MathpdesolverVector) -> MathpdesolverVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_pde_solver_vector_sub(a : MathpdesolverVector, b : MathpdesolverVector) -> MathpdesolverVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_pde_solver_vector_scale(v : MathpdesolverVector, s : Double) -> MathpdesolverVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_pde_solver_vector_dot(a : MathpdesolverVector, b : MathpdesolverVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_pde_solver_frame_get(s : MathpdesolverFrame, i : Int) -> Double {
 }
 
 pub fn math_pde_solver_frame_set(s : MathpdesolverFrame, i : Int, v : Double) -> MathpdesolverFrame {
-  let result = math_pde_solver_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_frame_sum(s : MathpdesolverFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_pde_solver_table_get(s : MathpdesolverTable, i : Int) -> Double {
 }
 
 pub fn math_pde_solver_table_set(s : MathpdesolverTable, i : Int, v : Double) -> MathpdesolverTable {
-  let result = math_pde_solver_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_table_sum(s : MathpdesolverTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_pde_solver_graphn_get(s : MathpdesolverGraphN, i : Int) -> Double {
 }
 
 pub fn math_pde_solver_graphn_set(s : MathpdesolverGraphN, i : Int, v : Double) -> MathpdesolverGraphN {
-  let result = math_pde_solver_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_graphn_sum(s : MathpdesolverGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_pde_solver_node_get(s : MathpdesolverNode, i : Int) -> Double {
 }
 
 pub fn math_pde_solver_node_set(s : MathpdesolverNode, i : Int, v : Double) -> MathpdesolverNode {
-  let result = math_pde_solver_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_node_sum(s : MathpdesolverNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_pde_solver_edge_get(s : MathpdesolverEdge, i : Int) -> Double {
 }
 
 pub fn math_pde_solver_edge_set(s : MathpdesolverEdge, i : Int, v : Double) -> MathpdesolverEdge {
-  let result = math_pde_solver_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_edge_sum(s : MathpdesolverEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_pde_solver_path_get(s : MathpdesolverPath, i : Int) -> Double {
 }
 
 pub fn math_pde_solver_path_set(s : MathpdesolverPath, i : Int, v : Double) -> MathpdesolverPath {
-  let result = math_pde_solver_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_path_sum(s : MathpdesolverPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_pde_solver_cluster_get(s : MathpdesolverCluster, i : Int) -> Double 
 }
 
 pub fn math_pde_solver_cluster_set(s : MathpdesolverCluster, i : Int, v : Double) -> MathpdesolverCluster {
-  let result = math_pde_solver_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_cluster_sum(s : MathpdesolverCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_pde_solver_model_get(s : MathpdesolverModel, i : Int) -> Double {
 }
 
 pub fn math_pde_solver_model_set(s : MathpdesolverModel, i : Int, v : Double) -> MathpdesolverModel {
-  let result = math_pde_solver_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_model_sum(s : MathpdesolverModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_pde_solver_layer_get(s : MathpdesolverLayer, i : Int) -> Double {
 }
 
 pub fn math_pde_solver_layer_set(s : MathpdesolverLayer, i : Int, v : Double) -> MathpdesolverLayer {
-  let result = math_pde_solver_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_layer_sum(s : MathpdesolverLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_pde_solver_buffer_get(s : MathpdesolverBuffer, i : Int) -> Double {
 }
 
 pub fn math_pde_solver_buffer_set(s : MathpdesolverBuffer, i : Int, v : Double) -> MathpdesolverBuffer {
-  let result = math_pde_solver_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_buffer_sum(s : MathpdesolverBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_pde_solver_cursor_get(s : MathpdesolverCursor, i : Int) -> Double {
 }
 
 pub fn math_pde_solver_cursor_set(s : MathpdesolverCursor, i : Int, v : Double) -> MathpdesolverCursor {
-  let result = math_pde_solver_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_cursor_sum(s : MathpdesolverCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_pde_solver_view_get(s : MathpdesolverView, i : Int) -> Double {
 }
 
 pub fn math_pde_solver_view_set(s : MathpdesolverView, i : Int, v : Double) -> MathpdesolverView {
-  let result = math_pde_solver_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_view_sum(s : MathpdesolverView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_pde_solver_range_get(s : MathpdesolverRange, i : Int) -> Double {
 }
 
 pub fn math_pde_solver_range_set(s : MathpdesolverRange, i : Int, v : Double) -> MathpdesolverRange {
-  let result = math_pde_solver_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_range_sum(s : MathpdesolverRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_pde_solver_slice_get(s : MathpdesolverSlice, i : Int) -> Double {
 }
 
 pub fn math_pde_solver_slice_set(s : MathpdesolverSlice, i : Int, v : Double) -> MathpdesolverSlice {
-  let result = math_pde_solver_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_pde_solver_slice_sum(s : MathpdesolverSlice) -> Double { @_common.sum(s.data) }

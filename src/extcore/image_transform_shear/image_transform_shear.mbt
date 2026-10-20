@@ -107,23 +107,15 @@ pub fn image_transform_shear_series_std(s : ImagetransformshearSeries) -> Double
 pub fn image_transform_shear_series_median(s : ImagetransformshearSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_transform_shear_series_scale(s : ImagetransformshearSeries, f : Double) -> ImagetransformshearSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_transform_shear_series_add(a : ImagetransformshearSeries, b : ImagetransformshearSeries) -> ImagetransformshearSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_transform_shear_series_sub(a : ImagetransformshearSeries, b : ImagetransformshearSeries) -> ImagetransformshearSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_transform_shear_series_normalize(s : ImagetransformshearSeries) -> ImagetransformshearSeries {
@@ -254,22 +246,16 @@ pub fn image_transform_shear_vector_zero(dim : Int) -> ImagetransformshearVector
 
 pub fn image_transform_shear_vector_add(a : ImagetransformshearVector, b : ImagetransformshearVector) -> ImagetransformshearVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_transform_shear_vector_sub(a : ImagetransformshearVector, b : ImagetransformshearVector) -> ImagetransformshearVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_transform_shear_vector_scale(v : ImagetransformshearVector, s : Double) -> ImagetransformshearVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_transform_shear_vector_dot(a : ImagetransformshearVector, b : ImagetransformshearVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_transform_shear_frame_get(s : ImagetransformshearFrame, i : Int) ->
 }
 
 pub fn image_transform_shear_frame_set(s : ImagetransformshearFrame, i : Int, v : Double) -> ImagetransformshearFrame {
-  let result = image_transform_shear_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_shear_frame_sum(s : ImagetransformshearFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_transform_shear_table_get(s : ImagetransformshearTable, i : Int) ->
 }
 
 pub fn image_transform_shear_table_set(s : ImagetransformshearTable, i : Int, v : Double) -> ImagetransformshearTable {
-  let result = image_transform_shear_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_shear_table_sum(s : ImagetransformshearTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_transform_shear_graphn_get(s : ImagetransformshearGraphN, i : Int) 
 }
 
 pub fn image_transform_shear_graphn_set(s : ImagetransformshearGraphN, i : Int, v : Double) -> ImagetransformshearGraphN {
-  let result = image_transform_shear_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_shear_graphn_sum(s : ImagetransformshearGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_transform_shear_node_get(s : ImagetransformshearNode, i : Int) -> D
 }
 
 pub fn image_transform_shear_node_set(s : ImagetransformshearNode, i : Int, v : Double) -> ImagetransformshearNode {
-  let result = image_transform_shear_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_shear_node_sum(s : ImagetransformshearNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_transform_shear_edge_get(s : ImagetransformshearEdge, i : Int) -> D
 }
 
 pub fn image_transform_shear_edge_set(s : ImagetransformshearEdge, i : Int, v : Double) -> ImagetransformshearEdge {
-  let result = image_transform_shear_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_shear_edge_sum(s : ImagetransformshearEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_transform_shear_path_get(s : ImagetransformshearPath, i : Int) -> D
 }
 
 pub fn image_transform_shear_path_set(s : ImagetransformshearPath, i : Int, v : Double) -> ImagetransformshearPath {
-  let result = image_transform_shear_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_shear_path_sum(s : ImagetransformshearPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_transform_shear_cluster_get(s : ImagetransformshearCluster, i : Int
 }
 
 pub fn image_transform_shear_cluster_set(s : ImagetransformshearCluster, i : Int, v : Double) -> ImagetransformshearCluster {
-  let result = image_transform_shear_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_shear_cluster_sum(s : ImagetransformshearCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_transform_shear_model_get(s : ImagetransformshearModel, i : Int) ->
 }
 
 pub fn image_transform_shear_model_set(s : ImagetransformshearModel, i : Int, v : Double) -> ImagetransformshearModel {
-  let result = image_transform_shear_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_shear_model_sum(s : ImagetransformshearModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_transform_shear_layer_get(s : ImagetransformshearLayer, i : Int) ->
 }
 
 pub fn image_transform_shear_layer_set(s : ImagetransformshearLayer, i : Int, v : Double) -> ImagetransformshearLayer {
-  let result = image_transform_shear_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_shear_layer_sum(s : ImagetransformshearLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_transform_shear_buffer_get(s : ImagetransformshearBuffer, i : Int) 
 }
 
 pub fn image_transform_shear_buffer_set(s : ImagetransformshearBuffer, i : Int, v : Double) -> ImagetransformshearBuffer {
-  let result = image_transform_shear_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_shear_buffer_sum(s : ImagetransformshearBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_transform_shear_cursor_get(s : ImagetransformshearCursor, i : Int) 
 }
 
 pub fn image_transform_shear_cursor_set(s : ImagetransformshearCursor, i : Int, v : Double) -> ImagetransformshearCursor {
-  let result = image_transform_shear_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_shear_cursor_sum(s : ImagetransformshearCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_transform_shear_view_get(s : ImagetransformshearView, i : Int) -> D
 }
 
 pub fn image_transform_shear_view_set(s : ImagetransformshearView, i : Int, v : Double) -> ImagetransformshearView {
-  let result = image_transform_shear_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_shear_view_sum(s : ImagetransformshearView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_transform_shear_range_get(s : ImagetransformshearRange, i : Int) ->
 }
 
 pub fn image_transform_shear_range_set(s : ImagetransformshearRange, i : Int, v : Double) -> ImagetransformshearRange {
-  let result = image_transform_shear_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_shear_range_sum(s : ImagetransformshearRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_transform_shear_slice_get(s : ImagetransformshearSlice, i : Int) ->
 }
 
 pub fn image_transform_shear_slice_set(s : ImagetransformshearSlice, i : Int, v : Double) -> ImagetransformshearSlice {
-  let result = image_transform_shear_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_shear_slice_sum(s : ImagetransformshearSlice) -> Double { @_common.sum(s.data) }

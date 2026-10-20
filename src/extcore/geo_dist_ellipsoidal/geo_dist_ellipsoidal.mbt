@@ -107,23 +107,15 @@ pub fn geo_dist_ellipsoidal_series_std(s : GeodistellipsoidalSeries) -> Double {
 pub fn geo_dist_ellipsoidal_series_median(s : GeodistellipsoidalSeries) -> Double { @_common.median(s.vals) }
 
 pub fn geo_dist_ellipsoidal_series_scale(s : GeodistellipsoidalSeries, f : Double) -> GeodistellipsoidalSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn geo_dist_ellipsoidal_series_add(a : GeodistellipsoidalSeries, b : GeodistellipsoidalSeries) -> GeodistellipsoidalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn geo_dist_ellipsoidal_series_sub(a : GeodistellipsoidalSeries, b : GeodistellipsoidalSeries) -> GeodistellipsoidalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn geo_dist_ellipsoidal_series_normalize(s : GeodistellipsoidalSeries) -> GeodistellipsoidalSeries {
@@ -254,22 +246,16 @@ pub fn geo_dist_ellipsoidal_vector_zero(dim : Int) -> GeodistellipsoidalVector {
 
 pub fn geo_dist_ellipsoidal_vector_add(a : GeodistellipsoidalVector, b : GeodistellipsoidalVector) -> GeodistellipsoidalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_dist_ellipsoidal_vector_sub(a : GeodistellipsoidalVector, b : GeodistellipsoidalVector) -> GeodistellipsoidalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_dist_ellipsoidal_vector_scale(v : GeodistellipsoidalVector, s : Double) -> GeodistellipsoidalVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn geo_dist_ellipsoidal_vector_dot(a : GeodistellipsoidalVector, b : GeodistellipsoidalVector) -> Double {
@@ -372,10 +358,9 @@ pub fn geo_dist_ellipsoidal_frame_get(s : GeodistellipsoidalFrame, i : Int) -> D
 }
 
 pub fn geo_dist_ellipsoidal_frame_set(s : GeodistellipsoidalFrame, i : Int, v : Double) -> GeodistellipsoidalFrame {
-  let result = geo_dist_ellipsoidal_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_ellipsoidal_frame_sum(s : GeodistellipsoidalFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn geo_dist_ellipsoidal_table_get(s : GeodistellipsoidalTable, i : Int) -> D
 }
 
 pub fn geo_dist_ellipsoidal_table_set(s : GeodistellipsoidalTable, i : Int, v : Double) -> GeodistellipsoidalTable {
-  let result = geo_dist_ellipsoidal_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_ellipsoidal_table_sum(s : GeodistellipsoidalTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn geo_dist_ellipsoidal_graphn_get(s : GeodistellipsoidalGraphN, i : Int) ->
 }
 
 pub fn geo_dist_ellipsoidal_graphn_set(s : GeodistellipsoidalGraphN, i : Int, v : Double) -> GeodistellipsoidalGraphN {
-  let result = geo_dist_ellipsoidal_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_ellipsoidal_graphn_sum(s : GeodistellipsoidalGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn geo_dist_ellipsoidal_node_get(s : GeodistellipsoidalNode, i : Int) -> Dou
 }
 
 pub fn geo_dist_ellipsoidal_node_set(s : GeodistellipsoidalNode, i : Int, v : Double) -> GeodistellipsoidalNode {
-  let result = geo_dist_ellipsoidal_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_ellipsoidal_node_sum(s : GeodistellipsoidalNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn geo_dist_ellipsoidal_edge_get(s : GeodistellipsoidalEdge, i : Int) -> Dou
 }
 
 pub fn geo_dist_ellipsoidal_edge_set(s : GeodistellipsoidalEdge, i : Int, v : Double) -> GeodistellipsoidalEdge {
-  let result = geo_dist_ellipsoidal_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_ellipsoidal_edge_sum(s : GeodistellipsoidalEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn geo_dist_ellipsoidal_path_get(s : GeodistellipsoidalPath, i : Int) -> Dou
 }
 
 pub fn geo_dist_ellipsoidal_path_set(s : GeodistellipsoidalPath, i : Int, v : Double) -> GeodistellipsoidalPath {
-  let result = geo_dist_ellipsoidal_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_ellipsoidal_path_sum(s : GeodistellipsoidalPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn geo_dist_ellipsoidal_cluster_get(s : GeodistellipsoidalCluster, i : Int) 
 }
 
 pub fn geo_dist_ellipsoidal_cluster_set(s : GeodistellipsoidalCluster, i : Int, v : Double) -> GeodistellipsoidalCluster {
-  let result = geo_dist_ellipsoidal_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_ellipsoidal_cluster_sum(s : GeodistellipsoidalCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn geo_dist_ellipsoidal_model_get(s : GeodistellipsoidalModel, i : Int) -> D
 }
 
 pub fn geo_dist_ellipsoidal_model_set(s : GeodistellipsoidalModel, i : Int, v : Double) -> GeodistellipsoidalModel {
-  let result = geo_dist_ellipsoidal_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_ellipsoidal_model_sum(s : GeodistellipsoidalModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn geo_dist_ellipsoidal_layer_get(s : GeodistellipsoidalLayer, i : Int) -> D
 }
 
 pub fn geo_dist_ellipsoidal_layer_set(s : GeodistellipsoidalLayer, i : Int, v : Double) -> GeodistellipsoidalLayer {
-  let result = geo_dist_ellipsoidal_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_ellipsoidal_layer_sum(s : GeodistellipsoidalLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn geo_dist_ellipsoidal_buffer_get(s : GeodistellipsoidalBuffer, i : Int) ->
 }
 
 pub fn geo_dist_ellipsoidal_buffer_set(s : GeodistellipsoidalBuffer, i : Int, v : Double) -> GeodistellipsoidalBuffer {
-  let result = geo_dist_ellipsoidal_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_ellipsoidal_buffer_sum(s : GeodistellipsoidalBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn geo_dist_ellipsoidal_cursor_get(s : GeodistellipsoidalCursor, i : Int) ->
 }
 
 pub fn geo_dist_ellipsoidal_cursor_set(s : GeodistellipsoidalCursor, i : Int, v : Double) -> GeodistellipsoidalCursor {
-  let result = geo_dist_ellipsoidal_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_ellipsoidal_cursor_sum(s : GeodistellipsoidalCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn geo_dist_ellipsoidal_view_get(s : GeodistellipsoidalView, i : Int) -> Dou
 }
 
 pub fn geo_dist_ellipsoidal_view_set(s : GeodistellipsoidalView, i : Int, v : Double) -> GeodistellipsoidalView {
-  let result = geo_dist_ellipsoidal_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_ellipsoidal_view_sum(s : GeodistellipsoidalView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn geo_dist_ellipsoidal_range_get(s : GeodistellipsoidalRange, i : Int) -> D
 }
 
 pub fn geo_dist_ellipsoidal_range_set(s : GeodistellipsoidalRange, i : Int, v : Double) -> GeodistellipsoidalRange {
-  let result = geo_dist_ellipsoidal_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_ellipsoidal_range_sum(s : GeodistellipsoidalRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn geo_dist_ellipsoidal_slice_get(s : GeodistellipsoidalSlice, i : Int) -> D
 }
 
 pub fn geo_dist_ellipsoidal_slice_set(s : GeodistellipsoidalSlice, i : Int, v : Double) -> GeodistellipsoidalSlice {
-  let result = geo_dist_ellipsoidal_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_ellipsoidal_slice_sum(s : GeodistellipsoidalSlice) -> Double { @_common.sum(s.data) }

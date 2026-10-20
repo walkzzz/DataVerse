@@ -107,23 +107,15 @@ pub fn math_initial_value_series_std(s : MathinitialvalueSeries) -> Double { @_c
 pub fn math_initial_value_series_median(s : MathinitialvalueSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_initial_value_series_scale(s : MathinitialvalueSeries, f : Double) -> MathinitialvalueSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_initial_value_series_add(a : MathinitialvalueSeries, b : MathinitialvalueSeries) -> MathinitialvalueSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_initial_value_series_sub(a : MathinitialvalueSeries, b : MathinitialvalueSeries) -> MathinitialvalueSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_initial_value_series_normalize(s : MathinitialvalueSeries) -> MathinitialvalueSeries {
@@ -254,22 +246,16 @@ pub fn math_initial_value_vector_zero(dim : Int) -> MathinitialvalueVector {
 
 pub fn math_initial_value_vector_add(a : MathinitialvalueVector, b : MathinitialvalueVector) -> MathinitialvalueVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_initial_value_vector_sub(a : MathinitialvalueVector, b : MathinitialvalueVector) -> MathinitialvalueVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_initial_value_vector_scale(v : MathinitialvalueVector, s : Double) -> MathinitialvalueVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_initial_value_vector_dot(a : MathinitialvalueVector, b : MathinitialvalueVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_initial_value_frame_get(s : MathinitialvalueFrame, i : Int) -> Doubl
 }
 
 pub fn math_initial_value_frame_set(s : MathinitialvalueFrame, i : Int, v : Double) -> MathinitialvalueFrame {
-  let result = math_initial_value_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_initial_value_frame_sum(s : MathinitialvalueFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_initial_value_table_get(s : MathinitialvalueTable, i : Int) -> Doubl
 }
 
 pub fn math_initial_value_table_set(s : MathinitialvalueTable, i : Int, v : Double) -> MathinitialvalueTable {
-  let result = math_initial_value_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_initial_value_table_sum(s : MathinitialvalueTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_initial_value_graphn_get(s : MathinitialvalueGraphN, i : Int) -> Dou
 }
 
 pub fn math_initial_value_graphn_set(s : MathinitialvalueGraphN, i : Int, v : Double) -> MathinitialvalueGraphN {
-  let result = math_initial_value_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_initial_value_graphn_sum(s : MathinitialvalueGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_initial_value_node_get(s : MathinitialvalueNode, i : Int) -> Double 
 }
 
 pub fn math_initial_value_node_set(s : MathinitialvalueNode, i : Int, v : Double) -> MathinitialvalueNode {
-  let result = math_initial_value_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_initial_value_node_sum(s : MathinitialvalueNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_initial_value_edge_get(s : MathinitialvalueEdge, i : Int) -> Double 
 }
 
 pub fn math_initial_value_edge_set(s : MathinitialvalueEdge, i : Int, v : Double) -> MathinitialvalueEdge {
-  let result = math_initial_value_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_initial_value_edge_sum(s : MathinitialvalueEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_initial_value_path_get(s : MathinitialvaluePath, i : Int) -> Double 
 }
 
 pub fn math_initial_value_path_set(s : MathinitialvaluePath, i : Int, v : Double) -> MathinitialvaluePath {
-  let result = math_initial_value_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_initial_value_path_sum(s : MathinitialvaluePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_initial_value_cluster_get(s : MathinitialvalueCluster, i : Int) -> D
 }
 
 pub fn math_initial_value_cluster_set(s : MathinitialvalueCluster, i : Int, v : Double) -> MathinitialvalueCluster {
-  let result = math_initial_value_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_initial_value_cluster_sum(s : MathinitialvalueCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_initial_value_model_get(s : MathinitialvalueModel, i : Int) -> Doubl
 }
 
 pub fn math_initial_value_model_set(s : MathinitialvalueModel, i : Int, v : Double) -> MathinitialvalueModel {
-  let result = math_initial_value_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_initial_value_model_sum(s : MathinitialvalueModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_initial_value_layer_get(s : MathinitialvalueLayer, i : Int) -> Doubl
 }
 
 pub fn math_initial_value_layer_set(s : MathinitialvalueLayer, i : Int, v : Double) -> MathinitialvalueLayer {
-  let result = math_initial_value_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_initial_value_layer_sum(s : MathinitialvalueLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_initial_value_buffer_get(s : MathinitialvalueBuffer, i : Int) -> Dou
 }
 
 pub fn math_initial_value_buffer_set(s : MathinitialvalueBuffer, i : Int, v : Double) -> MathinitialvalueBuffer {
-  let result = math_initial_value_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_initial_value_buffer_sum(s : MathinitialvalueBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_initial_value_cursor_get(s : MathinitialvalueCursor, i : Int) -> Dou
 }
 
 pub fn math_initial_value_cursor_set(s : MathinitialvalueCursor, i : Int, v : Double) -> MathinitialvalueCursor {
-  let result = math_initial_value_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_initial_value_cursor_sum(s : MathinitialvalueCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_initial_value_view_get(s : MathinitialvalueView, i : Int) -> Double 
 }
 
 pub fn math_initial_value_view_set(s : MathinitialvalueView, i : Int, v : Double) -> MathinitialvalueView {
-  let result = math_initial_value_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_initial_value_view_sum(s : MathinitialvalueView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_initial_value_range_get(s : MathinitialvalueRange, i : Int) -> Doubl
 }
 
 pub fn math_initial_value_range_set(s : MathinitialvalueRange, i : Int, v : Double) -> MathinitialvalueRange {
-  let result = math_initial_value_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_initial_value_range_sum(s : MathinitialvalueRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_initial_value_slice_get(s : MathinitialvalueSlice, i : Int) -> Doubl
 }
 
 pub fn math_initial_value_slice_set(s : MathinitialvalueSlice, i : Int, v : Double) -> MathinitialvalueSlice {
-  let result = math_initial_value_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_initial_value_slice_sum(s : MathinitialvalueSlice) -> Double { @_common.sum(s.data) }

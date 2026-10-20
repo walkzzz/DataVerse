@@ -107,23 +107,15 @@ pub fn physics_fluid_stokes_series_std(s : PhysicsfluidstokesSeries) -> Double {
 pub fn physics_fluid_stokes_series_median(s : PhysicsfluidstokesSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_fluid_stokes_series_scale(s : PhysicsfluidstokesSeries, f : Double) -> PhysicsfluidstokesSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_fluid_stokes_series_add(a : PhysicsfluidstokesSeries, b : PhysicsfluidstokesSeries) -> PhysicsfluidstokesSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_fluid_stokes_series_sub(a : PhysicsfluidstokesSeries, b : PhysicsfluidstokesSeries) -> PhysicsfluidstokesSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_fluid_stokes_series_normalize(s : PhysicsfluidstokesSeries) -> PhysicsfluidstokesSeries {
@@ -254,22 +246,16 @@ pub fn physics_fluid_stokes_vector_zero(dim : Int) -> PhysicsfluidstokesVector {
 
 pub fn physics_fluid_stokes_vector_add(a : PhysicsfluidstokesVector, b : PhysicsfluidstokesVector) -> PhysicsfluidstokesVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_fluid_stokes_vector_sub(a : PhysicsfluidstokesVector, b : PhysicsfluidstokesVector) -> PhysicsfluidstokesVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_fluid_stokes_vector_scale(v : PhysicsfluidstokesVector, s : Double) -> PhysicsfluidstokesVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_fluid_stokes_vector_dot(a : PhysicsfluidstokesVector, b : PhysicsfluidstokesVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_fluid_stokes_frame_get(s : PhysicsfluidstokesFrame, i : Int) -> D
 }
 
 pub fn physics_fluid_stokes_frame_set(s : PhysicsfluidstokesFrame, i : Int, v : Double) -> PhysicsfluidstokesFrame {
-  let result = physics_fluid_stokes_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_stokes_frame_sum(s : PhysicsfluidstokesFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_fluid_stokes_table_get(s : PhysicsfluidstokesTable, i : Int) -> D
 }
 
 pub fn physics_fluid_stokes_table_set(s : PhysicsfluidstokesTable, i : Int, v : Double) -> PhysicsfluidstokesTable {
-  let result = physics_fluid_stokes_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_stokes_table_sum(s : PhysicsfluidstokesTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_fluid_stokes_graphn_get(s : PhysicsfluidstokesGraphN, i : Int) ->
 }
 
 pub fn physics_fluid_stokes_graphn_set(s : PhysicsfluidstokesGraphN, i : Int, v : Double) -> PhysicsfluidstokesGraphN {
-  let result = physics_fluid_stokes_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_stokes_graphn_sum(s : PhysicsfluidstokesGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_fluid_stokes_node_get(s : PhysicsfluidstokesNode, i : Int) -> Dou
 }
 
 pub fn physics_fluid_stokes_node_set(s : PhysicsfluidstokesNode, i : Int, v : Double) -> PhysicsfluidstokesNode {
-  let result = physics_fluid_stokes_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_stokes_node_sum(s : PhysicsfluidstokesNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_fluid_stokes_edge_get(s : PhysicsfluidstokesEdge, i : Int) -> Dou
 }
 
 pub fn physics_fluid_stokes_edge_set(s : PhysicsfluidstokesEdge, i : Int, v : Double) -> PhysicsfluidstokesEdge {
-  let result = physics_fluid_stokes_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_stokes_edge_sum(s : PhysicsfluidstokesEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_fluid_stokes_path_get(s : PhysicsfluidstokesPath, i : Int) -> Dou
 }
 
 pub fn physics_fluid_stokes_path_set(s : PhysicsfluidstokesPath, i : Int, v : Double) -> PhysicsfluidstokesPath {
-  let result = physics_fluid_stokes_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_stokes_path_sum(s : PhysicsfluidstokesPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_fluid_stokes_cluster_get(s : PhysicsfluidstokesCluster, i : Int) 
 }
 
 pub fn physics_fluid_stokes_cluster_set(s : PhysicsfluidstokesCluster, i : Int, v : Double) -> PhysicsfluidstokesCluster {
-  let result = physics_fluid_stokes_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_stokes_cluster_sum(s : PhysicsfluidstokesCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_fluid_stokes_model_get(s : PhysicsfluidstokesModel, i : Int) -> D
 }
 
 pub fn physics_fluid_stokes_model_set(s : PhysicsfluidstokesModel, i : Int, v : Double) -> PhysicsfluidstokesModel {
-  let result = physics_fluid_stokes_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_stokes_model_sum(s : PhysicsfluidstokesModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_fluid_stokes_layer_get(s : PhysicsfluidstokesLayer, i : Int) -> D
 }
 
 pub fn physics_fluid_stokes_layer_set(s : PhysicsfluidstokesLayer, i : Int, v : Double) -> PhysicsfluidstokesLayer {
-  let result = physics_fluid_stokes_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_stokes_layer_sum(s : PhysicsfluidstokesLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_fluid_stokes_buffer_get(s : PhysicsfluidstokesBuffer, i : Int) ->
 }
 
 pub fn physics_fluid_stokes_buffer_set(s : PhysicsfluidstokesBuffer, i : Int, v : Double) -> PhysicsfluidstokesBuffer {
-  let result = physics_fluid_stokes_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_stokes_buffer_sum(s : PhysicsfluidstokesBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_fluid_stokes_cursor_get(s : PhysicsfluidstokesCursor, i : Int) ->
 }
 
 pub fn physics_fluid_stokes_cursor_set(s : PhysicsfluidstokesCursor, i : Int, v : Double) -> PhysicsfluidstokesCursor {
-  let result = physics_fluid_stokes_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_stokes_cursor_sum(s : PhysicsfluidstokesCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_fluid_stokes_view_get(s : PhysicsfluidstokesView, i : Int) -> Dou
 }
 
 pub fn physics_fluid_stokes_view_set(s : PhysicsfluidstokesView, i : Int, v : Double) -> PhysicsfluidstokesView {
-  let result = physics_fluid_stokes_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_stokes_view_sum(s : PhysicsfluidstokesView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_fluid_stokes_range_get(s : PhysicsfluidstokesRange, i : Int) -> D
 }
 
 pub fn physics_fluid_stokes_range_set(s : PhysicsfluidstokesRange, i : Int, v : Double) -> PhysicsfluidstokesRange {
-  let result = physics_fluid_stokes_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_stokes_range_sum(s : PhysicsfluidstokesRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_fluid_stokes_slice_get(s : PhysicsfluidstokesSlice, i : Int) -> D
 }
 
 pub fn physics_fluid_stokes_slice_set(s : PhysicsfluidstokesSlice, i : Int, v : Double) -> PhysicsfluidstokesSlice {
-  let result = physics_fluid_stokes_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_stokes_slice_sum(s : PhysicsfluidstokesSlice) -> Double { @_common.sum(s.data) }

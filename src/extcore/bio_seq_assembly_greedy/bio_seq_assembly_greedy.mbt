@@ -107,23 +107,15 @@ pub fn bio_seq_assembly_greedy_series_std(s : BioseqassemblygreedySeries) -> Dou
 pub fn bio_seq_assembly_greedy_series_median(s : BioseqassemblygreedySeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_seq_assembly_greedy_series_scale(s : BioseqassemblygreedySeries, f : Double) -> BioseqassemblygreedySeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_seq_assembly_greedy_series_add(a : BioseqassemblygreedySeries, b : BioseqassemblygreedySeries) -> BioseqassemblygreedySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_assembly_greedy_series_sub(a : BioseqassemblygreedySeries, b : BioseqassemblygreedySeries) -> BioseqassemblygreedySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_assembly_greedy_series_normalize(s : BioseqassemblygreedySeries) -> BioseqassemblygreedySeries {
@@ -254,22 +246,16 @@ pub fn bio_seq_assembly_greedy_vector_zero(dim : Int) -> BioseqassemblygreedyVec
 
 pub fn bio_seq_assembly_greedy_vector_add(a : BioseqassemblygreedyVector, b : BioseqassemblygreedyVector) -> BioseqassemblygreedyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_assembly_greedy_vector_sub(a : BioseqassemblygreedyVector, b : BioseqassemblygreedyVector) -> BioseqassemblygreedyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_assembly_greedy_vector_scale(v : BioseqassemblygreedyVector, s : Double) -> BioseqassemblygreedyVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_seq_assembly_greedy_vector_dot(a : BioseqassemblygreedyVector, b : BioseqassemblygreedyVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_seq_assembly_greedy_frame_get(s : BioseqassemblygreedyFrame, i : Int)
 }
 
 pub fn bio_seq_assembly_greedy_frame_set(s : BioseqassemblygreedyFrame, i : Int, v : Double) -> BioseqassemblygreedyFrame {
-  let result = bio_seq_assembly_greedy_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_greedy_frame_sum(s : BioseqassemblygreedyFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_seq_assembly_greedy_table_get(s : BioseqassemblygreedyTable, i : Int)
 }
 
 pub fn bio_seq_assembly_greedy_table_set(s : BioseqassemblygreedyTable, i : Int, v : Double) -> BioseqassemblygreedyTable {
-  let result = bio_seq_assembly_greedy_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_greedy_table_sum(s : BioseqassemblygreedyTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_seq_assembly_greedy_graphn_get(s : BioseqassemblygreedyGraphN, i : In
 }
 
 pub fn bio_seq_assembly_greedy_graphn_set(s : BioseqassemblygreedyGraphN, i : Int, v : Double) -> BioseqassemblygreedyGraphN {
-  let result = bio_seq_assembly_greedy_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_greedy_graphn_sum(s : BioseqassemblygreedyGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_seq_assembly_greedy_node_get(s : BioseqassemblygreedyNode, i : Int) -
 }
 
 pub fn bio_seq_assembly_greedy_node_set(s : BioseqassemblygreedyNode, i : Int, v : Double) -> BioseqassemblygreedyNode {
-  let result = bio_seq_assembly_greedy_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_greedy_node_sum(s : BioseqassemblygreedyNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_seq_assembly_greedy_edge_get(s : BioseqassemblygreedyEdge, i : Int) -
 }
 
 pub fn bio_seq_assembly_greedy_edge_set(s : BioseqassemblygreedyEdge, i : Int, v : Double) -> BioseqassemblygreedyEdge {
-  let result = bio_seq_assembly_greedy_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_greedy_edge_sum(s : BioseqassemblygreedyEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_seq_assembly_greedy_path_get(s : BioseqassemblygreedyPath, i : Int) -
 }
 
 pub fn bio_seq_assembly_greedy_path_set(s : BioseqassemblygreedyPath, i : Int, v : Double) -> BioseqassemblygreedyPath {
-  let result = bio_seq_assembly_greedy_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_greedy_path_sum(s : BioseqassemblygreedyPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_seq_assembly_greedy_cluster_get(s : BioseqassemblygreedyCluster, i : 
 }
 
 pub fn bio_seq_assembly_greedy_cluster_set(s : BioseqassemblygreedyCluster, i : Int, v : Double) -> BioseqassemblygreedyCluster {
-  let result = bio_seq_assembly_greedy_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_greedy_cluster_sum(s : BioseqassemblygreedyCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_seq_assembly_greedy_model_get(s : BioseqassemblygreedyModel, i : Int)
 }
 
 pub fn bio_seq_assembly_greedy_model_set(s : BioseqassemblygreedyModel, i : Int, v : Double) -> BioseqassemblygreedyModel {
-  let result = bio_seq_assembly_greedy_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_greedy_model_sum(s : BioseqassemblygreedyModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_seq_assembly_greedy_layer_get(s : BioseqassemblygreedyLayer, i : Int)
 }
 
 pub fn bio_seq_assembly_greedy_layer_set(s : BioseqassemblygreedyLayer, i : Int, v : Double) -> BioseqassemblygreedyLayer {
-  let result = bio_seq_assembly_greedy_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_greedy_layer_sum(s : BioseqassemblygreedyLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_seq_assembly_greedy_buffer_get(s : BioseqassemblygreedyBuffer, i : In
 }
 
 pub fn bio_seq_assembly_greedy_buffer_set(s : BioseqassemblygreedyBuffer, i : Int, v : Double) -> BioseqassemblygreedyBuffer {
-  let result = bio_seq_assembly_greedy_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_greedy_buffer_sum(s : BioseqassemblygreedyBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_seq_assembly_greedy_cursor_get(s : BioseqassemblygreedyCursor, i : In
 }
 
 pub fn bio_seq_assembly_greedy_cursor_set(s : BioseqassemblygreedyCursor, i : Int, v : Double) -> BioseqassemblygreedyCursor {
-  let result = bio_seq_assembly_greedy_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_greedy_cursor_sum(s : BioseqassemblygreedyCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_seq_assembly_greedy_view_get(s : BioseqassemblygreedyView, i : Int) -
 }
 
 pub fn bio_seq_assembly_greedy_view_set(s : BioseqassemblygreedyView, i : Int, v : Double) -> BioseqassemblygreedyView {
-  let result = bio_seq_assembly_greedy_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_greedy_view_sum(s : BioseqassemblygreedyView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_seq_assembly_greedy_range_get(s : BioseqassemblygreedyRange, i : Int)
 }
 
 pub fn bio_seq_assembly_greedy_range_set(s : BioseqassemblygreedyRange, i : Int, v : Double) -> BioseqassemblygreedyRange {
-  let result = bio_seq_assembly_greedy_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_greedy_range_sum(s : BioseqassemblygreedyRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_seq_assembly_greedy_slice_get(s : BioseqassemblygreedySlice, i : Int)
 }
 
 pub fn bio_seq_assembly_greedy_slice_set(s : BioseqassemblygreedySlice, i : Int, v : Double) -> BioseqassemblygreedySlice {
-  let result = bio_seq_assembly_greedy_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_greedy_slice_sum(s : BioseqassemblygreedySlice) -> Double { @_common.sum(s.data) }

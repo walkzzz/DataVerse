@@ -107,23 +107,15 @@ pub fn nlp_parse_malt_series_std(s : NlpparsemaltSeries) -> Double { @_common.st
 pub fn nlp_parse_malt_series_median(s : NlpparsemaltSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_parse_malt_series_scale(s : NlpparsemaltSeries, f : Double) -> NlpparsemaltSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_parse_malt_series_add(a : NlpparsemaltSeries, b : NlpparsemaltSeries) -> NlpparsemaltSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_parse_malt_series_sub(a : NlpparsemaltSeries, b : NlpparsemaltSeries) -> NlpparsemaltSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_parse_malt_series_normalize(s : NlpparsemaltSeries) -> NlpparsemaltSeries {
@@ -254,22 +246,16 @@ pub fn nlp_parse_malt_vector_zero(dim : Int) -> NlpparsemaltVector {
 
 pub fn nlp_parse_malt_vector_add(a : NlpparsemaltVector, b : NlpparsemaltVector) -> NlpparsemaltVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_parse_malt_vector_sub(a : NlpparsemaltVector, b : NlpparsemaltVector) -> NlpparsemaltVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_parse_malt_vector_scale(v : NlpparsemaltVector, s : Double) -> NlpparsemaltVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_parse_malt_vector_dot(a : NlpparsemaltVector, b : NlpparsemaltVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_parse_malt_frame_get(s : NlpparsemaltFrame, i : Int) -> Double {
 }
 
 pub fn nlp_parse_malt_frame_set(s : NlpparsemaltFrame, i : Int, v : Double) -> NlpparsemaltFrame {
-  let result = nlp_parse_malt_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_frame_sum(s : NlpparsemaltFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_parse_malt_table_get(s : NlpparsemaltTable, i : Int) -> Double {
 }
 
 pub fn nlp_parse_malt_table_set(s : NlpparsemaltTable, i : Int, v : Double) -> NlpparsemaltTable {
-  let result = nlp_parse_malt_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_table_sum(s : NlpparsemaltTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_parse_malt_graphn_get(s : NlpparsemaltGraphN, i : Int) -> Double {
 }
 
 pub fn nlp_parse_malt_graphn_set(s : NlpparsemaltGraphN, i : Int, v : Double) -> NlpparsemaltGraphN {
-  let result = nlp_parse_malt_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_graphn_sum(s : NlpparsemaltGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_parse_malt_node_get(s : NlpparsemaltNode, i : Int) -> Double {
 }
 
 pub fn nlp_parse_malt_node_set(s : NlpparsemaltNode, i : Int, v : Double) -> NlpparsemaltNode {
-  let result = nlp_parse_malt_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_node_sum(s : NlpparsemaltNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_parse_malt_edge_get(s : NlpparsemaltEdge, i : Int) -> Double {
 }
 
 pub fn nlp_parse_malt_edge_set(s : NlpparsemaltEdge, i : Int, v : Double) -> NlpparsemaltEdge {
-  let result = nlp_parse_malt_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_edge_sum(s : NlpparsemaltEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_parse_malt_path_get(s : NlpparsemaltPath, i : Int) -> Double {
 }
 
 pub fn nlp_parse_malt_path_set(s : NlpparsemaltPath, i : Int, v : Double) -> NlpparsemaltPath {
-  let result = nlp_parse_malt_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_path_sum(s : NlpparsemaltPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_parse_malt_cluster_get(s : NlpparsemaltCluster, i : Int) -> Double {
 }
 
 pub fn nlp_parse_malt_cluster_set(s : NlpparsemaltCluster, i : Int, v : Double) -> NlpparsemaltCluster {
-  let result = nlp_parse_malt_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_cluster_sum(s : NlpparsemaltCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_parse_malt_model_get(s : NlpparsemaltModel, i : Int) -> Double {
 }
 
 pub fn nlp_parse_malt_model_set(s : NlpparsemaltModel, i : Int, v : Double) -> NlpparsemaltModel {
-  let result = nlp_parse_malt_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_model_sum(s : NlpparsemaltModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_parse_malt_layer_get(s : NlpparsemaltLayer, i : Int) -> Double {
 }
 
 pub fn nlp_parse_malt_layer_set(s : NlpparsemaltLayer, i : Int, v : Double) -> NlpparsemaltLayer {
-  let result = nlp_parse_malt_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_layer_sum(s : NlpparsemaltLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_parse_malt_buffer_get(s : NlpparsemaltBuffer, i : Int) -> Double {
 }
 
 pub fn nlp_parse_malt_buffer_set(s : NlpparsemaltBuffer, i : Int, v : Double) -> NlpparsemaltBuffer {
-  let result = nlp_parse_malt_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_buffer_sum(s : NlpparsemaltBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_parse_malt_cursor_get(s : NlpparsemaltCursor, i : Int) -> Double {
 }
 
 pub fn nlp_parse_malt_cursor_set(s : NlpparsemaltCursor, i : Int, v : Double) -> NlpparsemaltCursor {
-  let result = nlp_parse_malt_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_cursor_sum(s : NlpparsemaltCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_parse_malt_view_get(s : NlpparsemaltView, i : Int) -> Double {
 }
 
 pub fn nlp_parse_malt_view_set(s : NlpparsemaltView, i : Int, v : Double) -> NlpparsemaltView {
-  let result = nlp_parse_malt_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_view_sum(s : NlpparsemaltView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_parse_malt_range_get(s : NlpparsemaltRange, i : Int) -> Double {
 }
 
 pub fn nlp_parse_malt_range_set(s : NlpparsemaltRange, i : Int, v : Double) -> NlpparsemaltRange {
-  let result = nlp_parse_malt_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_range_sum(s : NlpparsemaltRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_parse_malt_slice_get(s : NlpparsemaltSlice, i : Int) -> Double {
 }
 
 pub fn nlp_parse_malt_slice_set(s : NlpparsemaltSlice, i : Int, v : Double) -> NlpparsemaltSlice {
-  let result = nlp_parse_malt_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_malt_slice_sum(s : NlpparsemaltSlice) -> Double { @_common.sum(s.data) }

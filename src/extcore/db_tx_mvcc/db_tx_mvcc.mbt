@@ -107,23 +107,15 @@ pub fn db_tx_mvcc_series_std(s : DbtxmvccSeries) -> Double { @_common.std(s.vals
 pub fn db_tx_mvcc_series_median(s : DbtxmvccSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_tx_mvcc_series_scale(s : DbtxmvccSeries, f : Double) -> DbtxmvccSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_tx_mvcc_series_add(a : DbtxmvccSeries, b : DbtxmvccSeries) -> DbtxmvccSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_tx_mvcc_series_sub(a : DbtxmvccSeries, b : DbtxmvccSeries) -> DbtxmvccSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_tx_mvcc_series_normalize(s : DbtxmvccSeries) -> DbtxmvccSeries {
@@ -254,22 +246,16 @@ pub fn db_tx_mvcc_vector_zero(dim : Int) -> DbtxmvccVector {
 
 pub fn db_tx_mvcc_vector_add(a : DbtxmvccVector, b : DbtxmvccVector) -> DbtxmvccVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_tx_mvcc_vector_sub(a : DbtxmvccVector, b : DbtxmvccVector) -> DbtxmvccVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_tx_mvcc_vector_scale(v : DbtxmvccVector, s : Double) -> DbtxmvccVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_tx_mvcc_vector_dot(a : DbtxmvccVector, b : DbtxmvccVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_tx_mvcc_frame_get(s : DbtxmvccFrame, i : Int) -> Double {
 }
 
 pub fn db_tx_mvcc_frame_set(s : DbtxmvccFrame, i : Int, v : Double) -> DbtxmvccFrame {
-  let result = db_tx_mvcc_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_frame_sum(s : DbtxmvccFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_tx_mvcc_table_get(s : DbtxmvccTable, i : Int) -> Double {
 }
 
 pub fn db_tx_mvcc_table_set(s : DbtxmvccTable, i : Int, v : Double) -> DbtxmvccTable {
-  let result = db_tx_mvcc_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_table_sum(s : DbtxmvccTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_tx_mvcc_graphn_get(s : DbtxmvccGraphN, i : Int) -> Double {
 }
 
 pub fn db_tx_mvcc_graphn_set(s : DbtxmvccGraphN, i : Int, v : Double) -> DbtxmvccGraphN {
-  let result = db_tx_mvcc_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_graphn_sum(s : DbtxmvccGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_tx_mvcc_node_get(s : DbtxmvccNode, i : Int) -> Double {
 }
 
 pub fn db_tx_mvcc_node_set(s : DbtxmvccNode, i : Int, v : Double) -> DbtxmvccNode {
-  let result = db_tx_mvcc_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_node_sum(s : DbtxmvccNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_tx_mvcc_edge_get(s : DbtxmvccEdge, i : Int) -> Double {
 }
 
 pub fn db_tx_mvcc_edge_set(s : DbtxmvccEdge, i : Int, v : Double) -> DbtxmvccEdge {
-  let result = db_tx_mvcc_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_edge_sum(s : DbtxmvccEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_tx_mvcc_path_get(s : DbtxmvccPath, i : Int) -> Double {
 }
 
 pub fn db_tx_mvcc_path_set(s : DbtxmvccPath, i : Int, v : Double) -> DbtxmvccPath {
-  let result = db_tx_mvcc_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_path_sum(s : DbtxmvccPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_tx_mvcc_cluster_get(s : DbtxmvccCluster, i : Int) -> Double {
 }
 
 pub fn db_tx_mvcc_cluster_set(s : DbtxmvccCluster, i : Int, v : Double) -> DbtxmvccCluster {
-  let result = db_tx_mvcc_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_cluster_sum(s : DbtxmvccCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_tx_mvcc_model_get(s : DbtxmvccModel, i : Int) -> Double {
 }
 
 pub fn db_tx_mvcc_model_set(s : DbtxmvccModel, i : Int, v : Double) -> DbtxmvccModel {
-  let result = db_tx_mvcc_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_model_sum(s : DbtxmvccModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_tx_mvcc_layer_get(s : DbtxmvccLayer, i : Int) -> Double {
 }
 
 pub fn db_tx_mvcc_layer_set(s : DbtxmvccLayer, i : Int, v : Double) -> DbtxmvccLayer {
-  let result = db_tx_mvcc_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_layer_sum(s : DbtxmvccLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_tx_mvcc_buffer_get(s : DbtxmvccBuffer, i : Int) -> Double {
 }
 
 pub fn db_tx_mvcc_buffer_set(s : DbtxmvccBuffer, i : Int, v : Double) -> DbtxmvccBuffer {
-  let result = db_tx_mvcc_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_buffer_sum(s : DbtxmvccBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_tx_mvcc_cursor_get(s : DbtxmvccCursor, i : Int) -> Double {
 }
 
 pub fn db_tx_mvcc_cursor_set(s : DbtxmvccCursor, i : Int, v : Double) -> DbtxmvccCursor {
-  let result = db_tx_mvcc_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_cursor_sum(s : DbtxmvccCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_tx_mvcc_view_get(s : DbtxmvccView, i : Int) -> Double {
 }
 
 pub fn db_tx_mvcc_view_set(s : DbtxmvccView, i : Int, v : Double) -> DbtxmvccView {
-  let result = db_tx_mvcc_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_view_sum(s : DbtxmvccView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_tx_mvcc_range_get(s : DbtxmvccRange, i : Int) -> Double {
 }
 
 pub fn db_tx_mvcc_range_set(s : DbtxmvccRange, i : Int, v : Double) -> DbtxmvccRange {
-  let result = db_tx_mvcc_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_range_sum(s : DbtxmvccRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_tx_mvcc_slice_get(s : DbtxmvccSlice, i : Int) -> Double {
 }
 
 pub fn db_tx_mvcc_slice_set(s : DbtxmvccSlice, i : Int, v : Double) -> DbtxmvccSlice {
-  let result = db_tx_mvcc_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_mvcc_slice_sum(s : DbtxmvccSlice) -> Double { @_common.sum(s.data) }

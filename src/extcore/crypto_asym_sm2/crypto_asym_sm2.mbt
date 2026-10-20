@@ -107,23 +107,15 @@ pub fn crypto_asym_sm2_series_std(s : Cryptoasymsm2Series) -> Double { @_common.
 pub fn crypto_asym_sm2_series_median(s : Cryptoasymsm2Series) -> Double { @_common.median(s.vals) }
 
 pub fn crypto_asym_sm2_series_scale(s : Cryptoasymsm2Series, f : Double) -> Cryptoasymsm2Series {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn crypto_asym_sm2_series_add(a : Cryptoasymsm2Series, b : Cryptoasymsm2Series) -> Cryptoasymsm2Series {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn crypto_asym_sm2_series_sub(a : Cryptoasymsm2Series, b : Cryptoasymsm2Series) -> Cryptoasymsm2Series {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn crypto_asym_sm2_series_normalize(s : Cryptoasymsm2Series) -> Cryptoasymsm2Series {
@@ -254,22 +246,16 @@ pub fn crypto_asym_sm2_vector_zero(dim : Int) -> Cryptoasymsm2Vector {
 
 pub fn crypto_asym_sm2_vector_add(a : Cryptoasymsm2Vector, b : Cryptoasymsm2Vector) -> Cryptoasymsm2Vector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_asym_sm2_vector_sub(a : Cryptoasymsm2Vector, b : Cryptoasymsm2Vector) -> Cryptoasymsm2Vector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_asym_sm2_vector_scale(v : Cryptoasymsm2Vector, s : Double) -> Cryptoasymsm2Vector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn crypto_asym_sm2_vector_dot(a : Cryptoasymsm2Vector, b : Cryptoasymsm2Vector) -> Double {
@@ -372,10 +358,9 @@ pub fn crypto_asym_sm2_frame_get(s : Cryptoasymsm2Frame, i : Int) -> Double {
 }
 
 pub fn crypto_asym_sm2_frame_set(s : Cryptoasymsm2Frame, i : Int, v : Double) -> Cryptoasymsm2Frame {
-  let result = crypto_asym_sm2_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_sm2_frame_sum(s : Cryptoasymsm2Frame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn crypto_asym_sm2_table_get(s : Cryptoasymsm2Table, i : Int) -> Double {
 }
 
 pub fn crypto_asym_sm2_table_set(s : Cryptoasymsm2Table, i : Int, v : Double) -> Cryptoasymsm2Table {
-  let result = crypto_asym_sm2_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_sm2_table_sum(s : Cryptoasymsm2Table) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn crypto_asym_sm2_graphn_get(s : Cryptoasymsm2GraphN, i : Int) -> Double {
 }
 
 pub fn crypto_asym_sm2_graphn_set(s : Cryptoasymsm2GraphN, i : Int, v : Double) -> Cryptoasymsm2GraphN {
-  let result = crypto_asym_sm2_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_sm2_graphn_sum(s : Cryptoasymsm2GraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn crypto_asym_sm2_node_get(s : Cryptoasymsm2Node, i : Int) -> Double {
 }
 
 pub fn crypto_asym_sm2_node_set(s : Cryptoasymsm2Node, i : Int, v : Double) -> Cryptoasymsm2Node {
-  let result = crypto_asym_sm2_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_sm2_node_sum(s : Cryptoasymsm2Node) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn crypto_asym_sm2_edge_get(s : Cryptoasymsm2Edge, i : Int) -> Double {
 }
 
 pub fn crypto_asym_sm2_edge_set(s : Cryptoasymsm2Edge, i : Int, v : Double) -> Cryptoasymsm2Edge {
-  let result = crypto_asym_sm2_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_sm2_edge_sum(s : Cryptoasymsm2Edge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn crypto_asym_sm2_path_get(s : Cryptoasymsm2Path, i : Int) -> Double {
 }
 
 pub fn crypto_asym_sm2_path_set(s : Cryptoasymsm2Path, i : Int, v : Double) -> Cryptoasymsm2Path {
-  let result = crypto_asym_sm2_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_sm2_path_sum(s : Cryptoasymsm2Path) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn crypto_asym_sm2_cluster_get(s : Cryptoasymsm2Cluster, i : Int) -> Double 
 }
 
 pub fn crypto_asym_sm2_cluster_set(s : Cryptoasymsm2Cluster, i : Int, v : Double) -> Cryptoasymsm2Cluster {
-  let result = crypto_asym_sm2_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_sm2_cluster_sum(s : Cryptoasymsm2Cluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn crypto_asym_sm2_model_get(s : Cryptoasymsm2Model, i : Int) -> Double {
 }
 
 pub fn crypto_asym_sm2_model_set(s : Cryptoasymsm2Model, i : Int, v : Double) -> Cryptoasymsm2Model {
-  let result = crypto_asym_sm2_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_sm2_model_sum(s : Cryptoasymsm2Model) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn crypto_asym_sm2_layer_get(s : Cryptoasymsm2Layer, i : Int) -> Double {
 }
 
 pub fn crypto_asym_sm2_layer_set(s : Cryptoasymsm2Layer, i : Int, v : Double) -> Cryptoasymsm2Layer {
-  let result = crypto_asym_sm2_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_sm2_layer_sum(s : Cryptoasymsm2Layer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn crypto_asym_sm2_buffer_get(s : Cryptoasymsm2Buffer, i : Int) -> Double {
 }
 
 pub fn crypto_asym_sm2_buffer_set(s : Cryptoasymsm2Buffer, i : Int, v : Double) -> Cryptoasymsm2Buffer {
-  let result = crypto_asym_sm2_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_sm2_buffer_sum(s : Cryptoasymsm2Buffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn crypto_asym_sm2_cursor_get(s : Cryptoasymsm2Cursor, i : Int) -> Double {
 }
 
 pub fn crypto_asym_sm2_cursor_set(s : Cryptoasymsm2Cursor, i : Int, v : Double) -> Cryptoasymsm2Cursor {
-  let result = crypto_asym_sm2_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_sm2_cursor_sum(s : Cryptoasymsm2Cursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn crypto_asym_sm2_view_get(s : Cryptoasymsm2View, i : Int) -> Double {
 }
 
 pub fn crypto_asym_sm2_view_set(s : Cryptoasymsm2View, i : Int, v : Double) -> Cryptoasymsm2View {
-  let result = crypto_asym_sm2_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_sm2_view_sum(s : Cryptoasymsm2View) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn crypto_asym_sm2_range_get(s : Cryptoasymsm2Range, i : Int) -> Double {
 }
 
 pub fn crypto_asym_sm2_range_set(s : Cryptoasymsm2Range, i : Int, v : Double) -> Cryptoasymsm2Range {
-  let result = crypto_asym_sm2_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_sm2_range_sum(s : Cryptoasymsm2Range) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn crypto_asym_sm2_slice_get(s : Cryptoasymsm2Slice, i : Int) -> Double {
 }
 
 pub fn crypto_asym_sm2_slice_set(s : Cryptoasymsm2Slice, i : Int, v : Double) -> Cryptoasymsm2Slice {
-  let result = crypto_asym_sm2_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_sm2_slice_sum(s : Cryptoasymsm2Slice) -> Double { @_common.sum(s.data) }

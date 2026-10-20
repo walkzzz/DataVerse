@@ -107,23 +107,15 @@ pub fn ds_heap_skew_series_std(s : DsheapskewSeries) -> Double { @_common.std(s.
 pub fn ds_heap_skew_series_median(s : DsheapskewSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_heap_skew_series_scale(s : DsheapskewSeries, f : Double) -> DsheapskewSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_heap_skew_series_add(a : DsheapskewSeries, b : DsheapskewSeries) -> DsheapskewSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_heap_skew_series_sub(a : DsheapskewSeries, b : DsheapskewSeries) -> DsheapskewSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_heap_skew_series_normalize(s : DsheapskewSeries) -> DsheapskewSeries {
@@ -254,22 +246,16 @@ pub fn ds_heap_skew_vector_zero(dim : Int) -> DsheapskewVector {
 
 pub fn ds_heap_skew_vector_add(a : DsheapskewVector, b : DsheapskewVector) -> DsheapskewVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_heap_skew_vector_sub(a : DsheapskewVector, b : DsheapskewVector) -> DsheapskewVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_heap_skew_vector_scale(v : DsheapskewVector, s : Double) -> DsheapskewVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_heap_skew_vector_dot(a : DsheapskewVector, b : DsheapskewVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_heap_skew_frame_get(s : DsheapskewFrame, i : Int) -> Double {
 }
 
 pub fn ds_heap_skew_frame_set(s : DsheapskewFrame, i : Int, v : Double) -> DsheapskewFrame {
-  let result = ds_heap_skew_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_skew_frame_sum(s : DsheapskewFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_heap_skew_table_get(s : DsheapskewTable, i : Int) -> Double {
 }
 
 pub fn ds_heap_skew_table_set(s : DsheapskewTable, i : Int, v : Double) -> DsheapskewTable {
-  let result = ds_heap_skew_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_skew_table_sum(s : DsheapskewTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_heap_skew_graphn_get(s : DsheapskewGraphN, i : Int) -> Double {
 }
 
 pub fn ds_heap_skew_graphn_set(s : DsheapskewGraphN, i : Int, v : Double) -> DsheapskewGraphN {
-  let result = ds_heap_skew_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_skew_graphn_sum(s : DsheapskewGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_heap_skew_node_get(s : DsheapskewNode, i : Int) -> Double {
 }
 
 pub fn ds_heap_skew_node_set(s : DsheapskewNode, i : Int, v : Double) -> DsheapskewNode {
-  let result = ds_heap_skew_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_skew_node_sum(s : DsheapskewNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_heap_skew_edge_get(s : DsheapskewEdge, i : Int) -> Double {
 }
 
 pub fn ds_heap_skew_edge_set(s : DsheapskewEdge, i : Int, v : Double) -> DsheapskewEdge {
-  let result = ds_heap_skew_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_skew_edge_sum(s : DsheapskewEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_heap_skew_path_get(s : DsheapskewPath, i : Int) -> Double {
 }
 
 pub fn ds_heap_skew_path_set(s : DsheapskewPath, i : Int, v : Double) -> DsheapskewPath {
-  let result = ds_heap_skew_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_skew_path_sum(s : DsheapskewPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_heap_skew_cluster_get(s : DsheapskewCluster, i : Int) -> Double {
 }
 
 pub fn ds_heap_skew_cluster_set(s : DsheapskewCluster, i : Int, v : Double) -> DsheapskewCluster {
-  let result = ds_heap_skew_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_skew_cluster_sum(s : DsheapskewCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_heap_skew_model_get(s : DsheapskewModel, i : Int) -> Double {
 }
 
 pub fn ds_heap_skew_model_set(s : DsheapskewModel, i : Int, v : Double) -> DsheapskewModel {
-  let result = ds_heap_skew_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_skew_model_sum(s : DsheapskewModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_heap_skew_layer_get(s : DsheapskewLayer, i : Int) -> Double {
 }
 
 pub fn ds_heap_skew_layer_set(s : DsheapskewLayer, i : Int, v : Double) -> DsheapskewLayer {
-  let result = ds_heap_skew_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_skew_layer_sum(s : DsheapskewLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_heap_skew_buffer_get(s : DsheapskewBuffer, i : Int) -> Double {
 }
 
 pub fn ds_heap_skew_buffer_set(s : DsheapskewBuffer, i : Int, v : Double) -> DsheapskewBuffer {
-  let result = ds_heap_skew_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_skew_buffer_sum(s : DsheapskewBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_heap_skew_cursor_get(s : DsheapskewCursor, i : Int) -> Double {
 }
 
 pub fn ds_heap_skew_cursor_set(s : DsheapskewCursor, i : Int, v : Double) -> DsheapskewCursor {
-  let result = ds_heap_skew_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_skew_cursor_sum(s : DsheapskewCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_heap_skew_view_get(s : DsheapskewView, i : Int) -> Double {
 }
 
 pub fn ds_heap_skew_view_set(s : DsheapskewView, i : Int, v : Double) -> DsheapskewView {
-  let result = ds_heap_skew_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_skew_view_sum(s : DsheapskewView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_heap_skew_range_get(s : DsheapskewRange, i : Int) -> Double {
 }
 
 pub fn ds_heap_skew_range_set(s : DsheapskewRange, i : Int, v : Double) -> DsheapskewRange {
-  let result = ds_heap_skew_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_skew_range_sum(s : DsheapskewRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_heap_skew_slice_get(s : DsheapskewSlice, i : Int) -> Double {
 }
 
 pub fn ds_heap_skew_slice_set(s : DsheapskewSlice, i : Int, v : Double) -> DsheapskewSlice {
-  let result = ds_heap_skew_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_skew_slice_sum(s : DsheapskewSlice) -> Double { @_common.sum(s.data) }

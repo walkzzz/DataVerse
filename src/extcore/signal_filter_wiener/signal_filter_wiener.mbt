@@ -107,23 +107,15 @@ pub fn signal_filter_wiener_series_std(s : SignalfilterwienerSeries) -> Double {
 pub fn signal_filter_wiener_series_median(s : SignalfilterwienerSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_filter_wiener_series_scale(s : SignalfilterwienerSeries, f : Double) -> SignalfilterwienerSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_filter_wiener_series_add(a : SignalfilterwienerSeries, b : SignalfilterwienerSeries) -> SignalfilterwienerSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_filter_wiener_series_sub(a : SignalfilterwienerSeries, b : SignalfilterwienerSeries) -> SignalfilterwienerSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_filter_wiener_series_normalize(s : SignalfilterwienerSeries) -> SignalfilterwienerSeries {
@@ -254,22 +246,16 @@ pub fn signal_filter_wiener_vector_zero(dim : Int) -> SignalfilterwienerVector {
 
 pub fn signal_filter_wiener_vector_add(a : SignalfilterwienerVector, b : SignalfilterwienerVector) -> SignalfilterwienerVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_filter_wiener_vector_sub(a : SignalfilterwienerVector, b : SignalfilterwienerVector) -> SignalfilterwienerVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_filter_wiener_vector_scale(v : SignalfilterwienerVector, s : Double) -> SignalfilterwienerVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_filter_wiener_vector_dot(a : SignalfilterwienerVector, b : SignalfilterwienerVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_filter_wiener_frame_get(s : SignalfilterwienerFrame, i : Int) -> D
 }
 
 pub fn signal_filter_wiener_frame_set(s : SignalfilterwienerFrame, i : Int, v : Double) -> SignalfilterwienerFrame {
-  let result = signal_filter_wiener_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_frame_sum(s : SignalfilterwienerFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_filter_wiener_table_get(s : SignalfilterwienerTable, i : Int) -> D
 }
 
 pub fn signal_filter_wiener_table_set(s : SignalfilterwienerTable, i : Int, v : Double) -> SignalfilterwienerTable {
-  let result = signal_filter_wiener_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_table_sum(s : SignalfilterwienerTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_filter_wiener_graphn_get(s : SignalfilterwienerGraphN, i : Int) ->
 }
 
 pub fn signal_filter_wiener_graphn_set(s : SignalfilterwienerGraphN, i : Int, v : Double) -> SignalfilterwienerGraphN {
-  let result = signal_filter_wiener_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_graphn_sum(s : SignalfilterwienerGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_filter_wiener_node_get(s : SignalfilterwienerNode, i : Int) -> Dou
 }
 
 pub fn signal_filter_wiener_node_set(s : SignalfilterwienerNode, i : Int, v : Double) -> SignalfilterwienerNode {
-  let result = signal_filter_wiener_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_node_sum(s : SignalfilterwienerNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_filter_wiener_edge_get(s : SignalfilterwienerEdge, i : Int) -> Dou
 }
 
 pub fn signal_filter_wiener_edge_set(s : SignalfilterwienerEdge, i : Int, v : Double) -> SignalfilterwienerEdge {
-  let result = signal_filter_wiener_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_edge_sum(s : SignalfilterwienerEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_filter_wiener_path_get(s : SignalfilterwienerPath, i : Int) -> Dou
 }
 
 pub fn signal_filter_wiener_path_set(s : SignalfilterwienerPath, i : Int, v : Double) -> SignalfilterwienerPath {
-  let result = signal_filter_wiener_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_path_sum(s : SignalfilterwienerPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_filter_wiener_cluster_get(s : SignalfilterwienerCluster, i : Int) 
 }
 
 pub fn signal_filter_wiener_cluster_set(s : SignalfilterwienerCluster, i : Int, v : Double) -> SignalfilterwienerCluster {
-  let result = signal_filter_wiener_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_cluster_sum(s : SignalfilterwienerCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_filter_wiener_model_get(s : SignalfilterwienerModel, i : Int) -> D
 }
 
 pub fn signal_filter_wiener_model_set(s : SignalfilterwienerModel, i : Int, v : Double) -> SignalfilterwienerModel {
-  let result = signal_filter_wiener_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_model_sum(s : SignalfilterwienerModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_filter_wiener_layer_get(s : SignalfilterwienerLayer, i : Int) -> D
 }
 
 pub fn signal_filter_wiener_layer_set(s : SignalfilterwienerLayer, i : Int, v : Double) -> SignalfilterwienerLayer {
-  let result = signal_filter_wiener_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_layer_sum(s : SignalfilterwienerLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_filter_wiener_buffer_get(s : SignalfilterwienerBuffer, i : Int) ->
 }
 
 pub fn signal_filter_wiener_buffer_set(s : SignalfilterwienerBuffer, i : Int, v : Double) -> SignalfilterwienerBuffer {
-  let result = signal_filter_wiener_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_buffer_sum(s : SignalfilterwienerBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_filter_wiener_cursor_get(s : SignalfilterwienerCursor, i : Int) ->
 }
 
 pub fn signal_filter_wiener_cursor_set(s : SignalfilterwienerCursor, i : Int, v : Double) -> SignalfilterwienerCursor {
-  let result = signal_filter_wiener_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_cursor_sum(s : SignalfilterwienerCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_filter_wiener_view_get(s : SignalfilterwienerView, i : Int) -> Dou
 }
 
 pub fn signal_filter_wiener_view_set(s : SignalfilterwienerView, i : Int, v : Double) -> SignalfilterwienerView {
-  let result = signal_filter_wiener_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_view_sum(s : SignalfilterwienerView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_filter_wiener_range_get(s : SignalfilterwienerRange, i : Int) -> D
 }
 
 pub fn signal_filter_wiener_range_set(s : SignalfilterwienerRange, i : Int, v : Double) -> SignalfilterwienerRange {
-  let result = signal_filter_wiener_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_range_sum(s : SignalfilterwienerRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_filter_wiener_slice_get(s : SignalfilterwienerSlice, i : Int) -> D
 }
 
 pub fn signal_filter_wiener_slice_set(s : SignalfilterwienerSlice, i : Int, v : Double) -> SignalfilterwienerSlice {
-  let result = signal_filter_wiener_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_wiener_slice_sum(s : SignalfilterwienerSlice) -> Double { @_common.sum(s.data) }

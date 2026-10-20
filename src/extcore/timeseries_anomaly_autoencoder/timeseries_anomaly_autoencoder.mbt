@@ -107,23 +107,15 @@ pub fn timeseries_anomaly_autoencoder_series_std(s : Timeseriesanomalyautoencode
 pub fn timeseries_anomaly_autoencoder_series_median(s : TimeseriesanomalyautoencoderSeries) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_anomaly_autoencoder_series_scale(s : TimeseriesanomalyautoencoderSeries, f : Double) -> TimeseriesanomalyautoencoderSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn timeseries_anomaly_autoencoder_series_add(a : TimeseriesanomalyautoencoderSeries, b : TimeseriesanomalyautoencoderSeries) -> TimeseriesanomalyautoencoderSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_anomaly_autoencoder_series_sub(a : TimeseriesanomalyautoencoderSeries, b : TimeseriesanomalyautoencoderSeries) -> TimeseriesanomalyautoencoderSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_anomaly_autoencoder_series_normalize(s : TimeseriesanomalyautoencoderSeries) -> TimeseriesanomalyautoencoderSeries {
@@ -254,22 +246,16 @@ pub fn timeseries_anomaly_autoencoder_vector_zero(dim : Int) -> Timeseriesanomal
 
 pub fn timeseries_anomaly_autoencoder_vector_add(a : TimeseriesanomalyautoencoderVector, b : TimeseriesanomalyautoencoderVector) -> TimeseriesanomalyautoencoderVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_anomaly_autoencoder_vector_sub(a : TimeseriesanomalyautoencoderVector, b : TimeseriesanomalyautoencoderVector) -> TimeseriesanomalyautoencoderVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_anomaly_autoencoder_vector_scale(v : TimeseriesanomalyautoencoderVector, s : Double) -> TimeseriesanomalyautoencoderVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn timeseries_anomaly_autoencoder_vector_dot(a : TimeseriesanomalyautoencoderVector, b : TimeseriesanomalyautoencoderVector) -> Double {
@@ -372,10 +358,9 @@ pub fn timeseries_anomaly_autoencoder_frame_get(s : Timeseriesanomalyautoencoder
 }
 
 pub fn timeseries_anomaly_autoencoder_frame_set(s : TimeseriesanomalyautoencoderFrame, i : Int, v : Double) -> TimeseriesanomalyautoencoderFrame {
-  let result = timeseries_anomaly_autoencoder_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_autoencoder_frame_sum(s : TimeseriesanomalyautoencoderFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn timeseries_anomaly_autoencoder_table_get(s : Timeseriesanomalyautoencoder
 }
 
 pub fn timeseries_anomaly_autoencoder_table_set(s : TimeseriesanomalyautoencoderTable, i : Int, v : Double) -> TimeseriesanomalyautoencoderTable {
-  let result = timeseries_anomaly_autoencoder_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_autoencoder_table_sum(s : TimeseriesanomalyautoencoderTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn timeseries_anomaly_autoencoder_graphn_get(s : Timeseriesanomalyautoencode
 }
 
 pub fn timeseries_anomaly_autoencoder_graphn_set(s : TimeseriesanomalyautoencoderGraphN, i : Int, v : Double) -> TimeseriesanomalyautoencoderGraphN {
-  let result = timeseries_anomaly_autoencoder_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_autoencoder_graphn_sum(s : TimeseriesanomalyautoencoderGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn timeseries_anomaly_autoencoder_node_get(s : TimeseriesanomalyautoencoderN
 }
 
 pub fn timeseries_anomaly_autoencoder_node_set(s : TimeseriesanomalyautoencoderNode, i : Int, v : Double) -> TimeseriesanomalyautoencoderNode {
-  let result = timeseries_anomaly_autoencoder_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_autoencoder_node_sum(s : TimeseriesanomalyautoencoderNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn timeseries_anomaly_autoencoder_edge_get(s : TimeseriesanomalyautoencoderE
 }
 
 pub fn timeseries_anomaly_autoencoder_edge_set(s : TimeseriesanomalyautoencoderEdge, i : Int, v : Double) -> TimeseriesanomalyautoencoderEdge {
-  let result = timeseries_anomaly_autoencoder_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_autoencoder_edge_sum(s : TimeseriesanomalyautoencoderEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn timeseries_anomaly_autoencoder_path_get(s : TimeseriesanomalyautoencoderP
 }
 
 pub fn timeseries_anomaly_autoencoder_path_set(s : TimeseriesanomalyautoencoderPath, i : Int, v : Double) -> TimeseriesanomalyautoencoderPath {
-  let result = timeseries_anomaly_autoencoder_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_autoencoder_path_sum(s : TimeseriesanomalyautoencoderPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn timeseries_anomaly_autoencoder_cluster_get(s : Timeseriesanomalyautoencod
 }
 
 pub fn timeseries_anomaly_autoencoder_cluster_set(s : TimeseriesanomalyautoencoderCluster, i : Int, v : Double) -> TimeseriesanomalyautoencoderCluster {
-  let result = timeseries_anomaly_autoencoder_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_autoencoder_cluster_sum(s : TimeseriesanomalyautoencoderCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn timeseries_anomaly_autoencoder_model_get(s : Timeseriesanomalyautoencoder
 }
 
 pub fn timeseries_anomaly_autoencoder_model_set(s : TimeseriesanomalyautoencoderModel, i : Int, v : Double) -> TimeseriesanomalyautoencoderModel {
-  let result = timeseries_anomaly_autoencoder_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_autoencoder_model_sum(s : TimeseriesanomalyautoencoderModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn timeseries_anomaly_autoencoder_layer_get(s : Timeseriesanomalyautoencoder
 }
 
 pub fn timeseries_anomaly_autoencoder_layer_set(s : TimeseriesanomalyautoencoderLayer, i : Int, v : Double) -> TimeseriesanomalyautoencoderLayer {
-  let result = timeseries_anomaly_autoencoder_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_autoencoder_layer_sum(s : TimeseriesanomalyautoencoderLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn timeseries_anomaly_autoencoder_buffer_get(s : Timeseriesanomalyautoencode
 }
 
 pub fn timeseries_anomaly_autoencoder_buffer_set(s : TimeseriesanomalyautoencoderBuffer, i : Int, v : Double) -> TimeseriesanomalyautoencoderBuffer {
-  let result = timeseries_anomaly_autoencoder_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_autoencoder_buffer_sum(s : TimeseriesanomalyautoencoderBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn timeseries_anomaly_autoencoder_cursor_get(s : Timeseriesanomalyautoencode
 }
 
 pub fn timeseries_anomaly_autoencoder_cursor_set(s : TimeseriesanomalyautoencoderCursor, i : Int, v : Double) -> TimeseriesanomalyautoencoderCursor {
-  let result = timeseries_anomaly_autoencoder_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_autoencoder_cursor_sum(s : TimeseriesanomalyautoencoderCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn timeseries_anomaly_autoencoder_view_get(s : TimeseriesanomalyautoencoderV
 }
 
 pub fn timeseries_anomaly_autoencoder_view_set(s : TimeseriesanomalyautoencoderView, i : Int, v : Double) -> TimeseriesanomalyautoencoderView {
-  let result = timeseries_anomaly_autoencoder_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_autoencoder_view_sum(s : TimeseriesanomalyautoencoderView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn timeseries_anomaly_autoencoder_range_get(s : Timeseriesanomalyautoencoder
 }
 
 pub fn timeseries_anomaly_autoencoder_range_set(s : TimeseriesanomalyautoencoderRange, i : Int, v : Double) -> TimeseriesanomalyautoencoderRange {
-  let result = timeseries_anomaly_autoencoder_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_autoencoder_range_sum(s : TimeseriesanomalyautoencoderRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn timeseries_anomaly_autoencoder_slice_get(s : Timeseriesanomalyautoencoder
 }
 
 pub fn timeseries_anomaly_autoencoder_slice_set(s : TimeseriesanomalyautoencoderSlice, i : Int, v : Double) -> TimeseriesanomalyautoencoderSlice {
-  let result = timeseries_anomaly_autoencoder_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_autoencoder_slice_sum(s : TimeseriesanomalyautoencoderSlice) -> Double { @_common.sum(s.data) }

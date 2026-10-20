@@ -107,23 +107,15 @@ pub fn signal_transform_dwt_series_std(s : SignaltransformdwtSeries) -> Double {
 pub fn signal_transform_dwt_series_median(s : SignaltransformdwtSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_transform_dwt_series_scale(s : SignaltransformdwtSeries, f : Double) -> SignaltransformdwtSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_transform_dwt_series_add(a : SignaltransformdwtSeries, b : SignaltransformdwtSeries) -> SignaltransformdwtSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_transform_dwt_series_sub(a : SignaltransformdwtSeries, b : SignaltransformdwtSeries) -> SignaltransformdwtSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_transform_dwt_series_normalize(s : SignaltransformdwtSeries) -> SignaltransformdwtSeries {
@@ -254,22 +246,16 @@ pub fn signal_transform_dwt_vector_zero(dim : Int) -> SignaltransformdwtVector {
 
 pub fn signal_transform_dwt_vector_add(a : SignaltransformdwtVector, b : SignaltransformdwtVector) -> SignaltransformdwtVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_transform_dwt_vector_sub(a : SignaltransformdwtVector, b : SignaltransformdwtVector) -> SignaltransformdwtVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_transform_dwt_vector_scale(v : SignaltransformdwtVector, s : Double) -> SignaltransformdwtVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_transform_dwt_vector_dot(a : SignaltransformdwtVector, b : SignaltransformdwtVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_transform_dwt_frame_get(s : SignaltransformdwtFrame, i : Int) -> D
 }
 
 pub fn signal_transform_dwt_frame_set(s : SignaltransformdwtFrame, i : Int, v : Double) -> SignaltransformdwtFrame {
-  let result = signal_transform_dwt_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dwt_frame_sum(s : SignaltransformdwtFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_transform_dwt_table_get(s : SignaltransformdwtTable, i : Int) -> D
 }
 
 pub fn signal_transform_dwt_table_set(s : SignaltransformdwtTable, i : Int, v : Double) -> SignaltransformdwtTable {
-  let result = signal_transform_dwt_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dwt_table_sum(s : SignaltransformdwtTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_transform_dwt_graphn_get(s : SignaltransformdwtGraphN, i : Int) ->
 }
 
 pub fn signal_transform_dwt_graphn_set(s : SignaltransformdwtGraphN, i : Int, v : Double) -> SignaltransformdwtGraphN {
-  let result = signal_transform_dwt_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dwt_graphn_sum(s : SignaltransformdwtGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_transform_dwt_node_get(s : SignaltransformdwtNode, i : Int) -> Dou
 }
 
 pub fn signal_transform_dwt_node_set(s : SignaltransformdwtNode, i : Int, v : Double) -> SignaltransformdwtNode {
-  let result = signal_transform_dwt_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dwt_node_sum(s : SignaltransformdwtNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_transform_dwt_edge_get(s : SignaltransformdwtEdge, i : Int) -> Dou
 }
 
 pub fn signal_transform_dwt_edge_set(s : SignaltransformdwtEdge, i : Int, v : Double) -> SignaltransformdwtEdge {
-  let result = signal_transform_dwt_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dwt_edge_sum(s : SignaltransformdwtEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_transform_dwt_path_get(s : SignaltransformdwtPath, i : Int) -> Dou
 }
 
 pub fn signal_transform_dwt_path_set(s : SignaltransformdwtPath, i : Int, v : Double) -> SignaltransformdwtPath {
-  let result = signal_transform_dwt_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dwt_path_sum(s : SignaltransformdwtPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_transform_dwt_cluster_get(s : SignaltransformdwtCluster, i : Int) 
 }
 
 pub fn signal_transform_dwt_cluster_set(s : SignaltransformdwtCluster, i : Int, v : Double) -> SignaltransformdwtCluster {
-  let result = signal_transform_dwt_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dwt_cluster_sum(s : SignaltransformdwtCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_transform_dwt_model_get(s : SignaltransformdwtModel, i : Int) -> D
 }
 
 pub fn signal_transform_dwt_model_set(s : SignaltransformdwtModel, i : Int, v : Double) -> SignaltransformdwtModel {
-  let result = signal_transform_dwt_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dwt_model_sum(s : SignaltransformdwtModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_transform_dwt_layer_get(s : SignaltransformdwtLayer, i : Int) -> D
 }
 
 pub fn signal_transform_dwt_layer_set(s : SignaltransformdwtLayer, i : Int, v : Double) -> SignaltransformdwtLayer {
-  let result = signal_transform_dwt_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dwt_layer_sum(s : SignaltransformdwtLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_transform_dwt_buffer_get(s : SignaltransformdwtBuffer, i : Int) ->
 }
 
 pub fn signal_transform_dwt_buffer_set(s : SignaltransformdwtBuffer, i : Int, v : Double) -> SignaltransformdwtBuffer {
-  let result = signal_transform_dwt_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dwt_buffer_sum(s : SignaltransformdwtBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_transform_dwt_cursor_get(s : SignaltransformdwtCursor, i : Int) ->
 }
 
 pub fn signal_transform_dwt_cursor_set(s : SignaltransformdwtCursor, i : Int, v : Double) -> SignaltransformdwtCursor {
-  let result = signal_transform_dwt_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dwt_cursor_sum(s : SignaltransformdwtCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_transform_dwt_view_get(s : SignaltransformdwtView, i : Int) -> Dou
 }
 
 pub fn signal_transform_dwt_view_set(s : SignaltransformdwtView, i : Int, v : Double) -> SignaltransformdwtView {
-  let result = signal_transform_dwt_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dwt_view_sum(s : SignaltransformdwtView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_transform_dwt_range_get(s : SignaltransformdwtRange, i : Int) -> D
 }
 
 pub fn signal_transform_dwt_range_set(s : SignaltransformdwtRange, i : Int, v : Double) -> SignaltransformdwtRange {
-  let result = signal_transform_dwt_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dwt_range_sum(s : SignaltransformdwtRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_transform_dwt_slice_get(s : SignaltransformdwtSlice, i : Int) -> D
 }
 
 pub fn signal_transform_dwt_slice_set(s : SignaltransformdwtSlice, i : Int, v : Double) -> SignaltransformdwtSlice {
-  let result = signal_transform_dwt_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_dwt_slice_sum(s : SignaltransformdwtSlice) -> Double { @_common.sum(s.data) }

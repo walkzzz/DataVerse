@@ -107,23 +107,15 @@ pub fn finance_pricing_american_series_std(s : FinancepricingamericanSeries) -> 
 pub fn finance_pricing_american_series_median(s : FinancepricingamericanSeries) -> Double { @_common.median(s.vals) }
 
 pub fn finance_pricing_american_series_scale(s : FinancepricingamericanSeries, f : Double) -> FinancepricingamericanSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn finance_pricing_american_series_add(a : FinancepricingamericanSeries, b : FinancepricingamericanSeries) -> FinancepricingamericanSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn finance_pricing_american_series_sub(a : FinancepricingamericanSeries, b : FinancepricingamericanSeries) -> FinancepricingamericanSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn finance_pricing_american_series_normalize(s : FinancepricingamericanSeries) -> FinancepricingamericanSeries {
@@ -254,22 +246,16 @@ pub fn finance_pricing_american_vector_zero(dim : Int) -> Financepricingamerican
 
 pub fn finance_pricing_american_vector_add(a : FinancepricingamericanVector, b : FinancepricingamericanVector) -> FinancepricingamericanVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_pricing_american_vector_sub(a : FinancepricingamericanVector, b : FinancepricingamericanVector) -> FinancepricingamericanVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_pricing_american_vector_scale(v : FinancepricingamericanVector, s : Double) -> FinancepricingamericanVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn finance_pricing_american_vector_dot(a : FinancepricingamericanVector, b : FinancepricingamericanVector) -> Double {
@@ -372,10 +358,9 @@ pub fn finance_pricing_american_frame_get(s : FinancepricingamericanFrame, i : I
 }
 
 pub fn finance_pricing_american_frame_set(s : FinancepricingamericanFrame, i : Int, v : Double) -> FinancepricingamericanFrame {
-  let result = finance_pricing_american_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_american_frame_sum(s : FinancepricingamericanFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn finance_pricing_american_table_get(s : FinancepricingamericanTable, i : I
 }
 
 pub fn finance_pricing_american_table_set(s : FinancepricingamericanTable, i : Int, v : Double) -> FinancepricingamericanTable {
-  let result = finance_pricing_american_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_american_table_sum(s : FinancepricingamericanTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn finance_pricing_american_graphn_get(s : FinancepricingamericanGraphN, i :
 }
 
 pub fn finance_pricing_american_graphn_set(s : FinancepricingamericanGraphN, i : Int, v : Double) -> FinancepricingamericanGraphN {
-  let result = finance_pricing_american_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_american_graphn_sum(s : FinancepricingamericanGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn finance_pricing_american_node_get(s : FinancepricingamericanNode, i : Int
 }
 
 pub fn finance_pricing_american_node_set(s : FinancepricingamericanNode, i : Int, v : Double) -> FinancepricingamericanNode {
-  let result = finance_pricing_american_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_american_node_sum(s : FinancepricingamericanNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn finance_pricing_american_edge_get(s : FinancepricingamericanEdge, i : Int
 }
 
 pub fn finance_pricing_american_edge_set(s : FinancepricingamericanEdge, i : Int, v : Double) -> FinancepricingamericanEdge {
-  let result = finance_pricing_american_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_american_edge_sum(s : FinancepricingamericanEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn finance_pricing_american_path_get(s : FinancepricingamericanPath, i : Int
 }
 
 pub fn finance_pricing_american_path_set(s : FinancepricingamericanPath, i : Int, v : Double) -> FinancepricingamericanPath {
-  let result = finance_pricing_american_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_american_path_sum(s : FinancepricingamericanPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn finance_pricing_american_cluster_get(s : FinancepricingamericanCluster, i
 }
 
 pub fn finance_pricing_american_cluster_set(s : FinancepricingamericanCluster, i : Int, v : Double) -> FinancepricingamericanCluster {
-  let result = finance_pricing_american_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_american_cluster_sum(s : FinancepricingamericanCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn finance_pricing_american_model_get(s : FinancepricingamericanModel, i : I
 }
 
 pub fn finance_pricing_american_model_set(s : FinancepricingamericanModel, i : Int, v : Double) -> FinancepricingamericanModel {
-  let result = finance_pricing_american_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_american_model_sum(s : FinancepricingamericanModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn finance_pricing_american_layer_get(s : FinancepricingamericanLayer, i : I
 }
 
 pub fn finance_pricing_american_layer_set(s : FinancepricingamericanLayer, i : Int, v : Double) -> FinancepricingamericanLayer {
-  let result = finance_pricing_american_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_american_layer_sum(s : FinancepricingamericanLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn finance_pricing_american_buffer_get(s : FinancepricingamericanBuffer, i :
 }
 
 pub fn finance_pricing_american_buffer_set(s : FinancepricingamericanBuffer, i : Int, v : Double) -> FinancepricingamericanBuffer {
-  let result = finance_pricing_american_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_american_buffer_sum(s : FinancepricingamericanBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn finance_pricing_american_cursor_get(s : FinancepricingamericanCursor, i :
 }
 
 pub fn finance_pricing_american_cursor_set(s : FinancepricingamericanCursor, i : Int, v : Double) -> FinancepricingamericanCursor {
-  let result = finance_pricing_american_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_american_cursor_sum(s : FinancepricingamericanCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn finance_pricing_american_view_get(s : FinancepricingamericanView, i : Int
 }
 
 pub fn finance_pricing_american_view_set(s : FinancepricingamericanView, i : Int, v : Double) -> FinancepricingamericanView {
-  let result = finance_pricing_american_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_american_view_sum(s : FinancepricingamericanView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn finance_pricing_american_range_get(s : FinancepricingamericanRange, i : I
 }
 
 pub fn finance_pricing_american_range_set(s : FinancepricingamericanRange, i : Int, v : Double) -> FinancepricingamericanRange {
-  let result = finance_pricing_american_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_american_range_sum(s : FinancepricingamericanRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn finance_pricing_american_slice_get(s : FinancepricingamericanSlice, i : I
 }
 
 pub fn finance_pricing_american_slice_set(s : FinancepricingamericanSlice, i : Int, v : Double) -> FinancepricingamericanSlice {
-  let result = finance_pricing_american_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_american_slice_sum(s : FinancepricingamericanSlice) -> Double { @_common.sum(s.data) }

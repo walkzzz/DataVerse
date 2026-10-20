@@ -107,23 +107,15 @@ pub fn timeseries_decomp_hp_series_std(s : TimeseriesdecomphpSeries) -> Double {
 pub fn timeseries_decomp_hp_series_median(s : TimeseriesdecomphpSeries) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_decomp_hp_series_scale(s : TimeseriesdecomphpSeries, f : Double) -> TimeseriesdecomphpSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn timeseries_decomp_hp_series_add(a : TimeseriesdecomphpSeries, b : TimeseriesdecomphpSeries) -> TimeseriesdecomphpSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_decomp_hp_series_sub(a : TimeseriesdecomphpSeries, b : TimeseriesdecomphpSeries) -> TimeseriesdecomphpSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_decomp_hp_series_normalize(s : TimeseriesdecomphpSeries) -> TimeseriesdecomphpSeries {
@@ -254,22 +246,16 @@ pub fn timeseries_decomp_hp_vector_zero(dim : Int) -> TimeseriesdecomphpVector {
 
 pub fn timeseries_decomp_hp_vector_add(a : TimeseriesdecomphpVector, b : TimeseriesdecomphpVector) -> TimeseriesdecomphpVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_decomp_hp_vector_sub(a : TimeseriesdecomphpVector, b : TimeseriesdecomphpVector) -> TimeseriesdecomphpVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_decomp_hp_vector_scale(v : TimeseriesdecomphpVector, s : Double) -> TimeseriesdecomphpVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn timeseries_decomp_hp_vector_dot(a : TimeseriesdecomphpVector, b : TimeseriesdecomphpVector) -> Double {
@@ -372,10 +358,9 @@ pub fn timeseries_decomp_hp_frame_get(s : TimeseriesdecomphpFrame, i : Int) -> D
 }
 
 pub fn timeseries_decomp_hp_frame_set(s : TimeseriesdecomphpFrame, i : Int, v : Double) -> TimeseriesdecomphpFrame {
-  let result = timeseries_decomp_hp_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_hp_frame_sum(s : TimeseriesdecomphpFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn timeseries_decomp_hp_table_get(s : TimeseriesdecomphpTable, i : Int) -> D
 }
 
 pub fn timeseries_decomp_hp_table_set(s : TimeseriesdecomphpTable, i : Int, v : Double) -> TimeseriesdecomphpTable {
-  let result = timeseries_decomp_hp_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_hp_table_sum(s : TimeseriesdecomphpTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn timeseries_decomp_hp_graphn_get(s : TimeseriesdecomphpGraphN, i : Int) ->
 }
 
 pub fn timeseries_decomp_hp_graphn_set(s : TimeseriesdecomphpGraphN, i : Int, v : Double) -> TimeseriesdecomphpGraphN {
-  let result = timeseries_decomp_hp_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_hp_graphn_sum(s : TimeseriesdecomphpGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn timeseries_decomp_hp_node_get(s : TimeseriesdecomphpNode, i : Int) -> Dou
 }
 
 pub fn timeseries_decomp_hp_node_set(s : TimeseriesdecomphpNode, i : Int, v : Double) -> TimeseriesdecomphpNode {
-  let result = timeseries_decomp_hp_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_hp_node_sum(s : TimeseriesdecomphpNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn timeseries_decomp_hp_edge_get(s : TimeseriesdecomphpEdge, i : Int) -> Dou
 }
 
 pub fn timeseries_decomp_hp_edge_set(s : TimeseriesdecomphpEdge, i : Int, v : Double) -> TimeseriesdecomphpEdge {
-  let result = timeseries_decomp_hp_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_hp_edge_sum(s : TimeseriesdecomphpEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn timeseries_decomp_hp_path_get(s : TimeseriesdecomphpPath, i : Int) -> Dou
 }
 
 pub fn timeseries_decomp_hp_path_set(s : TimeseriesdecomphpPath, i : Int, v : Double) -> TimeseriesdecomphpPath {
-  let result = timeseries_decomp_hp_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_hp_path_sum(s : TimeseriesdecomphpPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn timeseries_decomp_hp_cluster_get(s : TimeseriesdecomphpCluster, i : Int) 
 }
 
 pub fn timeseries_decomp_hp_cluster_set(s : TimeseriesdecomphpCluster, i : Int, v : Double) -> TimeseriesdecomphpCluster {
-  let result = timeseries_decomp_hp_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_hp_cluster_sum(s : TimeseriesdecomphpCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn timeseries_decomp_hp_model_get(s : TimeseriesdecomphpModel, i : Int) -> D
 }
 
 pub fn timeseries_decomp_hp_model_set(s : TimeseriesdecomphpModel, i : Int, v : Double) -> TimeseriesdecomphpModel {
-  let result = timeseries_decomp_hp_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_hp_model_sum(s : TimeseriesdecomphpModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn timeseries_decomp_hp_layer_get(s : TimeseriesdecomphpLayer, i : Int) -> D
 }
 
 pub fn timeseries_decomp_hp_layer_set(s : TimeseriesdecomphpLayer, i : Int, v : Double) -> TimeseriesdecomphpLayer {
-  let result = timeseries_decomp_hp_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_hp_layer_sum(s : TimeseriesdecomphpLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn timeseries_decomp_hp_buffer_get(s : TimeseriesdecomphpBuffer, i : Int) ->
 }
 
 pub fn timeseries_decomp_hp_buffer_set(s : TimeseriesdecomphpBuffer, i : Int, v : Double) -> TimeseriesdecomphpBuffer {
-  let result = timeseries_decomp_hp_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_hp_buffer_sum(s : TimeseriesdecomphpBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn timeseries_decomp_hp_cursor_get(s : TimeseriesdecomphpCursor, i : Int) ->
 }
 
 pub fn timeseries_decomp_hp_cursor_set(s : TimeseriesdecomphpCursor, i : Int, v : Double) -> TimeseriesdecomphpCursor {
-  let result = timeseries_decomp_hp_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_hp_cursor_sum(s : TimeseriesdecomphpCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn timeseries_decomp_hp_view_get(s : TimeseriesdecomphpView, i : Int) -> Dou
 }
 
 pub fn timeseries_decomp_hp_view_set(s : TimeseriesdecomphpView, i : Int, v : Double) -> TimeseriesdecomphpView {
-  let result = timeseries_decomp_hp_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_hp_view_sum(s : TimeseriesdecomphpView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn timeseries_decomp_hp_range_get(s : TimeseriesdecomphpRange, i : Int) -> D
 }
 
 pub fn timeseries_decomp_hp_range_set(s : TimeseriesdecomphpRange, i : Int, v : Double) -> TimeseriesdecomphpRange {
-  let result = timeseries_decomp_hp_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_hp_range_sum(s : TimeseriesdecomphpRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn timeseries_decomp_hp_slice_get(s : TimeseriesdecomphpSlice, i : Int) -> D
 }
 
 pub fn timeseries_decomp_hp_slice_set(s : TimeseriesdecomphpSlice, i : Int, v : Double) -> TimeseriesdecomphpSlice {
-  let result = timeseries_decomp_hp_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_hp_slice_sum(s : TimeseriesdecomphpSlice) -> Double { @_common.sum(s.data) }

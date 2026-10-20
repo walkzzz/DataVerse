@@ -107,23 +107,15 @@ pub fn image_morph_erode_series_std(s : ImagemorpherodeSeries) -> Double { @_com
 pub fn image_morph_erode_series_median(s : ImagemorpherodeSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_morph_erode_series_scale(s : ImagemorpherodeSeries, f : Double) -> ImagemorpherodeSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_morph_erode_series_add(a : ImagemorpherodeSeries, b : ImagemorpherodeSeries) -> ImagemorpherodeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_morph_erode_series_sub(a : ImagemorpherodeSeries, b : ImagemorpherodeSeries) -> ImagemorpherodeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_morph_erode_series_normalize(s : ImagemorpherodeSeries) -> ImagemorpherodeSeries {
@@ -254,22 +246,16 @@ pub fn image_morph_erode_vector_zero(dim : Int) -> ImagemorpherodeVector {
 
 pub fn image_morph_erode_vector_add(a : ImagemorpherodeVector, b : ImagemorpherodeVector) -> ImagemorpherodeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_morph_erode_vector_sub(a : ImagemorpherodeVector, b : ImagemorpherodeVector) -> ImagemorpherodeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_morph_erode_vector_scale(v : ImagemorpherodeVector, s : Double) -> ImagemorpherodeVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_morph_erode_vector_dot(a : ImagemorpherodeVector, b : ImagemorpherodeVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_morph_erode_frame_get(s : ImagemorpherodeFrame, i : Int) -> Double 
 }
 
 pub fn image_morph_erode_frame_set(s : ImagemorpherodeFrame, i : Int, v : Double) -> ImagemorpherodeFrame {
-  let result = image_morph_erode_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_erode_frame_sum(s : ImagemorpherodeFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_morph_erode_table_get(s : ImagemorpherodeTable, i : Int) -> Double 
 }
 
 pub fn image_morph_erode_table_set(s : ImagemorpherodeTable, i : Int, v : Double) -> ImagemorpherodeTable {
-  let result = image_morph_erode_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_erode_table_sum(s : ImagemorpherodeTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_morph_erode_graphn_get(s : ImagemorpherodeGraphN, i : Int) -> Doubl
 }
 
 pub fn image_morph_erode_graphn_set(s : ImagemorpherodeGraphN, i : Int, v : Double) -> ImagemorpherodeGraphN {
-  let result = image_morph_erode_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_erode_graphn_sum(s : ImagemorpherodeGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_morph_erode_node_get(s : ImagemorpherodeNode, i : Int) -> Double {
 }
 
 pub fn image_morph_erode_node_set(s : ImagemorpherodeNode, i : Int, v : Double) -> ImagemorpherodeNode {
-  let result = image_morph_erode_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_erode_node_sum(s : ImagemorpherodeNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_morph_erode_edge_get(s : ImagemorpherodeEdge, i : Int) -> Double {
 }
 
 pub fn image_morph_erode_edge_set(s : ImagemorpherodeEdge, i : Int, v : Double) -> ImagemorpherodeEdge {
-  let result = image_morph_erode_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_erode_edge_sum(s : ImagemorpherodeEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_morph_erode_path_get(s : ImagemorpherodePath, i : Int) -> Double {
 }
 
 pub fn image_morph_erode_path_set(s : ImagemorpherodePath, i : Int, v : Double) -> ImagemorpherodePath {
-  let result = image_morph_erode_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_erode_path_sum(s : ImagemorpherodePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_morph_erode_cluster_get(s : ImagemorpherodeCluster, i : Int) -> Dou
 }
 
 pub fn image_morph_erode_cluster_set(s : ImagemorpherodeCluster, i : Int, v : Double) -> ImagemorpherodeCluster {
-  let result = image_morph_erode_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_erode_cluster_sum(s : ImagemorpherodeCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_morph_erode_model_get(s : ImagemorpherodeModel, i : Int) -> Double 
 }
 
 pub fn image_morph_erode_model_set(s : ImagemorpherodeModel, i : Int, v : Double) -> ImagemorpherodeModel {
-  let result = image_morph_erode_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_erode_model_sum(s : ImagemorpherodeModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_morph_erode_layer_get(s : ImagemorpherodeLayer, i : Int) -> Double 
 }
 
 pub fn image_morph_erode_layer_set(s : ImagemorpherodeLayer, i : Int, v : Double) -> ImagemorpherodeLayer {
-  let result = image_morph_erode_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_erode_layer_sum(s : ImagemorpherodeLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_morph_erode_buffer_get(s : ImagemorpherodeBuffer, i : Int) -> Doubl
 }
 
 pub fn image_morph_erode_buffer_set(s : ImagemorpherodeBuffer, i : Int, v : Double) -> ImagemorpherodeBuffer {
-  let result = image_morph_erode_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_erode_buffer_sum(s : ImagemorpherodeBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_morph_erode_cursor_get(s : ImagemorpherodeCursor, i : Int) -> Doubl
 }
 
 pub fn image_morph_erode_cursor_set(s : ImagemorpherodeCursor, i : Int, v : Double) -> ImagemorpherodeCursor {
-  let result = image_morph_erode_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_erode_cursor_sum(s : ImagemorpherodeCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_morph_erode_view_get(s : ImagemorpherodeView, i : Int) -> Double {
 }
 
 pub fn image_morph_erode_view_set(s : ImagemorpherodeView, i : Int, v : Double) -> ImagemorpherodeView {
-  let result = image_morph_erode_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_erode_view_sum(s : ImagemorpherodeView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_morph_erode_range_get(s : ImagemorpherodeRange, i : Int) -> Double 
 }
 
 pub fn image_morph_erode_range_set(s : ImagemorpherodeRange, i : Int, v : Double) -> ImagemorpherodeRange {
-  let result = image_morph_erode_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_erode_range_sum(s : ImagemorpherodeRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_morph_erode_slice_get(s : ImagemorpherodeSlice, i : Int) -> Double 
 }
 
 pub fn image_morph_erode_slice_set(s : ImagemorpherodeSlice, i : Int, v : Double) -> ImagemorpherodeSlice {
-  let result = image_morph_erode_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_erode_slice_sum(s : ImagemorpherodeSlice) -> Double { @_common.sum(s.data) }

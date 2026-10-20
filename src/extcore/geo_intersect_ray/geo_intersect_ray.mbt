@@ -107,23 +107,15 @@ pub fn geo_intersect_ray_series_std(s : GeointersectraySeries) -> Double { @_com
 pub fn geo_intersect_ray_series_median(s : GeointersectraySeries) -> Double { @_common.median(s.vals) }
 
 pub fn geo_intersect_ray_series_scale(s : GeointersectraySeries, f : Double) -> GeointersectraySeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn geo_intersect_ray_series_add(a : GeointersectraySeries, b : GeointersectraySeries) -> GeointersectraySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn geo_intersect_ray_series_sub(a : GeointersectraySeries, b : GeointersectraySeries) -> GeointersectraySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn geo_intersect_ray_series_normalize(s : GeointersectraySeries) -> GeointersectraySeries {
@@ -254,22 +246,16 @@ pub fn geo_intersect_ray_vector_zero(dim : Int) -> GeointersectrayVector {
 
 pub fn geo_intersect_ray_vector_add(a : GeointersectrayVector, b : GeointersectrayVector) -> GeointersectrayVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_intersect_ray_vector_sub(a : GeointersectrayVector, b : GeointersectrayVector) -> GeointersectrayVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_intersect_ray_vector_scale(v : GeointersectrayVector, s : Double) -> GeointersectrayVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn geo_intersect_ray_vector_dot(a : GeointersectrayVector, b : GeointersectrayVector) -> Double {
@@ -372,10 +358,9 @@ pub fn geo_intersect_ray_frame_get(s : GeointersectrayFrame, i : Int) -> Double 
 }
 
 pub fn geo_intersect_ray_frame_set(s : GeointersectrayFrame, i : Int, v : Double) -> GeointersectrayFrame {
-  let result = geo_intersect_ray_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_ray_frame_sum(s : GeointersectrayFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn geo_intersect_ray_table_get(s : GeointersectrayTable, i : Int) -> Double 
 }
 
 pub fn geo_intersect_ray_table_set(s : GeointersectrayTable, i : Int, v : Double) -> GeointersectrayTable {
-  let result = geo_intersect_ray_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_ray_table_sum(s : GeointersectrayTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn geo_intersect_ray_graphn_get(s : GeointersectrayGraphN, i : Int) -> Doubl
 }
 
 pub fn geo_intersect_ray_graphn_set(s : GeointersectrayGraphN, i : Int, v : Double) -> GeointersectrayGraphN {
-  let result = geo_intersect_ray_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_ray_graphn_sum(s : GeointersectrayGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn geo_intersect_ray_node_get(s : GeointersectrayNode, i : Int) -> Double {
 }
 
 pub fn geo_intersect_ray_node_set(s : GeointersectrayNode, i : Int, v : Double) -> GeointersectrayNode {
-  let result = geo_intersect_ray_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_ray_node_sum(s : GeointersectrayNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn geo_intersect_ray_edge_get(s : GeointersectrayEdge, i : Int) -> Double {
 }
 
 pub fn geo_intersect_ray_edge_set(s : GeointersectrayEdge, i : Int, v : Double) -> GeointersectrayEdge {
-  let result = geo_intersect_ray_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_ray_edge_sum(s : GeointersectrayEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn geo_intersect_ray_path_get(s : GeointersectrayPath, i : Int) -> Double {
 }
 
 pub fn geo_intersect_ray_path_set(s : GeointersectrayPath, i : Int, v : Double) -> GeointersectrayPath {
-  let result = geo_intersect_ray_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_ray_path_sum(s : GeointersectrayPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn geo_intersect_ray_cluster_get(s : GeointersectrayCluster, i : Int) -> Dou
 }
 
 pub fn geo_intersect_ray_cluster_set(s : GeointersectrayCluster, i : Int, v : Double) -> GeointersectrayCluster {
-  let result = geo_intersect_ray_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_ray_cluster_sum(s : GeointersectrayCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn geo_intersect_ray_model_get(s : GeointersectrayModel, i : Int) -> Double 
 }
 
 pub fn geo_intersect_ray_model_set(s : GeointersectrayModel, i : Int, v : Double) -> GeointersectrayModel {
-  let result = geo_intersect_ray_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_ray_model_sum(s : GeointersectrayModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn geo_intersect_ray_layer_get(s : GeointersectrayLayer, i : Int) -> Double 
 }
 
 pub fn geo_intersect_ray_layer_set(s : GeointersectrayLayer, i : Int, v : Double) -> GeointersectrayLayer {
-  let result = geo_intersect_ray_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_ray_layer_sum(s : GeointersectrayLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn geo_intersect_ray_buffer_get(s : GeointersectrayBuffer, i : Int) -> Doubl
 }
 
 pub fn geo_intersect_ray_buffer_set(s : GeointersectrayBuffer, i : Int, v : Double) -> GeointersectrayBuffer {
-  let result = geo_intersect_ray_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_ray_buffer_sum(s : GeointersectrayBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn geo_intersect_ray_cursor_get(s : GeointersectrayCursor, i : Int) -> Doubl
 }
 
 pub fn geo_intersect_ray_cursor_set(s : GeointersectrayCursor, i : Int, v : Double) -> GeointersectrayCursor {
-  let result = geo_intersect_ray_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_ray_cursor_sum(s : GeointersectrayCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn geo_intersect_ray_view_get(s : GeointersectrayView, i : Int) -> Double {
 }
 
 pub fn geo_intersect_ray_view_set(s : GeointersectrayView, i : Int, v : Double) -> GeointersectrayView {
-  let result = geo_intersect_ray_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_ray_view_sum(s : GeointersectrayView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn geo_intersect_ray_range_get(s : GeointersectrayRange, i : Int) -> Double 
 }
 
 pub fn geo_intersect_ray_range_set(s : GeointersectrayRange, i : Int, v : Double) -> GeointersectrayRange {
-  let result = geo_intersect_ray_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_ray_range_sum(s : GeointersectrayRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn geo_intersect_ray_slice_get(s : GeointersectraySlice, i : Int) -> Double 
 }
 
 pub fn geo_intersect_ray_slice_set(s : GeointersectraySlice, i : Int, v : Double) -> GeointersectraySlice {
-  let result = geo_intersect_ray_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_ray_slice_sum(s : GeointersectraySlice) -> Double { @_common.sum(s.data) }

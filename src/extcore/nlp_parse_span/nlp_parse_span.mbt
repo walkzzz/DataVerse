@@ -107,23 +107,15 @@ pub fn nlp_parse_span_series_std(s : NlpparsespanSeries) -> Double { @_common.st
 pub fn nlp_parse_span_series_median(s : NlpparsespanSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_parse_span_series_scale(s : NlpparsespanSeries, f : Double) -> NlpparsespanSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_parse_span_series_add(a : NlpparsespanSeries, b : NlpparsespanSeries) -> NlpparsespanSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_parse_span_series_sub(a : NlpparsespanSeries, b : NlpparsespanSeries) -> NlpparsespanSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_parse_span_series_normalize(s : NlpparsespanSeries) -> NlpparsespanSeries {
@@ -254,22 +246,16 @@ pub fn nlp_parse_span_vector_zero(dim : Int) -> NlpparsespanVector {
 
 pub fn nlp_parse_span_vector_add(a : NlpparsespanVector, b : NlpparsespanVector) -> NlpparsespanVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_parse_span_vector_sub(a : NlpparsespanVector, b : NlpparsespanVector) -> NlpparsespanVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_parse_span_vector_scale(v : NlpparsespanVector, s : Double) -> NlpparsespanVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_parse_span_vector_dot(a : NlpparsespanVector, b : NlpparsespanVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_parse_span_frame_get(s : NlpparsespanFrame, i : Int) -> Double {
 }
 
 pub fn nlp_parse_span_frame_set(s : NlpparsespanFrame, i : Int, v : Double) -> NlpparsespanFrame {
-  let result = nlp_parse_span_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_span_frame_sum(s : NlpparsespanFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_parse_span_table_get(s : NlpparsespanTable, i : Int) -> Double {
 }
 
 pub fn nlp_parse_span_table_set(s : NlpparsespanTable, i : Int, v : Double) -> NlpparsespanTable {
-  let result = nlp_parse_span_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_span_table_sum(s : NlpparsespanTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_parse_span_graphn_get(s : NlpparsespanGraphN, i : Int) -> Double {
 }
 
 pub fn nlp_parse_span_graphn_set(s : NlpparsespanGraphN, i : Int, v : Double) -> NlpparsespanGraphN {
-  let result = nlp_parse_span_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_span_graphn_sum(s : NlpparsespanGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_parse_span_node_get(s : NlpparsespanNode, i : Int) -> Double {
 }
 
 pub fn nlp_parse_span_node_set(s : NlpparsespanNode, i : Int, v : Double) -> NlpparsespanNode {
-  let result = nlp_parse_span_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_span_node_sum(s : NlpparsespanNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_parse_span_edge_get(s : NlpparsespanEdge, i : Int) -> Double {
 }
 
 pub fn nlp_parse_span_edge_set(s : NlpparsespanEdge, i : Int, v : Double) -> NlpparsespanEdge {
-  let result = nlp_parse_span_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_span_edge_sum(s : NlpparsespanEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_parse_span_path_get(s : NlpparsespanPath, i : Int) -> Double {
 }
 
 pub fn nlp_parse_span_path_set(s : NlpparsespanPath, i : Int, v : Double) -> NlpparsespanPath {
-  let result = nlp_parse_span_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_span_path_sum(s : NlpparsespanPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_parse_span_cluster_get(s : NlpparsespanCluster, i : Int) -> Double {
 }
 
 pub fn nlp_parse_span_cluster_set(s : NlpparsespanCluster, i : Int, v : Double) -> NlpparsespanCluster {
-  let result = nlp_parse_span_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_span_cluster_sum(s : NlpparsespanCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_parse_span_model_get(s : NlpparsespanModel, i : Int) -> Double {
 }
 
 pub fn nlp_parse_span_model_set(s : NlpparsespanModel, i : Int, v : Double) -> NlpparsespanModel {
-  let result = nlp_parse_span_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_span_model_sum(s : NlpparsespanModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_parse_span_layer_get(s : NlpparsespanLayer, i : Int) -> Double {
 }
 
 pub fn nlp_parse_span_layer_set(s : NlpparsespanLayer, i : Int, v : Double) -> NlpparsespanLayer {
-  let result = nlp_parse_span_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_span_layer_sum(s : NlpparsespanLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_parse_span_buffer_get(s : NlpparsespanBuffer, i : Int) -> Double {
 }
 
 pub fn nlp_parse_span_buffer_set(s : NlpparsespanBuffer, i : Int, v : Double) -> NlpparsespanBuffer {
-  let result = nlp_parse_span_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_span_buffer_sum(s : NlpparsespanBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_parse_span_cursor_get(s : NlpparsespanCursor, i : Int) -> Double {
 }
 
 pub fn nlp_parse_span_cursor_set(s : NlpparsespanCursor, i : Int, v : Double) -> NlpparsespanCursor {
-  let result = nlp_parse_span_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_span_cursor_sum(s : NlpparsespanCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_parse_span_view_get(s : NlpparsespanView, i : Int) -> Double {
 }
 
 pub fn nlp_parse_span_view_set(s : NlpparsespanView, i : Int, v : Double) -> NlpparsespanView {
-  let result = nlp_parse_span_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_span_view_sum(s : NlpparsespanView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_parse_span_range_get(s : NlpparsespanRange, i : Int) -> Double {
 }
 
 pub fn nlp_parse_span_range_set(s : NlpparsespanRange, i : Int, v : Double) -> NlpparsespanRange {
-  let result = nlp_parse_span_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_span_range_sum(s : NlpparsespanRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_parse_span_slice_get(s : NlpparsespanSlice, i : Int) -> Double {
 }
 
 pub fn nlp_parse_span_slice_set(s : NlpparsespanSlice, i : Int, v : Double) -> NlpparsespanSlice {
-  let result = nlp_parse_span_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_span_slice_sum(s : NlpparsespanSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn stats_desc_robust_series_std(s : StatsdescrobustSeries) -> Double { @_com
 pub fn stats_desc_robust_series_median(s : StatsdescrobustSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_desc_robust_series_scale(s : StatsdescrobustSeries, f : Double) -> StatsdescrobustSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_desc_robust_series_add(a : StatsdescrobustSeries, b : StatsdescrobustSeries) -> StatsdescrobustSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_desc_robust_series_sub(a : StatsdescrobustSeries, b : StatsdescrobustSeries) -> StatsdescrobustSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_desc_robust_series_normalize(s : StatsdescrobustSeries) -> StatsdescrobustSeries {
@@ -254,22 +246,16 @@ pub fn stats_desc_robust_vector_zero(dim : Int) -> StatsdescrobustVector {
 
 pub fn stats_desc_robust_vector_add(a : StatsdescrobustVector, b : StatsdescrobustVector) -> StatsdescrobustVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_desc_robust_vector_sub(a : StatsdescrobustVector, b : StatsdescrobustVector) -> StatsdescrobustVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_desc_robust_vector_scale(v : StatsdescrobustVector, s : Double) -> StatsdescrobustVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_desc_robust_vector_dot(a : StatsdescrobustVector, b : StatsdescrobustVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_desc_robust_frame_get(s : StatsdescrobustFrame, i : Int) -> Double 
 }
 
 pub fn stats_desc_robust_frame_set(s : StatsdescrobustFrame, i : Int, v : Double) -> StatsdescrobustFrame {
-  let result = stats_desc_robust_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_robust_frame_sum(s : StatsdescrobustFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_desc_robust_table_get(s : StatsdescrobustTable, i : Int) -> Double 
 }
 
 pub fn stats_desc_robust_table_set(s : StatsdescrobustTable, i : Int, v : Double) -> StatsdescrobustTable {
-  let result = stats_desc_robust_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_robust_table_sum(s : StatsdescrobustTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_desc_robust_graphn_get(s : StatsdescrobustGraphN, i : Int) -> Doubl
 }
 
 pub fn stats_desc_robust_graphn_set(s : StatsdescrobustGraphN, i : Int, v : Double) -> StatsdescrobustGraphN {
-  let result = stats_desc_robust_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_robust_graphn_sum(s : StatsdescrobustGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_desc_robust_node_get(s : StatsdescrobustNode, i : Int) -> Double {
 }
 
 pub fn stats_desc_robust_node_set(s : StatsdescrobustNode, i : Int, v : Double) -> StatsdescrobustNode {
-  let result = stats_desc_robust_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_robust_node_sum(s : StatsdescrobustNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_desc_robust_edge_get(s : StatsdescrobustEdge, i : Int) -> Double {
 }
 
 pub fn stats_desc_robust_edge_set(s : StatsdescrobustEdge, i : Int, v : Double) -> StatsdescrobustEdge {
-  let result = stats_desc_robust_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_robust_edge_sum(s : StatsdescrobustEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_desc_robust_path_get(s : StatsdescrobustPath, i : Int) -> Double {
 }
 
 pub fn stats_desc_robust_path_set(s : StatsdescrobustPath, i : Int, v : Double) -> StatsdescrobustPath {
-  let result = stats_desc_robust_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_robust_path_sum(s : StatsdescrobustPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_desc_robust_cluster_get(s : StatsdescrobustCluster, i : Int) -> Dou
 }
 
 pub fn stats_desc_robust_cluster_set(s : StatsdescrobustCluster, i : Int, v : Double) -> StatsdescrobustCluster {
-  let result = stats_desc_robust_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_robust_cluster_sum(s : StatsdescrobustCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_desc_robust_model_get(s : StatsdescrobustModel, i : Int) -> Double 
 }
 
 pub fn stats_desc_robust_model_set(s : StatsdescrobustModel, i : Int, v : Double) -> StatsdescrobustModel {
-  let result = stats_desc_robust_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_robust_model_sum(s : StatsdescrobustModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_desc_robust_layer_get(s : StatsdescrobustLayer, i : Int) -> Double 
 }
 
 pub fn stats_desc_robust_layer_set(s : StatsdescrobustLayer, i : Int, v : Double) -> StatsdescrobustLayer {
-  let result = stats_desc_robust_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_robust_layer_sum(s : StatsdescrobustLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_desc_robust_buffer_get(s : StatsdescrobustBuffer, i : Int) -> Doubl
 }
 
 pub fn stats_desc_robust_buffer_set(s : StatsdescrobustBuffer, i : Int, v : Double) -> StatsdescrobustBuffer {
-  let result = stats_desc_robust_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_robust_buffer_sum(s : StatsdescrobustBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_desc_robust_cursor_get(s : StatsdescrobustCursor, i : Int) -> Doubl
 }
 
 pub fn stats_desc_robust_cursor_set(s : StatsdescrobustCursor, i : Int, v : Double) -> StatsdescrobustCursor {
-  let result = stats_desc_robust_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_robust_cursor_sum(s : StatsdescrobustCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_desc_robust_view_get(s : StatsdescrobustView, i : Int) -> Double {
 }
 
 pub fn stats_desc_robust_view_set(s : StatsdescrobustView, i : Int, v : Double) -> StatsdescrobustView {
-  let result = stats_desc_robust_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_robust_view_sum(s : StatsdescrobustView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_desc_robust_range_get(s : StatsdescrobustRange, i : Int) -> Double 
 }
 
 pub fn stats_desc_robust_range_set(s : StatsdescrobustRange, i : Int, v : Double) -> StatsdescrobustRange {
-  let result = stats_desc_robust_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_robust_range_sum(s : StatsdescrobustRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_desc_robust_slice_get(s : StatsdescrobustSlice, i : Int) -> Double 
 }
 
 pub fn stats_desc_robust_slice_set(s : StatsdescrobustSlice, i : Int, v : Double) -> StatsdescrobustSlice {
-  let result = stats_desc_robust_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_robust_slice_sum(s : StatsdescrobustSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn stats_desc_order_series_std(s : StatsdescorderSeries) -> Double { @_commo
 pub fn stats_desc_order_series_median(s : StatsdescorderSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_desc_order_series_scale(s : StatsdescorderSeries, f : Double) -> StatsdescorderSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_desc_order_series_add(a : StatsdescorderSeries, b : StatsdescorderSeries) -> StatsdescorderSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_desc_order_series_sub(a : StatsdescorderSeries, b : StatsdescorderSeries) -> StatsdescorderSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_desc_order_series_normalize(s : StatsdescorderSeries) -> StatsdescorderSeries {
@@ -254,22 +246,16 @@ pub fn stats_desc_order_vector_zero(dim : Int) -> StatsdescorderVector {
 
 pub fn stats_desc_order_vector_add(a : StatsdescorderVector, b : StatsdescorderVector) -> StatsdescorderVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_desc_order_vector_sub(a : StatsdescorderVector, b : StatsdescorderVector) -> StatsdescorderVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_desc_order_vector_scale(v : StatsdescorderVector, s : Double) -> StatsdescorderVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_desc_order_vector_dot(a : StatsdescorderVector, b : StatsdescorderVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_desc_order_frame_get(s : StatsdescorderFrame, i : Int) -> Double {
 }
 
 pub fn stats_desc_order_frame_set(s : StatsdescorderFrame, i : Int, v : Double) -> StatsdescorderFrame {
-  let result = stats_desc_order_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_frame_sum(s : StatsdescorderFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_desc_order_table_get(s : StatsdescorderTable, i : Int) -> Double {
 }
 
 pub fn stats_desc_order_table_set(s : StatsdescorderTable, i : Int, v : Double) -> StatsdescorderTable {
-  let result = stats_desc_order_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_table_sum(s : StatsdescorderTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_desc_order_graphn_get(s : StatsdescorderGraphN, i : Int) -> Double 
 }
 
 pub fn stats_desc_order_graphn_set(s : StatsdescorderGraphN, i : Int, v : Double) -> StatsdescorderGraphN {
-  let result = stats_desc_order_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_graphn_sum(s : StatsdescorderGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_desc_order_node_get(s : StatsdescorderNode, i : Int) -> Double {
 }
 
 pub fn stats_desc_order_node_set(s : StatsdescorderNode, i : Int, v : Double) -> StatsdescorderNode {
-  let result = stats_desc_order_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_node_sum(s : StatsdescorderNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_desc_order_edge_get(s : StatsdescorderEdge, i : Int) -> Double {
 }
 
 pub fn stats_desc_order_edge_set(s : StatsdescorderEdge, i : Int, v : Double) -> StatsdescorderEdge {
-  let result = stats_desc_order_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_edge_sum(s : StatsdescorderEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_desc_order_path_get(s : StatsdescorderPath, i : Int) -> Double {
 }
 
 pub fn stats_desc_order_path_set(s : StatsdescorderPath, i : Int, v : Double) -> StatsdescorderPath {
-  let result = stats_desc_order_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_path_sum(s : StatsdescorderPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_desc_order_cluster_get(s : StatsdescorderCluster, i : Int) -> Doubl
 }
 
 pub fn stats_desc_order_cluster_set(s : StatsdescorderCluster, i : Int, v : Double) -> StatsdescorderCluster {
-  let result = stats_desc_order_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_cluster_sum(s : StatsdescorderCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_desc_order_model_get(s : StatsdescorderModel, i : Int) -> Double {
 }
 
 pub fn stats_desc_order_model_set(s : StatsdescorderModel, i : Int, v : Double) -> StatsdescorderModel {
-  let result = stats_desc_order_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_model_sum(s : StatsdescorderModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_desc_order_layer_get(s : StatsdescorderLayer, i : Int) -> Double {
 }
 
 pub fn stats_desc_order_layer_set(s : StatsdescorderLayer, i : Int, v : Double) -> StatsdescorderLayer {
-  let result = stats_desc_order_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_layer_sum(s : StatsdescorderLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_desc_order_buffer_get(s : StatsdescorderBuffer, i : Int) -> Double 
 }
 
 pub fn stats_desc_order_buffer_set(s : StatsdescorderBuffer, i : Int, v : Double) -> StatsdescorderBuffer {
-  let result = stats_desc_order_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_buffer_sum(s : StatsdescorderBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_desc_order_cursor_get(s : StatsdescorderCursor, i : Int) -> Double 
 }
 
 pub fn stats_desc_order_cursor_set(s : StatsdescorderCursor, i : Int, v : Double) -> StatsdescorderCursor {
-  let result = stats_desc_order_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_cursor_sum(s : StatsdescorderCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_desc_order_view_get(s : StatsdescorderView, i : Int) -> Double {
 }
 
 pub fn stats_desc_order_view_set(s : StatsdescorderView, i : Int, v : Double) -> StatsdescorderView {
-  let result = stats_desc_order_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_view_sum(s : StatsdescorderView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_desc_order_range_get(s : StatsdescorderRange, i : Int) -> Double {
 }
 
 pub fn stats_desc_order_range_set(s : StatsdescorderRange, i : Int, v : Double) -> StatsdescorderRange {
-  let result = stats_desc_order_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_range_sum(s : StatsdescorderRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_desc_order_slice_get(s : StatsdescorderSlice, i : Int) -> Double {
 }
 
 pub fn stats_desc_order_slice_set(s : StatsdescorderSlice, i : Int, v : Double) -> StatsdescorderSlice {
-  let result = stats_desc_order_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_order_slice_sum(s : StatsdescorderSlice) -> Double { @_common.sum(s.data) }

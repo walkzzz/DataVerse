@@ -107,23 +107,15 @@ pub fn geo_dist_manhattan_series_std(s : GeodistmanhattanSeries) -> Double { @_c
 pub fn geo_dist_manhattan_series_median(s : GeodistmanhattanSeries) -> Double { @_common.median(s.vals) }
 
 pub fn geo_dist_manhattan_series_scale(s : GeodistmanhattanSeries, f : Double) -> GeodistmanhattanSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn geo_dist_manhattan_series_add(a : GeodistmanhattanSeries, b : GeodistmanhattanSeries) -> GeodistmanhattanSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn geo_dist_manhattan_series_sub(a : GeodistmanhattanSeries, b : GeodistmanhattanSeries) -> GeodistmanhattanSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn geo_dist_manhattan_series_normalize(s : GeodistmanhattanSeries) -> GeodistmanhattanSeries {
@@ -254,22 +246,16 @@ pub fn geo_dist_manhattan_vector_zero(dim : Int) -> GeodistmanhattanVector {
 
 pub fn geo_dist_manhattan_vector_add(a : GeodistmanhattanVector, b : GeodistmanhattanVector) -> GeodistmanhattanVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_dist_manhattan_vector_sub(a : GeodistmanhattanVector, b : GeodistmanhattanVector) -> GeodistmanhattanVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_dist_manhattan_vector_scale(v : GeodistmanhattanVector, s : Double) -> GeodistmanhattanVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn geo_dist_manhattan_vector_dot(a : GeodistmanhattanVector, b : GeodistmanhattanVector) -> Double {
@@ -372,10 +358,9 @@ pub fn geo_dist_manhattan_frame_get(s : GeodistmanhattanFrame, i : Int) -> Doubl
 }
 
 pub fn geo_dist_manhattan_frame_set(s : GeodistmanhattanFrame, i : Int, v : Double) -> GeodistmanhattanFrame {
-  let result = geo_dist_manhattan_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_manhattan_frame_sum(s : GeodistmanhattanFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn geo_dist_manhattan_table_get(s : GeodistmanhattanTable, i : Int) -> Doubl
 }
 
 pub fn geo_dist_manhattan_table_set(s : GeodistmanhattanTable, i : Int, v : Double) -> GeodistmanhattanTable {
-  let result = geo_dist_manhattan_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_manhattan_table_sum(s : GeodistmanhattanTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn geo_dist_manhattan_graphn_get(s : GeodistmanhattanGraphN, i : Int) -> Dou
 }
 
 pub fn geo_dist_manhattan_graphn_set(s : GeodistmanhattanGraphN, i : Int, v : Double) -> GeodistmanhattanGraphN {
-  let result = geo_dist_manhattan_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_manhattan_graphn_sum(s : GeodistmanhattanGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn geo_dist_manhattan_node_get(s : GeodistmanhattanNode, i : Int) -> Double 
 }
 
 pub fn geo_dist_manhattan_node_set(s : GeodistmanhattanNode, i : Int, v : Double) -> GeodistmanhattanNode {
-  let result = geo_dist_manhattan_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_manhattan_node_sum(s : GeodistmanhattanNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn geo_dist_manhattan_edge_get(s : GeodistmanhattanEdge, i : Int) -> Double 
 }
 
 pub fn geo_dist_manhattan_edge_set(s : GeodistmanhattanEdge, i : Int, v : Double) -> GeodistmanhattanEdge {
-  let result = geo_dist_manhattan_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_manhattan_edge_sum(s : GeodistmanhattanEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn geo_dist_manhattan_path_get(s : GeodistmanhattanPath, i : Int) -> Double 
 }
 
 pub fn geo_dist_manhattan_path_set(s : GeodistmanhattanPath, i : Int, v : Double) -> GeodistmanhattanPath {
-  let result = geo_dist_manhattan_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_manhattan_path_sum(s : GeodistmanhattanPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn geo_dist_manhattan_cluster_get(s : GeodistmanhattanCluster, i : Int) -> D
 }
 
 pub fn geo_dist_manhattan_cluster_set(s : GeodistmanhattanCluster, i : Int, v : Double) -> GeodistmanhattanCluster {
-  let result = geo_dist_manhattan_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_manhattan_cluster_sum(s : GeodistmanhattanCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn geo_dist_manhattan_model_get(s : GeodistmanhattanModel, i : Int) -> Doubl
 }
 
 pub fn geo_dist_manhattan_model_set(s : GeodistmanhattanModel, i : Int, v : Double) -> GeodistmanhattanModel {
-  let result = geo_dist_manhattan_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_manhattan_model_sum(s : GeodistmanhattanModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn geo_dist_manhattan_layer_get(s : GeodistmanhattanLayer, i : Int) -> Doubl
 }
 
 pub fn geo_dist_manhattan_layer_set(s : GeodistmanhattanLayer, i : Int, v : Double) -> GeodistmanhattanLayer {
-  let result = geo_dist_manhattan_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_manhattan_layer_sum(s : GeodistmanhattanLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn geo_dist_manhattan_buffer_get(s : GeodistmanhattanBuffer, i : Int) -> Dou
 }
 
 pub fn geo_dist_manhattan_buffer_set(s : GeodistmanhattanBuffer, i : Int, v : Double) -> GeodistmanhattanBuffer {
-  let result = geo_dist_manhattan_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_manhattan_buffer_sum(s : GeodistmanhattanBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn geo_dist_manhattan_cursor_get(s : GeodistmanhattanCursor, i : Int) -> Dou
 }
 
 pub fn geo_dist_manhattan_cursor_set(s : GeodistmanhattanCursor, i : Int, v : Double) -> GeodistmanhattanCursor {
-  let result = geo_dist_manhattan_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_manhattan_cursor_sum(s : GeodistmanhattanCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn geo_dist_manhattan_view_get(s : GeodistmanhattanView, i : Int) -> Double 
 }
 
 pub fn geo_dist_manhattan_view_set(s : GeodistmanhattanView, i : Int, v : Double) -> GeodistmanhattanView {
-  let result = geo_dist_manhattan_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_manhattan_view_sum(s : GeodistmanhattanView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn geo_dist_manhattan_range_get(s : GeodistmanhattanRange, i : Int) -> Doubl
 }
 
 pub fn geo_dist_manhattan_range_set(s : GeodistmanhattanRange, i : Int, v : Double) -> GeodistmanhattanRange {
-  let result = geo_dist_manhattan_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_manhattan_range_sum(s : GeodistmanhattanRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn geo_dist_manhattan_slice_get(s : GeodistmanhattanSlice, i : Int) -> Doubl
 }
 
 pub fn geo_dist_manhattan_slice_set(s : GeodistmanhattanSlice, i : Int, v : Double) -> GeodistmanhattanSlice {
-  let result = geo_dist_manhattan_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_manhattan_slice_sum(s : GeodistmanhattanSlice) -> Double { @_common.sum(s.data) }

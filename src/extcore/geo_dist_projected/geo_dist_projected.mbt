@@ -107,23 +107,15 @@ pub fn geo_dist_projected_series_std(s : GeodistprojectedSeries) -> Double { @_c
 pub fn geo_dist_projected_series_median(s : GeodistprojectedSeries) -> Double { @_common.median(s.vals) }
 
 pub fn geo_dist_projected_series_scale(s : GeodistprojectedSeries, f : Double) -> GeodistprojectedSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn geo_dist_projected_series_add(a : GeodistprojectedSeries, b : GeodistprojectedSeries) -> GeodistprojectedSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn geo_dist_projected_series_sub(a : GeodistprojectedSeries, b : GeodistprojectedSeries) -> GeodistprojectedSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn geo_dist_projected_series_normalize(s : GeodistprojectedSeries) -> GeodistprojectedSeries {
@@ -254,22 +246,16 @@ pub fn geo_dist_projected_vector_zero(dim : Int) -> GeodistprojectedVector {
 
 pub fn geo_dist_projected_vector_add(a : GeodistprojectedVector, b : GeodistprojectedVector) -> GeodistprojectedVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_dist_projected_vector_sub(a : GeodistprojectedVector, b : GeodistprojectedVector) -> GeodistprojectedVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_dist_projected_vector_scale(v : GeodistprojectedVector, s : Double) -> GeodistprojectedVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn geo_dist_projected_vector_dot(a : GeodistprojectedVector, b : GeodistprojectedVector) -> Double {
@@ -372,10 +358,9 @@ pub fn geo_dist_projected_frame_get(s : GeodistprojectedFrame, i : Int) -> Doubl
 }
 
 pub fn geo_dist_projected_frame_set(s : GeodistprojectedFrame, i : Int, v : Double) -> GeodistprojectedFrame {
-  let result = geo_dist_projected_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_projected_frame_sum(s : GeodistprojectedFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn geo_dist_projected_table_get(s : GeodistprojectedTable, i : Int) -> Doubl
 }
 
 pub fn geo_dist_projected_table_set(s : GeodistprojectedTable, i : Int, v : Double) -> GeodistprojectedTable {
-  let result = geo_dist_projected_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_projected_table_sum(s : GeodistprojectedTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn geo_dist_projected_graphn_get(s : GeodistprojectedGraphN, i : Int) -> Dou
 }
 
 pub fn geo_dist_projected_graphn_set(s : GeodistprojectedGraphN, i : Int, v : Double) -> GeodistprojectedGraphN {
-  let result = geo_dist_projected_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_projected_graphn_sum(s : GeodistprojectedGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn geo_dist_projected_node_get(s : GeodistprojectedNode, i : Int) -> Double 
 }
 
 pub fn geo_dist_projected_node_set(s : GeodistprojectedNode, i : Int, v : Double) -> GeodistprojectedNode {
-  let result = geo_dist_projected_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_projected_node_sum(s : GeodistprojectedNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn geo_dist_projected_edge_get(s : GeodistprojectedEdge, i : Int) -> Double 
 }
 
 pub fn geo_dist_projected_edge_set(s : GeodistprojectedEdge, i : Int, v : Double) -> GeodistprojectedEdge {
-  let result = geo_dist_projected_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_projected_edge_sum(s : GeodistprojectedEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn geo_dist_projected_path_get(s : GeodistprojectedPath, i : Int) -> Double 
 }
 
 pub fn geo_dist_projected_path_set(s : GeodistprojectedPath, i : Int, v : Double) -> GeodistprojectedPath {
-  let result = geo_dist_projected_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_projected_path_sum(s : GeodistprojectedPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn geo_dist_projected_cluster_get(s : GeodistprojectedCluster, i : Int) -> D
 }
 
 pub fn geo_dist_projected_cluster_set(s : GeodistprojectedCluster, i : Int, v : Double) -> GeodistprojectedCluster {
-  let result = geo_dist_projected_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_projected_cluster_sum(s : GeodistprojectedCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn geo_dist_projected_model_get(s : GeodistprojectedModel, i : Int) -> Doubl
 }
 
 pub fn geo_dist_projected_model_set(s : GeodistprojectedModel, i : Int, v : Double) -> GeodistprojectedModel {
-  let result = geo_dist_projected_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_projected_model_sum(s : GeodistprojectedModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn geo_dist_projected_layer_get(s : GeodistprojectedLayer, i : Int) -> Doubl
 }
 
 pub fn geo_dist_projected_layer_set(s : GeodistprojectedLayer, i : Int, v : Double) -> GeodistprojectedLayer {
-  let result = geo_dist_projected_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_projected_layer_sum(s : GeodistprojectedLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn geo_dist_projected_buffer_get(s : GeodistprojectedBuffer, i : Int) -> Dou
 }
 
 pub fn geo_dist_projected_buffer_set(s : GeodistprojectedBuffer, i : Int, v : Double) -> GeodistprojectedBuffer {
-  let result = geo_dist_projected_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_projected_buffer_sum(s : GeodistprojectedBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn geo_dist_projected_cursor_get(s : GeodistprojectedCursor, i : Int) -> Dou
 }
 
 pub fn geo_dist_projected_cursor_set(s : GeodistprojectedCursor, i : Int, v : Double) -> GeodistprojectedCursor {
-  let result = geo_dist_projected_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_projected_cursor_sum(s : GeodistprojectedCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn geo_dist_projected_view_get(s : GeodistprojectedView, i : Int) -> Double 
 }
 
 pub fn geo_dist_projected_view_set(s : GeodistprojectedView, i : Int, v : Double) -> GeodistprojectedView {
-  let result = geo_dist_projected_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_projected_view_sum(s : GeodistprojectedView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn geo_dist_projected_range_get(s : GeodistprojectedRange, i : Int) -> Doubl
 }
 
 pub fn geo_dist_projected_range_set(s : GeodistprojectedRange, i : Int, v : Double) -> GeodistprojectedRange {
-  let result = geo_dist_projected_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_projected_range_sum(s : GeodistprojectedRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn geo_dist_projected_slice_get(s : GeodistprojectedSlice, i : Int) -> Doubl
 }
 
 pub fn geo_dist_projected_slice_set(s : GeodistprojectedSlice, i : Int, v : Double) -> GeodistprojectedSlice {
-  let result = geo_dist_projected_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_projected_slice_sum(s : GeodistprojectedSlice) -> Double { @_common.sum(s.data) }

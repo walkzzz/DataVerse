@@ -107,23 +107,15 @@ pub fn sort_exchange_gnome_series_std(s : SortexchangegnomeSeries) -> Double { @
 pub fn sort_exchange_gnome_series_median(s : SortexchangegnomeSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_exchange_gnome_series_scale(s : SortexchangegnomeSeries, f : Double) -> SortexchangegnomeSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn sort_exchange_gnome_series_add(a : SortexchangegnomeSeries, b : SortexchangegnomeSeries) -> SortexchangegnomeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn sort_exchange_gnome_series_sub(a : SortexchangegnomeSeries, b : SortexchangegnomeSeries) -> SortexchangegnomeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn sort_exchange_gnome_series_normalize(s : SortexchangegnomeSeries) -> SortexchangegnomeSeries {
@@ -254,22 +246,16 @@ pub fn sort_exchange_gnome_vector_zero(dim : Int) -> SortexchangegnomeVector {
 
 pub fn sort_exchange_gnome_vector_add(a : SortexchangegnomeVector, b : SortexchangegnomeVector) -> SortexchangegnomeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_exchange_gnome_vector_sub(a : SortexchangegnomeVector, b : SortexchangegnomeVector) -> SortexchangegnomeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_exchange_gnome_vector_scale(v : SortexchangegnomeVector, s : Double) -> SortexchangegnomeVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn sort_exchange_gnome_vector_dot(a : SortexchangegnomeVector, b : SortexchangegnomeVector) -> Double {
@@ -372,10 +358,9 @@ pub fn sort_exchange_gnome_frame_get(s : SortexchangegnomeFrame, i : Int) -> Dou
 }
 
 pub fn sort_exchange_gnome_frame_set(s : SortexchangegnomeFrame, i : Int, v : Double) -> SortexchangegnomeFrame {
-  let result = sort_exchange_gnome_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_gnome_frame_sum(s : SortexchangegnomeFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn sort_exchange_gnome_table_get(s : SortexchangegnomeTable, i : Int) -> Dou
 }
 
 pub fn sort_exchange_gnome_table_set(s : SortexchangegnomeTable, i : Int, v : Double) -> SortexchangegnomeTable {
-  let result = sort_exchange_gnome_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_gnome_table_sum(s : SortexchangegnomeTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn sort_exchange_gnome_graphn_get(s : SortexchangegnomeGraphN, i : Int) -> D
 }
 
 pub fn sort_exchange_gnome_graphn_set(s : SortexchangegnomeGraphN, i : Int, v : Double) -> SortexchangegnomeGraphN {
-  let result = sort_exchange_gnome_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_gnome_graphn_sum(s : SortexchangegnomeGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn sort_exchange_gnome_node_get(s : SortexchangegnomeNode, i : Int) -> Doubl
 }
 
 pub fn sort_exchange_gnome_node_set(s : SortexchangegnomeNode, i : Int, v : Double) -> SortexchangegnomeNode {
-  let result = sort_exchange_gnome_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_gnome_node_sum(s : SortexchangegnomeNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn sort_exchange_gnome_edge_get(s : SortexchangegnomeEdge, i : Int) -> Doubl
 }
 
 pub fn sort_exchange_gnome_edge_set(s : SortexchangegnomeEdge, i : Int, v : Double) -> SortexchangegnomeEdge {
-  let result = sort_exchange_gnome_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_gnome_edge_sum(s : SortexchangegnomeEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn sort_exchange_gnome_path_get(s : SortexchangegnomePath, i : Int) -> Doubl
 }
 
 pub fn sort_exchange_gnome_path_set(s : SortexchangegnomePath, i : Int, v : Double) -> SortexchangegnomePath {
-  let result = sort_exchange_gnome_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_gnome_path_sum(s : SortexchangegnomePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn sort_exchange_gnome_cluster_get(s : SortexchangegnomeCluster, i : Int) ->
 }
 
 pub fn sort_exchange_gnome_cluster_set(s : SortexchangegnomeCluster, i : Int, v : Double) -> SortexchangegnomeCluster {
-  let result = sort_exchange_gnome_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_gnome_cluster_sum(s : SortexchangegnomeCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn sort_exchange_gnome_model_get(s : SortexchangegnomeModel, i : Int) -> Dou
 }
 
 pub fn sort_exchange_gnome_model_set(s : SortexchangegnomeModel, i : Int, v : Double) -> SortexchangegnomeModel {
-  let result = sort_exchange_gnome_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_gnome_model_sum(s : SortexchangegnomeModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn sort_exchange_gnome_layer_get(s : SortexchangegnomeLayer, i : Int) -> Dou
 }
 
 pub fn sort_exchange_gnome_layer_set(s : SortexchangegnomeLayer, i : Int, v : Double) -> SortexchangegnomeLayer {
-  let result = sort_exchange_gnome_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_gnome_layer_sum(s : SortexchangegnomeLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn sort_exchange_gnome_buffer_get(s : SortexchangegnomeBuffer, i : Int) -> D
 }
 
 pub fn sort_exchange_gnome_buffer_set(s : SortexchangegnomeBuffer, i : Int, v : Double) -> SortexchangegnomeBuffer {
-  let result = sort_exchange_gnome_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_gnome_buffer_sum(s : SortexchangegnomeBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn sort_exchange_gnome_cursor_get(s : SortexchangegnomeCursor, i : Int) -> D
 }
 
 pub fn sort_exchange_gnome_cursor_set(s : SortexchangegnomeCursor, i : Int, v : Double) -> SortexchangegnomeCursor {
-  let result = sort_exchange_gnome_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_gnome_cursor_sum(s : SortexchangegnomeCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn sort_exchange_gnome_view_get(s : SortexchangegnomeView, i : Int) -> Doubl
 }
 
 pub fn sort_exchange_gnome_view_set(s : SortexchangegnomeView, i : Int, v : Double) -> SortexchangegnomeView {
-  let result = sort_exchange_gnome_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_gnome_view_sum(s : SortexchangegnomeView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn sort_exchange_gnome_range_get(s : SortexchangegnomeRange, i : Int) -> Dou
 }
 
 pub fn sort_exchange_gnome_range_set(s : SortexchangegnomeRange, i : Int, v : Double) -> SortexchangegnomeRange {
-  let result = sort_exchange_gnome_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_gnome_range_sum(s : SortexchangegnomeRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn sort_exchange_gnome_slice_get(s : SortexchangegnomeSlice, i : Int) -> Dou
 }
 
 pub fn sort_exchange_gnome_slice_set(s : SortexchangegnomeSlice, i : Int, v : Double) -> SortexchangegnomeSlice {
-  let result = sort_exchange_gnome_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_gnome_slice_sum(s : SortexchangegnomeSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn timeseries_exponential_series_std(s : TimeseriesexponentialSeries) -> Dou
 pub fn timeseries_exponential_series_median(s : TimeseriesexponentialSeries) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_exponential_series_scale(s : TimeseriesexponentialSeries, f : Double) -> TimeseriesexponentialSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn timeseries_exponential_series_add(a : TimeseriesexponentialSeries, b : TimeseriesexponentialSeries) -> TimeseriesexponentialSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_exponential_series_sub(a : TimeseriesexponentialSeries, b : TimeseriesexponentialSeries) -> TimeseriesexponentialSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_exponential_series_normalize(s : TimeseriesexponentialSeries) -> TimeseriesexponentialSeries {
@@ -254,22 +246,16 @@ pub fn timeseries_exponential_vector_zero(dim : Int) -> TimeseriesexponentialVec
 
 pub fn timeseries_exponential_vector_add(a : TimeseriesexponentialVector, b : TimeseriesexponentialVector) -> TimeseriesexponentialVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_exponential_vector_sub(a : TimeseriesexponentialVector, b : TimeseriesexponentialVector) -> TimeseriesexponentialVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_exponential_vector_scale(v : TimeseriesexponentialVector, s : Double) -> TimeseriesexponentialVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn timeseries_exponential_vector_dot(a : TimeseriesexponentialVector, b : TimeseriesexponentialVector) -> Double {
@@ -372,10 +358,9 @@ pub fn timeseries_exponential_frame_get(s : TimeseriesexponentialFrame, i : Int)
 }
 
 pub fn timeseries_exponential_frame_set(s : TimeseriesexponentialFrame, i : Int, v : Double) -> TimeseriesexponentialFrame {
-  let result = timeseries_exponential_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_exponential_frame_sum(s : TimeseriesexponentialFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn timeseries_exponential_table_get(s : TimeseriesexponentialTable, i : Int)
 }
 
 pub fn timeseries_exponential_table_set(s : TimeseriesexponentialTable, i : Int, v : Double) -> TimeseriesexponentialTable {
-  let result = timeseries_exponential_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_exponential_table_sum(s : TimeseriesexponentialTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn timeseries_exponential_graphn_get(s : TimeseriesexponentialGraphN, i : In
 }
 
 pub fn timeseries_exponential_graphn_set(s : TimeseriesexponentialGraphN, i : Int, v : Double) -> TimeseriesexponentialGraphN {
-  let result = timeseries_exponential_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_exponential_graphn_sum(s : TimeseriesexponentialGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn timeseries_exponential_node_get(s : TimeseriesexponentialNode, i : Int) -
 }
 
 pub fn timeseries_exponential_node_set(s : TimeseriesexponentialNode, i : Int, v : Double) -> TimeseriesexponentialNode {
-  let result = timeseries_exponential_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_exponential_node_sum(s : TimeseriesexponentialNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn timeseries_exponential_edge_get(s : TimeseriesexponentialEdge, i : Int) -
 }
 
 pub fn timeseries_exponential_edge_set(s : TimeseriesexponentialEdge, i : Int, v : Double) -> TimeseriesexponentialEdge {
-  let result = timeseries_exponential_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_exponential_edge_sum(s : TimeseriesexponentialEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn timeseries_exponential_path_get(s : TimeseriesexponentialPath, i : Int) -
 }
 
 pub fn timeseries_exponential_path_set(s : TimeseriesexponentialPath, i : Int, v : Double) -> TimeseriesexponentialPath {
-  let result = timeseries_exponential_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_exponential_path_sum(s : TimeseriesexponentialPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn timeseries_exponential_cluster_get(s : TimeseriesexponentialCluster, i : 
 }
 
 pub fn timeseries_exponential_cluster_set(s : TimeseriesexponentialCluster, i : Int, v : Double) -> TimeseriesexponentialCluster {
-  let result = timeseries_exponential_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_exponential_cluster_sum(s : TimeseriesexponentialCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn timeseries_exponential_model_get(s : TimeseriesexponentialModel, i : Int)
 }
 
 pub fn timeseries_exponential_model_set(s : TimeseriesexponentialModel, i : Int, v : Double) -> TimeseriesexponentialModel {
-  let result = timeseries_exponential_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_exponential_model_sum(s : TimeseriesexponentialModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn timeseries_exponential_layer_get(s : TimeseriesexponentialLayer, i : Int)
 }
 
 pub fn timeseries_exponential_layer_set(s : TimeseriesexponentialLayer, i : Int, v : Double) -> TimeseriesexponentialLayer {
-  let result = timeseries_exponential_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_exponential_layer_sum(s : TimeseriesexponentialLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn timeseries_exponential_buffer_get(s : TimeseriesexponentialBuffer, i : In
 }
 
 pub fn timeseries_exponential_buffer_set(s : TimeseriesexponentialBuffer, i : Int, v : Double) -> TimeseriesexponentialBuffer {
-  let result = timeseries_exponential_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_exponential_buffer_sum(s : TimeseriesexponentialBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn timeseries_exponential_cursor_get(s : TimeseriesexponentialCursor, i : In
 }
 
 pub fn timeseries_exponential_cursor_set(s : TimeseriesexponentialCursor, i : Int, v : Double) -> TimeseriesexponentialCursor {
-  let result = timeseries_exponential_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_exponential_cursor_sum(s : TimeseriesexponentialCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn timeseries_exponential_view_get(s : TimeseriesexponentialView, i : Int) -
 }
 
 pub fn timeseries_exponential_view_set(s : TimeseriesexponentialView, i : Int, v : Double) -> TimeseriesexponentialView {
-  let result = timeseries_exponential_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_exponential_view_sum(s : TimeseriesexponentialView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn timeseries_exponential_range_get(s : TimeseriesexponentialRange, i : Int)
 }
 
 pub fn timeseries_exponential_range_set(s : TimeseriesexponentialRange, i : Int, v : Double) -> TimeseriesexponentialRange {
-  let result = timeseries_exponential_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_exponential_range_sum(s : TimeseriesexponentialRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn timeseries_exponential_slice_get(s : TimeseriesexponentialSlice, i : Int)
 }
 
 pub fn timeseries_exponential_slice_set(s : TimeseriesexponentialSlice, i : Int, v : Double) -> TimeseriesexponentialSlice {
-  let result = timeseries_exponential_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_exponential_slice_sum(s : TimeseriesexponentialSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn image_morph_bothat_series_std(s : ImagemorphbothatSeries) -> Double { @_c
 pub fn image_morph_bothat_series_median(s : ImagemorphbothatSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_morph_bothat_series_scale(s : ImagemorphbothatSeries, f : Double) -> ImagemorphbothatSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_morph_bothat_series_add(a : ImagemorphbothatSeries, b : ImagemorphbothatSeries) -> ImagemorphbothatSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_morph_bothat_series_sub(a : ImagemorphbothatSeries, b : ImagemorphbothatSeries) -> ImagemorphbothatSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_morph_bothat_series_normalize(s : ImagemorphbothatSeries) -> ImagemorphbothatSeries {
@@ -254,22 +246,16 @@ pub fn image_morph_bothat_vector_zero(dim : Int) -> ImagemorphbothatVector {
 
 pub fn image_morph_bothat_vector_add(a : ImagemorphbothatVector, b : ImagemorphbothatVector) -> ImagemorphbothatVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_morph_bothat_vector_sub(a : ImagemorphbothatVector, b : ImagemorphbothatVector) -> ImagemorphbothatVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_morph_bothat_vector_scale(v : ImagemorphbothatVector, s : Double) -> ImagemorphbothatVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_morph_bothat_vector_dot(a : ImagemorphbothatVector, b : ImagemorphbothatVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_morph_bothat_frame_get(s : ImagemorphbothatFrame, i : Int) -> Doubl
 }
 
 pub fn image_morph_bothat_frame_set(s : ImagemorphbothatFrame, i : Int, v : Double) -> ImagemorphbothatFrame {
-  let result = image_morph_bothat_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_bothat_frame_sum(s : ImagemorphbothatFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_morph_bothat_table_get(s : ImagemorphbothatTable, i : Int) -> Doubl
 }
 
 pub fn image_morph_bothat_table_set(s : ImagemorphbothatTable, i : Int, v : Double) -> ImagemorphbothatTable {
-  let result = image_morph_bothat_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_bothat_table_sum(s : ImagemorphbothatTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_morph_bothat_graphn_get(s : ImagemorphbothatGraphN, i : Int) -> Dou
 }
 
 pub fn image_morph_bothat_graphn_set(s : ImagemorphbothatGraphN, i : Int, v : Double) -> ImagemorphbothatGraphN {
-  let result = image_morph_bothat_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_bothat_graphn_sum(s : ImagemorphbothatGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_morph_bothat_node_get(s : ImagemorphbothatNode, i : Int) -> Double 
 }
 
 pub fn image_morph_bothat_node_set(s : ImagemorphbothatNode, i : Int, v : Double) -> ImagemorphbothatNode {
-  let result = image_morph_bothat_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_bothat_node_sum(s : ImagemorphbothatNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_morph_bothat_edge_get(s : ImagemorphbothatEdge, i : Int) -> Double 
 }
 
 pub fn image_morph_bothat_edge_set(s : ImagemorphbothatEdge, i : Int, v : Double) -> ImagemorphbothatEdge {
-  let result = image_morph_bothat_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_bothat_edge_sum(s : ImagemorphbothatEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_morph_bothat_path_get(s : ImagemorphbothatPath, i : Int) -> Double 
 }
 
 pub fn image_morph_bothat_path_set(s : ImagemorphbothatPath, i : Int, v : Double) -> ImagemorphbothatPath {
-  let result = image_morph_bothat_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_bothat_path_sum(s : ImagemorphbothatPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_morph_bothat_cluster_get(s : ImagemorphbothatCluster, i : Int) -> D
 }
 
 pub fn image_morph_bothat_cluster_set(s : ImagemorphbothatCluster, i : Int, v : Double) -> ImagemorphbothatCluster {
-  let result = image_morph_bothat_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_bothat_cluster_sum(s : ImagemorphbothatCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_morph_bothat_model_get(s : ImagemorphbothatModel, i : Int) -> Doubl
 }
 
 pub fn image_morph_bothat_model_set(s : ImagemorphbothatModel, i : Int, v : Double) -> ImagemorphbothatModel {
-  let result = image_morph_bothat_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_bothat_model_sum(s : ImagemorphbothatModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_morph_bothat_layer_get(s : ImagemorphbothatLayer, i : Int) -> Doubl
 }
 
 pub fn image_morph_bothat_layer_set(s : ImagemorphbothatLayer, i : Int, v : Double) -> ImagemorphbothatLayer {
-  let result = image_morph_bothat_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_bothat_layer_sum(s : ImagemorphbothatLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_morph_bothat_buffer_get(s : ImagemorphbothatBuffer, i : Int) -> Dou
 }
 
 pub fn image_morph_bothat_buffer_set(s : ImagemorphbothatBuffer, i : Int, v : Double) -> ImagemorphbothatBuffer {
-  let result = image_morph_bothat_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_bothat_buffer_sum(s : ImagemorphbothatBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_morph_bothat_cursor_get(s : ImagemorphbothatCursor, i : Int) -> Dou
 }
 
 pub fn image_morph_bothat_cursor_set(s : ImagemorphbothatCursor, i : Int, v : Double) -> ImagemorphbothatCursor {
-  let result = image_morph_bothat_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_bothat_cursor_sum(s : ImagemorphbothatCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_morph_bothat_view_get(s : ImagemorphbothatView, i : Int) -> Double 
 }
 
 pub fn image_morph_bothat_view_set(s : ImagemorphbothatView, i : Int, v : Double) -> ImagemorphbothatView {
-  let result = image_morph_bothat_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_bothat_view_sum(s : ImagemorphbothatView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_morph_bothat_range_get(s : ImagemorphbothatRange, i : Int) -> Doubl
 }
 
 pub fn image_morph_bothat_range_set(s : ImagemorphbothatRange, i : Int, v : Double) -> ImagemorphbothatRange {
-  let result = image_morph_bothat_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_bothat_range_sum(s : ImagemorphbothatRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_morph_bothat_slice_get(s : ImagemorphbothatSlice, i : Int) -> Doubl
 }
 
 pub fn image_morph_bothat_slice_set(s : ImagemorphbothatSlice, i : Int, v : Double) -> ImagemorphbothatSlice {
-  let result = image_morph_bothat_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_bothat_slice_sum(s : ImagemorphbothatSlice) -> Double { @_common.sum(s.data) }

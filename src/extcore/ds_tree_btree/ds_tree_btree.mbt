@@ -107,23 +107,15 @@ pub fn ds_tree_btree_series_std(s : DstreebtreeSeries) -> Double { @_common.std(
 pub fn ds_tree_btree_series_median(s : DstreebtreeSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_tree_btree_series_scale(s : DstreebtreeSeries, f : Double) -> DstreebtreeSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_tree_btree_series_add(a : DstreebtreeSeries, b : DstreebtreeSeries) -> DstreebtreeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_tree_btree_series_sub(a : DstreebtreeSeries, b : DstreebtreeSeries) -> DstreebtreeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_tree_btree_series_normalize(s : DstreebtreeSeries) -> DstreebtreeSeries {
@@ -254,22 +246,16 @@ pub fn ds_tree_btree_vector_zero(dim : Int) -> DstreebtreeVector {
 
 pub fn ds_tree_btree_vector_add(a : DstreebtreeVector, b : DstreebtreeVector) -> DstreebtreeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_tree_btree_vector_sub(a : DstreebtreeVector, b : DstreebtreeVector) -> DstreebtreeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_tree_btree_vector_scale(v : DstreebtreeVector, s : Double) -> DstreebtreeVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_tree_btree_vector_dot(a : DstreebtreeVector, b : DstreebtreeVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_tree_btree_frame_get(s : DstreebtreeFrame, i : Int) -> Double {
 }
 
 pub fn ds_tree_btree_frame_set(s : DstreebtreeFrame, i : Int, v : Double) -> DstreebtreeFrame {
-  let result = ds_tree_btree_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_btree_frame_sum(s : DstreebtreeFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_tree_btree_table_get(s : DstreebtreeTable, i : Int) -> Double {
 }
 
 pub fn ds_tree_btree_table_set(s : DstreebtreeTable, i : Int, v : Double) -> DstreebtreeTable {
-  let result = ds_tree_btree_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_btree_table_sum(s : DstreebtreeTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_tree_btree_graphn_get(s : DstreebtreeGraphN, i : Int) -> Double {
 }
 
 pub fn ds_tree_btree_graphn_set(s : DstreebtreeGraphN, i : Int, v : Double) -> DstreebtreeGraphN {
-  let result = ds_tree_btree_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_btree_graphn_sum(s : DstreebtreeGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_tree_btree_node_get(s : DstreebtreeNode, i : Int) -> Double {
 }
 
 pub fn ds_tree_btree_node_set(s : DstreebtreeNode, i : Int, v : Double) -> DstreebtreeNode {
-  let result = ds_tree_btree_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_btree_node_sum(s : DstreebtreeNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_tree_btree_edge_get(s : DstreebtreeEdge, i : Int) -> Double {
 }
 
 pub fn ds_tree_btree_edge_set(s : DstreebtreeEdge, i : Int, v : Double) -> DstreebtreeEdge {
-  let result = ds_tree_btree_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_btree_edge_sum(s : DstreebtreeEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_tree_btree_path_get(s : DstreebtreePath, i : Int) -> Double {
 }
 
 pub fn ds_tree_btree_path_set(s : DstreebtreePath, i : Int, v : Double) -> DstreebtreePath {
-  let result = ds_tree_btree_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_btree_path_sum(s : DstreebtreePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_tree_btree_cluster_get(s : DstreebtreeCluster, i : Int) -> Double {
 }
 
 pub fn ds_tree_btree_cluster_set(s : DstreebtreeCluster, i : Int, v : Double) -> DstreebtreeCluster {
-  let result = ds_tree_btree_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_btree_cluster_sum(s : DstreebtreeCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_tree_btree_model_get(s : DstreebtreeModel, i : Int) -> Double {
 }
 
 pub fn ds_tree_btree_model_set(s : DstreebtreeModel, i : Int, v : Double) -> DstreebtreeModel {
-  let result = ds_tree_btree_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_btree_model_sum(s : DstreebtreeModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_tree_btree_layer_get(s : DstreebtreeLayer, i : Int) -> Double {
 }
 
 pub fn ds_tree_btree_layer_set(s : DstreebtreeLayer, i : Int, v : Double) -> DstreebtreeLayer {
-  let result = ds_tree_btree_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_btree_layer_sum(s : DstreebtreeLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_tree_btree_buffer_get(s : DstreebtreeBuffer, i : Int) -> Double {
 }
 
 pub fn ds_tree_btree_buffer_set(s : DstreebtreeBuffer, i : Int, v : Double) -> DstreebtreeBuffer {
-  let result = ds_tree_btree_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_btree_buffer_sum(s : DstreebtreeBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_tree_btree_cursor_get(s : DstreebtreeCursor, i : Int) -> Double {
 }
 
 pub fn ds_tree_btree_cursor_set(s : DstreebtreeCursor, i : Int, v : Double) -> DstreebtreeCursor {
-  let result = ds_tree_btree_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_btree_cursor_sum(s : DstreebtreeCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_tree_btree_view_get(s : DstreebtreeView, i : Int) -> Double {
 }
 
 pub fn ds_tree_btree_view_set(s : DstreebtreeView, i : Int, v : Double) -> DstreebtreeView {
-  let result = ds_tree_btree_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_btree_view_sum(s : DstreebtreeView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_tree_btree_range_get(s : DstreebtreeRange, i : Int) -> Double {
 }
 
 pub fn ds_tree_btree_range_set(s : DstreebtreeRange, i : Int, v : Double) -> DstreebtreeRange {
-  let result = ds_tree_btree_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_btree_range_sum(s : DstreebtreeRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_tree_btree_slice_get(s : DstreebtreeSlice, i : Int) -> Double {
 }
 
 pub fn ds_tree_btree_slice_set(s : DstreebtreeSlice, i : Int, v : Double) -> DstreebtreeSlice {
-  let result = ds_tree_btree_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_btree_slice_sum(s : DstreebtreeSlice) -> Double { @_common.sum(s.data) }

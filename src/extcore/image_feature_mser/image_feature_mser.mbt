@@ -107,23 +107,15 @@ pub fn image_feature_mser_series_std(s : ImagefeaturemserSeries) -> Double { @_c
 pub fn image_feature_mser_series_median(s : ImagefeaturemserSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_feature_mser_series_scale(s : ImagefeaturemserSeries, f : Double) -> ImagefeaturemserSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_feature_mser_series_add(a : ImagefeaturemserSeries, b : ImagefeaturemserSeries) -> ImagefeaturemserSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_feature_mser_series_sub(a : ImagefeaturemserSeries, b : ImagefeaturemserSeries) -> ImagefeaturemserSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_feature_mser_series_normalize(s : ImagefeaturemserSeries) -> ImagefeaturemserSeries {
@@ -254,22 +246,16 @@ pub fn image_feature_mser_vector_zero(dim : Int) -> ImagefeaturemserVector {
 
 pub fn image_feature_mser_vector_add(a : ImagefeaturemserVector, b : ImagefeaturemserVector) -> ImagefeaturemserVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_feature_mser_vector_sub(a : ImagefeaturemserVector, b : ImagefeaturemserVector) -> ImagefeaturemserVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_feature_mser_vector_scale(v : ImagefeaturemserVector, s : Double) -> ImagefeaturemserVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_feature_mser_vector_dot(a : ImagefeaturemserVector, b : ImagefeaturemserVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_feature_mser_frame_get(s : ImagefeaturemserFrame, i : Int) -> Doubl
 }
 
 pub fn image_feature_mser_frame_set(s : ImagefeaturemserFrame, i : Int, v : Double) -> ImagefeaturemserFrame {
-  let result = image_feature_mser_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_mser_frame_sum(s : ImagefeaturemserFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_feature_mser_table_get(s : ImagefeaturemserTable, i : Int) -> Doubl
 }
 
 pub fn image_feature_mser_table_set(s : ImagefeaturemserTable, i : Int, v : Double) -> ImagefeaturemserTable {
-  let result = image_feature_mser_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_mser_table_sum(s : ImagefeaturemserTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_feature_mser_graphn_get(s : ImagefeaturemserGraphN, i : Int) -> Dou
 }
 
 pub fn image_feature_mser_graphn_set(s : ImagefeaturemserGraphN, i : Int, v : Double) -> ImagefeaturemserGraphN {
-  let result = image_feature_mser_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_mser_graphn_sum(s : ImagefeaturemserGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_feature_mser_node_get(s : ImagefeaturemserNode, i : Int) -> Double 
 }
 
 pub fn image_feature_mser_node_set(s : ImagefeaturemserNode, i : Int, v : Double) -> ImagefeaturemserNode {
-  let result = image_feature_mser_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_mser_node_sum(s : ImagefeaturemserNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_feature_mser_edge_get(s : ImagefeaturemserEdge, i : Int) -> Double 
 }
 
 pub fn image_feature_mser_edge_set(s : ImagefeaturemserEdge, i : Int, v : Double) -> ImagefeaturemserEdge {
-  let result = image_feature_mser_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_mser_edge_sum(s : ImagefeaturemserEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_feature_mser_path_get(s : ImagefeaturemserPath, i : Int) -> Double 
 }
 
 pub fn image_feature_mser_path_set(s : ImagefeaturemserPath, i : Int, v : Double) -> ImagefeaturemserPath {
-  let result = image_feature_mser_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_mser_path_sum(s : ImagefeaturemserPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_feature_mser_cluster_get(s : ImagefeaturemserCluster, i : Int) -> D
 }
 
 pub fn image_feature_mser_cluster_set(s : ImagefeaturemserCluster, i : Int, v : Double) -> ImagefeaturemserCluster {
-  let result = image_feature_mser_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_mser_cluster_sum(s : ImagefeaturemserCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_feature_mser_model_get(s : ImagefeaturemserModel, i : Int) -> Doubl
 }
 
 pub fn image_feature_mser_model_set(s : ImagefeaturemserModel, i : Int, v : Double) -> ImagefeaturemserModel {
-  let result = image_feature_mser_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_mser_model_sum(s : ImagefeaturemserModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_feature_mser_layer_get(s : ImagefeaturemserLayer, i : Int) -> Doubl
 }
 
 pub fn image_feature_mser_layer_set(s : ImagefeaturemserLayer, i : Int, v : Double) -> ImagefeaturemserLayer {
-  let result = image_feature_mser_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_mser_layer_sum(s : ImagefeaturemserLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_feature_mser_buffer_get(s : ImagefeaturemserBuffer, i : Int) -> Dou
 }
 
 pub fn image_feature_mser_buffer_set(s : ImagefeaturemserBuffer, i : Int, v : Double) -> ImagefeaturemserBuffer {
-  let result = image_feature_mser_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_mser_buffer_sum(s : ImagefeaturemserBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_feature_mser_cursor_get(s : ImagefeaturemserCursor, i : Int) -> Dou
 }
 
 pub fn image_feature_mser_cursor_set(s : ImagefeaturemserCursor, i : Int, v : Double) -> ImagefeaturemserCursor {
-  let result = image_feature_mser_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_mser_cursor_sum(s : ImagefeaturemserCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_feature_mser_view_get(s : ImagefeaturemserView, i : Int) -> Double 
 }
 
 pub fn image_feature_mser_view_set(s : ImagefeaturemserView, i : Int, v : Double) -> ImagefeaturemserView {
-  let result = image_feature_mser_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_mser_view_sum(s : ImagefeaturemserView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_feature_mser_range_get(s : ImagefeaturemserRange, i : Int) -> Doubl
 }
 
 pub fn image_feature_mser_range_set(s : ImagefeaturemserRange, i : Int, v : Double) -> ImagefeaturemserRange {
-  let result = image_feature_mser_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_mser_range_sum(s : ImagefeaturemserRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_feature_mser_slice_get(s : ImagefeaturemserSlice, i : Int) -> Doubl
 }
 
 pub fn image_feature_mser_slice_set(s : ImagefeaturemserSlice, i : Int, v : Double) -> ImagefeaturemserSlice {
-  let result = image_feature_mser_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_mser_slice_sum(s : ImagefeaturemserSlice) -> Double { @_common.sum(s.data) }

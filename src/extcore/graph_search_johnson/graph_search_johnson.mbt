@@ -107,23 +107,15 @@ pub fn graph_search_johnson_series_std(s : GraphsearchjohnsonSeries) -> Double {
 pub fn graph_search_johnson_series_median(s : GraphsearchjohnsonSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_search_johnson_series_scale(s : GraphsearchjohnsonSeries, f : Double) -> GraphsearchjohnsonSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_search_johnson_series_add(a : GraphsearchjohnsonSeries, b : GraphsearchjohnsonSeries) -> GraphsearchjohnsonSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_search_johnson_series_sub(a : GraphsearchjohnsonSeries, b : GraphsearchjohnsonSeries) -> GraphsearchjohnsonSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_search_johnson_series_normalize(s : GraphsearchjohnsonSeries) -> GraphsearchjohnsonSeries {
@@ -254,22 +246,16 @@ pub fn graph_search_johnson_vector_zero(dim : Int) -> GraphsearchjohnsonVector {
 
 pub fn graph_search_johnson_vector_add(a : GraphsearchjohnsonVector, b : GraphsearchjohnsonVector) -> GraphsearchjohnsonVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_search_johnson_vector_sub(a : GraphsearchjohnsonVector, b : GraphsearchjohnsonVector) -> GraphsearchjohnsonVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_search_johnson_vector_scale(v : GraphsearchjohnsonVector, s : Double) -> GraphsearchjohnsonVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_search_johnson_vector_dot(a : GraphsearchjohnsonVector, b : GraphsearchjohnsonVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_search_johnson_frame_get(s : GraphsearchjohnsonFrame, i : Int) -> D
 }
 
 pub fn graph_search_johnson_frame_set(s : GraphsearchjohnsonFrame, i : Int, v : Double) -> GraphsearchjohnsonFrame {
-  let result = graph_search_johnson_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_frame_sum(s : GraphsearchjohnsonFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_search_johnson_table_get(s : GraphsearchjohnsonTable, i : Int) -> D
 }
 
 pub fn graph_search_johnson_table_set(s : GraphsearchjohnsonTable, i : Int, v : Double) -> GraphsearchjohnsonTable {
-  let result = graph_search_johnson_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_table_sum(s : GraphsearchjohnsonTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_search_johnson_graphn_get(s : GraphsearchjohnsonGraphN, i : Int) ->
 }
 
 pub fn graph_search_johnson_graphn_set(s : GraphsearchjohnsonGraphN, i : Int, v : Double) -> GraphsearchjohnsonGraphN {
-  let result = graph_search_johnson_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_graphn_sum(s : GraphsearchjohnsonGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_search_johnson_node_get(s : GraphsearchjohnsonNode, i : Int) -> Dou
 }
 
 pub fn graph_search_johnson_node_set(s : GraphsearchjohnsonNode, i : Int, v : Double) -> GraphsearchjohnsonNode {
-  let result = graph_search_johnson_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_node_sum(s : GraphsearchjohnsonNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_search_johnson_edge_get(s : GraphsearchjohnsonEdge, i : Int) -> Dou
 }
 
 pub fn graph_search_johnson_edge_set(s : GraphsearchjohnsonEdge, i : Int, v : Double) -> GraphsearchjohnsonEdge {
-  let result = graph_search_johnson_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_edge_sum(s : GraphsearchjohnsonEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_search_johnson_path_get(s : GraphsearchjohnsonPath, i : Int) -> Dou
 }
 
 pub fn graph_search_johnson_path_set(s : GraphsearchjohnsonPath, i : Int, v : Double) -> GraphsearchjohnsonPath {
-  let result = graph_search_johnson_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_path_sum(s : GraphsearchjohnsonPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_search_johnson_cluster_get(s : GraphsearchjohnsonCluster, i : Int) 
 }
 
 pub fn graph_search_johnson_cluster_set(s : GraphsearchjohnsonCluster, i : Int, v : Double) -> GraphsearchjohnsonCluster {
-  let result = graph_search_johnson_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_cluster_sum(s : GraphsearchjohnsonCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_search_johnson_model_get(s : GraphsearchjohnsonModel, i : Int) -> D
 }
 
 pub fn graph_search_johnson_model_set(s : GraphsearchjohnsonModel, i : Int, v : Double) -> GraphsearchjohnsonModel {
-  let result = graph_search_johnson_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_model_sum(s : GraphsearchjohnsonModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_search_johnson_layer_get(s : GraphsearchjohnsonLayer, i : Int) -> D
 }
 
 pub fn graph_search_johnson_layer_set(s : GraphsearchjohnsonLayer, i : Int, v : Double) -> GraphsearchjohnsonLayer {
-  let result = graph_search_johnson_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_layer_sum(s : GraphsearchjohnsonLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_search_johnson_buffer_get(s : GraphsearchjohnsonBuffer, i : Int) ->
 }
 
 pub fn graph_search_johnson_buffer_set(s : GraphsearchjohnsonBuffer, i : Int, v : Double) -> GraphsearchjohnsonBuffer {
-  let result = graph_search_johnson_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_buffer_sum(s : GraphsearchjohnsonBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_search_johnson_cursor_get(s : GraphsearchjohnsonCursor, i : Int) ->
 }
 
 pub fn graph_search_johnson_cursor_set(s : GraphsearchjohnsonCursor, i : Int, v : Double) -> GraphsearchjohnsonCursor {
-  let result = graph_search_johnson_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_cursor_sum(s : GraphsearchjohnsonCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_search_johnson_view_get(s : GraphsearchjohnsonView, i : Int) -> Dou
 }
 
 pub fn graph_search_johnson_view_set(s : GraphsearchjohnsonView, i : Int, v : Double) -> GraphsearchjohnsonView {
-  let result = graph_search_johnson_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_view_sum(s : GraphsearchjohnsonView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_search_johnson_range_get(s : GraphsearchjohnsonRange, i : Int) -> D
 }
 
 pub fn graph_search_johnson_range_set(s : GraphsearchjohnsonRange, i : Int, v : Double) -> GraphsearchjohnsonRange {
-  let result = graph_search_johnson_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_range_sum(s : GraphsearchjohnsonRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_search_johnson_slice_get(s : GraphsearchjohnsonSlice, i : Int) -> D
 }
 
 pub fn graph_search_johnson_slice_set(s : GraphsearchjohnsonSlice, i : Int, v : Double) -> GraphsearchjohnsonSlice {
-  let result = graph_search_johnson_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_search_johnson_slice_sum(s : GraphsearchjohnsonSlice) -> Double { @_common.sum(s.data) }

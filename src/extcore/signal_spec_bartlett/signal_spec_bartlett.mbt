@@ -107,23 +107,15 @@ pub fn signal_spec_bartlett_series_std(s : SignalspecbartlettSeries) -> Double {
 pub fn signal_spec_bartlett_series_median(s : SignalspecbartlettSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_spec_bartlett_series_scale(s : SignalspecbartlettSeries, f : Double) -> SignalspecbartlettSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_spec_bartlett_series_add(a : SignalspecbartlettSeries, b : SignalspecbartlettSeries) -> SignalspecbartlettSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_spec_bartlett_series_sub(a : SignalspecbartlettSeries, b : SignalspecbartlettSeries) -> SignalspecbartlettSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_spec_bartlett_series_normalize(s : SignalspecbartlettSeries) -> SignalspecbartlettSeries {
@@ -254,22 +246,16 @@ pub fn signal_spec_bartlett_vector_zero(dim : Int) -> SignalspecbartlettVector {
 
 pub fn signal_spec_bartlett_vector_add(a : SignalspecbartlettVector, b : SignalspecbartlettVector) -> SignalspecbartlettVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_spec_bartlett_vector_sub(a : SignalspecbartlettVector, b : SignalspecbartlettVector) -> SignalspecbartlettVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_spec_bartlett_vector_scale(v : SignalspecbartlettVector, s : Double) -> SignalspecbartlettVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_spec_bartlett_vector_dot(a : SignalspecbartlettVector, b : SignalspecbartlettVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_spec_bartlett_frame_get(s : SignalspecbartlettFrame, i : Int) -> D
 }
 
 pub fn signal_spec_bartlett_frame_set(s : SignalspecbartlettFrame, i : Int, v : Double) -> SignalspecbartlettFrame {
-  let result = signal_spec_bartlett_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_frame_sum(s : SignalspecbartlettFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_spec_bartlett_table_get(s : SignalspecbartlettTable, i : Int) -> D
 }
 
 pub fn signal_spec_bartlett_table_set(s : SignalspecbartlettTable, i : Int, v : Double) -> SignalspecbartlettTable {
-  let result = signal_spec_bartlett_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_table_sum(s : SignalspecbartlettTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_spec_bartlett_graphn_get(s : SignalspecbartlettGraphN, i : Int) ->
 }
 
 pub fn signal_spec_bartlett_graphn_set(s : SignalspecbartlettGraphN, i : Int, v : Double) -> SignalspecbartlettGraphN {
-  let result = signal_spec_bartlett_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_graphn_sum(s : SignalspecbartlettGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_spec_bartlett_node_get(s : SignalspecbartlettNode, i : Int) -> Dou
 }
 
 pub fn signal_spec_bartlett_node_set(s : SignalspecbartlettNode, i : Int, v : Double) -> SignalspecbartlettNode {
-  let result = signal_spec_bartlett_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_node_sum(s : SignalspecbartlettNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_spec_bartlett_edge_get(s : SignalspecbartlettEdge, i : Int) -> Dou
 }
 
 pub fn signal_spec_bartlett_edge_set(s : SignalspecbartlettEdge, i : Int, v : Double) -> SignalspecbartlettEdge {
-  let result = signal_spec_bartlett_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_edge_sum(s : SignalspecbartlettEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_spec_bartlett_path_get(s : SignalspecbartlettPath, i : Int) -> Dou
 }
 
 pub fn signal_spec_bartlett_path_set(s : SignalspecbartlettPath, i : Int, v : Double) -> SignalspecbartlettPath {
-  let result = signal_spec_bartlett_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_path_sum(s : SignalspecbartlettPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_spec_bartlett_cluster_get(s : SignalspecbartlettCluster, i : Int) 
 }
 
 pub fn signal_spec_bartlett_cluster_set(s : SignalspecbartlettCluster, i : Int, v : Double) -> SignalspecbartlettCluster {
-  let result = signal_spec_bartlett_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_cluster_sum(s : SignalspecbartlettCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_spec_bartlett_model_get(s : SignalspecbartlettModel, i : Int) -> D
 }
 
 pub fn signal_spec_bartlett_model_set(s : SignalspecbartlettModel, i : Int, v : Double) -> SignalspecbartlettModel {
-  let result = signal_spec_bartlett_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_model_sum(s : SignalspecbartlettModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_spec_bartlett_layer_get(s : SignalspecbartlettLayer, i : Int) -> D
 }
 
 pub fn signal_spec_bartlett_layer_set(s : SignalspecbartlettLayer, i : Int, v : Double) -> SignalspecbartlettLayer {
-  let result = signal_spec_bartlett_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_layer_sum(s : SignalspecbartlettLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_spec_bartlett_buffer_get(s : SignalspecbartlettBuffer, i : Int) ->
 }
 
 pub fn signal_spec_bartlett_buffer_set(s : SignalspecbartlettBuffer, i : Int, v : Double) -> SignalspecbartlettBuffer {
-  let result = signal_spec_bartlett_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_buffer_sum(s : SignalspecbartlettBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_spec_bartlett_cursor_get(s : SignalspecbartlettCursor, i : Int) ->
 }
 
 pub fn signal_spec_bartlett_cursor_set(s : SignalspecbartlettCursor, i : Int, v : Double) -> SignalspecbartlettCursor {
-  let result = signal_spec_bartlett_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_cursor_sum(s : SignalspecbartlettCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_spec_bartlett_view_get(s : SignalspecbartlettView, i : Int) -> Dou
 }
 
 pub fn signal_spec_bartlett_view_set(s : SignalspecbartlettView, i : Int, v : Double) -> SignalspecbartlettView {
-  let result = signal_spec_bartlett_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_view_sum(s : SignalspecbartlettView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_spec_bartlett_range_get(s : SignalspecbartlettRange, i : Int) -> D
 }
 
 pub fn signal_spec_bartlett_range_set(s : SignalspecbartlettRange, i : Int, v : Double) -> SignalspecbartlettRange {
-  let result = signal_spec_bartlett_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_range_sum(s : SignalspecbartlettRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_spec_bartlett_slice_get(s : SignalspecbartlettSlice, i : Int) -> D
 }
 
 pub fn signal_spec_bartlett_slice_set(s : SignalspecbartlettSlice, i : Int, v : Double) -> SignalspecbartlettSlice {
-  let result = signal_spec_bartlett_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_bartlett_slice_sum(s : SignalspecbartlettSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn ds_list_circular_series_std(s : DslistcircularSeries) -> Double { @_commo
 pub fn ds_list_circular_series_median(s : DslistcircularSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_list_circular_series_scale(s : DslistcircularSeries, f : Double) -> DslistcircularSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_list_circular_series_add(a : DslistcircularSeries, b : DslistcircularSeries) -> DslistcircularSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_list_circular_series_sub(a : DslistcircularSeries, b : DslistcircularSeries) -> DslistcircularSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_list_circular_series_normalize(s : DslistcircularSeries) -> DslistcircularSeries {
@@ -254,22 +246,16 @@ pub fn ds_list_circular_vector_zero(dim : Int) -> DslistcircularVector {
 
 pub fn ds_list_circular_vector_add(a : DslistcircularVector, b : DslistcircularVector) -> DslistcircularVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_list_circular_vector_sub(a : DslistcircularVector, b : DslistcircularVector) -> DslistcircularVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_list_circular_vector_scale(v : DslistcircularVector, s : Double) -> DslistcircularVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_list_circular_vector_dot(a : DslistcircularVector, b : DslistcircularVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_list_circular_frame_get(s : DslistcircularFrame, i : Int) -> Double {
 }
 
 pub fn ds_list_circular_frame_set(s : DslistcircularFrame, i : Int, v : Double) -> DslistcircularFrame {
-  let result = ds_list_circular_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_circular_frame_sum(s : DslistcircularFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_list_circular_table_get(s : DslistcircularTable, i : Int) -> Double {
 }
 
 pub fn ds_list_circular_table_set(s : DslistcircularTable, i : Int, v : Double) -> DslistcircularTable {
-  let result = ds_list_circular_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_circular_table_sum(s : DslistcircularTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_list_circular_graphn_get(s : DslistcircularGraphN, i : Int) -> Double 
 }
 
 pub fn ds_list_circular_graphn_set(s : DslistcircularGraphN, i : Int, v : Double) -> DslistcircularGraphN {
-  let result = ds_list_circular_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_circular_graphn_sum(s : DslistcircularGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_list_circular_node_get(s : DslistcircularNode, i : Int) -> Double {
 }
 
 pub fn ds_list_circular_node_set(s : DslistcircularNode, i : Int, v : Double) -> DslistcircularNode {
-  let result = ds_list_circular_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_circular_node_sum(s : DslistcircularNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_list_circular_edge_get(s : DslistcircularEdge, i : Int) -> Double {
 }
 
 pub fn ds_list_circular_edge_set(s : DslistcircularEdge, i : Int, v : Double) -> DslistcircularEdge {
-  let result = ds_list_circular_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_circular_edge_sum(s : DslistcircularEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_list_circular_path_get(s : DslistcircularPath, i : Int) -> Double {
 }
 
 pub fn ds_list_circular_path_set(s : DslistcircularPath, i : Int, v : Double) -> DslistcircularPath {
-  let result = ds_list_circular_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_circular_path_sum(s : DslistcircularPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_list_circular_cluster_get(s : DslistcircularCluster, i : Int) -> Doubl
 }
 
 pub fn ds_list_circular_cluster_set(s : DslistcircularCluster, i : Int, v : Double) -> DslistcircularCluster {
-  let result = ds_list_circular_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_circular_cluster_sum(s : DslistcircularCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_list_circular_model_get(s : DslistcircularModel, i : Int) -> Double {
 }
 
 pub fn ds_list_circular_model_set(s : DslistcircularModel, i : Int, v : Double) -> DslistcircularModel {
-  let result = ds_list_circular_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_circular_model_sum(s : DslistcircularModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_list_circular_layer_get(s : DslistcircularLayer, i : Int) -> Double {
 }
 
 pub fn ds_list_circular_layer_set(s : DslistcircularLayer, i : Int, v : Double) -> DslistcircularLayer {
-  let result = ds_list_circular_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_circular_layer_sum(s : DslistcircularLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_list_circular_buffer_get(s : DslistcircularBuffer, i : Int) -> Double 
 }
 
 pub fn ds_list_circular_buffer_set(s : DslistcircularBuffer, i : Int, v : Double) -> DslistcircularBuffer {
-  let result = ds_list_circular_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_circular_buffer_sum(s : DslistcircularBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_list_circular_cursor_get(s : DslistcircularCursor, i : Int) -> Double 
 }
 
 pub fn ds_list_circular_cursor_set(s : DslistcircularCursor, i : Int, v : Double) -> DslistcircularCursor {
-  let result = ds_list_circular_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_circular_cursor_sum(s : DslistcircularCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_list_circular_view_get(s : DslistcircularView, i : Int) -> Double {
 }
 
 pub fn ds_list_circular_view_set(s : DslistcircularView, i : Int, v : Double) -> DslistcircularView {
-  let result = ds_list_circular_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_circular_view_sum(s : DslistcircularView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_list_circular_range_get(s : DslistcircularRange, i : Int) -> Double {
 }
 
 pub fn ds_list_circular_range_set(s : DslistcircularRange, i : Int, v : Double) -> DslistcircularRange {
-  let result = ds_list_circular_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_circular_range_sum(s : DslistcircularRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_list_circular_slice_get(s : DslistcircularSlice, i : Int) -> Double {
 }
 
 pub fn ds_list_circular_slice_set(s : DslistcircularSlice, i : Int, v : Double) -> DslistcircularSlice {
-  let result = ds_list_circular_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_circular_slice_sum(s : DslistcircularSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn stats_infer_hypothesis_series_std(s : StatsinferhypothesisSeries) -> Doub
 pub fn stats_infer_hypothesis_series_median(s : StatsinferhypothesisSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_infer_hypothesis_series_scale(s : StatsinferhypothesisSeries, f : Double) -> StatsinferhypothesisSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_infer_hypothesis_series_add(a : StatsinferhypothesisSeries, b : StatsinferhypothesisSeries) -> StatsinferhypothesisSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_infer_hypothesis_series_sub(a : StatsinferhypothesisSeries, b : StatsinferhypothesisSeries) -> StatsinferhypothesisSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_infer_hypothesis_series_normalize(s : StatsinferhypothesisSeries) -> StatsinferhypothesisSeries {
@@ -254,22 +246,16 @@ pub fn stats_infer_hypothesis_vector_zero(dim : Int) -> StatsinferhypothesisVect
 
 pub fn stats_infer_hypothesis_vector_add(a : StatsinferhypothesisVector, b : StatsinferhypothesisVector) -> StatsinferhypothesisVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_infer_hypothesis_vector_sub(a : StatsinferhypothesisVector, b : StatsinferhypothesisVector) -> StatsinferhypothesisVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_infer_hypothesis_vector_scale(v : StatsinferhypothesisVector, s : Double) -> StatsinferhypothesisVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_infer_hypothesis_vector_dot(a : StatsinferhypothesisVector, b : StatsinferhypothesisVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_infer_hypothesis_frame_get(s : StatsinferhypothesisFrame, i : Int) 
 }
 
 pub fn stats_infer_hypothesis_frame_set(s : StatsinferhypothesisFrame, i : Int, v : Double) -> StatsinferhypothesisFrame {
-  let result = stats_infer_hypothesis_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_frame_sum(s : StatsinferhypothesisFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_infer_hypothesis_table_get(s : StatsinferhypothesisTable, i : Int) 
 }
 
 pub fn stats_infer_hypothesis_table_set(s : StatsinferhypothesisTable, i : Int, v : Double) -> StatsinferhypothesisTable {
-  let result = stats_infer_hypothesis_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_table_sum(s : StatsinferhypothesisTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_infer_hypothesis_graphn_get(s : StatsinferhypothesisGraphN, i : Int
 }
 
 pub fn stats_infer_hypothesis_graphn_set(s : StatsinferhypothesisGraphN, i : Int, v : Double) -> StatsinferhypothesisGraphN {
-  let result = stats_infer_hypothesis_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_graphn_sum(s : StatsinferhypothesisGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_infer_hypothesis_node_get(s : StatsinferhypothesisNode, i : Int) ->
 }
 
 pub fn stats_infer_hypothesis_node_set(s : StatsinferhypothesisNode, i : Int, v : Double) -> StatsinferhypothesisNode {
-  let result = stats_infer_hypothesis_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_node_sum(s : StatsinferhypothesisNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_infer_hypothesis_edge_get(s : StatsinferhypothesisEdge, i : Int) ->
 }
 
 pub fn stats_infer_hypothesis_edge_set(s : StatsinferhypothesisEdge, i : Int, v : Double) -> StatsinferhypothesisEdge {
-  let result = stats_infer_hypothesis_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_edge_sum(s : StatsinferhypothesisEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_infer_hypothesis_path_get(s : StatsinferhypothesisPath, i : Int) ->
 }
 
 pub fn stats_infer_hypothesis_path_set(s : StatsinferhypothesisPath, i : Int, v : Double) -> StatsinferhypothesisPath {
-  let result = stats_infer_hypothesis_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_path_sum(s : StatsinferhypothesisPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_infer_hypothesis_cluster_get(s : StatsinferhypothesisCluster, i : I
 }
 
 pub fn stats_infer_hypothesis_cluster_set(s : StatsinferhypothesisCluster, i : Int, v : Double) -> StatsinferhypothesisCluster {
-  let result = stats_infer_hypothesis_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_cluster_sum(s : StatsinferhypothesisCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_infer_hypothesis_model_get(s : StatsinferhypothesisModel, i : Int) 
 }
 
 pub fn stats_infer_hypothesis_model_set(s : StatsinferhypothesisModel, i : Int, v : Double) -> StatsinferhypothesisModel {
-  let result = stats_infer_hypothesis_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_model_sum(s : StatsinferhypothesisModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_infer_hypothesis_layer_get(s : StatsinferhypothesisLayer, i : Int) 
 }
 
 pub fn stats_infer_hypothesis_layer_set(s : StatsinferhypothesisLayer, i : Int, v : Double) -> StatsinferhypothesisLayer {
-  let result = stats_infer_hypothesis_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_layer_sum(s : StatsinferhypothesisLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_infer_hypothesis_buffer_get(s : StatsinferhypothesisBuffer, i : Int
 }
 
 pub fn stats_infer_hypothesis_buffer_set(s : StatsinferhypothesisBuffer, i : Int, v : Double) -> StatsinferhypothesisBuffer {
-  let result = stats_infer_hypothesis_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_buffer_sum(s : StatsinferhypothesisBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_infer_hypothesis_cursor_get(s : StatsinferhypothesisCursor, i : Int
 }
 
 pub fn stats_infer_hypothesis_cursor_set(s : StatsinferhypothesisCursor, i : Int, v : Double) -> StatsinferhypothesisCursor {
-  let result = stats_infer_hypothesis_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_cursor_sum(s : StatsinferhypothesisCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_infer_hypothesis_view_get(s : StatsinferhypothesisView, i : Int) ->
 }
 
 pub fn stats_infer_hypothesis_view_set(s : StatsinferhypothesisView, i : Int, v : Double) -> StatsinferhypothesisView {
-  let result = stats_infer_hypothesis_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_view_sum(s : StatsinferhypothesisView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_infer_hypothesis_range_get(s : StatsinferhypothesisRange, i : Int) 
 }
 
 pub fn stats_infer_hypothesis_range_set(s : StatsinferhypothesisRange, i : Int, v : Double) -> StatsinferhypothesisRange {
-  let result = stats_infer_hypothesis_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_range_sum(s : StatsinferhypothesisRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_infer_hypothesis_slice_get(s : StatsinferhypothesisSlice, i : Int) 
 }
 
 pub fn stats_infer_hypothesis_slice_set(s : StatsinferhypothesisSlice, i : Int, v : Double) -> StatsinferhypothesisSlice {
-  let result = stats_infer_hypothesis_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_infer_hypothesis_slice_sum(s : StatsinferhypothesisSlice) -> Double { @_common.sum(s.data) }

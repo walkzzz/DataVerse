@@ -107,23 +107,15 @@ pub fn bio_struct_distance_series_std(s : BiostructdistanceSeries) -> Double { @
 pub fn bio_struct_distance_series_median(s : BiostructdistanceSeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_struct_distance_series_scale(s : BiostructdistanceSeries, f : Double) -> BiostructdistanceSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_struct_distance_series_add(a : BiostructdistanceSeries, b : BiostructdistanceSeries) -> BiostructdistanceSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_struct_distance_series_sub(a : BiostructdistanceSeries, b : BiostructdistanceSeries) -> BiostructdistanceSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_struct_distance_series_normalize(s : BiostructdistanceSeries) -> BiostructdistanceSeries {
@@ -254,22 +246,16 @@ pub fn bio_struct_distance_vector_zero(dim : Int) -> BiostructdistanceVector {
 
 pub fn bio_struct_distance_vector_add(a : BiostructdistanceVector, b : BiostructdistanceVector) -> BiostructdistanceVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_struct_distance_vector_sub(a : BiostructdistanceVector, b : BiostructdistanceVector) -> BiostructdistanceVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_struct_distance_vector_scale(v : BiostructdistanceVector, s : Double) -> BiostructdistanceVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_struct_distance_vector_dot(a : BiostructdistanceVector, b : BiostructdistanceVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_struct_distance_frame_get(s : BiostructdistanceFrame, i : Int) -> Dou
 }
 
 pub fn bio_struct_distance_frame_set(s : BiostructdistanceFrame, i : Int, v : Double) -> BiostructdistanceFrame {
-  let result = bio_struct_distance_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_distance_frame_sum(s : BiostructdistanceFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_struct_distance_table_get(s : BiostructdistanceTable, i : Int) -> Dou
 }
 
 pub fn bio_struct_distance_table_set(s : BiostructdistanceTable, i : Int, v : Double) -> BiostructdistanceTable {
-  let result = bio_struct_distance_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_distance_table_sum(s : BiostructdistanceTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_struct_distance_graphn_get(s : BiostructdistanceGraphN, i : Int) -> D
 }
 
 pub fn bio_struct_distance_graphn_set(s : BiostructdistanceGraphN, i : Int, v : Double) -> BiostructdistanceGraphN {
-  let result = bio_struct_distance_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_distance_graphn_sum(s : BiostructdistanceGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_struct_distance_node_get(s : BiostructdistanceNode, i : Int) -> Doubl
 }
 
 pub fn bio_struct_distance_node_set(s : BiostructdistanceNode, i : Int, v : Double) -> BiostructdistanceNode {
-  let result = bio_struct_distance_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_distance_node_sum(s : BiostructdistanceNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_struct_distance_edge_get(s : BiostructdistanceEdge, i : Int) -> Doubl
 }
 
 pub fn bio_struct_distance_edge_set(s : BiostructdistanceEdge, i : Int, v : Double) -> BiostructdistanceEdge {
-  let result = bio_struct_distance_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_distance_edge_sum(s : BiostructdistanceEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_struct_distance_path_get(s : BiostructdistancePath, i : Int) -> Doubl
 }
 
 pub fn bio_struct_distance_path_set(s : BiostructdistancePath, i : Int, v : Double) -> BiostructdistancePath {
-  let result = bio_struct_distance_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_distance_path_sum(s : BiostructdistancePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_struct_distance_cluster_get(s : BiostructdistanceCluster, i : Int) ->
 }
 
 pub fn bio_struct_distance_cluster_set(s : BiostructdistanceCluster, i : Int, v : Double) -> BiostructdistanceCluster {
-  let result = bio_struct_distance_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_distance_cluster_sum(s : BiostructdistanceCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_struct_distance_model_get(s : BiostructdistanceModel, i : Int) -> Dou
 }
 
 pub fn bio_struct_distance_model_set(s : BiostructdistanceModel, i : Int, v : Double) -> BiostructdistanceModel {
-  let result = bio_struct_distance_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_distance_model_sum(s : BiostructdistanceModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_struct_distance_layer_get(s : BiostructdistanceLayer, i : Int) -> Dou
 }
 
 pub fn bio_struct_distance_layer_set(s : BiostructdistanceLayer, i : Int, v : Double) -> BiostructdistanceLayer {
-  let result = bio_struct_distance_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_distance_layer_sum(s : BiostructdistanceLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_struct_distance_buffer_get(s : BiostructdistanceBuffer, i : Int) -> D
 }
 
 pub fn bio_struct_distance_buffer_set(s : BiostructdistanceBuffer, i : Int, v : Double) -> BiostructdistanceBuffer {
-  let result = bio_struct_distance_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_distance_buffer_sum(s : BiostructdistanceBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_struct_distance_cursor_get(s : BiostructdistanceCursor, i : Int) -> D
 }
 
 pub fn bio_struct_distance_cursor_set(s : BiostructdistanceCursor, i : Int, v : Double) -> BiostructdistanceCursor {
-  let result = bio_struct_distance_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_distance_cursor_sum(s : BiostructdistanceCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_struct_distance_view_get(s : BiostructdistanceView, i : Int) -> Doubl
 }
 
 pub fn bio_struct_distance_view_set(s : BiostructdistanceView, i : Int, v : Double) -> BiostructdistanceView {
-  let result = bio_struct_distance_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_distance_view_sum(s : BiostructdistanceView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_struct_distance_range_get(s : BiostructdistanceRange, i : Int) -> Dou
 }
 
 pub fn bio_struct_distance_range_set(s : BiostructdistanceRange, i : Int, v : Double) -> BiostructdistanceRange {
-  let result = bio_struct_distance_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_distance_range_sum(s : BiostructdistanceRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_struct_distance_slice_get(s : BiostructdistanceSlice, i : Int) -> Dou
 }
 
 pub fn bio_struct_distance_slice_set(s : BiostructdistanceSlice, i : Int, v : Double) -> BiostructdistanceSlice {
-  let result = bio_struct_distance_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_distance_slice_sum(s : BiostructdistanceSlice) -> Double { @_common.sum(s.data) }

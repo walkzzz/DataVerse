@@ -107,23 +107,15 @@ pub fn physics_mechanics_force_series_std(s : PhysicsmechanicsforceSeries) -> Do
 pub fn physics_mechanics_force_series_median(s : PhysicsmechanicsforceSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_mechanics_force_series_scale(s : PhysicsmechanicsforceSeries, f : Double) -> PhysicsmechanicsforceSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_mechanics_force_series_add(a : PhysicsmechanicsforceSeries, b : PhysicsmechanicsforceSeries) -> PhysicsmechanicsforceSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_mechanics_force_series_sub(a : PhysicsmechanicsforceSeries, b : PhysicsmechanicsforceSeries) -> PhysicsmechanicsforceSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_mechanics_force_series_normalize(s : PhysicsmechanicsforceSeries) -> PhysicsmechanicsforceSeries {
@@ -254,22 +246,16 @@ pub fn physics_mechanics_force_vector_zero(dim : Int) -> PhysicsmechanicsforceVe
 
 pub fn physics_mechanics_force_vector_add(a : PhysicsmechanicsforceVector, b : PhysicsmechanicsforceVector) -> PhysicsmechanicsforceVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_mechanics_force_vector_sub(a : PhysicsmechanicsforceVector, b : PhysicsmechanicsforceVector) -> PhysicsmechanicsforceVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_mechanics_force_vector_scale(v : PhysicsmechanicsforceVector, s : Double) -> PhysicsmechanicsforceVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_mechanics_force_vector_dot(a : PhysicsmechanicsforceVector, b : PhysicsmechanicsforceVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_mechanics_force_frame_get(s : PhysicsmechanicsforceFrame, i : Int
 }
 
 pub fn physics_mechanics_force_frame_set(s : PhysicsmechanicsforceFrame, i : Int, v : Double) -> PhysicsmechanicsforceFrame {
-  let result = physics_mechanics_force_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_frame_sum(s : PhysicsmechanicsforceFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_mechanics_force_table_get(s : PhysicsmechanicsforceTable, i : Int
 }
 
 pub fn physics_mechanics_force_table_set(s : PhysicsmechanicsforceTable, i : Int, v : Double) -> PhysicsmechanicsforceTable {
-  let result = physics_mechanics_force_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_table_sum(s : PhysicsmechanicsforceTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_mechanics_force_graphn_get(s : PhysicsmechanicsforceGraphN, i : I
 }
 
 pub fn physics_mechanics_force_graphn_set(s : PhysicsmechanicsforceGraphN, i : Int, v : Double) -> PhysicsmechanicsforceGraphN {
-  let result = physics_mechanics_force_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_graphn_sum(s : PhysicsmechanicsforceGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_mechanics_force_node_get(s : PhysicsmechanicsforceNode, i : Int) 
 }
 
 pub fn physics_mechanics_force_node_set(s : PhysicsmechanicsforceNode, i : Int, v : Double) -> PhysicsmechanicsforceNode {
-  let result = physics_mechanics_force_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_node_sum(s : PhysicsmechanicsforceNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_mechanics_force_edge_get(s : PhysicsmechanicsforceEdge, i : Int) 
 }
 
 pub fn physics_mechanics_force_edge_set(s : PhysicsmechanicsforceEdge, i : Int, v : Double) -> PhysicsmechanicsforceEdge {
-  let result = physics_mechanics_force_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_edge_sum(s : PhysicsmechanicsforceEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_mechanics_force_path_get(s : PhysicsmechanicsforcePath, i : Int) 
 }
 
 pub fn physics_mechanics_force_path_set(s : PhysicsmechanicsforcePath, i : Int, v : Double) -> PhysicsmechanicsforcePath {
-  let result = physics_mechanics_force_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_path_sum(s : PhysicsmechanicsforcePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_mechanics_force_cluster_get(s : PhysicsmechanicsforceCluster, i :
 }
 
 pub fn physics_mechanics_force_cluster_set(s : PhysicsmechanicsforceCluster, i : Int, v : Double) -> PhysicsmechanicsforceCluster {
-  let result = physics_mechanics_force_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_cluster_sum(s : PhysicsmechanicsforceCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_mechanics_force_model_get(s : PhysicsmechanicsforceModel, i : Int
 }
 
 pub fn physics_mechanics_force_model_set(s : PhysicsmechanicsforceModel, i : Int, v : Double) -> PhysicsmechanicsforceModel {
-  let result = physics_mechanics_force_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_model_sum(s : PhysicsmechanicsforceModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_mechanics_force_layer_get(s : PhysicsmechanicsforceLayer, i : Int
 }
 
 pub fn physics_mechanics_force_layer_set(s : PhysicsmechanicsforceLayer, i : Int, v : Double) -> PhysicsmechanicsforceLayer {
-  let result = physics_mechanics_force_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_layer_sum(s : PhysicsmechanicsforceLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_mechanics_force_buffer_get(s : PhysicsmechanicsforceBuffer, i : I
 }
 
 pub fn physics_mechanics_force_buffer_set(s : PhysicsmechanicsforceBuffer, i : Int, v : Double) -> PhysicsmechanicsforceBuffer {
-  let result = physics_mechanics_force_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_buffer_sum(s : PhysicsmechanicsforceBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_mechanics_force_cursor_get(s : PhysicsmechanicsforceCursor, i : I
 }
 
 pub fn physics_mechanics_force_cursor_set(s : PhysicsmechanicsforceCursor, i : Int, v : Double) -> PhysicsmechanicsforceCursor {
-  let result = physics_mechanics_force_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_cursor_sum(s : PhysicsmechanicsforceCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_mechanics_force_view_get(s : PhysicsmechanicsforceView, i : Int) 
 }
 
 pub fn physics_mechanics_force_view_set(s : PhysicsmechanicsforceView, i : Int, v : Double) -> PhysicsmechanicsforceView {
-  let result = physics_mechanics_force_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_view_sum(s : PhysicsmechanicsforceView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_mechanics_force_range_get(s : PhysicsmechanicsforceRange, i : Int
 }
 
 pub fn physics_mechanics_force_range_set(s : PhysicsmechanicsforceRange, i : Int, v : Double) -> PhysicsmechanicsforceRange {
-  let result = physics_mechanics_force_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_range_sum(s : PhysicsmechanicsforceRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_mechanics_force_slice_get(s : PhysicsmechanicsforceSlice, i : Int
 }
 
 pub fn physics_mechanics_force_slice_set(s : PhysicsmechanicsforceSlice, i : Int, v : Double) -> PhysicsmechanicsforceSlice {
-  let result = physics_mechanics_force_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_force_slice_sum(s : PhysicsmechanicsforceSlice) -> Double { @_common.sum(s.data) }

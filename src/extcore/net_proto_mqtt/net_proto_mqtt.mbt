@@ -107,23 +107,15 @@ pub fn net_proto_mqtt_series_std(s : NetprotomqttSeries) -> Double { @_common.st
 pub fn net_proto_mqtt_series_median(s : NetprotomqttSeries) -> Double { @_common.median(s.vals) }
 
 pub fn net_proto_mqtt_series_scale(s : NetprotomqttSeries, f : Double) -> NetprotomqttSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn net_proto_mqtt_series_add(a : NetprotomqttSeries, b : NetprotomqttSeries) -> NetprotomqttSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn net_proto_mqtt_series_sub(a : NetprotomqttSeries, b : NetprotomqttSeries) -> NetprotomqttSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn net_proto_mqtt_series_normalize(s : NetprotomqttSeries) -> NetprotomqttSeries {
@@ -254,22 +246,16 @@ pub fn net_proto_mqtt_vector_zero(dim : Int) -> NetprotomqttVector {
 
 pub fn net_proto_mqtt_vector_add(a : NetprotomqttVector, b : NetprotomqttVector) -> NetprotomqttVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_proto_mqtt_vector_sub(a : NetprotomqttVector, b : NetprotomqttVector) -> NetprotomqttVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_proto_mqtt_vector_scale(v : NetprotomqttVector, s : Double) -> NetprotomqttVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn net_proto_mqtt_vector_dot(a : NetprotomqttVector, b : NetprotomqttVector) -> Double {
@@ -372,10 +358,9 @@ pub fn net_proto_mqtt_frame_get(s : NetprotomqttFrame, i : Int) -> Double {
 }
 
 pub fn net_proto_mqtt_frame_set(s : NetprotomqttFrame, i : Int, v : Double) -> NetprotomqttFrame {
-  let result = net_proto_mqtt_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_frame_sum(s : NetprotomqttFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn net_proto_mqtt_table_get(s : NetprotomqttTable, i : Int) -> Double {
 }
 
 pub fn net_proto_mqtt_table_set(s : NetprotomqttTable, i : Int, v : Double) -> NetprotomqttTable {
-  let result = net_proto_mqtt_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_table_sum(s : NetprotomqttTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn net_proto_mqtt_graphn_get(s : NetprotomqttGraphN, i : Int) -> Double {
 }
 
 pub fn net_proto_mqtt_graphn_set(s : NetprotomqttGraphN, i : Int, v : Double) -> NetprotomqttGraphN {
-  let result = net_proto_mqtt_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_graphn_sum(s : NetprotomqttGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn net_proto_mqtt_node_get(s : NetprotomqttNode, i : Int) -> Double {
 }
 
 pub fn net_proto_mqtt_node_set(s : NetprotomqttNode, i : Int, v : Double) -> NetprotomqttNode {
-  let result = net_proto_mqtt_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_node_sum(s : NetprotomqttNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn net_proto_mqtt_edge_get(s : NetprotomqttEdge, i : Int) -> Double {
 }
 
 pub fn net_proto_mqtt_edge_set(s : NetprotomqttEdge, i : Int, v : Double) -> NetprotomqttEdge {
-  let result = net_proto_mqtt_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_edge_sum(s : NetprotomqttEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn net_proto_mqtt_path_get(s : NetprotomqttPath, i : Int) -> Double {
 }
 
 pub fn net_proto_mqtt_path_set(s : NetprotomqttPath, i : Int, v : Double) -> NetprotomqttPath {
-  let result = net_proto_mqtt_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_path_sum(s : NetprotomqttPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn net_proto_mqtt_cluster_get(s : NetprotomqttCluster, i : Int) -> Double {
 }
 
 pub fn net_proto_mqtt_cluster_set(s : NetprotomqttCluster, i : Int, v : Double) -> NetprotomqttCluster {
-  let result = net_proto_mqtt_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_cluster_sum(s : NetprotomqttCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn net_proto_mqtt_model_get(s : NetprotomqttModel, i : Int) -> Double {
 }
 
 pub fn net_proto_mqtt_model_set(s : NetprotomqttModel, i : Int, v : Double) -> NetprotomqttModel {
-  let result = net_proto_mqtt_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_model_sum(s : NetprotomqttModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn net_proto_mqtt_layer_get(s : NetprotomqttLayer, i : Int) -> Double {
 }
 
 pub fn net_proto_mqtt_layer_set(s : NetprotomqttLayer, i : Int, v : Double) -> NetprotomqttLayer {
-  let result = net_proto_mqtt_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_layer_sum(s : NetprotomqttLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn net_proto_mqtt_buffer_get(s : NetprotomqttBuffer, i : Int) -> Double {
 }
 
 pub fn net_proto_mqtt_buffer_set(s : NetprotomqttBuffer, i : Int, v : Double) -> NetprotomqttBuffer {
-  let result = net_proto_mqtt_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_buffer_sum(s : NetprotomqttBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn net_proto_mqtt_cursor_get(s : NetprotomqttCursor, i : Int) -> Double {
 }
 
 pub fn net_proto_mqtt_cursor_set(s : NetprotomqttCursor, i : Int, v : Double) -> NetprotomqttCursor {
-  let result = net_proto_mqtt_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_cursor_sum(s : NetprotomqttCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn net_proto_mqtt_view_get(s : NetprotomqttView, i : Int) -> Double {
 }
 
 pub fn net_proto_mqtt_view_set(s : NetprotomqttView, i : Int, v : Double) -> NetprotomqttView {
-  let result = net_proto_mqtt_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_view_sum(s : NetprotomqttView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn net_proto_mqtt_range_get(s : NetprotomqttRange, i : Int) -> Double {
 }
 
 pub fn net_proto_mqtt_range_set(s : NetprotomqttRange, i : Int, v : Double) -> NetprotomqttRange {
-  let result = net_proto_mqtt_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_range_sum(s : NetprotomqttRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn net_proto_mqtt_slice_get(s : NetprotomqttSlice, i : Int) -> Double {
 }
 
 pub fn net_proto_mqtt_slice_set(s : NetprotomqttSlice, i : Int, v : Double) -> NetprotomqttSlice {
-  let result = net_proto_mqtt_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_mqtt_slice_sum(s : NetprotomqttSlice) -> Double { @_common.sum(s.data) }

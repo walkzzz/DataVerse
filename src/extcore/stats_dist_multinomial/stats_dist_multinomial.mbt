@@ -107,23 +107,15 @@ pub fn stats_dist_multinomial_series_std(s : StatsdistmultinomialSeries) -> Doub
 pub fn stats_dist_multinomial_series_median(s : StatsdistmultinomialSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_dist_multinomial_series_scale(s : StatsdistmultinomialSeries, f : Double) -> StatsdistmultinomialSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_dist_multinomial_series_add(a : StatsdistmultinomialSeries, b : StatsdistmultinomialSeries) -> StatsdistmultinomialSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_dist_multinomial_series_sub(a : StatsdistmultinomialSeries, b : StatsdistmultinomialSeries) -> StatsdistmultinomialSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_dist_multinomial_series_normalize(s : StatsdistmultinomialSeries) -> StatsdistmultinomialSeries {
@@ -254,22 +246,16 @@ pub fn stats_dist_multinomial_vector_zero(dim : Int) -> StatsdistmultinomialVect
 
 pub fn stats_dist_multinomial_vector_add(a : StatsdistmultinomialVector, b : StatsdistmultinomialVector) -> StatsdistmultinomialVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_dist_multinomial_vector_sub(a : StatsdistmultinomialVector, b : StatsdistmultinomialVector) -> StatsdistmultinomialVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_dist_multinomial_vector_scale(v : StatsdistmultinomialVector, s : Double) -> StatsdistmultinomialVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_dist_multinomial_vector_dot(a : StatsdistmultinomialVector, b : StatsdistmultinomialVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_dist_multinomial_frame_get(s : StatsdistmultinomialFrame, i : Int) 
 }
 
 pub fn stats_dist_multinomial_frame_set(s : StatsdistmultinomialFrame, i : Int, v : Double) -> StatsdistmultinomialFrame {
-  let result = stats_dist_multinomial_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_multinomial_frame_sum(s : StatsdistmultinomialFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_dist_multinomial_table_get(s : StatsdistmultinomialTable, i : Int) 
 }
 
 pub fn stats_dist_multinomial_table_set(s : StatsdistmultinomialTable, i : Int, v : Double) -> StatsdistmultinomialTable {
-  let result = stats_dist_multinomial_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_multinomial_table_sum(s : StatsdistmultinomialTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_dist_multinomial_graphn_get(s : StatsdistmultinomialGraphN, i : Int
 }
 
 pub fn stats_dist_multinomial_graphn_set(s : StatsdistmultinomialGraphN, i : Int, v : Double) -> StatsdistmultinomialGraphN {
-  let result = stats_dist_multinomial_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_multinomial_graphn_sum(s : StatsdistmultinomialGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_dist_multinomial_node_get(s : StatsdistmultinomialNode, i : Int) ->
 }
 
 pub fn stats_dist_multinomial_node_set(s : StatsdistmultinomialNode, i : Int, v : Double) -> StatsdistmultinomialNode {
-  let result = stats_dist_multinomial_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_multinomial_node_sum(s : StatsdistmultinomialNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_dist_multinomial_edge_get(s : StatsdistmultinomialEdge, i : Int) ->
 }
 
 pub fn stats_dist_multinomial_edge_set(s : StatsdistmultinomialEdge, i : Int, v : Double) -> StatsdistmultinomialEdge {
-  let result = stats_dist_multinomial_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_multinomial_edge_sum(s : StatsdistmultinomialEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_dist_multinomial_path_get(s : StatsdistmultinomialPath, i : Int) ->
 }
 
 pub fn stats_dist_multinomial_path_set(s : StatsdistmultinomialPath, i : Int, v : Double) -> StatsdistmultinomialPath {
-  let result = stats_dist_multinomial_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_multinomial_path_sum(s : StatsdistmultinomialPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_dist_multinomial_cluster_get(s : StatsdistmultinomialCluster, i : I
 }
 
 pub fn stats_dist_multinomial_cluster_set(s : StatsdistmultinomialCluster, i : Int, v : Double) -> StatsdistmultinomialCluster {
-  let result = stats_dist_multinomial_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_multinomial_cluster_sum(s : StatsdistmultinomialCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_dist_multinomial_model_get(s : StatsdistmultinomialModel, i : Int) 
 }
 
 pub fn stats_dist_multinomial_model_set(s : StatsdistmultinomialModel, i : Int, v : Double) -> StatsdistmultinomialModel {
-  let result = stats_dist_multinomial_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_multinomial_model_sum(s : StatsdistmultinomialModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_dist_multinomial_layer_get(s : StatsdistmultinomialLayer, i : Int) 
 }
 
 pub fn stats_dist_multinomial_layer_set(s : StatsdistmultinomialLayer, i : Int, v : Double) -> StatsdistmultinomialLayer {
-  let result = stats_dist_multinomial_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_multinomial_layer_sum(s : StatsdistmultinomialLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_dist_multinomial_buffer_get(s : StatsdistmultinomialBuffer, i : Int
 }
 
 pub fn stats_dist_multinomial_buffer_set(s : StatsdistmultinomialBuffer, i : Int, v : Double) -> StatsdistmultinomialBuffer {
-  let result = stats_dist_multinomial_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_multinomial_buffer_sum(s : StatsdistmultinomialBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_dist_multinomial_cursor_get(s : StatsdistmultinomialCursor, i : Int
 }
 
 pub fn stats_dist_multinomial_cursor_set(s : StatsdistmultinomialCursor, i : Int, v : Double) -> StatsdistmultinomialCursor {
-  let result = stats_dist_multinomial_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_multinomial_cursor_sum(s : StatsdistmultinomialCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_dist_multinomial_view_get(s : StatsdistmultinomialView, i : Int) ->
 }
 
 pub fn stats_dist_multinomial_view_set(s : StatsdistmultinomialView, i : Int, v : Double) -> StatsdistmultinomialView {
-  let result = stats_dist_multinomial_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_multinomial_view_sum(s : StatsdistmultinomialView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_dist_multinomial_range_get(s : StatsdistmultinomialRange, i : Int) 
 }
 
 pub fn stats_dist_multinomial_range_set(s : StatsdistmultinomialRange, i : Int, v : Double) -> StatsdistmultinomialRange {
-  let result = stats_dist_multinomial_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_multinomial_range_sum(s : StatsdistmultinomialRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_dist_multinomial_slice_get(s : StatsdistmultinomialSlice, i : Int) 
 }
 
 pub fn stats_dist_multinomial_slice_set(s : StatsdistmultinomialSlice, i : Int, v : Double) -> StatsdistmultinomialSlice {
-  let result = stats_dist_multinomial_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_multinomial_slice_sum(s : StatsdistmultinomialSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn sort_dist_proxmap_series_std(s : SortdistproxmapSeries) -> Double { @_com
 pub fn sort_dist_proxmap_series_median(s : SortdistproxmapSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_dist_proxmap_series_scale(s : SortdistproxmapSeries, f : Double) -> SortdistproxmapSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn sort_dist_proxmap_series_add(a : SortdistproxmapSeries, b : SortdistproxmapSeries) -> SortdistproxmapSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn sort_dist_proxmap_series_sub(a : SortdistproxmapSeries, b : SortdistproxmapSeries) -> SortdistproxmapSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn sort_dist_proxmap_series_normalize(s : SortdistproxmapSeries) -> SortdistproxmapSeries {
@@ -254,22 +246,16 @@ pub fn sort_dist_proxmap_vector_zero(dim : Int) -> SortdistproxmapVector {
 
 pub fn sort_dist_proxmap_vector_add(a : SortdistproxmapVector, b : SortdistproxmapVector) -> SortdistproxmapVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_dist_proxmap_vector_sub(a : SortdistproxmapVector, b : SortdistproxmapVector) -> SortdistproxmapVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_dist_proxmap_vector_scale(v : SortdistproxmapVector, s : Double) -> SortdistproxmapVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn sort_dist_proxmap_vector_dot(a : SortdistproxmapVector, b : SortdistproxmapVector) -> Double {
@@ -372,10 +358,9 @@ pub fn sort_dist_proxmap_frame_get(s : SortdistproxmapFrame, i : Int) -> Double 
 }
 
 pub fn sort_dist_proxmap_frame_set(s : SortdistproxmapFrame, i : Int, v : Double) -> SortdistproxmapFrame {
-  let result = sort_dist_proxmap_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_proxmap_frame_sum(s : SortdistproxmapFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn sort_dist_proxmap_table_get(s : SortdistproxmapTable, i : Int) -> Double 
 }
 
 pub fn sort_dist_proxmap_table_set(s : SortdistproxmapTable, i : Int, v : Double) -> SortdistproxmapTable {
-  let result = sort_dist_proxmap_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_proxmap_table_sum(s : SortdistproxmapTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn sort_dist_proxmap_graphn_get(s : SortdistproxmapGraphN, i : Int) -> Doubl
 }
 
 pub fn sort_dist_proxmap_graphn_set(s : SortdistproxmapGraphN, i : Int, v : Double) -> SortdistproxmapGraphN {
-  let result = sort_dist_proxmap_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_proxmap_graphn_sum(s : SortdistproxmapGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn sort_dist_proxmap_node_get(s : SortdistproxmapNode, i : Int) -> Double {
 }
 
 pub fn sort_dist_proxmap_node_set(s : SortdistproxmapNode, i : Int, v : Double) -> SortdistproxmapNode {
-  let result = sort_dist_proxmap_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_proxmap_node_sum(s : SortdistproxmapNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn sort_dist_proxmap_edge_get(s : SortdistproxmapEdge, i : Int) -> Double {
 }
 
 pub fn sort_dist_proxmap_edge_set(s : SortdistproxmapEdge, i : Int, v : Double) -> SortdistproxmapEdge {
-  let result = sort_dist_proxmap_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_proxmap_edge_sum(s : SortdistproxmapEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn sort_dist_proxmap_path_get(s : SortdistproxmapPath, i : Int) -> Double {
 }
 
 pub fn sort_dist_proxmap_path_set(s : SortdistproxmapPath, i : Int, v : Double) -> SortdistproxmapPath {
-  let result = sort_dist_proxmap_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_proxmap_path_sum(s : SortdistproxmapPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn sort_dist_proxmap_cluster_get(s : SortdistproxmapCluster, i : Int) -> Dou
 }
 
 pub fn sort_dist_proxmap_cluster_set(s : SortdistproxmapCluster, i : Int, v : Double) -> SortdistproxmapCluster {
-  let result = sort_dist_proxmap_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_proxmap_cluster_sum(s : SortdistproxmapCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn sort_dist_proxmap_model_get(s : SortdistproxmapModel, i : Int) -> Double 
 }
 
 pub fn sort_dist_proxmap_model_set(s : SortdistproxmapModel, i : Int, v : Double) -> SortdistproxmapModel {
-  let result = sort_dist_proxmap_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_proxmap_model_sum(s : SortdistproxmapModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn sort_dist_proxmap_layer_get(s : SortdistproxmapLayer, i : Int) -> Double 
 }
 
 pub fn sort_dist_proxmap_layer_set(s : SortdistproxmapLayer, i : Int, v : Double) -> SortdistproxmapLayer {
-  let result = sort_dist_proxmap_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_proxmap_layer_sum(s : SortdistproxmapLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn sort_dist_proxmap_buffer_get(s : SortdistproxmapBuffer, i : Int) -> Doubl
 }
 
 pub fn sort_dist_proxmap_buffer_set(s : SortdistproxmapBuffer, i : Int, v : Double) -> SortdistproxmapBuffer {
-  let result = sort_dist_proxmap_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_proxmap_buffer_sum(s : SortdistproxmapBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn sort_dist_proxmap_cursor_get(s : SortdistproxmapCursor, i : Int) -> Doubl
 }
 
 pub fn sort_dist_proxmap_cursor_set(s : SortdistproxmapCursor, i : Int, v : Double) -> SortdistproxmapCursor {
-  let result = sort_dist_proxmap_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_proxmap_cursor_sum(s : SortdistproxmapCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn sort_dist_proxmap_view_get(s : SortdistproxmapView, i : Int) -> Double {
 }
 
 pub fn sort_dist_proxmap_view_set(s : SortdistproxmapView, i : Int, v : Double) -> SortdistproxmapView {
-  let result = sort_dist_proxmap_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_proxmap_view_sum(s : SortdistproxmapView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn sort_dist_proxmap_range_get(s : SortdistproxmapRange, i : Int) -> Double 
 }
 
 pub fn sort_dist_proxmap_range_set(s : SortdistproxmapRange, i : Int, v : Double) -> SortdistproxmapRange {
-  let result = sort_dist_proxmap_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_proxmap_range_sum(s : SortdistproxmapRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn sort_dist_proxmap_slice_get(s : SortdistproxmapSlice, i : Int) -> Double 
 }
 
 pub fn sort_dist_proxmap_slice_set(s : SortdistproxmapSlice, i : Int, v : Double) -> SortdistproxmapSlice {
-  let result = sort_dist_proxmap_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_proxmap_slice_sum(s : SortdistproxmapSlice) -> Double { @_common.sum(s.data) }

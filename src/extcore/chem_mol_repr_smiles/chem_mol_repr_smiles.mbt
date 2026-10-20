@@ -107,23 +107,15 @@ pub fn chem_mol_repr_smiles_series_std(s : ChemmolreprsmilesSeries) -> Double { 
 pub fn chem_mol_repr_smiles_series_median(s : ChemmolreprsmilesSeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_mol_repr_smiles_series_scale(s : ChemmolreprsmilesSeries, f : Double) -> ChemmolreprsmilesSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn chem_mol_repr_smiles_series_add(a : ChemmolreprsmilesSeries, b : ChemmolreprsmilesSeries) -> ChemmolreprsmilesSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn chem_mol_repr_smiles_series_sub(a : ChemmolreprsmilesSeries, b : ChemmolreprsmilesSeries) -> ChemmolreprsmilesSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn chem_mol_repr_smiles_series_normalize(s : ChemmolreprsmilesSeries) -> ChemmolreprsmilesSeries {
@@ -254,22 +246,16 @@ pub fn chem_mol_repr_smiles_vector_zero(dim : Int) -> ChemmolreprsmilesVector {
 
 pub fn chem_mol_repr_smiles_vector_add(a : ChemmolreprsmilesVector, b : ChemmolreprsmilesVector) -> ChemmolreprsmilesVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_mol_repr_smiles_vector_sub(a : ChemmolreprsmilesVector, b : ChemmolreprsmilesVector) -> ChemmolreprsmilesVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_mol_repr_smiles_vector_scale(v : ChemmolreprsmilesVector, s : Double) -> ChemmolreprsmilesVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn chem_mol_repr_smiles_vector_dot(a : ChemmolreprsmilesVector, b : ChemmolreprsmilesVector) -> Double {
@@ -372,10 +358,9 @@ pub fn chem_mol_repr_smiles_frame_get(s : ChemmolreprsmilesFrame, i : Int) -> Do
 }
 
 pub fn chem_mol_repr_smiles_frame_set(s : ChemmolreprsmilesFrame, i : Int, v : Double) -> ChemmolreprsmilesFrame {
-  let result = chem_mol_repr_smiles_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_smiles_frame_sum(s : ChemmolreprsmilesFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn chem_mol_repr_smiles_table_get(s : ChemmolreprsmilesTable, i : Int) -> Do
 }
 
 pub fn chem_mol_repr_smiles_table_set(s : ChemmolreprsmilesTable, i : Int, v : Double) -> ChemmolreprsmilesTable {
-  let result = chem_mol_repr_smiles_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_smiles_table_sum(s : ChemmolreprsmilesTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn chem_mol_repr_smiles_graphn_get(s : ChemmolreprsmilesGraphN, i : Int) -> 
 }
 
 pub fn chem_mol_repr_smiles_graphn_set(s : ChemmolreprsmilesGraphN, i : Int, v : Double) -> ChemmolreprsmilesGraphN {
-  let result = chem_mol_repr_smiles_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_smiles_graphn_sum(s : ChemmolreprsmilesGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn chem_mol_repr_smiles_node_get(s : ChemmolreprsmilesNode, i : Int) -> Doub
 }
 
 pub fn chem_mol_repr_smiles_node_set(s : ChemmolreprsmilesNode, i : Int, v : Double) -> ChemmolreprsmilesNode {
-  let result = chem_mol_repr_smiles_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_smiles_node_sum(s : ChemmolreprsmilesNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn chem_mol_repr_smiles_edge_get(s : ChemmolreprsmilesEdge, i : Int) -> Doub
 }
 
 pub fn chem_mol_repr_smiles_edge_set(s : ChemmolreprsmilesEdge, i : Int, v : Double) -> ChemmolreprsmilesEdge {
-  let result = chem_mol_repr_smiles_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_smiles_edge_sum(s : ChemmolreprsmilesEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn chem_mol_repr_smiles_path_get(s : ChemmolreprsmilesPath, i : Int) -> Doub
 }
 
 pub fn chem_mol_repr_smiles_path_set(s : ChemmolreprsmilesPath, i : Int, v : Double) -> ChemmolreprsmilesPath {
-  let result = chem_mol_repr_smiles_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_smiles_path_sum(s : ChemmolreprsmilesPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn chem_mol_repr_smiles_cluster_get(s : ChemmolreprsmilesCluster, i : Int) -
 }
 
 pub fn chem_mol_repr_smiles_cluster_set(s : ChemmolreprsmilesCluster, i : Int, v : Double) -> ChemmolreprsmilesCluster {
-  let result = chem_mol_repr_smiles_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_smiles_cluster_sum(s : ChemmolreprsmilesCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn chem_mol_repr_smiles_model_get(s : ChemmolreprsmilesModel, i : Int) -> Do
 }
 
 pub fn chem_mol_repr_smiles_model_set(s : ChemmolreprsmilesModel, i : Int, v : Double) -> ChemmolreprsmilesModel {
-  let result = chem_mol_repr_smiles_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_smiles_model_sum(s : ChemmolreprsmilesModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn chem_mol_repr_smiles_layer_get(s : ChemmolreprsmilesLayer, i : Int) -> Do
 }
 
 pub fn chem_mol_repr_smiles_layer_set(s : ChemmolreprsmilesLayer, i : Int, v : Double) -> ChemmolreprsmilesLayer {
-  let result = chem_mol_repr_smiles_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_smiles_layer_sum(s : ChemmolreprsmilesLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn chem_mol_repr_smiles_buffer_get(s : ChemmolreprsmilesBuffer, i : Int) -> 
 }
 
 pub fn chem_mol_repr_smiles_buffer_set(s : ChemmolreprsmilesBuffer, i : Int, v : Double) -> ChemmolreprsmilesBuffer {
-  let result = chem_mol_repr_smiles_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_smiles_buffer_sum(s : ChemmolreprsmilesBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn chem_mol_repr_smiles_cursor_get(s : ChemmolreprsmilesCursor, i : Int) -> 
 }
 
 pub fn chem_mol_repr_smiles_cursor_set(s : ChemmolreprsmilesCursor, i : Int, v : Double) -> ChemmolreprsmilesCursor {
-  let result = chem_mol_repr_smiles_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_smiles_cursor_sum(s : ChemmolreprsmilesCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn chem_mol_repr_smiles_view_get(s : ChemmolreprsmilesView, i : Int) -> Doub
 }
 
 pub fn chem_mol_repr_smiles_view_set(s : ChemmolreprsmilesView, i : Int, v : Double) -> ChemmolreprsmilesView {
-  let result = chem_mol_repr_smiles_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_smiles_view_sum(s : ChemmolreprsmilesView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn chem_mol_repr_smiles_range_get(s : ChemmolreprsmilesRange, i : Int) -> Do
 }
 
 pub fn chem_mol_repr_smiles_range_set(s : ChemmolreprsmilesRange, i : Int, v : Double) -> ChemmolreprsmilesRange {
-  let result = chem_mol_repr_smiles_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_smiles_range_sum(s : ChemmolreprsmilesRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn chem_mol_repr_smiles_slice_get(s : ChemmolreprsmilesSlice, i : Int) -> Do
 }
 
 pub fn chem_mol_repr_smiles_slice_set(s : ChemmolreprsmilesSlice, i : Int, v : Double) -> ChemmolreprsmilesSlice {
-  let result = chem_mol_repr_smiles_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_smiles_slice_sum(s : ChemmolreprsmilesSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn graph_color_greedy_series_std(s : GraphcolorgreedySeries) -> Double { @_c
 pub fn graph_color_greedy_series_median(s : GraphcolorgreedySeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_color_greedy_series_scale(s : GraphcolorgreedySeries, f : Double) -> GraphcolorgreedySeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_color_greedy_series_add(a : GraphcolorgreedySeries, b : GraphcolorgreedySeries) -> GraphcolorgreedySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_color_greedy_series_sub(a : GraphcolorgreedySeries, b : GraphcolorgreedySeries) -> GraphcolorgreedySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_color_greedy_series_normalize(s : GraphcolorgreedySeries) -> GraphcolorgreedySeries {
@@ -254,22 +246,16 @@ pub fn graph_color_greedy_vector_zero(dim : Int) -> GraphcolorgreedyVector {
 
 pub fn graph_color_greedy_vector_add(a : GraphcolorgreedyVector, b : GraphcolorgreedyVector) -> GraphcolorgreedyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_color_greedy_vector_sub(a : GraphcolorgreedyVector, b : GraphcolorgreedyVector) -> GraphcolorgreedyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_color_greedy_vector_scale(v : GraphcolorgreedyVector, s : Double) -> GraphcolorgreedyVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_color_greedy_vector_dot(a : GraphcolorgreedyVector, b : GraphcolorgreedyVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_color_greedy_frame_get(s : GraphcolorgreedyFrame, i : Int) -> Doubl
 }
 
 pub fn graph_color_greedy_frame_set(s : GraphcolorgreedyFrame, i : Int, v : Double) -> GraphcolorgreedyFrame {
-  let result = graph_color_greedy_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_frame_sum(s : GraphcolorgreedyFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_color_greedy_table_get(s : GraphcolorgreedyTable, i : Int) -> Doubl
 }
 
 pub fn graph_color_greedy_table_set(s : GraphcolorgreedyTable, i : Int, v : Double) -> GraphcolorgreedyTable {
-  let result = graph_color_greedy_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_table_sum(s : GraphcolorgreedyTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_color_greedy_graphn_get(s : GraphcolorgreedyGraphN, i : Int) -> Dou
 }
 
 pub fn graph_color_greedy_graphn_set(s : GraphcolorgreedyGraphN, i : Int, v : Double) -> GraphcolorgreedyGraphN {
-  let result = graph_color_greedy_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_graphn_sum(s : GraphcolorgreedyGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_color_greedy_node_get(s : GraphcolorgreedyNode, i : Int) -> Double 
 }
 
 pub fn graph_color_greedy_node_set(s : GraphcolorgreedyNode, i : Int, v : Double) -> GraphcolorgreedyNode {
-  let result = graph_color_greedy_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_node_sum(s : GraphcolorgreedyNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_color_greedy_edge_get(s : GraphcolorgreedyEdge, i : Int) -> Double 
 }
 
 pub fn graph_color_greedy_edge_set(s : GraphcolorgreedyEdge, i : Int, v : Double) -> GraphcolorgreedyEdge {
-  let result = graph_color_greedy_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_edge_sum(s : GraphcolorgreedyEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_color_greedy_path_get(s : GraphcolorgreedyPath, i : Int) -> Double 
 }
 
 pub fn graph_color_greedy_path_set(s : GraphcolorgreedyPath, i : Int, v : Double) -> GraphcolorgreedyPath {
-  let result = graph_color_greedy_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_path_sum(s : GraphcolorgreedyPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_color_greedy_cluster_get(s : GraphcolorgreedyCluster, i : Int) -> D
 }
 
 pub fn graph_color_greedy_cluster_set(s : GraphcolorgreedyCluster, i : Int, v : Double) -> GraphcolorgreedyCluster {
-  let result = graph_color_greedy_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_cluster_sum(s : GraphcolorgreedyCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_color_greedy_model_get(s : GraphcolorgreedyModel, i : Int) -> Doubl
 }
 
 pub fn graph_color_greedy_model_set(s : GraphcolorgreedyModel, i : Int, v : Double) -> GraphcolorgreedyModel {
-  let result = graph_color_greedy_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_model_sum(s : GraphcolorgreedyModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_color_greedy_layer_get(s : GraphcolorgreedyLayer, i : Int) -> Doubl
 }
 
 pub fn graph_color_greedy_layer_set(s : GraphcolorgreedyLayer, i : Int, v : Double) -> GraphcolorgreedyLayer {
-  let result = graph_color_greedy_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_layer_sum(s : GraphcolorgreedyLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_color_greedy_buffer_get(s : GraphcolorgreedyBuffer, i : Int) -> Dou
 }
 
 pub fn graph_color_greedy_buffer_set(s : GraphcolorgreedyBuffer, i : Int, v : Double) -> GraphcolorgreedyBuffer {
-  let result = graph_color_greedy_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_buffer_sum(s : GraphcolorgreedyBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_color_greedy_cursor_get(s : GraphcolorgreedyCursor, i : Int) -> Dou
 }
 
 pub fn graph_color_greedy_cursor_set(s : GraphcolorgreedyCursor, i : Int, v : Double) -> GraphcolorgreedyCursor {
-  let result = graph_color_greedy_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_cursor_sum(s : GraphcolorgreedyCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_color_greedy_view_get(s : GraphcolorgreedyView, i : Int) -> Double 
 }
 
 pub fn graph_color_greedy_view_set(s : GraphcolorgreedyView, i : Int, v : Double) -> GraphcolorgreedyView {
-  let result = graph_color_greedy_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_view_sum(s : GraphcolorgreedyView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_color_greedy_range_get(s : GraphcolorgreedyRange, i : Int) -> Doubl
 }
 
 pub fn graph_color_greedy_range_set(s : GraphcolorgreedyRange, i : Int, v : Double) -> GraphcolorgreedyRange {
-  let result = graph_color_greedy_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_range_sum(s : GraphcolorgreedyRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_color_greedy_slice_get(s : GraphcolorgreedySlice, i : Int) -> Doubl
 }
 
 pub fn graph_color_greedy_slice_set(s : GraphcolorgreedySlice, i : Int, v : Double) -> GraphcolorgreedySlice {
-  let result = graph_color_greedy_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_greedy_slice_sum(s : GraphcolorgreedySlice) -> Double { @_common.sum(s.data) }

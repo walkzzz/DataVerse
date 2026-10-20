@@ -107,23 +107,15 @@ pub fn opt_grad_adagrad_series_std(s : OptgradadagradSeries) -> Double { @_commo
 pub fn opt_grad_adagrad_series_median(s : OptgradadagradSeries) -> Double { @_common.median(s.vals) }
 
 pub fn opt_grad_adagrad_series_scale(s : OptgradadagradSeries, f : Double) -> OptgradadagradSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn opt_grad_adagrad_series_add(a : OptgradadagradSeries, b : OptgradadagradSeries) -> OptgradadagradSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn opt_grad_adagrad_series_sub(a : OptgradadagradSeries, b : OptgradadagradSeries) -> OptgradadagradSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn opt_grad_adagrad_series_normalize(s : OptgradadagradSeries) -> OptgradadagradSeries {
@@ -254,22 +246,16 @@ pub fn opt_grad_adagrad_vector_zero(dim : Int) -> OptgradadagradVector {
 
 pub fn opt_grad_adagrad_vector_add(a : OptgradadagradVector, b : OptgradadagradVector) -> OptgradadagradVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_grad_adagrad_vector_sub(a : OptgradadagradVector, b : OptgradadagradVector) -> OptgradadagradVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_grad_adagrad_vector_scale(v : OptgradadagradVector, s : Double) -> OptgradadagradVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn opt_grad_adagrad_vector_dot(a : OptgradadagradVector, b : OptgradadagradVector) -> Double {
@@ -372,10 +358,9 @@ pub fn opt_grad_adagrad_frame_get(s : OptgradadagradFrame, i : Int) -> Double {
 }
 
 pub fn opt_grad_adagrad_frame_set(s : OptgradadagradFrame, i : Int, v : Double) -> OptgradadagradFrame {
-  let result = opt_grad_adagrad_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adagrad_frame_sum(s : OptgradadagradFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn opt_grad_adagrad_table_get(s : OptgradadagradTable, i : Int) -> Double {
 }
 
 pub fn opt_grad_adagrad_table_set(s : OptgradadagradTable, i : Int, v : Double) -> OptgradadagradTable {
-  let result = opt_grad_adagrad_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adagrad_table_sum(s : OptgradadagradTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn opt_grad_adagrad_graphn_get(s : OptgradadagradGraphN, i : Int) -> Double 
 }
 
 pub fn opt_grad_adagrad_graphn_set(s : OptgradadagradGraphN, i : Int, v : Double) -> OptgradadagradGraphN {
-  let result = opt_grad_adagrad_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adagrad_graphn_sum(s : OptgradadagradGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn opt_grad_adagrad_node_get(s : OptgradadagradNode, i : Int) -> Double {
 }
 
 pub fn opt_grad_adagrad_node_set(s : OptgradadagradNode, i : Int, v : Double) -> OptgradadagradNode {
-  let result = opt_grad_adagrad_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adagrad_node_sum(s : OptgradadagradNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn opt_grad_adagrad_edge_get(s : OptgradadagradEdge, i : Int) -> Double {
 }
 
 pub fn opt_grad_adagrad_edge_set(s : OptgradadagradEdge, i : Int, v : Double) -> OptgradadagradEdge {
-  let result = opt_grad_adagrad_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adagrad_edge_sum(s : OptgradadagradEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn opt_grad_adagrad_path_get(s : OptgradadagradPath, i : Int) -> Double {
 }
 
 pub fn opt_grad_adagrad_path_set(s : OptgradadagradPath, i : Int, v : Double) -> OptgradadagradPath {
-  let result = opt_grad_adagrad_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adagrad_path_sum(s : OptgradadagradPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn opt_grad_adagrad_cluster_get(s : OptgradadagradCluster, i : Int) -> Doubl
 }
 
 pub fn opt_grad_adagrad_cluster_set(s : OptgradadagradCluster, i : Int, v : Double) -> OptgradadagradCluster {
-  let result = opt_grad_adagrad_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adagrad_cluster_sum(s : OptgradadagradCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn opt_grad_adagrad_model_get(s : OptgradadagradModel, i : Int) -> Double {
 }
 
 pub fn opt_grad_adagrad_model_set(s : OptgradadagradModel, i : Int, v : Double) -> OptgradadagradModel {
-  let result = opt_grad_adagrad_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adagrad_model_sum(s : OptgradadagradModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn opt_grad_adagrad_layer_get(s : OptgradadagradLayer, i : Int) -> Double {
 }
 
 pub fn opt_grad_adagrad_layer_set(s : OptgradadagradLayer, i : Int, v : Double) -> OptgradadagradLayer {
-  let result = opt_grad_adagrad_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adagrad_layer_sum(s : OptgradadagradLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn opt_grad_adagrad_buffer_get(s : OptgradadagradBuffer, i : Int) -> Double 
 }
 
 pub fn opt_grad_adagrad_buffer_set(s : OptgradadagradBuffer, i : Int, v : Double) -> OptgradadagradBuffer {
-  let result = opt_grad_adagrad_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adagrad_buffer_sum(s : OptgradadagradBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn opt_grad_adagrad_cursor_get(s : OptgradadagradCursor, i : Int) -> Double 
 }
 
 pub fn opt_grad_adagrad_cursor_set(s : OptgradadagradCursor, i : Int, v : Double) -> OptgradadagradCursor {
-  let result = opt_grad_adagrad_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adagrad_cursor_sum(s : OptgradadagradCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn opt_grad_adagrad_view_get(s : OptgradadagradView, i : Int) -> Double {
 }
 
 pub fn opt_grad_adagrad_view_set(s : OptgradadagradView, i : Int, v : Double) -> OptgradadagradView {
-  let result = opt_grad_adagrad_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adagrad_view_sum(s : OptgradadagradView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn opt_grad_adagrad_range_get(s : OptgradadagradRange, i : Int) -> Double {
 }
 
 pub fn opt_grad_adagrad_range_set(s : OptgradadagradRange, i : Int, v : Double) -> OptgradadagradRange {
-  let result = opt_grad_adagrad_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adagrad_range_sum(s : OptgradadagradRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn opt_grad_adagrad_slice_get(s : OptgradadagradSlice, i : Int) -> Double {
 }
 
 pub fn opt_grad_adagrad_slice_set(s : OptgradadagradSlice, i : Int, v : Double) -> OptgradadagradSlice {
-  let result = opt_grad_adagrad_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adagrad_slice_sum(s : OptgradadagradSlice) -> Double { @_common.sum(s.data) }

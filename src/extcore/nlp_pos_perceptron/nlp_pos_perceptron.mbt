@@ -107,23 +107,15 @@ pub fn nlp_pos_perceptron_series_std(s : NlpposperceptronSeries) -> Double { @_c
 pub fn nlp_pos_perceptron_series_median(s : NlpposperceptronSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_pos_perceptron_series_scale(s : NlpposperceptronSeries, f : Double) -> NlpposperceptronSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_pos_perceptron_series_add(a : NlpposperceptronSeries, b : NlpposperceptronSeries) -> NlpposperceptronSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_pos_perceptron_series_sub(a : NlpposperceptronSeries, b : NlpposperceptronSeries) -> NlpposperceptronSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_pos_perceptron_series_normalize(s : NlpposperceptronSeries) -> NlpposperceptronSeries {
@@ -254,22 +246,16 @@ pub fn nlp_pos_perceptron_vector_zero(dim : Int) -> NlpposperceptronVector {
 
 pub fn nlp_pos_perceptron_vector_add(a : NlpposperceptronVector, b : NlpposperceptronVector) -> NlpposperceptronVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_pos_perceptron_vector_sub(a : NlpposperceptronVector, b : NlpposperceptronVector) -> NlpposperceptronVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_pos_perceptron_vector_scale(v : NlpposperceptronVector, s : Double) -> NlpposperceptronVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_pos_perceptron_vector_dot(a : NlpposperceptronVector, b : NlpposperceptronVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_pos_perceptron_frame_get(s : NlpposperceptronFrame, i : Int) -> Doubl
 }
 
 pub fn nlp_pos_perceptron_frame_set(s : NlpposperceptronFrame, i : Int, v : Double) -> NlpposperceptronFrame {
-  let result = nlp_pos_perceptron_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_frame_sum(s : NlpposperceptronFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_pos_perceptron_table_get(s : NlpposperceptronTable, i : Int) -> Doubl
 }
 
 pub fn nlp_pos_perceptron_table_set(s : NlpposperceptronTable, i : Int, v : Double) -> NlpposperceptronTable {
-  let result = nlp_pos_perceptron_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_table_sum(s : NlpposperceptronTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_pos_perceptron_graphn_get(s : NlpposperceptronGraphN, i : Int) -> Dou
 }
 
 pub fn nlp_pos_perceptron_graphn_set(s : NlpposperceptronGraphN, i : Int, v : Double) -> NlpposperceptronGraphN {
-  let result = nlp_pos_perceptron_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_graphn_sum(s : NlpposperceptronGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_pos_perceptron_node_get(s : NlpposperceptronNode, i : Int) -> Double 
 }
 
 pub fn nlp_pos_perceptron_node_set(s : NlpposperceptronNode, i : Int, v : Double) -> NlpposperceptronNode {
-  let result = nlp_pos_perceptron_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_node_sum(s : NlpposperceptronNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_pos_perceptron_edge_get(s : NlpposperceptronEdge, i : Int) -> Double 
 }
 
 pub fn nlp_pos_perceptron_edge_set(s : NlpposperceptronEdge, i : Int, v : Double) -> NlpposperceptronEdge {
-  let result = nlp_pos_perceptron_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_edge_sum(s : NlpposperceptronEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_pos_perceptron_path_get(s : NlpposperceptronPath, i : Int) -> Double 
 }
 
 pub fn nlp_pos_perceptron_path_set(s : NlpposperceptronPath, i : Int, v : Double) -> NlpposperceptronPath {
-  let result = nlp_pos_perceptron_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_path_sum(s : NlpposperceptronPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_pos_perceptron_cluster_get(s : NlpposperceptronCluster, i : Int) -> D
 }
 
 pub fn nlp_pos_perceptron_cluster_set(s : NlpposperceptronCluster, i : Int, v : Double) -> NlpposperceptronCluster {
-  let result = nlp_pos_perceptron_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_cluster_sum(s : NlpposperceptronCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_pos_perceptron_model_get(s : NlpposperceptronModel, i : Int) -> Doubl
 }
 
 pub fn nlp_pos_perceptron_model_set(s : NlpposperceptronModel, i : Int, v : Double) -> NlpposperceptronModel {
-  let result = nlp_pos_perceptron_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_model_sum(s : NlpposperceptronModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_pos_perceptron_layer_get(s : NlpposperceptronLayer, i : Int) -> Doubl
 }
 
 pub fn nlp_pos_perceptron_layer_set(s : NlpposperceptronLayer, i : Int, v : Double) -> NlpposperceptronLayer {
-  let result = nlp_pos_perceptron_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_layer_sum(s : NlpposperceptronLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_pos_perceptron_buffer_get(s : NlpposperceptronBuffer, i : Int) -> Dou
 }
 
 pub fn nlp_pos_perceptron_buffer_set(s : NlpposperceptronBuffer, i : Int, v : Double) -> NlpposperceptronBuffer {
-  let result = nlp_pos_perceptron_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_buffer_sum(s : NlpposperceptronBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_pos_perceptron_cursor_get(s : NlpposperceptronCursor, i : Int) -> Dou
 }
 
 pub fn nlp_pos_perceptron_cursor_set(s : NlpposperceptronCursor, i : Int, v : Double) -> NlpposperceptronCursor {
-  let result = nlp_pos_perceptron_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_cursor_sum(s : NlpposperceptronCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_pos_perceptron_view_get(s : NlpposperceptronView, i : Int) -> Double 
 }
 
 pub fn nlp_pos_perceptron_view_set(s : NlpposperceptronView, i : Int, v : Double) -> NlpposperceptronView {
-  let result = nlp_pos_perceptron_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_view_sum(s : NlpposperceptronView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_pos_perceptron_range_get(s : NlpposperceptronRange, i : Int) -> Doubl
 }
 
 pub fn nlp_pos_perceptron_range_set(s : NlpposperceptronRange, i : Int, v : Double) -> NlpposperceptronRange {
-  let result = nlp_pos_perceptron_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_range_sum(s : NlpposperceptronRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_pos_perceptron_slice_get(s : NlpposperceptronSlice, i : Int) -> Doubl
 }
 
 pub fn nlp_pos_perceptron_slice_set(s : NlpposperceptronSlice, i : Int, v : Double) -> NlpposperceptronSlice {
-  let result = nlp_pos_perceptron_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_perceptron_slice_sum(s : NlpposperceptronSlice) -> Double { @_common.sum(s.data) }

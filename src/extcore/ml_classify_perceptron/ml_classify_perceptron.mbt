@@ -107,23 +107,15 @@ pub fn ml_classify_perceptron_series_std(s : MlclassifyperceptronSeries) -> Doub
 pub fn ml_classify_perceptron_series_median(s : MlclassifyperceptronSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_classify_perceptron_series_scale(s : MlclassifyperceptronSeries, f : Double) -> MlclassifyperceptronSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_classify_perceptron_series_add(a : MlclassifyperceptronSeries, b : MlclassifyperceptronSeries) -> MlclassifyperceptronSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_classify_perceptron_series_sub(a : MlclassifyperceptronSeries, b : MlclassifyperceptronSeries) -> MlclassifyperceptronSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_classify_perceptron_series_normalize(s : MlclassifyperceptronSeries) -> MlclassifyperceptronSeries {
@@ -254,22 +246,16 @@ pub fn ml_classify_perceptron_vector_zero(dim : Int) -> MlclassifyperceptronVect
 
 pub fn ml_classify_perceptron_vector_add(a : MlclassifyperceptronVector, b : MlclassifyperceptronVector) -> MlclassifyperceptronVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_classify_perceptron_vector_sub(a : MlclassifyperceptronVector, b : MlclassifyperceptronVector) -> MlclassifyperceptronVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_classify_perceptron_vector_scale(v : MlclassifyperceptronVector, s : Double) -> MlclassifyperceptronVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_classify_perceptron_vector_dot(a : MlclassifyperceptronVector, b : MlclassifyperceptronVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_classify_perceptron_frame_get(s : MlclassifyperceptronFrame, i : Int) 
 }
 
 pub fn ml_classify_perceptron_frame_set(s : MlclassifyperceptronFrame, i : Int, v : Double) -> MlclassifyperceptronFrame {
-  let result = ml_classify_perceptron_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_perceptron_frame_sum(s : MlclassifyperceptronFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_classify_perceptron_table_get(s : MlclassifyperceptronTable, i : Int) 
 }
 
 pub fn ml_classify_perceptron_table_set(s : MlclassifyperceptronTable, i : Int, v : Double) -> MlclassifyperceptronTable {
-  let result = ml_classify_perceptron_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_perceptron_table_sum(s : MlclassifyperceptronTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_classify_perceptron_graphn_get(s : MlclassifyperceptronGraphN, i : Int
 }
 
 pub fn ml_classify_perceptron_graphn_set(s : MlclassifyperceptronGraphN, i : Int, v : Double) -> MlclassifyperceptronGraphN {
-  let result = ml_classify_perceptron_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_perceptron_graphn_sum(s : MlclassifyperceptronGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_classify_perceptron_node_get(s : MlclassifyperceptronNode, i : Int) ->
 }
 
 pub fn ml_classify_perceptron_node_set(s : MlclassifyperceptronNode, i : Int, v : Double) -> MlclassifyperceptronNode {
-  let result = ml_classify_perceptron_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_perceptron_node_sum(s : MlclassifyperceptronNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_classify_perceptron_edge_get(s : MlclassifyperceptronEdge, i : Int) ->
 }
 
 pub fn ml_classify_perceptron_edge_set(s : MlclassifyperceptronEdge, i : Int, v : Double) -> MlclassifyperceptronEdge {
-  let result = ml_classify_perceptron_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_perceptron_edge_sum(s : MlclassifyperceptronEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_classify_perceptron_path_get(s : MlclassifyperceptronPath, i : Int) ->
 }
 
 pub fn ml_classify_perceptron_path_set(s : MlclassifyperceptronPath, i : Int, v : Double) -> MlclassifyperceptronPath {
-  let result = ml_classify_perceptron_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_perceptron_path_sum(s : MlclassifyperceptronPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_classify_perceptron_cluster_get(s : MlclassifyperceptronCluster, i : I
 }
 
 pub fn ml_classify_perceptron_cluster_set(s : MlclassifyperceptronCluster, i : Int, v : Double) -> MlclassifyperceptronCluster {
-  let result = ml_classify_perceptron_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_perceptron_cluster_sum(s : MlclassifyperceptronCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_classify_perceptron_model_get(s : MlclassifyperceptronModel, i : Int) 
 }
 
 pub fn ml_classify_perceptron_model_set(s : MlclassifyperceptronModel, i : Int, v : Double) -> MlclassifyperceptronModel {
-  let result = ml_classify_perceptron_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_perceptron_model_sum(s : MlclassifyperceptronModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_classify_perceptron_layer_get(s : MlclassifyperceptronLayer, i : Int) 
 }
 
 pub fn ml_classify_perceptron_layer_set(s : MlclassifyperceptronLayer, i : Int, v : Double) -> MlclassifyperceptronLayer {
-  let result = ml_classify_perceptron_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_perceptron_layer_sum(s : MlclassifyperceptronLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_classify_perceptron_buffer_get(s : MlclassifyperceptronBuffer, i : Int
 }
 
 pub fn ml_classify_perceptron_buffer_set(s : MlclassifyperceptronBuffer, i : Int, v : Double) -> MlclassifyperceptronBuffer {
-  let result = ml_classify_perceptron_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_perceptron_buffer_sum(s : MlclassifyperceptronBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_classify_perceptron_cursor_get(s : MlclassifyperceptronCursor, i : Int
 }
 
 pub fn ml_classify_perceptron_cursor_set(s : MlclassifyperceptronCursor, i : Int, v : Double) -> MlclassifyperceptronCursor {
-  let result = ml_classify_perceptron_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_perceptron_cursor_sum(s : MlclassifyperceptronCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_classify_perceptron_view_get(s : MlclassifyperceptronView, i : Int) ->
 }
 
 pub fn ml_classify_perceptron_view_set(s : MlclassifyperceptronView, i : Int, v : Double) -> MlclassifyperceptronView {
-  let result = ml_classify_perceptron_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_perceptron_view_sum(s : MlclassifyperceptronView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_classify_perceptron_range_get(s : MlclassifyperceptronRange, i : Int) 
 }
 
 pub fn ml_classify_perceptron_range_set(s : MlclassifyperceptronRange, i : Int, v : Double) -> MlclassifyperceptronRange {
-  let result = ml_classify_perceptron_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_perceptron_range_sum(s : MlclassifyperceptronRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_classify_perceptron_slice_get(s : MlclassifyperceptronSlice, i : Int) 
 }
 
 pub fn ml_classify_perceptron_slice_set(s : MlclassifyperceptronSlice, i : Int, v : Double) -> MlclassifyperceptronSlice {
-  let result = ml_classify_perceptron_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_perceptron_slice_sum(s : MlclassifyperceptronSlice) -> Double { @_common.sum(s.data) }

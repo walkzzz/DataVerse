@@ -107,23 +107,15 @@ pub fn net_flow_fairness_series_std(s : NetflowfairnessSeries) -> Double { @_com
 pub fn net_flow_fairness_series_median(s : NetflowfairnessSeries) -> Double { @_common.median(s.vals) }
 
 pub fn net_flow_fairness_series_scale(s : NetflowfairnessSeries, f : Double) -> NetflowfairnessSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn net_flow_fairness_series_add(a : NetflowfairnessSeries, b : NetflowfairnessSeries) -> NetflowfairnessSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn net_flow_fairness_series_sub(a : NetflowfairnessSeries, b : NetflowfairnessSeries) -> NetflowfairnessSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn net_flow_fairness_series_normalize(s : NetflowfairnessSeries) -> NetflowfairnessSeries {
@@ -254,22 +246,16 @@ pub fn net_flow_fairness_vector_zero(dim : Int) -> NetflowfairnessVector {
 
 pub fn net_flow_fairness_vector_add(a : NetflowfairnessVector, b : NetflowfairnessVector) -> NetflowfairnessVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_flow_fairness_vector_sub(a : NetflowfairnessVector, b : NetflowfairnessVector) -> NetflowfairnessVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_flow_fairness_vector_scale(v : NetflowfairnessVector, s : Double) -> NetflowfairnessVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn net_flow_fairness_vector_dot(a : NetflowfairnessVector, b : NetflowfairnessVector) -> Double {
@@ -372,10 +358,9 @@ pub fn net_flow_fairness_frame_get(s : NetflowfairnessFrame, i : Int) -> Double 
 }
 
 pub fn net_flow_fairness_frame_set(s : NetflowfairnessFrame, i : Int, v : Double) -> NetflowfairnessFrame {
-  let result = net_flow_fairness_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_fairness_frame_sum(s : NetflowfairnessFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn net_flow_fairness_table_get(s : NetflowfairnessTable, i : Int) -> Double 
 }
 
 pub fn net_flow_fairness_table_set(s : NetflowfairnessTable, i : Int, v : Double) -> NetflowfairnessTable {
-  let result = net_flow_fairness_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_fairness_table_sum(s : NetflowfairnessTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn net_flow_fairness_graphn_get(s : NetflowfairnessGraphN, i : Int) -> Doubl
 }
 
 pub fn net_flow_fairness_graphn_set(s : NetflowfairnessGraphN, i : Int, v : Double) -> NetflowfairnessGraphN {
-  let result = net_flow_fairness_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_fairness_graphn_sum(s : NetflowfairnessGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn net_flow_fairness_node_get(s : NetflowfairnessNode, i : Int) -> Double {
 }
 
 pub fn net_flow_fairness_node_set(s : NetflowfairnessNode, i : Int, v : Double) -> NetflowfairnessNode {
-  let result = net_flow_fairness_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_fairness_node_sum(s : NetflowfairnessNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn net_flow_fairness_edge_get(s : NetflowfairnessEdge, i : Int) -> Double {
 }
 
 pub fn net_flow_fairness_edge_set(s : NetflowfairnessEdge, i : Int, v : Double) -> NetflowfairnessEdge {
-  let result = net_flow_fairness_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_fairness_edge_sum(s : NetflowfairnessEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn net_flow_fairness_path_get(s : NetflowfairnessPath, i : Int) -> Double {
 }
 
 pub fn net_flow_fairness_path_set(s : NetflowfairnessPath, i : Int, v : Double) -> NetflowfairnessPath {
-  let result = net_flow_fairness_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_fairness_path_sum(s : NetflowfairnessPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn net_flow_fairness_cluster_get(s : NetflowfairnessCluster, i : Int) -> Dou
 }
 
 pub fn net_flow_fairness_cluster_set(s : NetflowfairnessCluster, i : Int, v : Double) -> NetflowfairnessCluster {
-  let result = net_flow_fairness_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_fairness_cluster_sum(s : NetflowfairnessCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn net_flow_fairness_model_get(s : NetflowfairnessModel, i : Int) -> Double 
 }
 
 pub fn net_flow_fairness_model_set(s : NetflowfairnessModel, i : Int, v : Double) -> NetflowfairnessModel {
-  let result = net_flow_fairness_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_fairness_model_sum(s : NetflowfairnessModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn net_flow_fairness_layer_get(s : NetflowfairnessLayer, i : Int) -> Double 
 }
 
 pub fn net_flow_fairness_layer_set(s : NetflowfairnessLayer, i : Int, v : Double) -> NetflowfairnessLayer {
-  let result = net_flow_fairness_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_fairness_layer_sum(s : NetflowfairnessLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn net_flow_fairness_buffer_get(s : NetflowfairnessBuffer, i : Int) -> Doubl
 }
 
 pub fn net_flow_fairness_buffer_set(s : NetflowfairnessBuffer, i : Int, v : Double) -> NetflowfairnessBuffer {
-  let result = net_flow_fairness_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_fairness_buffer_sum(s : NetflowfairnessBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn net_flow_fairness_cursor_get(s : NetflowfairnessCursor, i : Int) -> Doubl
 }
 
 pub fn net_flow_fairness_cursor_set(s : NetflowfairnessCursor, i : Int, v : Double) -> NetflowfairnessCursor {
-  let result = net_flow_fairness_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_fairness_cursor_sum(s : NetflowfairnessCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn net_flow_fairness_view_get(s : NetflowfairnessView, i : Int) -> Double {
 }
 
 pub fn net_flow_fairness_view_set(s : NetflowfairnessView, i : Int, v : Double) -> NetflowfairnessView {
-  let result = net_flow_fairness_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_fairness_view_sum(s : NetflowfairnessView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn net_flow_fairness_range_get(s : NetflowfairnessRange, i : Int) -> Double 
 }
 
 pub fn net_flow_fairness_range_set(s : NetflowfairnessRange, i : Int, v : Double) -> NetflowfairnessRange {
-  let result = net_flow_fairness_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_fairness_range_sum(s : NetflowfairnessRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn net_flow_fairness_slice_get(s : NetflowfairnessSlice, i : Int) -> Double 
 }
 
 pub fn net_flow_fairness_slice_set(s : NetflowfairnessSlice, i : Int, v : Double) -> NetflowfairnessSlice {
-  let result = net_flow_fairness_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_fairness_slice_sum(s : NetflowfairnessSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn opt_grad_adamax_series_std(s : OptgradadamaxSeries) -> Double { @_common.
 pub fn opt_grad_adamax_series_median(s : OptgradadamaxSeries) -> Double { @_common.median(s.vals) }
 
 pub fn opt_grad_adamax_series_scale(s : OptgradadamaxSeries, f : Double) -> OptgradadamaxSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn opt_grad_adamax_series_add(a : OptgradadamaxSeries, b : OptgradadamaxSeries) -> OptgradadamaxSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn opt_grad_adamax_series_sub(a : OptgradadamaxSeries, b : OptgradadamaxSeries) -> OptgradadamaxSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn opt_grad_adamax_series_normalize(s : OptgradadamaxSeries) -> OptgradadamaxSeries {
@@ -254,22 +246,16 @@ pub fn opt_grad_adamax_vector_zero(dim : Int) -> OptgradadamaxVector {
 
 pub fn opt_grad_adamax_vector_add(a : OptgradadamaxVector, b : OptgradadamaxVector) -> OptgradadamaxVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_grad_adamax_vector_sub(a : OptgradadamaxVector, b : OptgradadamaxVector) -> OptgradadamaxVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_grad_adamax_vector_scale(v : OptgradadamaxVector, s : Double) -> OptgradadamaxVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn opt_grad_adamax_vector_dot(a : OptgradadamaxVector, b : OptgradadamaxVector) -> Double {
@@ -372,10 +358,9 @@ pub fn opt_grad_adamax_frame_get(s : OptgradadamaxFrame, i : Int) -> Double {
 }
 
 pub fn opt_grad_adamax_frame_set(s : OptgradadamaxFrame, i : Int, v : Double) -> OptgradadamaxFrame {
-  let result = opt_grad_adamax_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adamax_frame_sum(s : OptgradadamaxFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn opt_grad_adamax_table_get(s : OptgradadamaxTable, i : Int) -> Double {
 }
 
 pub fn opt_grad_adamax_table_set(s : OptgradadamaxTable, i : Int, v : Double) -> OptgradadamaxTable {
-  let result = opt_grad_adamax_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adamax_table_sum(s : OptgradadamaxTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn opt_grad_adamax_graphn_get(s : OptgradadamaxGraphN, i : Int) -> Double {
 }
 
 pub fn opt_grad_adamax_graphn_set(s : OptgradadamaxGraphN, i : Int, v : Double) -> OptgradadamaxGraphN {
-  let result = opt_grad_adamax_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adamax_graphn_sum(s : OptgradadamaxGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn opt_grad_adamax_node_get(s : OptgradadamaxNode, i : Int) -> Double {
 }
 
 pub fn opt_grad_adamax_node_set(s : OptgradadamaxNode, i : Int, v : Double) -> OptgradadamaxNode {
-  let result = opt_grad_adamax_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adamax_node_sum(s : OptgradadamaxNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn opt_grad_adamax_edge_get(s : OptgradadamaxEdge, i : Int) -> Double {
 }
 
 pub fn opt_grad_adamax_edge_set(s : OptgradadamaxEdge, i : Int, v : Double) -> OptgradadamaxEdge {
-  let result = opt_grad_adamax_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adamax_edge_sum(s : OptgradadamaxEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn opt_grad_adamax_path_get(s : OptgradadamaxPath, i : Int) -> Double {
 }
 
 pub fn opt_grad_adamax_path_set(s : OptgradadamaxPath, i : Int, v : Double) -> OptgradadamaxPath {
-  let result = opt_grad_adamax_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adamax_path_sum(s : OptgradadamaxPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn opt_grad_adamax_cluster_get(s : OptgradadamaxCluster, i : Int) -> Double 
 }
 
 pub fn opt_grad_adamax_cluster_set(s : OptgradadamaxCluster, i : Int, v : Double) -> OptgradadamaxCluster {
-  let result = opt_grad_adamax_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adamax_cluster_sum(s : OptgradadamaxCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn opt_grad_adamax_model_get(s : OptgradadamaxModel, i : Int) -> Double {
 }
 
 pub fn opt_grad_adamax_model_set(s : OptgradadamaxModel, i : Int, v : Double) -> OptgradadamaxModel {
-  let result = opt_grad_adamax_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adamax_model_sum(s : OptgradadamaxModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn opt_grad_adamax_layer_get(s : OptgradadamaxLayer, i : Int) -> Double {
 }
 
 pub fn opt_grad_adamax_layer_set(s : OptgradadamaxLayer, i : Int, v : Double) -> OptgradadamaxLayer {
-  let result = opt_grad_adamax_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adamax_layer_sum(s : OptgradadamaxLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn opt_grad_adamax_buffer_get(s : OptgradadamaxBuffer, i : Int) -> Double {
 }
 
 pub fn opt_grad_adamax_buffer_set(s : OptgradadamaxBuffer, i : Int, v : Double) -> OptgradadamaxBuffer {
-  let result = opt_grad_adamax_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adamax_buffer_sum(s : OptgradadamaxBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn opt_grad_adamax_cursor_get(s : OptgradadamaxCursor, i : Int) -> Double {
 }
 
 pub fn opt_grad_adamax_cursor_set(s : OptgradadamaxCursor, i : Int, v : Double) -> OptgradadamaxCursor {
-  let result = opt_grad_adamax_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adamax_cursor_sum(s : OptgradadamaxCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn opt_grad_adamax_view_get(s : OptgradadamaxView, i : Int) -> Double {
 }
 
 pub fn opt_grad_adamax_view_set(s : OptgradadamaxView, i : Int, v : Double) -> OptgradadamaxView {
-  let result = opt_grad_adamax_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adamax_view_sum(s : OptgradadamaxView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn opt_grad_adamax_range_get(s : OptgradadamaxRange, i : Int) -> Double {
 }
 
 pub fn opt_grad_adamax_range_set(s : OptgradadamaxRange, i : Int, v : Double) -> OptgradadamaxRange {
-  let result = opt_grad_adamax_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adamax_range_sum(s : OptgradadamaxRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn opt_grad_adamax_slice_get(s : OptgradadamaxSlice, i : Int) -> Double {
 }
 
 pub fn opt_grad_adamax_slice_set(s : OptgradadamaxSlice, i : Int, v : Double) -> OptgradadamaxSlice {
-  let result = opt_grad_adamax_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_adamax_slice_sum(s : OptgradadamaxSlice) -> Double { @_common.sum(s.data) }

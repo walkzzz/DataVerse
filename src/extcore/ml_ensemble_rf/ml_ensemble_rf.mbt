@@ -107,23 +107,15 @@ pub fn ml_ensemble_rf_series_std(s : MlensemblerfSeries) -> Double { @_common.st
 pub fn ml_ensemble_rf_series_median(s : MlensemblerfSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_ensemble_rf_series_scale(s : MlensemblerfSeries, f : Double) -> MlensemblerfSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_ensemble_rf_series_add(a : MlensemblerfSeries, b : MlensemblerfSeries) -> MlensemblerfSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_ensemble_rf_series_sub(a : MlensemblerfSeries, b : MlensemblerfSeries) -> MlensemblerfSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_ensemble_rf_series_normalize(s : MlensemblerfSeries) -> MlensemblerfSeries {
@@ -254,22 +246,16 @@ pub fn ml_ensemble_rf_vector_zero(dim : Int) -> MlensemblerfVector {
 
 pub fn ml_ensemble_rf_vector_add(a : MlensemblerfVector, b : MlensemblerfVector) -> MlensemblerfVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_ensemble_rf_vector_sub(a : MlensemblerfVector, b : MlensemblerfVector) -> MlensemblerfVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_ensemble_rf_vector_scale(v : MlensemblerfVector, s : Double) -> MlensemblerfVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_ensemble_rf_vector_dot(a : MlensemblerfVector, b : MlensemblerfVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_ensemble_rf_frame_get(s : MlensemblerfFrame, i : Int) -> Double {
 }
 
 pub fn ml_ensemble_rf_frame_set(s : MlensemblerfFrame, i : Int, v : Double) -> MlensemblerfFrame {
-  let result = ml_ensemble_rf_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_rf_frame_sum(s : MlensemblerfFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_ensemble_rf_table_get(s : MlensemblerfTable, i : Int) -> Double {
 }
 
 pub fn ml_ensemble_rf_table_set(s : MlensemblerfTable, i : Int, v : Double) -> MlensemblerfTable {
-  let result = ml_ensemble_rf_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_rf_table_sum(s : MlensemblerfTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_ensemble_rf_graphn_get(s : MlensemblerfGraphN, i : Int) -> Double {
 }
 
 pub fn ml_ensemble_rf_graphn_set(s : MlensemblerfGraphN, i : Int, v : Double) -> MlensemblerfGraphN {
-  let result = ml_ensemble_rf_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_rf_graphn_sum(s : MlensemblerfGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_ensemble_rf_node_get(s : MlensemblerfNode, i : Int) -> Double {
 }
 
 pub fn ml_ensemble_rf_node_set(s : MlensemblerfNode, i : Int, v : Double) -> MlensemblerfNode {
-  let result = ml_ensemble_rf_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_rf_node_sum(s : MlensemblerfNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_ensemble_rf_edge_get(s : MlensemblerfEdge, i : Int) -> Double {
 }
 
 pub fn ml_ensemble_rf_edge_set(s : MlensemblerfEdge, i : Int, v : Double) -> MlensemblerfEdge {
-  let result = ml_ensemble_rf_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_rf_edge_sum(s : MlensemblerfEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_ensemble_rf_path_get(s : MlensemblerfPath, i : Int) -> Double {
 }
 
 pub fn ml_ensemble_rf_path_set(s : MlensemblerfPath, i : Int, v : Double) -> MlensemblerfPath {
-  let result = ml_ensemble_rf_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_rf_path_sum(s : MlensemblerfPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_ensemble_rf_cluster_get(s : MlensemblerfCluster, i : Int) -> Double {
 }
 
 pub fn ml_ensemble_rf_cluster_set(s : MlensemblerfCluster, i : Int, v : Double) -> MlensemblerfCluster {
-  let result = ml_ensemble_rf_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_rf_cluster_sum(s : MlensemblerfCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_ensemble_rf_model_get(s : MlensemblerfModel, i : Int) -> Double {
 }
 
 pub fn ml_ensemble_rf_model_set(s : MlensemblerfModel, i : Int, v : Double) -> MlensemblerfModel {
-  let result = ml_ensemble_rf_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_rf_model_sum(s : MlensemblerfModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_ensemble_rf_layer_get(s : MlensemblerfLayer, i : Int) -> Double {
 }
 
 pub fn ml_ensemble_rf_layer_set(s : MlensemblerfLayer, i : Int, v : Double) -> MlensemblerfLayer {
-  let result = ml_ensemble_rf_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_rf_layer_sum(s : MlensemblerfLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_ensemble_rf_buffer_get(s : MlensemblerfBuffer, i : Int) -> Double {
 }
 
 pub fn ml_ensemble_rf_buffer_set(s : MlensemblerfBuffer, i : Int, v : Double) -> MlensemblerfBuffer {
-  let result = ml_ensemble_rf_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_rf_buffer_sum(s : MlensemblerfBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_ensemble_rf_cursor_get(s : MlensemblerfCursor, i : Int) -> Double {
 }
 
 pub fn ml_ensemble_rf_cursor_set(s : MlensemblerfCursor, i : Int, v : Double) -> MlensemblerfCursor {
-  let result = ml_ensemble_rf_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_rf_cursor_sum(s : MlensemblerfCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_ensemble_rf_view_get(s : MlensemblerfView, i : Int) -> Double {
 }
 
 pub fn ml_ensemble_rf_view_set(s : MlensemblerfView, i : Int, v : Double) -> MlensemblerfView {
-  let result = ml_ensemble_rf_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_rf_view_sum(s : MlensemblerfView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_ensemble_rf_range_get(s : MlensemblerfRange, i : Int) -> Double {
 }
 
 pub fn ml_ensemble_rf_range_set(s : MlensemblerfRange, i : Int, v : Double) -> MlensemblerfRange {
-  let result = ml_ensemble_rf_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_rf_range_sum(s : MlensemblerfRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_ensemble_rf_slice_get(s : MlensemblerfSlice, i : Int) -> Double {
 }
 
 pub fn ml_ensemble_rf_slice_set(s : MlensemblerfSlice, i : Int, v : Double) -> MlensemblerfSlice {
-  let result = ml_ensemble_rf_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_rf_slice_sum(s : MlensemblerfSlice) -> Double { @_common.sum(s.data) }

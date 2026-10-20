@@ -107,23 +107,15 @@ pub fn timeseries_prophet_series_std(s : TimeseriesprophetSeries) -> Double { @_
 pub fn timeseries_prophet_series_median(s : TimeseriesprophetSeries) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_prophet_series_scale(s : TimeseriesprophetSeries, f : Double) -> TimeseriesprophetSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn timeseries_prophet_series_add(a : TimeseriesprophetSeries, b : TimeseriesprophetSeries) -> TimeseriesprophetSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_prophet_series_sub(a : TimeseriesprophetSeries, b : TimeseriesprophetSeries) -> TimeseriesprophetSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_prophet_series_normalize(s : TimeseriesprophetSeries) -> TimeseriesprophetSeries {
@@ -254,22 +246,16 @@ pub fn timeseries_prophet_vector_zero(dim : Int) -> TimeseriesprophetVector {
 
 pub fn timeseries_prophet_vector_add(a : TimeseriesprophetVector, b : TimeseriesprophetVector) -> TimeseriesprophetVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_prophet_vector_sub(a : TimeseriesprophetVector, b : TimeseriesprophetVector) -> TimeseriesprophetVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_prophet_vector_scale(v : TimeseriesprophetVector, s : Double) -> TimeseriesprophetVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn timeseries_prophet_vector_dot(a : TimeseriesprophetVector, b : TimeseriesprophetVector) -> Double {
@@ -372,10 +358,9 @@ pub fn timeseries_prophet_frame_get(s : TimeseriesprophetFrame, i : Int) -> Doub
 }
 
 pub fn timeseries_prophet_frame_set(s : TimeseriesprophetFrame, i : Int, v : Double) -> TimeseriesprophetFrame {
-  let result = timeseries_prophet_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_frame_sum(s : TimeseriesprophetFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn timeseries_prophet_table_get(s : TimeseriesprophetTable, i : Int) -> Doub
 }
 
 pub fn timeseries_prophet_table_set(s : TimeseriesprophetTable, i : Int, v : Double) -> TimeseriesprophetTable {
-  let result = timeseries_prophet_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_table_sum(s : TimeseriesprophetTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn timeseries_prophet_graphn_get(s : TimeseriesprophetGraphN, i : Int) -> Do
 }
 
 pub fn timeseries_prophet_graphn_set(s : TimeseriesprophetGraphN, i : Int, v : Double) -> TimeseriesprophetGraphN {
-  let result = timeseries_prophet_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_graphn_sum(s : TimeseriesprophetGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn timeseries_prophet_node_get(s : TimeseriesprophetNode, i : Int) -> Double
 }
 
 pub fn timeseries_prophet_node_set(s : TimeseriesprophetNode, i : Int, v : Double) -> TimeseriesprophetNode {
-  let result = timeseries_prophet_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_node_sum(s : TimeseriesprophetNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn timeseries_prophet_edge_get(s : TimeseriesprophetEdge, i : Int) -> Double
 }
 
 pub fn timeseries_prophet_edge_set(s : TimeseriesprophetEdge, i : Int, v : Double) -> TimeseriesprophetEdge {
-  let result = timeseries_prophet_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_edge_sum(s : TimeseriesprophetEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn timeseries_prophet_path_get(s : TimeseriesprophetPath, i : Int) -> Double
 }
 
 pub fn timeseries_prophet_path_set(s : TimeseriesprophetPath, i : Int, v : Double) -> TimeseriesprophetPath {
-  let result = timeseries_prophet_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_path_sum(s : TimeseriesprophetPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn timeseries_prophet_cluster_get(s : TimeseriesprophetCluster, i : Int) -> 
 }
 
 pub fn timeseries_prophet_cluster_set(s : TimeseriesprophetCluster, i : Int, v : Double) -> TimeseriesprophetCluster {
-  let result = timeseries_prophet_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_cluster_sum(s : TimeseriesprophetCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn timeseries_prophet_model_get(s : TimeseriesprophetModel, i : Int) -> Doub
 }
 
 pub fn timeseries_prophet_model_set(s : TimeseriesprophetModel, i : Int, v : Double) -> TimeseriesprophetModel {
-  let result = timeseries_prophet_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_model_sum(s : TimeseriesprophetModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn timeseries_prophet_layer_get(s : TimeseriesprophetLayer, i : Int) -> Doub
 }
 
 pub fn timeseries_prophet_layer_set(s : TimeseriesprophetLayer, i : Int, v : Double) -> TimeseriesprophetLayer {
-  let result = timeseries_prophet_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_layer_sum(s : TimeseriesprophetLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn timeseries_prophet_buffer_get(s : TimeseriesprophetBuffer, i : Int) -> Do
 }
 
 pub fn timeseries_prophet_buffer_set(s : TimeseriesprophetBuffer, i : Int, v : Double) -> TimeseriesprophetBuffer {
-  let result = timeseries_prophet_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_buffer_sum(s : TimeseriesprophetBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn timeseries_prophet_cursor_get(s : TimeseriesprophetCursor, i : Int) -> Do
 }
 
 pub fn timeseries_prophet_cursor_set(s : TimeseriesprophetCursor, i : Int, v : Double) -> TimeseriesprophetCursor {
-  let result = timeseries_prophet_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_cursor_sum(s : TimeseriesprophetCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn timeseries_prophet_view_get(s : TimeseriesprophetView, i : Int) -> Double
 }
 
 pub fn timeseries_prophet_view_set(s : TimeseriesprophetView, i : Int, v : Double) -> TimeseriesprophetView {
-  let result = timeseries_prophet_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_view_sum(s : TimeseriesprophetView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn timeseries_prophet_range_get(s : TimeseriesprophetRange, i : Int) -> Doub
 }
 
 pub fn timeseries_prophet_range_set(s : TimeseriesprophetRange, i : Int, v : Double) -> TimeseriesprophetRange {
-  let result = timeseries_prophet_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_range_sum(s : TimeseriesprophetRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn timeseries_prophet_slice_get(s : TimeseriesprophetSlice, i : Int) -> Doub
 }
 
 pub fn timeseries_prophet_slice_set(s : TimeseriesprophetSlice, i : Int, v : Double) -> TimeseriesprophetSlice {
-  let result = timeseries_prophet_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_prophet_slice_sum(s : TimeseriesprophetSlice) -> Double { @_common.sum(s.data) }

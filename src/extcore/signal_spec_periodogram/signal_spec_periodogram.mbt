@@ -107,23 +107,15 @@ pub fn signal_spec_periodogram_series_std(s : SignalspecperiodogramSeries) -> Do
 pub fn signal_spec_periodogram_series_median(s : SignalspecperiodogramSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_spec_periodogram_series_scale(s : SignalspecperiodogramSeries, f : Double) -> SignalspecperiodogramSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_spec_periodogram_series_add(a : SignalspecperiodogramSeries, b : SignalspecperiodogramSeries) -> SignalspecperiodogramSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_spec_periodogram_series_sub(a : SignalspecperiodogramSeries, b : SignalspecperiodogramSeries) -> SignalspecperiodogramSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_spec_periodogram_series_normalize(s : SignalspecperiodogramSeries) -> SignalspecperiodogramSeries {
@@ -254,22 +246,16 @@ pub fn signal_spec_periodogram_vector_zero(dim : Int) -> SignalspecperiodogramVe
 
 pub fn signal_spec_periodogram_vector_add(a : SignalspecperiodogramVector, b : SignalspecperiodogramVector) -> SignalspecperiodogramVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_spec_periodogram_vector_sub(a : SignalspecperiodogramVector, b : SignalspecperiodogramVector) -> SignalspecperiodogramVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_spec_periodogram_vector_scale(v : SignalspecperiodogramVector, s : Double) -> SignalspecperiodogramVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_spec_periodogram_vector_dot(a : SignalspecperiodogramVector, b : SignalspecperiodogramVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_spec_periodogram_frame_get(s : SignalspecperiodogramFrame, i : Int
 }
 
 pub fn signal_spec_periodogram_frame_set(s : SignalspecperiodogramFrame, i : Int, v : Double) -> SignalspecperiodogramFrame {
-  let result = signal_spec_periodogram_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_periodogram_frame_sum(s : SignalspecperiodogramFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_spec_periodogram_table_get(s : SignalspecperiodogramTable, i : Int
 }
 
 pub fn signal_spec_periodogram_table_set(s : SignalspecperiodogramTable, i : Int, v : Double) -> SignalspecperiodogramTable {
-  let result = signal_spec_periodogram_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_periodogram_table_sum(s : SignalspecperiodogramTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_spec_periodogram_graphn_get(s : SignalspecperiodogramGraphN, i : I
 }
 
 pub fn signal_spec_periodogram_graphn_set(s : SignalspecperiodogramGraphN, i : Int, v : Double) -> SignalspecperiodogramGraphN {
-  let result = signal_spec_periodogram_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_periodogram_graphn_sum(s : SignalspecperiodogramGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_spec_periodogram_node_get(s : SignalspecperiodogramNode, i : Int) 
 }
 
 pub fn signal_spec_periodogram_node_set(s : SignalspecperiodogramNode, i : Int, v : Double) -> SignalspecperiodogramNode {
-  let result = signal_spec_periodogram_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_periodogram_node_sum(s : SignalspecperiodogramNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_spec_periodogram_edge_get(s : SignalspecperiodogramEdge, i : Int) 
 }
 
 pub fn signal_spec_periodogram_edge_set(s : SignalspecperiodogramEdge, i : Int, v : Double) -> SignalspecperiodogramEdge {
-  let result = signal_spec_periodogram_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_periodogram_edge_sum(s : SignalspecperiodogramEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_spec_periodogram_path_get(s : SignalspecperiodogramPath, i : Int) 
 }
 
 pub fn signal_spec_periodogram_path_set(s : SignalspecperiodogramPath, i : Int, v : Double) -> SignalspecperiodogramPath {
-  let result = signal_spec_periodogram_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_periodogram_path_sum(s : SignalspecperiodogramPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_spec_periodogram_cluster_get(s : SignalspecperiodogramCluster, i :
 }
 
 pub fn signal_spec_periodogram_cluster_set(s : SignalspecperiodogramCluster, i : Int, v : Double) -> SignalspecperiodogramCluster {
-  let result = signal_spec_periodogram_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_periodogram_cluster_sum(s : SignalspecperiodogramCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_spec_periodogram_model_get(s : SignalspecperiodogramModel, i : Int
 }
 
 pub fn signal_spec_periodogram_model_set(s : SignalspecperiodogramModel, i : Int, v : Double) -> SignalspecperiodogramModel {
-  let result = signal_spec_periodogram_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_periodogram_model_sum(s : SignalspecperiodogramModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_spec_periodogram_layer_get(s : SignalspecperiodogramLayer, i : Int
 }
 
 pub fn signal_spec_periodogram_layer_set(s : SignalspecperiodogramLayer, i : Int, v : Double) -> SignalspecperiodogramLayer {
-  let result = signal_spec_periodogram_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_periodogram_layer_sum(s : SignalspecperiodogramLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_spec_periodogram_buffer_get(s : SignalspecperiodogramBuffer, i : I
 }
 
 pub fn signal_spec_periodogram_buffer_set(s : SignalspecperiodogramBuffer, i : Int, v : Double) -> SignalspecperiodogramBuffer {
-  let result = signal_spec_periodogram_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_periodogram_buffer_sum(s : SignalspecperiodogramBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_spec_periodogram_cursor_get(s : SignalspecperiodogramCursor, i : I
 }
 
 pub fn signal_spec_periodogram_cursor_set(s : SignalspecperiodogramCursor, i : Int, v : Double) -> SignalspecperiodogramCursor {
-  let result = signal_spec_periodogram_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_periodogram_cursor_sum(s : SignalspecperiodogramCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_spec_periodogram_view_get(s : SignalspecperiodogramView, i : Int) 
 }
 
 pub fn signal_spec_periodogram_view_set(s : SignalspecperiodogramView, i : Int, v : Double) -> SignalspecperiodogramView {
-  let result = signal_spec_periodogram_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_periodogram_view_sum(s : SignalspecperiodogramView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_spec_periodogram_range_get(s : SignalspecperiodogramRange, i : Int
 }
 
 pub fn signal_spec_periodogram_range_set(s : SignalspecperiodogramRange, i : Int, v : Double) -> SignalspecperiodogramRange {
-  let result = signal_spec_periodogram_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_periodogram_range_sum(s : SignalspecperiodogramRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_spec_periodogram_slice_get(s : SignalspecperiodogramSlice, i : Int
 }
 
 pub fn signal_spec_periodogram_slice_set(s : SignalspecperiodogramSlice, i : Int, v : Double) -> SignalspecperiodogramSlice {
-  let result = signal_spec_periodogram_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_periodogram_slice_sum(s : SignalspecperiodogramSlice) -> Double { @_common.sum(s.data) }

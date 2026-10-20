@@ -107,23 +107,15 @@ pub fn signal_filter_chebyshev1_series_std(s : Signalfilterchebyshev1Series) -> 
 pub fn signal_filter_chebyshev1_series_median(s : Signalfilterchebyshev1Series) -> Double { @_common.median(s.vals) }
 
 pub fn signal_filter_chebyshev1_series_scale(s : Signalfilterchebyshev1Series, f : Double) -> Signalfilterchebyshev1Series {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_filter_chebyshev1_series_add(a : Signalfilterchebyshev1Series, b : Signalfilterchebyshev1Series) -> Signalfilterchebyshev1Series {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_filter_chebyshev1_series_sub(a : Signalfilterchebyshev1Series, b : Signalfilterchebyshev1Series) -> Signalfilterchebyshev1Series {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_filter_chebyshev1_series_normalize(s : Signalfilterchebyshev1Series) -> Signalfilterchebyshev1Series {
@@ -254,22 +246,16 @@ pub fn signal_filter_chebyshev1_vector_zero(dim : Int) -> Signalfilterchebyshev1
 
 pub fn signal_filter_chebyshev1_vector_add(a : Signalfilterchebyshev1Vector, b : Signalfilterchebyshev1Vector) -> Signalfilterchebyshev1Vector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_filter_chebyshev1_vector_sub(a : Signalfilterchebyshev1Vector, b : Signalfilterchebyshev1Vector) -> Signalfilterchebyshev1Vector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_filter_chebyshev1_vector_scale(v : Signalfilterchebyshev1Vector, s : Double) -> Signalfilterchebyshev1Vector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_filter_chebyshev1_vector_dot(a : Signalfilterchebyshev1Vector, b : Signalfilterchebyshev1Vector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_filter_chebyshev1_frame_get(s : Signalfilterchebyshev1Frame, i : I
 }
 
 pub fn signal_filter_chebyshev1_frame_set(s : Signalfilterchebyshev1Frame, i : Int, v : Double) -> Signalfilterchebyshev1Frame {
-  let result = signal_filter_chebyshev1_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_chebyshev1_frame_sum(s : Signalfilterchebyshev1Frame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_filter_chebyshev1_table_get(s : Signalfilterchebyshev1Table, i : I
 }
 
 pub fn signal_filter_chebyshev1_table_set(s : Signalfilterchebyshev1Table, i : Int, v : Double) -> Signalfilterchebyshev1Table {
-  let result = signal_filter_chebyshev1_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_chebyshev1_table_sum(s : Signalfilterchebyshev1Table) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_filter_chebyshev1_graphn_get(s : Signalfilterchebyshev1GraphN, i :
 }
 
 pub fn signal_filter_chebyshev1_graphn_set(s : Signalfilterchebyshev1GraphN, i : Int, v : Double) -> Signalfilterchebyshev1GraphN {
-  let result = signal_filter_chebyshev1_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_chebyshev1_graphn_sum(s : Signalfilterchebyshev1GraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_filter_chebyshev1_node_get(s : Signalfilterchebyshev1Node, i : Int
 }
 
 pub fn signal_filter_chebyshev1_node_set(s : Signalfilterchebyshev1Node, i : Int, v : Double) -> Signalfilterchebyshev1Node {
-  let result = signal_filter_chebyshev1_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_chebyshev1_node_sum(s : Signalfilterchebyshev1Node) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_filter_chebyshev1_edge_get(s : Signalfilterchebyshev1Edge, i : Int
 }
 
 pub fn signal_filter_chebyshev1_edge_set(s : Signalfilterchebyshev1Edge, i : Int, v : Double) -> Signalfilterchebyshev1Edge {
-  let result = signal_filter_chebyshev1_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_chebyshev1_edge_sum(s : Signalfilterchebyshev1Edge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_filter_chebyshev1_path_get(s : Signalfilterchebyshev1Path, i : Int
 }
 
 pub fn signal_filter_chebyshev1_path_set(s : Signalfilterchebyshev1Path, i : Int, v : Double) -> Signalfilterchebyshev1Path {
-  let result = signal_filter_chebyshev1_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_chebyshev1_path_sum(s : Signalfilterchebyshev1Path) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_filter_chebyshev1_cluster_get(s : Signalfilterchebyshev1Cluster, i
 }
 
 pub fn signal_filter_chebyshev1_cluster_set(s : Signalfilterchebyshev1Cluster, i : Int, v : Double) -> Signalfilterchebyshev1Cluster {
-  let result = signal_filter_chebyshev1_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_chebyshev1_cluster_sum(s : Signalfilterchebyshev1Cluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_filter_chebyshev1_model_get(s : Signalfilterchebyshev1Model, i : I
 }
 
 pub fn signal_filter_chebyshev1_model_set(s : Signalfilterchebyshev1Model, i : Int, v : Double) -> Signalfilterchebyshev1Model {
-  let result = signal_filter_chebyshev1_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_chebyshev1_model_sum(s : Signalfilterchebyshev1Model) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_filter_chebyshev1_layer_get(s : Signalfilterchebyshev1Layer, i : I
 }
 
 pub fn signal_filter_chebyshev1_layer_set(s : Signalfilterchebyshev1Layer, i : Int, v : Double) -> Signalfilterchebyshev1Layer {
-  let result = signal_filter_chebyshev1_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_chebyshev1_layer_sum(s : Signalfilterchebyshev1Layer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_filter_chebyshev1_buffer_get(s : Signalfilterchebyshev1Buffer, i :
 }
 
 pub fn signal_filter_chebyshev1_buffer_set(s : Signalfilterchebyshev1Buffer, i : Int, v : Double) -> Signalfilterchebyshev1Buffer {
-  let result = signal_filter_chebyshev1_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_chebyshev1_buffer_sum(s : Signalfilterchebyshev1Buffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_filter_chebyshev1_cursor_get(s : Signalfilterchebyshev1Cursor, i :
 }
 
 pub fn signal_filter_chebyshev1_cursor_set(s : Signalfilterchebyshev1Cursor, i : Int, v : Double) -> Signalfilterchebyshev1Cursor {
-  let result = signal_filter_chebyshev1_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_chebyshev1_cursor_sum(s : Signalfilterchebyshev1Cursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_filter_chebyshev1_view_get(s : Signalfilterchebyshev1View, i : Int
 }
 
 pub fn signal_filter_chebyshev1_view_set(s : Signalfilterchebyshev1View, i : Int, v : Double) -> Signalfilterchebyshev1View {
-  let result = signal_filter_chebyshev1_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_chebyshev1_view_sum(s : Signalfilterchebyshev1View) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_filter_chebyshev1_range_get(s : Signalfilterchebyshev1Range, i : I
 }
 
 pub fn signal_filter_chebyshev1_range_set(s : Signalfilterchebyshev1Range, i : Int, v : Double) -> Signalfilterchebyshev1Range {
-  let result = signal_filter_chebyshev1_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_chebyshev1_range_sum(s : Signalfilterchebyshev1Range) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_filter_chebyshev1_slice_get(s : Signalfilterchebyshev1Slice, i : I
 }
 
 pub fn signal_filter_chebyshev1_slice_set(s : Signalfilterchebyshev1Slice, i : Int, v : Double) -> Signalfilterchebyshev1Slice {
-  let result = signal_filter_chebyshev1_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_chebyshev1_slice_sum(s : Signalfilterchebyshev1Slice) -> Double { @_common.sum(s.data) }

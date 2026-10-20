@@ -107,23 +107,15 @@ pub fn sort_compare_patience_series_std(s : SortcomparepatienceSeries) -> Double
 pub fn sort_compare_patience_series_median(s : SortcomparepatienceSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_compare_patience_series_scale(s : SortcomparepatienceSeries, f : Double) -> SortcomparepatienceSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn sort_compare_patience_series_add(a : SortcomparepatienceSeries, b : SortcomparepatienceSeries) -> SortcomparepatienceSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn sort_compare_patience_series_sub(a : SortcomparepatienceSeries, b : SortcomparepatienceSeries) -> SortcomparepatienceSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn sort_compare_patience_series_normalize(s : SortcomparepatienceSeries) -> SortcomparepatienceSeries {
@@ -254,22 +246,16 @@ pub fn sort_compare_patience_vector_zero(dim : Int) -> SortcomparepatienceVector
 
 pub fn sort_compare_patience_vector_add(a : SortcomparepatienceVector, b : SortcomparepatienceVector) -> SortcomparepatienceVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_compare_patience_vector_sub(a : SortcomparepatienceVector, b : SortcomparepatienceVector) -> SortcomparepatienceVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_compare_patience_vector_scale(v : SortcomparepatienceVector, s : Double) -> SortcomparepatienceVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn sort_compare_patience_vector_dot(a : SortcomparepatienceVector, b : SortcomparepatienceVector) -> Double {
@@ -372,10 +358,9 @@ pub fn sort_compare_patience_frame_get(s : SortcomparepatienceFrame, i : Int) ->
 }
 
 pub fn sort_compare_patience_frame_set(s : SortcomparepatienceFrame, i : Int, v : Double) -> SortcomparepatienceFrame {
-  let result = sort_compare_patience_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_patience_frame_sum(s : SortcomparepatienceFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn sort_compare_patience_table_get(s : SortcomparepatienceTable, i : Int) ->
 }
 
 pub fn sort_compare_patience_table_set(s : SortcomparepatienceTable, i : Int, v : Double) -> SortcomparepatienceTable {
-  let result = sort_compare_patience_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_patience_table_sum(s : SortcomparepatienceTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn sort_compare_patience_graphn_get(s : SortcomparepatienceGraphN, i : Int) 
 }
 
 pub fn sort_compare_patience_graphn_set(s : SortcomparepatienceGraphN, i : Int, v : Double) -> SortcomparepatienceGraphN {
-  let result = sort_compare_patience_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_patience_graphn_sum(s : SortcomparepatienceGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn sort_compare_patience_node_get(s : SortcomparepatienceNode, i : Int) -> D
 }
 
 pub fn sort_compare_patience_node_set(s : SortcomparepatienceNode, i : Int, v : Double) -> SortcomparepatienceNode {
-  let result = sort_compare_patience_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_patience_node_sum(s : SortcomparepatienceNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn sort_compare_patience_edge_get(s : SortcomparepatienceEdge, i : Int) -> D
 }
 
 pub fn sort_compare_patience_edge_set(s : SortcomparepatienceEdge, i : Int, v : Double) -> SortcomparepatienceEdge {
-  let result = sort_compare_patience_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_patience_edge_sum(s : SortcomparepatienceEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn sort_compare_patience_path_get(s : SortcomparepatiencePath, i : Int) -> D
 }
 
 pub fn sort_compare_patience_path_set(s : SortcomparepatiencePath, i : Int, v : Double) -> SortcomparepatiencePath {
-  let result = sort_compare_patience_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_patience_path_sum(s : SortcomparepatiencePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn sort_compare_patience_cluster_get(s : SortcomparepatienceCluster, i : Int
 }
 
 pub fn sort_compare_patience_cluster_set(s : SortcomparepatienceCluster, i : Int, v : Double) -> SortcomparepatienceCluster {
-  let result = sort_compare_patience_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_patience_cluster_sum(s : SortcomparepatienceCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn sort_compare_patience_model_get(s : SortcomparepatienceModel, i : Int) ->
 }
 
 pub fn sort_compare_patience_model_set(s : SortcomparepatienceModel, i : Int, v : Double) -> SortcomparepatienceModel {
-  let result = sort_compare_patience_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_patience_model_sum(s : SortcomparepatienceModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn sort_compare_patience_layer_get(s : SortcomparepatienceLayer, i : Int) ->
 }
 
 pub fn sort_compare_patience_layer_set(s : SortcomparepatienceLayer, i : Int, v : Double) -> SortcomparepatienceLayer {
-  let result = sort_compare_patience_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_patience_layer_sum(s : SortcomparepatienceLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn sort_compare_patience_buffer_get(s : SortcomparepatienceBuffer, i : Int) 
 }
 
 pub fn sort_compare_patience_buffer_set(s : SortcomparepatienceBuffer, i : Int, v : Double) -> SortcomparepatienceBuffer {
-  let result = sort_compare_patience_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_patience_buffer_sum(s : SortcomparepatienceBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn sort_compare_patience_cursor_get(s : SortcomparepatienceCursor, i : Int) 
 }
 
 pub fn sort_compare_patience_cursor_set(s : SortcomparepatienceCursor, i : Int, v : Double) -> SortcomparepatienceCursor {
-  let result = sort_compare_patience_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_patience_cursor_sum(s : SortcomparepatienceCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn sort_compare_patience_view_get(s : SortcomparepatienceView, i : Int) -> D
 }
 
 pub fn sort_compare_patience_view_set(s : SortcomparepatienceView, i : Int, v : Double) -> SortcomparepatienceView {
-  let result = sort_compare_patience_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_patience_view_sum(s : SortcomparepatienceView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn sort_compare_patience_range_get(s : SortcomparepatienceRange, i : Int) ->
 }
 
 pub fn sort_compare_patience_range_set(s : SortcomparepatienceRange, i : Int, v : Double) -> SortcomparepatienceRange {
-  let result = sort_compare_patience_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_patience_range_sum(s : SortcomparepatienceRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn sort_compare_patience_slice_get(s : SortcomparepatienceSlice, i : Int) ->
 }
 
 pub fn sort_compare_patience_slice_set(s : SortcomparepatienceSlice, i : Int, v : Double) -> SortcomparepatienceSlice {
-  let result = sort_compare_patience_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_patience_slice_sum(s : SortcomparepatienceSlice) -> Double { @_common.sum(s.data) }

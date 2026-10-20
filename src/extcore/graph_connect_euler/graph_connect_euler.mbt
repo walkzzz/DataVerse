@@ -107,23 +107,15 @@ pub fn graph_connect_euler_series_std(s : GraphconnecteulerSeries) -> Double { @
 pub fn graph_connect_euler_series_median(s : GraphconnecteulerSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_connect_euler_series_scale(s : GraphconnecteulerSeries, f : Double) -> GraphconnecteulerSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_connect_euler_series_add(a : GraphconnecteulerSeries, b : GraphconnecteulerSeries) -> GraphconnecteulerSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_connect_euler_series_sub(a : GraphconnecteulerSeries, b : GraphconnecteulerSeries) -> GraphconnecteulerSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_connect_euler_series_normalize(s : GraphconnecteulerSeries) -> GraphconnecteulerSeries {
@@ -254,22 +246,16 @@ pub fn graph_connect_euler_vector_zero(dim : Int) -> GraphconnecteulerVector {
 
 pub fn graph_connect_euler_vector_add(a : GraphconnecteulerVector, b : GraphconnecteulerVector) -> GraphconnecteulerVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_connect_euler_vector_sub(a : GraphconnecteulerVector, b : GraphconnecteulerVector) -> GraphconnecteulerVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_connect_euler_vector_scale(v : GraphconnecteulerVector, s : Double) -> GraphconnecteulerVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_connect_euler_vector_dot(a : GraphconnecteulerVector, b : GraphconnecteulerVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_connect_euler_frame_get(s : GraphconnecteulerFrame, i : Int) -> Dou
 }
 
 pub fn graph_connect_euler_frame_set(s : GraphconnecteulerFrame, i : Int, v : Double) -> GraphconnecteulerFrame {
-  let result = graph_connect_euler_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_euler_frame_sum(s : GraphconnecteulerFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_connect_euler_table_get(s : GraphconnecteulerTable, i : Int) -> Dou
 }
 
 pub fn graph_connect_euler_table_set(s : GraphconnecteulerTable, i : Int, v : Double) -> GraphconnecteulerTable {
-  let result = graph_connect_euler_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_euler_table_sum(s : GraphconnecteulerTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_connect_euler_graphn_get(s : GraphconnecteulerGraphN, i : Int) -> D
 }
 
 pub fn graph_connect_euler_graphn_set(s : GraphconnecteulerGraphN, i : Int, v : Double) -> GraphconnecteulerGraphN {
-  let result = graph_connect_euler_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_euler_graphn_sum(s : GraphconnecteulerGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_connect_euler_node_get(s : GraphconnecteulerNode, i : Int) -> Doubl
 }
 
 pub fn graph_connect_euler_node_set(s : GraphconnecteulerNode, i : Int, v : Double) -> GraphconnecteulerNode {
-  let result = graph_connect_euler_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_euler_node_sum(s : GraphconnecteulerNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_connect_euler_edge_get(s : GraphconnecteulerEdge, i : Int) -> Doubl
 }
 
 pub fn graph_connect_euler_edge_set(s : GraphconnecteulerEdge, i : Int, v : Double) -> GraphconnecteulerEdge {
-  let result = graph_connect_euler_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_euler_edge_sum(s : GraphconnecteulerEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_connect_euler_path_get(s : GraphconnecteulerPath, i : Int) -> Doubl
 }
 
 pub fn graph_connect_euler_path_set(s : GraphconnecteulerPath, i : Int, v : Double) -> GraphconnecteulerPath {
-  let result = graph_connect_euler_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_euler_path_sum(s : GraphconnecteulerPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_connect_euler_cluster_get(s : GraphconnecteulerCluster, i : Int) ->
 }
 
 pub fn graph_connect_euler_cluster_set(s : GraphconnecteulerCluster, i : Int, v : Double) -> GraphconnecteulerCluster {
-  let result = graph_connect_euler_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_euler_cluster_sum(s : GraphconnecteulerCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_connect_euler_model_get(s : GraphconnecteulerModel, i : Int) -> Dou
 }
 
 pub fn graph_connect_euler_model_set(s : GraphconnecteulerModel, i : Int, v : Double) -> GraphconnecteulerModel {
-  let result = graph_connect_euler_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_euler_model_sum(s : GraphconnecteulerModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_connect_euler_layer_get(s : GraphconnecteulerLayer, i : Int) -> Dou
 }
 
 pub fn graph_connect_euler_layer_set(s : GraphconnecteulerLayer, i : Int, v : Double) -> GraphconnecteulerLayer {
-  let result = graph_connect_euler_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_euler_layer_sum(s : GraphconnecteulerLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_connect_euler_buffer_get(s : GraphconnecteulerBuffer, i : Int) -> D
 }
 
 pub fn graph_connect_euler_buffer_set(s : GraphconnecteulerBuffer, i : Int, v : Double) -> GraphconnecteulerBuffer {
-  let result = graph_connect_euler_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_euler_buffer_sum(s : GraphconnecteulerBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_connect_euler_cursor_get(s : GraphconnecteulerCursor, i : Int) -> D
 }
 
 pub fn graph_connect_euler_cursor_set(s : GraphconnecteulerCursor, i : Int, v : Double) -> GraphconnecteulerCursor {
-  let result = graph_connect_euler_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_euler_cursor_sum(s : GraphconnecteulerCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_connect_euler_view_get(s : GraphconnecteulerView, i : Int) -> Doubl
 }
 
 pub fn graph_connect_euler_view_set(s : GraphconnecteulerView, i : Int, v : Double) -> GraphconnecteulerView {
-  let result = graph_connect_euler_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_euler_view_sum(s : GraphconnecteulerView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_connect_euler_range_get(s : GraphconnecteulerRange, i : Int) -> Dou
 }
 
 pub fn graph_connect_euler_range_set(s : GraphconnecteulerRange, i : Int, v : Double) -> GraphconnecteulerRange {
-  let result = graph_connect_euler_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_euler_range_sum(s : GraphconnecteulerRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_connect_euler_slice_get(s : GraphconnecteulerSlice, i : Int) -> Dou
 }
 
 pub fn graph_connect_euler_slice_set(s : GraphconnecteulerSlice, i : Int, v : Double) -> GraphconnecteulerSlice {
-  let result = graph_connect_euler_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_euler_slice_sum(s : GraphconnecteulerSlice) -> Double { @_common.sum(s.data) }

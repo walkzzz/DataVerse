@@ -107,23 +107,15 @@ pub fn nlp_embed_doc2vec_series_std(s : Nlpembeddoc2vecSeries) -> Double { @_com
 pub fn nlp_embed_doc2vec_series_median(s : Nlpembeddoc2vecSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_embed_doc2vec_series_scale(s : Nlpembeddoc2vecSeries, f : Double) -> Nlpembeddoc2vecSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_embed_doc2vec_series_add(a : Nlpembeddoc2vecSeries, b : Nlpembeddoc2vecSeries) -> Nlpembeddoc2vecSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_embed_doc2vec_series_sub(a : Nlpembeddoc2vecSeries, b : Nlpembeddoc2vecSeries) -> Nlpembeddoc2vecSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_embed_doc2vec_series_normalize(s : Nlpembeddoc2vecSeries) -> Nlpembeddoc2vecSeries {
@@ -254,22 +246,16 @@ pub fn nlp_embed_doc2vec_vector_zero(dim : Int) -> Nlpembeddoc2vecVector {
 
 pub fn nlp_embed_doc2vec_vector_add(a : Nlpembeddoc2vecVector, b : Nlpembeddoc2vecVector) -> Nlpembeddoc2vecVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_embed_doc2vec_vector_sub(a : Nlpembeddoc2vecVector, b : Nlpembeddoc2vecVector) -> Nlpembeddoc2vecVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_embed_doc2vec_vector_scale(v : Nlpembeddoc2vecVector, s : Double) -> Nlpembeddoc2vecVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_embed_doc2vec_vector_dot(a : Nlpembeddoc2vecVector, b : Nlpembeddoc2vecVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_embed_doc2vec_frame_get(s : Nlpembeddoc2vecFrame, i : Int) -> Double 
 }
 
 pub fn nlp_embed_doc2vec_frame_set(s : Nlpembeddoc2vecFrame, i : Int, v : Double) -> Nlpembeddoc2vecFrame {
-  let result = nlp_embed_doc2vec_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_doc2vec_frame_sum(s : Nlpembeddoc2vecFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_embed_doc2vec_table_get(s : Nlpembeddoc2vecTable, i : Int) -> Double 
 }
 
 pub fn nlp_embed_doc2vec_table_set(s : Nlpembeddoc2vecTable, i : Int, v : Double) -> Nlpembeddoc2vecTable {
-  let result = nlp_embed_doc2vec_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_doc2vec_table_sum(s : Nlpembeddoc2vecTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_embed_doc2vec_graphn_get(s : Nlpembeddoc2vecGraphN, i : Int) -> Doubl
 }
 
 pub fn nlp_embed_doc2vec_graphn_set(s : Nlpembeddoc2vecGraphN, i : Int, v : Double) -> Nlpembeddoc2vecGraphN {
-  let result = nlp_embed_doc2vec_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_doc2vec_graphn_sum(s : Nlpembeddoc2vecGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_embed_doc2vec_node_get(s : Nlpembeddoc2vecNode, i : Int) -> Double {
 }
 
 pub fn nlp_embed_doc2vec_node_set(s : Nlpembeddoc2vecNode, i : Int, v : Double) -> Nlpembeddoc2vecNode {
-  let result = nlp_embed_doc2vec_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_doc2vec_node_sum(s : Nlpembeddoc2vecNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_embed_doc2vec_edge_get(s : Nlpembeddoc2vecEdge, i : Int) -> Double {
 }
 
 pub fn nlp_embed_doc2vec_edge_set(s : Nlpembeddoc2vecEdge, i : Int, v : Double) -> Nlpembeddoc2vecEdge {
-  let result = nlp_embed_doc2vec_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_doc2vec_edge_sum(s : Nlpembeddoc2vecEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_embed_doc2vec_path_get(s : Nlpembeddoc2vecPath, i : Int) -> Double {
 }
 
 pub fn nlp_embed_doc2vec_path_set(s : Nlpembeddoc2vecPath, i : Int, v : Double) -> Nlpembeddoc2vecPath {
-  let result = nlp_embed_doc2vec_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_doc2vec_path_sum(s : Nlpembeddoc2vecPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_embed_doc2vec_cluster_get(s : Nlpembeddoc2vecCluster, i : Int) -> Dou
 }
 
 pub fn nlp_embed_doc2vec_cluster_set(s : Nlpembeddoc2vecCluster, i : Int, v : Double) -> Nlpembeddoc2vecCluster {
-  let result = nlp_embed_doc2vec_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_doc2vec_cluster_sum(s : Nlpembeddoc2vecCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_embed_doc2vec_model_get(s : Nlpembeddoc2vecModel, i : Int) -> Double 
 }
 
 pub fn nlp_embed_doc2vec_model_set(s : Nlpembeddoc2vecModel, i : Int, v : Double) -> Nlpembeddoc2vecModel {
-  let result = nlp_embed_doc2vec_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_doc2vec_model_sum(s : Nlpembeddoc2vecModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_embed_doc2vec_layer_get(s : Nlpembeddoc2vecLayer, i : Int) -> Double 
 }
 
 pub fn nlp_embed_doc2vec_layer_set(s : Nlpembeddoc2vecLayer, i : Int, v : Double) -> Nlpembeddoc2vecLayer {
-  let result = nlp_embed_doc2vec_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_doc2vec_layer_sum(s : Nlpembeddoc2vecLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_embed_doc2vec_buffer_get(s : Nlpembeddoc2vecBuffer, i : Int) -> Doubl
 }
 
 pub fn nlp_embed_doc2vec_buffer_set(s : Nlpembeddoc2vecBuffer, i : Int, v : Double) -> Nlpembeddoc2vecBuffer {
-  let result = nlp_embed_doc2vec_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_doc2vec_buffer_sum(s : Nlpembeddoc2vecBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_embed_doc2vec_cursor_get(s : Nlpembeddoc2vecCursor, i : Int) -> Doubl
 }
 
 pub fn nlp_embed_doc2vec_cursor_set(s : Nlpembeddoc2vecCursor, i : Int, v : Double) -> Nlpembeddoc2vecCursor {
-  let result = nlp_embed_doc2vec_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_doc2vec_cursor_sum(s : Nlpembeddoc2vecCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_embed_doc2vec_view_get(s : Nlpembeddoc2vecView, i : Int) -> Double {
 }
 
 pub fn nlp_embed_doc2vec_view_set(s : Nlpembeddoc2vecView, i : Int, v : Double) -> Nlpembeddoc2vecView {
-  let result = nlp_embed_doc2vec_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_doc2vec_view_sum(s : Nlpembeddoc2vecView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_embed_doc2vec_range_get(s : Nlpembeddoc2vecRange, i : Int) -> Double 
 }
 
 pub fn nlp_embed_doc2vec_range_set(s : Nlpembeddoc2vecRange, i : Int, v : Double) -> Nlpembeddoc2vecRange {
-  let result = nlp_embed_doc2vec_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_doc2vec_range_sum(s : Nlpembeddoc2vecRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_embed_doc2vec_slice_get(s : Nlpembeddoc2vecSlice, i : Int) -> Double 
 }
 
 pub fn nlp_embed_doc2vec_slice_set(s : Nlpembeddoc2vecSlice, i : Int, v : Double) -> Nlpembeddoc2vecSlice {
-  let result = nlp_embed_doc2vec_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_doc2vec_slice_sum(s : Nlpembeddoc2vecSlice) -> Double { @_common.sum(s.data) }

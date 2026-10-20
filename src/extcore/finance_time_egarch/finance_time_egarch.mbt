@@ -107,23 +107,15 @@ pub fn finance_time_egarch_series_std(s : FinancetimeegarchSeries) -> Double { @
 pub fn finance_time_egarch_series_median(s : FinancetimeegarchSeries) -> Double { @_common.median(s.vals) }
 
 pub fn finance_time_egarch_series_scale(s : FinancetimeegarchSeries, f : Double) -> FinancetimeegarchSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn finance_time_egarch_series_add(a : FinancetimeegarchSeries, b : FinancetimeegarchSeries) -> FinancetimeegarchSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn finance_time_egarch_series_sub(a : FinancetimeegarchSeries, b : FinancetimeegarchSeries) -> FinancetimeegarchSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn finance_time_egarch_series_normalize(s : FinancetimeegarchSeries) -> FinancetimeegarchSeries {
@@ -254,22 +246,16 @@ pub fn finance_time_egarch_vector_zero(dim : Int) -> FinancetimeegarchVector {
 
 pub fn finance_time_egarch_vector_add(a : FinancetimeegarchVector, b : FinancetimeegarchVector) -> FinancetimeegarchVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_time_egarch_vector_sub(a : FinancetimeegarchVector, b : FinancetimeegarchVector) -> FinancetimeegarchVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_time_egarch_vector_scale(v : FinancetimeegarchVector, s : Double) -> FinancetimeegarchVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn finance_time_egarch_vector_dot(a : FinancetimeegarchVector, b : FinancetimeegarchVector) -> Double {
@@ -372,10 +358,9 @@ pub fn finance_time_egarch_frame_get(s : FinancetimeegarchFrame, i : Int) -> Dou
 }
 
 pub fn finance_time_egarch_frame_set(s : FinancetimeegarchFrame, i : Int, v : Double) -> FinancetimeegarchFrame {
-  let result = finance_time_egarch_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_egarch_frame_sum(s : FinancetimeegarchFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn finance_time_egarch_table_get(s : FinancetimeegarchTable, i : Int) -> Dou
 }
 
 pub fn finance_time_egarch_table_set(s : FinancetimeegarchTable, i : Int, v : Double) -> FinancetimeegarchTable {
-  let result = finance_time_egarch_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_egarch_table_sum(s : FinancetimeegarchTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn finance_time_egarch_graphn_get(s : FinancetimeegarchGraphN, i : Int) -> D
 }
 
 pub fn finance_time_egarch_graphn_set(s : FinancetimeegarchGraphN, i : Int, v : Double) -> FinancetimeegarchGraphN {
-  let result = finance_time_egarch_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_egarch_graphn_sum(s : FinancetimeegarchGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn finance_time_egarch_node_get(s : FinancetimeegarchNode, i : Int) -> Doubl
 }
 
 pub fn finance_time_egarch_node_set(s : FinancetimeegarchNode, i : Int, v : Double) -> FinancetimeegarchNode {
-  let result = finance_time_egarch_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_egarch_node_sum(s : FinancetimeegarchNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn finance_time_egarch_edge_get(s : FinancetimeegarchEdge, i : Int) -> Doubl
 }
 
 pub fn finance_time_egarch_edge_set(s : FinancetimeegarchEdge, i : Int, v : Double) -> FinancetimeegarchEdge {
-  let result = finance_time_egarch_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_egarch_edge_sum(s : FinancetimeegarchEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn finance_time_egarch_path_get(s : FinancetimeegarchPath, i : Int) -> Doubl
 }
 
 pub fn finance_time_egarch_path_set(s : FinancetimeegarchPath, i : Int, v : Double) -> FinancetimeegarchPath {
-  let result = finance_time_egarch_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_egarch_path_sum(s : FinancetimeegarchPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn finance_time_egarch_cluster_get(s : FinancetimeegarchCluster, i : Int) ->
 }
 
 pub fn finance_time_egarch_cluster_set(s : FinancetimeegarchCluster, i : Int, v : Double) -> FinancetimeegarchCluster {
-  let result = finance_time_egarch_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_egarch_cluster_sum(s : FinancetimeegarchCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn finance_time_egarch_model_get(s : FinancetimeegarchModel, i : Int) -> Dou
 }
 
 pub fn finance_time_egarch_model_set(s : FinancetimeegarchModel, i : Int, v : Double) -> FinancetimeegarchModel {
-  let result = finance_time_egarch_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_egarch_model_sum(s : FinancetimeegarchModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn finance_time_egarch_layer_get(s : FinancetimeegarchLayer, i : Int) -> Dou
 }
 
 pub fn finance_time_egarch_layer_set(s : FinancetimeegarchLayer, i : Int, v : Double) -> FinancetimeegarchLayer {
-  let result = finance_time_egarch_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_egarch_layer_sum(s : FinancetimeegarchLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn finance_time_egarch_buffer_get(s : FinancetimeegarchBuffer, i : Int) -> D
 }
 
 pub fn finance_time_egarch_buffer_set(s : FinancetimeegarchBuffer, i : Int, v : Double) -> FinancetimeegarchBuffer {
-  let result = finance_time_egarch_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_egarch_buffer_sum(s : FinancetimeegarchBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn finance_time_egarch_cursor_get(s : FinancetimeegarchCursor, i : Int) -> D
 }
 
 pub fn finance_time_egarch_cursor_set(s : FinancetimeegarchCursor, i : Int, v : Double) -> FinancetimeegarchCursor {
-  let result = finance_time_egarch_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_egarch_cursor_sum(s : FinancetimeegarchCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn finance_time_egarch_view_get(s : FinancetimeegarchView, i : Int) -> Doubl
 }
 
 pub fn finance_time_egarch_view_set(s : FinancetimeegarchView, i : Int, v : Double) -> FinancetimeegarchView {
-  let result = finance_time_egarch_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_egarch_view_sum(s : FinancetimeegarchView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn finance_time_egarch_range_get(s : FinancetimeegarchRange, i : Int) -> Dou
 }
 
 pub fn finance_time_egarch_range_set(s : FinancetimeegarchRange, i : Int, v : Double) -> FinancetimeegarchRange {
-  let result = finance_time_egarch_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_egarch_range_sum(s : FinancetimeegarchRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn finance_time_egarch_slice_get(s : FinancetimeegarchSlice, i : Int) -> Dou
 }
 
 pub fn finance_time_egarch_slice_set(s : FinancetimeegarchSlice, i : Int, v : Double) -> FinancetimeegarchSlice {
-  let result = finance_time_egarch_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_time_egarch_slice_sum(s : FinancetimeegarchSlice) -> Double { @_common.sum(s.data) }

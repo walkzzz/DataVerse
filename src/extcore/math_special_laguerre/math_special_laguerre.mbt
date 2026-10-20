@@ -107,23 +107,15 @@ pub fn math_special_laguerre_series_std(s : MathspeciallaguerreSeries) -> Double
 pub fn math_special_laguerre_series_median(s : MathspeciallaguerreSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_special_laguerre_series_scale(s : MathspeciallaguerreSeries, f : Double) -> MathspeciallaguerreSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_special_laguerre_series_add(a : MathspeciallaguerreSeries, b : MathspeciallaguerreSeries) -> MathspeciallaguerreSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_special_laguerre_series_sub(a : MathspeciallaguerreSeries, b : MathspeciallaguerreSeries) -> MathspeciallaguerreSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_special_laguerre_series_normalize(s : MathspeciallaguerreSeries) -> MathspeciallaguerreSeries {
@@ -254,22 +246,16 @@ pub fn math_special_laguerre_vector_zero(dim : Int) -> MathspeciallaguerreVector
 
 pub fn math_special_laguerre_vector_add(a : MathspeciallaguerreVector, b : MathspeciallaguerreVector) -> MathspeciallaguerreVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_special_laguerre_vector_sub(a : MathspeciallaguerreVector, b : MathspeciallaguerreVector) -> MathspeciallaguerreVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_special_laguerre_vector_scale(v : MathspeciallaguerreVector, s : Double) -> MathspeciallaguerreVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_special_laguerre_vector_dot(a : MathspeciallaguerreVector, b : MathspeciallaguerreVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_special_laguerre_frame_get(s : MathspeciallaguerreFrame, i : Int) ->
 }
 
 pub fn math_special_laguerre_frame_set(s : MathspeciallaguerreFrame, i : Int, v : Double) -> MathspeciallaguerreFrame {
-  let result = math_special_laguerre_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_laguerre_frame_sum(s : MathspeciallaguerreFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_special_laguerre_table_get(s : MathspeciallaguerreTable, i : Int) ->
 }
 
 pub fn math_special_laguerre_table_set(s : MathspeciallaguerreTable, i : Int, v : Double) -> MathspeciallaguerreTable {
-  let result = math_special_laguerre_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_laguerre_table_sum(s : MathspeciallaguerreTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_special_laguerre_graphn_get(s : MathspeciallaguerreGraphN, i : Int) 
 }
 
 pub fn math_special_laguerre_graphn_set(s : MathspeciallaguerreGraphN, i : Int, v : Double) -> MathspeciallaguerreGraphN {
-  let result = math_special_laguerre_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_laguerre_graphn_sum(s : MathspeciallaguerreGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_special_laguerre_node_get(s : MathspeciallaguerreNode, i : Int) -> D
 }
 
 pub fn math_special_laguerre_node_set(s : MathspeciallaguerreNode, i : Int, v : Double) -> MathspeciallaguerreNode {
-  let result = math_special_laguerre_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_laguerre_node_sum(s : MathspeciallaguerreNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_special_laguerre_edge_get(s : MathspeciallaguerreEdge, i : Int) -> D
 }
 
 pub fn math_special_laguerre_edge_set(s : MathspeciallaguerreEdge, i : Int, v : Double) -> MathspeciallaguerreEdge {
-  let result = math_special_laguerre_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_laguerre_edge_sum(s : MathspeciallaguerreEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_special_laguerre_path_get(s : MathspeciallaguerrePath, i : Int) -> D
 }
 
 pub fn math_special_laguerre_path_set(s : MathspeciallaguerrePath, i : Int, v : Double) -> MathspeciallaguerrePath {
-  let result = math_special_laguerre_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_laguerre_path_sum(s : MathspeciallaguerrePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_special_laguerre_cluster_get(s : MathspeciallaguerreCluster, i : Int
 }
 
 pub fn math_special_laguerre_cluster_set(s : MathspeciallaguerreCluster, i : Int, v : Double) -> MathspeciallaguerreCluster {
-  let result = math_special_laguerre_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_laguerre_cluster_sum(s : MathspeciallaguerreCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_special_laguerre_model_get(s : MathspeciallaguerreModel, i : Int) ->
 }
 
 pub fn math_special_laguerre_model_set(s : MathspeciallaguerreModel, i : Int, v : Double) -> MathspeciallaguerreModel {
-  let result = math_special_laguerre_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_laguerre_model_sum(s : MathspeciallaguerreModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_special_laguerre_layer_get(s : MathspeciallaguerreLayer, i : Int) ->
 }
 
 pub fn math_special_laguerre_layer_set(s : MathspeciallaguerreLayer, i : Int, v : Double) -> MathspeciallaguerreLayer {
-  let result = math_special_laguerre_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_laguerre_layer_sum(s : MathspeciallaguerreLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_special_laguerre_buffer_get(s : MathspeciallaguerreBuffer, i : Int) 
 }
 
 pub fn math_special_laguerre_buffer_set(s : MathspeciallaguerreBuffer, i : Int, v : Double) -> MathspeciallaguerreBuffer {
-  let result = math_special_laguerre_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_laguerre_buffer_sum(s : MathspeciallaguerreBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_special_laguerre_cursor_get(s : MathspeciallaguerreCursor, i : Int) 
 }
 
 pub fn math_special_laguerre_cursor_set(s : MathspeciallaguerreCursor, i : Int, v : Double) -> MathspeciallaguerreCursor {
-  let result = math_special_laguerre_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_laguerre_cursor_sum(s : MathspeciallaguerreCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_special_laguerre_view_get(s : MathspeciallaguerreView, i : Int) -> D
 }
 
 pub fn math_special_laguerre_view_set(s : MathspeciallaguerreView, i : Int, v : Double) -> MathspeciallaguerreView {
-  let result = math_special_laguerre_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_laguerre_view_sum(s : MathspeciallaguerreView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_special_laguerre_range_get(s : MathspeciallaguerreRange, i : Int) ->
 }
 
 pub fn math_special_laguerre_range_set(s : MathspeciallaguerreRange, i : Int, v : Double) -> MathspeciallaguerreRange {
-  let result = math_special_laguerre_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_laguerre_range_sum(s : MathspeciallaguerreRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_special_laguerre_slice_get(s : MathspeciallaguerreSlice, i : Int) ->
 }
 
 pub fn math_special_laguerre_slice_set(s : MathspeciallaguerreSlice, i : Int, v : Double) -> MathspeciallaguerreSlice {
-  let result = math_special_laguerre_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_laguerre_slice_sum(s : MathspeciallaguerreSlice) -> Double { @_common.sum(s.data) }

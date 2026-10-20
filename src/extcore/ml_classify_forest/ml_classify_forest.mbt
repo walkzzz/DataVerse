@@ -107,23 +107,15 @@ pub fn ml_classify_forest_series_std(s : MlclassifyforestSeries) -> Double { @_c
 pub fn ml_classify_forest_series_median(s : MlclassifyforestSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_classify_forest_series_scale(s : MlclassifyforestSeries, f : Double) -> MlclassifyforestSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_classify_forest_series_add(a : MlclassifyforestSeries, b : MlclassifyforestSeries) -> MlclassifyforestSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_classify_forest_series_sub(a : MlclassifyforestSeries, b : MlclassifyforestSeries) -> MlclassifyforestSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_classify_forest_series_normalize(s : MlclassifyforestSeries) -> MlclassifyforestSeries {
@@ -254,22 +246,16 @@ pub fn ml_classify_forest_vector_zero(dim : Int) -> MlclassifyforestVector {
 
 pub fn ml_classify_forest_vector_add(a : MlclassifyforestVector, b : MlclassifyforestVector) -> MlclassifyforestVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_classify_forest_vector_sub(a : MlclassifyforestVector, b : MlclassifyforestVector) -> MlclassifyforestVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_classify_forest_vector_scale(v : MlclassifyforestVector, s : Double) -> MlclassifyforestVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_classify_forest_vector_dot(a : MlclassifyforestVector, b : MlclassifyforestVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_classify_forest_frame_get(s : MlclassifyforestFrame, i : Int) -> Doubl
 }
 
 pub fn ml_classify_forest_frame_set(s : MlclassifyforestFrame, i : Int, v : Double) -> MlclassifyforestFrame {
-  let result = ml_classify_forest_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_forest_frame_sum(s : MlclassifyforestFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_classify_forest_table_get(s : MlclassifyforestTable, i : Int) -> Doubl
 }
 
 pub fn ml_classify_forest_table_set(s : MlclassifyforestTable, i : Int, v : Double) -> MlclassifyforestTable {
-  let result = ml_classify_forest_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_forest_table_sum(s : MlclassifyforestTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_classify_forest_graphn_get(s : MlclassifyforestGraphN, i : Int) -> Dou
 }
 
 pub fn ml_classify_forest_graphn_set(s : MlclassifyforestGraphN, i : Int, v : Double) -> MlclassifyforestGraphN {
-  let result = ml_classify_forest_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_forest_graphn_sum(s : MlclassifyforestGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_classify_forest_node_get(s : MlclassifyforestNode, i : Int) -> Double 
 }
 
 pub fn ml_classify_forest_node_set(s : MlclassifyforestNode, i : Int, v : Double) -> MlclassifyforestNode {
-  let result = ml_classify_forest_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_forest_node_sum(s : MlclassifyforestNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_classify_forest_edge_get(s : MlclassifyforestEdge, i : Int) -> Double 
 }
 
 pub fn ml_classify_forest_edge_set(s : MlclassifyforestEdge, i : Int, v : Double) -> MlclassifyforestEdge {
-  let result = ml_classify_forest_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_forest_edge_sum(s : MlclassifyforestEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_classify_forest_path_get(s : MlclassifyforestPath, i : Int) -> Double 
 }
 
 pub fn ml_classify_forest_path_set(s : MlclassifyforestPath, i : Int, v : Double) -> MlclassifyforestPath {
-  let result = ml_classify_forest_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_forest_path_sum(s : MlclassifyforestPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_classify_forest_cluster_get(s : MlclassifyforestCluster, i : Int) -> D
 }
 
 pub fn ml_classify_forest_cluster_set(s : MlclassifyforestCluster, i : Int, v : Double) -> MlclassifyforestCluster {
-  let result = ml_classify_forest_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_forest_cluster_sum(s : MlclassifyforestCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_classify_forest_model_get(s : MlclassifyforestModel, i : Int) -> Doubl
 }
 
 pub fn ml_classify_forest_model_set(s : MlclassifyforestModel, i : Int, v : Double) -> MlclassifyforestModel {
-  let result = ml_classify_forest_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_forest_model_sum(s : MlclassifyforestModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_classify_forest_layer_get(s : MlclassifyforestLayer, i : Int) -> Doubl
 }
 
 pub fn ml_classify_forest_layer_set(s : MlclassifyforestLayer, i : Int, v : Double) -> MlclassifyforestLayer {
-  let result = ml_classify_forest_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_forest_layer_sum(s : MlclassifyforestLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_classify_forest_buffer_get(s : MlclassifyforestBuffer, i : Int) -> Dou
 }
 
 pub fn ml_classify_forest_buffer_set(s : MlclassifyforestBuffer, i : Int, v : Double) -> MlclassifyforestBuffer {
-  let result = ml_classify_forest_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_forest_buffer_sum(s : MlclassifyforestBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_classify_forest_cursor_get(s : MlclassifyforestCursor, i : Int) -> Dou
 }
 
 pub fn ml_classify_forest_cursor_set(s : MlclassifyforestCursor, i : Int, v : Double) -> MlclassifyforestCursor {
-  let result = ml_classify_forest_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_forest_cursor_sum(s : MlclassifyforestCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_classify_forest_view_get(s : MlclassifyforestView, i : Int) -> Double 
 }
 
 pub fn ml_classify_forest_view_set(s : MlclassifyforestView, i : Int, v : Double) -> MlclassifyforestView {
-  let result = ml_classify_forest_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_forest_view_sum(s : MlclassifyforestView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_classify_forest_range_get(s : MlclassifyforestRange, i : Int) -> Doubl
 }
 
 pub fn ml_classify_forest_range_set(s : MlclassifyforestRange, i : Int, v : Double) -> MlclassifyforestRange {
-  let result = ml_classify_forest_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_forest_range_sum(s : MlclassifyforestRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_classify_forest_slice_get(s : MlclassifyforestSlice, i : Int) -> Doubl
 }
 
 pub fn ml_classify_forest_slice_set(s : MlclassifyforestSlice, i : Int, v : Double) -> MlclassifyforestSlice {
-  let result = ml_classify_forest_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_forest_slice_sum(s : MlclassifyforestSlice) -> Double { @_common.sum(s.data) }

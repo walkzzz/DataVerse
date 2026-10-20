@@ -107,23 +107,15 @@ pub fn sort_compare_heap_series_std(s : SortcompareheapSeries) -> Double { @_com
 pub fn sort_compare_heap_series_median(s : SortcompareheapSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_compare_heap_series_scale(s : SortcompareheapSeries, f : Double) -> SortcompareheapSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn sort_compare_heap_series_add(a : SortcompareheapSeries, b : SortcompareheapSeries) -> SortcompareheapSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn sort_compare_heap_series_sub(a : SortcompareheapSeries, b : SortcompareheapSeries) -> SortcompareheapSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn sort_compare_heap_series_normalize(s : SortcompareheapSeries) -> SortcompareheapSeries {
@@ -254,22 +246,16 @@ pub fn sort_compare_heap_vector_zero(dim : Int) -> SortcompareheapVector {
 
 pub fn sort_compare_heap_vector_add(a : SortcompareheapVector, b : SortcompareheapVector) -> SortcompareheapVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_compare_heap_vector_sub(a : SortcompareheapVector, b : SortcompareheapVector) -> SortcompareheapVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_compare_heap_vector_scale(v : SortcompareheapVector, s : Double) -> SortcompareheapVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn sort_compare_heap_vector_dot(a : SortcompareheapVector, b : SortcompareheapVector) -> Double {
@@ -372,10 +358,9 @@ pub fn sort_compare_heap_frame_get(s : SortcompareheapFrame, i : Int) -> Double 
 }
 
 pub fn sort_compare_heap_frame_set(s : SortcompareheapFrame, i : Int, v : Double) -> SortcompareheapFrame {
-  let result = sort_compare_heap_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_heap_frame_sum(s : SortcompareheapFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn sort_compare_heap_table_get(s : SortcompareheapTable, i : Int) -> Double 
 }
 
 pub fn sort_compare_heap_table_set(s : SortcompareheapTable, i : Int, v : Double) -> SortcompareheapTable {
-  let result = sort_compare_heap_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_heap_table_sum(s : SortcompareheapTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn sort_compare_heap_graphn_get(s : SortcompareheapGraphN, i : Int) -> Doubl
 }
 
 pub fn sort_compare_heap_graphn_set(s : SortcompareheapGraphN, i : Int, v : Double) -> SortcompareheapGraphN {
-  let result = sort_compare_heap_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_heap_graphn_sum(s : SortcompareheapGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn sort_compare_heap_node_get(s : SortcompareheapNode, i : Int) -> Double {
 }
 
 pub fn sort_compare_heap_node_set(s : SortcompareheapNode, i : Int, v : Double) -> SortcompareheapNode {
-  let result = sort_compare_heap_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_heap_node_sum(s : SortcompareheapNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn sort_compare_heap_edge_get(s : SortcompareheapEdge, i : Int) -> Double {
 }
 
 pub fn sort_compare_heap_edge_set(s : SortcompareheapEdge, i : Int, v : Double) -> SortcompareheapEdge {
-  let result = sort_compare_heap_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_heap_edge_sum(s : SortcompareheapEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn sort_compare_heap_path_get(s : SortcompareheapPath, i : Int) -> Double {
 }
 
 pub fn sort_compare_heap_path_set(s : SortcompareheapPath, i : Int, v : Double) -> SortcompareheapPath {
-  let result = sort_compare_heap_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_heap_path_sum(s : SortcompareheapPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn sort_compare_heap_cluster_get(s : SortcompareheapCluster, i : Int) -> Dou
 }
 
 pub fn sort_compare_heap_cluster_set(s : SortcompareheapCluster, i : Int, v : Double) -> SortcompareheapCluster {
-  let result = sort_compare_heap_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_heap_cluster_sum(s : SortcompareheapCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn sort_compare_heap_model_get(s : SortcompareheapModel, i : Int) -> Double 
 }
 
 pub fn sort_compare_heap_model_set(s : SortcompareheapModel, i : Int, v : Double) -> SortcompareheapModel {
-  let result = sort_compare_heap_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_heap_model_sum(s : SortcompareheapModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn sort_compare_heap_layer_get(s : SortcompareheapLayer, i : Int) -> Double 
 }
 
 pub fn sort_compare_heap_layer_set(s : SortcompareheapLayer, i : Int, v : Double) -> SortcompareheapLayer {
-  let result = sort_compare_heap_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_heap_layer_sum(s : SortcompareheapLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn sort_compare_heap_buffer_get(s : SortcompareheapBuffer, i : Int) -> Doubl
 }
 
 pub fn sort_compare_heap_buffer_set(s : SortcompareheapBuffer, i : Int, v : Double) -> SortcompareheapBuffer {
-  let result = sort_compare_heap_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_heap_buffer_sum(s : SortcompareheapBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn sort_compare_heap_cursor_get(s : SortcompareheapCursor, i : Int) -> Doubl
 }
 
 pub fn sort_compare_heap_cursor_set(s : SortcompareheapCursor, i : Int, v : Double) -> SortcompareheapCursor {
-  let result = sort_compare_heap_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_heap_cursor_sum(s : SortcompareheapCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn sort_compare_heap_view_get(s : SortcompareheapView, i : Int) -> Double {
 }
 
 pub fn sort_compare_heap_view_set(s : SortcompareheapView, i : Int, v : Double) -> SortcompareheapView {
-  let result = sort_compare_heap_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_heap_view_sum(s : SortcompareheapView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn sort_compare_heap_range_get(s : SortcompareheapRange, i : Int) -> Double 
 }
 
 pub fn sort_compare_heap_range_set(s : SortcompareheapRange, i : Int, v : Double) -> SortcompareheapRange {
-  let result = sort_compare_heap_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_heap_range_sum(s : SortcompareheapRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn sort_compare_heap_slice_get(s : SortcompareheapSlice, i : Int) -> Double 
 }
 
 pub fn sort_compare_heap_slice_set(s : SortcompareheapSlice, i : Int, v : Double) -> SortcompareheapSlice {
-  let result = sort_compare_heap_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_heap_slice_sum(s : SortcompareheapSlice) -> Double { @_common.sum(s.data) }

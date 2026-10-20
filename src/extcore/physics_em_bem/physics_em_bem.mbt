@@ -107,23 +107,15 @@ pub fn physics_em_bem_series_std(s : PhysicsembemSeries) -> Double { @_common.st
 pub fn physics_em_bem_series_median(s : PhysicsembemSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_em_bem_series_scale(s : PhysicsembemSeries, f : Double) -> PhysicsembemSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_em_bem_series_add(a : PhysicsembemSeries, b : PhysicsembemSeries) -> PhysicsembemSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_em_bem_series_sub(a : PhysicsembemSeries, b : PhysicsembemSeries) -> PhysicsembemSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_em_bem_series_normalize(s : PhysicsembemSeries) -> PhysicsembemSeries {
@@ -254,22 +246,16 @@ pub fn physics_em_bem_vector_zero(dim : Int) -> PhysicsembemVector {
 
 pub fn physics_em_bem_vector_add(a : PhysicsembemVector, b : PhysicsembemVector) -> PhysicsembemVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_em_bem_vector_sub(a : PhysicsembemVector, b : PhysicsembemVector) -> PhysicsembemVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_em_bem_vector_scale(v : PhysicsembemVector, s : Double) -> PhysicsembemVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_em_bem_vector_dot(a : PhysicsembemVector, b : PhysicsembemVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_em_bem_frame_get(s : PhysicsembemFrame, i : Int) -> Double {
 }
 
 pub fn physics_em_bem_frame_set(s : PhysicsembemFrame, i : Int, v : Double) -> PhysicsembemFrame {
-  let result = physics_em_bem_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_frame_sum(s : PhysicsembemFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_em_bem_table_get(s : PhysicsembemTable, i : Int) -> Double {
 }
 
 pub fn physics_em_bem_table_set(s : PhysicsembemTable, i : Int, v : Double) -> PhysicsembemTable {
-  let result = physics_em_bem_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_table_sum(s : PhysicsembemTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_em_bem_graphn_get(s : PhysicsembemGraphN, i : Int) -> Double {
 }
 
 pub fn physics_em_bem_graphn_set(s : PhysicsembemGraphN, i : Int, v : Double) -> PhysicsembemGraphN {
-  let result = physics_em_bem_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_graphn_sum(s : PhysicsembemGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_em_bem_node_get(s : PhysicsembemNode, i : Int) -> Double {
 }
 
 pub fn physics_em_bem_node_set(s : PhysicsembemNode, i : Int, v : Double) -> PhysicsembemNode {
-  let result = physics_em_bem_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_node_sum(s : PhysicsembemNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_em_bem_edge_get(s : PhysicsembemEdge, i : Int) -> Double {
 }
 
 pub fn physics_em_bem_edge_set(s : PhysicsembemEdge, i : Int, v : Double) -> PhysicsembemEdge {
-  let result = physics_em_bem_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_edge_sum(s : PhysicsembemEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_em_bem_path_get(s : PhysicsembemPath, i : Int) -> Double {
 }
 
 pub fn physics_em_bem_path_set(s : PhysicsembemPath, i : Int, v : Double) -> PhysicsembemPath {
-  let result = physics_em_bem_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_path_sum(s : PhysicsembemPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_em_bem_cluster_get(s : PhysicsembemCluster, i : Int) -> Double {
 }
 
 pub fn physics_em_bem_cluster_set(s : PhysicsembemCluster, i : Int, v : Double) -> PhysicsembemCluster {
-  let result = physics_em_bem_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_cluster_sum(s : PhysicsembemCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_em_bem_model_get(s : PhysicsembemModel, i : Int) -> Double {
 }
 
 pub fn physics_em_bem_model_set(s : PhysicsembemModel, i : Int, v : Double) -> PhysicsembemModel {
-  let result = physics_em_bem_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_model_sum(s : PhysicsembemModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_em_bem_layer_get(s : PhysicsembemLayer, i : Int) -> Double {
 }
 
 pub fn physics_em_bem_layer_set(s : PhysicsembemLayer, i : Int, v : Double) -> PhysicsembemLayer {
-  let result = physics_em_bem_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_layer_sum(s : PhysicsembemLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_em_bem_buffer_get(s : PhysicsembemBuffer, i : Int) -> Double {
 }
 
 pub fn physics_em_bem_buffer_set(s : PhysicsembemBuffer, i : Int, v : Double) -> PhysicsembemBuffer {
-  let result = physics_em_bem_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_buffer_sum(s : PhysicsembemBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_em_bem_cursor_get(s : PhysicsembemCursor, i : Int) -> Double {
 }
 
 pub fn physics_em_bem_cursor_set(s : PhysicsembemCursor, i : Int, v : Double) -> PhysicsembemCursor {
-  let result = physics_em_bem_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_cursor_sum(s : PhysicsembemCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_em_bem_view_get(s : PhysicsembemView, i : Int) -> Double {
 }
 
 pub fn physics_em_bem_view_set(s : PhysicsembemView, i : Int, v : Double) -> PhysicsembemView {
-  let result = physics_em_bem_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_view_sum(s : PhysicsembemView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_em_bem_range_get(s : PhysicsembemRange, i : Int) -> Double {
 }
 
 pub fn physics_em_bem_range_set(s : PhysicsembemRange, i : Int, v : Double) -> PhysicsembemRange {
-  let result = physics_em_bem_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_range_sum(s : PhysicsembemRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_em_bem_slice_get(s : PhysicsembemSlice, i : Int) -> Double {
 }
 
 pub fn physics_em_bem_slice_set(s : PhysicsembemSlice, i : Int, v : Double) -> PhysicsembemSlice {
-  let result = physics_em_bem_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_bem_slice_sum(s : PhysicsembemSlice) -> Double { @_common.sum(s.data) }

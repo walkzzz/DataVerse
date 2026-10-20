@@ -107,23 +107,15 @@ pub fn ml_feature_pls_series_std(s : MlfeatureplsSeries) -> Double { @_common.st
 pub fn ml_feature_pls_series_median(s : MlfeatureplsSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_feature_pls_series_scale(s : MlfeatureplsSeries, f : Double) -> MlfeatureplsSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_feature_pls_series_add(a : MlfeatureplsSeries, b : MlfeatureplsSeries) -> MlfeatureplsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_feature_pls_series_sub(a : MlfeatureplsSeries, b : MlfeatureplsSeries) -> MlfeatureplsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_feature_pls_series_normalize(s : MlfeatureplsSeries) -> MlfeatureplsSeries {
@@ -254,22 +246,16 @@ pub fn ml_feature_pls_vector_zero(dim : Int) -> MlfeatureplsVector {
 
 pub fn ml_feature_pls_vector_add(a : MlfeatureplsVector, b : MlfeatureplsVector) -> MlfeatureplsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_feature_pls_vector_sub(a : MlfeatureplsVector, b : MlfeatureplsVector) -> MlfeatureplsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_feature_pls_vector_scale(v : MlfeatureplsVector, s : Double) -> MlfeatureplsVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_feature_pls_vector_dot(a : MlfeatureplsVector, b : MlfeatureplsVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_feature_pls_frame_get(s : MlfeatureplsFrame, i : Int) -> Double {
 }
 
 pub fn ml_feature_pls_frame_set(s : MlfeatureplsFrame, i : Int, v : Double) -> MlfeatureplsFrame {
-  let result = ml_feature_pls_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pls_frame_sum(s : MlfeatureplsFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_feature_pls_table_get(s : MlfeatureplsTable, i : Int) -> Double {
 }
 
 pub fn ml_feature_pls_table_set(s : MlfeatureplsTable, i : Int, v : Double) -> MlfeatureplsTable {
-  let result = ml_feature_pls_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pls_table_sum(s : MlfeatureplsTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_feature_pls_graphn_get(s : MlfeatureplsGraphN, i : Int) -> Double {
 }
 
 pub fn ml_feature_pls_graphn_set(s : MlfeatureplsGraphN, i : Int, v : Double) -> MlfeatureplsGraphN {
-  let result = ml_feature_pls_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pls_graphn_sum(s : MlfeatureplsGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_feature_pls_node_get(s : MlfeatureplsNode, i : Int) -> Double {
 }
 
 pub fn ml_feature_pls_node_set(s : MlfeatureplsNode, i : Int, v : Double) -> MlfeatureplsNode {
-  let result = ml_feature_pls_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pls_node_sum(s : MlfeatureplsNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_feature_pls_edge_get(s : MlfeatureplsEdge, i : Int) -> Double {
 }
 
 pub fn ml_feature_pls_edge_set(s : MlfeatureplsEdge, i : Int, v : Double) -> MlfeatureplsEdge {
-  let result = ml_feature_pls_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pls_edge_sum(s : MlfeatureplsEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_feature_pls_path_get(s : MlfeatureplsPath, i : Int) -> Double {
 }
 
 pub fn ml_feature_pls_path_set(s : MlfeatureplsPath, i : Int, v : Double) -> MlfeatureplsPath {
-  let result = ml_feature_pls_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pls_path_sum(s : MlfeatureplsPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_feature_pls_cluster_get(s : MlfeatureplsCluster, i : Int) -> Double {
 }
 
 pub fn ml_feature_pls_cluster_set(s : MlfeatureplsCluster, i : Int, v : Double) -> MlfeatureplsCluster {
-  let result = ml_feature_pls_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pls_cluster_sum(s : MlfeatureplsCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_feature_pls_model_get(s : MlfeatureplsModel, i : Int) -> Double {
 }
 
 pub fn ml_feature_pls_model_set(s : MlfeatureplsModel, i : Int, v : Double) -> MlfeatureplsModel {
-  let result = ml_feature_pls_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pls_model_sum(s : MlfeatureplsModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_feature_pls_layer_get(s : MlfeatureplsLayer, i : Int) -> Double {
 }
 
 pub fn ml_feature_pls_layer_set(s : MlfeatureplsLayer, i : Int, v : Double) -> MlfeatureplsLayer {
-  let result = ml_feature_pls_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pls_layer_sum(s : MlfeatureplsLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_feature_pls_buffer_get(s : MlfeatureplsBuffer, i : Int) -> Double {
 }
 
 pub fn ml_feature_pls_buffer_set(s : MlfeatureplsBuffer, i : Int, v : Double) -> MlfeatureplsBuffer {
-  let result = ml_feature_pls_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pls_buffer_sum(s : MlfeatureplsBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_feature_pls_cursor_get(s : MlfeatureplsCursor, i : Int) -> Double {
 }
 
 pub fn ml_feature_pls_cursor_set(s : MlfeatureplsCursor, i : Int, v : Double) -> MlfeatureplsCursor {
-  let result = ml_feature_pls_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pls_cursor_sum(s : MlfeatureplsCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_feature_pls_view_get(s : MlfeatureplsView, i : Int) -> Double {
 }
 
 pub fn ml_feature_pls_view_set(s : MlfeatureplsView, i : Int, v : Double) -> MlfeatureplsView {
-  let result = ml_feature_pls_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pls_view_sum(s : MlfeatureplsView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_feature_pls_range_get(s : MlfeatureplsRange, i : Int) -> Double {
 }
 
 pub fn ml_feature_pls_range_set(s : MlfeatureplsRange, i : Int, v : Double) -> MlfeatureplsRange {
-  let result = ml_feature_pls_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pls_range_sum(s : MlfeatureplsRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_feature_pls_slice_get(s : MlfeatureplsSlice, i : Int) -> Double {
 }
 
 pub fn ml_feature_pls_slice_set(s : MlfeatureplsSlice, i : Int, v : Double) -> MlfeatureplsSlice {
-  let result = ml_feature_pls_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_pls_slice_sum(s : MlfeatureplsSlice) -> Double { @_common.sum(s.data) }

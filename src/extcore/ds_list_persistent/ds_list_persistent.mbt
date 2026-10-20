@@ -107,23 +107,15 @@ pub fn ds_list_persistent_series_std(s : DslistpersistentSeries) -> Double { @_c
 pub fn ds_list_persistent_series_median(s : DslistpersistentSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_list_persistent_series_scale(s : DslistpersistentSeries, f : Double) -> DslistpersistentSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_list_persistent_series_add(a : DslistpersistentSeries, b : DslistpersistentSeries) -> DslistpersistentSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_list_persistent_series_sub(a : DslistpersistentSeries, b : DslistpersistentSeries) -> DslistpersistentSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_list_persistent_series_normalize(s : DslistpersistentSeries) -> DslistpersistentSeries {
@@ -254,22 +246,16 @@ pub fn ds_list_persistent_vector_zero(dim : Int) -> DslistpersistentVector {
 
 pub fn ds_list_persistent_vector_add(a : DslistpersistentVector, b : DslistpersistentVector) -> DslistpersistentVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_list_persistent_vector_sub(a : DslistpersistentVector, b : DslistpersistentVector) -> DslistpersistentVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_list_persistent_vector_scale(v : DslistpersistentVector, s : Double) -> DslistpersistentVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_list_persistent_vector_dot(a : DslistpersistentVector, b : DslistpersistentVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_list_persistent_frame_get(s : DslistpersistentFrame, i : Int) -> Doubl
 }
 
 pub fn ds_list_persistent_frame_set(s : DslistpersistentFrame, i : Int, v : Double) -> DslistpersistentFrame {
-  let result = ds_list_persistent_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_frame_sum(s : DslistpersistentFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_list_persistent_table_get(s : DslistpersistentTable, i : Int) -> Doubl
 }
 
 pub fn ds_list_persistent_table_set(s : DslistpersistentTable, i : Int, v : Double) -> DslistpersistentTable {
-  let result = ds_list_persistent_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_table_sum(s : DslistpersistentTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_list_persistent_graphn_get(s : DslistpersistentGraphN, i : Int) -> Dou
 }
 
 pub fn ds_list_persistent_graphn_set(s : DslistpersistentGraphN, i : Int, v : Double) -> DslistpersistentGraphN {
-  let result = ds_list_persistent_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_graphn_sum(s : DslistpersistentGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_list_persistent_node_get(s : DslistpersistentNode, i : Int) -> Double 
 }
 
 pub fn ds_list_persistent_node_set(s : DslistpersistentNode, i : Int, v : Double) -> DslistpersistentNode {
-  let result = ds_list_persistent_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_node_sum(s : DslistpersistentNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_list_persistent_edge_get(s : DslistpersistentEdge, i : Int) -> Double 
 }
 
 pub fn ds_list_persistent_edge_set(s : DslistpersistentEdge, i : Int, v : Double) -> DslistpersistentEdge {
-  let result = ds_list_persistent_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_edge_sum(s : DslistpersistentEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_list_persistent_path_get(s : DslistpersistentPath, i : Int) -> Double 
 }
 
 pub fn ds_list_persistent_path_set(s : DslistpersistentPath, i : Int, v : Double) -> DslistpersistentPath {
-  let result = ds_list_persistent_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_path_sum(s : DslistpersistentPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_list_persistent_cluster_get(s : DslistpersistentCluster, i : Int) -> D
 }
 
 pub fn ds_list_persistent_cluster_set(s : DslistpersistentCluster, i : Int, v : Double) -> DslistpersistentCluster {
-  let result = ds_list_persistent_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_cluster_sum(s : DslistpersistentCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_list_persistent_model_get(s : DslistpersistentModel, i : Int) -> Doubl
 }
 
 pub fn ds_list_persistent_model_set(s : DslistpersistentModel, i : Int, v : Double) -> DslistpersistentModel {
-  let result = ds_list_persistent_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_model_sum(s : DslistpersistentModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_list_persistent_layer_get(s : DslistpersistentLayer, i : Int) -> Doubl
 }
 
 pub fn ds_list_persistent_layer_set(s : DslistpersistentLayer, i : Int, v : Double) -> DslistpersistentLayer {
-  let result = ds_list_persistent_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_layer_sum(s : DslistpersistentLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_list_persistent_buffer_get(s : DslistpersistentBuffer, i : Int) -> Dou
 }
 
 pub fn ds_list_persistent_buffer_set(s : DslistpersistentBuffer, i : Int, v : Double) -> DslistpersistentBuffer {
-  let result = ds_list_persistent_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_buffer_sum(s : DslistpersistentBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_list_persistent_cursor_get(s : DslistpersistentCursor, i : Int) -> Dou
 }
 
 pub fn ds_list_persistent_cursor_set(s : DslistpersistentCursor, i : Int, v : Double) -> DslistpersistentCursor {
-  let result = ds_list_persistent_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_cursor_sum(s : DslistpersistentCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_list_persistent_view_get(s : DslistpersistentView, i : Int) -> Double 
 }
 
 pub fn ds_list_persistent_view_set(s : DslistpersistentView, i : Int, v : Double) -> DslistpersistentView {
-  let result = ds_list_persistent_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_view_sum(s : DslistpersistentView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_list_persistent_range_get(s : DslistpersistentRange, i : Int) -> Doubl
 }
 
 pub fn ds_list_persistent_range_set(s : DslistpersistentRange, i : Int, v : Double) -> DslistpersistentRange {
-  let result = ds_list_persistent_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_range_sum(s : DslistpersistentRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_list_persistent_slice_get(s : DslistpersistentSlice, i : Int) -> Doubl
 }
 
 pub fn ds_list_persistent_slice_set(s : DslistpersistentSlice, i : Int, v : Double) -> DslistpersistentSlice {
-  let result = ds_list_persistent_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_persistent_slice_sum(s : DslistpersistentSlice) -> Double { @_common.sum(s.data) }

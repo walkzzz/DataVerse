@@ -107,23 +107,15 @@ pub fn ds_list_lockfree_series_std(s : DslistlockfreeSeries) -> Double { @_commo
 pub fn ds_list_lockfree_series_median(s : DslistlockfreeSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_list_lockfree_series_scale(s : DslistlockfreeSeries, f : Double) -> DslistlockfreeSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_list_lockfree_series_add(a : DslistlockfreeSeries, b : DslistlockfreeSeries) -> DslistlockfreeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_list_lockfree_series_sub(a : DslistlockfreeSeries, b : DslistlockfreeSeries) -> DslistlockfreeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_list_lockfree_series_normalize(s : DslistlockfreeSeries) -> DslistlockfreeSeries {
@@ -254,22 +246,16 @@ pub fn ds_list_lockfree_vector_zero(dim : Int) -> DslistlockfreeVector {
 
 pub fn ds_list_lockfree_vector_add(a : DslistlockfreeVector, b : DslistlockfreeVector) -> DslistlockfreeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_list_lockfree_vector_sub(a : DslistlockfreeVector, b : DslistlockfreeVector) -> DslistlockfreeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_list_lockfree_vector_scale(v : DslistlockfreeVector, s : Double) -> DslistlockfreeVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_list_lockfree_vector_dot(a : DslistlockfreeVector, b : DslistlockfreeVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_list_lockfree_frame_get(s : DslistlockfreeFrame, i : Int) -> Double {
 }
 
 pub fn ds_list_lockfree_frame_set(s : DslistlockfreeFrame, i : Int, v : Double) -> DslistlockfreeFrame {
-  let result = ds_list_lockfree_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_lockfree_frame_sum(s : DslistlockfreeFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_list_lockfree_table_get(s : DslistlockfreeTable, i : Int) -> Double {
 }
 
 pub fn ds_list_lockfree_table_set(s : DslistlockfreeTable, i : Int, v : Double) -> DslistlockfreeTable {
-  let result = ds_list_lockfree_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_lockfree_table_sum(s : DslistlockfreeTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_list_lockfree_graphn_get(s : DslistlockfreeGraphN, i : Int) -> Double 
 }
 
 pub fn ds_list_lockfree_graphn_set(s : DslistlockfreeGraphN, i : Int, v : Double) -> DslistlockfreeGraphN {
-  let result = ds_list_lockfree_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_lockfree_graphn_sum(s : DslistlockfreeGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_list_lockfree_node_get(s : DslistlockfreeNode, i : Int) -> Double {
 }
 
 pub fn ds_list_lockfree_node_set(s : DslistlockfreeNode, i : Int, v : Double) -> DslistlockfreeNode {
-  let result = ds_list_lockfree_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_lockfree_node_sum(s : DslistlockfreeNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_list_lockfree_edge_get(s : DslistlockfreeEdge, i : Int) -> Double {
 }
 
 pub fn ds_list_lockfree_edge_set(s : DslistlockfreeEdge, i : Int, v : Double) -> DslistlockfreeEdge {
-  let result = ds_list_lockfree_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_lockfree_edge_sum(s : DslistlockfreeEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_list_lockfree_path_get(s : DslistlockfreePath, i : Int) -> Double {
 }
 
 pub fn ds_list_lockfree_path_set(s : DslistlockfreePath, i : Int, v : Double) -> DslistlockfreePath {
-  let result = ds_list_lockfree_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_lockfree_path_sum(s : DslistlockfreePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_list_lockfree_cluster_get(s : DslistlockfreeCluster, i : Int) -> Doubl
 }
 
 pub fn ds_list_lockfree_cluster_set(s : DslistlockfreeCluster, i : Int, v : Double) -> DslistlockfreeCluster {
-  let result = ds_list_lockfree_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_lockfree_cluster_sum(s : DslistlockfreeCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_list_lockfree_model_get(s : DslistlockfreeModel, i : Int) -> Double {
 }
 
 pub fn ds_list_lockfree_model_set(s : DslistlockfreeModel, i : Int, v : Double) -> DslistlockfreeModel {
-  let result = ds_list_lockfree_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_lockfree_model_sum(s : DslistlockfreeModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_list_lockfree_layer_get(s : DslistlockfreeLayer, i : Int) -> Double {
 }
 
 pub fn ds_list_lockfree_layer_set(s : DslistlockfreeLayer, i : Int, v : Double) -> DslistlockfreeLayer {
-  let result = ds_list_lockfree_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_lockfree_layer_sum(s : DslistlockfreeLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_list_lockfree_buffer_get(s : DslistlockfreeBuffer, i : Int) -> Double 
 }
 
 pub fn ds_list_lockfree_buffer_set(s : DslistlockfreeBuffer, i : Int, v : Double) -> DslistlockfreeBuffer {
-  let result = ds_list_lockfree_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_lockfree_buffer_sum(s : DslistlockfreeBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_list_lockfree_cursor_get(s : DslistlockfreeCursor, i : Int) -> Double 
 }
 
 pub fn ds_list_lockfree_cursor_set(s : DslistlockfreeCursor, i : Int, v : Double) -> DslistlockfreeCursor {
-  let result = ds_list_lockfree_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_lockfree_cursor_sum(s : DslistlockfreeCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_list_lockfree_view_get(s : DslistlockfreeView, i : Int) -> Double {
 }
 
 pub fn ds_list_lockfree_view_set(s : DslistlockfreeView, i : Int, v : Double) -> DslistlockfreeView {
-  let result = ds_list_lockfree_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_lockfree_view_sum(s : DslistlockfreeView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_list_lockfree_range_get(s : DslistlockfreeRange, i : Int) -> Double {
 }
 
 pub fn ds_list_lockfree_range_set(s : DslistlockfreeRange, i : Int, v : Double) -> DslistlockfreeRange {
-  let result = ds_list_lockfree_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_lockfree_range_sum(s : DslistlockfreeRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_list_lockfree_slice_get(s : DslistlockfreeSlice, i : Int) -> Double {
 }
 
 pub fn ds_list_lockfree_slice_set(s : DslistlockfreeSlice, i : Int, v : Double) -> DslistlockfreeSlice {
-  let result = ds_list_lockfree_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_lockfree_slice_sum(s : DslistlockfreeSlice) -> Double { @_common.sum(s.data) }

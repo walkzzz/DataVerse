@@ -107,23 +107,15 @@ pub fn timeseries_anomaly_twitter_series_std(s : TimeseriesanomalytwitterSeries)
 pub fn timeseries_anomaly_twitter_series_median(s : TimeseriesanomalytwitterSeries) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_anomaly_twitter_series_scale(s : TimeseriesanomalytwitterSeries, f : Double) -> TimeseriesanomalytwitterSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn timeseries_anomaly_twitter_series_add(a : TimeseriesanomalytwitterSeries, b : TimeseriesanomalytwitterSeries) -> TimeseriesanomalytwitterSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_anomaly_twitter_series_sub(a : TimeseriesanomalytwitterSeries, b : TimeseriesanomalytwitterSeries) -> TimeseriesanomalytwitterSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_anomaly_twitter_series_normalize(s : TimeseriesanomalytwitterSeries) -> TimeseriesanomalytwitterSeries {
@@ -254,22 +246,16 @@ pub fn timeseries_anomaly_twitter_vector_zero(dim : Int) -> Timeseriesanomalytwi
 
 pub fn timeseries_anomaly_twitter_vector_add(a : TimeseriesanomalytwitterVector, b : TimeseriesanomalytwitterVector) -> TimeseriesanomalytwitterVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_anomaly_twitter_vector_sub(a : TimeseriesanomalytwitterVector, b : TimeseriesanomalytwitterVector) -> TimeseriesanomalytwitterVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_anomaly_twitter_vector_scale(v : TimeseriesanomalytwitterVector, s : Double) -> TimeseriesanomalytwitterVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn timeseries_anomaly_twitter_vector_dot(a : TimeseriesanomalytwitterVector, b : TimeseriesanomalytwitterVector) -> Double {
@@ -372,10 +358,9 @@ pub fn timeseries_anomaly_twitter_frame_get(s : TimeseriesanomalytwitterFrame, i
 }
 
 pub fn timeseries_anomaly_twitter_frame_set(s : TimeseriesanomalytwitterFrame, i : Int, v : Double) -> TimeseriesanomalytwitterFrame {
-  let result = timeseries_anomaly_twitter_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_frame_sum(s : TimeseriesanomalytwitterFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn timeseries_anomaly_twitter_table_get(s : TimeseriesanomalytwitterTable, i
 }
 
 pub fn timeseries_anomaly_twitter_table_set(s : TimeseriesanomalytwitterTable, i : Int, v : Double) -> TimeseriesanomalytwitterTable {
-  let result = timeseries_anomaly_twitter_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_table_sum(s : TimeseriesanomalytwitterTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn timeseries_anomaly_twitter_graphn_get(s : TimeseriesanomalytwitterGraphN,
 }
 
 pub fn timeseries_anomaly_twitter_graphn_set(s : TimeseriesanomalytwitterGraphN, i : Int, v : Double) -> TimeseriesanomalytwitterGraphN {
-  let result = timeseries_anomaly_twitter_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_graphn_sum(s : TimeseriesanomalytwitterGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn timeseries_anomaly_twitter_node_get(s : TimeseriesanomalytwitterNode, i :
 }
 
 pub fn timeseries_anomaly_twitter_node_set(s : TimeseriesanomalytwitterNode, i : Int, v : Double) -> TimeseriesanomalytwitterNode {
-  let result = timeseries_anomaly_twitter_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_node_sum(s : TimeseriesanomalytwitterNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn timeseries_anomaly_twitter_edge_get(s : TimeseriesanomalytwitterEdge, i :
 }
 
 pub fn timeseries_anomaly_twitter_edge_set(s : TimeseriesanomalytwitterEdge, i : Int, v : Double) -> TimeseriesanomalytwitterEdge {
-  let result = timeseries_anomaly_twitter_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_edge_sum(s : TimeseriesanomalytwitterEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn timeseries_anomaly_twitter_path_get(s : TimeseriesanomalytwitterPath, i :
 }
 
 pub fn timeseries_anomaly_twitter_path_set(s : TimeseriesanomalytwitterPath, i : Int, v : Double) -> TimeseriesanomalytwitterPath {
-  let result = timeseries_anomaly_twitter_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_path_sum(s : TimeseriesanomalytwitterPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn timeseries_anomaly_twitter_cluster_get(s : TimeseriesanomalytwitterCluste
 }
 
 pub fn timeseries_anomaly_twitter_cluster_set(s : TimeseriesanomalytwitterCluster, i : Int, v : Double) -> TimeseriesanomalytwitterCluster {
-  let result = timeseries_anomaly_twitter_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_cluster_sum(s : TimeseriesanomalytwitterCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn timeseries_anomaly_twitter_model_get(s : TimeseriesanomalytwitterModel, i
 }
 
 pub fn timeseries_anomaly_twitter_model_set(s : TimeseriesanomalytwitterModel, i : Int, v : Double) -> TimeseriesanomalytwitterModel {
-  let result = timeseries_anomaly_twitter_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_model_sum(s : TimeseriesanomalytwitterModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn timeseries_anomaly_twitter_layer_get(s : TimeseriesanomalytwitterLayer, i
 }
 
 pub fn timeseries_anomaly_twitter_layer_set(s : TimeseriesanomalytwitterLayer, i : Int, v : Double) -> TimeseriesanomalytwitterLayer {
-  let result = timeseries_anomaly_twitter_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_layer_sum(s : TimeseriesanomalytwitterLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn timeseries_anomaly_twitter_buffer_get(s : TimeseriesanomalytwitterBuffer,
 }
 
 pub fn timeseries_anomaly_twitter_buffer_set(s : TimeseriesanomalytwitterBuffer, i : Int, v : Double) -> TimeseriesanomalytwitterBuffer {
-  let result = timeseries_anomaly_twitter_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_buffer_sum(s : TimeseriesanomalytwitterBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn timeseries_anomaly_twitter_cursor_get(s : TimeseriesanomalytwitterCursor,
 }
 
 pub fn timeseries_anomaly_twitter_cursor_set(s : TimeseriesanomalytwitterCursor, i : Int, v : Double) -> TimeseriesanomalytwitterCursor {
-  let result = timeseries_anomaly_twitter_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_cursor_sum(s : TimeseriesanomalytwitterCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn timeseries_anomaly_twitter_view_get(s : TimeseriesanomalytwitterView, i :
 }
 
 pub fn timeseries_anomaly_twitter_view_set(s : TimeseriesanomalytwitterView, i : Int, v : Double) -> TimeseriesanomalytwitterView {
-  let result = timeseries_anomaly_twitter_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_view_sum(s : TimeseriesanomalytwitterView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn timeseries_anomaly_twitter_range_get(s : TimeseriesanomalytwitterRange, i
 }
 
 pub fn timeseries_anomaly_twitter_range_set(s : TimeseriesanomalytwitterRange, i : Int, v : Double) -> TimeseriesanomalytwitterRange {
-  let result = timeseries_anomaly_twitter_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_range_sum(s : TimeseriesanomalytwitterRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn timeseries_anomaly_twitter_slice_get(s : TimeseriesanomalytwitterSlice, i
 }
 
 pub fn timeseries_anomaly_twitter_slice_set(s : TimeseriesanomalytwitterSlice, i : Int, v : Double) -> TimeseriesanomalytwitterSlice {
-  let result = timeseries_anomaly_twitter_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_anomaly_twitter_slice_sum(s : TimeseriesanomalytwitterSlice) -> Double { @_common.sum(s.data) }

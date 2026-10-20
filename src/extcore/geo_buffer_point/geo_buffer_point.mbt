@@ -107,23 +107,15 @@ pub fn geo_buffer_point_series_std(s : GeobufferpointSeries) -> Double { @_commo
 pub fn geo_buffer_point_series_median(s : GeobufferpointSeries) -> Double { @_common.median(s.vals) }
 
 pub fn geo_buffer_point_series_scale(s : GeobufferpointSeries, f : Double) -> GeobufferpointSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn geo_buffer_point_series_add(a : GeobufferpointSeries, b : GeobufferpointSeries) -> GeobufferpointSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn geo_buffer_point_series_sub(a : GeobufferpointSeries, b : GeobufferpointSeries) -> GeobufferpointSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn geo_buffer_point_series_normalize(s : GeobufferpointSeries) -> GeobufferpointSeries {
@@ -254,22 +246,16 @@ pub fn geo_buffer_point_vector_zero(dim : Int) -> GeobufferpointVector {
 
 pub fn geo_buffer_point_vector_add(a : GeobufferpointVector, b : GeobufferpointVector) -> GeobufferpointVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_buffer_point_vector_sub(a : GeobufferpointVector, b : GeobufferpointVector) -> GeobufferpointVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_buffer_point_vector_scale(v : GeobufferpointVector, s : Double) -> GeobufferpointVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn geo_buffer_point_vector_dot(a : GeobufferpointVector, b : GeobufferpointVector) -> Double {
@@ -372,10 +358,9 @@ pub fn geo_buffer_point_frame_get(s : GeobufferpointFrame, i : Int) -> Double {
 }
 
 pub fn geo_buffer_point_frame_set(s : GeobufferpointFrame, i : Int, v : Double) -> GeobufferpointFrame {
-  let result = geo_buffer_point_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_point_frame_sum(s : GeobufferpointFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn geo_buffer_point_table_get(s : GeobufferpointTable, i : Int) -> Double {
 }
 
 pub fn geo_buffer_point_table_set(s : GeobufferpointTable, i : Int, v : Double) -> GeobufferpointTable {
-  let result = geo_buffer_point_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_point_table_sum(s : GeobufferpointTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn geo_buffer_point_graphn_get(s : GeobufferpointGraphN, i : Int) -> Double 
 }
 
 pub fn geo_buffer_point_graphn_set(s : GeobufferpointGraphN, i : Int, v : Double) -> GeobufferpointGraphN {
-  let result = geo_buffer_point_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_point_graphn_sum(s : GeobufferpointGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn geo_buffer_point_node_get(s : GeobufferpointNode, i : Int) -> Double {
 }
 
 pub fn geo_buffer_point_node_set(s : GeobufferpointNode, i : Int, v : Double) -> GeobufferpointNode {
-  let result = geo_buffer_point_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_point_node_sum(s : GeobufferpointNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn geo_buffer_point_edge_get(s : GeobufferpointEdge, i : Int) -> Double {
 }
 
 pub fn geo_buffer_point_edge_set(s : GeobufferpointEdge, i : Int, v : Double) -> GeobufferpointEdge {
-  let result = geo_buffer_point_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_point_edge_sum(s : GeobufferpointEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn geo_buffer_point_path_get(s : GeobufferpointPath, i : Int) -> Double {
 }
 
 pub fn geo_buffer_point_path_set(s : GeobufferpointPath, i : Int, v : Double) -> GeobufferpointPath {
-  let result = geo_buffer_point_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_point_path_sum(s : GeobufferpointPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn geo_buffer_point_cluster_get(s : GeobufferpointCluster, i : Int) -> Doubl
 }
 
 pub fn geo_buffer_point_cluster_set(s : GeobufferpointCluster, i : Int, v : Double) -> GeobufferpointCluster {
-  let result = geo_buffer_point_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_point_cluster_sum(s : GeobufferpointCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn geo_buffer_point_model_get(s : GeobufferpointModel, i : Int) -> Double {
 }
 
 pub fn geo_buffer_point_model_set(s : GeobufferpointModel, i : Int, v : Double) -> GeobufferpointModel {
-  let result = geo_buffer_point_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_point_model_sum(s : GeobufferpointModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn geo_buffer_point_layer_get(s : GeobufferpointLayer, i : Int) -> Double {
 }
 
 pub fn geo_buffer_point_layer_set(s : GeobufferpointLayer, i : Int, v : Double) -> GeobufferpointLayer {
-  let result = geo_buffer_point_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_point_layer_sum(s : GeobufferpointLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn geo_buffer_point_buffer_get(s : GeobufferpointBuffer, i : Int) -> Double 
 }
 
 pub fn geo_buffer_point_buffer_set(s : GeobufferpointBuffer, i : Int, v : Double) -> GeobufferpointBuffer {
-  let result = geo_buffer_point_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_point_buffer_sum(s : GeobufferpointBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn geo_buffer_point_cursor_get(s : GeobufferpointCursor, i : Int) -> Double 
 }
 
 pub fn geo_buffer_point_cursor_set(s : GeobufferpointCursor, i : Int, v : Double) -> GeobufferpointCursor {
-  let result = geo_buffer_point_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_point_cursor_sum(s : GeobufferpointCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn geo_buffer_point_view_get(s : GeobufferpointView, i : Int) -> Double {
 }
 
 pub fn geo_buffer_point_view_set(s : GeobufferpointView, i : Int, v : Double) -> GeobufferpointView {
-  let result = geo_buffer_point_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_point_view_sum(s : GeobufferpointView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn geo_buffer_point_range_get(s : GeobufferpointRange, i : Int) -> Double {
 }
 
 pub fn geo_buffer_point_range_set(s : GeobufferpointRange, i : Int, v : Double) -> GeobufferpointRange {
-  let result = geo_buffer_point_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_point_range_sum(s : GeobufferpointRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn geo_buffer_point_slice_get(s : GeobufferpointSlice, i : Int) -> Double {
 }
 
 pub fn geo_buffer_point_slice_set(s : GeobufferpointSlice, i : Int, v : Double) -> GeobufferpointSlice {
-  let result = geo_buffer_point_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_point_slice_sum(s : GeobufferpointSlice) -> Double { @_common.sum(s.data) }

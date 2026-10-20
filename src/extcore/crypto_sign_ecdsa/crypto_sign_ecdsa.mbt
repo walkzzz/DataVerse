@@ -107,23 +107,15 @@ pub fn crypto_sign_ecdsa_series_std(s : CryptosignecdsaSeries) -> Double { @_com
 pub fn crypto_sign_ecdsa_series_median(s : CryptosignecdsaSeries) -> Double { @_common.median(s.vals) }
 
 pub fn crypto_sign_ecdsa_series_scale(s : CryptosignecdsaSeries, f : Double) -> CryptosignecdsaSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn crypto_sign_ecdsa_series_add(a : CryptosignecdsaSeries, b : CryptosignecdsaSeries) -> CryptosignecdsaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn crypto_sign_ecdsa_series_sub(a : CryptosignecdsaSeries, b : CryptosignecdsaSeries) -> CryptosignecdsaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn crypto_sign_ecdsa_series_normalize(s : CryptosignecdsaSeries) -> CryptosignecdsaSeries {
@@ -254,22 +246,16 @@ pub fn crypto_sign_ecdsa_vector_zero(dim : Int) -> CryptosignecdsaVector {
 
 pub fn crypto_sign_ecdsa_vector_add(a : CryptosignecdsaVector, b : CryptosignecdsaVector) -> CryptosignecdsaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_sign_ecdsa_vector_sub(a : CryptosignecdsaVector, b : CryptosignecdsaVector) -> CryptosignecdsaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_sign_ecdsa_vector_scale(v : CryptosignecdsaVector, s : Double) -> CryptosignecdsaVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn crypto_sign_ecdsa_vector_dot(a : CryptosignecdsaVector, b : CryptosignecdsaVector) -> Double {
@@ -372,10 +358,9 @@ pub fn crypto_sign_ecdsa_frame_get(s : CryptosignecdsaFrame, i : Int) -> Double 
 }
 
 pub fn crypto_sign_ecdsa_frame_set(s : CryptosignecdsaFrame, i : Int, v : Double) -> CryptosignecdsaFrame {
-  let result = crypto_sign_ecdsa_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ecdsa_frame_sum(s : CryptosignecdsaFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn crypto_sign_ecdsa_table_get(s : CryptosignecdsaTable, i : Int) -> Double 
 }
 
 pub fn crypto_sign_ecdsa_table_set(s : CryptosignecdsaTable, i : Int, v : Double) -> CryptosignecdsaTable {
-  let result = crypto_sign_ecdsa_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ecdsa_table_sum(s : CryptosignecdsaTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn crypto_sign_ecdsa_graphn_get(s : CryptosignecdsaGraphN, i : Int) -> Doubl
 }
 
 pub fn crypto_sign_ecdsa_graphn_set(s : CryptosignecdsaGraphN, i : Int, v : Double) -> CryptosignecdsaGraphN {
-  let result = crypto_sign_ecdsa_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ecdsa_graphn_sum(s : CryptosignecdsaGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn crypto_sign_ecdsa_node_get(s : CryptosignecdsaNode, i : Int) -> Double {
 }
 
 pub fn crypto_sign_ecdsa_node_set(s : CryptosignecdsaNode, i : Int, v : Double) -> CryptosignecdsaNode {
-  let result = crypto_sign_ecdsa_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ecdsa_node_sum(s : CryptosignecdsaNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn crypto_sign_ecdsa_edge_get(s : CryptosignecdsaEdge, i : Int) -> Double {
 }
 
 pub fn crypto_sign_ecdsa_edge_set(s : CryptosignecdsaEdge, i : Int, v : Double) -> CryptosignecdsaEdge {
-  let result = crypto_sign_ecdsa_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ecdsa_edge_sum(s : CryptosignecdsaEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn crypto_sign_ecdsa_path_get(s : CryptosignecdsaPath, i : Int) -> Double {
 }
 
 pub fn crypto_sign_ecdsa_path_set(s : CryptosignecdsaPath, i : Int, v : Double) -> CryptosignecdsaPath {
-  let result = crypto_sign_ecdsa_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ecdsa_path_sum(s : CryptosignecdsaPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn crypto_sign_ecdsa_cluster_get(s : CryptosignecdsaCluster, i : Int) -> Dou
 }
 
 pub fn crypto_sign_ecdsa_cluster_set(s : CryptosignecdsaCluster, i : Int, v : Double) -> CryptosignecdsaCluster {
-  let result = crypto_sign_ecdsa_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ecdsa_cluster_sum(s : CryptosignecdsaCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn crypto_sign_ecdsa_model_get(s : CryptosignecdsaModel, i : Int) -> Double 
 }
 
 pub fn crypto_sign_ecdsa_model_set(s : CryptosignecdsaModel, i : Int, v : Double) -> CryptosignecdsaModel {
-  let result = crypto_sign_ecdsa_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ecdsa_model_sum(s : CryptosignecdsaModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn crypto_sign_ecdsa_layer_get(s : CryptosignecdsaLayer, i : Int) -> Double 
 }
 
 pub fn crypto_sign_ecdsa_layer_set(s : CryptosignecdsaLayer, i : Int, v : Double) -> CryptosignecdsaLayer {
-  let result = crypto_sign_ecdsa_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ecdsa_layer_sum(s : CryptosignecdsaLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn crypto_sign_ecdsa_buffer_get(s : CryptosignecdsaBuffer, i : Int) -> Doubl
 }
 
 pub fn crypto_sign_ecdsa_buffer_set(s : CryptosignecdsaBuffer, i : Int, v : Double) -> CryptosignecdsaBuffer {
-  let result = crypto_sign_ecdsa_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ecdsa_buffer_sum(s : CryptosignecdsaBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn crypto_sign_ecdsa_cursor_get(s : CryptosignecdsaCursor, i : Int) -> Doubl
 }
 
 pub fn crypto_sign_ecdsa_cursor_set(s : CryptosignecdsaCursor, i : Int, v : Double) -> CryptosignecdsaCursor {
-  let result = crypto_sign_ecdsa_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ecdsa_cursor_sum(s : CryptosignecdsaCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn crypto_sign_ecdsa_view_get(s : CryptosignecdsaView, i : Int) -> Double {
 }
 
 pub fn crypto_sign_ecdsa_view_set(s : CryptosignecdsaView, i : Int, v : Double) -> CryptosignecdsaView {
-  let result = crypto_sign_ecdsa_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ecdsa_view_sum(s : CryptosignecdsaView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn crypto_sign_ecdsa_range_get(s : CryptosignecdsaRange, i : Int) -> Double 
 }
 
 pub fn crypto_sign_ecdsa_range_set(s : CryptosignecdsaRange, i : Int, v : Double) -> CryptosignecdsaRange {
-  let result = crypto_sign_ecdsa_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ecdsa_range_sum(s : CryptosignecdsaRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn crypto_sign_ecdsa_slice_get(s : CryptosignecdsaSlice, i : Int) -> Double 
 }
 
 pub fn crypto_sign_ecdsa_slice_set(s : CryptosignecdsaSlice, i : Int, v : Double) -> CryptosignecdsaSlice {
-  let result = crypto_sign_ecdsa_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ecdsa_slice_sum(s : CryptosignecdsaSlice) -> Double { @_common.sum(s.data) }

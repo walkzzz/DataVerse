@@ -107,23 +107,15 @@ pub fn image_feature_akaze_series_std(s : ImagefeatureakazeSeries) -> Double { @
 pub fn image_feature_akaze_series_median(s : ImagefeatureakazeSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_feature_akaze_series_scale(s : ImagefeatureakazeSeries, f : Double) -> ImagefeatureakazeSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_feature_akaze_series_add(a : ImagefeatureakazeSeries, b : ImagefeatureakazeSeries) -> ImagefeatureakazeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_feature_akaze_series_sub(a : ImagefeatureakazeSeries, b : ImagefeatureakazeSeries) -> ImagefeatureakazeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_feature_akaze_series_normalize(s : ImagefeatureakazeSeries) -> ImagefeatureakazeSeries {
@@ -254,22 +246,16 @@ pub fn image_feature_akaze_vector_zero(dim : Int) -> ImagefeatureakazeVector {
 
 pub fn image_feature_akaze_vector_add(a : ImagefeatureakazeVector, b : ImagefeatureakazeVector) -> ImagefeatureakazeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_feature_akaze_vector_sub(a : ImagefeatureakazeVector, b : ImagefeatureakazeVector) -> ImagefeatureakazeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_feature_akaze_vector_scale(v : ImagefeatureakazeVector, s : Double) -> ImagefeatureakazeVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_feature_akaze_vector_dot(a : ImagefeatureakazeVector, b : ImagefeatureakazeVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_feature_akaze_frame_get(s : ImagefeatureakazeFrame, i : Int) -> Dou
 }
 
 pub fn image_feature_akaze_frame_set(s : ImagefeatureakazeFrame, i : Int, v : Double) -> ImagefeatureakazeFrame {
-  let result = image_feature_akaze_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_akaze_frame_sum(s : ImagefeatureakazeFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_feature_akaze_table_get(s : ImagefeatureakazeTable, i : Int) -> Dou
 }
 
 pub fn image_feature_akaze_table_set(s : ImagefeatureakazeTable, i : Int, v : Double) -> ImagefeatureakazeTable {
-  let result = image_feature_akaze_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_akaze_table_sum(s : ImagefeatureakazeTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_feature_akaze_graphn_get(s : ImagefeatureakazeGraphN, i : Int) -> D
 }
 
 pub fn image_feature_akaze_graphn_set(s : ImagefeatureakazeGraphN, i : Int, v : Double) -> ImagefeatureakazeGraphN {
-  let result = image_feature_akaze_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_akaze_graphn_sum(s : ImagefeatureakazeGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_feature_akaze_node_get(s : ImagefeatureakazeNode, i : Int) -> Doubl
 }
 
 pub fn image_feature_akaze_node_set(s : ImagefeatureakazeNode, i : Int, v : Double) -> ImagefeatureakazeNode {
-  let result = image_feature_akaze_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_akaze_node_sum(s : ImagefeatureakazeNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_feature_akaze_edge_get(s : ImagefeatureakazeEdge, i : Int) -> Doubl
 }
 
 pub fn image_feature_akaze_edge_set(s : ImagefeatureakazeEdge, i : Int, v : Double) -> ImagefeatureakazeEdge {
-  let result = image_feature_akaze_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_akaze_edge_sum(s : ImagefeatureakazeEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_feature_akaze_path_get(s : ImagefeatureakazePath, i : Int) -> Doubl
 }
 
 pub fn image_feature_akaze_path_set(s : ImagefeatureakazePath, i : Int, v : Double) -> ImagefeatureakazePath {
-  let result = image_feature_akaze_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_akaze_path_sum(s : ImagefeatureakazePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_feature_akaze_cluster_get(s : ImagefeatureakazeCluster, i : Int) ->
 }
 
 pub fn image_feature_akaze_cluster_set(s : ImagefeatureakazeCluster, i : Int, v : Double) -> ImagefeatureakazeCluster {
-  let result = image_feature_akaze_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_akaze_cluster_sum(s : ImagefeatureakazeCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_feature_akaze_model_get(s : ImagefeatureakazeModel, i : Int) -> Dou
 }
 
 pub fn image_feature_akaze_model_set(s : ImagefeatureakazeModel, i : Int, v : Double) -> ImagefeatureakazeModel {
-  let result = image_feature_akaze_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_akaze_model_sum(s : ImagefeatureakazeModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_feature_akaze_layer_get(s : ImagefeatureakazeLayer, i : Int) -> Dou
 }
 
 pub fn image_feature_akaze_layer_set(s : ImagefeatureakazeLayer, i : Int, v : Double) -> ImagefeatureakazeLayer {
-  let result = image_feature_akaze_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_akaze_layer_sum(s : ImagefeatureakazeLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_feature_akaze_buffer_get(s : ImagefeatureakazeBuffer, i : Int) -> D
 }
 
 pub fn image_feature_akaze_buffer_set(s : ImagefeatureakazeBuffer, i : Int, v : Double) -> ImagefeatureakazeBuffer {
-  let result = image_feature_akaze_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_akaze_buffer_sum(s : ImagefeatureakazeBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_feature_akaze_cursor_get(s : ImagefeatureakazeCursor, i : Int) -> D
 }
 
 pub fn image_feature_akaze_cursor_set(s : ImagefeatureakazeCursor, i : Int, v : Double) -> ImagefeatureakazeCursor {
-  let result = image_feature_akaze_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_akaze_cursor_sum(s : ImagefeatureakazeCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_feature_akaze_view_get(s : ImagefeatureakazeView, i : Int) -> Doubl
 }
 
 pub fn image_feature_akaze_view_set(s : ImagefeatureakazeView, i : Int, v : Double) -> ImagefeatureakazeView {
-  let result = image_feature_akaze_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_akaze_view_sum(s : ImagefeatureakazeView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_feature_akaze_range_get(s : ImagefeatureakazeRange, i : Int) -> Dou
 }
 
 pub fn image_feature_akaze_range_set(s : ImagefeatureakazeRange, i : Int, v : Double) -> ImagefeatureakazeRange {
-  let result = image_feature_akaze_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_akaze_range_sum(s : ImagefeatureakazeRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_feature_akaze_slice_get(s : ImagefeatureakazeSlice, i : Int) -> Dou
 }
 
 pub fn image_feature_akaze_slice_set(s : ImagefeatureakazeSlice, i : Int, v : Double) -> ImagefeatureakazeSlice {
-  let result = image_feature_akaze_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_akaze_slice_sum(s : ImagefeatureakazeSlice) -> Double { @_common.sum(s.data) }

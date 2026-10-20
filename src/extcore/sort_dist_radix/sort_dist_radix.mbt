@@ -107,23 +107,15 @@ pub fn sort_dist_radix_series_std(s : SortdistradixSeries) -> Double { @_common.
 pub fn sort_dist_radix_series_median(s : SortdistradixSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_dist_radix_series_scale(s : SortdistradixSeries, f : Double) -> SortdistradixSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn sort_dist_radix_series_add(a : SortdistradixSeries, b : SortdistradixSeries) -> SortdistradixSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn sort_dist_radix_series_sub(a : SortdistradixSeries, b : SortdistradixSeries) -> SortdistradixSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn sort_dist_radix_series_normalize(s : SortdistradixSeries) -> SortdistradixSeries {
@@ -254,22 +246,16 @@ pub fn sort_dist_radix_vector_zero(dim : Int) -> SortdistradixVector {
 
 pub fn sort_dist_radix_vector_add(a : SortdistradixVector, b : SortdistradixVector) -> SortdistradixVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_dist_radix_vector_sub(a : SortdistradixVector, b : SortdistradixVector) -> SortdistradixVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_dist_radix_vector_scale(v : SortdistradixVector, s : Double) -> SortdistradixVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn sort_dist_radix_vector_dot(a : SortdistradixVector, b : SortdistradixVector) -> Double {
@@ -372,10 +358,9 @@ pub fn sort_dist_radix_frame_get(s : SortdistradixFrame, i : Int) -> Double {
 }
 
 pub fn sort_dist_radix_frame_set(s : SortdistradixFrame, i : Int, v : Double) -> SortdistradixFrame {
-  let result = sort_dist_radix_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_radix_frame_sum(s : SortdistradixFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn sort_dist_radix_table_get(s : SortdistradixTable, i : Int) -> Double {
 }
 
 pub fn sort_dist_radix_table_set(s : SortdistradixTable, i : Int, v : Double) -> SortdistradixTable {
-  let result = sort_dist_radix_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_radix_table_sum(s : SortdistradixTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn sort_dist_radix_graphn_get(s : SortdistradixGraphN, i : Int) -> Double {
 }
 
 pub fn sort_dist_radix_graphn_set(s : SortdistradixGraphN, i : Int, v : Double) -> SortdistradixGraphN {
-  let result = sort_dist_radix_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_radix_graphn_sum(s : SortdistradixGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn sort_dist_radix_node_get(s : SortdistradixNode, i : Int) -> Double {
 }
 
 pub fn sort_dist_radix_node_set(s : SortdistradixNode, i : Int, v : Double) -> SortdistradixNode {
-  let result = sort_dist_radix_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_radix_node_sum(s : SortdistradixNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn sort_dist_radix_edge_get(s : SortdistradixEdge, i : Int) -> Double {
 }
 
 pub fn sort_dist_radix_edge_set(s : SortdistradixEdge, i : Int, v : Double) -> SortdistradixEdge {
-  let result = sort_dist_radix_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_radix_edge_sum(s : SortdistradixEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn sort_dist_radix_path_get(s : SortdistradixPath, i : Int) -> Double {
 }
 
 pub fn sort_dist_radix_path_set(s : SortdistradixPath, i : Int, v : Double) -> SortdistradixPath {
-  let result = sort_dist_radix_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_radix_path_sum(s : SortdistradixPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn sort_dist_radix_cluster_get(s : SortdistradixCluster, i : Int) -> Double 
 }
 
 pub fn sort_dist_radix_cluster_set(s : SortdistradixCluster, i : Int, v : Double) -> SortdistradixCluster {
-  let result = sort_dist_radix_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_radix_cluster_sum(s : SortdistradixCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn sort_dist_radix_model_get(s : SortdistradixModel, i : Int) -> Double {
 }
 
 pub fn sort_dist_radix_model_set(s : SortdistradixModel, i : Int, v : Double) -> SortdistradixModel {
-  let result = sort_dist_radix_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_radix_model_sum(s : SortdistradixModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn sort_dist_radix_layer_get(s : SortdistradixLayer, i : Int) -> Double {
 }
 
 pub fn sort_dist_radix_layer_set(s : SortdistradixLayer, i : Int, v : Double) -> SortdistradixLayer {
-  let result = sort_dist_radix_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_radix_layer_sum(s : SortdistradixLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn sort_dist_radix_buffer_get(s : SortdistradixBuffer, i : Int) -> Double {
 }
 
 pub fn sort_dist_radix_buffer_set(s : SortdistradixBuffer, i : Int, v : Double) -> SortdistradixBuffer {
-  let result = sort_dist_radix_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_radix_buffer_sum(s : SortdistradixBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn sort_dist_radix_cursor_get(s : SortdistradixCursor, i : Int) -> Double {
 }
 
 pub fn sort_dist_radix_cursor_set(s : SortdistradixCursor, i : Int, v : Double) -> SortdistradixCursor {
-  let result = sort_dist_radix_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_radix_cursor_sum(s : SortdistradixCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn sort_dist_radix_view_get(s : SortdistradixView, i : Int) -> Double {
 }
 
 pub fn sort_dist_radix_view_set(s : SortdistradixView, i : Int, v : Double) -> SortdistradixView {
-  let result = sort_dist_radix_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_radix_view_sum(s : SortdistradixView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn sort_dist_radix_range_get(s : SortdistradixRange, i : Int) -> Double {
 }
 
 pub fn sort_dist_radix_range_set(s : SortdistradixRange, i : Int, v : Double) -> SortdistradixRange {
-  let result = sort_dist_radix_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_radix_range_sum(s : SortdistradixRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn sort_dist_radix_slice_get(s : SortdistradixSlice, i : Int) -> Double {
 }
 
 pub fn sort_dist_radix_slice_set(s : SortdistradixSlice, i : Int, v : Double) -> SortdistradixSlice {
-  let result = sort_dist_radix_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_radix_slice_sum(s : SortdistradixSlice) -> Double { @_common.sum(s.data) }

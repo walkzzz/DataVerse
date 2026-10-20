@@ -107,23 +107,15 @@ pub fn physics_heat_boundary_series_std(s : PhysicsheatboundarySeries) -> Double
 pub fn physics_heat_boundary_series_median(s : PhysicsheatboundarySeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_heat_boundary_series_scale(s : PhysicsheatboundarySeries, f : Double) -> PhysicsheatboundarySeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_heat_boundary_series_add(a : PhysicsheatboundarySeries, b : PhysicsheatboundarySeries) -> PhysicsheatboundarySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_heat_boundary_series_sub(a : PhysicsheatboundarySeries, b : PhysicsheatboundarySeries) -> PhysicsheatboundarySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_heat_boundary_series_normalize(s : PhysicsheatboundarySeries) -> PhysicsheatboundarySeries {
@@ -254,22 +246,16 @@ pub fn physics_heat_boundary_vector_zero(dim : Int) -> PhysicsheatboundaryVector
 
 pub fn physics_heat_boundary_vector_add(a : PhysicsheatboundaryVector, b : PhysicsheatboundaryVector) -> PhysicsheatboundaryVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_heat_boundary_vector_sub(a : PhysicsheatboundaryVector, b : PhysicsheatboundaryVector) -> PhysicsheatboundaryVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_heat_boundary_vector_scale(v : PhysicsheatboundaryVector, s : Double) -> PhysicsheatboundaryVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_heat_boundary_vector_dot(a : PhysicsheatboundaryVector, b : PhysicsheatboundaryVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_heat_boundary_frame_get(s : PhysicsheatboundaryFrame, i : Int) ->
 }
 
 pub fn physics_heat_boundary_frame_set(s : PhysicsheatboundaryFrame, i : Int, v : Double) -> PhysicsheatboundaryFrame {
-  let result = physics_heat_boundary_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_boundary_frame_sum(s : PhysicsheatboundaryFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_heat_boundary_table_get(s : PhysicsheatboundaryTable, i : Int) ->
 }
 
 pub fn physics_heat_boundary_table_set(s : PhysicsheatboundaryTable, i : Int, v : Double) -> PhysicsheatboundaryTable {
-  let result = physics_heat_boundary_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_boundary_table_sum(s : PhysicsheatboundaryTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_heat_boundary_graphn_get(s : PhysicsheatboundaryGraphN, i : Int) 
 }
 
 pub fn physics_heat_boundary_graphn_set(s : PhysicsheatboundaryGraphN, i : Int, v : Double) -> PhysicsheatboundaryGraphN {
-  let result = physics_heat_boundary_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_boundary_graphn_sum(s : PhysicsheatboundaryGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_heat_boundary_node_get(s : PhysicsheatboundaryNode, i : Int) -> D
 }
 
 pub fn physics_heat_boundary_node_set(s : PhysicsheatboundaryNode, i : Int, v : Double) -> PhysicsheatboundaryNode {
-  let result = physics_heat_boundary_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_boundary_node_sum(s : PhysicsheatboundaryNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_heat_boundary_edge_get(s : PhysicsheatboundaryEdge, i : Int) -> D
 }
 
 pub fn physics_heat_boundary_edge_set(s : PhysicsheatboundaryEdge, i : Int, v : Double) -> PhysicsheatboundaryEdge {
-  let result = physics_heat_boundary_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_boundary_edge_sum(s : PhysicsheatboundaryEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_heat_boundary_path_get(s : PhysicsheatboundaryPath, i : Int) -> D
 }
 
 pub fn physics_heat_boundary_path_set(s : PhysicsheatboundaryPath, i : Int, v : Double) -> PhysicsheatboundaryPath {
-  let result = physics_heat_boundary_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_boundary_path_sum(s : PhysicsheatboundaryPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_heat_boundary_cluster_get(s : PhysicsheatboundaryCluster, i : Int
 }
 
 pub fn physics_heat_boundary_cluster_set(s : PhysicsheatboundaryCluster, i : Int, v : Double) -> PhysicsheatboundaryCluster {
-  let result = physics_heat_boundary_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_boundary_cluster_sum(s : PhysicsheatboundaryCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_heat_boundary_model_get(s : PhysicsheatboundaryModel, i : Int) ->
 }
 
 pub fn physics_heat_boundary_model_set(s : PhysicsheatboundaryModel, i : Int, v : Double) -> PhysicsheatboundaryModel {
-  let result = physics_heat_boundary_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_boundary_model_sum(s : PhysicsheatboundaryModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_heat_boundary_layer_get(s : PhysicsheatboundaryLayer, i : Int) ->
 }
 
 pub fn physics_heat_boundary_layer_set(s : PhysicsheatboundaryLayer, i : Int, v : Double) -> PhysicsheatboundaryLayer {
-  let result = physics_heat_boundary_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_boundary_layer_sum(s : PhysicsheatboundaryLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_heat_boundary_buffer_get(s : PhysicsheatboundaryBuffer, i : Int) 
 }
 
 pub fn physics_heat_boundary_buffer_set(s : PhysicsheatboundaryBuffer, i : Int, v : Double) -> PhysicsheatboundaryBuffer {
-  let result = physics_heat_boundary_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_boundary_buffer_sum(s : PhysicsheatboundaryBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_heat_boundary_cursor_get(s : PhysicsheatboundaryCursor, i : Int) 
 }
 
 pub fn physics_heat_boundary_cursor_set(s : PhysicsheatboundaryCursor, i : Int, v : Double) -> PhysicsheatboundaryCursor {
-  let result = physics_heat_boundary_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_boundary_cursor_sum(s : PhysicsheatboundaryCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_heat_boundary_view_get(s : PhysicsheatboundaryView, i : Int) -> D
 }
 
 pub fn physics_heat_boundary_view_set(s : PhysicsheatboundaryView, i : Int, v : Double) -> PhysicsheatboundaryView {
-  let result = physics_heat_boundary_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_boundary_view_sum(s : PhysicsheatboundaryView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_heat_boundary_range_get(s : PhysicsheatboundaryRange, i : Int) ->
 }
 
 pub fn physics_heat_boundary_range_set(s : PhysicsheatboundaryRange, i : Int, v : Double) -> PhysicsheatboundaryRange {
-  let result = physics_heat_boundary_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_boundary_range_sum(s : PhysicsheatboundaryRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_heat_boundary_slice_get(s : PhysicsheatboundarySlice, i : Int) ->
 }
 
 pub fn physics_heat_boundary_slice_set(s : PhysicsheatboundarySlice, i : Int, v : Double) -> PhysicsheatboundarySlice {
-  let result = physics_heat_boundary_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_boundary_slice_sum(s : PhysicsheatboundarySlice) -> Double { @_common.sum(s.data) }

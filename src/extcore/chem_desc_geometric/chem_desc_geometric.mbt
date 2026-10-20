@@ -107,23 +107,15 @@ pub fn chem_desc_geometric_series_std(s : ChemdescgeometricSeries) -> Double { @
 pub fn chem_desc_geometric_series_median(s : ChemdescgeometricSeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_desc_geometric_series_scale(s : ChemdescgeometricSeries, f : Double) -> ChemdescgeometricSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn chem_desc_geometric_series_add(a : ChemdescgeometricSeries, b : ChemdescgeometricSeries) -> ChemdescgeometricSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn chem_desc_geometric_series_sub(a : ChemdescgeometricSeries, b : ChemdescgeometricSeries) -> ChemdescgeometricSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn chem_desc_geometric_series_normalize(s : ChemdescgeometricSeries) -> ChemdescgeometricSeries {
@@ -254,22 +246,16 @@ pub fn chem_desc_geometric_vector_zero(dim : Int) -> ChemdescgeometricVector {
 
 pub fn chem_desc_geometric_vector_add(a : ChemdescgeometricVector, b : ChemdescgeometricVector) -> ChemdescgeometricVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_desc_geometric_vector_sub(a : ChemdescgeometricVector, b : ChemdescgeometricVector) -> ChemdescgeometricVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_desc_geometric_vector_scale(v : ChemdescgeometricVector, s : Double) -> ChemdescgeometricVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn chem_desc_geometric_vector_dot(a : ChemdescgeometricVector, b : ChemdescgeometricVector) -> Double {
@@ -372,10 +358,9 @@ pub fn chem_desc_geometric_frame_get(s : ChemdescgeometricFrame, i : Int) -> Dou
 }
 
 pub fn chem_desc_geometric_frame_set(s : ChemdescgeometricFrame, i : Int, v : Double) -> ChemdescgeometricFrame {
-  let result = chem_desc_geometric_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_geometric_frame_sum(s : ChemdescgeometricFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn chem_desc_geometric_table_get(s : ChemdescgeometricTable, i : Int) -> Dou
 }
 
 pub fn chem_desc_geometric_table_set(s : ChemdescgeometricTable, i : Int, v : Double) -> ChemdescgeometricTable {
-  let result = chem_desc_geometric_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_geometric_table_sum(s : ChemdescgeometricTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn chem_desc_geometric_graphn_get(s : ChemdescgeometricGraphN, i : Int) -> D
 }
 
 pub fn chem_desc_geometric_graphn_set(s : ChemdescgeometricGraphN, i : Int, v : Double) -> ChemdescgeometricGraphN {
-  let result = chem_desc_geometric_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_geometric_graphn_sum(s : ChemdescgeometricGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn chem_desc_geometric_node_get(s : ChemdescgeometricNode, i : Int) -> Doubl
 }
 
 pub fn chem_desc_geometric_node_set(s : ChemdescgeometricNode, i : Int, v : Double) -> ChemdescgeometricNode {
-  let result = chem_desc_geometric_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_geometric_node_sum(s : ChemdescgeometricNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn chem_desc_geometric_edge_get(s : ChemdescgeometricEdge, i : Int) -> Doubl
 }
 
 pub fn chem_desc_geometric_edge_set(s : ChemdescgeometricEdge, i : Int, v : Double) -> ChemdescgeometricEdge {
-  let result = chem_desc_geometric_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_geometric_edge_sum(s : ChemdescgeometricEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn chem_desc_geometric_path_get(s : ChemdescgeometricPath, i : Int) -> Doubl
 }
 
 pub fn chem_desc_geometric_path_set(s : ChemdescgeometricPath, i : Int, v : Double) -> ChemdescgeometricPath {
-  let result = chem_desc_geometric_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_geometric_path_sum(s : ChemdescgeometricPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn chem_desc_geometric_cluster_get(s : ChemdescgeometricCluster, i : Int) ->
 }
 
 pub fn chem_desc_geometric_cluster_set(s : ChemdescgeometricCluster, i : Int, v : Double) -> ChemdescgeometricCluster {
-  let result = chem_desc_geometric_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_geometric_cluster_sum(s : ChemdescgeometricCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn chem_desc_geometric_model_get(s : ChemdescgeometricModel, i : Int) -> Dou
 }
 
 pub fn chem_desc_geometric_model_set(s : ChemdescgeometricModel, i : Int, v : Double) -> ChemdescgeometricModel {
-  let result = chem_desc_geometric_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_geometric_model_sum(s : ChemdescgeometricModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn chem_desc_geometric_layer_get(s : ChemdescgeometricLayer, i : Int) -> Dou
 }
 
 pub fn chem_desc_geometric_layer_set(s : ChemdescgeometricLayer, i : Int, v : Double) -> ChemdescgeometricLayer {
-  let result = chem_desc_geometric_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_geometric_layer_sum(s : ChemdescgeometricLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn chem_desc_geometric_buffer_get(s : ChemdescgeometricBuffer, i : Int) -> D
 }
 
 pub fn chem_desc_geometric_buffer_set(s : ChemdescgeometricBuffer, i : Int, v : Double) -> ChemdescgeometricBuffer {
-  let result = chem_desc_geometric_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_geometric_buffer_sum(s : ChemdescgeometricBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn chem_desc_geometric_cursor_get(s : ChemdescgeometricCursor, i : Int) -> D
 }
 
 pub fn chem_desc_geometric_cursor_set(s : ChemdescgeometricCursor, i : Int, v : Double) -> ChemdescgeometricCursor {
-  let result = chem_desc_geometric_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_geometric_cursor_sum(s : ChemdescgeometricCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn chem_desc_geometric_view_get(s : ChemdescgeometricView, i : Int) -> Doubl
 }
 
 pub fn chem_desc_geometric_view_set(s : ChemdescgeometricView, i : Int, v : Double) -> ChemdescgeometricView {
-  let result = chem_desc_geometric_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_geometric_view_sum(s : ChemdescgeometricView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn chem_desc_geometric_range_get(s : ChemdescgeometricRange, i : Int) -> Dou
 }
 
 pub fn chem_desc_geometric_range_set(s : ChemdescgeometricRange, i : Int, v : Double) -> ChemdescgeometricRange {
-  let result = chem_desc_geometric_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_geometric_range_sum(s : ChemdescgeometricRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn chem_desc_geometric_slice_get(s : ChemdescgeometricSlice, i : Int) -> Dou
 }
 
 pub fn chem_desc_geometric_slice_set(s : ChemdescgeometricSlice, i : Int, v : Double) -> ChemdescgeometricSlice {
-  let result = chem_desc_geometric_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_geometric_slice_sum(s : ChemdescgeometricSlice) -> Double { @_common.sum(s.data) }

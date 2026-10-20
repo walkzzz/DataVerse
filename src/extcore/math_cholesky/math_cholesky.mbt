@@ -107,23 +107,15 @@ pub fn math_cholesky_series_std(s : MathcholeskySeries) -> Double { @_common.std
 pub fn math_cholesky_series_median(s : MathcholeskySeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_cholesky_series_scale(s : MathcholeskySeries, f : Double) -> MathcholeskySeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_cholesky_series_add(a : MathcholeskySeries, b : MathcholeskySeries) -> MathcholeskySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_cholesky_series_sub(a : MathcholeskySeries, b : MathcholeskySeries) -> MathcholeskySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_cholesky_series_normalize(s : MathcholeskySeries) -> MathcholeskySeries {
@@ -254,22 +246,16 @@ pub fn math_cholesky_vector_zero(dim : Int) -> MathcholeskyVector {
 
 pub fn math_cholesky_vector_add(a : MathcholeskyVector, b : MathcholeskyVector) -> MathcholeskyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_cholesky_vector_sub(a : MathcholeskyVector, b : MathcholeskyVector) -> MathcholeskyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_cholesky_vector_scale(v : MathcholeskyVector, s : Double) -> MathcholeskyVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_cholesky_vector_dot(a : MathcholeskyVector, b : MathcholeskyVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_cholesky_frame_get(s : MathcholeskyFrame, i : Int) -> Double {
 }
 
 pub fn math_cholesky_frame_set(s : MathcholeskyFrame, i : Int, v : Double) -> MathcholeskyFrame {
-  let result = math_cholesky_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_frame_sum(s : MathcholeskyFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_cholesky_table_get(s : MathcholeskyTable, i : Int) -> Double {
 }
 
 pub fn math_cholesky_table_set(s : MathcholeskyTable, i : Int, v : Double) -> MathcholeskyTable {
-  let result = math_cholesky_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_table_sum(s : MathcholeskyTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_cholesky_graphn_get(s : MathcholeskyGraphN, i : Int) -> Double {
 }
 
 pub fn math_cholesky_graphn_set(s : MathcholeskyGraphN, i : Int, v : Double) -> MathcholeskyGraphN {
-  let result = math_cholesky_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_graphn_sum(s : MathcholeskyGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_cholesky_node_get(s : MathcholeskyNode, i : Int) -> Double {
 }
 
 pub fn math_cholesky_node_set(s : MathcholeskyNode, i : Int, v : Double) -> MathcholeskyNode {
-  let result = math_cholesky_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_node_sum(s : MathcholeskyNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_cholesky_edge_get(s : MathcholeskyEdge, i : Int) -> Double {
 }
 
 pub fn math_cholesky_edge_set(s : MathcholeskyEdge, i : Int, v : Double) -> MathcholeskyEdge {
-  let result = math_cholesky_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_edge_sum(s : MathcholeskyEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_cholesky_path_get(s : MathcholeskyPath, i : Int) -> Double {
 }
 
 pub fn math_cholesky_path_set(s : MathcholeskyPath, i : Int, v : Double) -> MathcholeskyPath {
-  let result = math_cholesky_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_path_sum(s : MathcholeskyPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_cholesky_cluster_get(s : MathcholeskyCluster, i : Int) -> Double {
 }
 
 pub fn math_cholesky_cluster_set(s : MathcholeskyCluster, i : Int, v : Double) -> MathcholeskyCluster {
-  let result = math_cholesky_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_cluster_sum(s : MathcholeskyCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_cholesky_model_get(s : MathcholeskyModel, i : Int) -> Double {
 }
 
 pub fn math_cholesky_model_set(s : MathcholeskyModel, i : Int, v : Double) -> MathcholeskyModel {
-  let result = math_cholesky_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_model_sum(s : MathcholeskyModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_cholesky_layer_get(s : MathcholeskyLayer, i : Int) -> Double {
 }
 
 pub fn math_cholesky_layer_set(s : MathcholeskyLayer, i : Int, v : Double) -> MathcholeskyLayer {
-  let result = math_cholesky_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_layer_sum(s : MathcholeskyLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_cholesky_buffer_get(s : MathcholeskyBuffer, i : Int) -> Double {
 }
 
 pub fn math_cholesky_buffer_set(s : MathcholeskyBuffer, i : Int, v : Double) -> MathcholeskyBuffer {
-  let result = math_cholesky_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_buffer_sum(s : MathcholeskyBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_cholesky_cursor_get(s : MathcholeskyCursor, i : Int) -> Double {
 }
 
 pub fn math_cholesky_cursor_set(s : MathcholeskyCursor, i : Int, v : Double) -> MathcholeskyCursor {
-  let result = math_cholesky_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_cursor_sum(s : MathcholeskyCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_cholesky_view_get(s : MathcholeskyView, i : Int) -> Double {
 }
 
 pub fn math_cholesky_view_set(s : MathcholeskyView, i : Int, v : Double) -> MathcholeskyView {
-  let result = math_cholesky_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_view_sum(s : MathcholeskyView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_cholesky_range_get(s : MathcholeskyRange, i : Int) -> Double {
 }
 
 pub fn math_cholesky_range_set(s : MathcholeskyRange, i : Int, v : Double) -> MathcholeskyRange {
-  let result = math_cholesky_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_range_sum(s : MathcholeskyRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_cholesky_slice_get(s : MathcholeskySlice, i : Int) -> Double {
 }
 
 pub fn math_cholesky_slice_set(s : MathcholeskySlice, i : Int, v : Double) -> MathcholeskySlice {
-  let result = math_cholesky_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_cholesky_slice_sum(s : MathcholeskySlice) -> Double { @_common.sum(s.data) }

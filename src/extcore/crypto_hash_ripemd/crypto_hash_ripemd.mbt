@@ -107,23 +107,15 @@ pub fn crypto_hash_ripemd_series_std(s : CryptohashripemdSeries) -> Double { @_c
 pub fn crypto_hash_ripemd_series_median(s : CryptohashripemdSeries) -> Double { @_common.median(s.vals) }
 
 pub fn crypto_hash_ripemd_series_scale(s : CryptohashripemdSeries, f : Double) -> CryptohashripemdSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn crypto_hash_ripemd_series_add(a : CryptohashripemdSeries, b : CryptohashripemdSeries) -> CryptohashripemdSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn crypto_hash_ripemd_series_sub(a : CryptohashripemdSeries, b : CryptohashripemdSeries) -> CryptohashripemdSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn crypto_hash_ripemd_series_normalize(s : CryptohashripemdSeries) -> CryptohashripemdSeries {
@@ -254,22 +246,16 @@ pub fn crypto_hash_ripemd_vector_zero(dim : Int) -> CryptohashripemdVector {
 
 pub fn crypto_hash_ripemd_vector_add(a : CryptohashripemdVector, b : CryptohashripemdVector) -> CryptohashripemdVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_hash_ripemd_vector_sub(a : CryptohashripemdVector, b : CryptohashripemdVector) -> CryptohashripemdVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_hash_ripemd_vector_scale(v : CryptohashripemdVector, s : Double) -> CryptohashripemdVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn crypto_hash_ripemd_vector_dot(a : CryptohashripemdVector, b : CryptohashripemdVector) -> Double {
@@ -372,10 +358,9 @@ pub fn crypto_hash_ripemd_frame_get(s : CryptohashripemdFrame, i : Int) -> Doubl
 }
 
 pub fn crypto_hash_ripemd_frame_set(s : CryptohashripemdFrame, i : Int, v : Double) -> CryptohashripemdFrame {
-  let result = crypto_hash_ripemd_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_frame_sum(s : CryptohashripemdFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn crypto_hash_ripemd_table_get(s : CryptohashripemdTable, i : Int) -> Doubl
 }
 
 pub fn crypto_hash_ripemd_table_set(s : CryptohashripemdTable, i : Int, v : Double) -> CryptohashripemdTable {
-  let result = crypto_hash_ripemd_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_table_sum(s : CryptohashripemdTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn crypto_hash_ripemd_graphn_get(s : CryptohashripemdGraphN, i : Int) -> Dou
 }
 
 pub fn crypto_hash_ripemd_graphn_set(s : CryptohashripemdGraphN, i : Int, v : Double) -> CryptohashripemdGraphN {
-  let result = crypto_hash_ripemd_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_graphn_sum(s : CryptohashripemdGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn crypto_hash_ripemd_node_get(s : CryptohashripemdNode, i : Int) -> Double 
 }
 
 pub fn crypto_hash_ripemd_node_set(s : CryptohashripemdNode, i : Int, v : Double) -> CryptohashripemdNode {
-  let result = crypto_hash_ripemd_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_node_sum(s : CryptohashripemdNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn crypto_hash_ripemd_edge_get(s : CryptohashripemdEdge, i : Int) -> Double 
 }
 
 pub fn crypto_hash_ripemd_edge_set(s : CryptohashripemdEdge, i : Int, v : Double) -> CryptohashripemdEdge {
-  let result = crypto_hash_ripemd_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_edge_sum(s : CryptohashripemdEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn crypto_hash_ripemd_path_get(s : CryptohashripemdPath, i : Int) -> Double 
 }
 
 pub fn crypto_hash_ripemd_path_set(s : CryptohashripemdPath, i : Int, v : Double) -> CryptohashripemdPath {
-  let result = crypto_hash_ripemd_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_path_sum(s : CryptohashripemdPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn crypto_hash_ripemd_cluster_get(s : CryptohashripemdCluster, i : Int) -> D
 }
 
 pub fn crypto_hash_ripemd_cluster_set(s : CryptohashripemdCluster, i : Int, v : Double) -> CryptohashripemdCluster {
-  let result = crypto_hash_ripemd_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_cluster_sum(s : CryptohashripemdCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn crypto_hash_ripemd_model_get(s : CryptohashripemdModel, i : Int) -> Doubl
 }
 
 pub fn crypto_hash_ripemd_model_set(s : CryptohashripemdModel, i : Int, v : Double) -> CryptohashripemdModel {
-  let result = crypto_hash_ripemd_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_model_sum(s : CryptohashripemdModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn crypto_hash_ripemd_layer_get(s : CryptohashripemdLayer, i : Int) -> Doubl
 }
 
 pub fn crypto_hash_ripemd_layer_set(s : CryptohashripemdLayer, i : Int, v : Double) -> CryptohashripemdLayer {
-  let result = crypto_hash_ripemd_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_layer_sum(s : CryptohashripemdLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn crypto_hash_ripemd_buffer_get(s : CryptohashripemdBuffer, i : Int) -> Dou
 }
 
 pub fn crypto_hash_ripemd_buffer_set(s : CryptohashripemdBuffer, i : Int, v : Double) -> CryptohashripemdBuffer {
-  let result = crypto_hash_ripemd_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_buffer_sum(s : CryptohashripemdBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn crypto_hash_ripemd_cursor_get(s : CryptohashripemdCursor, i : Int) -> Dou
 }
 
 pub fn crypto_hash_ripemd_cursor_set(s : CryptohashripemdCursor, i : Int, v : Double) -> CryptohashripemdCursor {
-  let result = crypto_hash_ripemd_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_cursor_sum(s : CryptohashripemdCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn crypto_hash_ripemd_view_get(s : CryptohashripemdView, i : Int) -> Double 
 }
 
 pub fn crypto_hash_ripemd_view_set(s : CryptohashripemdView, i : Int, v : Double) -> CryptohashripemdView {
-  let result = crypto_hash_ripemd_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_view_sum(s : CryptohashripemdView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn crypto_hash_ripemd_range_get(s : CryptohashripemdRange, i : Int) -> Doubl
 }
 
 pub fn crypto_hash_ripemd_range_set(s : CryptohashripemdRange, i : Int, v : Double) -> CryptohashripemdRange {
-  let result = crypto_hash_ripemd_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_range_sum(s : CryptohashripemdRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn crypto_hash_ripemd_slice_get(s : CryptohashripemdSlice, i : Int) -> Doubl
 }
 
 pub fn crypto_hash_ripemd_slice_set(s : CryptohashripemdSlice, i : Int, v : Double) -> CryptohashripemdSlice {
-  let result = crypto_hash_ripemd_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_ripemd_slice_sum(s : CryptohashripemdSlice) -> Double { @_common.sum(s.data) }

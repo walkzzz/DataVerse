@@ -107,23 +107,15 @@ pub fn graph_flow_mincut_series_std(s : GraphflowmincutSeries) -> Double { @_com
 pub fn graph_flow_mincut_series_median(s : GraphflowmincutSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_flow_mincut_series_scale(s : GraphflowmincutSeries, f : Double) -> GraphflowmincutSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_flow_mincut_series_add(a : GraphflowmincutSeries, b : GraphflowmincutSeries) -> GraphflowmincutSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_flow_mincut_series_sub(a : GraphflowmincutSeries, b : GraphflowmincutSeries) -> GraphflowmincutSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_flow_mincut_series_normalize(s : GraphflowmincutSeries) -> GraphflowmincutSeries {
@@ -254,22 +246,16 @@ pub fn graph_flow_mincut_vector_zero(dim : Int) -> GraphflowmincutVector {
 
 pub fn graph_flow_mincut_vector_add(a : GraphflowmincutVector, b : GraphflowmincutVector) -> GraphflowmincutVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_flow_mincut_vector_sub(a : GraphflowmincutVector, b : GraphflowmincutVector) -> GraphflowmincutVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_flow_mincut_vector_scale(v : GraphflowmincutVector, s : Double) -> GraphflowmincutVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_flow_mincut_vector_dot(a : GraphflowmincutVector, b : GraphflowmincutVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_flow_mincut_frame_get(s : GraphflowmincutFrame, i : Int) -> Double 
 }
 
 pub fn graph_flow_mincut_frame_set(s : GraphflowmincutFrame, i : Int, v : Double) -> GraphflowmincutFrame {
-  let result = graph_flow_mincut_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mincut_frame_sum(s : GraphflowmincutFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_flow_mincut_table_get(s : GraphflowmincutTable, i : Int) -> Double 
 }
 
 pub fn graph_flow_mincut_table_set(s : GraphflowmincutTable, i : Int, v : Double) -> GraphflowmincutTable {
-  let result = graph_flow_mincut_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mincut_table_sum(s : GraphflowmincutTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_flow_mincut_graphn_get(s : GraphflowmincutGraphN, i : Int) -> Doubl
 }
 
 pub fn graph_flow_mincut_graphn_set(s : GraphflowmincutGraphN, i : Int, v : Double) -> GraphflowmincutGraphN {
-  let result = graph_flow_mincut_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mincut_graphn_sum(s : GraphflowmincutGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_flow_mincut_node_get(s : GraphflowmincutNode, i : Int) -> Double {
 }
 
 pub fn graph_flow_mincut_node_set(s : GraphflowmincutNode, i : Int, v : Double) -> GraphflowmincutNode {
-  let result = graph_flow_mincut_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mincut_node_sum(s : GraphflowmincutNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_flow_mincut_edge_get(s : GraphflowmincutEdge, i : Int) -> Double {
 }
 
 pub fn graph_flow_mincut_edge_set(s : GraphflowmincutEdge, i : Int, v : Double) -> GraphflowmincutEdge {
-  let result = graph_flow_mincut_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mincut_edge_sum(s : GraphflowmincutEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_flow_mincut_path_get(s : GraphflowmincutPath, i : Int) -> Double {
 }
 
 pub fn graph_flow_mincut_path_set(s : GraphflowmincutPath, i : Int, v : Double) -> GraphflowmincutPath {
-  let result = graph_flow_mincut_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mincut_path_sum(s : GraphflowmincutPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_flow_mincut_cluster_get(s : GraphflowmincutCluster, i : Int) -> Dou
 }
 
 pub fn graph_flow_mincut_cluster_set(s : GraphflowmincutCluster, i : Int, v : Double) -> GraphflowmincutCluster {
-  let result = graph_flow_mincut_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mincut_cluster_sum(s : GraphflowmincutCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_flow_mincut_model_get(s : GraphflowmincutModel, i : Int) -> Double 
 }
 
 pub fn graph_flow_mincut_model_set(s : GraphflowmincutModel, i : Int, v : Double) -> GraphflowmincutModel {
-  let result = graph_flow_mincut_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mincut_model_sum(s : GraphflowmincutModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_flow_mincut_layer_get(s : GraphflowmincutLayer, i : Int) -> Double 
 }
 
 pub fn graph_flow_mincut_layer_set(s : GraphflowmincutLayer, i : Int, v : Double) -> GraphflowmincutLayer {
-  let result = graph_flow_mincut_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mincut_layer_sum(s : GraphflowmincutLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_flow_mincut_buffer_get(s : GraphflowmincutBuffer, i : Int) -> Doubl
 }
 
 pub fn graph_flow_mincut_buffer_set(s : GraphflowmincutBuffer, i : Int, v : Double) -> GraphflowmincutBuffer {
-  let result = graph_flow_mincut_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mincut_buffer_sum(s : GraphflowmincutBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_flow_mincut_cursor_get(s : GraphflowmincutCursor, i : Int) -> Doubl
 }
 
 pub fn graph_flow_mincut_cursor_set(s : GraphflowmincutCursor, i : Int, v : Double) -> GraphflowmincutCursor {
-  let result = graph_flow_mincut_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mincut_cursor_sum(s : GraphflowmincutCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_flow_mincut_view_get(s : GraphflowmincutView, i : Int) -> Double {
 }
 
 pub fn graph_flow_mincut_view_set(s : GraphflowmincutView, i : Int, v : Double) -> GraphflowmincutView {
-  let result = graph_flow_mincut_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mincut_view_sum(s : GraphflowmincutView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_flow_mincut_range_get(s : GraphflowmincutRange, i : Int) -> Double 
 }
 
 pub fn graph_flow_mincut_range_set(s : GraphflowmincutRange, i : Int, v : Double) -> GraphflowmincutRange {
-  let result = graph_flow_mincut_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mincut_range_sum(s : GraphflowmincutRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_flow_mincut_slice_get(s : GraphflowmincutSlice, i : Int) -> Double 
 }
 
 pub fn graph_flow_mincut_slice_set(s : GraphflowmincutSlice, i : Int, v : Double) -> GraphflowmincutSlice {
-  let result = graph_flow_mincut_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_mincut_slice_sum(s : GraphflowmincutSlice) -> Double { @_common.sum(s.data) }

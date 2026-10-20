@@ -107,23 +107,15 @@ pub fn stats_test_independence_series_std(s : StatstestindependenceSeries) -> Do
 pub fn stats_test_independence_series_median(s : StatstestindependenceSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_test_independence_series_scale(s : StatstestindependenceSeries, f : Double) -> StatstestindependenceSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_test_independence_series_add(a : StatstestindependenceSeries, b : StatstestindependenceSeries) -> StatstestindependenceSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_test_independence_series_sub(a : StatstestindependenceSeries, b : StatstestindependenceSeries) -> StatstestindependenceSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_test_independence_series_normalize(s : StatstestindependenceSeries) -> StatstestindependenceSeries {
@@ -254,22 +246,16 @@ pub fn stats_test_independence_vector_zero(dim : Int) -> StatstestindependenceVe
 
 pub fn stats_test_independence_vector_add(a : StatstestindependenceVector, b : StatstestindependenceVector) -> StatstestindependenceVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_test_independence_vector_sub(a : StatstestindependenceVector, b : StatstestindependenceVector) -> StatstestindependenceVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_test_independence_vector_scale(v : StatstestindependenceVector, s : Double) -> StatstestindependenceVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_test_independence_vector_dot(a : StatstestindependenceVector, b : StatstestindependenceVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_test_independence_frame_get(s : StatstestindependenceFrame, i : Int
 }
 
 pub fn stats_test_independence_frame_set(s : StatstestindependenceFrame, i : Int, v : Double) -> StatstestindependenceFrame {
-  let result = stats_test_independence_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_independence_frame_sum(s : StatstestindependenceFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_test_independence_table_get(s : StatstestindependenceTable, i : Int
 }
 
 pub fn stats_test_independence_table_set(s : StatstestindependenceTable, i : Int, v : Double) -> StatstestindependenceTable {
-  let result = stats_test_independence_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_independence_table_sum(s : StatstestindependenceTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_test_independence_graphn_get(s : StatstestindependenceGraphN, i : I
 }
 
 pub fn stats_test_independence_graphn_set(s : StatstestindependenceGraphN, i : Int, v : Double) -> StatstestindependenceGraphN {
-  let result = stats_test_independence_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_independence_graphn_sum(s : StatstestindependenceGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_test_independence_node_get(s : StatstestindependenceNode, i : Int) 
 }
 
 pub fn stats_test_independence_node_set(s : StatstestindependenceNode, i : Int, v : Double) -> StatstestindependenceNode {
-  let result = stats_test_independence_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_independence_node_sum(s : StatstestindependenceNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_test_independence_edge_get(s : StatstestindependenceEdge, i : Int) 
 }
 
 pub fn stats_test_independence_edge_set(s : StatstestindependenceEdge, i : Int, v : Double) -> StatstestindependenceEdge {
-  let result = stats_test_independence_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_independence_edge_sum(s : StatstestindependenceEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_test_independence_path_get(s : StatstestindependencePath, i : Int) 
 }
 
 pub fn stats_test_independence_path_set(s : StatstestindependencePath, i : Int, v : Double) -> StatstestindependencePath {
-  let result = stats_test_independence_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_independence_path_sum(s : StatstestindependencePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_test_independence_cluster_get(s : StatstestindependenceCluster, i :
 }
 
 pub fn stats_test_independence_cluster_set(s : StatstestindependenceCluster, i : Int, v : Double) -> StatstestindependenceCluster {
-  let result = stats_test_independence_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_independence_cluster_sum(s : StatstestindependenceCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_test_independence_model_get(s : StatstestindependenceModel, i : Int
 }
 
 pub fn stats_test_independence_model_set(s : StatstestindependenceModel, i : Int, v : Double) -> StatstestindependenceModel {
-  let result = stats_test_independence_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_independence_model_sum(s : StatstestindependenceModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_test_independence_layer_get(s : StatstestindependenceLayer, i : Int
 }
 
 pub fn stats_test_independence_layer_set(s : StatstestindependenceLayer, i : Int, v : Double) -> StatstestindependenceLayer {
-  let result = stats_test_independence_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_independence_layer_sum(s : StatstestindependenceLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_test_independence_buffer_get(s : StatstestindependenceBuffer, i : I
 }
 
 pub fn stats_test_independence_buffer_set(s : StatstestindependenceBuffer, i : Int, v : Double) -> StatstestindependenceBuffer {
-  let result = stats_test_independence_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_independence_buffer_sum(s : StatstestindependenceBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_test_independence_cursor_get(s : StatstestindependenceCursor, i : I
 }
 
 pub fn stats_test_independence_cursor_set(s : StatstestindependenceCursor, i : Int, v : Double) -> StatstestindependenceCursor {
-  let result = stats_test_independence_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_independence_cursor_sum(s : StatstestindependenceCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_test_independence_view_get(s : StatstestindependenceView, i : Int) 
 }
 
 pub fn stats_test_independence_view_set(s : StatstestindependenceView, i : Int, v : Double) -> StatstestindependenceView {
-  let result = stats_test_independence_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_independence_view_sum(s : StatstestindependenceView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_test_independence_range_get(s : StatstestindependenceRange, i : Int
 }
 
 pub fn stats_test_independence_range_set(s : StatstestindependenceRange, i : Int, v : Double) -> StatstestindependenceRange {
-  let result = stats_test_independence_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_independence_range_sum(s : StatstestindependenceRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_test_independence_slice_get(s : StatstestindependenceSlice, i : Int
 }
 
 pub fn stats_test_independence_slice_set(s : StatstestindependenceSlice, i : Int, v : Double) -> StatstestindependenceSlice {
-  let result = stats_test_independence_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_independence_slice_sum(s : StatstestindependenceSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn db_store_tensor_series_std(s : DbstoretensorSeries) -> Double { @_common.
 pub fn db_store_tensor_series_median(s : DbstoretensorSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_store_tensor_series_scale(s : DbstoretensorSeries, f : Double) -> DbstoretensorSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_store_tensor_series_add(a : DbstoretensorSeries, b : DbstoretensorSeries) -> DbstoretensorSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_store_tensor_series_sub(a : DbstoretensorSeries, b : DbstoretensorSeries) -> DbstoretensorSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_store_tensor_series_normalize(s : DbstoretensorSeries) -> DbstoretensorSeries {
@@ -254,22 +246,16 @@ pub fn db_store_tensor_vector_zero(dim : Int) -> DbstoretensorVector {
 
 pub fn db_store_tensor_vector_add(a : DbstoretensorVector, b : DbstoretensorVector) -> DbstoretensorVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_store_tensor_vector_sub(a : DbstoretensorVector, b : DbstoretensorVector) -> DbstoretensorVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_store_tensor_vector_scale(v : DbstoretensorVector, s : Double) -> DbstoretensorVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_store_tensor_vector_dot(a : DbstoretensorVector, b : DbstoretensorVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_store_tensor_frame_get(s : DbstoretensorFrame, i : Int) -> Double {
 }
 
 pub fn db_store_tensor_frame_set(s : DbstoretensorFrame, i : Int, v : Double) -> DbstoretensorFrame {
-  let result = db_store_tensor_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_tensor_frame_sum(s : DbstoretensorFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_store_tensor_table_get(s : DbstoretensorTable, i : Int) -> Double {
 }
 
 pub fn db_store_tensor_table_set(s : DbstoretensorTable, i : Int, v : Double) -> DbstoretensorTable {
-  let result = db_store_tensor_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_tensor_table_sum(s : DbstoretensorTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_store_tensor_graphn_get(s : DbstoretensorGraphN, i : Int) -> Double {
 }
 
 pub fn db_store_tensor_graphn_set(s : DbstoretensorGraphN, i : Int, v : Double) -> DbstoretensorGraphN {
-  let result = db_store_tensor_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_tensor_graphn_sum(s : DbstoretensorGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_store_tensor_node_get(s : DbstoretensorNode, i : Int) -> Double {
 }
 
 pub fn db_store_tensor_node_set(s : DbstoretensorNode, i : Int, v : Double) -> DbstoretensorNode {
-  let result = db_store_tensor_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_tensor_node_sum(s : DbstoretensorNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_store_tensor_edge_get(s : DbstoretensorEdge, i : Int) -> Double {
 }
 
 pub fn db_store_tensor_edge_set(s : DbstoretensorEdge, i : Int, v : Double) -> DbstoretensorEdge {
-  let result = db_store_tensor_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_tensor_edge_sum(s : DbstoretensorEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_store_tensor_path_get(s : DbstoretensorPath, i : Int) -> Double {
 }
 
 pub fn db_store_tensor_path_set(s : DbstoretensorPath, i : Int, v : Double) -> DbstoretensorPath {
-  let result = db_store_tensor_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_tensor_path_sum(s : DbstoretensorPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_store_tensor_cluster_get(s : DbstoretensorCluster, i : Int) -> Double 
 }
 
 pub fn db_store_tensor_cluster_set(s : DbstoretensorCluster, i : Int, v : Double) -> DbstoretensorCluster {
-  let result = db_store_tensor_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_tensor_cluster_sum(s : DbstoretensorCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_store_tensor_model_get(s : DbstoretensorModel, i : Int) -> Double {
 }
 
 pub fn db_store_tensor_model_set(s : DbstoretensorModel, i : Int, v : Double) -> DbstoretensorModel {
-  let result = db_store_tensor_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_tensor_model_sum(s : DbstoretensorModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_store_tensor_layer_get(s : DbstoretensorLayer, i : Int) -> Double {
 }
 
 pub fn db_store_tensor_layer_set(s : DbstoretensorLayer, i : Int, v : Double) -> DbstoretensorLayer {
-  let result = db_store_tensor_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_tensor_layer_sum(s : DbstoretensorLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_store_tensor_buffer_get(s : DbstoretensorBuffer, i : Int) -> Double {
 }
 
 pub fn db_store_tensor_buffer_set(s : DbstoretensorBuffer, i : Int, v : Double) -> DbstoretensorBuffer {
-  let result = db_store_tensor_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_tensor_buffer_sum(s : DbstoretensorBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_store_tensor_cursor_get(s : DbstoretensorCursor, i : Int) -> Double {
 }
 
 pub fn db_store_tensor_cursor_set(s : DbstoretensorCursor, i : Int, v : Double) -> DbstoretensorCursor {
-  let result = db_store_tensor_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_tensor_cursor_sum(s : DbstoretensorCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_store_tensor_view_get(s : DbstoretensorView, i : Int) -> Double {
 }
 
 pub fn db_store_tensor_view_set(s : DbstoretensorView, i : Int, v : Double) -> DbstoretensorView {
-  let result = db_store_tensor_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_tensor_view_sum(s : DbstoretensorView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_store_tensor_range_get(s : DbstoretensorRange, i : Int) -> Double {
 }
 
 pub fn db_store_tensor_range_set(s : DbstoretensorRange, i : Int, v : Double) -> DbstoretensorRange {
-  let result = db_store_tensor_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_tensor_range_sum(s : DbstoretensorRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_store_tensor_slice_get(s : DbstoretensorSlice, i : Int) -> Double {
 }
 
 pub fn db_store_tensor_slice_set(s : DbstoretensorSlice, i : Int, v : Double) -> DbstoretensorSlice {
-  let result = db_store_tensor_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_tensor_slice_sum(s : DbstoretensorSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn db_query_window_series_std(s : DbquerywindowSeries) -> Double { @_common.
 pub fn db_query_window_series_median(s : DbquerywindowSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_query_window_series_scale(s : DbquerywindowSeries, f : Double) -> DbquerywindowSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_query_window_series_add(a : DbquerywindowSeries, b : DbquerywindowSeries) -> DbquerywindowSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_query_window_series_sub(a : DbquerywindowSeries, b : DbquerywindowSeries) -> DbquerywindowSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_query_window_series_normalize(s : DbquerywindowSeries) -> DbquerywindowSeries {
@@ -254,22 +246,16 @@ pub fn db_query_window_vector_zero(dim : Int) -> DbquerywindowVector {
 
 pub fn db_query_window_vector_add(a : DbquerywindowVector, b : DbquerywindowVector) -> DbquerywindowVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_query_window_vector_sub(a : DbquerywindowVector, b : DbquerywindowVector) -> DbquerywindowVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_query_window_vector_scale(v : DbquerywindowVector, s : Double) -> DbquerywindowVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_query_window_vector_dot(a : DbquerywindowVector, b : DbquerywindowVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_query_window_frame_get(s : DbquerywindowFrame, i : Int) -> Double {
 }
 
 pub fn db_query_window_frame_set(s : DbquerywindowFrame, i : Int, v : Double) -> DbquerywindowFrame {
-  let result = db_query_window_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_window_frame_sum(s : DbquerywindowFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_query_window_table_get(s : DbquerywindowTable, i : Int) -> Double {
 }
 
 pub fn db_query_window_table_set(s : DbquerywindowTable, i : Int, v : Double) -> DbquerywindowTable {
-  let result = db_query_window_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_window_table_sum(s : DbquerywindowTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_query_window_graphn_get(s : DbquerywindowGraphN, i : Int) -> Double {
 }
 
 pub fn db_query_window_graphn_set(s : DbquerywindowGraphN, i : Int, v : Double) -> DbquerywindowGraphN {
-  let result = db_query_window_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_window_graphn_sum(s : DbquerywindowGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_query_window_node_get(s : DbquerywindowNode, i : Int) -> Double {
 }
 
 pub fn db_query_window_node_set(s : DbquerywindowNode, i : Int, v : Double) -> DbquerywindowNode {
-  let result = db_query_window_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_window_node_sum(s : DbquerywindowNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_query_window_edge_get(s : DbquerywindowEdge, i : Int) -> Double {
 }
 
 pub fn db_query_window_edge_set(s : DbquerywindowEdge, i : Int, v : Double) -> DbquerywindowEdge {
-  let result = db_query_window_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_window_edge_sum(s : DbquerywindowEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_query_window_path_get(s : DbquerywindowPath, i : Int) -> Double {
 }
 
 pub fn db_query_window_path_set(s : DbquerywindowPath, i : Int, v : Double) -> DbquerywindowPath {
-  let result = db_query_window_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_window_path_sum(s : DbquerywindowPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_query_window_cluster_get(s : DbquerywindowCluster, i : Int) -> Double 
 }
 
 pub fn db_query_window_cluster_set(s : DbquerywindowCluster, i : Int, v : Double) -> DbquerywindowCluster {
-  let result = db_query_window_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_window_cluster_sum(s : DbquerywindowCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_query_window_model_get(s : DbquerywindowModel, i : Int) -> Double {
 }
 
 pub fn db_query_window_model_set(s : DbquerywindowModel, i : Int, v : Double) -> DbquerywindowModel {
-  let result = db_query_window_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_window_model_sum(s : DbquerywindowModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_query_window_layer_get(s : DbquerywindowLayer, i : Int) -> Double {
 }
 
 pub fn db_query_window_layer_set(s : DbquerywindowLayer, i : Int, v : Double) -> DbquerywindowLayer {
-  let result = db_query_window_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_window_layer_sum(s : DbquerywindowLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_query_window_buffer_get(s : DbquerywindowBuffer, i : Int) -> Double {
 }
 
 pub fn db_query_window_buffer_set(s : DbquerywindowBuffer, i : Int, v : Double) -> DbquerywindowBuffer {
-  let result = db_query_window_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_window_buffer_sum(s : DbquerywindowBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_query_window_cursor_get(s : DbquerywindowCursor, i : Int) -> Double {
 }
 
 pub fn db_query_window_cursor_set(s : DbquerywindowCursor, i : Int, v : Double) -> DbquerywindowCursor {
-  let result = db_query_window_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_window_cursor_sum(s : DbquerywindowCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_query_window_view_get(s : DbquerywindowView, i : Int) -> Double {
 }
 
 pub fn db_query_window_view_set(s : DbquerywindowView, i : Int, v : Double) -> DbquerywindowView {
-  let result = db_query_window_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_window_view_sum(s : DbquerywindowView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_query_window_range_get(s : DbquerywindowRange, i : Int) -> Double {
 }
 
 pub fn db_query_window_range_set(s : DbquerywindowRange, i : Int, v : Double) -> DbquerywindowRange {
-  let result = db_query_window_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_window_range_sum(s : DbquerywindowRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_query_window_slice_get(s : DbquerywindowSlice, i : Int) -> Double {
 }
 
 pub fn db_query_window_slice_set(s : DbquerywindowSlice, i : Int, v : Double) -> DbquerywindowSlice {
-  let result = db_query_window_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_window_slice_sum(s : DbquerywindowSlice) -> Double { @_common.sum(s.data) }

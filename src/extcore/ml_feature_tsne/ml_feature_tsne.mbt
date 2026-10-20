@@ -107,23 +107,15 @@ pub fn ml_feature_tsne_series_std(s : MlfeaturetsneSeries) -> Double { @_common.
 pub fn ml_feature_tsne_series_median(s : MlfeaturetsneSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_feature_tsne_series_scale(s : MlfeaturetsneSeries, f : Double) -> MlfeaturetsneSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_feature_tsne_series_add(a : MlfeaturetsneSeries, b : MlfeaturetsneSeries) -> MlfeaturetsneSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_feature_tsne_series_sub(a : MlfeaturetsneSeries, b : MlfeaturetsneSeries) -> MlfeaturetsneSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_feature_tsne_series_normalize(s : MlfeaturetsneSeries) -> MlfeaturetsneSeries {
@@ -254,22 +246,16 @@ pub fn ml_feature_tsne_vector_zero(dim : Int) -> MlfeaturetsneVector {
 
 pub fn ml_feature_tsne_vector_add(a : MlfeaturetsneVector, b : MlfeaturetsneVector) -> MlfeaturetsneVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_feature_tsne_vector_sub(a : MlfeaturetsneVector, b : MlfeaturetsneVector) -> MlfeaturetsneVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_feature_tsne_vector_scale(v : MlfeaturetsneVector, s : Double) -> MlfeaturetsneVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_feature_tsne_vector_dot(a : MlfeaturetsneVector, b : MlfeaturetsneVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_feature_tsne_frame_get(s : MlfeaturetsneFrame, i : Int) -> Double {
 }
 
 pub fn ml_feature_tsne_frame_set(s : MlfeaturetsneFrame, i : Int, v : Double) -> MlfeaturetsneFrame {
-  let result = ml_feature_tsne_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_tsne_frame_sum(s : MlfeaturetsneFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_feature_tsne_table_get(s : MlfeaturetsneTable, i : Int) -> Double {
 }
 
 pub fn ml_feature_tsne_table_set(s : MlfeaturetsneTable, i : Int, v : Double) -> MlfeaturetsneTable {
-  let result = ml_feature_tsne_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_tsne_table_sum(s : MlfeaturetsneTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_feature_tsne_graphn_get(s : MlfeaturetsneGraphN, i : Int) -> Double {
 }
 
 pub fn ml_feature_tsne_graphn_set(s : MlfeaturetsneGraphN, i : Int, v : Double) -> MlfeaturetsneGraphN {
-  let result = ml_feature_tsne_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_tsne_graphn_sum(s : MlfeaturetsneGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_feature_tsne_node_get(s : MlfeaturetsneNode, i : Int) -> Double {
 }
 
 pub fn ml_feature_tsne_node_set(s : MlfeaturetsneNode, i : Int, v : Double) -> MlfeaturetsneNode {
-  let result = ml_feature_tsne_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_tsne_node_sum(s : MlfeaturetsneNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_feature_tsne_edge_get(s : MlfeaturetsneEdge, i : Int) -> Double {
 }
 
 pub fn ml_feature_tsne_edge_set(s : MlfeaturetsneEdge, i : Int, v : Double) -> MlfeaturetsneEdge {
-  let result = ml_feature_tsne_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_tsne_edge_sum(s : MlfeaturetsneEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_feature_tsne_path_get(s : MlfeaturetsnePath, i : Int) -> Double {
 }
 
 pub fn ml_feature_tsne_path_set(s : MlfeaturetsnePath, i : Int, v : Double) -> MlfeaturetsnePath {
-  let result = ml_feature_tsne_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_tsne_path_sum(s : MlfeaturetsnePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_feature_tsne_cluster_get(s : MlfeaturetsneCluster, i : Int) -> Double 
 }
 
 pub fn ml_feature_tsne_cluster_set(s : MlfeaturetsneCluster, i : Int, v : Double) -> MlfeaturetsneCluster {
-  let result = ml_feature_tsne_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_tsne_cluster_sum(s : MlfeaturetsneCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_feature_tsne_model_get(s : MlfeaturetsneModel, i : Int) -> Double {
 }
 
 pub fn ml_feature_tsne_model_set(s : MlfeaturetsneModel, i : Int, v : Double) -> MlfeaturetsneModel {
-  let result = ml_feature_tsne_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_tsne_model_sum(s : MlfeaturetsneModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_feature_tsne_layer_get(s : MlfeaturetsneLayer, i : Int) -> Double {
 }
 
 pub fn ml_feature_tsne_layer_set(s : MlfeaturetsneLayer, i : Int, v : Double) -> MlfeaturetsneLayer {
-  let result = ml_feature_tsne_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_tsne_layer_sum(s : MlfeaturetsneLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_feature_tsne_buffer_get(s : MlfeaturetsneBuffer, i : Int) -> Double {
 }
 
 pub fn ml_feature_tsne_buffer_set(s : MlfeaturetsneBuffer, i : Int, v : Double) -> MlfeaturetsneBuffer {
-  let result = ml_feature_tsne_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_tsne_buffer_sum(s : MlfeaturetsneBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_feature_tsne_cursor_get(s : MlfeaturetsneCursor, i : Int) -> Double {
 }
 
 pub fn ml_feature_tsne_cursor_set(s : MlfeaturetsneCursor, i : Int, v : Double) -> MlfeaturetsneCursor {
-  let result = ml_feature_tsne_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_tsne_cursor_sum(s : MlfeaturetsneCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_feature_tsne_view_get(s : MlfeaturetsneView, i : Int) -> Double {
 }
 
 pub fn ml_feature_tsne_view_set(s : MlfeaturetsneView, i : Int, v : Double) -> MlfeaturetsneView {
-  let result = ml_feature_tsne_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_tsne_view_sum(s : MlfeaturetsneView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_feature_tsne_range_get(s : MlfeaturetsneRange, i : Int) -> Double {
 }
 
 pub fn ml_feature_tsne_range_set(s : MlfeaturetsneRange, i : Int, v : Double) -> MlfeaturetsneRange {
-  let result = ml_feature_tsne_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_tsne_range_sum(s : MlfeaturetsneRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_feature_tsne_slice_get(s : MlfeaturetsneSlice, i : Int) -> Double {
 }
 
 pub fn ml_feature_tsne_slice_set(s : MlfeaturetsneSlice, i : Int, v : Double) -> MlfeaturetsneSlice {
-  let result = ml_feature_tsne_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_tsne_slice_sum(s : MlfeaturetsneSlice) -> Double { @_common.sum(s.data) }

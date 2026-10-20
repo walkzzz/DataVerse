@@ -107,23 +107,15 @@ pub fn opt_grad_sgd_series_std(s : OptgradsgdSeries) -> Double { @_common.std(s.
 pub fn opt_grad_sgd_series_median(s : OptgradsgdSeries) -> Double { @_common.median(s.vals) }
 
 pub fn opt_grad_sgd_series_scale(s : OptgradsgdSeries, f : Double) -> OptgradsgdSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn opt_grad_sgd_series_add(a : OptgradsgdSeries, b : OptgradsgdSeries) -> OptgradsgdSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn opt_grad_sgd_series_sub(a : OptgradsgdSeries, b : OptgradsgdSeries) -> OptgradsgdSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn opt_grad_sgd_series_normalize(s : OptgradsgdSeries) -> OptgradsgdSeries {
@@ -254,22 +246,16 @@ pub fn opt_grad_sgd_vector_zero(dim : Int) -> OptgradsgdVector {
 
 pub fn opt_grad_sgd_vector_add(a : OptgradsgdVector, b : OptgradsgdVector) -> OptgradsgdVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_grad_sgd_vector_sub(a : OptgradsgdVector, b : OptgradsgdVector) -> OptgradsgdVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_grad_sgd_vector_scale(v : OptgradsgdVector, s : Double) -> OptgradsgdVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn opt_grad_sgd_vector_dot(a : OptgradsgdVector, b : OptgradsgdVector) -> Double {
@@ -372,10 +358,9 @@ pub fn opt_grad_sgd_frame_get(s : OptgradsgdFrame, i : Int) -> Double {
 }
 
 pub fn opt_grad_sgd_frame_set(s : OptgradsgdFrame, i : Int, v : Double) -> OptgradsgdFrame {
-  let result = opt_grad_sgd_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_sgd_frame_sum(s : OptgradsgdFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn opt_grad_sgd_table_get(s : OptgradsgdTable, i : Int) -> Double {
 }
 
 pub fn opt_grad_sgd_table_set(s : OptgradsgdTable, i : Int, v : Double) -> OptgradsgdTable {
-  let result = opt_grad_sgd_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_sgd_table_sum(s : OptgradsgdTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn opt_grad_sgd_graphn_get(s : OptgradsgdGraphN, i : Int) -> Double {
 }
 
 pub fn opt_grad_sgd_graphn_set(s : OptgradsgdGraphN, i : Int, v : Double) -> OptgradsgdGraphN {
-  let result = opt_grad_sgd_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_sgd_graphn_sum(s : OptgradsgdGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn opt_grad_sgd_node_get(s : OptgradsgdNode, i : Int) -> Double {
 }
 
 pub fn opt_grad_sgd_node_set(s : OptgradsgdNode, i : Int, v : Double) -> OptgradsgdNode {
-  let result = opt_grad_sgd_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_sgd_node_sum(s : OptgradsgdNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn opt_grad_sgd_edge_get(s : OptgradsgdEdge, i : Int) -> Double {
 }
 
 pub fn opt_grad_sgd_edge_set(s : OptgradsgdEdge, i : Int, v : Double) -> OptgradsgdEdge {
-  let result = opt_grad_sgd_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_sgd_edge_sum(s : OptgradsgdEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn opt_grad_sgd_path_get(s : OptgradsgdPath, i : Int) -> Double {
 }
 
 pub fn opt_grad_sgd_path_set(s : OptgradsgdPath, i : Int, v : Double) -> OptgradsgdPath {
-  let result = opt_grad_sgd_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_sgd_path_sum(s : OptgradsgdPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn opt_grad_sgd_cluster_get(s : OptgradsgdCluster, i : Int) -> Double {
 }
 
 pub fn opt_grad_sgd_cluster_set(s : OptgradsgdCluster, i : Int, v : Double) -> OptgradsgdCluster {
-  let result = opt_grad_sgd_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_sgd_cluster_sum(s : OptgradsgdCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn opt_grad_sgd_model_get(s : OptgradsgdModel, i : Int) -> Double {
 }
 
 pub fn opt_grad_sgd_model_set(s : OptgradsgdModel, i : Int, v : Double) -> OptgradsgdModel {
-  let result = opt_grad_sgd_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_sgd_model_sum(s : OptgradsgdModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn opt_grad_sgd_layer_get(s : OptgradsgdLayer, i : Int) -> Double {
 }
 
 pub fn opt_grad_sgd_layer_set(s : OptgradsgdLayer, i : Int, v : Double) -> OptgradsgdLayer {
-  let result = opt_grad_sgd_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_sgd_layer_sum(s : OptgradsgdLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn opt_grad_sgd_buffer_get(s : OptgradsgdBuffer, i : Int) -> Double {
 }
 
 pub fn opt_grad_sgd_buffer_set(s : OptgradsgdBuffer, i : Int, v : Double) -> OptgradsgdBuffer {
-  let result = opt_grad_sgd_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_sgd_buffer_sum(s : OptgradsgdBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn opt_grad_sgd_cursor_get(s : OptgradsgdCursor, i : Int) -> Double {
 }
 
 pub fn opt_grad_sgd_cursor_set(s : OptgradsgdCursor, i : Int, v : Double) -> OptgradsgdCursor {
-  let result = opt_grad_sgd_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_sgd_cursor_sum(s : OptgradsgdCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn opt_grad_sgd_view_get(s : OptgradsgdView, i : Int) -> Double {
 }
 
 pub fn opt_grad_sgd_view_set(s : OptgradsgdView, i : Int, v : Double) -> OptgradsgdView {
-  let result = opt_grad_sgd_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_sgd_view_sum(s : OptgradsgdView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn opt_grad_sgd_range_get(s : OptgradsgdRange, i : Int) -> Double {
 }
 
 pub fn opt_grad_sgd_range_set(s : OptgradsgdRange, i : Int, v : Double) -> OptgradsgdRange {
-  let result = opt_grad_sgd_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_sgd_range_sum(s : OptgradsgdRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn opt_grad_sgd_slice_get(s : OptgradsgdSlice, i : Int) -> Double {
 }
 
 pub fn opt_grad_sgd_slice_set(s : OptgradsgdSlice, i : Int, v : Double) -> OptgradsgdSlice {
-  let result = opt_grad_sgd_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_sgd_slice_sum(s : OptgradsgdSlice) -> Double { @_common.sum(s.data) }

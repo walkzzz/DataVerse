@@ -107,23 +107,15 @@ pub fn physics_mechanics_kinematic_series_std(s : PhysicsmechanicskinematicSerie
 pub fn physics_mechanics_kinematic_series_median(s : PhysicsmechanicskinematicSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_mechanics_kinematic_series_scale(s : PhysicsmechanicskinematicSeries, f : Double) -> PhysicsmechanicskinematicSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_mechanics_kinematic_series_add(a : PhysicsmechanicskinematicSeries, b : PhysicsmechanicskinematicSeries) -> PhysicsmechanicskinematicSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_mechanics_kinematic_series_sub(a : PhysicsmechanicskinematicSeries, b : PhysicsmechanicskinematicSeries) -> PhysicsmechanicskinematicSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_mechanics_kinematic_series_normalize(s : PhysicsmechanicskinematicSeries) -> PhysicsmechanicskinematicSeries {
@@ -254,22 +246,16 @@ pub fn physics_mechanics_kinematic_vector_zero(dim : Int) -> Physicsmechanicskin
 
 pub fn physics_mechanics_kinematic_vector_add(a : PhysicsmechanicskinematicVector, b : PhysicsmechanicskinematicVector) -> PhysicsmechanicskinematicVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_mechanics_kinematic_vector_sub(a : PhysicsmechanicskinematicVector, b : PhysicsmechanicskinematicVector) -> PhysicsmechanicskinematicVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_mechanics_kinematic_vector_scale(v : PhysicsmechanicskinematicVector, s : Double) -> PhysicsmechanicskinematicVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_mechanics_kinematic_vector_dot(a : PhysicsmechanicskinematicVector, b : PhysicsmechanicskinematicVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_mechanics_kinematic_frame_get(s : PhysicsmechanicskinematicFrame,
 }
 
 pub fn physics_mechanics_kinematic_frame_set(s : PhysicsmechanicskinematicFrame, i : Int, v : Double) -> PhysicsmechanicskinematicFrame {
-  let result = physics_mechanics_kinematic_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_kinematic_frame_sum(s : PhysicsmechanicskinematicFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_mechanics_kinematic_table_get(s : PhysicsmechanicskinematicTable,
 }
 
 pub fn physics_mechanics_kinematic_table_set(s : PhysicsmechanicskinematicTable, i : Int, v : Double) -> PhysicsmechanicskinematicTable {
-  let result = physics_mechanics_kinematic_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_kinematic_table_sum(s : PhysicsmechanicskinematicTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_mechanics_kinematic_graphn_get(s : PhysicsmechanicskinematicGraph
 }
 
 pub fn physics_mechanics_kinematic_graphn_set(s : PhysicsmechanicskinematicGraphN, i : Int, v : Double) -> PhysicsmechanicskinematicGraphN {
-  let result = physics_mechanics_kinematic_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_kinematic_graphn_sum(s : PhysicsmechanicskinematicGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_mechanics_kinematic_node_get(s : PhysicsmechanicskinematicNode, i
 }
 
 pub fn physics_mechanics_kinematic_node_set(s : PhysicsmechanicskinematicNode, i : Int, v : Double) -> PhysicsmechanicskinematicNode {
-  let result = physics_mechanics_kinematic_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_kinematic_node_sum(s : PhysicsmechanicskinematicNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_mechanics_kinematic_edge_get(s : PhysicsmechanicskinematicEdge, i
 }
 
 pub fn physics_mechanics_kinematic_edge_set(s : PhysicsmechanicskinematicEdge, i : Int, v : Double) -> PhysicsmechanicskinematicEdge {
-  let result = physics_mechanics_kinematic_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_kinematic_edge_sum(s : PhysicsmechanicskinematicEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_mechanics_kinematic_path_get(s : PhysicsmechanicskinematicPath, i
 }
 
 pub fn physics_mechanics_kinematic_path_set(s : PhysicsmechanicskinematicPath, i : Int, v : Double) -> PhysicsmechanicskinematicPath {
-  let result = physics_mechanics_kinematic_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_kinematic_path_sum(s : PhysicsmechanicskinematicPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_mechanics_kinematic_cluster_get(s : PhysicsmechanicskinematicClus
 }
 
 pub fn physics_mechanics_kinematic_cluster_set(s : PhysicsmechanicskinematicCluster, i : Int, v : Double) -> PhysicsmechanicskinematicCluster {
-  let result = physics_mechanics_kinematic_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_kinematic_cluster_sum(s : PhysicsmechanicskinematicCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_mechanics_kinematic_model_get(s : PhysicsmechanicskinematicModel,
 }
 
 pub fn physics_mechanics_kinematic_model_set(s : PhysicsmechanicskinematicModel, i : Int, v : Double) -> PhysicsmechanicskinematicModel {
-  let result = physics_mechanics_kinematic_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_kinematic_model_sum(s : PhysicsmechanicskinematicModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_mechanics_kinematic_layer_get(s : PhysicsmechanicskinematicLayer,
 }
 
 pub fn physics_mechanics_kinematic_layer_set(s : PhysicsmechanicskinematicLayer, i : Int, v : Double) -> PhysicsmechanicskinematicLayer {
-  let result = physics_mechanics_kinematic_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_kinematic_layer_sum(s : PhysicsmechanicskinematicLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_mechanics_kinematic_buffer_get(s : PhysicsmechanicskinematicBuffe
 }
 
 pub fn physics_mechanics_kinematic_buffer_set(s : PhysicsmechanicskinematicBuffer, i : Int, v : Double) -> PhysicsmechanicskinematicBuffer {
-  let result = physics_mechanics_kinematic_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_kinematic_buffer_sum(s : PhysicsmechanicskinematicBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_mechanics_kinematic_cursor_get(s : PhysicsmechanicskinematicCurso
 }
 
 pub fn physics_mechanics_kinematic_cursor_set(s : PhysicsmechanicskinematicCursor, i : Int, v : Double) -> PhysicsmechanicskinematicCursor {
-  let result = physics_mechanics_kinematic_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_kinematic_cursor_sum(s : PhysicsmechanicskinematicCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_mechanics_kinematic_view_get(s : PhysicsmechanicskinematicView, i
 }
 
 pub fn physics_mechanics_kinematic_view_set(s : PhysicsmechanicskinematicView, i : Int, v : Double) -> PhysicsmechanicskinematicView {
-  let result = physics_mechanics_kinematic_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_kinematic_view_sum(s : PhysicsmechanicskinematicView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_mechanics_kinematic_range_get(s : PhysicsmechanicskinematicRange,
 }
 
 pub fn physics_mechanics_kinematic_range_set(s : PhysicsmechanicskinematicRange, i : Int, v : Double) -> PhysicsmechanicskinematicRange {
-  let result = physics_mechanics_kinematic_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_kinematic_range_sum(s : PhysicsmechanicskinematicRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_mechanics_kinematic_slice_get(s : PhysicsmechanicskinematicSlice,
 }
 
 pub fn physics_mechanics_kinematic_slice_set(s : PhysicsmechanicskinematicSlice, i : Int, v : Double) -> PhysicsmechanicskinematicSlice {
-  let result = physics_mechanics_kinematic_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_kinematic_slice_sum(s : PhysicsmechanicskinematicSlice) -> Double { @_common.sum(s.data) }

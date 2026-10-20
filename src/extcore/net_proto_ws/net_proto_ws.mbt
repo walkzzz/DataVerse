@@ -107,23 +107,15 @@ pub fn net_proto_ws_series_std(s : NetprotowsSeries) -> Double { @_common.std(s.
 pub fn net_proto_ws_series_median(s : NetprotowsSeries) -> Double { @_common.median(s.vals) }
 
 pub fn net_proto_ws_series_scale(s : NetprotowsSeries, f : Double) -> NetprotowsSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn net_proto_ws_series_add(a : NetprotowsSeries, b : NetprotowsSeries) -> NetprotowsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn net_proto_ws_series_sub(a : NetprotowsSeries, b : NetprotowsSeries) -> NetprotowsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn net_proto_ws_series_normalize(s : NetprotowsSeries) -> NetprotowsSeries {
@@ -254,22 +246,16 @@ pub fn net_proto_ws_vector_zero(dim : Int) -> NetprotowsVector {
 
 pub fn net_proto_ws_vector_add(a : NetprotowsVector, b : NetprotowsVector) -> NetprotowsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_proto_ws_vector_sub(a : NetprotowsVector, b : NetprotowsVector) -> NetprotowsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_proto_ws_vector_scale(v : NetprotowsVector, s : Double) -> NetprotowsVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn net_proto_ws_vector_dot(a : NetprotowsVector, b : NetprotowsVector) -> Double {
@@ -372,10 +358,9 @@ pub fn net_proto_ws_frame_get(s : NetprotowsFrame, i : Int) -> Double {
 }
 
 pub fn net_proto_ws_frame_set(s : NetprotowsFrame, i : Int, v : Double) -> NetprotowsFrame {
-  let result = net_proto_ws_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_frame_sum(s : NetprotowsFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn net_proto_ws_table_get(s : NetprotowsTable, i : Int) -> Double {
 }
 
 pub fn net_proto_ws_table_set(s : NetprotowsTable, i : Int, v : Double) -> NetprotowsTable {
-  let result = net_proto_ws_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_table_sum(s : NetprotowsTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn net_proto_ws_graphn_get(s : NetprotowsGraphN, i : Int) -> Double {
 }
 
 pub fn net_proto_ws_graphn_set(s : NetprotowsGraphN, i : Int, v : Double) -> NetprotowsGraphN {
-  let result = net_proto_ws_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_graphn_sum(s : NetprotowsGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn net_proto_ws_node_get(s : NetprotowsNode, i : Int) -> Double {
 }
 
 pub fn net_proto_ws_node_set(s : NetprotowsNode, i : Int, v : Double) -> NetprotowsNode {
-  let result = net_proto_ws_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_node_sum(s : NetprotowsNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn net_proto_ws_edge_get(s : NetprotowsEdge, i : Int) -> Double {
 }
 
 pub fn net_proto_ws_edge_set(s : NetprotowsEdge, i : Int, v : Double) -> NetprotowsEdge {
-  let result = net_proto_ws_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_edge_sum(s : NetprotowsEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn net_proto_ws_path_get(s : NetprotowsPath, i : Int) -> Double {
 }
 
 pub fn net_proto_ws_path_set(s : NetprotowsPath, i : Int, v : Double) -> NetprotowsPath {
-  let result = net_proto_ws_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_path_sum(s : NetprotowsPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn net_proto_ws_cluster_get(s : NetprotowsCluster, i : Int) -> Double {
 }
 
 pub fn net_proto_ws_cluster_set(s : NetprotowsCluster, i : Int, v : Double) -> NetprotowsCluster {
-  let result = net_proto_ws_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_cluster_sum(s : NetprotowsCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn net_proto_ws_model_get(s : NetprotowsModel, i : Int) -> Double {
 }
 
 pub fn net_proto_ws_model_set(s : NetprotowsModel, i : Int, v : Double) -> NetprotowsModel {
-  let result = net_proto_ws_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_model_sum(s : NetprotowsModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn net_proto_ws_layer_get(s : NetprotowsLayer, i : Int) -> Double {
 }
 
 pub fn net_proto_ws_layer_set(s : NetprotowsLayer, i : Int, v : Double) -> NetprotowsLayer {
-  let result = net_proto_ws_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_layer_sum(s : NetprotowsLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn net_proto_ws_buffer_get(s : NetprotowsBuffer, i : Int) -> Double {
 }
 
 pub fn net_proto_ws_buffer_set(s : NetprotowsBuffer, i : Int, v : Double) -> NetprotowsBuffer {
-  let result = net_proto_ws_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_buffer_sum(s : NetprotowsBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn net_proto_ws_cursor_get(s : NetprotowsCursor, i : Int) -> Double {
 }
 
 pub fn net_proto_ws_cursor_set(s : NetprotowsCursor, i : Int, v : Double) -> NetprotowsCursor {
-  let result = net_proto_ws_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_cursor_sum(s : NetprotowsCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn net_proto_ws_view_get(s : NetprotowsView, i : Int) -> Double {
 }
 
 pub fn net_proto_ws_view_set(s : NetprotowsView, i : Int, v : Double) -> NetprotowsView {
-  let result = net_proto_ws_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_view_sum(s : NetprotowsView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn net_proto_ws_range_get(s : NetprotowsRange, i : Int) -> Double {
 }
 
 pub fn net_proto_ws_range_set(s : NetprotowsRange, i : Int, v : Double) -> NetprotowsRange {
-  let result = net_proto_ws_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_range_sum(s : NetprotowsRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn net_proto_ws_slice_get(s : NetprotowsSlice, i : Int) -> Double {
 }
 
 pub fn net_proto_ws_slice_set(s : NetprotowsSlice, i : Int, v : Double) -> NetprotowsSlice {
-  let result = net_proto_ws_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_ws_slice_sum(s : NetprotowsSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn geo_proj_lambert_series_std(s : GeoprojlambertSeries) -> Double { @_commo
 pub fn geo_proj_lambert_series_median(s : GeoprojlambertSeries) -> Double { @_common.median(s.vals) }
 
 pub fn geo_proj_lambert_series_scale(s : GeoprojlambertSeries, f : Double) -> GeoprojlambertSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn geo_proj_lambert_series_add(a : GeoprojlambertSeries, b : GeoprojlambertSeries) -> GeoprojlambertSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn geo_proj_lambert_series_sub(a : GeoprojlambertSeries, b : GeoprojlambertSeries) -> GeoprojlambertSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn geo_proj_lambert_series_normalize(s : GeoprojlambertSeries) -> GeoprojlambertSeries {
@@ -254,22 +246,16 @@ pub fn geo_proj_lambert_vector_zero(dim : Int) -> GeoprojlambertVector {
 
 pub fn geo_proj_lambert_vector_add(a : GeoprojlambertVector, b : GeoprojlambertVector) -> GeoprojlambertVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_proj_lambert_vector_sub(a : GeoprojlambertVector, b : GeoprojlambertVector) -> GeoprojlambertVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_proj_lambert_vector_scale(v : GeoprojlambertVector, s : Double) -> GeoprojlambertVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn geo_proj_lambert_vector_dot(a : GeoprojlambertVector, b : GeoprojlambertVector) -> Double {
@@ -372,10 +358,9 @@ pub fn geo_proj_lambert_frame_get(s : GeoprojlambertFrame, i : Int) -> Double {
 }
 
 pub fn geo_proj_lambert_frame_set(s : GeoprojlambertFrame, i : Int, v : Double) -> GeoprojlambertFrame {
-  let result = geo_proj_lambert_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_frame_sum(s : GeoprojlambertFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn geo_proj_lambert_table_get(s : GeoprojlambertTable, i : Int) -> Double {
 }
 
 pub fn geo_proj_lambert_table_set(s : GeoprojlambertTable, i : Int, v : Double) -> GeoprojlambertTable {
-  let result = geo_proj_lambert_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_table_sum(s : GeoprojlambertTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn geo_proj_lambert_graphn_get(s : GeoprojlambertGraphN, i : Int) -> Double 
 }
 
 pub fn geo_proj_lambert_graphn_set(s : GeoprojlambertGraphN, i : Int, v : Double) -> GeoprojlambertGraphN {
-  let result = geo_proj_lambert_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_graphn_sum(s : GeoprojlambertGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn geo_proj_lambert_node_get(s : GeoprojlambertNode, i : Int) -> Double {
 }
 
 pub fn geo_proj_lambert_node_set(s : GeoprojlambertNode, i : Int, v : Double) -> GeoprojlambertNode {
-  let result = geo_proj_lambert_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_node_sum(s : GeoprojlambertNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn geo_proj_lambert_edge_get(s : GeoprojlambertEdge, i : Int) -> Double {
 }
 
 pub fn geo_proj_lambert_edge_set(s : GeoprojlambertEdge, i : Int, v : Double) -> GeoprojlambertEdge {
-  let result = geo_proj_lambert_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_edge_sum(s : GeoprojlambertEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn geo_proj_lambert_path_get(s : GeoprojlambertPath, i : Int) -> Double {
 }
 
 pub fn geo_proj_lambert_path_set(s : GeoprojlambertPath, i : Int, v : Double) -> GeoprojlambertPath {
-  let result = geo_proj_lambert_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_path_sum(s : GeoprojlambertPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn geo_proj_lambert_cluster_get(s : GeoprojlambertCluster, i : Int) -> Doubl
 }
 
 pub fn geo_proj_lambert_cluster_set(s : GeoprojlambertCluster, i : Int, v : Double) -> GeoprojlambertCluster {
-  let result = geo_proj_lambert_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_cluster_sum(s : GeoprojlambertCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn geo_proj_lambert_model_get(s : GeoprojlambertModel, i : Int) -> Double {
 }
 
 pub fn geo_proj_lambert_model_set(s : GeoprojlambertModel, i : Int, v : Double) -> GeoprojlambertModel {
-  let result = geo_proj_lambert_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_model_sum(s : GeoprojlambertModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn geo_proj_lambert_layer_get(s : GeoprojlambertLayer, i : Int) -> Double {
 }
 
 pub fn geo_proj_lambert_layer_set(s : GeoprojlambertLayer, i : Int, v : Double) -> GeoprojlambertLayer {
-  let result = geo_proj_lambert_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_layer_sum(s : GeoprojlambertLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn geo_proj_lambert_buffer_get(s : GeoprojlambertBuffer, i : Int) -> Double 
 }
 
 pub fn geo_proj_lambert_buffer_set(s : GeoprojlambertBuffer, i : Int, v : Double) -> GeoprojlambertBuffer {
-  let result = geo_proj_lambert_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_buffer_sum(s : GeoprojlambertBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn geo_proj_lambert_cursor_get(s : GeoprojlambertCursor, i : Int) -> Double 
 }
 
 pub fn geo_proj_lambert_cursor_set(s : GeoprojlambertCursor, i : Int, v : Double) -> GeoprojlambertCursor {
-  let result = geo_proj_lambert_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_cursor_sum(s : GeoprojlambertCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn geo_proj_lambert_view_get(s : GeoprojlambertView, i : Int) -> Double {
 }
 
 pub fn geo_proj_lambert_view_set(s : GeoprojlambertView, i : Int, v : Double) -> GeoprojlambertView {
-  let result = geo_proj_lambert_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_view_sum(s : GeoprojlambertView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn geo_proj_lambert_range_get(s : GeoprojlambertRange, i : Int) -> Double {
 }
 
 pub fn geo_proj_lambert_range_set(s : GeoprojlambertRange, i : Int, v : Double) -> GeoprojlambertRange {
-  let result = geo_proj_lambert_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_range_sum(s : GeoprojlambertRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn geo_proj_lambert_slice_get(s : GeoprojlambertSlice, i : Int) -> Double {
 }
 
 pub fn geo_proj_lambert_slice_set(s : GeoprojlambertSlice, i : Int, v : Double) -> GeoprojlambertSlice {
-  let result = geo_proj_lambert_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_lambert_slice_sum(s : GeoprojlambertSlice) -> Double { @_common.sum(s.data) }

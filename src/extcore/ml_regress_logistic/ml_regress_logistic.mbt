@@ -107,23 +107,15 @@ pub fn ml_regress_logistic_series_std(s : MlregresslogisticSeries) -> Double { @
 pub fn ml_regress_logistic_series_median(s : MlregresslogisticSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_regress_logistic_series_scale(s : MlregresslogisticSeries, f : Double) -> MlregresslogisticSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_regress_logistic_series_add(a : MlregresslogisticSeries, b : MlregresslogisticSeries) -> MlregresslogisticSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_regress_logistic_series_sub(a : MlregresslogisticSeries, b : MlregresslogisticSeries) -> MlregresslogisticSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_regress_logistic_series_normalize(s : MlregresslogisticSeries) -> MlregresslogisticSeries {
@@ -254,22 +246,16 @@ pub fn ml_regress_logistic_vector_zero(dim : Int) -> MlregresslogisticVector {
 
 pub fn ml_regress_logistic_vector_add(a : MlregresslogisticVector, b : MlregresslogisticVector) -> MlregresslogisticVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_regress_logistic_vector_sub(a : MlregresslogisticVector, b : MlregresslogisticVector) -> MlregresslogisticVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_regress_logistic_vector_scale(v : MlregresslogisticVector, s : Double) -> MlregresslogisticVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_regress_logistic_vector_dot(a : MlregresslogisticVector, b : MlregresslogisticVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_regress_logistic_frame_get(s : MlregresslogisticFrame, i : Int) -> Dou
 }
 
 pub fn ml_regress_logistic_frame_set(s : MlregresslogisticFrame, i : Int, v : Double) -> MlregresslogisticFrame {
-  let result = ml_regress_logistic_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_logistic_frame_sum(s : MlregresslogisticFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_regress_logistic_table_get(s : MlregresslogisticTable, i : Int) -> Dou
 }
 
 pub fn ml_regress_logistic_table_set(s : MlregresslogisticTable, i : Int, v : Double) -> MlregresslogisticTable {
-  let result = ml_regress_logistic_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_logistic_table_sum(s : MlregresslogisticTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_regress_logistic_graphn_get(s : MlregresslogisticGraphN, i : Int) -> D
 }
 
 pub fn ml_regress_logistic_graphn_set(s : MlregresslogisticGraphN, i : Int, v : Double) -> MlregresslogisticGraphN {
-  let result = ml_regress_logistic_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_logistic_graphn_sum(s : MlregresslogisticGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_regress_logistic_node_get(s : MlregresslogisticNode, i : Int) -> Doubl
 }
 
 pub fn ml_regress_logistic_node_set(s : MlregresslogisticNode, i : Int, v : Double) -> MlregresslogisticNode {
-  let result = ml_regress_logistic_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_logistic_node_sum(s : MlregresslogisticNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_regress_logistic_edge_get(s : MlregresslogisticEdge, i : Int) -> Doubl
 }
 
 pub fn ml_regress_logistic_edge_set(s : MlregresslogisticEdge, i : Int, v : Double) -> MlregresslogisticEdge {
-  let result = ml_regress_logistic_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_logistic_edge_sum(s : MlregresslogisticEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_regress_logistic_path_get(s : MlregresslogisticPath, i : Int) -> Doubl
 }
 
 pub fn ml_regress_logistic_path_set(s : MlregresslogisticPath, i : Int, v : Double) -> MlregresslogisticPath {
-  let result = ml_regress_logistic_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_logistic_path_sum(s : MlregresslogisticPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_regress_logistic_cluster_get(s : MlregresslogisticCluster, i : Int) ->
 }
 
 pub fn ml_regress_logistic_cluster_set(s : MlregresslogisticCluster, i : Int, v : Double) -> MlregresslogisticCluster {
-  let result = ml_regress_logistic_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_logistic_cluster_sum(s : MlregresslogisticCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_regress_logistic_model_get(s : MlregresslogisticModel, i : Int) -> Dou
 }
 
 pub fn ml_regress_logistic_model_set(s : MlregresslogisticModel, i : Int, v : Double) -> MlregresslogisticModel {
-  let result = ml_regress_logistic_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_logistic_model_sum(s : MlregresslogisticModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_regress_logistic_layer_get(s : MlregresslogisticLayer, i : Int) -> Dou
 }
 
 pub fn ml_regress_logistic_layer_set(s : MlregresslogisticLayer, i : Int, v : Double) -> MlregresslogisticLayer {
-  let result = ml_regress_logistic_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_logistic_layer_sum(s : MlregresslogisticLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_regress_logistic_buffer_get(s : MlregresslogisticBuffer, i : Int) -> D
 }
 
 pub fn ml_regress_logistic_buffer_set(s : MlregresslogisticBuffer, i : Int, v : Double) -> MlregresslogisticBuffer {
-  let result = ml_regress_logistic_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_logistic_buffer_sum(s : MlregresslogisticBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_regress_logistic_cursor_get(s : MlregresslogisticCursor, i : Int) -> D
 }
 
 pub fn ml_regress_logistic_cursor_set(s : MlregresslogisticCursor, i : Int, v : Double) -> MlregresslogisticCursor {
-  let result = ml_regress_logistic_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_logistic_cursor_sum(s : MlregresslogisticCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_regress_logistic_view_get(s : MlregresslogisticView, i : Int) -> Doubl
 }
 
 pub fn ml_regress_logistic_view_set(s : MlregresslogisticView, i : Int, v : Double) -> MlregresslogisticView {
-  let result = ml_regress_logistic_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_logistic_view_sum(s : MlregresslogisticView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_regress_logistic_range_get(s : MlregresslogisticRange, i : Int) -> Dou
 }
 
 pub fn ml_regress_logistic_range_set(s : MlregresslogisticRange, i : Int, v : Double) -> MlregresslogisticRange {
-  let result = ml_regress_logistic_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_logistic_range_sum(s : MlregresslogisticRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_regress_logistic_slice_get(s : MlregresslogisticSlice, i : Int) -> Dou
 }
 
 pub fn ml_regress_logistic_slice_set(s : MlregresslogisticSlice, i : Int, v : Double) -> MlregresslogisticSlice {
-  let result = ml_regress_logistic_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_logistic_slice_sum(s : MlregresslogisticSlice) -> Double { @_common.sum(s.data) }

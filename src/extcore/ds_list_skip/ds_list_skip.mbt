@@ -107,23 +107,15 @@ pub fn ds_list_skip_series_std(s : DslistskipSeries) -> Double { @_common.std(s.
 pub fn ds_list_skip_series_median(s : DslistskipSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_list_skip_series_scale(s : DslistskipSeries, f : Double) -> DslistskipSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_list_skip_series_add(a : DslistskipSeries, b : DslistskipSeries) -> DslistskipSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_list_skip_series_sub(a : DslistskipSeries, b : DslistskipSeries) -> DslistskipSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_list_skip_series_normalize(s : DslistskipSeries) -> DslistskipSeries {
@@ -254,22 +246,16 @@ pub fn ds_list_skip_vector_zero(dim : Int) -> DslistskipVector {
 
 pub fn ds_list_skip_vector_add(a : DslistskipVector, b : DslistskipVector) -> DslistskipVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_list_skip_vector_sub(a : DslistskipVector, b : DslistskipVector) -> DslistskipVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_list_skip_vector_scale(v : DslistskipVector, s : Double) -> DslistskipVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_list_skip_vector_dot(a : DslistskipVector, b : DslistskipVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_list_skip_frame_get(s : DslistskipFrame, i : Int) -> Double {
 }
 
 pub fn ds_list_skip_frame_set(s : DslistskipFrame, i : Int, v : Double) -> DslistskipFrame {
-  let result = ds_list_skip_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_frame_sum(s : DslistskipFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_list_skip_table_get(s : DslistskipTable, i : Int) -> Double {
 }
 
 pub fn ds_list_skip_table_set(s : DslistskipTable, i : Int, v : Double) -> DslistskipTable {
-  let result = ds_list_skip_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_table_sum(s : DslistskipTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_list_skip_graphn_get(s : DslistskipGraphN, i : Int) -> Double {
 }
 
 pub fn ds_list_skip_graphn_set(s : DslistskipGraphN, i : Int, v : Double) -> DslistskipGraphN {
-  let result = ds_list_skip_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_graphn_sum(s : DslistskipGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_list_skip_node_get(s : DslistskipNode, i : Int) -> Double {
 }
 
 pub fn ds_list_skip_node_set(s : DslistskipNode, i : Int, v : Double) -> DslistskipNode {
-  let result = ds_list_skip_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_node_sum(s : DslistskipNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_list_skip_edge_get(s : DslistskipEdge, i : Int) -> Double {
 }
 
 pub fn ds_list_skip_edge_set(s : DslistskipEdge, i : Int, v : Double) -> DslistskipEdge {
-  let result = ds_list_skip_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_edge_sum(s : DslistskipEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_list_skip_path_get(s : DslistskipPath, i : Int) -> Double {
 }
 
 pub fn ds_list_skip_path_set(s : DslistskipPath, i : Int, v : Double) -> DslistskipPath {
-  let result = ds_list_skip_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_path_sum(s : DslistskipPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_list_skip_cluster_get(s : DslistskipCluster, i : Int) -> Double {
 }
 
 pub fn ds_list_skip_cluster_set(s : DslistskipCluster, i : Int, v : Double) -> DslistskipCluster {
-  let result = ds_list_skip_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_cluster_sum(s : DslistskipCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_list_skip_model_get(s : DslistskipModel, i : Int) -> Double {
 }
 
 pub fn ds_list_skip_model_set(s : DslistskipModel, i : Int, v : Double) -> DslistskipModel {
-  let result = ds_list_skip_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_model_sum(s : DslistskipModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_list_skip_layer_get(s : DslistskipLayer, i : Int) -> Double {
 }
 
 pub fn ds_list_skip_layer_set(s : DslistskipLayer, i : Int, v : Double) -> DslistskipLayer {
-  let result = ds_list_skip_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_layer_sum(s : DslistskipLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_list_skip_buffer_get(s : DslistskipBuffer, i : Int) -> Double {
 }
 
 pub fn ds_list_skip_buffer_set(s : DslistskipBuffer, i : Int, v : Double) -> DslistskipBuffer {
-  let result = ds_list_skip_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_buffer_sum(s : DslistskipBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_list_skip_cursor_get(s : DslistskipCursor, i : Int) -> Double {
 }
 
 pub fn ds_list_skip_cursor_set(s : DslistskipCursor, i : Int, v : Double) -> DslistskipCursor {
-  let result = ds_list_skip_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_cursor_sum(s : DslistskipCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_list_skip_view_get(s : DslistskipView, i : Int) -> Double {
 }
 
 pub fn ds_list_skip_view_set(s : DslistskipView, i : Int, v : Double) -> DslistskipView {
-  let result = ds_list_skip_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_view_sum(s : DslistskipView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_list_skip_range_get(s : DslistskipRange, i : Int) -> Double {
 }
 
 pub fn ds_list_skip_range_set(s : DslistskipRange, i : Int, v : Double) -> DslistskipRange {
-  let result = ds_list_skip_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_range_sum(s : DslistskipRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_list_skip_slice_get(s : DslistskipSlice, i : Int) -> Double {
 }
 
 pub fn ds_list_skip_slice_set(s : DslistskipSlice, i : Int, v : Double) -> DslistskipSlice {
-  let result = ds_list_skip_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_skip_slice_sum(s : DslistskipSlice) -> Double { @_common.sum(s.data) }

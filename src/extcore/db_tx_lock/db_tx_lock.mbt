@@ -107,23 +107,15 @@ pub fn db_tx_lock_series_std(s : DbtxlockSeries) -> Double { @_common.std(s.vals
 pub fn db_tx_lock_series_median(s : DbtxlockSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_tx_lock_series_scale(s : DbtxlockSeries, f : Double) -> DbtxlockSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_tx_lock_series_add(a : DbtxlockSeries, b : DbtxlockSeries) -> DbtxlockSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_tx_lock_series_sub(a : DbtxlockSeries, b : DbtxlockSeries) -> DbtxlockSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_tx_lock_series_normalize(s : DbtxlockSeries) -> DbtxlockSeries {
@@ -254,22 +246,16 @@ pub fn db_tx_lock_vector_zero(dim : Int) -> DbtxlockVector {
 
 pub fn db_tx_lock_vector_add(a : DbtxlockVector, b : DbtxlockVector) -> DbtxlockVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_tx_lock_vector_sub(a : DbtxlockVector, b : DbtxlockVector) -> DbtxlockVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_tx_lock_vector_scale(v : DbtxlockVector, s : Double) -> DbtxlockVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_tx_lock_vector_dot(a : DbtxlockVector, b : DbtxlockVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_tx_lock_frame_get(s : DbtxlockFrame, i : Int) -> Double {
 }
 
 pub fn db_tx_lock_frame_set(s : DbtxlockFrame, i : Int, v : Double) -> DbtxlockFrame {
-  let result = db_tx_lock_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_lock_frame_sum(s : DbtxlockFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_tx_lock_table_get(s : DbtxlockTable, i : Int) -> Double {
 }
 
 pub fn db_tx_lock_table_set(s : DbtxlockTable, i : Int, v : Double) -> DbtxlockTable {
-  let result = db_tx_lock_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_lock_table_sum(s : DbtxlockTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_tx_lock_graphn_get(s : DbtxlockGraphN, i : Int) -> Double {
 }
 
 pub fn db_tx_lock_graphn_set(s : DbtxlockGraphN, i : Int, v : Double) -> DbtxlockGraphN {
-  let result = db_tx_lock_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_lock_graphn_sum(s : DbtxlockGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_tx_lock_node_get(s : DbtxlockNode, i : Int) -> Double {
 }
 
 pub fn db_tx_lock_node_set(s : DbtxlockNode, i : Int, v : Double) -> DbtxlockNode {
-  let result = db_tx_lock_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_lock_node_sum(s : DbtxlockNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_tx_lock_edge_get(s : DbtxlockEdge, i : Int) -> Double {
 }
 
 pub fn db_tx_lock_edge_set(s : DbtxlockEdge, i : Int, v : Double) -> DbtxlockEdge {
-  let result = db_tx_lock_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_lock_edge_sum(s : DbtxlockEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_tx_lock_path_get(s : DbtxlockPath, i : Int) -> Double {
 }
 
 pub fn db_tx_lock_path_set(s : DbtxlockPath, i : Int, v : Double) -> DbtxlockPath {
-  let result = db_tx_lock_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_lock_path_sum(s : DbtxlockPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_tx_lock_cluster_get(s : DbtxlockCluster, i : Int) -> Double {
 }
 
 pub fn db_tx_lock_cluster_set(s : DbtxlockCluster, i : Int, v : Double) -> DbtxlockCluster {
-  let result = db_tx_lock_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_lock_cluster_sum(s : DbtxlockCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_tx_lock_model_get(s : DbtxlockModel, i : Int) -> Double {
 }
 
 pub fn db_tx_lock_model_set(s : DbtxlockModel, i : Int, v : Double) -> DbtxlockModel {
-  let result = db_tx_lock_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_lock_model_sum(s : DbtxlockModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_tx_lock_layer_get(s : DbtxlockLayer, i : Int) -> Double {
 }
 
 pub fn db_tx_lock_layer_set(s : DbtxlockLayer, i : Int, v : Double) -> DbtxlockLayer {
-  let result = db_tx_lock_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_lock_layer_sum(s : DbtxlockLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_tx_lock_buffer_get(s : DbtxlockBuffer, i : Int) -> Double {
 }
 
 pub fn db_tx_lock_buffer_set(s : DbtxlockBuffer, i : Int, v : Double) -> DbtxlockBuffer {
-  let result = db_tx_lock_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_lock_buffer_sum(s : DbtxlockBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_tx_lock_cursor_get(s : DbtxlockCursor, i : Int) -> Double {
 }
 
 pub fn db_tx_lock_cursor_set(s : DbtxlockCursor, i : Int, v : Double) -> DbtxlockCursor {
-  let result = db_tx_lock_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_lock_cursor_sum(s : DbtxlockCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_tx_lock_view_get(s : DbtxlockView, i : Int) -> Double {
 }
 
 pub fn db_tx_lock_view_set(s : DbtxlockView, i : Int, v : Double) -> DbtxlockView {
-  let result = db_tx_lock_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_lock_view_sum(s : DbtxlockView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_tx_lock_range_get(s : DbtxlockRange, i : Int) -> Double {
 }
 
 pub fn db_tx_lock_range_set(s : DbtxlockRange, i : Int, v : Double) -> DbtxlockRange {
-  let result = db_tx_lock_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_lock_range_sum(s : DbtxlockRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_tx_lock_slice_get(s : DbtxlockSlice, i : Int) -> Double {
 }
 
 pub fn db_tx_lock_slice_set(s : DbtxlockSlice, i : Int, v : Double) -> DbtxlockSlice {
-  let result = db_tx_lock_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_lock_slice_sum(s : DbtxlockSlice) -> Double { @_common.sum(s.data) }

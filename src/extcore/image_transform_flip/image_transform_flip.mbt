@@ -107,23 +107,15 @@ pub fn image_transform_flip_series_std(s : ImagetransformflipSeries) -> Double {
 pub fn image_transform_flip_series_median(s : ImagetransformflipSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_transform_flip_series_scale(s : ImagetransformflipSeries, f : Double) -> ImagetransformflipSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_transform_flip_series_add(a : ImagetransformflipSeries, b : ImagetransformflipSeries) -> ImagetransformflipSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_transform_flip_series_sub(a : ImagetransformflipSeries, b : ImagetransformflipSeries) -> ImagetransformflipSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_transform_flip_series_normalize(s : ImagetransformflipSeries) -> ImagetransformflipSeries {
@@ -254,22 +246,16 @@ pub fn image_transform_flip_vector_zero(dim : Int) -> ImagetransformflipVector {
 
 pub fn image_transform_flip_vector_add(a : ImagetransformflipVector, b : ImagetransformflipVector) -> ImagetransformflipVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_transform_flip_vector_sub(a : ImagetransformflipVector, b : ImagetransformflipVector) -> ImagetransformflipVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_transform_flip_vector_scale(v : ImagetransformflipVector, s : Double) -> ImagetransformflipVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_transform_flip_vector_dot(a : ImagetransformflipVector, b : ImagetransformflipVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_transform_flip_frame_get(s : ImagetransformflipFrame, i : Int) -> D
 }
 
 pub fn image_transform_flip_frame_set(s : ImagetransformflipFrame, i : Int, v : Double) -> ImagetransformflipFrame {
-  let result = image_transform_flip_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_flip_frame_sum(s : ImagetransformflipFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_transform_flip_table_get(s : ImagetransformflipTable, i : Int) -> D
 }
 
 pub fn image_transform_flip_table_set(s : ImagetransformflipTable, i : Int, v : Double) -> ImagetransformflipTable {
-  let result = image_transform_flip_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_flip_table_sum(s : ImagetransformflipTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_transform_flip_graphn_get(s : ImagetransformflipGraphN, i : Int) ->
 }
 
 pub fn image_transform_flip_graphn_set(s : ImagetransformflipGraphN, i : Int, v : Double) -> ImagetransformflipGraphN {
-  let result = image_transform_flip_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_flip_graphn_sum(s : ImagetransformflipGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_transform_flip_node_get(s : ImagetransformflipNode, i : Int) -> Dou
 }
 
 pub fn image_transform_flip_node_set(s : ImagetransformflipNode, i : Int, v : Double) -> ImagetransformflipNode {
-  let result = image_transform_flip_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_flip_node_sum(s : ImagetransformflipNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_transform_flip_edge_get(s : ImagetransformflipEdge, i : Int) -> Dou
 }
 
 pub fn image_transform_flip_edge_set(s : ImagetransformflipEdge, i : Int, v : Double) -> ImagetransformflipEdge {
-  let result = image_transform_flip_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_flip_edge_sum(s : ImagetransformflipEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_transform_flip_path_get(s : ImagetransformflipPath, i : Int) -> Dou
 }
 
 pub fn image_transform_flip_path_set(s : ImagetransformflipPath, i : Int, v : Double) -> ImagetransformflipPath {
-  let result = image_transform_flip_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_flip_path_sum(s : ImagetransformflipPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_transform_flip_cluster_get(s : ImagetransformflipCluster, i : Int) 
 }
 
 pub fn image_transform_flip_cluster_set(s : ImagetransformflipCluster, i : Int, v : Double) -> ImagetransformflipCluster {
-  let result = image_transform_flip_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_flip_cluster_sum(s : ImagetransformflipCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_transform_flip_model_get(s : ImagetransformflipModel, i : Int) -> D
 }
 
 pub fn image_transform_flip_model_set(s : ImagetransformflipModel, i : Int, v : Double) -> ImagetransformflipModel {
-  let result = image_transform_flip_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_flip_model_sum(s : ImagetransformflipModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_transform_flip_layer_get(s : ImagetransformflipLayer, i : Int) -> D
 }
 
 pub fn image_transform_flip_layer_set(s : ImagetransformflipLayer, i : Int, v : Double) -> ImagetransformflipLayer {
-  let result = image_transform_flip_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_flip_layer_sum(s : ImagetransformflipLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_transform_flip_buffer_get(s : ImagetransformflipBuffer, i : Int) ->
 }
 
 pub fn image_transform_flip_buffer_set(s : ImagetransformflipBuffer, i : Int, v : Double) -> ImagetransformflipBuffer {
-  let result = image_transform_flip_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_flip_buffer_sum(s : ImagetransformflipBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_transform_flip_cursor_get(s : ImagetransformflipCursor, i : Int) ->
 }
 
 pub fn image_transform_flip_cursor_set(s : ImagetransformflipCursor, i : Int, v : Double) -> ImagetransformflipCursor {
-  let result = image_transform_flip_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_flip_cursor_sum(s : ImagetransformflipCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_transform_flip_view_get(s : ImagetransformflipView, i : Int) -> Dou
 }
 
 pub fn image_transform_flip_view_set(s : ImagetransformflipView, i : Int, v : Double) -> ImagetransformflipView {
-  let result = image_transform_flip_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_flip_view_sum(s : ImagetransformflipView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_transform_flip_range_get(s : ImagetransformflipRange, i : Int) -> D
 }
 
 pub fn image_transform_flip_range_set(s : ImagetransformflipRange, i : Int, v : Double) -> ImagetransformflipRange {
-  let result = image_transform_flip_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_flip_range_sum(s : ImagetransformflipRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_transform_flip_slice_get(s : ImagetransformflipSlice, i : Int) -> D
 }
 
 pub fn image_transform_flip_slice_set(s : ImagetransformflipSlice, i : Int, v : Double) -> ImagetransformflipSlice {
-  let result = image_transform_flip_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_flip_slice_sum(s : ImagetransformflipSlice) -> Double { @_common.sum(s.data) }

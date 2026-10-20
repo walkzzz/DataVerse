@@ -107,23 +107,15 @@ pub fn signal_transform_wigner_series_std(s : SignaltransformwignerSeries) -> Do
 pub fn signal_transform_wigner_series_median(s : SignaltransformwignerSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_transform_wigner_series_scale(s : SignaltransformwignerSeries, f : Double) -> SignaltransformwignerSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_transform_wigner_series_add(a : SignaltransformwignerSeries, b : SignaltransformwignerSeries) -> SignaltransformwignerSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_transform_wigner_series_sub(a : SignaltransformwignerSeries, b : SignaltransformwignerSeries) -> SignaltransformwignerSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_transform_wigner_series_normalize(s : SignaltransformwignerSeries) -> SignaltransformwignerSeries {
@@ -254,22 +246,16 @@ pub fn signal_transform_wigner_vector_zero(dim : Int) -> SignaltransformwignerVe
 
 pub fn signal_transform_wigner_vector_add(a : SignaltransformwignerVector, b : SignaltransformwignerVector) -> SignaltransformwignerVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_transform_wigner_vector_sub(a : SignaltransformwignerVector, b : SignaltransformwignerVector) -> SignaltransformwignerVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_transform_wigner_vector_scale(v : SignaltransformwignerVector, s : Double) -> SignaltransformwignerVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_transform_wigner_vector_dot(a : SignaltransformwignerVector, b : SignaltransformwignerVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_transform_wigner_frame_get(s : SignaltransformwignerFrame, i : Int
 }
 
 pub fn signal_transform_wigner_frame_set(s : SignaltransformwignerFrame, i : Int, v : Double) -> SignaltransformwignerFrame {
-  let result = signal_transform_wigner_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_wigner_frame_sum(s : SignaltransformwignerFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_transform_wigner_table_get(s : SignaltransformwignerTable, i : Int
 }
 
 pub fn signal_transform_wigner_table_set(s : SignaltransformwignerTable, i : Int, v : Double) -> SignaltransformwignerTable {
-  let result = signal_transform_wigner_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_wigner_table_sum(s : SignaltransformwignerTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_transform_wigner_graphn_get(s : SignaltransformwignerGraphN, i : I
 }
 
 pub fn signal_transform_wigner_graphn_set(s : SignaltransformwignerGraphN, i : Int, v : Double) -> SignaltransformwignerGraphN {
-  let result = signal_transform_wigner_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_wigner_graphn_sum(s : SignaltransformwignerGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_transform_wigner_node_get(s : SignaltransformwignerNode, i : Int) 
 }
 
 pub fn signal_transform_wigner_node_set(s : SignaltransformwignerNode, i : Int, v : Double) -> SignaltransformwignerNode {
-  let result = signal_transform_wigner_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_wigner_node_sum(s : SignaltransformwignerNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_transform_wigner_edge_get(s : SignaltransformwignerEdge, i : Int) 
 }
 
 pub fn signal_transform_wigner_edge_set(s : SignaltransformwignerEdge, i : Int, v : Double) -> SignaltransformwignerEdge {
-  let result = signal_transform_wigner_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_wigner_edge_sum(s : SignaltransformwignerEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_transform_wigner_path_get(s : SignaltransformwignerPath, i : Int) 
 }
 
 pub fn signal_transform_wigner_path_set(s : SignaltransformwignerPath, i : Int, v : Double) -> SignaltransformwignerPath {
-  let result = signal_transform_wigner_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_wigner_path_sum(s : SignaltransformwignerPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_transform_wigner_cluster_get(s : SignaltransformwignerCluster, i :
 }
 
 pub fn signal_transform_wigner_cluster_set(s : SignaltransformwignerCluster, i : Int, v : Double) -> SignaltransformwignerCluster {
-  let result = signal_transform_wigner_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_wigner_cluster_sum(s : SignaltransformwignerCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_transform_wigner_model_get(s : SignaltransformwignerModel, i : Int
 }
 
 pub fn signal_transform_wigner_model_set(s : SignaltransformwignerModel, i : Int, v : Double) -> SignaltransformwignerModel {
-  let result = signal_transform_wigner_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_wigner_model_sum(s : SignaltransformwignerModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_transform_wigner_layer_get(s : SignaltransformwignerLayer, i : Int
 }
 
 pub fn signal_transform_wigner_layer_set(s : SignaltransformwignerLayer, i : Int, v : Double) -> SignaltransformwignerLayer {
-  let result = signal_transform_wigner_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_wigner_layer_sum(s : SignaltransformwignerLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_transform_wigner_buffer_get(s : SignaltransformwignerBuffer, i : I
 }
 
 pub fn signal_transform_wigner_buffer_set(s : SignaltransformwignerBuffer, i : Int, v : Double) -> SignaltransformwignerBuffer {
-  let result = signal_transform_wigner_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_wigner_buffer_sum(s : SignaltransformwignerBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_transform_wigner_cursor_get(s : SignaltransformwignerCursor, i : I
 }
 
 pub fn signal_transform_wigner_cursor_set(s : SignaltransformwignerCursor, i : Int, v : Double) -> SignaltransformwignerCursor {
-  let result = signal_transform_wigner_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_wigner_cursor_sum(s : SignaltransformwignerCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_transform_wigner_view_get(s : SignaltransformwignerView, i : Int) 
 }
 
 pub fn signal_transform_wigner_view_set(s : SignaltransformwignerView, i : Int, v : Double) -> SignaltransformwignerView {
-  let result = signal_transform_wigner_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_wigner_view_sum(s : SignaltransformwignerView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_transform_wigner_range_get(s : SignaltransformwignerRange, i : Int
 }
 
 pub fn signal_transform_wigner_range_set(s : SignaltransformwignerRange, i : Int, v : Double) -> SignaltransformwignerRange {
-  let result = signal_transform_wigner_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_wigner_range_sum(s : SignaltransformwignerRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_transform_wigner_slice_get(s : SignaltransformwignerSlice, i : Int
 }
 
 pub fn signal_transform_wigner_slice_set(s : SignaltransformwignerSlice, i : Int, v : Double) -> SignaltransformwignerSlice {
-  let result = signal_transform_wigner_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_wigner_slice_sum(s : SignaltransformwignerSlice) -> Double { @_common.sum(s.data) }

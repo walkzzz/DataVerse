@@ -107,23 +107,15 @@ pub fn crypto_sym_salsa_series_std(s : CryptosymsalsaSeries) -> Double { @_commo
 pub fn crypto_sym_salsa_series_median(s : CryptosymsalsaSeries) -> Double { @_common.median(s.vals) }
 
 pub fn crypto_sym_salsa_series_scale(s : CryptosymsalsaSeries, f : Double) -> CryptosymsalsaSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn crypto_sym_salsa_series_add(a : CryptosymsalsaSeries, b : CryptosymsalsaSeries) -> CryptosymsalsaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn crypto_sym_salsa_series_sub(a : CryptosymsalsaSeries, b : CryptosymsalsaSeries) -> CryptosymsalsaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn crypto_sym_salsa_series_normalize(s : CryptosymsalsaSeries) -> CryptosymsalsaSeries {
@@ -254,22 +246,16 @@ pub fn crypto_sym_salsa_vector_zero(dim : Int) -> CryptosymsalsaVector {
 
 pub fn crypto_sym_salsa_vector_add(a : CryptosymsalsaVector, b : CryptosymsalsaVector) -> CryptosymsalsaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_sym_salsa_vector_sub(a : CryptosymsalsaVector, b : CryptosymsalsaVector) -> CryptosymsalsaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_sym_salsa_vector_scale(v : CryptosymsalsaVector, s : Double) -> CryptosymsalsaVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn crypto_sym_salsa_vector_dot(a : CryptosymsalsaVector, b : CryptosymsalsaVector) -> Double {
@@ -372,10 +358,9 @@ pub fn crypto_sym_salsa_frame_get(s : CryptosymsalsaFrame, i : Int) -> Double {
 }
 
 pub fn crypto_sym_salsa_frame_set(s : CryptosymsalsaFrame, i : Int, v : Double) -> CryptosymsalsaFrame {
-  let result = crypto_sym_salsa_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_salsa_frame_sum(s : CryptosymsalsaFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn crypto_sym_salsa_table_get(s : CryptosymsalsaTable, i : Int) -> Double {
 }
 
 pub fn crypto_sym_salsa_table_set(s : CryptosymsalsaTable, i : Int, v : Double) -> CryptosymsalsaTable {
-  let result = crypto_sym_salsa_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_salsa_table_sum(s : CryptosymsalsaTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn crypto_sym_salsa_graphn_get(s : CryptosymsalsaGraphN, i : Int) -> Double 
 }
 
 pub fn crypto_sym_salsa_graphn_set(s : CryptosymsalsaGraphN, i : Int, v : Double) -> CryptosymsalsaGraphN {
-  let result = crypto_sym_salsa_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_salsa_graphn_sum(s : CryptosymsalsaGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn crypto_sym_salsa_node_get(s : CryptosymsalsaNode, i : Int) -> Double {
 }
 
 pub fn crypto_sym_salsa_node_set(s : CryptosymsalsaNode, i : Int, v : Double) -> CryptosymsalsaNode {
-  let result = crypto_sym_salsa_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_salsa_node_sum(s : CryptosymsalsaNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn crypto_sym_salsa_edge_get(s : CryptosymsalsaEdge, i : Int) -> Double {
 }
 
 pub fn crypto_sym_salsa_edge_set(s : CryptosymsalsaEdge, i : Int, v : Double) -> CryptosymsalsaEdge {
-  let result = crypto_sym_salsa_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_salsa_edge_sum(s : CryptosymsalsaEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn crypto_sym_salsa_path_get(s : CryptosymsalsaPath, i : Int) -> Double {
 }
 
 pub fn crypto_sym_salsa_path_set(s : CryptosymsalsaPath, i : Int, v : Double) -> CryptosymsalsaPath {
-  let result = crypto_sym_salsa_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_salsa_path_sum(s : CryptosymsalsaPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn crypto_sym_salsa_cluster_get(s : CryptosymsalsaCluster, i : Int) -> Doubl
 }
 
 pub fn crypto_sym_salsa_cluster_set(s : CryptosymsalsaCluster, i : Int, v : Double) -> CryptosymsalsaCluster {
-  let result = crypto_sym_salsa_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_salsa_cluster_sum(s : CryptosymsalsaCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn crypto_sym_salsa_model_get(s : CryptosymsalsaModel, i : Int) -> Double {
 }
 
 pub fn crypto_sym_salsa_model_set(s : CryptosymsalsaModel, i : Int, v : Double) -> CryptosymsalsaModel {
-  let result = crypto_sym_salsa_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_salsa_model_sum(s : CryptosymsalsaModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn crypto_sym_salsa_layer_get(s : CryptosymsalsaLayer, i : Int) -> Double {
 }
 
 pub fn crypto_sym_salsa_layer_set(s : CryptosymsalsaLayer, i : Int, v : Double) -> CryptosymsalsaLayer {
-  let result = crypto_sym_salsa_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_salsa_layer_sum(s : CryptosymsalsaLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn crypto_sym_salsa_buffer_get(s : CryptosymsalsaBuffer, i : Int) -> Double 
 }
 
 pub fn crypto_sym_salsa_buffer_set(s : CryptosymsalsaBuffer, i : Int, v : Double) -> CryptosymsalsaBuffer {
-  let result = crypto_sym_salsa_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_salsa_buffer_sum(s : CryptosymsalsaBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn crypto_sym_salsa_cursor_get(s : CryptosymsalsaCursor, i : Int) -> Double 
 }
 
 pub fn crypto_sym_salsa_cursor_set(s : CryptosymsalsaCursor, i : Int, v : Double) -> CryptosymsalsaCursor {
-  let result = crypto_sym_salsa_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_salsa_cursor_sum(s : CryptosymsalsaCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn crypto_sym_salsa_view_get(s : CryptosymsalsaView, i : Int) -> Double {
 }
 
 pub fn crypto_sym_salsa_view_set(s : CryptosymsalsaView, i : Int, v : Double) -> CryptosymsalsaView {
-  let result = crypto_sym_salsa_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_salsa_view_sum(s : CryptosymsalsaView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn crypto_sym_salsa_range_get(s : CryptosymsalsaRange, i : Int) -> Double {
 }
 
 pub fn crypto_sym_salsa_range_set(s : CryptosymsalsaRange, i : Int, v : Double) -> CryptosymsalsaRange {
-  let result = crypto_sym_salsa_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_salsa_range_sum(s : CryptosymsalsaRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn crypto_sym_salsa_slice_get(s : CryptosymsalsaSlice, i : Int) -> Double {
 }
 
 pub fn crypto_sym_salsa_slice_set(s : CryptosymsalsaSlice, i : Int, v : Double) -> CryptosymsalsaSlice {
-  let result = crypto_sym_salsa_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_salsa_slice_sum(s : CryptosymsalsaSlice) -> Double { @_common.sum(s.data) }

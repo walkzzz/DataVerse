@@ -107,23 +107,15 @@ pub fn stats_dist_binomial_series_std(s : StatsdistbinomialSeries) -> Double { @
 pub fn stats_dist_binomial_series_median(s : StatsdistbinomialSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_dist_binomial_series_scale(s : StatsdistbinomialSeries, f : Double) -> StatsdistbinomialSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_dist_binomial_series_add(a : StatsdistbinomialSeries, b : StatsdistbinomialSeries) -> StatsdistbinomialSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_dist_binomial_series_sub(a : StatsdistbinomialSeries, b : StatsdistbinomialSeries) -> StatsdistbinomialSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_dist_binomial_series_normalize(s : StatsdistbinomialSeries) -> StatsdistbinomialSeries {
@@ -254,22 +246,16 @@ pub fn stats_dist_binomial_vector_zero(dim : Int) -> StatsdistbinomialVector {
 
 pub fn stats_dist_binomial_vector_add(a : StatsdistbinomialVector, b : StatsdistbinomialVector) -> StatsdistbinomialVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_dist_binomial_vector_sub(a : StatsdistbinomialVector, b : StatsdistbinomialVector) -> StatsdistbinomialVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_dist_binomial_vector_scale(v : StatsdistbinomialVector, s : Double) -> StatsdistbinomialVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_dist_binomial_vector_dot(a : StatsdistbinomialVector, b : StatsdistbinomialVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_dist_binomial_frame_get(s : StatsdistbinomialFrame, i : Int) -> Dou
 }
 
 pub fn stats_dist_binomial_frame_set(s : StatsdistbinomialFrame, i : Int, v : Double) -> StatsdistbinomialFrame {
-  let result = stats_dist_binomial_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_binomial_frame_sum(s : StatsdistbinomialFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_dist_binomial_table_get(s : StatsdistbinomialTable, i : Int) -> Dou
 }
 
 pub fn stats_dist_binomial_table_set(s : StatsdistbinomialTable, i : Int, v : Double) -> StatsdistbinomialTable {
-  let result = stats_dist_binomial_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_binomial_table_sum(s : StatsdistbinomialTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_dist_binomial_graphn_get(s : StatsdistbinomialGraphN, i : Int) -> D
 }
 
 pub fn stats_dist_binomial_graphn_set(s : StatsdistbinomialGraphN, i : Int, v : Double) -> StatsdistbinomialGraphN {
-  let result = stats_dist_binomial_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_binomial_graphn_sum(s : StatsdistbinomialGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_dist_binomial_node_get(s : StatsdistbinomialNode, i : Int) -> Doubl
 }
 
 pub fn stats_dist_binomial_node_set(s : StatsdistbinomialNode, i : Int, v : Double) -> StatsdistbinomialNode {
-  let result = stats_dist_binomial_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_binomial_node_sum(s : StatsdistbinomialNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_dist_binomial_edge_get(s : StatsdistbinomialEdge, i : Int) -> Doubl
 }
 
 pub fn stats_dist_binomial_edge_set(s : StatsdistbinomialEdge, i : Int, v : Double) -> StatsdistbinomialEdge {
-  let result = stats_dist_binomial_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_binomial_edge_sum(s : StatsdistbinomialEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_dist_binomial_path_get(s : StatsdistbinomialPath, i : Int) -> Doubl
 }
 
 pub fn stats_dist_binomial_path_set(s : StatsdistbinomialPath, i : Int, v : Double) -> StatsdistbinomialPath {
-  let result = stats_dist_binomial_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_binomial_path_sum(s : StatsdistbinomialPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_dist_binomial_cluster_get(s : StatsdistbinomialCluster, i : Int) ->
 }
 
 pub fn stats_dist_binomial_cluster_set(s : StatsdistbinomialCluster, i : Int, v : Double) -> StatsdistbinomialCluster {
-  let result = stats_dist_binomial_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_binomial_cluster_sum(s : StatsdistbinomialCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_dist_binomial_model_get(s : StatsdistbinomialModel, i : Int) -> Dou
 }
 
 pub fn stats_dist_binomial_model_set(s : StatsdistbinomialModel, i : Int, v : Double) -> StatsdistbinomialModel {
-  let result = stats_dist_binomial_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_binomial_model_sum(s : StatsdistbinomialModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_dist_binomial_layer_get(s : StatsdistbinomialLayer, i : Int) -> Dou
 }
 
 pub fn stats_dist_binomial_layer_set(s : StatsdistbinomialLayer, i : Int, v : Double) -> StatsdistbinomialLayer {
-  let result = stats_dist_binomial_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_binomial_layer_sum(s : StatsdistbinomialLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_dist_binomial_buffer_get(s : StatsdistbinomialBuffer, i : Int) -> D
 }
 
 pub fn stats_dist_binomial_buffer_set(s : StatsdistbinomialBuffer, i : Int, v : Double) -> StatsdistbinomialBuffer {
-  let result = stats_dist_binomial_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_binomial_buffer_sum(s : StatsdistbinomialBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_dist_binomial_cursor_get(s : StatsdistbinomialCursor, i : Int) -> D
 }
 
 pub fn stats_dist_binomial_cursor_set(s : StatsdistbinomialCursor, i : Int, v : Double) -> StatsdistbinomialCursor {
-  let result = stats_dist_binomial_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_binomial_cursor_sum(s : StatsdistbinomialCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_dist_binomial_view_get(s : StatsdistbinomialView, i : Int) -> Doubl
 }
 
 pub fn stats_dist_binomial_view_set(s : StatsdistbinomialView, i : Int, v : Double) -> StatsdistbinomialView {
-  let result = stats_dist_binomial_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_binomial_view_sum(s : StatsdistbinomialView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_dist_binomial_range_get(s : StatsdistbinomialRange, i : Int) -> Dou
 }
 
 pub fn stats_dist_binomial_range_set(s : StatsdistbinomialRange, i : Int, v : Double) -> StatsdistbinomialRange {
-  let result = stats_dist_binomial_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_binomial_range_sum(s : StatsdistbinomialRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_dist_binomial_slice_get(s : StatsdistbinomialSlice, i : Int) -> Dou
 }
 
 pub fn stats_dist_binomial_slice_set(s : StatsdistbinomialSlice, i : Int, v : Double) -> StatsdistbinomialSlice {
-  let result = stats_dist_binomial_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_binomial_slice_sum(s : StatsdistbinomialSlice) -> Double { @_common.sum(s.data) }

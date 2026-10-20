@@ -107,23 +107,15 @@ pub fn ml_cluster_gmm_series_std(s : MlclustergmmSeries) -> Double { @_common.st
 pub fn ml_cluster_gmm_series_median(s : MlclustergmmSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_cluster_gmm_series_scale(s : MlclustergmmSeries, f : Double) -> MlclustergmmSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_cluster_gmm_series_add(a : MlclustergmmSeries, b : MlclustergmmSeries) -> MlclustergmmSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_cluster_gmm_series_sub(a : MlclustergmmSeries, b : MlclustergmmSeries) -> MlclustergmmSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_cluster_gmm_series_normalize(s : MlclustergmmSeries) -> MlclustergmmSeries {
@@ -254,22 +246,16 @@ pub fn ml_cluster_gmm_vector_zero(dim : Int) -> MlclustergmmVector {
 
 pub fn ml_cluster_gmm_vector_add(a : MlclustergmmVector, b : MlclustergmmVector) -> MlclustergmmVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_cluster_gmm_vector_sub(a : MlclustergmmVector, b : MlclustergmmVector) -> MlclustergmmVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_cluster_gmm_vector_scale(v : MlclustergmmVector, s : Double) -> MlclustergmmVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_cluster_gmm_vector_dot(a : MlclustergmmVector, b : MlclustergmmVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_cluster_gmm_frame_get(s : MlclustergmmFrame, i : Int) -> Double {
 }
 
 pub fn ml_cluster_gmm_frame_set(s : MlclustergmmFrame, i : Int, v : Double) -> MlclustergmmFrame {
-  let result = ml_cluster_gmm_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_gmm_frame_sum(s : MlclustergmmFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_cluster_gmm_table_get(s : MlclustergmmTable, i : Int) -> Double {
 }
 
 pub fn ml_cluster_gmm_table_set(s : MlclustergmmTable, i : Int, v : Double) -> MlclustergmmTable {
-  let result = ml_cluster_gmm_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_gmm_table_sum(s : MlclustergmmTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_cluster_gmm_graphn_get(s : MlclustergmmGraphN, i : Int) -> Double {
 }
 
 pub fn ml_cluster_gmm_graphn_set(s : MlclustergmmGraphN, i : Int, v : Double) -> MlclustergmmGraphN {
-  let result = ml_cluster_gmm_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_gmm_graphn_sum(s : MlclustergmmGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_cluster_gmm_node_get(s : MlclustergmmNode, i : Int) -> Double {
 }
 
 pub fn ml_cluster_gmm_node_set(s : MlclustergmmNode, i : Int, v : Double) -> MlclustergmmNode {
-  let result = ml_cluster_gmm_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_gmm_node_sum(s : MlclustergmmNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_cluster_gmm_edge_get(s : MlclustergmmEdge, i : Int) -> Double {
 }
 
 pub fn ml_cluster_gmm_edge_set(s : MlclustergmmEdge, i : Int, v : Double) -> MlclustergmmEdge {
-  let result = ml_cluster_gmm_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_gmm_edge_sum(s : MlclustergmmEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_cluster_gmm_path_get(s : MlclustergmmPath, i : Int) -> Double {
 }
 
 pub fn ml_cluster_gmm_path_set(s : MlclustergmmPath, i : Int, v : Double) -> MlclustergmmPath {
-  let result = ml_cluster_gmm_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_gmm_path_sum(s : MlclustergmmPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_cluster_gmm_cluster_get(s : MlclustergmmCluster, i : Int) -> Double {
 }
 
 pub fn ml_cluster_gmm_cluster_set(s : MlclustergmmCluster, i : Int, v : Double) -> MlclustergmmCluster {
-  let result = ml_cluster_gmm_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_gmm_cluster_sum(s : MlclustergmmCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_cluster_gmm_model_get(s : MlclustergmmModel, i : Int) -> Double {
 }
 
 pub fn ml_cluster_gmm_model_set(s : MlclustergmmModel, i : Int, v : Double) -> MlclustergmmModel {
-  let result = ml_cluster_gmm_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_gmm_model_sum(s : MlclustergmmModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_cluster_gmm_layer_get(s : MlclustergmmLayer, i : Int) -> Double {
 }
 
 pub fn ml_cluster_gmm_layer_set(s : MlclustergmmLayer, i : Int, v : Double) -> MlclustergmmLayer {
-  let result = ml_cluster_gmm_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_gmm_layer_sum(s : MlclustergmmLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_cluster_gmm_buffer_get(s : MlclustergmmBuffer, i : Int) -> Double {
 }
 
 pub fn ml_cluster_gmm_buffer_set(s : MlclustergmmBuffer, i : Int, v : Double) -> MlclustergmmBuffer {
-  let result = ml_cluster_gmm_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_gmm_buffer_sum(s : MlclustergmmBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_cluster_gmm_cursor_get(s : MlclustergmmCursor, i : Int) -> Double {
 }
 
 pub fn ml_cluster_gmm_cursor_set(s : MlclustergmmCursor, i : Int, v : Double) -> MlclustergmmCursor {
-  let result = ml_cluster_gmm_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_gmm_cursor_sum(s : MlclustergmmCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_cluster_gmm_view_get(s : MlclustergmmView, i : Int) -> Double {
 }
 
 pub fn ml_cluster_gmm_view_set(s : MlclustergmmView, i : Int, v : Double) -> MlclustergmmView {
-  let result = ml_cluster_gmm_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_gmm_view_sum(s : MlclustergmmView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_cluster_gmm_range_get(s : MlclustergmmRange, i : Int) -> Double {
 }
 
 pub fn ml_cluster_gmm_range_set(s : MlclustergmmRange, i : Int, v : Double) -> MlclustergmmRange {
-  let result = ml_cluster_gmm_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_gmm_range_sum(s : MlclustergmmRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_cluster_gmm_slice_get(s : MlclustergmmSlice, i : Int) -> Double {
 }
 
 pub fn ml_cluster_gmm_slice_set(s : MlclustergmmSlice, i : Int, v : Double) -> MlclustergmmSlice {
-  let result = ml_cluster_gmm_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_gmm_slice_sum(s : MlclustergmmSlice) -> Double { @_common.sum(s.data) }

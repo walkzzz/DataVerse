@@ -107,23 +107,15 @@ pub fn image_morph_close_series_std(s : ImagemorphcloseSeries) -> Double { @_com
 pub fn image_morph_close_series_median(s : ImagemorphcloseSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_morph_close_series_scale(s : ImagemorphcloseSeries, f : Double) -> ImagemorphcloseSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_morph_close_series_add(a : ImagemorphcloseSeries, b : ImagemorphcloseSeries) -> ImagemorphcloseSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_morph_close_series_sub(a : ImagemorphcloseSeries, b : ImagemorphcloseSeries) -> ImagemorphcloseSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_morph_close_series_normalize(s : ImagemorphcloseSeries) -> ImagemorphcloseSeries {
@@ -254,22 +246,16 @@ pub fn image_morph_close_vector_zero(dim : Int) -> ImagemorphcloseVector {
 
 pub fn image_morph_close_vector_add(a : ImagemorphcloseVector, b : ImagemorphcloseVector) -> ImagemorphcloseVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_morph_close_vector_sub(a : ImagemorphcloseVector, b : ImagemorphcloseVector) -> ImagemorphcloseVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_morph_close_vector_scale(v : ImagemorphcloseVector, s : Double) -> ImagemorphcloseVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_morph_close_vector_dot(a : ImagemorphcloseVector, b : ImagemorphcloseVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_morph_close_frame_get(s : ImagemorphcloseFrame, i : Int) -> Double 
 }
 
 pub fn image_morph_close_frame_set(s : ImagemorphcloseFrame, i : Int, v : Double) -> ImagemorphcloseFrame {
-  let result = image_morph_close_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_close_frame_sum(s : ImagemorphcloseFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_morph_close_table_get(s : ImagemorphcloseTable, i : Int) -> Double 
 }
 
 pub fn image_morph_close_table_set(s : ImagemorphcloseTable, i : Int, v : Double) -> ImagemorphcloseTable {
-  let result = image_morph_close_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_close_table_sum(s : ImagemorphcloseTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_morph_close_graphn_get(s : ImagemorphcloseGraphN, i : Int) -> Doubl
 }
 
 pub fn image_morph_close_graphn_set(s : ImagemorphcloseGraphN, i : Int, v : Double) -> ImagemorphcloseGraphN {
-  let result = image_morph_close_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_close_graphn_sum(s : ImagemorphcloseGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_morph_close_node_get(s : ImagemorphcloseNode, i : Int) -> Double {
 }
 
 pub fn image_morph_close_node_set(s : ImagemorphcloseNode, i : Int, v : Double) -> ImagemorphcloseNode {
-  let result = image_morph_close_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_close_node_sum(s : ImagemorphcloseNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_morph_close_edge_get(s : ImagemorphcloseEdge, i : Int) -> Double {
 }
 
 pub fn image_morph_close_edge_set(s : ImagemorphcloseEdge, i : Int, v : Double) -> ImagemorphcloseEdge {
-  let result = image_morph_close_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_close_edge_sum(s : ImagemorphcloseEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_morph_close_path_get(s : ImagemorphclosePath, i : Int) -> Double {
 }
 
 pub fn image_morph_close_path_set(s : ImagemorphclosePath, i : Int, v : Double) -> ImagemorphclosePath {
-  let result = image_morph_close_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_close_path_sum(s : ImagemorphclosePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_morph_close_cluster_get(s : ImagemorphcloseCluster, i : Int) -> Dou
 }
 
 pub fn image_morph_close_cluster_set(s : ImagemorphcloseCluster, i : Int, v : Double) -> ImagemorphcloseCluster {
-  let result = image_morph_close_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_close_cluster_sum(s : ImagemorphcloseCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_morph_close_model_get(s : ImagemorphcloseModel, i : Int) -> Double 
 }
 
 pub fn image_morph_close_model_set(s : ImagemorphcloseModel, i : Int, v : Double) -> ImagemorphcloseModel {
-  let result = image_morph_close_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_close_model_sum(s : ImagemorphcloseModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_morph_close_layer_get(s : ImagemorphcloseLayer, i : Int) -> Double 
 }
 
 pub fn image_morph_close_layer_set(s : ImagemorphcloseLayer, i : Int, v : Double) -> ImagemorphcloseLayer {
-  let result = image_morph_close_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_close_layer_sum(s : ImagemorphcloseLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_morph_close_buffer_get(s : ImagemorphcloseBuffer, i : Int) -> Doubl
 }
 
 pub fn image_morph_close_buffer_set(s : ImagemorphcloseBuffer, i : Int, v : Double) -> ImagemorphcloseBuffer {
-  let result = image_morph_close_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_close_buffer_sum(s : ImagemorphcloseBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_morph_close_cursor_get(s : ImagemorphcloseCursor, i : Int) -> Doubl
 }
 
 pub fn image_morph_close_cursor_set(s : ImagemorphcloseCursor, i : Int, v : Double) -> ImagemorphcloseCursor {
-  let result = image_morph_close_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_close_cursor_sum(s : ImagemorphcloseCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_morph_close_view_get(s : ImagemorphcloseView, i : Int) -> Double {
 }
 
 pub fn image_morph_close_view_set(s : ImagemorphcloseView, i : Int, v : Double) -> ImagemorphcloseView {
-  let result = image_morph_close_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_close_view_sum(s : ImagemorphcloseView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_morph_close_range_get(s : ImagemorphcloseRange, i : Int) -> Double 
 }
 
 pub fn image_morph_close_range_set(s : ImagemorphcloseRange, i : Int, v : Double) -> ImagemorphcloseRange {
-  let result = image_morph_close_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_close_range_sum(s : ImagemorphcloseRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_morph_close_slice_get(s : ImagemorphcloseSlice, i : Int) -> Double 
 }
 
 pub fn image_morph_close_slice_set(s : ImagemorphcloseSlice, i : Int, v : Double) -> ImagemorphcloseSlice {
-  let result = image_morph_close_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_close_slice_sum(s : ImagemorphcloseSlice) -> Double { @_common.sum(s.data) }

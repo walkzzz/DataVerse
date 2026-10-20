@@ -107,23 +107,15 @@ pub fn image_transform_affine_series_std(s : ImagetransformaffineSeries) -> Doub
 pub fn image_transform_affine_series_median(s : ImagetransformaffineSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_transform_affine_series_scale(s : ImagetransformaffineSeries, f : Double) -> ImagetransformaffineSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_transform_affine_series_add(a : ImagetransformaffineSeries, b : ImagetransformaffineSeries) -> ImagetransformaffineSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_transform_affine_series_sub(a : ImagetransformaffineSeries, b : ImagetransformaffineSeries) -> ImagetransformaffineSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_transform_affine_series_normalize(s : ImagetransformaffineSeries) -> ImagetransformaffineSeries {
@@ -254,22 +246,16 @@ pub fn image_transform_affine_vector_zero(dim : Int) -> ImagetransformaffineVect
 
 pub fn image_transform_affine_vector_add(a : ImagetransformaffineVector, b : ImagetransformaffineVector) -> ImagetransformaffineVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_transform_affine_vector_sub(a : ImagetransformaffineVector, b : ImagetransformaffineVector) -> ImagetransformaffineVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_transform_affine_vector_scale(v : ImagetransformaffineVector, s : Double) -> ImagetransformaffineVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_transform_affine_vector_dot(a : ImagetransformaffineVector, b : ImagetransformaffineVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_transform_affine_frame_get(s : ImagetransformaffineFrame, i : Int) 
 }
 
 pub fn image_transform_affine_frame_set(s : ImagetransformaffineFrame, i : Int, v : Double) -> ImagetransformaffineFrame {
-  let result = image_transform_affine_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_affine_frame_sum(s : ImagetransformaffineFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_transform_affine_table_get(s : ImagetransformaffineTable, i : Int) 
 }
 
 pub fn image_transform_affine_table_set(s : ImagetransformaffineTable, i : Int, v : Double) -> ImagetransformaffineTable {
-  let result = image_transform_affine_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_affine_table_sum(s : ImagetransformaffineTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_transform_affine_graphn_get(s : ImagetransformaffineGraphN, i : Int
 }
 
 pub fn image_transform_affine_graphn_set(s : ImagetransformaffineGraphN, i : Int, v : Double) -> ImagetransformaffineGraphN {
-  let result = image_transform_affine_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_affine_graphn_sum(s : ImagetransformaffineGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_transform_affine_node_get(s : ImagetransformaffineNode, i : Int) ->
 }
 
 pub fn image_transform_affine_node_set(s : ImagetransformaffineNode, i : Int, v : Double) -> ImagetransformaffineNode {
-  let result = image_transform_affine_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_affine_node_sum(s : ImagetransformaffineNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_transform_affine_edge_get(s : ImagetransformaffineEdge, i : Int) ->
 }
 
 pub fn image_transform_affine_edge_set(s : ImagetransformaffineEdge, i : Int, v : Double) -> ImagetransformaffineEdge {
-  let result = image_transform_affine_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_affine_edge_sum(s : ImagetransformaffineEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_transform_affine_path_get(s : ImagetransformaffinePath, i : Int) ->
 }
 
 pub fn image_transform_affine_path_set(s : ImagetransformaffinePath, i : Int, v : Double) -> ImagetransformaffinePath {
-  let result = image_transform_affine_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_affine_path_sum(s : ImagetransformaffinePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_transform_affine_cluster_get(s : ImagetransformaffineCluster, i : I
 }
 
 pub fn image_transform_affine_cluster_set(s : ImagetransformaffineCluster, i : Int, v : Double) -> ImagetransformaffineCluster {
-  let result = image_transform_affine_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_affine_cluster_sum(s : ImagetransformaffineCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_transform_affine_model_get(s : ImagetransformaffineModel, i : Int) 
 }
 
 pub fn image_transform_affine_model_set(s : ImagetransformaffineModel, i : Int, v : Double) -> ImagetransformaffineModel {
-  let result = image_transform_affine_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_affine_model_sum(s : ImagetransformaffineModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_transform_affine_layer_get(s : ImagetransformaffineLayer, i : Int) 
 }
 
 pub fn image_transform_affine_layer_set(s : ImagetransformaffineLayer, i : Int, v : Double) -> ImagetransformaffineLayer {
-  let result = image_transform_affine_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_affine_layer_sum(s : ImagetransformaffineLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_transform_affine_buffer_get(s : ImagetransformaffineBuffer, i : Int
 }
 
 pub fn image_transform_affine_buffer_set(s : ImagetransformaffineBuffer, i : Int, v : Double) -> ImagetransformaffineBuffer {
-  let result = image_transform_affine_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_affine_buffer_sum(s : ImagetransformaffineBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_transform_affine_cursor_get(s : ImagetransformaffineCursor, i : Int
 }
 
 pub fn image_transform_affine_cursor_set(s : ImagetransformaffineCursor, i : Int, v : Double) -> ImagetransformaffineCursor {
-  let result = image_transform_affine_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_affine_cursor_sum(s : ImagetransformaffineCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_transform_affine_view_get(s : ImagetransformaffineView, i : Int) ->
 }
 
 pub fn image_transform_affine_view_set(s : ImagetransformaffineView, i : Int, v : Double) -> ImagetransformaffineView {
-  let result = image_transform_affine_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_affine_view_sum(s : ImagetransformaffineView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_transform_affine_range_get(s : ImagetransformaffineRange, i : Int) 
 }
 
 pub fn image_transform_affine_range_set(s : ImagetransformaffineRange, i : Int, v : Double) -> ImagetransformaffineRange {
-  let result = image_transform_affine_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_affine_range_sum(s : ImagetransformaffineRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_transform_affine_slice_get(s : ImagetransformaffineSlice, i : Int) 
 }
 
 pub fn image_transform_affine_slice_set(s : ImagetransformaffineSlice, i : Int, v : Double) -> ImagetransformaffineSlice {
-  let result = image_transform_affine_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_affine_slice_sum(s : ImagetransformaffineSlice) -> Double { @_common.sum(s.data) }

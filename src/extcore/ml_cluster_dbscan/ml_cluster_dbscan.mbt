@@ -107,23 +107,15 @@ pub fn ml_cluster_dbscan_series_std(s : MlclusterdbscanSeries) -> Double { @_com
 pub fn ml_cluster_dbscan_series_median(s : MlclusterdbscanSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_cluster_dbscan_series_scale(s : MlclusterdbscanSeries, f : Double) -> MlclusterdbscanSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_cluster_dbscan_series_add(a : MlclusterdbscanSeries, b : MlclusterdbscanSeries) -> MlclusterdbscanSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_cluster_dbscan_series_sub(a : MlclusterdbscanSeries, b : MlclusterdbscanSeries) -> MlclusterdbscanSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_cluster_dbscan_series_normalize(s : MlclusterdbscanSeries) -> MlclusterdbscanSeries {
@@ -254,22 +246,16 @@ pub fn ml_cluster_dbscan_vector_zero(dim : Int) -> MlclusterdbscanVector {
 
 pub fn ml_cluster_dbscan_vector_add(a : MlclusterdbscanVector, b : MlclusterdbscanVector) -> MlclusterdbscanVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_cluster_dbscan_vector_sub(a : MlclusterdbscanVector, b : MlclusterdbscanVector) -> MlclusterdbscanVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_cluster_dbscan_vector_scale(v : MlclusterdbscanVector, s : Double) -> MlclusterdbscanVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_cluster_dbscan_vector_dot(a : MlclusterdbscanVector, b : MlclusterdbscanVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_cluster_dbscan_frame_get(s : MlclusterdbscanFrame, i : Int) -> Double 
 }
 
 pub fn ml_cluster_dbscan_frame_set(s : MlclusterdbscanFrame, i : Int, v : Double) -> MlclusterdbscanFrame {
-  let result = ml_cluster_dbscan_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_dbscan_frame_sum(s : MlclusterdbscanFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_cluster_dbscan_table_get(s : MlclusterdbscanTable, i : Int) -> Double 
 }
 
 pub fn ml_cluster_dbscan_table_set(s : MlclusterdbscanTable, i : Int, v : Double) -> MlclusterdbscanTable {
-  let result = ml_cluster_dbscan_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_dbscan_table_sum(s : MlclusterdbscanTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_cluster_dbscan_graphn_get(s : MlclusterdbscanGraphN, i : Int) -> Doubl
 }
 
 pub fn ml_cluster_dbscan_graphn_set(s : MlclusterdbscanGraphN, i : Int, v : Double) -> MlclusterdbscanGraphN {
-  let result = ml_cluster_dbscan_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_dbscan_graphn_sum(s : MlclusterdbscanGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_cluster_dbscan_node_get(s : MlclusterdbscanNode, i : Int) -> Double {
 }
 
 pub fn ml_cluster_dbscan_node_set(s : MlclusterdbscanNode, i : Int, v : Double) -> MlclusterdbscanNode {
-  let result = ml_cluster_dbscan_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_dbscan_node_sum(s : MlclusterdbscanNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_cluster_dbscan_edge_get(s : MlclusterdbscanEdge, i : Int) -> Double {
 }
 
 pub fn ml_cluster_dbscan_edge_set(s : MlclusterdbscanEdge, i : Int, v : Double) -> MlclusterdbscanEdge {
-  let result = ml_cluster_dbscan_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_dbscan_edge_sum(s : MlclusterdbscanEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_cluster_dbscan_path_get(s : MlclusterdbscanPath, i : Int) -> Double {
 }
 
 pub fn ml_cluster_dbscan_path_set(s : MlclusterdbscanPath, i : Int, v : Double) -> MlclusterdbscanPath {
-  let result = ml_cluster_dbscan_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_dbscan_path_sum(s : MlclusterdbscanPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_cluster_dbscan_cluster_get(s : MlclusterdbscanCluster, i : Int) -> Dou
 }
 
 pub fn ml_cluster_dbscan_cluster_set(s : MlclusterdbscanCluster, i : Int, v : Double) -> MlclusterdbscanCluster {
-  let result = ml_cluster_dbscan_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_dbscan_cluster_sum(s : MlclusterdbscanCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_cluster_dbscan_model_get(s : MlclusterdbscanModel, i : Int) -> Double 
 }
 
 pub fn ml_cluster_dbscan_model_set(s : MlclusterdbscanModel, i : Int, v : Double) -> MlclusterdbscanModel {
-  let result = ml_cluster_dbscan_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_dbscan_model_sum(s : MlclusterdbscanModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_cluster_dbscan_layer_get(s : MlclusterdbscanLayer, i : Int) -> Double 
 }
 
 pub fn ml_cluster_dbscan_layer_set(s : MlclusterdbscanLayer, i : Int, v : Double) -> MlclusterdbscanLayer {
-  let result = ml_cluster_dbscan_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_dbscan_layer_sum(s : MlclusterdbscanLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_cluster_dbscan_buffer_get(s : MlclusterdbscanBuffer, i : Int) -> Doubl
 }
 
 pub fn ml_cluster_dbscan_buffer_set(s : MlclusterdbscanBuffer, i : Int, v : Double) -> MlclusterdbscanBuffer {
-  let result = ml_cluster_dbscan_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_dbscan_buffer_sum(s : MlclusterdbscanBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_cluster_dbscan_cursor_get(s : MlclusterdbscanCursor, i : Int) -> Doubl
 }
 
 pub fn ml_cluster_dbscan_cursor_set(s : MlclusterdbscanCursor, i : Int, v : Double) -> MlclusterdbscanCursor {
-  let result = ml_cluster_dbscan_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_dbscan_cursor_sum(s : MlclusterdbscanCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_cluster_dbscan_view_get(s : MlclusterdbscanView, i : Int) -> Double {
 }
 
 pub fn ml_cluster_dbscan_view_set(s : MlclusterdbscanView, i : Int, v : Double) -> MlclusterdbscanView {
-  let result = ml_cluster_dbscan_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_dbscan_view_sum(s : MlclusterdbscanView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_cluster_dbscan_range_get(s : MlclusterdbscanRange, i : Int) -> Double 
 }
 
 pub fn ml_cluster_dbscan_range_set(s : MlclusterdbscanRange, i : Int, v : Double) -> MlclusterdbscanRange {
-  let result = ml_cluster_dbscan_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_dbscan_range_sum(s : MlclusterdbscanRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_cluster_dbscan_slice_get(s : MlclusterdbscanSlice, i : Int) -> Double 
 }
 
 pub fn ml_cluster_dbscan_slice_set(s : MlclusterdbscanSlice, i : Int, v : Double) -> MlclusterdbscanSlice {
-  let result = ml_cluster_dbscan_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_dbscan_slice_sum(s : MlclusterdbscanSlice) -> Double { @_common.sum(s.data) }

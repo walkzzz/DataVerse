@@ -107,23 +107,15 @@ pub fn timeseries_forecast_ensemble_series_std(s : TimeseriesforecastensembleSer
 pub fn timeseries_forecast_ensemble_series_median(s : TimeseriesforecastensembleSeries) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_forecast_ensemble_series_scale(s : TimeseriesforecastensembleSeries, f : Double) -> TimeseriesforecastensembleSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn timeseries_forecast_ensemble_series_add(a : TimeseriesforecastensembleSeries, b : TimeseriesforecastensembleSeries) -> TimeseriesforecastensembleSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_forecast_ensemble_series_sub(a : TimeseriesforecastensembleSeries, b : TimeseriesforecastensembleSeries) -> TimeseriesforecastensembleSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_forecast_ensemble_series_normalize(s : TimeseriesforecastensembleSeries) -> TimeseriesforecastensembleSeries {
@@ -254,22 +246,16 @@ pub fn timeseries_forecast_ensemble_vector_zero(dim : Int) -> Timeseriesforecast
 
 pub fn timeseries_forecast_ensemble_vector_add(a : TimeseriesforecastensembleVector, b : TimeseriesforecastensembleVector) -> TimeseriesforecastensembleVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_forecast_ensemble_vector_sub(a : TimeseriesforecastensembleVector, b : TimeseriesforecastensembleVector) -> TimeseriesforecastensembleVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_forecast_ensemble_vector_scale(v : TimeseriesforecastensembleVector, s : Double) -> TimeseriesforecastensembleVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn timeseries_forecast_ensemble_vector_dot(a : TimeseriesforecastensembleVector, b : TimeseriesforecastensembleVector) -> Double {
@@ -372,10 +358,9 @@ pub fn timeseries_forecast_ensemble_frame_get(s : TimeseriesforecastensembleFram
 }
 
 pub fn timeseries_forecast_ensemble_frame_set(s : TimeseriesforecastensembleFrame, i : Int, v : Double) -> TimeseriesforecastensembleFrame {
-  let result = timeseries_forecast_ensemble_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_ensemble_frame_sum(s : TimeseriesforecastensembleFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn timeseries_forecast_ensemble_table_get(s : TimeseriesforecastensembleTabl
 }
 
 pub fn timeseries_forecast_ensemble_table_set(s : TimeseriesforecastensembleTable, i : Int, v : Double) -> TimeseriesforecastensembleTable {
-  let result = timeseries_forecast_ensemble_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_ensemble_table_sum(s : TimeseriesforecastensembleTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn timeseries_forecast_ensemble_graphn_get(s : TimeseriesforecastensembleGra
 }
 
 pub fn timeseries_forecast_ensemble_graphn_set(s : TimeseriesforecastensembleGraphN, i : Int, v : Double) -> TimeseriesforecastensembleGraphN {
-  let result = timeseries_forecast_ensemble_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_ensemble_graphn_sum(s : TimeseriesforecastensembleGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn timeseries_forecast_ensemble_node_get(s : TimeseriesforecastensembleNode,
 }
 
 pub fn timeseries_forecast_ensemble_node_set(s : TimeseriesforecastensembleNode, i : Int, v : Double) -> TimeseriesforecastensembleNode {
-  let result = timeseries_forecast_ensemble_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_ensemble_node_sum(s : TimeseriesforecastensembleNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn timeseries_forecast_ensemble_edge_get(s : TimeseriesforecastensembleEdge,
 }
 
 pub fn timeseries_forecast_ensemble_edge_set(s : TimeseriesforecastensembleEdge, i : Int, v : Double) -> TimeseriesforecastensembleEdge {
-  let result = timeseries_forecast_ensemble_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_ensemble_edge_sum(s : TimeseriesforecastensembleEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn timeseries_forecast_ensemble_path_get(s : TimeseriesforecastensemblePath,
 }
 
 pub fn timeseries_forecast_ensemble_path_set(s : TimeseriesforecastensemblePath, i : Int, v : Double) -> TimeseriesforecastensemblePath {
-  let result = timeseries_forecast_ensemble_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_ensemble_path_sum(s : TimeseriesforecastensemblePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn timeseries_forecast_ensemble_cluster_get(s : TimeseriesforecastensembleCl
 }
 
 pub fn timeseries_forecast_ensemble_cluster_set(s : TimeseriesforecastensembleCluster, i : Int, v : Double) -> TimeseriesforecastensembleCluster {
-  let result = timeseries_forecast_ensemble_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_ensemble_cluster_sum(s : TimeseriesforecastensembleCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn timeseries_forecast_ensemble_model_get(s : TimeseriesforecastensembleMode
 }
 
 pub fn timeseries_forecast_ensemble_model_set(s : TimeseriesforecastensembleModel, i : Int, v : Double) -> TimeseriesforecastensembleModel {
-  let result = timeseries_forecast_ensemble_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_ensemble_model_sum(s : TimeseriesforecastensembleModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn timeseries_forecast_ensemble_layer_get(s : TimeseriesforecastensembleLaye
 }
 
 pub fn timeseries_forecast_ensemble_layer_set(s : TimeseriesforecastensembleLayer, i : Int, v : Double) -> TimeseriesforecastensembleLayer {
-  let result = timeseries_forecast_ensemble_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_ensemble_layer_sum(s : TimeseriesforecastensembleLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn timeseries_forecast_ensemble_buffer_get(s : TimeseriesforecastensembleBuf
 }
 
 pub fn timeseries_forecast_ensemble_buffer_set(s : TimeseriesforecastensembleBuffer, i : Int, v : Double) -> TimeseriesforecastensembleBuffer {
-  let result = timeseries_forecast_ensemble_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_ensemble_buffer_sum(s : TimeseriesforecastensembleBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn timeseries_forecast_ensemble_cursor_get(s : TimeseriesforecastensembleCur
 }
 
 pub fn timeseries_forecast_ensemble_cursor_set(s : TimeseriesforecastensembleCursor, i : Int, v : Double) -> TimeseriesforecastensembleCursor {
-  let result = timeseries_forecast_ensemble_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_ensemble_cursor_sum(s : TimeseriesforecastensembleCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn timeseries_forecast_ensemble_view_get(s : TimeseriesforecastensembleView,
 }
 
 pub fn timeseries_forecast_ensemble_view_set(s : TimeseriesforecastensembleView, i : Int, v : Double) -> TimeseriesforecastensembleView {
-  let result = timeseries_forecast_ensemble_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_ensemble_view_sum(s : TimeseriesforecastensembleView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn timeseries_forecast_ensemble_range_get(s : TimeseriesforecastensembleRang
 }
 
 pub fn timeseries_forecast_ensemble_range_set(s : TimeseriesforecastensembleRange, i : Int, v : Double) -> TimeseriesforecastensembleRange {
-  let result = timeseries_forecast_ensemble_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_ensemble_range_sum(s : TimeseriesforecastensembleRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn timeseries_forecast_ensemble_slice_get(s : TimeseriesforecastensembleSlic
 }
 
 pub fn timeseries_forecast_ensemble_slice_set(s : TimeseriesforecastensembleSlice, i : Int, v : Double) -> TimeseriesforecastensembleSlice {
-  let result = timeseries_forecast_ensemble_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_ensemble_slice_sum(s : TimeseriesforecastensembleSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn stats_desc_univariate_series_std(s : StatsdescunivariateSeries) -> Double
 pub fn stats_desc_univariate_series_median(s : StatsdescunivariateSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_desc_univariate_series_scale(s : StatsdescunivariateSeries, f : Double) -> StatsdescunivariateSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_desc_univariate_series_add(a : StatsdescunivariateSeries, b : StatsdescunivariateSeries) -> StatsdescunivariateSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_desc_univariate_series_sub(a : StatsdescunivariateSeries, b : StatsdescunivariateSeries) -> StatsdescunivariateSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_desc_univariate_series_normalize(s : StatsdescunivariateSeries) -> StatsdescunivariateSeries {
@@ -254,22 +246,16 @@ pub fn stats_desc_univariate_vector_zero(dim : Int) -> StatsdescunivariateVector
 
 pub fn stats_desc_univariate_vector_add(a : StatsdescunivariateVector, b : StatsdescunivariateVector) -> StatsdescunivariateVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_desc_univariate_vector_sub(a : StatsdescunivariateVector, b : StatsdescunivariateVector) -> StatsdescunivariateVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_desc_univariate_vector_scale(v : StatsdescunivariateVector, s : Double) -> StatsdescunivariateVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_desc_univariate_vector_dot(a : StatsdescunivariateVector, b : StatsdescunivariateVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_desc_univariate_frame_get(s : StatsdescunivariateFrame, i : Int) ->
 }
 
 pub fn stats_desc_univariate_frame_set(s : StatsdescunivariateFrame, i : Int, v : Double) -> StatsdescunivariateFrame {
-  let result = stats_desc_univariate_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_univariate_frame_sum(s : StatsdescunivariateFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_desc_univariate_table_get(s : StatsdescunivariateTable, i : Int) ->
 }
 
 pub fn stats_desc_univariate_table_set(s : StatsdescunivariateTable, i : Int, v : Double) -> StatsdescunivariateTable {
-  let result = stats_desc_univariate_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_univariate_table_sum(s : StatsdescunivariateTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_desc_univariate_graphn_get(s : StatsdescunivariateGraphN, i : Int) 
 }
 
 pub fn stats_desc_univariate_graphn_set(s : StatsdescunivariateGraphN, i : Int, v : Double) -> StatsdescunivariateGraphN {
-  let result = stats_desc_univariate_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_univariate_graphn_sum(s : StatsdescunivariateGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_desc_univariate_node_get(s : StatsdescunivariateNode, i : Int) -> D
 }
 
 pub fn stats_desc_univariate_node_set(s : StatsdescunivariateNode, i : Int, v : Double) -> StatsdescunivariateNode {
-  let result = stats_desc_univariate_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_univariate_node_sum(s : StatsdescunivariateNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_desc_univariate_edge_get(s : StatsdescunivariateEdge, i : Int) -> D
 }
 
 pub fn stats_desc_univariate_edge_set(s : StatsdescunivariateEdge, i : Int, v : Double) -> StatsdescunivariateEdge {
-  let result = stats_desc_univariate_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_univariate_edge_sum(s : StatsdescunivariateEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_desc_univariate_path_get(s : StatsdescunivariatePath, i : Int) -> D
 }
 
 pub fn stats_desc_univariate_path_set(s : StatsdescunivariatePath, i : Int, v : Double) -> StatsdescunivariatePath {
-  let result = stats_desc_univariate_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_univariate_path_sum(s : StatsdescunivariatePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_desc_univariate_cluster_get(s : StatsdescunivariateCluster, i : Int
 }
 
 pub fn stats_desc_univariate_cluster_set(s : StatsdescunivariateCluster, i : Int, v : Double) -> StatsdescunivariateCluster {
-  let result = stats_desc_univariate_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_univariate_cluster_sum(s : StatsdescunivariateCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_desc_univariate_model_get(s : StatsdescunivariateModel, i : Int) ->
 }
 
 pub fn stats_desc_univariate_model_set(s : StatsdescunivariateModel, i : Int, v : Double) -> StatsdescunivariateModel {
-  let result = stats_desc_univariate_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_univariate_model_sum(s : StatsdescunivariateModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_desc_univariate_layer_get(s : StatsdescunivariateLayer, i : Int) ->
 }
 
 pub fn stats_desc_univariate_layer_set(s : StatsdescunivariateLayer, i : Int, v : Double) -> StatsdescunivariateLayer {
-  let result = stats_desc_univariate_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_univariate_layer_sum(s : StatsdescunivariateLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_desc_univariate_buffer_get(s : StatsdescunivariateBuffer, i : Int) 
 }
 
 pub fn stats_desc_univariate_buffer_set(s : StatsdescunivariateBuffer, i : Int, v : Double) -> StatsdescunivariateBuffer {
-  let result = stats_desc_univariate_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_univariate_buffer_sum(s : StatsdescunivariateBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_desc_univariate_cursor_get(s : StatsdescunivariateCursor, i : Int) 
 }
 
 pub fn stats_desc_univariate_cursor_set(s : StatsdescunivariateCursor, i : Int, v : Double) -> StatsdescunivariateCursor {
-  let result = stats_desc_univariate_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_univariate_cursor_sum(s : StatsdescunivariateCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_desc_univariate_view_get(s : StatsdescunivariateView, i : Int) -> D
 }
 
 pub fn stats_desc_univariate_view_set(s : StatsdescunivariateView, i : Int, v : Double) -> StatsdescunivariateView {
-  let result = stats_desc_univariate_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_univariate_view_sum(s : StatsdescunivariateView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_desc_univariate_range_get(s : StatsdescunivariateRange, i : Int) ->
 }
 
 pub fn stats_desc_univariate_range_set(s : StatsdescunivariateRange, i : Int, v : Double) -> StatsdescunivariateRange {
-  let result = stats_desc_univariate_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_univariate_range_sum(s : StatsdescunivariateRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_desc_univariate_slice_get(s : StatsdescunivariateSlice, i : Int) ->
 }
 
 pub fn stats_desc_univariate_slice_set(s : StatsdescunivariateSlice, i : Int, v : Double) -> StatsdescunivariateSlice {
-  let result = stats_desc_univariate_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_univariate_slice_sum(s : StatsdescunivariateSlice) -> Double { @_common.sum(s.data) }

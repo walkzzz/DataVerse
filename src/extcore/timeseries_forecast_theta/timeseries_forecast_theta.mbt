@@ -107,23 +107,15 @@ pub fn timeseries_forecast_theta_series_std(s : TimeseriesforecastthetaSeries) -
 pub fn timeseries_forecast_theta_series_median(s : TimeseriesforecastthetaSeries) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_forecast_theta_series_scale(s : TimeseriesforecastthetaSeries, f : Double) -> TimeseriesforecastthetaSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn timeseries_forecast_theta_series_add(a : TimeseriesforecastthetaSeries, b : TimeseriesforecastthetaSeries) -> TimeseriesforecastthetaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_forecast_theta_series_sub(a : TimeseriesforecastthetaSeries, b : TimeseriesforecastthetaSeries) -> TimeseriesforecastthetaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_forecast_theta_series_normalize(s : TimeseriesforecastthetaSeries) -> TimeseriesforecastthetaSeries {
@@ -254,22 +246,16 @@ pub fn timeseries_forecast_theta_vector_zero(dim : Int) -> Timeseriesforecastthe
 
 pub fn timeseries_forecast_theta_vector_add(a : TimeseriesforecastthetaVector, b : TimeseriesforecastthetaVector) -> TimeseriesforecastthetaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_forecast_theta_vector_sub(a : TimeseriesforecastthetaVector, b : TimeseriesforecastthetaVector) -> TimeseriesforecastthetaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_forecast_theta_vector_scale(v : TimeseriesforecastthetaVector, s : Double) -> TimeseriesforecastthetaVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn timeseries_forecast_theta_vector_dot(a : TimeseriesforecastthetaVector, b : TimeseriesforecastthetaVector) -> Double {
@@ -372,10 +358,9 @@ pub fn timeseries_forecast_theta_frame_get(s : TimeseriesforecastthetaFrame, i :
 }
 
 pub fn timeseries_forecast_theta_frame_set(s : TimeseriesforecastthetaFrame, i : Int, v : Double) -> TimeseriesforecastthetaFrame {
-  let result = timeseries_forecast_theta_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_theta_frame_sum(s : TimeseriesforecastthetaFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn timeseries_forecast_theta_table_get(s : TimeseriesforecastthetaTable, i :
 }
 
 pub fn timeseries_forecast_theta_table_set(s : TimeseriesforecastthetaTable, i : Int, v : Double) -> TimeseriesforecastthetaTable {
-  let result = timeseries_forecast_theta_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_theta_table_sum(s : TimeseriesforecastthetaTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn timeseries_forecast_theta_graphn_get(s : TimeseriesforecastthetaGraphN, i
 }
 
 pub fn timeseries_forecast_theta_graphn_set(s : TimeseriesforecastthetaGraphN, i : Int, v : Double) -> TimeseriesforecastthetaGraphN {
-  let result = timeseries_forecast_theta_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_theta_graphn_sum(s : TimeseriesforecastthetaGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn timeseries_forecast_theta_node_get(s : TimeseriesforecastthetaNode, i : I
 }
 
 pub fn timeseries_forecast_theta_node_set(s : TimeseriesforecastthetaNode, i : Int, v : Double) -> TimeseriesforecastthetaNode {
-  let result = timeseries_forecast_theta_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_theta_node_sum(s : TimeseriesforecastthetaNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn timeseries_forecast_theta_edge_get(s : TimeseriesforecastthetaEdge, i : I
 }
 
 pub fn timeseries_forecast_theta_edge_set(s : TimeseriesforecastthetaEdge, i : Int, v : Double) -> TimeseriesforecastthetaEdge {
-  let result = timeseries_forecast_theta_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_theta_edge_sum(s : TimeseriesforecastthetaEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn timeseries_forecast_theta_path_get(s : TimeseriesforecastthetaPath, i : I
 }
 
 pub fn timeseries_forecast_theta_path_set(s : TimeseriesforecastthetaPath, i : Int, v : Double) -> TimeseriesforecastthetaPath {
-  let result = timeseries_forecast_theta_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_theta_path_sum(s : TimeseriesforecastthetaPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn timeseries_forecast_theta_cluster_get(s : TimeseriesforecastthetaCluster,
 }
 
 pub fn timeseries_forecast_theta_cluster_set(s : TimeseriesforecastthetaCluster, i : Int, v : Double) -> TimeseriesforecastthetaCluster {
-  let result = timeseries_forecast_theta_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_theta_cluster_sum(s : TimeseriesforecastthetaCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn timeseries_forecast_theta_model_get(s : TimeseriesforecastthetaModel, i :
 }
 
 pub fn timeseries_forecast_theta_model_set(s : TimeseriesforecastthetaModel, i : Int, v : Double) -> TimeseriesforecastthetaModel {
-  let result = timeseries_forecast_theta_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_theta_model_sum(s : TimeseriesforecastthetaModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn timeseries_forecast_theta_layer_get(s : TimeseriesforecastthetaLayer, i :
 }
 
 pub fn timeseries_forecast_theta_layer_set(s : TimeseriesforecastthetaLayer, i : Int, v : Double) -> TimeseriesforecastthetaLayer {
-  let result = timeseries_forecast_theta_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_theta_layer_sum(s : TimeseriesforecastthetaLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn timeseries_forecast_theta_buffer_get(s : TimeseriesforecastthetaBuffer, i
 }
 
 pub fn timeseries_forecast_theta_buffer_set(s : TimeseriesforecastthetaBuffer, i : Int, v : Double) -> TimeseriesforecastthetaBuffer {
-  let result = timeseries_forecast_theta_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_theta_buffer_sum(s : TimeseriesforecastthetaBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn timeseries_forecast_theta_cursor_get(s : TimeseriesforecastthetaCursor, i
 }
 
 pub fn timeseries_forecast_theta_cursor_set(s : TimeseriesforecastthetaCursor, i : Int, v : Double) -> TimeseriesforecastthetaCursor {
-  let result = timeseries_forecast_theta_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_theta_cursor_sum(s : TimeseriesforecastthetaCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn timeseries_forecast_theta_view_get(s : TimeseriesforecastthetaView, i : I
 }
 
 pub fn timeseries_forecast_theta_view_set(s : TimeseriesforecastthetaView, i : Int, v : Double) -> TimeseriesforecastthetaView {
-  let result = timeseries_forecast_theta_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_theta_view_sum(s : TimeseriesforecastthetaView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn timeseries_forecast_theta_range_get(s : TimeseriesforecastthetaRange, i :
 }
 
 pub fn timeseries_forecast_theta_range_set(s : TimeseriesforecastthetaRange, i : Int, v : Double) -> TimeseriesforecastthetaRange {
-  let result = timeseries_forecast_theta_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_theta_range_sum(s : TimeseriesforecastthetaRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn timeseries_forecast_theta_slice_get(s : TimeseriesforecastthetaSlice, i :
 }
 
 pub fn timeseries_forecast_theta_slice_set(s : TimeseriesforecastthetaSlice, i : Int, v : Double) -> TimeseriesforecastthetaSlice {
-  let result = timeseries_forecast_theta_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_theta_slice_sum(s : TimeseriesforecastthetaSlice) -> Double { @_common.sum(s.data) }

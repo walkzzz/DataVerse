@@ -107,23 +107,15 @@ pub fn net_flow_backpressure_series_std(s : NetflowbackpressureSeries) -> Double
 pub fn net_flow_backpressure_series_median(s : NetflowbackpressureSeries) -> Double { @_common.median(s.vals) }
 
 pub fn net_flow_backpressure_series_scale(s : NetflowbackpressureSeries, f : Double) -> NetflowbackpressureSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn net_flow_backpressure_series_add(a : NetflowbackpressureSeries, b : NetflowbackpressureSeries) -> NetflowbackpressureSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn net_flow_backpressure_series_sub(a : NetflowbackpressureSeries, b : NetflowbackpressureSeries) -> NetflowbackpressureSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn net_flow_backpressure_series_normalize(s : NetflowbackpressureSeries) -> NetflowbackpressureSeries {
@@ -254,22 +246,16 @@ pub fn net_flow_backpressure_vector_zero(dim : Int) -> NetflowbackpressureVector
 
 pub fn net_flow_backpressure_vector_add(a : NetflowbackpressureVector, b : NetflowbackpressureVector) -> NetflowbackpressureVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_flow_backpressure_vector_sub(a : NetflowbackpressureVector, b : NetflowbackpressureVector) -> NetflowbackpressureVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_flow_backpressure_vector_scale(v : NetflowbackpressureVector, s : Double) -> NetflowbackpressureVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn net_flow_backpressure_vector_dot(a : NetflowbackpressureVector, b : NetflowbackpressureVector) -> Double {
@@ -372,10 +358,9 @@ pub fn net_flow_backpressure_frame_get(s : NetflowbackpressureFrame, i : Int) ->
 }
 
 pub fn net_flow_backpressure_frame_set(s : NetflowbackpressureFrame, i : Int, v : Double) -> NetflowbackpressureFrame {
-  let result = net_flow_backpressure_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_frame_sum(s : NetflowbackpressureFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn net_flow_backpressure_table_get(s : NetflowbackpressureTable, i : Int) ->
 }
 
 pub fn net_flow_backpressure_table_set(s : NetflowbackpressureTable, i : Int, v : Double) -> NetflowbackpressureTable {
-  let result = net_flow_backpressure_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_table_sum(s : NetflowbackpressureTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn net_flow_backpressure_graphn_get(s : NetflowbackpressureGraphN, i : Int) 
 }
 
 pub fn net_flow_backpressure_graphn_set(s : NetflowbackpressureGraphN, i : Int, v : Double) -> NetflowbackpressureGraphN {
-  let result = net_flow_backpressure_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_graphn_sum(s : NetflowbackpressureGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn net_flow_backpressure_node_get(s : NetflowbackpressureNode, i : Int) -> D
 }
 
 pub fn net_flow_backpressure_node_set(s : NetflowbackpressureNode, i : Int, v : Double) -> NetflowbackpressureNode {
-  let result = net_flow_backpressure_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_node_sum(s : NetflowbackpressureNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn net_flow_backpressure_edge_get(s : NetflowbackpressureEdge, i : Int) -> D
 }
 
 pub fn net_flow_backpressure_edge_set(s : NetflowbackpressureEdge, i : Int, v : Double) -> NetflowbackpressureEdge {
-  let result = net_flow_backpressure_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_edge_sum(s : NetflowbackpressureEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn net_flow_backpressure_path_get(s : NetflowbackpressurePath, i : Int) -> D
 }
 
 pub fn net_flow_backpressure_path_set(s : NetflowbackpressurePath, i : Int, v : Double) -> NetflowbackpressurePath {
-  let result = net_flow_backpressure_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_path_sum(s : NetflowbackpressurePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn net_flow_backpressure_cluster_get(s : NetflowbackpressureCluster, i : Int
 }
 
 pub fn net_flow_backpressure_cluster_set(s : NetflowbackpressureCluster, i : Int, v : Double) -> NetflowbackpressureCluster {
-  let result = net_flow_backpressure_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_cluster_sum(s : NetflowbackpressureCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn net_flow_backpressure_model_get(s : NetflowbackpressureModel, i : Int) ->
 }
 
 pub fn net_flow_backpressure_model_set(s : NetflowbackpressureModel, i : Int, v : Double) -> NetflowbackpressureModel {
-  let result = net_flow_backpressure_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_model_sum(s : NetflowbackpressureModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn net_flow_backpressure_layer_get(s : NetflowbackpressureLayer, i : Int) ->
 }
 
 pub fn net_flow_backpressure_layer_set(s : NetflowbackpressureLayer, i : Int, v : Double) -> NetflowbackpressureLayer {
-  let result = net_flow_backpressure_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_layer_sum(s : NetflowbackpressureLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn net_flow_backpressure_buffer_get(s : NetflowbackpressureBuffer, i : Int) 
 }
 
 pub fn net_flow_backpressure_buffer_set(s : NetflowbackpressureBuffer, i : Int, v : Double) -> NetflowbackpressureBuffer {
-  let result = net_flow_backpressure_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_buffer_sum(s : NetflowbackpressureBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn net_flow_backpressure_cursor_get(s : NetflowbackpressureCursor, i : Int) 
 }
 
 pub fn net_flow_backpressure_cursor_set(s : NetflowbackpressureCursor, i : Int, v : Double) -> NetflowbackpressureCursor {
-  let result = net_flow_backpressure_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_cursor_sum(s : NetflowbackpressureCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn net_flow_backpressure_view_get(s : NetflowbackpressureView, i : Int) -> D
 }
 
 pub fn net_flow_backpressure_view_set(s : NetflowbackpressureView, i : Int, v : Double) -> NetflowbackpressureView {
-  let result = net_flow_backpressure_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_view_sum(s : NetflowbackpressureView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn net_flow_backpressure_range_get(s : NetflowbackpressureRange, i : Int) ->
 }
 
 pub fn net_flow_backpressure_range_set(s : NetflowbackpressureRange, i : Int, v : Double) -> NetflowbackpressureRange {
-  let result = net_flow_backpressure_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_range_sum(s : NetflowbackpressureRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn net_flow_backpressure_slice_get(s : NetflowbackpressureSlice, i : Int) ->
 }
 
 pub fn net_flow_backpressure_slice_set(s : NetflowbackpressureSlice, i : Int, v : Double) -> NetflowbackpressureSlice {
-  let result = net_flow_backpressure_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_backpressure_slice_sum(s : NetflowbackpressureSlice) -> Double { @_common.sum(s.data) }

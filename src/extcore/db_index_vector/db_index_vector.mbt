@@ -107,23 +107,15 @@ pub fn db_index_vector_series_std(s : DbindexvectorSeries) -> Double { @_common.
 pub fn db_index_vector_series_median(s : DbindexvectorSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_index_vector_series_scale(s : DbindexvectorSeries, f : Double) -> DbindexvectorSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_index_vector_series_add(a : DbindexvectorSeries, b : DbindexvectorSeries) -> DbindexvectorSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_index_vector_series_sub(a : DbindexvectorSeries, b : DbindexvectorSeries) -> DbindexvectorSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_index_vector_series_normalize(s : DbindexvectorSeries) -> DbindexvectorSeries {
@@ -254,22 +246,16 @@ pub fn db_index_vector_vector_zero(dim : Int) -> DbindexvectorVector {
 
 pub fn db_index_vector_vector_add(a : DbindexvectorVector, b : DbindexvectorVector) -> DbindexvectorVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_index_vector_vector_sub(a : DbindexvectorVector, b : DbindexvectorVector) -> DbindexvectorVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_index_vector_vector_scale(v : DbindexvectorVector, s : Double) -> DbindexvectorVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_index_vector_vector_dot(a : DbindexvectorVector, b : DbindexvectorVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_index_vector_frame_get(s : DbindexvectorFrame, i : Int) -> Double {
 }
 
 pub fn db_index_vector_frame_set(s : DbindexvectorFrame, i : Int, v : Double) -> DbindexvectorFrame {
-  let result = db_index_vector_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_vector_frame_sum(s : DbindexvectorFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_index_vector_table_get(s : DbindexvectorTable, i : Int) -> Double {
 }
 
 pub fn db_index_vector_table_set(s : DbindexvectorTable, i : Int, v : Double) -> DbindexvectorTable {
-  let result = db_index_vector_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_vector_table_sum(s : DbindexvectorTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_index_vector_graphn_get(s : DbindexvectorGraphN, i : Int) -> Double {
 }
 
 pub fn db_index_vector_graphn_set(s : DbindexvectorGraphN, i : Int, v : Double) -> DbindexvectorGraphN {
-  let result = db_index_vector_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_vector_graphn_sum(s : DbindexvectorGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_index_vector_node_get(s : DbindexvectorNode, i : Int) -> Double {
 }
 
 pub fn db_index_vector_node_set(s : DbindexvectorNode, i : Int, v : Double) -> DbindexvectorNode {
-  let result = db_index_vector_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_vector_node_sum(s : DbindexvectorNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_index_vector_edge_get(s : DbindexvectorEdge, i : Int) -> Double {
 }
 
 pub fn db_index_vector_edge_set(s : DbindexvectorEdge, i : Int, v : Double) -> DbindexvectorEdge {
-  let result = db_index_vector_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_vector_edge_sum(s : DbindexvectorEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_index_vector_path_get(s : DbindexvectorPath, i : Int) -> Double {
 }
 
 pub fn db_index_vector_path_set(s : DbindexvectorPath, i : Int, v : Double) -> DbindexvectorPath {
-  let result = db_index_vector_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_vector_path_sum(s : DbindexvectorPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_index_vector_cluster_get(s : DbindexvectorCluster, i : Int) -> Double 
 }
 
 pub fn db_index_vector_cluster_set(s : DbindexvectorCluster, i : Int, v : Double) -> DbindexvectorCluster {
-  let result = db_index_vector_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_vector_cluster_sum(s : DbindexvectorCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_index_vector_model_get(s : DbindexvectorModel, i : Int) -> Double {
 }
 
 pub fn db_index_vector_model_set(s : DbindexvectorModel, i : Int, v : Double) -> DbindexvectorModel {
-  let result = db_index_vector_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_vector_model_sum(s : DbindexvectorModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_index_vector_layer_get(s : DbindexvectorLayer, i : Int) -> Double {
 }
 
 pub fn db_index_vector_layer_set(s : DbindexvectorLayer, i : Int, v : Double) -> DbindexvectorLayer {
-  let result = db_index_vector_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_vector_layer_sum(s : DbindexvectorLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_index_vector_buffer_get(s : DbindexvectorBuffer, i : Int) -> Double {
 }
 
 pub fn db_index_vector_buffer_set(s : DbindexvectorBuffer, i : Int, v : Double) -> DbindexvectorBuffer {
-  let result = db_index_vector_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_vector_buffer_sum(s : DbindexvectorBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_index_vector_cursor_get(s : DbindexvectorCursor, i : Int) -> Double {
 }
 
 pub fn db_index_vector_cursor_set(s : DbindexvectorCursor, i : Int, v : Double) -> DbindexvectorCursor {
-  let result = db_index_vector_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_vector_cursor_sum(s : DbindexvectorCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_index_vector_view_get(s : DbindexvectorView, i : Int) -> Double {
 }
 
 pub fn db_index_vector_view_set(s : DbindexvectorView, i : Int, v : Double) -> DbindexvectorView {
-  let result = db_index_vector_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_vector_view_sum(s : DbindexvectorView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_index_vector_range_get(s : DbindexvectorRange, i : Int) -> Double {
 }
 
 pub fn db_index_vector_range_set(s : DbindexvectorRange, i : Int, v : Double) -> DbindexvectorRange {
-  let result = db_index_vector_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_vector_range_sum(s : DbindexvectorRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_index_vector_slice_get(s : DbindexvectorSlice, i : Int) -> Double {
 }
 
 pub fn db_index_vector_slice_set(s : DbindexvectorSlice, i : Int, v : Double) -> DbindexvectorSlice {
-  let result = db_index_vector_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_vector_slice_sum(s : DbindexvectorSlice) -> Double { @_common.sum(s.data) }

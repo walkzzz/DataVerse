@@ -107,23 +107,15 @@ pub fn db_store_time_series_std(s : DbstoretimeSeries) -> Double { @_common.std(
 pub fn db_store_time_series_median(s : DbstoretimeSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_store_time_series_scale(s : DbstoretimeSeries, f : Double) -> DbstoretimeSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_store_time_series_add(a : DbstoretimeSeries, b : DbstoretimeSeries) -> DbstoretimeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_store_time_series_sub(a : DbstoretimeSeries, b : DbstoretimeSeries) -> DbstoretimeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_store_time_series_normalize(s : DbstoretimeSeries) -> DbstoretimeSeries {
@@ -254,22 +246,16 @@ pub fn db_store_time_vector_zero(dim : Int) -> DbstoretimeVector {
 
 pub fn db_store_time_vector_add(a : DbstoretimeVector, b : DbstoretimeVector) -> DbstoretimeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_store_time_vector_sub(a : DbstoretimeVector, b : DbstoretimeVector) -> DbstoretimeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_store_time_vector_scale(v : DbstoretimeVector, s : Double) -> DbstoretimeVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_store_time_vector_dot(a : DbstoretimeVector, b : DbstoretimeVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_store_time_frame_get(s : DbstoretimeFrame, i : Int) -> Double {
 }
 
 pub fn db_store_time_frame_set(s : DbstoretimeFrame, i : Int, v : Double) -> DbstoretimeFrame {
-  let result = db_store_time_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_frame_sum(s : DbstoretimeFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_store_time_table_get(s : DbstoretimeTable, i : Int) -> Double {
 }
 
 pub fn db_store_time_table_set(s : DbstoretimeTable, i : Int, v : Double) -> DbstoretimeTable {
-  let result = db_store_time_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_table_sum(s : DbstoretimeTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_store_time_graphn_get(s : DbstoretimeGraphN, i : Int) -> Double {
 }
 
 pub fn db_store_time_graphn_set(s : DbstoretimeGraphN, i : Int, v : Double) -> DbstoretimeGraphN {
-  let result = db_store_time_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_graphn_sum(s : DbstoretimeGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_store_time_node_get(s : DbstoretimeNode, i : Int) -> Double {
 }
 
 pub fn db_store_time_node_set(s : DbstoretimeNode, i : Int, v : Double) -> DbstoretimeNode {
-  let result = db_store_time_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_node_sum(s : DbstoretimeNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_store_time_edge_get(s : DbstoretimeEdge, i : Int) -> Double {
 }
 
 pub fn db_store_time_edge_set(s : DbstoretimeEdge, i : Int, v : Double) -> DbstoretimeEdge {
-  let result = db_store_time_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_edge_sum(s : DbstoretimeEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_store_time_path_get(s : DbstoretimePath, i : Int) -> Double {
 }
 
 pub fn db_store_time_path_set(s : DbstoretimePath, i : Int, v : Double) -> DbstoretimePath {
-  let result = db_store_time_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_path_sum(s : DbstoretimePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_store_time_cluster_get(s : DbstoretimeCluster, i : Int) -> Double {
 }
 
 pub fn db_store_time_cluster_set(s : DbstoretimeCluster, i : Int, v : Double) -> DbstoretimeCluster {
-  let result = db_store_time_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_cluster_sum(s : DbstoretimeCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_store_time_model_get(s : DbstoretimeModel, i : Int) -> Double {
 }
 
 pub fn db_store_time_model_set(s : DbstoretimeModel, i : Int, v : Double) -> DbstoretimeModel {
-  let result = db_store_time_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_model_sum(s : DbstoretimeModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_store_time_layer_get(s : DbstoretimeLayer, i : Int) -> Double {
 }
 
 pub fn db_store_time_layer_set(s : DbstoretimeLayer, i : Int, v : Double) -> DbstoretimeLayer {
-  let result = db_store_time_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_layer_sum(s : DbstoretimeLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_store_time_buffer_get(s : DbstoretimeBuffer, i : Int) -> Double {
 }
 
 pub fn db_store_time_buffer_set(s : DbstoretimeBuffer, i : Int, v : Double) -> DbstoretimeBuffer {
-  let result = db_store_time_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_buffer_sum(s : DbstoretimeBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_store_time_cursor_get(s : DbstoretimeCursor, i : Int) -> Double {
 }
 
 pub fn db_store_time_cursor_set(s : DbstoretimeCursor, i : Int, v : Double) -> DbstoretimeCursor {
-  let result = db_store_time_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_cursor_sum(s : DbstoretimeCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_store_time_view_get(s : DbstoretimeView, i : Int) -> Double {
 }
 
 pub fn db_store_time_view_set(s : DbstoretimeView, i : Int, v : Double) -> DbstoretimeView {
-  let result = db_store_time_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_view_sum(s : DbstoretimeView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_store_time_range_get(s : DbstoretimeRange, i : Int) -> Double {
 }
 
 pub fn db_store_time_range_set(s : DbstoretimeRange, i : Int, v : Double) -> DbstoretimeRange {
-  let result = db_store_time_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_range_sum(s : DbstoretimeRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_store_time_slice_get(s : DbstoretimeSlice, i : Int) -> Double {
 }
 
 pub fn db_store_time_slice_set(s : DbstoretimeSlice, i : Int, v : Double) -> DbstoretimeSlice {
-  let result = db_store_time_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_time_slice_sum(s : DbstoretimeSlice) -> Double { @_common.sum(s.data) }

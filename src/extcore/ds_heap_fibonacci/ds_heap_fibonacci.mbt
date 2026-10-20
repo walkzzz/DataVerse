@@ -107,23 +107,15 @@ pub fn ds_heap_fibonacci_series_std(s : DsheapfibonacciSeries) -> Double { @_com
 pub fn ds_heap_fibonacci_series_median(s : DsheapfibonacciSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_heap_fibonacci_series_scale(s : DsheapfibonacciSeries, f : Double) -> DsheapfibonacciSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_heap_fibonacci_series_add(a : DsheapfibonacciSeries, b : DsheapfibonacciSeries) -> DsheapfibonacciSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_heap_fibonacci_series_sub(a : DsheapfibonacciSeries, b : DsheapfibonacciSeries) -> DsheapfibonacciSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_heap_fibonacci_series_normalize(s : DsheapfibonacciSeries) -> DsheapfibonacciSeries {
@@ -254,22 +246,16 @@ pub fn ds_heap_fibonacci_vector_zero(dim : Int) -> DsheapfibonacciVector {
 
 pub fn ds_heap_fibonacci_vector_add(a : DsheapfibonacciVector, b : DsheapfibonacciVector) -> DsheapfibonacciVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_heap_fibonacci_vector_sub(a : DsheapfibonacciVector, b : DsheapfibonacciVector) -> DsheapfibonacciVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_heap_fibonacci_vector_scale(v : DsheapfibonacciVector, s : Double) -> DsheapfibonacciVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_heap_fibonacci_vector_dot(a : DsheapfibonacciVector, b : DsheapfibonacciVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_heap_fibonacci_frame_get(s : DsheapfibonacciFrame, i : Int) -> Double 
 }
 
 pub fn ds_heap_fibonacci_frame_set(s : DsheapfibonacciFrame, i : Int, v : Double) -> DsheapfibonacciFrame {
-  let result = ds_heap_fibonacci_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_fibonacci_frame_sum(s : DsheapfibonacciFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_heap_fibonacci_table_get(s : DsheapfibonacciTable, i : Int) -> Double 
 }
 
 pub fn ds_heap_fibonacci_table_set(s : DsheapfibonacciTable, i : Int, v : Double) -> DsheapfibonacciTable {
-  let result = ds_heap_fibonacci_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_fibonacci_table_sum(s : DsheapfibonacciTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_heap_fibonacci_graphn_get(s : DsheapfibonacciGraphN, i : Int) -> Doubl
 }
 
 pub fn ds_heap_fibonacci_graphn_set(s : DsheapfibonacciGraphN, i : Int, v : Double) -> DsheapfibonacciGraphN {
-  let result = ds_heap_fibonacci_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_fibonacci_graphn_sum(s : DsheapfibonacciGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_heap_fibonacci_node_get(s : DsheapfibonacciNode, i : Int) -> Double {
 }
 
 pub fn ds_heap_fibonacci_node_set(s : DsheapfibonacciNode, i : Int, v : Double) -> DsheapfibonacciNode {
-  let result = ds_heap_fibonacci_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_fibonacci_node_sum(s : DsheapfibonacciNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_heap_fibonacci_edge_get(s : DsheapfibonacciEdge, i : Int) -> Double {
 }
 
 pub fn ds_heap_fibonacci_edge_set(s : DsheapfibonacciEdge, i : Int, v : Double) -> DsheapfibonacciEdge {
-  let result = ds_heap_fibonacci_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_fibonacci_edge_sum(s : DsheapfibonacciEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_heap_fibonacci_path_get(s : DsheapfibonacciPath, i : Int) -> Double {
 }
 
 pub fn ds_heap_fibonacci_path_set(s : DsheapfibonacciPath, i : Int, v : Double) -> DsheapfibonacciPath {
-  let result = ds_heap_fibonacci_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_fibonacci_path_sum(s : DsheapfibonacciPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_heap_fibonacci_cluster_get(s : DsheapfibonacciCluster, i : Int) -> Dou
 }
 
 pub fn ds_heap_fibonacci_cluster_set(s : DsheapfibonacciCluster, i : Int, v : Double) -> DsheapfibonacciCluster {
-  let result = ds_heap_fibonacci_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_fibonacci_cluster_sum(s : DsheapfibonacciCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_heap_fibonacci_model_get(s : DsheapfibonacciModel, i : Int) -> Double 
 }
 
 pub fn ds_heap_fibonacci_model_set(s : DsheapfibonacciModel, i : Int, v : Double) -> DsheapfibonacciModel {
-  let result = ds_heap_fibonacci_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_fibonacci_model_sum(s : DsheapfibonacciModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_heap_fibonacci_layer_get(s : DsheapfibonacciLayer, i : Int) -> Double 
 }
 
 pub fn ds_heap_fibonacci_layer_set(s : DsheapfibonacciLayer, i : Int, v : Double) -> DsheapfibonacciLayer {
-  let result = ds_heap_fibonacci_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_fibonacci_layer_sum(s : DsheapfibonacciLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_heap_fibonacci_buffer_get(s : DsheapfibonacciBuffer, i : Int) -> Doubl
 }
 
 pub fn ds_heap_fibonacci_buffer_set(s : DsheapfibonacciBuffer, i : Int, v : Double) -> DsheapfibonacciBuffer {
-  let result = ds_heap_fibonacci_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_fibonacci_buffer_sum(s : DsheapfibonacciBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_heap_fibonacci_cursor_get(s : DsheapfibonacciCursor, i : Int) -> Doubl
 }
 
 pub fn ds_heap_fibonacci_cursor_set(s : DsheapfibonacciCursor, i : Int, v : Double) -> DsheapfibonacciCursor {
-  let result = ds_heap_fibonacci_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_fibonacci_cursor_sum(s : DsheapfibonacciCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_heap_fibonacci_view_get(s : DsheapfibonacciView, i : Int) -> Double {
 }
 
 pub fn ds_heap_fibonacci_view_set(s : DsheapfibonacciView, i : Int, v : Double) -> DsheapfibonacciView {
-  let result = ds_heap_fibonacci_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_fibonacci_view_sum(s : DsheapfibonacciView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_heap_fibonacci_range_get(s : DsheapfibonacciRange, i : Int) -> Double 
 }
 
 pub fn ds_heap_fibonacci_range_set(s : DsheapfibonacciRange, i : Int, v : Double) -> DsheapfibonacciRange {
-  let result = ds_heap_fibonacci_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_fibonacci_range_sum(s : DsheapfibonacciRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_heap_fibonacci_slice_get(s : DsheapfibonacciSlice, i : Int) -> Double 
 }
 
 pub fn ds_heap_fibonacci_slice_set(s : DsheapfibonacciSlice, i : Int, v : Double) -> DsheapfibonacciSlice {
-  let result = ds_heap_fibonacci_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_fibonacci_slice_sum(s : DsheapfibonacciSlice) -> Double { @_common.sum(s.data) }

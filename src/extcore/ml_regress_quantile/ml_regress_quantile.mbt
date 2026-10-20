@@ -107,23 +107,15 @@ pub fn ml_regress_quantile_series_std(s : MlregressquantileSeries) -> Double { @
 pub fn ml_regress_quantile_series_median(s : MlregressquantileSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_regress_quantile_series_scale(s : MlregressquantileSeries, f : Double) -> MlregressquantileSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_regress_quantile_series_add(a : MlregressquantileSeries, b : MlregressquantileSeries) -> MlregressquantileSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_regress_quantile_series_sub(a : MlregressquantileSeries, b : MlregressquantileSeries) -> MlregressquantileSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_regress_quantile_series_normalize(s : MlregressquantileSeries) -> MlregressquantileSeries {
@@ -254,22 +246,16 @@ pub fn ml_regress_quantile_vector_zero(dim : Int) -> MlregressquantileVector {
 
 pub fn ml_regress_quantile_vector_add(a : MlregressquantileVector, b : MlregressquantileVector) -> MlregressquantileVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_regress_quantile_vector_sub(a : MlregressquantileVector, b : MlregressquantileVector) -> MlregressquantileVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_regress_quantile_vector_scale(v : MlregressquantileVector, s : Double) -> MlregressquantileVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_regress_quantile_vector_dot(a : MlregressquantileVector, b : MlregressquantileVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_regress_quantile_frame_get(s : MlregressquantileFrame, i : Int) -> Dou
 }
 
 pub fn ml_regress_quantile_frame_set(s : MlregressquantileFrame, i : Int, v : Double) -> MlregressquantileFrame {
-  let result = ml_regress_quantile_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_quantile_frame_sum(s : MlregressquantileFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_regress_quantile_table_get(s : MlregressquantileTable, i : Int) -> Dou
 }
 
 pub fn ml_regress_quantile_table_set(s : MlregressquantileTable, i : Int, v : Double) -> MlregressquantileTable {
-  let result = ml_regress_quantile_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_quantile_table_sum(s : MlregressquantileTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_regress_quantile_graphn_get(s : MlregressquantileGraphN, i : Int) -> D
 }
 
 pub fn ml_regress_quantile_graphn_set(s : MlregressquantileGraphN, i : Int, v : Double) -> MlregressquantileGraphN {
-  let result = ml_regress_quantile_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_quantile_graphn_sum(s : MlregressquantileGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_regress_quantile_node_get(s : MlregressquantileNode, i : Int) -> Doubl
 }
 
 pub fn ml_regress_quantile_node_set(s : MlregressquantileNode, i : Int, v : Double) -> MlregressquantileNode {
-  let result = ml_regress_quantile_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_quantile_node_sum(s : MlregressquantileNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_regress_quantile_edge_get(s : MlregressquantileEdge, i : Int) -> Doubl
 }
 
 pub fn ml_regress_quantile_edge_set(s : MlregressquantileEdge, i : Int, v : Double) -> MlregressquantileEdge {
-  let result = ml_regress_quantile_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_quantile_edge_sum(s : MlregressquantileEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_regress_quantile_path_get(s : MlregressquantilePath, i : Int) -> Doubl
 }
 
 pub fn ml_regress_quantile_path_set(s : MlregressquantilePath, i : Int, v : Double) -> MlregressquantilePath {
-  let result = ml_regress_quantile_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_quantile_path_sum(s : MlregressquantilePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_regress_quantile_cluster_get(s : MlregressquantileCluster, i : Int) ->
 }
 
 pub fn ml_regress_quantile_cluster_set(s : MlregressquantileCluster, i : Int, v : Double) -> MlregressquantileCluster {
-  let result = ml_regress_quantile_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_quantile_cluster_sum(s : MlregressquantileCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_regress_quantile_model_get(s : MlregressquantileModel, i : Int) -> Dou
 }
 
 pub fn ml_regress_quantile_model_set(s : MlregressquantileModel, i : Int, v : Double) -> MlregressquantileModel {
-  let result = ml_regress_quantile_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_quantile_model_sum(s : MlregressquantileModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_regress_quantile_layer_get(s : MlregressquantileLayer, i : Int) -> Dou
 }
 
 pub fn ml_regress_quantile_layer_set(s : MlregressquantileLayer, i : Int, v : Double) -> MlregressquantileLayer {
-  let result = ml_regress_quantile_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_quantile_layer_sum(s : MlregressquantileLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_regress_quantile_buffer_get(s : MlregressquantileBuffer, i : Int) -> D
 }
 
 pub fn ml_regress_quantile_buffer_set(s : MlregressquantileBuffer, i : Int, v : Double) -> MlregressquantileBuffer {
-  let result = ml_regress_quantile_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_quantile_buffer_sum(s : MlregressquantileBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_regress_quantile_cursor_get(s : MlregressquantileCursor, i : Int) -> D
 }
 
 pub fn ml_regress_quantile_cursor_set(s : MlregressquantileCursor, i : Int, v : Double) -> MlregressquantileCursor {
-  let result = ml_regress_quantile_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_quantile_cursor_sum(s : MlregressquantileCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_regress_quantile_view_get(s : MlregressquantileView, i : Int) -> Doubl
 }
 
 pub fn ml_regress_quantile_view_set(s : MlregressquantileView, i : Int, v : Double) -> MlregressquantileView {
-  let result = ml_regress_quantile_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_quantile_view_sum(s : MlregressquantileView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_regress_quantile_range_get(s : MlregressquantileRange, i : Int) -> Dou
 }
 
 pub fn ml_regress_quantile_range_set(s : MlregressquantileRange, i : Int, v : Double) -> MlregressquantileRange {
-  let result = ml_regress_quantile_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_quantile_range_sum(s : MlregressquantileRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_regress_quantile_slice_get(s : MlregressquantileSlice, i : Int) -> Dou
 }
 
 pub fn ml_regress_quantile_slice_set(s : MlregressquantileSlice, i : Int, v : Double) -> MlregressquantileSlice {
-  let result = ml_regress_quantile_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_quantile_slice_sum(s : MlregressquantileSlice) -> Double { @_common.sum(s.data) }

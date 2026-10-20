@@ -107,23 +107,15 @@ pub fn signal_filter_bessel_series_std(s : SignalfilterbesselSeries) -> Double {
 pub fn signal_filter_bessel_series_median(s : SignalfilterbesselSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_filter_bessel_series_scale(s : SignalfilterbesselSeries, f : Double) -> SignalfilterbesselSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_filter_bessel_series_add(a : SignalfilterbesselSeries, b : SignalfilterbesselSeries) -> SignalfilterbesselSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_filter_bessel_series_sub(a : SignalfilterbesselSeries, b : SignalfilterbesselSeries) -> SignalfilterbesselSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_filter_bessel_series_normalize(s : SignalfilterbesselSeries) -> SignalfilterbesselSeries {
@@ -254,22 +246,16 @@ pub fn signal_filter_bessel_vector_zero(dim : Int) -> SignalfilterbesselVector {
 
 pub fn signal_filter_bessel_vector_add(a : SignalfilterbesselVector, b : SignalfilterbesselVector) -> SignalfilterbesselVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_filter_bessel_vector_sub(a : SignalfilterbesselVector, b : SignalfilterbesselVector) -> SignalfilterbesselVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_filter_bessel_vector_scale(v : SignalfilterbesselVector, s : Double) -> SignalfilterbesselVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_filter_bessel_vector_dot(a : SignalfilterbesselVector, b : SignalfilterbesselVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_filter_bessel_frame_get(s : SignalfilterbesselFrame, i : Int) -> D
 }
 
 pub fn signal_filter_bessel_frame_set(s : SignalfilterbesselFrame, i : Int, v : Double) -> SignalfilterbesselFrame {
-  let result = signal_filter_bessel_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_bessel_frame_sum(s : SignalfilterbesselFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_filter_bessel_table_get(s : SignalfilterbesselTable, i : Int) -> D
 }
 
 pub fn signal_filter_bessel_table_set(s : SignalfilterbesselTable, i : Int, v : Double) -> SignalfilterbesselTable {
-  let result = signal_filter_bessel_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_bessel_table_sum(s : SignalfilterbesselTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_filter_bessel_graphn_get(s : SignalfilterbesselGraphN, i : Int) ->
 }
 
 pub fn signal_filter_bessel_graphn_set(s : SignalfilterbesselGraphN, i : Int, v : Double) -> SignalfilterbesselGraphN {
-  let result = signal_filter_bessel_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_bessel_graphn_sum(s : SignalfilterbesselGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_filter_bessel_node_get(s : SignalfilterbesselNode, i : Int) -> Dou
 }
 
 pub fn signal_filter_bessel_node_set(s : SignalfilterbesselNode, i : Int, v : Double) -> SignalfilterbesselNode {
-  let result = signal_filter_bessel_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_bessel_node_sum(s : SignalfilterbesselNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_filter_bessel_edge_get(s : SignalfilterbesselEdge, i : Int) -> Dou
 }
 
 pub fn signal_filter_bessel_edge_set(s : SignalfilterbesselEdge, i : Int, v : Double) -> SignalfilterbesselEdge {
-  let result = signal_filter_bessel_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_bessel_edge_sum(s : SignalfilterbesselEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_filter_bessel_path_get(s : SignalfilterbesselPath, i : Int) -> Dou
 }
 
 pub fn signal_filter_bessel_path_set(s : SignalfilterbesselPath, i : Int, v : Double) -> SignalfilterbesselPath {
-  let result = signal_filter_bessel_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_bessel_path_sum(s : SignalfilterbesselPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_filter_bessel_cluster_get(s : SignalfilterbesselCluster, i : Int) 
 }
 
 pub fn signal_filter_bessel_cluster_set(s : SignalfilterbesselCluster, i : Int, v : Double) -> SignalfilterbesselCluster {
-  let result = signal_filter_bessel_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_bessel_cluster_sum(s : SignalfilterbesselCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_filter_bessel_model_get(s : SignalfilterbesselModel, i : Int) -> D
 }
 
 pub fn signal_filter_bessel_model_set(s : SignalfilterbesselModel, i : Int, v : Double) -> SignalfilterbesselModel {
-  let result = signal_filter_bessel_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_bessel_model_sum(s : SignalfilterbesselModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_filter_bessel_layer_get(s : SignalfilterbesselLayer, i : Int) -> D
 }
 
 pub fn signal_filter_bessel_layer_set(s : SignalfilterbesselLayer, i : Int, v : Double) -> SignalfilterbesselLayer {
-  let result = signal_filter_bessel_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_bessel_layer_sum(s : SignalfilterbesselLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_filter_bessel_buffer_get(s : SignalfilterbesselBuffer, i : Int) ->
 }
 
 pub fn signal_filter_bessel_buffer_set(s : SignalfilterbesselBuffer, i : Int, v : Double) -> SignalfilterbesselBuffer {
-  let result = signal_filter_bessel_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_bessel_buffer_sum(s : SignalfilterbesselBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_filter_bessel_cursor_get(s : SignalfilterbesselCursor, i : Int) ->
 }
 
 pub fn signal_filter_bessel_cursor_set(s : SignalfilterbesselCursor, i : Int, v : Double) -> SignalfilterbesselCursor {
-  let result = signal_filter_bessel_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_bessel_cursor_sum(s : SignalfilterbesselCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_filter_bessel_view_get(s : SignalfilterbesselView, i : Int) -> Dou
 }
 
 pub fn signal_filter_bessel_view_set(s : SignalfilterbesselView, i : Int, v : Double) -> SignalfilterbesselView {
-  let result = signal_filter_bessel_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_bessel_view_sum(s : SignalfilterbesselView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_filter_bessel_range_get(s : SignalfilterbesselRange, i : Int) -> D
 }
 
 pub fn signal_filter_bessel_range_set(s : SignalfilterbesselRange, i : Int, v : Double) -> SignalfilterbesselRange {
-  let result = signal_filter_bessel_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_bessel_range_sum(s : SignalfilterbesselRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_filter_bessel_slice_get(s : SignalfilterbesselSlice, i : Int) -> D
 }
 
 pub fn signal_filter_bessel_slice_set(s : SignalfilterbesselSlice, i : Int, v : Double) -> SignalfilterbesselSlice {
-  let result = signal_filter_bessel_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_bessel_slice_sum(s : SignalfilterbesselSlice) -> Double { @_common.sum(s.data) }

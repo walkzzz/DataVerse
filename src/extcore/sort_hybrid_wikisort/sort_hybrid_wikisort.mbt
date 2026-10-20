@@ -107,23 +107,15 @@ pub fn sort_hybrid_wikisort_series_std(s : SorthybridwikisortSeries) -> Double {
 pub fn sort_hybrid_wikisort_series_median(s : SorthybridwikisortSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_hybrid_wikisort_series_scale(s : SorthybridwikisortSeries, f : Double) -> SorthybridwikisortSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn sort_hybrid_wikisort_series_add(a : SorthybridwikisortSeries, b : SorthybridwikisortSeries) -> SorthybridwikisortSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn sort_hybrid_wikisort_series_sub(a : SorthybridwikisortSeries, b : SorthybridwikisortSeries) -> SorthybridwikisortSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn sort_hybrid_wikisort_series_normalize(s : SorthybridwikisortSeries) -> SorthybridwikisortSeries {
@@ -254,22 +246,16 @@ pub fn sort_hybrid_wikisort_vector_zero(dim : Int) -> SorthybridwikisortVector {
 
 pub fn sort_hybrid_wikisort_vector_add(a : SorthybridwikisortVector, b : SorthybridwikisortVector) -> SorthybridwikisortVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_hybrid_wikisort_vector_sub(a : SorthybridwikisortVector, b : SorthybridwikisortVector) -> SorthybridwikisortVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_hybrid_wikisort_vector_scale(v : SorthybridwikisortVector, s : Double) -> SorthybridwikisortVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn sort_hybrid_wikisort_vector_dot(a : SorthybridwikisortVector, b : SorthybridwikisortVector) -> Double {
@@ -372,10 +358,9 @@ pub fn sort_hybrid_wikisort_frame_get(s : SorthybridwikisortFrame, i : Int) -> D
 }
 
 pub fn sort_hybrid_wikisort_frame_set(s : SorthybridwikisortFrame, i : Int, v : Double) -> SorthybridwikisortFrame {
-  let result = sort_hybrid_wikisort_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_wikisort_frame_sum(s : SorthybridwikisortFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn sort_hybrid_wikisort_table_get(s : SorthybridwikisortTable, i : Int) -> D
 }
 
 pub fn sort_hybrid_wikisort_table_set(s : SorthybridwikisortTable, i : Int, v : Double) -> SorthybridwikisortTable {
-  let result = sort_hybrid_wikisort_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_wikisort_table_sum(s : SorthybridwikisortTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn sort_hybrid_wikisort_graphn_get(s : SorthybridwikisortGraphN, i : Int) ->
 }
 
 pub fn sort_hybrid_wikisort_graphn_set(s : SorthybridwikisortGraphN, i : Int, v : Double) -> SorthybridwikisortGraphN {
-  let result = sort_hybrid_wikisort_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_wikisort_graphn_sum(s : SorthybridwikisortGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn sort_hybrid_wikisort_node_get(s : SorthybridwikisortNode, i : Int) -> Dou
 }
 
 pub fn sort_hybrid_wikisort_node_set(s : SorthybridwikisortNode, i : Int, v : Double) -> SorthybridwikisortNode {
-  let result = sort_hybrid_wikisort_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_wikisort_node_sum(s : SorthybridwikisortNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn sort_hybrid_wikisort_edge_get(s : SorthybridwikisortEdge, i : Int) -> Dou
 }
 
 pub fn sort_hybrid_wikisort_edge_set(s : SorthybridwikisortEdge, i : Int, v : Double) -> SorthybridwikisortEdge {
-  let result = sort_hybrid_wikisort_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_wikisort_edge_sum(s : SorthybridwikisortEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn sort_hybrid_wikisort_path_get(s : SorthybridwikisortPath, i : Int) -> Dou
 }
 
 pub fn sort_hybrid_wikisort_path_set(s : SorthybridwikisortPath, i : Int, v : Double) -> SorthybridwikisortPath {
-  let result = sort_hybrid_wikisort_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_wikisort_path_sum(s : SorthybridwikisortPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn sort_hybrid_wikisort_cluster_get(s : SorthybridwikisortCluster, i : Int) 
 }
 
 pub fn sort_hybrid_wikisort_cluster_set(s : SorthybridwikisortCluster, i : Int, v : Double) -> SorthybridwikisortCluster {
-  let result = sort_hybrid_wikisort_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_wikisort_cluster_sum(s : SorthybridwikisortCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn sort_hybrid_wikisort_model_get(s : SorthybridwikisortModel, i : Int) -> D
 }
 
 pub fn sort_hybrid_wikisort_model_set(s : SorthybridwikisortModel, i : Int, v : Double) -> SorthybridwikisortModel {
-  let result = sort_hybrid_wikisort_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_wikisort_model_sum(s : SorthybridwikisortModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn sort_hybrid_wikisort_layer_get(s : SorthybridwikisortLayer, i : Int) -> D
 }
 
 pub fn sort_hybrid_wikisort_layer_set(s : SorthybridwikisortLayer, i : Int, v : Double) -> SorthybridwikisortLayer {
-  let result = sort_hybrid_wikisort_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_wikisort_layer_sum(s : SorthybridwikisortLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn sort_hybrid_wikisort_buffer_get(s : SorthybridwikisortBuffer, i : Int) ->
 }
 
 pub fn sort_hybrid_wikisort_buffer_set(s : SorthybridwikisortBuffer, i : Int, v : Double) -> SorthybridwikisortBuffer {
-  let result = sort_hybrid_wikisort_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_wikisort_buffer_sum(s : SorthybridwikisortBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn sort_hybrid_wikisort_cursor_get(s : SorthybridwikisortCursor, i : Int) ->
 }
 
 pub fn sort_hybrid_wikisort_cursor_set(s : SorthybridwikisortCursor, i : Int, v : Double) -> SorthybridwikisortCursor {
-  let result = sort_hybrid_wikisort_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_wikisort_cursor_sum(s : SorthybridwikisortCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn sort_hybrid_wikisort_view_get(s : SorthybridwikisortView, i : Int) -> Dou
 }
 
 pub fn sort_hybrid_wikisort_view_set(s : SorthybridwikisortView, i : Int, v : Double) -> SorthybridwikisortView {
-  let result = sort_hybrid_wikisort_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_wikisort_view_sum(s : SorthybridwikisortView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn sort_hybrid_wikisort_range_get(s : SorthybridwikisortRange, i : Int) -> D
 }
 
 pub fn sort_hybrid_wikisort_range_set(s : SorthybridwikisortRange, i : Int, v : Double) -> SorthybridwikisortRange {
-  let result = sort_hybrid_wikisort_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_wikisort_range_sum(s : SorthybridwikisortRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn sort_hybrid_wikisort_slice_get(s : SorthybridwikisortSlice, i : Int) -> D
 }
 
 pub fn sort_hybrid_wikisort_slice_set(s : SorthybridwikisortSlice, i : Int, v : Double) -> SorthybridwikisortSlice {
-  let result = sort_hybrid_wikisort_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_wikisort_slice_sum(s : SorthybridwikisortSlice) -> Double { @_common.sum(s.data) }

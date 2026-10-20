@@ -107,23 +107,15 @@ pub fn timeseries_garch_series_std(s : TimeseriesgarchSeries) -> Double { @_comm
 pub fn timeseries_garch_series_median(s : TimeseriesgarchSeries) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_garch_series_scale(s : TimeseriesgarchSeries, f : Double) -> TimeseriesgarchSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn timeseries_garch_series_add(a : TimeseriesgarchSeries, b : TimeseriesgarchSeries) -> TimeseriesgarchSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_garch_series_sub(a : TimeseriesgarchSeries, b : TimeseriesgarchSeries) -> TimeseriesgarchSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_garch_series_normalize(s : TimeseriesgarchSeries) -> TimeseriesgarchSeries {
@@ -254,22 +246,16 @@ pub fn timeseries_garch_vector_zero(dim : Int) -> TimeseriesgarchVector {
 
 pub fn timeseries_garch_vector_add(a : TimeseriesgarchVector, b : TimeseriesgarchVector) -> TimeseriesgarchVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_garch_vector_sub(a : TimeseriesgarchVector, b : TimeseriesgarchVector) -> TimeseriesgarchVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_garch_vector_scale(v : TimeseriesgarchVector, s : Double) -> TimeseriesgarchVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn timeseries_garch_vector_dot(a : TimeseriesgarchVector, b : TimeseriesgarchVector) -> Double {
@@ -372,10 +358,9 @@ pub fn timeseries_garch_frame_get(s : TimeseriesgarchFrame, i : Int) -> Double {
 }
 
 pub fn timeseries_garch_frame_set(s : TimeseriesgarchFrame, i : Int, v : Double) -> TimeseriesgarchFrame {
-  let result = timeseries_garch_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_garch_frame_sum(s : TimeseriesgarchFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn timeseries_garch_table_get(s : TimeseriesgarchTable, i : Int) -> Double {
 }
 
 pub fn timeseries_garch_table_set(s : TimeseriesgarchTable, i : Int, v : Double) -> TimeseriesgarchTable {
-  let result = timeseries_garch_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_garch_table_sum(s : TimeseriesgarchTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn timeseries_garch_graphn_get(s : TimeseriesgarchGraphN, i : Int) -> Double
 }
 
 pub fn timeseries_garch_graphn_set(s : TimeseriesgarchGraphN, i : Int, v : Double) -> TimeseriesgarchGraphN {
-  let result = timeseries_garch_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_garch_graphn_sum(s : TimeseriesgarchGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn timeseries_garch_node_get(s : TimeseriesgarchNode, i : Int) -> Double {
 }
 
 pub fn timeseries_garch_node_set(s : TimeseriesgarchNode, i : Int, v : Double) -> TimeseriesgarchNode {
-  let result = timeseries_garch_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_garch_node_sum(s : TimeseriesgarchNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn timeseries_garch_edge_get(s : TimeseriesgarchEdge, i : Int) -> Double {
 }
 
 pub fn timeseries_garch_edge_set(s : TimeseriesgarchEdge, i : Int, v : Double) -> TimeseriesgarchEdge {
-  let result = timeseries_garch_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_garch_edge_sum(s : TimeseriesgarchEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn timeseries_garch_path_get(s : TimeseriesgarchPath, i : Int) -> Double {
 }
 
 pub fn timeseries_garch_path_set(s : TimeseriesgarchPath, i : Int, v : Double) -> TimeseriesgarchPath {
-  let result = timeseries_garch_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_garch_path_sum(s : TimeseriesgarchPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn timeseries_garch_cluster_get(s : TimeseriesgarchCluster, i : Int) -> Doub
 }
 
 pub fn timeseries_garch_cluster_set(s : TimeseriesgarchCluster, i : Int, v : Double) -> TimeseriesgarchCluster {
-  let result = timeseries_garch_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_garch_cluster_sum(s : TimeseriesgarchCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn timeseries_garch_model_get(s : TimeseriesgarchModel, i : Int) -> Double {
 }
 
 pub fn timeseries_garch_model_set(s : TimeseriesgarchModel, i : Int, v : Double) -> TimeseriesgarchModel {
-  let result = timeseries_garch_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_garch_model_sum(s : TimeseriesgarchModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn timeseries_garch_layer_get(s : TimeseriesgarchLayer, i : Int) -> Double {
 }
 
 pub fn timeseries_garch_layer_set(s : TimeseriesgarchLayer, i : Int, v : Double) -> TimeseriesgarchLayer {
-  let result = timeseries_garch_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_garch_layer_sum(s : TimeseriesgarchLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn timeseries_garch_buffer_get(s : TimeseriesgarchBuffer, i : Int) -> Double
 }
 
 pub fn timeseries_garch_buffer_set(s : TimeseriesgarchBuffer, i : Int, v : Double) -> TimeseriesgarchBuffer {
-  let result = timeseries_garch_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_garch_buffer_sum(s : TimeseriesgarchBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn timeseries_garch_cursor_get(s : TimeseriesgarchCursor, i : Int) -> Double
 }
 
 pub fn timeseries_garch_cursor_set(s : TimeseriesgarchCursor, i : Int, v : Double) -> TimeseriesgarchCursor {
-  let result = timeseries_garch_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_garch_cursor_sum(s : TimeseriesgarchCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn timeseries_garch_view_get(s : TimeseriesgarchView, i : Int) -> Double {
 }
 
 pub fn timeseries_garch_view_set(s : TimeseriesgarchView, i : Int, v : Double) -> TimeseriesgarchView {
-  let result = timeseries_garch_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_garch_view_sum(s : TimeseriesgarchView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn timeseries_garch_range_get(s : TimeseriesgarchRange, i : Int) -> Double {
 }
 
 pub fn timeseries_garch_range_set(s : TimeseriesgarchRange, i : Int, v : Double) -> TimeseriesgarchRange {
-  let result = timeseries_garch_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_garch_range_sum(s : TimeseriesgarchRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn timeseries_garch_slice_get(s : TimeseriesgarchSlice, i : Int) -> Double {
 }
 
 pub fn timeseries_garch_slice_set(s : TimeseriesgarchSlice, i : Int, v : Double) -> TimeseriesgarchSlice {
-  let result = timeseries_garch_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_garch_slice_sum(s : TimeseriesgarchSlice) -> Double { @_common.sum(s.data) }

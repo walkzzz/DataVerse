@@ -107,23 +107,15 @@ pub fn physics_fluid_lattice_series_std(s : PhysicsfluidlatticeSeries) -> Double
 pub fn physics_fluid_lattice_series_median(s : PhysicsfluidlatticeSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_fluid_lattice_series_scale(s : PhysicsfluidlatticeSeries, f : Double) -> PhysicsfluidlatticeSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_fluid_lattice_series_add(a : PhysicsfluidlatticeSeries, b : PhysicsfluidlatticeSeries) -> PhysicsfluidlatticeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_fluid_lattice_series_sub(a : PhysicsfluidlatticeSeries, b : PhysicsfluidlatticeSeries) -> PhysicsfluidlatticeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_fluid_lattice_series_normalize(s : PhysicsfluidlatticeSeries) -> PhysicsfluidlatticeSeries {
@@ -254,22 +246,16 @@ pub fn physics_fluid_lattice_vector_zero(dim : Int) -> PhysicsfluidlatticeVector
 
 pub fn physics_fluid_lattice_vector_add(a : PhysicsfluidlatticeVector, b : PhysicsfluidlatticeVector) -> PhysicsfluidlatticeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_fluid_lattice_vector_sub(a : PhysicsfluidlatticeVector, b : PhysicsfluidlatticeVector) -> PhysicsfluidlatticeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_fluid_lattice_vector_scale(v : PhysicsfluidlatticeVector, s : Double) -> PhysicsfluidlatticeVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_fluid_lattice_vector_dot(a : PhysicsfluidlatticeVector, b : PhysicsfluidlatticeVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_fluid_lattice_frame_get(s : PhysicsfluidlatticeFrame, i : Int) ->
 }
 
 pub fn physics_fluid_lattice_frame_set(s : PhysicsfluidlatticeFrame, i : Int, v : Double) -> PhysicsfluidlatticeFrame {
-  let result = physics_fluid_lattice_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_lattice_frame_sum(s : PhysicsfluidlatticeFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_fluid_lattice_table_get(s : PhysicsfluidlatticeTable, i : Int) ->
 }
 
 pub fn physics_fluid_lattice_table_set(s : PhysicsfluidlatticeTable, i : Int, v : Double) -> PhysicsfluidlatticeTable {
-  let result = physics_fluid_lattice_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_lattice_table_sum(s : PhysicsfluidlatticeTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_fluid_lattice_graphn_get(s : PhysicsfluidlatticeGraphN, i : Int) 
 }
 
 pub fn physics_fluid_lattice_graphn_set(s : PhysicsfluidlatticeGraphN, i : Int, v : Double) -> PhysicsfluidlatticeGraphN {
-  let result = physics_fluid_lattice_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_lattice_graphn_sum(s : PhysicsfluidlatticeGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_fluid_lattice_node_get(s : PhysicsfluidlatticeNode, i : Int) -> D
 }
 
 pub fn physics_fluid_lattice_node_set(s : PhysicsfluidlatticeNode, i : Int, v : Double) -> PhysicsfluidlatticeNode {
-  let result = physics_fluid_lattice_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_lattice_node_sum(s : PhysicsfluidlatticeNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_fluid_lattice_edge_get(s : PhysicsfluidlatticeEdge, i : Int) -> D
 }
 
 pub fn physics_fluid_lattice_edge_set(s : PhysicsfluidlatticeEdge, i : Int, v : Double) -> PhysicsfluidlatticeEdge {
-  let result = physics_fluid_lattice_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_lattice_edge_sum(s : PhysicsfluidlatticeEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_fluid_lattice_path_get(s : PhysicsfluidlatticePath, i : Int) -> D
 }
 
 pub fn physics_fluid_lattice_path_set(s : PhysicsfluidlatticePath, i : Int, v : Double) -> PhysicsfluidlatticePath {
-  let result = physics_fluid_lattice_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_lattice_path_sum(s : PhysicsfluidlatticePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_fluid_lattice_cluster_get(s : PhysicsfluidlatticeCluster, i : Int
 }
 
 pub fn physics_fluid_lattice_cluster_set(s : PhysicsfluidlatticeCluster, i : Int, v : Double) -> PhysicsfluidlatticeCluster {
-  let result = physics_fluid_lattice_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_lattice_cluster_sum(s : PhysicsfluidlatticeCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_fluid_lattice_model_get(s : PhysicsfluidlatticeModel, i : Int) ->
 }
 
 pub fn physics_fluid_lattice_model_set(s : PhysicsfluidlatticeModel, i : Int, v : Double) -> PhysicsfluidlatticeModel {
-  let result = physics_fluid_lattice_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_lattice_model_sum(s : PhysicsfluidlatticeModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_fluid_lattice_layer_get(s : PhysicsfluidlatticeLayer, i : Int) ->
 }
 
 pub fn physics_fluid_lattice_layer_set(s : PhysicsfluidlatticeLayer, i : Int, v : Double) -> PhysicsfluidlatticeLayer {
-  let result = physics_fluid_lattice_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_lattice_layer_sum(s : PhysicsfluidlatticeLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_fluid_lattice_buffer_get(s : PhysicsfluidlatticeBuffer, i : Int) 
 }
 
 pub fn physics_fluid_lattice_buffer_set(s : PhysicsfluidlatticeBuffer, i : Int, v : Double) -> PhysicsfluidlatticeBuffer {
-  let result = physics_fluid_lattice_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_lattice_buffer_sum(s : PhysicsfluidlatticeBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_fluid_lattice_cursor_get(s : PhysicsfluidlatticeCursor, i : Int) 
 }
 
 pub fn physics_fluid_lattice_cursor_set(s : PhysicsfluidlatticeCursor, i : Int, v : Double) -> PhysicsfluidlatticeCursor {
-  let result = physics_fluid_lattice_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_lattice_cursor_sum(s : PhysicsfluidlatticeCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_fluid_lattice_view_get(s : PhysicsfluidlatticeView, i : Int) -> D
 }
 
 pub fn physics_fluid_lattice_view_set(s : PhysicsfluidlatticeView, i : Int, v : Double) -> PhysicsfluidlatticeView {
-  let result = physics_fluid_lattice_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_lattice_view_sum(s : PhysicsfluidlatticeView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_fluid_lattice_range_get(s : PhysicsfluidlatticeRange, i : Int) ->
 }
 
 pub fn physics_fluid_lattice_range_set(s : PhysicsfluidlatticeRange, i : Int, v : Double) -> PhysicsfluidlatticeRange {
-  let result = physics_fluid_lattice_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_lattice_range_sum(s : PhysicsfluidlatticeRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_fluid_lattice_slice_get(s : PhysicsfluidlatticeSlice, i : Int) ->
 }
 
 pub fn physics_fluid_lattice_slice_set(s : PhysicsfluidlatticeSlice, i : Int, v : Double) -> PhysicsfluidlatticeSlice {
-  let result = physics_fluid_lattice_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_fluid_lattice_slice_sum(s : PhysicsfluidlatticeSlice) -> Double { @_common.sum(s.data) }

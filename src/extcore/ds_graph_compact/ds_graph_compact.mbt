@@ -107,23 +107,15 @@ pub fn ds_graph_compact_series_std(s : DsgraphcompactSeries) -> Double { @_commo
 pub fn ds_graph_compact_series_median(s : DsgraphcompactSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_graph_compact_series_scale(s : DsgraphcompactSeries, f : Double) -> DsgraphcompactSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_graph_compact_series_add(a : DsgraphcompactSeries, b : DsgraphcompactSeries) -> DsgraphcompactSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_graph_compact_series_sub(a : DsgraphcompactSeries, b : DsgraphcompactSeries) -> DsgraphcompactSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_graph_compact_series_normalize(s : DsgraphcompactSeries) -> DsgraphcompactSeries {
@@ -254,22 +246,16 @@ pub fn ds_graph_compact_vector_zero(dim : Int) -> DsgraphcompactVector {
 
 pub fn ds_graph_compact_vector_add(a : DsgraphcompactVector, b : DsgraphcompactVector) -> DsgraphcompactVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_graph_compact_vector_sub(a : DsgraphcompactVector, b : DsgraphcompactVector) -> DsgraphcompactVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_graph_compact_vector_scale(v : DsgraphcompactVector, s : Double) -> DsgraphcompactVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_graph_compact_vector_dot(a : DsgraphcompactVector, b : DsgraphcompactVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_graph_compact_frame_get(s : DsgraphcompactFrame, i : Int) -> Double {
 }
 
 pub fn ds_graph_compact_frame_set(s : DsgraphcompactFrame, i : Int, v : Double) -> DsgraphcompactFrame {
-  let result = ds_graph_compact_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_compact_frame_sum(s : DsgraphcompactFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_graph_compact_table_get(s : DsgraphcompactTable, i : Int) -> Double {
 }
 
 pub fn ds_graph_compact_table_set(s : DsgraphcompactTable, i : Int, v : Double) -> DsgraphcompactTable {
-  let result = ds_graph_compact_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_compact_table_sum(s : DsgraphcompactTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_graph_compact_graphn_get(s : DsgraphcompactGraphN, i : Int) -> Double 
 }
 
 pub fn ds_graph_compact_graphn_set(s : DsgraphcompactGraphN, i : Int, v : Double) -> DsgraphcompactGraphN {
-  let result = ds_graph_compact_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_compact_graphn_sum(s : DsgraphcompactGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_graph_compact_node_get(s : DsgraphcompactNode, i : Int) -> Double {
 }
 
 pub fn ds_graph_compact_node_set(s : DsgraphcompactNode, i : Int, v : Double) -> DsgraphcompactNode {
-  let result = ds_graph_compact_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_compact_node_sum(s : DsgraphcompactNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_graph_compact_edge_get(s : DsgraphcompactEdge, i : Int) -> Double {
 }
 
 pub fn ds_graph_compact_edge_set(s : DsgraphcompactEdge, i : Int, v : Double) -> DsgraphcompactEdge {
-  let result = ds_graph_compact_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_compact_edge_sum(s : DsgraphcompactEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_graph_compact_path_get(s : DsgraphcompactPath, i : Int) -> Double {
 }
 
 pub fn ds_graph_compact_path_set(s : DsgraphcompactPath, i : Int, v : Double) -> DsgraphcompactPath {
-  let result = ds_graph_compact_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_compact_path_sum(s : DsgraphcompactPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_graph_compact_cluster_get(s : DsgraphcompactCluster, i : Int) -> Doubl
 }
 
 pub fn ds_graph_compact_cluster_set(s : DsgraphcompactCluster, i : Int, v : Double) -> DsgraphcompactCluster {
-  let result = ds_graph_compact_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_compact_cluster_sum(s : DsgraphcompactCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_graph_compact_model_get(s : DsgraphcompactModel, i : Int) -> Double {
 }
 
 pub fn ds_graph_compact_model_set(s : DsgraphcompactModel, i : Int, v : Double) -> DsgraphcompactModel {
-  let result = ds_graph_compact_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_compact_model_sum(s : DsgraphcompactModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_graph_compact_layer_get(s : DsgraphcompactLayer, i : Int) -> Double {
 }
 
 pub fn ds_graph_compact_layer_set(s : DsgraphcompactLayer, i : Int, v : Double) -> DsgraphcompactLayer {
-  let result = ds_graph_compact_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_compact_layer_sum(s : DsgraphcompactLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_graph_compact_buffer_get(s : DsgraphcompactBuffer, i : Int) -> Double 
 }
 
 pub fn ds_graph_compact_buffer_set(s : DsgraphcompactBuffer, i : Int, v : Double) -> DsgraphcompactBuffer {
-  let result = ds_graph_compact_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_compact_buffer_sum(s : DsgraphcompactBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_graph_compact_cursor_get(s : DsgraphcompactCursor, i : Int) -> Double 
 }
 
 pub fn ds_graph_compact_cursor_set(s : DsgraphcompactCursor, i : Int, v : Double) -> DsgraphcompactCursor {
-  let result = ds_graph_compact_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_compact_cursor_sum(s : DsgraphcompactCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_graph_compact_view_get(s : DsgraphcompactView, i : Int) -> Double {
 }
 
 pub fn ds_graph_compact_view_set(s : DsgraphcompactView, i : Int, v : Double) -> DsgraphcompactView {
-  let result = ds_graph_compact_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_compact_view_sum(s : DsgraphcompactView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_graph_compact_range_get(s : DsgraphcompactRange, i : Int) -> Double {
 }
 
 pub fn ds_graph_compact_range_set(s : DsgraphcompactRange, i : Int, v : Double) -> DsgraphcompactRange {
-  let result = ds_graph_compact_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_compact_range_sum(s : DsgraphcompactRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_graph_compact_slice_get(s : DsgraphcompactSlice, i : Int) -> Double {
 }
 
 pub fn ds_graph_compact_slice_set(s : DsgraphcompactSlice, i : Int, v : Double) -> DsgraphcompactSlice {
-  let result = ds_graph_compact_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_compact_slice_sum(s : DsgraphcompactSlice) -> Double { @_common.sum(s.data) }

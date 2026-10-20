@@ -107,23 +107,15 @@ pub fn ds_graph_hyper_series_std(s : DsgraphhyperSeries) -> Double { @_common.st
 pub fn ds_graph_hyper_series_median(s : DsgraphhyperSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_graph_hyper_series_scale(s : DsgraphhyperSeries, f : Double) -> DsgraphhyperSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_graph_hyper_series_add(a : DsgraphhyperSeries, b : DsgraphhyperSeries) -> DsgraphhyperSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_graph_hyper_series_sub(a : DsgraphhyperSeries, b : DsgraphhyperSeries) -> DsgraphhyperSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_graph_hyper_series_normalize(s : DsgraphhyperSeries) -> DsgraphhyperSeries {
@@ -254,22 +246,16 @@ pub fn ds_graph_hyper_vector_zero(dim : Int) -> DsgraphhyperVector {
 
 pub fn ds_graph_hyper_vector_add(a : DsgraphhyperVector, b : DsgraphhyperVector) -> DsgraphhyperVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_graph_hyper_vector_sub(a : DsgraphhyperVector, b : DsgraphhyperVector) -> DsgraphhyperVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_graph_hyper_vector_scale(v : DsgraphhyperVector, s : Double) -> DsgraphhyperVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_graph_hyper_vector_dot(a : DsgraphhyperVector, b : DsgraphhyperVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_graph_hyper_frame_get(s : DsgraphhyperFrame, i : Int) -> Double {
 }
 
 pub fn ds_graph_hyper_frame_set(s : DsgraphhyperFrame, i : Int, v : Double) -> DsgraphhyperFrame {
-  let result = ds_graph_hyper_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_hyper_frame_sum(s : DsgraphhyperFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_graph_hyper_table_get(s : DsgraphhyperTable, i : Int) -> Double {
 }
 
 pub fn ds_graph_hyper_table_set(s : DsgraphhyperTable, i : Int, v : Double) -> DsgraphhyperTable {
-  let result = ds_graph_hyper_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_hyper_table_sum(s : DsgraphhyperTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_graph_hyper_graphn_get(s : DsgraphhyperGraphN, i : Int) -> Double {
 }
 
 pub fn ds_graph_hyper_graphn_set(s : DsgraphhyperGraphN, i : Int, v : Double) -> DsgraphhyperGraphN {
-  let result = ds_graph_hyper_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_hyper_graphn_sum(s : DsgraphhyperGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_graph_hyper_node_get(s : DsgraphhyperNode, i : Int) -> Double {
 }
 
 pub fn ds_graph_hyper_node_set(s : DsgraphhyperNode, i : Int, v : Double) -> DsgraphhyperNode {
-  let result = ds_graph_hyper_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_hyper_node_sum(s : DsgraphhyperNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_graph_hyper_edge_get(s : DsgraphhyperEdge, i : Int) -> Double {
 }
 
 pub fn ds_graph_hyper_edge_set(s : DsgraphhyperEdge, i : Int, v : Double) -> DsgraphhyperEdge {
-  let result = ds_graph_hyper_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_hyper_edge_sum(s : DsgraphhyperEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_graph_hyper_path_get(s : DsgraphhyperPath, i : Int) -> Double {
 }
 
 pub fn ds_graph_hyper_path_set(s : DsgraphhyperPath, i : Int, v : Double) -> DsgraphhyperPath {
-  let result = ds_graph_hyper_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_hyper_path_sum(s : DsgraphhyperPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_graph_hyper_cluster_get(s : DsgraphhyperCluster, i : Int) -> Double {
 }
 
 pub fn ds_graph_hyper_cluster_set(s : DsgraphhyperCluster, i : Int, v : Double) -> DsgraphhyperCluster {
-  let result = ds_graph_hyper_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_hyper_cluster_sum(s : DsgraphhyperCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_graph_hyper_model_get(s : DsgraphhyperModel, i : Int) -> Double {
 }
 
 pub fn ds_graph_hyper_model_set(s : DsgraphhyperModel, i : Int, v : Double) -> DsgraphhyperModel {
-  let result = ds_graph_hyper_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_hyper_model_sum(s : DsgraphhyperModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_graph_hyper_layer_get(s : DsgraphhyperLayer, i : Int) -> Double {
 }
 
 pub fn ds_graph_hyper_layer_set(s : DsgraphhyperLayer, i : Int, v : Double) -> DsgraphhyperLayer {
-  let result = ds_graph_hyper_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_hyper_layer_sum(s : DsgraphhyperLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_graph_hyper_buffer_get(s : DsgraphhyperBuffer, i : Int) -> Double {
 }
 
 pub fn ds_graph_hyper_buffer_set(s : DsgraphhyperBuffer, i : Int, v : Double) -> DsgraphhyperBuffer {
-  let result = ds_graph_hyper_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_hyper_buffer_sum(s : DsgraphhyperBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_graph_hyper_cursor_get(s : DsgraphhyperCursor, i : Int) -> Double {
 }
 
 pub fn ds_graph_hyper_cursor_set(s : DsgraphhyperCursor, i : Int, v : Double) -> DsgraphhyperCursor {
-  let result = ds_graph_hyper_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_hyper_cursor_sum(s : DsgraphhyperCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_graph_hyper_view_get(s : DsgraphhyperView, i : Int) -> Double {
 }
 
 pub fn ds_graph_hyper_view_set(s : DsgraphhyperView, i : Int, v : Double) -> DsgraphhyperView {
-  let result = ds_graph_hyper_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_hyper_view_sum(s : DsgraphhyperView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_graph_hyper_range_get(s : DsgraphhyperRange, i : Int) -> Double {
 }
 
 pub fn ds_graph_hyper_range_set(s : DsgraphhyperRange, i : Int, v : Double) -> DsgraphhyperRange {
-  let result = ds_graph_hyper_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_hyper_range_sum(s : DsgraphhyperRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_graph_hyper_slice_get(s : DsgraphhyperSlice, i : Int) -> Double {
 }
 
 pub fn ds_graph_hyper_slice_set(s : DsgraphhyperSlice, i : Int, v : Double) -> DsgraphhyperSlice {
-  let result = ds_graph_hyper_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_hyper_slice_sum(s : DsgraphhyperSlice) -> Double { @_common.sum(s.data) }

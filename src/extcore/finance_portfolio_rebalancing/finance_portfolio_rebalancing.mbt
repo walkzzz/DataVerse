@@ -107,23 +107,15 @@ pub fn finance_portfolio_rebalancing_series_std(s : FinanceportfoliorebalancingS
 pub fn finance_portfolio_rebalancing_series_median(s : FinanceportfoliorebalancingSeries) -> Double { @_common.median(s.vals) }
 
 pub fn finance_portfolio_rebalancing_series_scale(s : FinanceportfoliorebalancingSeries, f : Double) -> FinanceportfoliorebalancingSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn finance_portfolio_rebalancing_series_add(a : FinanceportfoliorebalancingSeries, b : FinanceportfoliorebalancingSeries) -> FinanceportfoliorebalancingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn finance_portfolio_rebalancing_series_sub(a : FinanceportfoliorebalancingSeries, b : FinanceportfoliorebalancingSeries) -> FinanceportfoliorebalancingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn finance_portfolio_rebalancing_series_normalize(s : FinanceportfoliorebalancingSeries) -> FinanceportfoliorebalancingSeries {
@@ -254,22 +246,16 @@ pub fn finance_portfolio_rebalancing_vector_zero(dim : Int) -> Financeportfolior
 
 pub fn finance_portfolio_rebalancing_vector_add(a : FinanceportfoliorebalancingVector, b : FinanceportfoliorebalancingVector) -> FinanceportfoliorebalancingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_portfolio_rebalancing_vector_sub(a : FinanceportfoliorebalancingVector, b : FinanceportfoliorebalancingVector) -> FinanceportfoliorebalancingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_portfolio_rebalancing_vector_scale(v : FinanceportfoliorebalancingVector, s : Double) -> FinanceportfoliorebalancingVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn finance_portfolio_rebalancing_vector_dot(a : FinanceportfoliorebalancingVector, b : FinanceportfoliorebalancingVector) -> Double {
@@ -372,10 +358,9 @@ pub fn finance_portfolio_rebalancing_frame_get(s : FinanceportfoliorebalancingFr
 }
 
 pub fn finance_portfolio_rebalancing_frame_set(s : FinanceportfoliorebalancingFrame, i : Int, v : Double) -> FinanceportfoliorebalancingFrame {
-  let result = finance_portfolio_rebalancing_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_frame_sum(s : FinanceportfoliorebalancingFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn finance_portfolio_rebalancing_table_get(s : FinanceportfoliorebalancingTa
 }
 
 pub fn finance_portfolio_rebalancing_table_set(s : FinanceportfoliorebalancingTable, i : Int, v : Double) -> FinanceportfoliorebalancingTable {
-  let result = finance_portfolio_rebalancing_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_table_sum(s : FinanceportfoliorebalancingTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn finance_portfolio_rebalancing_graphn_get(s : FinanceportfoliorebalancingG
 }
 
 pub fn finance_portfolio_rebalancing_graphn_set(s : FinanceportfoliorebalancingGraphN, i : Int, v : Double) -> FinanceportfoliorebalancingGraphN {
-  let result = finance_portfolio_rebalancing_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_graphn_sum(s : FinanceportfoliorebalancingGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn finance_portfolio_rebalancing_node_get(s : FinanceportfoliorebalancingNod
 }
 
 pub fn finance_portfolio_rebalancing_node_set(s : FinanceportfoliorebalancingNode, i : Int, v : Double) -> FinanceportfoliorebalancingNode {
-  let result = finance_portfolio_rebalancing_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_node_sum(s : FinanceportfoliorebalancingNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn finance_portfolio_rebalancing_edge_get(s : FinanceportfoliorebalancingEdg
 }
 
 pub fn finance_portfolio_rebalancing_edge_set(s : FinanceportfoliorebalancingEdge, i : Int, v : Double) -> FinanceportfoliorebalancingEdge {
-  let result = finance_portfolio_rebalancing_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_edge_sum(s : FinanceportfoliorebalancingEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn finance_portfolio_rebalancing_path_get(s : FinanceportfoliorebalancingPat
 }
 
 pub fn finance_portfolio_rebalancing_path_set(s : FinanceportfoliorebalancingPath, i : Int, v : Double) -> FinanceportfoliorebalancingPath {
-  let result = finance_portfolio_rebalancing_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_path_sum(s : FinanceportfoliorebalancingPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn finance_portfolio_rebalancing_cluster_get(s : Financeportfoliorebalancing
 }
 
 pub fn finance_portfolio_rebalancing_cluster_set(s : FinanceportfoliorebalancingCluster, i : Int, v : Double) -> FinanceportfoliorebalancingCluster {
-  let result = finance_portfolio_rebalancing_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_cluster_sum(s : FinanceportfoliorebalancingCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn finance_portfolio_rebalancing_model_get(s : FinanceportfoliorebalancingMo
 }
 
 pub fn finance_portfolio_rebalancing_model_set(s : FinanceportfoliorebalancingModel, i : Int, v : Double) -> FinanceportfoliorebalancingModel {
-  let result = finance_portfolio_rebalancing_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_model_sum(s : FinanceportfoliorebalancingModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn finance_portfolio_rebalancing_layer_get(s : FinanceportfoliorebalancingLa
 }
 
 pub fn finance_portfolio_rebalancing_layer_set(s : FinanceportfoliorebalancingLayer, i : Int, v : Double) -> FinanceportfoliorebalancingLayer {
-  let result = finance_portfolio_rebalancing_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_layer_sum(s : FinanceportfoliorebalancingLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn finance_portfolio_rebalancing_buffer_get(s : FinanceportfoliorebalancingB
 }
 
 pub fn finance_portfolio_rebalancing_buffer_set(s : FinanceportfoliorebalancingBuffer, i : Int, v : Double) -> FinanceportfoliorebalancingBuffer {
-  let result = finance_portfolio_rebalancing_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_buffer_sum(s : FinanceportfoliorebalancingBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn finance_portfolio_rebalancing_cursor_get(s : FinanceportfoliorebalancingC
 }
 
 pub fn finance_portfolio_rebalancing_cursor_set(s : FinanceportfoliorebalancingCursor, i : Int, v : Double) -> FinanceportfoliorebalancingCursor {
-  let result = finance_portfolio_rebalancing_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_cursor_sum(s : FinanceportfoliorebalancingCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn finance_portfolio_rebalancing_view_get(s : FinanceportfoliorebalancingVie
 }
 
 pub fn finance_portfolio_rebalancing_view_set(s : FinanceportfoliorebalancingView, i : Int, v : Double) -> FinanceportfoliorebalancingView {
-  let result = finance_portfolio_rebalancing_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_view_sum(s : FinanceportfoliorebalancingView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn finance_portfolio_rebalancing_range_get(s : FinanceportfoliorebalancingRa
 }
 
 pub fn finance_portfolio_rebalancing_range_set(s : FinanceportfoliorebalancingRange, i : Int, v : Double) -> FinanceportfoliorebalancingRange {
-  let result = finance_portfolio_rebalancing_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_range_sum(s : FinanceportfoliorebalancingRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn finance_portfolio_rebalancing_slice_get(s : FinanceportfoliorebalancingSl
 }
 
 pub fn finance_portfolio_rebalancing_slice_set(s : FinanceportfoliorebalancingSlice, i : Int, v : Double) -> FinanceportfoliorebalancingSlice {
-  let result = finance_portfolio_rebalancing_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_rebalancing_slice_sum(s : FinanceportfoliorebalancingSlice) -> Double { @_common.sum(s.data) }

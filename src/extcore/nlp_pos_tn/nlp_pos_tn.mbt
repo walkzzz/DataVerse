@@ -107,23 +107,15 @@ pub fn nlp_pos_tn_series_std(s : NlppostnSeries) -> Double { @_common.std(s.vals
 pub fn nlp_pos_tn_series_median(s : NlppostnSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_pos_tn_series_scale(s : NlppostnSeries, f : Double) -> NlppostnSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_pos_tn_series_add(a : NlppostnSeries, b : NlppostnSeries) -> NlppostnSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_pos_tn_series_sub(a : NlppostnSeries, b : NlppostnSeries) -> NlppostnSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_pos_tn_series_normalize(s : NlppostnSeries) -> NlppostnSeries {
@@ -254,22 +246,16 @@ pub fn nlp_pos_tn_vector_zero(dim : Int) -> NlppostnVector {
 
 pub fn nlp_pos_tn_vector_add(a : NlppostnVector, b : NlppostnVector) -> NlppostnVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_pos_tn_vector_sub(a : NlppostnVector, b : NlppostnVector) -> NlppostnVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_pos_tn_vector_scale(v : NlppostnVector, s : Double) -> NlppostnVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_pos_tn_vector_dot(a : NlppostnVector, b : NlppostnVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_pos_tn_frame_get(s : NlppostnFrame, i : Int) -> Double {
 }
 
 pub fn nlp_pos_tn_frame_set(s : NlppostnFrame, i : Int, v : Double) -> NlppostnFrame {
-  let result = nlp_pos_tn_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_tn_frame_sum(s : NlppostnFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_pos_tn_table_get(s : NlppostnTable, i : Int) -> Double {
 }
 
 pub fn nlp_pos_tn_table_set(s : NlppostnTable, i : Int, v : Double) -> NlppostnTable {
-  let result = nlp_pos_tn_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_tn_table_sum(s : NlppostnTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_pos_tn_graphn_get(s : NlppostnGraphN, i : Int) -> Double {
 }
 
 pub fn nlp_pos_tn_graphn_set(s : NlppostnGraphN, i : Int, v : Double) -> NlppostnGraphN {
-  let result = nlp_pos_tn_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_tn_graphn_sum(s : NlppostnGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_pos_tn_node_get(s : NlppostnNode, i : Int) -> Double {
 }
 
 pub fn nlp_pos_tn_node_set(s : NlppostnNode, i : Int, v : Double) -> NlppostnNode {
-  let result = nlp_pos_tn_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_tn_node_sum(s : NlppostnNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_pos_tn_edge_get(s : NlppostnEdge, i : Int) -> Double {
 }
 
 pub fn nlp_pos_tn_edge_set(s : NlppostnEdge, i : Int, v : Double) -> NlppostnEdge {
-  let result = nlp_pos_tn_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_tn_edge_sum(s : NlppostnEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_pos_tn_path_get(s : NlppostnPath, i : Int) -> Double {
 }
 
 pub fn nlp_pos_tn_path_set(s : NlppostnPath, i : Int, v : Double) -> NlppostnPath {
-  let result = nlp_pos_tn_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_tn_path_sum(s : NlppostnPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_pos_tn_cluster_get(s : NlppostnCluster, i : Int) -> Double {
 }
 
 pub fn nlp_pos_tn_cluster_set(s : NlppostnCluster, i : Int, v : Double) -> NlppostnCluster {
-  let result = nlp_pos_tn_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_tn_cluster_sum(s : NlppostnCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_pos_tn_model_get(s : NlppostnModel, i : Int) -> Double {
 }
 
 pub fn nlp_pos_tn_model_set(s : NlppostnModel, i : Int, v : Double) -> NlppostnModel {
-  let result = nlp_pos_tn_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_tn_model_sum(s : NlppostnModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_pos_tn_layer_get(s : NlppostnLayer, i : Int) -> Double {
 }
 
 pub fn nlp_pos_tn_layer_set(s : NlppostnLayer, i : Int, v : Double) -> NlppostnLayer {
-  let result = nlp_pos_tn_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_tn_layer_sum(s : NlppostnLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_pos_tn_buffer_get(s : NlppostnBuffer, i : Int) -> Double {
 }
 
 pub fn nlp_pos_tn_buffer_set(s : NlppostnBuffer, i : Int, v : Double) -> NlppostnBuffer {
-  let result = nlp_pos_tn_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_tn_buffer_sum(s : NlppostnBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_pos_tn_cursor_get(s : NlppostnCursor, i : Int) -> Double {
 }
 
 pub fn nlp_pos_tn_cursor_set(s : NlppostnCursor, i : Int, v : Double) -> NlppostnCursor {
-  let result = nlp_pos_tn_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_tn_cursor_sum(s : NlppostnCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_pos_tn_view_get(s : NlppostnView, i : Int) -> Double {
 }
 
 pub fn nlp_pos_tn_view_set(s : NlppostnView, i : Int, v : Double) -> NlppostnView {
-  let result = nlp_pos_tn_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_tn_view_sum(s : NlppostnView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_pos_tn_range_get(s : NlppostnRange, i : Int) -> Double {
 }
 
 pub fn nlp_pos_tn_range_set(s : NlppostnRange, i : Int, v : Double) -> NlppostnRange {
-  let result = nlp_pos_tn_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_tn_range_sum(s : NlppostnRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_pos_tn_slice_get(s : NlppostnSlice, i : Int) -> Double {
 }
 
 pub fn nlp_pos_tn_slice_set(s : NlppostnSlice, i : Int, v : Double) -> NlppostnSlice {
-  let result = nlp_pos_tn_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_tn_slice_sum(s : NlppostnSlice) -> Double { @_common.sum(s.data) }

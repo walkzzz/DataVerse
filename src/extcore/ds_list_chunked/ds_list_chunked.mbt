@@ -107,23 +107,15 @@ pub fn ds_list_chunked_series_std(s : DslistchunkedSeries) -> Double { @_common.
 pub fn ds_list_chunked_series_median(s : DslistchunkedSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_list_chunked_series_scale(s : DslistchunkedSeries, f : Double) -> DslistchunkedSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_list_chunked_series_add(a : DslistchunkedSeries, b : DslistchunkedSeries) -> DslistchunkedSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_list_chunked_series_sub(a : DslistchunkedSeries, b : DslistchunkedSeries) -> DslistchunkedSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_list_chunked_series_normalize(s : DslistchunkedSeries) -> DslistchunkedSeries {
@@ -254,22 +246,16 @@ pub fn ds_list_chunked_vector_zero(dim : Int) -> DslistchunkedVector {
 
 pub fn ds_list_chunked_vector_add(a : DslistchunkedVector, b : DslistchunkedVector) -> DslistchunkedVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_list_chunked_vector_sub(a : DslistchunkedVector, b : DslistchunkedVector) -> DslistchunkedVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_list_chunked_vector_scale(v : DslistchunkedVector, s : Double) -> DslistchunkedVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_list_chunked_vector_dot(a : DslistchunkedVector, b : DslistchunkedVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_list_chunked_frame_get(s : DslistchunkedFrame, i : Int) -> Double {
 }
 
 pub fn ds_list_chunked_frame_set(s : DslistchunkedFrame, i : Int, v : Double) -> DslistchunkedFrame {
-  let result = ds_list_chunked_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_frame_sum(s : DslistchunkedFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_list_chunked_table_get(s : DslistchunkedTable, i : Int) -> Double {
 }
 
 pub fn ds_list_chunked_table_set(s : DslistchunkedTable, i : Int, v : Double) -> DslistchunkedTable {
-  let result = ds_list_chunked_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_table_sum(s : DslistchunkedTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_list_chunked_graphn_get(s : DslistchunkedGraphN, i : Int) -> Double {
 }
 
 pub fn ds_list_chunked_graphn_set(s : DslistchunkedGraphN, i : Int, v : Double) -> DslistchunkedGraphN {
-  let result = ds_list_chunked_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_graphn_sum(s : DslistchunkedGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_list_chunked_node_get(s : DslistchunkedNode, i : Int) -> Double {
 }
 
 pub fn ds_list_chunked_node_set(s : DslistchunkedNode, i : Int, v : Double) -> DslistchunkedNode {
-  let result = ds_list_chunked_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_node_sum(s : DslistchunkedNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_list_chunked_edge_get(s : DslistchunkedEdge, i : Int) -> Double {
 }
 
 pub fn ds_list_chunked_edge_set(s : DslistchunkedEdge, i : Int, v : Double) -> DslistchunkedEdge {
-  let result = ds_list_chunked_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_edge_sum(s : DslistchunkedEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_list_chunked_path_get(s : DslistchunkedPath, i : Int) -> Double {
 }
 
 pub fn ds_list_chunked_path_set(s : DslistchunkedPath, i : Int, v : Double) -> DslistchunkedPath {
-  let result = ds_list_chunked_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_path_sum(s : DslistchunkedPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_list_chunked_cluster_get(s : DslistchunkedCluster, i : Int) -> Double 
 }
 
 pub fn ds_list_chunked_cluster_set(s : DslistchunkedCluster, i : Int, v : Double) -> DslistchunkedCluster {
-  let result = ds_list_chunked_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_cluster_sum(s : DslistchunkedCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_list_chunked_model_get(s : DslistchunkedModel, i : Int) -> Double {
 }
 
 pub fn ds_list_chunked_model_set(s : DslistchunkedModel, i : Int, v : Double) -> DslistchunkedModel {
-  let result = ds_list_chunked_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_model_sum(s : DslistchunkedModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_list_chunked_layer_get(s : DslistchunkedLayer, i : Int) -> Double {
 }
 
 pub fn ds_list_chunked_layer_set(s : DslistchunkedLayer, i : Int, v : Double) -> DslistchunkedLayer {
-  let result = ds_list_chunked_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_layer_sum(s : DslistchunkedLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_list_chunked_buffer_get(s : DslistchunkedBuffer, i : Int) -> Double {
 }
 
 pub fn ds_list_chunked_buffer_set(s : DslistchunkedBuffer, i : Int, v : Double) -> DslistchunkedBuffer {
-  let result = ds_list_chunked_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_buffer_sum(s : DslistchunkedBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_list_chunked_cursor_get(s : DslistchunkedCursor, i : Int) -> Double {
 }
 
 pub fn ds_list_chunked_cursor_set(s : DslistchunkedCursor, i : Int, v : Double) -> DslistchunkedCursor {
-  let result = ds_list_chunked_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_cursor_sum(s : DslistchunkedCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_list_chunked_view_get(s : DslistchunkedView, i : Int) -> Double {
 }
 
 pub fn ds_list_chunked_view_set(s : DslistchunkedView, i : Int, v : Double) -> DslistchunkedView {
-  let result = ds_list_chunked_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_view_sum(s : DslistchunkedView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_list_chunked_range_get(s : DslistchunkedRange, i : Int) -> Double {
 }
 
 pub fn ds_list_chunked_range_set(s : DslistchunkedRange, i : Int, v : Double) -> DslistchunkedRange {
-  let result = ds_list_chunked_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_range_sum(s : DslistchunkedRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_list_chunked_slice_get(s : DslistchunkedSlice, i : Int) -> Double {
 }
 
 pub fn ds_list_chunked_slice_set(s : DslistchunkedSlice, i : Int, v : Double) -> DslistchunkedSlice {
-  let result = ds_list_chunked_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_chunked_slice_sum(s : DslistchunkedSlice) -> Double { @_common.sum(s.data) }

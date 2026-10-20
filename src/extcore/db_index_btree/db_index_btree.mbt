@@ -107,23 +107,15 @@ pub fn db_index_btree_series_std(s : DbindexbtreeSeries) -> Double { @_common.st
 pub fn db_index_btree_series_median(s : DbindexbtreeSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_index_btree_series_scale(s : DbindexbtreeSeries, f : Double) -> DbindexbtreeSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_index_btree_series_add(a : DbindexbtreeSeries, b : DbindexbtreeSeries) -> DbindexbtreeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_index_btree_series_sub(a : DbindexbtreeSeries, b : DbindexbtreeSeries) -> DbindexbtreeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_index_btree_series_normalize(s : DbindexbtreeSeries) -> DbindexbtreeSeries {
@@ -254,22 +246,16 @@ pub fn db_index_btree_vector_zero(dim : Int) -> DbindexbtreeVector {
 
 pub fn db_index_btree_vector_add(a : DbindexbtreeVector, b : DbindexbtreeVector) -> DbindexbtreeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_index_btree_vector_sub(a : DbindexbtreeVector, b : DbindexbtreeVector) -> DbindexbtreeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_index_btree_vector_scale(v : DbindexbtreeVector, s : Double) -> DbindexbtreeVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_index_btree_vector_dot(a : DbindexbtreeVector, b : DbindexbtreeVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_index_btree_frame_get(s : DbindexbtreeFrame, i : Int) -> Double {
 }
 
 pub fn db_index_btree_frame_set(s : DbindexbtreeFrame, i : Int, v : Double) -> DbindexbtreeFrame {
-  let result = db_index_btree_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_btree_frame_sum(s : DbindexbtreeFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_index_btree_table_get(s : DbindexbtreeTable, i : Int) -> Double {
 }
 
 pub fn db_index_btree_table_set(s : DbindexbtreeTable, i : Int, v : Double) -> DbindexbtreeTable {
-  let result = db_index_btree_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_btree_table_sum(s : DbindexbtreeTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_index_btree_graphn_get(s : DbindexbtreeGraphN, i : Int) -> Double {
 }
 
 pub fn db_index_btree_graphn_set(s : DbindexbtreeGraphN, i : Int, v : Double) -> DbindexbtreeGraphN {
-  let result = db_index_btree_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_btree_graphn_sum(s : DbindexbtreeGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_index_btree_node_get(s : DbindexbtreeNode, i : Int) -> Double {
 }
 
 pub fn db_index_btree_node_set(s : DbindexbtreeNode, i : Int, v : Double) -> DbindexbtreeNode {
-  let result = db_index_btree_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_btree_node_sum(s : DbindexbtreeNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_index_btree_edge_get(s : DbindexbtreeEdge, i : Int) -> Double {
 }
 
 pub fn db_index_btree_edge_set(s : DbindexbtreeEdge, i : Int, v : Double) -> DbindexbtreeEdge {
-  let result = db_index_btree_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_btree_edge_sum(s : DbindexbtreeEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_index_btree_path_get(s : DbindexbtreePath, i : Int) -> Double {
 }
 
 pub fn db_index_btree_path_set(s : DbindexbtreePath, i : Int, v : Double) -> DbindexbtreePath {
-  let result = db_index_btree_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_btree_path_sum(s : DbindexbtreePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_index_btree_cluster_get(s : DbindexbtreeCluster, i : Int) -> Double {
 }
 
 pub fn db_index_btree_cluster_set(s : DbindexbtreeCluster, i : Int, v : Double) -> DbindexbtreeCluster {
-  let result = db_index_btree_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_btree_cluster_sum(s : DbindexbtreeCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_index_btree_model_get(s : DbindexbtreeModel, i : Int) -> Double {
 }
 
 pub fn db_index_btree_model_set(s : DbindexbtreeModel, i : Int, v : Double) -> DbindexbtreeModel {
-  let result = db_index_btree_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_btree_model_sum(s : DbindexbtreeModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_index_btree_layer_get(s : DbindexbtreeLayer, i : Int) -> Double {
 }
 
 pub fn db_index_btree_layer_set(s : DbindexbtreeLayer, i : Int, v : Double) -> DbindexbtreeLayer {
-  let result = db_index_btree_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_btree_layer_sum(s : DbindexbtreeLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_index_btree_buffer_get(s : DbindexbtreeBuffer, i : Int) -> Double {
 }
 
 pub fn db_index_btree_buffer_set(s : DbindexbtreeBuffer, i : Int, v : Double) -> DbindexbtreeBuffer {
-  let result = db_index_btree_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_btree_buffer_sum(s : DbindexbtreeBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_index_btree_cursor_get(s : DbindexbtreeCursor, i : Int) -> Double {
 }
 
 pub fn db_index_btree_cursor_set(s : DbindexbtreeCursor, i : Int, v : Double) -> DbindexbtreeCursor {
-  let result = db_index_btree_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_btree_cursor_sum(s : DbindexbtreeCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_index_btree_view_get(s : DbindexbtreeView, i : Int) -> Double {
 }
 
 pub fn db_index_btree_view_set(s : DbindexbtreeView, i : Int, v : Double) -> DbindexbtreeView {
-  let result = db_index_btree_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_btree_view_sum(s : DbindexbtreeView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_index_btree_range_get(s : DbindexbtreeRange, i : Int) -> Double {
 }
 
 pub fn db_index_btree_range_set(s : DbindexbtreeRange, i : Int, v : Double) -> DbindexbtreeRange {
-  let result = db_index_btree_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_btree_range_sum(s : DbindexbtreeRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_index_btree_slice_get(s : DbindexbtreeSlice, i : Int) -> Double {
 }
 
 pub fn db_index_btree_slice_set(s : DbindexbtreeSlice, i : Int, v : Double) -> DbindexbtreeSlice {
-  let result = db_index_btree_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_btree_slice_sum(s : DbindexbtreeSlice) -> Double { @_common.sum(s.data) }

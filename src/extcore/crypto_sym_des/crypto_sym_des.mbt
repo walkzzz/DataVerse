@@ -107,23 +107,15 @@ pub fn crypto_sym_des_series_std(s : CryptosymdesSeries) -> Double { @_common.st
 pub fn crypto_sym_des_series_median(s : CryptosymdesSeries) -> Double { @_common.median(s.vals) }
 
 pub fn crypto_sym_des_series_scale(s : CryptosymdesSeries, f : Double) -> CryptosymdesSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn crypto_sym_des_series_add(a : CryptosymdesSeries, b : CryptosymdesSeries) -> CryptosymdesSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn crypto_sym_des_series_sub(a : CryptosymdesSeries, b : CryptosymdesSeries) -> CryptosymdesSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn crypto_sym_des_series_normalize(s : CryptosymdesSeries) -> CryptosymdesSeries {
@@ -254,22 +246,16 @@ pub fn crypto_sym_des_vector_zero(dim : Int) -> CryptosymdesVector {
 
 pub fn crypto_sym_des_vector_add(a : CryptosymdesVector, b : CryptosymdesVector) -> CryptosymdesVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_sym_des_vector_sub(a : CryptosymdesVector, b : CryptosymdesVector) -> CryptosymdesVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_sym_des_vector_scale(v : CryptosymdesVector, s : Double) -> CryptosymdesVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn crypto_sym_des_vector_dot(a : CryptosymdesVector, b : CryptosymdesVector) -> Double {
@@ -372,10 +358,9 @@ pub fn crypto_sym_des_frame_get(s : CryptosymdesFrame, i : Int) -> Double {
 }
 
 pub fn crypto_sym_des_frame_set(s : CryptosymdesFrame, i : Int, v : Double) -> CryptosymdesFrame {
-  let result = crypto_sym_des_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_des_frame_sum(s : CryptosymdesFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn crypto_sym_des_table_get(s : CryptosymdesTable, i : Int) -> Double {
 }
 
 pub fn crypto_sym_des_table_set(s : CryptosymdesTable, i : Int, v : Double) -> CryptosymdesTable {
-  let result = crypto_sym_des_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_des_table_sum(s : CryptosymdesTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn crypto_sym_des_graphn_get(s : CryptosymdesGraphN, i : Int) -> Double {
 }
 
 pub fn crypto_sym_des_graphn_set(s : CryptosymdesGraphN, i : Int, v : Double) -> CryptosymdesGraphN {
-  let result = crypto_sym_des_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_des_graphn_sum(s : CryptosymdesGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn crypto_sym_des_node_get(s : CryptosymdesNode, i : Int) -> Double {
 }
 
 pub fn crypto_sym_des_node_set(s : CryptosymdesNode, i : Int, v : Double) -> CryptosymdesNode {
-  let result = crypto_sym_des_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_des_node_sum(s : CryptosymdesNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn crypto_sym_des_edge_get(s : CryptosymdesEdge, i : Int) -> Double {
 }
 
 pub fn crypto_sym_des_edge_set(s : CryptosymdesEdge, i : Int, v : Double) -> CryptosymdesEdge {
-  let result = crypto_sym_des_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_des_edge_sum(s : CryptosymdesEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn crypto_sym_des_path_get(s : CryptosymdesPath, i : Int) -> Double {
 }
 
 pub fn crypto_sym_des_path_set(s : CryptosymdesPath, i : Int, v : Double) -> CryptosymdesPath {
-  let result = crypto_sym_des_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_des_path_sum(s : CryptosymdesPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn crypto_sym_des_cluster_get(s : CryptosymdesCluster, i : Int) -> Double {
 }
 
 pub fn crypto_sym_des_cluster_set(s : CryptosymdesCluster, i : Int, v : Double) -> CryptosymdesCluster {
-  let result = crypto_sym_des_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_des_cluster_sum(s : CryptosymdesCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn crypto_sym_des_model_get(s : CryptosymdesModel, i : Int) -> Double {
 }
 
 pub fn crypto_sym_des_model_set(s : CryptosymdesModel, i : Int, v : Double) -> CryptosymdesModel {
-  let result = crypto_sym_des_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_des_model_sum(s : CryptosymdesModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn crypto_sym_des_layer_get(s : CryptosymdesLayer, i : Int) -> Double {
 }
 
 pub fn crypto_sym_des_layer_set(s : CryptosymdesLayer, i : Int, v : Double) -> CryptosymdesLayer {
-  let result = crypto_sym_des_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_des_layer_sum(s : CryptosymdesLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn crypto_sym_des_buffer_get(s : CryptosymdesBuffer, i : Int) -> Double {
 }
 
 pub fn crypto_sym_des_buffer_set(s : CryptosymdesBuffer, i : Int, v : Double) -> CryptosymdesBuffer {
-  let result = crypto_sym_des_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_des_buffer_sum(s : CryptosymdesBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn crypto_sym_des_cursor_get(s : CryptosymdesCursor, i : Int) -> Double {
 }
 
 pub fn crypto_sym_des_cursor_set(s : CryptosymdesCursor, i : Int, v : Double) -> CryptosymdesCursor {
-  let result = crypto_sym_des_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_des_cursor_sum(s : CryptosymdesCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn crypto_sym_des_view_get(s : CryptosymdesView, i : Int) -> Double {
 }
 
 pub fn crypto_sym_des_view_set(s : CryptosymdesView, i : Int, v : Double) -> CryptosymdesView {
-  let result = crypto_sym_des_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_des_view_sum(s : CryptosymdesView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn crypto_sym_des_range_get(s : CryptosymdesRange, i : Int) -> Double {
 }
 
 pub fn crypto_sym_des_range_set(s : CryptosymdesRange, i : Int, v : Double) -> CryptosymdesRange {
-  let result = crypto_sym_des_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_des_range_sum(s : CryptosymdesRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn crypto_sym_des_slice_get(s : CryptosymdesSlice, i : Int) -> Double {
 }
 
 pub fn crypto_sym_des_slice_set(s : CryptosymdesSlice, i : Int, v : Double) -> CryptosymdesSlice {
-  let result = crypto_sym_des_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sym_des_slice_sum(s : CryptosymdesSlice) -> Double { @_common.sum(s.data) }

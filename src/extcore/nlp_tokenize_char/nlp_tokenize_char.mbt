@@ -107,23 +107,15 @@ pub fn nlp_tokenize_char_series_std(s : NlptokenizecharSeries) -> Double { @_com
 pub fn nlp_tokenize_char_series_median(s : NlptokenizecharSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_tokenize_char_series_scale(s : NlptokenizecharSeries, f : Double) -> NlptokenizecharSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_tokenize_char_series_add(a : NlptokenizecharSeries, b : NlptokenizecharSeries) -> NlptokenizecharSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_tokenize_char_series_sub(a : NlptokenizecharSeries, b : NlptokenizecharSeries) -> NlptokenizecharSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_tokenize_char_series_normalize(s : NlptokenizecharSeries) -> NlptokenizecharSeries {
@@ -254,22 +246,16 @@ pub fn nlp_tokenize_char_vector_zero(dim : Int) -> NlptokenizecharVector {
 
 pub fn nlp_tokenize_char_vector_add(a : NlptokenizecharVector, b : NlptokenizecharVector) -> NlptokenizecharVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_tokenize_char_vector_sub(a : NlptokenizecharVector, b : NlptokenizecharVector) -> NlptokenizecharVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_tokenize_char_vector_scale(v : NlptokenizecharVector, s : Double) -> NlptokenizecharVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_tokenize_char_vector_dot(a : NlptokenizecharVector, b : NlptokenizecharVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_tokenize_char_frame_get(s : NlptokenizecharFrame, i : Int) -> Double 
 }
 
 pub fn nlp_tokenize_char_frame_set(s : NlptokenizecharFrame, i : Int, v : Double) -> NlptokenizecharFrame {
-  let result = nlp_tokenize_char_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_char_frame_sum(s : NlptokenizecharFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_tokenize_char_table_get(s : NlptokenizecharTable, i : Int) -> Double 
 }
 
 pub fn nlp_tokenize_char_table_set(s : NlptokenizecharTable, i : Int, v : Double) -> NlptokenizecharTable {
-  let result = nlp_tokenize_char_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_char_table_sum(s : NlptokenizecharTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_tokenize_char_graphn_get(s : NlptokenizecharGraphN, i : Int) -> Doubl
 }
 
 pub fn nlp_tokenize_char_graphn_set(s : NlptokenizecharGraphN, i : Int, v : Double) -> NlptokenizecharGraphN {
-  let result = nlp_tokenize_char_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_char_graphn_sum(s : NlptokenizecharGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_tokenize_char_node_get(s : NlptokenizecharNode, i : Int) -> Double {
 }
 
 pub fn nlp_tokenize_char_node_set(s : NlptokenizecharNode, i : Int, v : Double) -> NlptokenizecharNode {
-  let result = nlp_tokenize_char_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_char_node_sum(s : NlptokenizecharNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_tokenize_char_edge_get(s : NlptokenizecharEdge, i : Int) -> Double {
 }
 
 pub fn nlp_tokenize_char_edge_set(s : NlptokenizecharEdge, i : Int, v : Double) -> NlptokenizecharEdge {
-  let result = nlp_tokenize_char_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_char_edge_sum(s : NlptokenizecharEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_tokenize_char_path_get(s : NlptokenizecharPath, i : Int) -> Double {
 }
 
 pub fn nlp_tokenize_char_path_set(s : NlptokenizecharPath, i : Int, v : Double) -> NlptokenizecharPath {
-  let result = nlp_tokenize_char_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_char_path_sum(s : NlptokenizecharPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_tokenize_char_cluster_get(s : NlptokenizecharCluster, i : Int) -> Dou
 }
 
 pub fn nlp_tokenize_char_cluster_set(s : NlptokenizecharCluster, i : Int, v : Double) -> NlptokenizecharCluster {
-  let result = nlp_tokenize_char_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_char_cluster_sum(s : NlptokenizecharCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_tokenize_char_model_get(s : NlptokenizecharModel, i : Int) -> Double 
 }
 
 pub fn nlp_tokenize_char_model_set(s : NlptokenizecharModel, i : Int, v : Double) -> NlptokenizecharModel {
-  let result = nlp_tokenize_char_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_char_model_sum(s : NlptokenizecharModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_tokenize_char_layer_get(s : NlptokenizecharLayer, i : Int) -> Double 
 }
 
 pub fn nlp_tokenize_char_layer_set(s : NlptokenizecharLayer, i : Int, v : Double) -> NlptokenizecharLayer {
-  let result = nlp_tokenize_char_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_char_layer_sum(s : NlptokenizecharLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_tokenize_char_buffer_get(s : NlptokenizecharBuffer, i : Int) -> Doubl
 }
 
 pub fn nlp_tokenize_char_buffer_set(s : NlptokenizecharBuffer, i : Int, v : Double) -> NlptokenizecharBuffer {
-  let result = nlp_tokenize_char_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_char_buffer_sum(s : NlptokenizecharBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_tokenize_char_cursor_get(s : NlptokenizecharCursor, i : Int) -> Doubl
 }
 
 pub fn nlp_tokenize_char_cursor_set(s : NlptokenizecharCursor, i : Int, v : Double) -> NlptokenizecharCursor {
-  let result = nlp_tokenize_char_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_char_cursor_sum(s : NlptokenizecharCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_tokenize_char_view_get(s : NlptokenizecharView, i : Int) -> Double {
 }
 
 pub fn nlp_tokenize_char_view_set(s : NlptokenizecharView, i : Int, v : Double) -> NlptokenizecharView {
-  let result = nlp_tokenize_char_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_char_view_sum(s : NlptokenizecharView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_tokenize_char_range_get(s : NlptokenizecharRange, i : Int) -> Double 
 }
 
 pub fn nlp_tokenize_char_range_set(s : NlptokenizecharRange, i : Int, v : Double) -> NlptokenizecharRange {
-  let result = nlp_tokenize_char_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_char_range_sum(s : NlptokenizecharRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_tokenize_char_slice_get(s : NlptokenizecharSlice, i : Int) -> Double 
 }
 
 pub fn nlp_tokenize_char_slice_set(s : NlptokenizecharSlice, i : Int, v : Double) -> NlptokenizecharSlice {
-  let result = nlp_tokenize_char_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_char_slice_sum(s : NlptokenizecharSlice) -> Double { @_common.sum(s.data) }

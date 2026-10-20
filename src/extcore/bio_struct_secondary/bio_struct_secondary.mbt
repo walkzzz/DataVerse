@@ -107,23 +107,15 @@ pub fn bio_struct_secondary_series_std(s : BiostructsecondarySeries) -> Double {
 pub fn bio_struct_secondary_series_median(s : BiostructsecondarySeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_struct_secondary_series_scale(s : BiostructsecondarySeries, f : Double) -> BiostructsecondarySeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_struct_secondary_series_add(a : BiostructsecondarySeries, b : BiostructsecondarySeries) -> BiostructsecondarySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_struct_secondary_series_sub(a : BiostructsecondarySeries, b : BiostructsecondarySeries) -> BiostructsecondarySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_struct_secondary_series_normalize(s : BiostructsecondarySeries) -> BiostructsecondarySeries {
@@ -254,22 +246,16 @@ pub fn bio_struct_secondary_vector_zero(dim : Int) -> BiostructsecondaryVector {
 
 pub fn bio_struct_secondary_vector_add(a : BiostructsecondaryVector, b : BiostructsecondaryVector) -> BiostructsecondaryVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_struct_secondary_vector_sub(a : BiostructsecondaryVector, b : BiostructsecondaryVector) -> BiostructsecondaryVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_struct_secondary_vector_scale(v : BiostructsecondaryVector, s : Double) -> BiostructsecondaryVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_struct_secondary_vector_dot(a : BiostructsecondaryVector, b : BiostructsecondaryVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_struct_secondary_frame_get(s : BiostructsecondaryFrame, i : Int) -> D
 }
 
 pub fn bio_struct_secondary_frame_set(s : BiostructsecondaryFrame, i : Int, v : Double) -> BiostructsecondaryFrame {
-  let result = bio_struct_secondary_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_secondary_frame_sum(s : BiostructsecondaryFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_struct_secondary_table_get(s : BiostructsecondaryTable, i : Int) -> D
 }
 
 pub fn bio_struct_secondary_table_set(s : BiostructsecondaryTable, i : Int, v : Double) -> BiostructsecondaryTable {
-  let result = bio_struct_secondary_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_secondary_table_sum(s : BiostructsecondaryTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_struct_secondary_graphn_get(s : BiostructsecondaryGraphN, i : Int) ->
 }
 
 pub fn bio_struct_secondary_graphn_set(s : BiostructsecondaryGraphN, i : Int, v : Double) -> BiostructsecondaryGraphN {
-  let result = bio_struct_secondary_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_secondary_graphn_sum(s : BiostructsecondaryGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_struct_secondary_node_get(s : BiostructsecondaryNode, i : Int) -> Dou
 }
 
 pub fn bio_struct_secondary_node_set(s : BiostructsecondaryNode, i : Int, v : Double) -> BiostructsecondaryNode {
-  let result = bio_struct_secondary_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_secondary_node_sum(s : BiostructsecondaryNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_struct_secondary_edge_get(s : BiostructsecondaryEdge, i : Int) -> Dou
 }
 
 pub fn bio_struct_secondary_edge_set(s : BiostructsecondaryEdge, i : Int, v : Double) -> BiostructsecondaryEdge {
-  let result = bio_struct_secondary_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_secondary_edge_sum(s : BiostructsecondaryEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_struct_secondary_path_get(s : BiostructsecondaryPath, i : Int) -> Dou
 }
 
 pub fn bio_struct_secondary_path_set(s : BiostructsecondaryPath, i : Int, v : Double) -> BiostructsecondaryPath {
-  let result = bio_struct_secondary_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_secondary_path_sum(s : BiostructsecondaryPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_struct_secondary_cluster_get(s : BiostructsecondaryCluster, i : Int) 
 }
 
 pub fn bio_struct_secondary_cluster_set(s : BiostructsecondaryCluster, i : Int, v : Double) -> BiostructsecondaryCluster {
-  let result = bio_struct_secondary_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_secondary_cluster_sum(s : BiostructsecondaryCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_struct_secondary_model_get(s : BiostructsecondaryModel, i : Int) -> D
 }
 
 pub fn bio_struct_secondary_model_set(s : BiostructsecondaryModel, i : Int, v : Double) -> BiostructsecondaryModel {
-  let result = bio_struct_secondary_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_secondary_model_sum(s : BiostructsecondaryModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_struct_secondary_layer_get(s : BiostructsecondaryLayer, i : Int) -> D
 }
 
 pub fn bio_struct_secondary_layer_set(s : BiostructsecondaryLayer, i : Int, v : Double) -> BiostructsecondaryLayer {
-  let result = bio_struct_secondary_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_secondary_layer_sum(s : BiostructsecondaryLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_struct_secondary_buffer_get(s : BiostructsecondaryBuffer, i : Int) ->
 }
 
 pub fn bio_struct_secondary_buffer_set(s : BiostructsecondaryBuffer, i : Int, v : Double) -> BiostructsecondaryBuffer {
-  let result = bio_struct_secondary_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_secondary_buffer_sum(s : BiostructsecondaryBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_struct_secondary_cursor_get(s : BiostructsecondaryCursor, i : Int) ->
 }
 
 pub fn bio_struct_secondary_cursor_set(s : BiostructsecondaryCursor, i : Int, v : Double) -> BiostructsecondaryCursor {
-  let result = bio_struct_secondary_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_secondary_cursor_sum(s : BiostructsecondaryCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_struct_secondary_view_get(s : BiostructsecondaryView, i : Int) -> Dou
 }
 
 pub fn bio_struct_secondary_view_set(s : BiostructsecondaryView, i : Int, v : Double) -> BiostructsecondaryView {
-  let result = bio_struct_secondary_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_secondary_view_sum(s : BiostructsecondaryView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_struct_secondary_range_get(s : BiostructsecondaryRange, i : Int) -> D
 }
 
 pub fn bio_struct_secondary_range_set(s : BiostructsecondaryRange, i : Int, v : Double) -> BiostructsecondaryRange {
-  let result = bio_struct_secondary_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_secondary_range_sum(s : BiostructsecondaryRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_struct_secondary_slice_get(s : BiostructsecondarySlice, i : Int) -> D
 }
 
 pub fn bio_struct_secondary_slice_set(s : BiostructsecondarySlice, i : Int, v : Double) -> BiostructsecondarySlice {
-  let result = bio_struct_secondary_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_secondary_slice_sum(s : BiostructsecondarySlice) -> Double { @_common.sum(s.data) }

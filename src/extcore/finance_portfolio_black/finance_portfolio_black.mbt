@@ -107,23 +107,15 @@ pub fn finance_portfolio_black_series_std(s : FinanceportfolioblackSeries) -> Do
 pub fn finance_portfolio_black_series_median(s : FinanceportfolioblackSeries) -> Double { @_common.median(s.vals) }
 
 pub fn finance_portfolio_black_series_scale(s : FinanceportfolioblackSeries, f : Double) -> FinanceportfolioblackSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn finance_portfolio_black_series_add(a : FinanceportfolioblackSeries, b : FinanceportfolioblackSeries) -> FinanceportfolioblackSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn finance_portfolio_black_series_sub(a : FinanceportfolioblackSeries, b : FinanceportfolioblackSeries) -> FinanceportfolioblackSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn finance_portfolio_black_series_normalize(s : FinanceportfolioblackSeries) -> FinanceportfolioblackSeries {
@@ -254,22 +246,16 @@ pub fn finance_portfolio_black_vector_zero(dim : Int) -> FinanceportfolioblackVe
 
 pub fn finance_portfolio_black_vector_add(a : FinanceportfolioblackVector, b : FinanceportfolioblackVector) -> FinanceportfolioblackVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_portfolio_black_vector_sub(a : FinanceportfolioblackVector, b : FinanceportfolioblackVector) -> FinanceportfolioblackVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_portfolio_black_vector_scale(v : FinanceportfolioblackVector, s : Double) -> FinanceportfolioblackVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn finance_portfolio_black_vector_dot(a : FinanceportfolioblackVector, b : FinanceportfolioblackVector) -> Double {
@@ -372,10 +358,9 @@ pub fn finance_portfolio_black_frame_get(s : FinanceportfolioblackFrame, i : Int
 }
 
 pub fn finance_portfolio_black_frame_set(s : FinanceportfolioblackFrame, i : Int, v : Double) -> FinanceportfolioblackFrame {
-  let result = finance_portfolio_black_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_frame_sum(s : FinanceportfolioblackFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn finance_portfolio_black_table_get(s : FinanceportfolioblackTable, i : Int
 }
 
 pub fn finance_portfolio_black_table_set(s : FinanceportfolioblackTable, i : Int, v : Double) -> FinanceportfolioblackTable {
-  let result = finance_portfolio_black_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_table_sum(s : FinanceportfolioblackTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn finance_portfolio_black_graphn_get(s : FinanceportfolioblackGraphN, i : I
 }
 
 pub fn finance_portfolio_black_graphn_set(s : FinanceportfolioblackGraphN, i : Int, v : Double) -> FinanceportfolioblackGraphN {
-  let result = finance_portfolio_black_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_graphn_sum(s : FinanceportfolioblackGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn finance_portfolio_black_node_get(s : FinanceportfolioblackNode, i : Int) 
 }
 
 pub fn finance_portfolio_black_node_set(s : FinanceportfolioblackNode, i : Int, v : Double) -> FinanceportfolioblackNode {
-  let result = finance_portfolio_black_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_node_sum(s : FinanceportfolioblackNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn finance_portfolio_black_edge_get(s : FinanceportfolioblackEdge, i : Int) 
 }
 
 pub fn finance_portfolio_black_edge_set(s : FinanceportfolioblackEdge, i : Int, v : Double) -> FinanceportfolioblackEdge {
-  let result = finance_portfolio_black_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_edge_sum(s : FinanceportfolioblackEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn finance_portfolio_black_path_get(s : FinanceportfolioblackPath, i : Int) 
 }
 
 pub fn finance_portfolio_black_path_set(s : FinanceportfolioblackPath, i : Int, v : Double) -> FinanceportfolioblackPath {
-  let result = finance_portfolio_black_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_path_sum(s : FinanceportfolioblackPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn finance_portfolio_black_cluster_get(s : FinanceportfolioblackCluster, i :
 }
 
 pub fn finance_portfolio_black_cluster_set(s : FinanceportfolioblackCluster, i : Int, v : Double) -> FinanceportfolioblackCluster {
-  let result = finance_portfolio_black_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_cluster_sum(s : FinanceportfolioblackCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn finance_portfolio_black_model_get(s : FinanceportfolioblackModel, i : Int
 }
 
 pub fn finance_portfolio_black_model_set(s : FinanceportfolioblackModel, i : Int, v : Double) -> FinanceportfolioblackModel {
-  let result = finance_portfolio_black_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_model_sum(s : FinanceportfolioblackModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn finance_portfolio_black_layer_get(s : FinanceportfolioblackLayer, i : Int
 }
 
 pub fn finance_portfolio_black_layer_set(s : FinanceportfolioblackLayer, i : Int, v : Double) -> FinanceportfolioblackLayer {
-  let result = finance_portfolio_black_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_layer_sum(s : FinanceportfolioblackLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn finance_portfolio_black_buffer_get(s : FinanceportfolioblackBuffer, i : I
 }
 
 pub fn finance_portfolio_black_buffer_set(s : FinanceportfolioblackBuffer, i : Int, v : Double) -> FinanceportfolioblackBuffer {
-  let result = finance_portfolio_black_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_buffer_sum(s : FinanceportfolioblackBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn finance_portfolio_black_cursor_get(s : FinanceportfolioblackCursor, i : I
 }
 
 pub fn finance_portfolio_black_cursor_set(s : FinanceportfolioblackCursor, i : Int, v : Double) -> FinanceportfolioblackCursor {
-  let result = finance_portfolio_black_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_cursor_sum(s : FinanceportfolioblackCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn finance_portfolio_black_view_get(s : FinanceportfolioblackView, i : Int) 
 }
 
 pub fn finance_portfolio_black_view_set(s : FinanceportfolioblackView, i : Int, v : Double) -> FinanceportfolioblackView {
-  let result = finance_portfolio_black_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_view_sum(s : FinanceportfolioblackView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn finance_portfolio_black_range_get(s : FinanceportfolioblackRange, i : Int
 }
 
 pub fn finance_portfolio_black_range_set(s : FinanceportfolioblackRange, i : Int, v : Double) -> FinanceportfolioblackRange {
-  let result = finance_portfolio_black_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_range_sum(s : FinanceportfolioblackRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn finance_portfolio_black_slice_get(s : FinanceportfolioblackSlice, i : Int
 }
 
 pub fn finance_portfolio_black_slice_set(s : FinanceportfolioblackSlice, i : Int, v : Double) -> FinanceportfolioblackSlice {
-  let result = finance_portfolio_black_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_slice_sum(s : FinanceportfolioblackSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn geo_buffer_segment_series_std(s : GeobuffersegmentSeries) -> Double { @_c
 pub fn geo_buffer_segment_series_median(s : GeobuffersegmentSeries) -> Double { @_common.median(s.vals) }
 
 pub fn geo_buffer_segment_series_scale(s : GeobuffersegmentSeries, f : Double) -> GeobuffersegmentSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn geo_buffer_segment_series_add(a : GeobuffersegmentSeries, b : GeobuffersegmentSeries) -> GeobuffersegmentSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn geo_buffer_segment_series_sub(a : GeobuffersegmentSeries, b : GeobuffersegmentSeries) -> GeobuffersegmentSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn geo_buffer_segment_series_normalize(s : GeobuffersegmentSeries) -> GeobuffersegmentSeries {
@@ -254,22 +246,16 @@ pub fn geo_buffer_segment_vector_zero(dim : Int) -> GeobuffersegmentVector {
 
 pub fn geo_buffer_segment_vector_add(a : GeobuffersegmentVector, b : GeobuffersegmentVector) -> GeobuffersegmentVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_buffer_segment_vector_sub(a : GeobuffersegmentVector, b : GeobuffersegmentVector) -> GeobuffersegmentVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_buffer_segment_vector_scale(v : GeobuffersegmentVector, s : Double) -> GeobuffersegmentVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn geo_buffer_segment_vector_dot(a : GeobuffersegmentVector, b : GeobuffersegmentVector) -> Double {
@@ -372,10 +358,9 @@ pub fn geo_buffer_segment_frame_get(s : GeobuffersegmentFrame, i : Int) -> Doubl
 }
 
 pub fn geo_buffer_segment_frame_set(s : GeobuffersegmentFrame, i : Int, v : Double) -> GeobuffersegmentFrame {
-  let result = geo_buffer_segment_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_frame_sum(s : GeobuffersegmentFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn geo_buffer_segment_table_get(s : GeobuffersegmentTable, i : Int) -> Doubl
 }
 
 pub fn geo_buffer_segment_table_set(s : GeobuffersegmentTable, i : Int, v : Double) -> GeobuffersegmentTable {
-  let result = geo_buffer_segment_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_table_sum(s : GeobuffersegmentTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn geo_buffer_segment_graphn_get(s : GeobuffersegmentGraphN, i : Int) -> Dou
 }
 
 pub fn geo_buffer_segment_graphn_set(s : GeobuffersegmentGraphN, i : Int, v : Double) -> GeobuffersegmentGraphN {
-  let result = geo_buffer_segment_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_graphn_sum(s : GeobuffersegmentGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn geo_buffer_segment_node_get(s : GeobuffersegmentNode, i : Int) -> Double 
 }
 
 pub fn geo_buffer_segment_node_set(s : GeobuffersegmentNode, i : Int, v : Double) -> GeobuffersegmentNode {
-  let result = geo_buffer_segment_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_node_sum(s : GeobuffersegmentNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn geo_buffer_segment_edge_get(s : GeobuffersegmentEdge, i : Int) -> Double 
 }
 
 pub fn geo_buffer_segment_edge_set(s : GeobuffersegmentEdge, i : Int, v : Double) -> GeobuffersegmentEdge {
-  let result = geo_buffer_segment_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_edge_sum(s : GeobuffersegmentEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn geo_buffer_segment_path_get(s : GeobuffersegmentPath, i : Int) -> Double 
 }
 
 pub fn geo_buffer_segment_path_set(s : GeobuffersegmentPath, i : Int, v : Double) -> GeobuffersegmentPath {
-  let result = geo_buffer_segment_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_path_sum(s : GeobuffersegmentPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn geo_buffer_segment_cluster_get(s : GeobuffersegmentCluster, i : Int) -> D
 }
 
 pub fn geo_buffer_segment_cluster_set(s : GeobuffersegmentCluster, i : Int, v : Double) -> GeobuffersegmentCluster {
-  let result = geo_buffer_segment_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_cluster_sum(s : GeobuffersegmentCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn geo_buffer_segment_model_get(s : GeobuffersegmentModel, i : Int) -> Doubl
 }
 
 pub fn geo_buffer_segment_model_set(s : GeobuffersegmentModel, i : Int, v : Double) -> GeobuffersegmentModel {
-  let result = geo_buffer_segment_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_model_sum(s : GeobuffersegmentModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn geo_buffer_segment_layer_get(s : GeobuffersegmentLayer, i : Int) -> Doubl
 }
 
 pub fn geo_buffer_segment_layer_set(s : GeobuffersegmentLayer, i : Int, v : Double) -> GeobuffersegmentLayer {
-  let result = geo_buffer_segment_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_layer_sum(s : GeobuffersegmentLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn geo_buffer_segment_buffer_get(s : GeobuffersegmentBuffer, i : Int) -> Dou
 }
 
 pub fn geo_buffer_segment_buffer_set(s : GeobuffersegmentBuffer, i : Int, v : Double) -> GeobuffersegmentBuffer {
-  let result = geo_buffer_segment_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_buffer_sum(s : GeobuffersegmentBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn geo_buffer_segment_cursor_get(s : GeobuffersegmentCursor, i : Int) -> Dou
 }
 
 pub fn geo_buffer_segment_cursor_set(s : GeobuffersegmentCursor, i : Int, v : Double) -> GeobuffersegmentCursor {
-  let result = geo_buffer_segment_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_cursor_sum(s : GeobuffersegmentCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn geo_buffer_segment_view_get(s : GeobuffersegmentView, i : Int) -> Double 
 }
 
 pub fn geo_buffer_segment_view_set(s : GeobuffersegmentView, i : Int, v : Double) -> GeobuffersegmentView {
-  let result = geo_buffer_segment_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_view_sum(s : GeobuffersegmentView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn geo_buffer_segment_range_get(s : GeobuffersegmentRange, i : Int) -> Doubl
 }
 
 pub fn geo_buffer_segment_range_set(s : GeobuffersegmentRange, i : Int, v : Double) -> GeobuffersegmentRange {
-  let result = geo_buffer_segment_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_range_sum(s : GeobuffersegmentRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn geo_buffer_segment_slice_get(s : GeobuffersegmentSlice, i : Int) -> Doubl
 }
 
 pub fn geo_buffer_segment_slice_set(s : GeobuffersegmentSlice, i : Int, v : Double) -> GeobuffersegmentSlice {
-  let result = geo_buffer_segment_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_segment_slice_sum(s : GeobuffersegmentSlice) -> Double { @_common.sum(s.data) }

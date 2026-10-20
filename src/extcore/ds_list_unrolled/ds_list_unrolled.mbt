@@ -107,23 +107,15 @@ pub fn ds_list_unrolled_series_std(s : DslistunrolledSeries) -> Double { @_commo
 pub fn ds_list_unrolled_series_median(s : DslistunrolledSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_list_unrolled_series_scale(s : DslistunrolledSeries, f : Double) -> DslistunrolledSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_list_unrolled_series_add(a : DslistunrolledSeries, b : DslistunrolledSeries) -> DslistunrolledSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_list_unrolled_series_sub(a : DslistunrolledSeries, b : DslistunrolledSeries) -> DslistunrolledSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_list_unrolled_series_normalize(s : DslistunrolledSeries) -> DslistunrolledSeries {
@@ -254,22 +246,16 @@ pub fn ds_list_unrolled_vector_zero(dim : Int) -> DslistunrolledVector {
 
 pub fn ds_list_unrolled_vector_add(a : DslistunrolledVector, b : DslistunrolledVector) -> DslistunrolledVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_list_unrolled_vector_sub(a : DslistunrolledVector, b : DslistunrolledVector) -> DslistunrolledVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_list_unrolled_vector_scale(v : DslistunrolledVector, s : Double) -> DslistunrolledVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_list_unrolled_vector_dot(a : DslistunrolledVector, b : DslistunrolledVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_list_unrolled_frame_get(s : DslistunrolledFrame, i : Int) -> Double {
 }
 
 pub fn ds_list_unrolled_frame_set(s : DslistunrolledFrame, i : Int, v : Double) -> DslistunrolledFrame {
-  let result = ds_list_unrolled_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_unrolled_frame_sum(s : DslistunrolledFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_list_unrolled_table_get(s : DslistunrolledTable, i : Int) -> Double {
 }
 
 pub fn ds_list_unrolled_table_set(s : DslistunrolledTable, i : Int, v : Double) -> DslistunrolledTable {
-  let result = ds_list_unrolled_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_unrolled_table_sum(s : DslistunrolledTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_list_unrolled_graphn_get(s : DslistunrolledGraphN, i : Int) -> Double 
 }
 
 pub fn ds_list_unrolled_graphn_set(s : DslistunrolledGraphN, i : Int, v : Double) -> DslistunrolledGraphN {
-  let result = ds_list_unrolled_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_unrolled_graphn_sum(s : DslistunrolledGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_list_unrolled_node_get(s : DslistunrolledNode, i : Int) -> Double {
 }
 
 pub fn ds_list_unrolled_node_set(s : DslistunrolledNode, i : Int, v : Double) -> DslistunrolledNode {
-  let result = ds_list_unrolled_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_unrolled_node_sum(s : DslistunrolledNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_list_unrolled_edge_get(s : DslistunrolledEdge, i : Int) -> Double {
 }
 
 pub fn ds_list_unrolled_edge_set(s : DslistunrolledEdge, i : Int, v : Double) -> DslistunrolledEdge {
-  let result = ds_list_unrolled_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_unrolled_edge_sum(s : DslistunrolledEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_list_unrolled_path_get(s : DslistunrolledPath, i : Int) -> Double {
 }
 
 pub fn ds_list_unrolled_path_set(s : DslistunrolledPath, i : Int, v : Double) -> DslistunrolledPath {
-  let result = ds_list_unrolled_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_unrolled_path_sum(s : DslistunrolledPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_list_unrolled_cluster_get(s : DslistunrolledCluster, i : Int) -> Doubl
 }
 
 pub fn ds_list_unrolled_cluster_set(s : DslistunrolledCluster, i : Int, v : Double) -> DslistunrolledCluster {
-  let result = ds_list_unrolled_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_unrolled_cluster_sum(s : DslistunrolledCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_list_unrolled_model_get(s : DslistunrolledModel, i : Int) -> Double {
 }
 
 pub fn ds_list_unrolled_model_set(s : DslistunrolledModel, i : Int, v : Double) -> DslistunrolledModel {
-  let result = ds_list_unrolled_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_unrolled_model_sum(s : DslistunrolledModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_list_unrolled_layer_get(s : DslistunrolledLayer, i : Int) -> Double {
 }
 
 pub fn ds_list_unrolled_layer_set(s : DslistunrolledLayer, i : Int, v : Double) -> DslistunrolledLayer {
-  let result = ds_list_unrolled_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_unrolled_layer_sum(s : DslistunrolledLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_list_unrolled_buffer_get(s : DslistunrolledBuffer, i : Int) -> Double 
 }
 
 pub fn ds_list_unrolled_buffer_set(s : DslistunrolledBuffer, i : Int, v : Double) -> DslistunrolledBuffer {
-  let result = ds_list_unrolled_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_unrolled_buffer_sum(s : DslistunrolledBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_list_unrolled_cursor_get(s : DslistunrolledCursor, i : Int) -> Double 
 }
 
 pub fn ds_list_unrolled_cursor_set(s : DslistunrolledCursor, i : Int, v : Double) -> DslistunrolledCursor {
-  let result = ds_list_unrolled_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_unrolled_cursor_sum(s : DslistunrolledCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_list_unrolled_view_get(s : DslistunrolledView, i : Int) -> Double {
 }
 
 pub fn ds_list_unrolled_view_set(s : DslistunrolledView, i : Int, v : Double) -> DslistunrolledView {
-  let result = ds_list_unrolled_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_unrolled_view_sum(s : DslistunrolledView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_list_unrolled_range_get(s : DslistunrolledRange, i : Int) -> Double {
 }
 
 pub fn ds_list_unrolled_range_set(s : DslistunrolledRange, i : Int, v : Double) -> DslistunrolledRange {
-  let result = ds_list_unrolled_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_unrolled_range_sum(s : DslistunrolledRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_list_unrolled_slice_get(s : DslistunrolledSlice, i : Int) -> Double {
 }
 
 pub fn ds_list_unrolled_slice_set(s : DslistunrolledSlice, i : Int, v : Double) -> DslistunrolledSlice {
-  let result = ds_list_unrolled_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_unrolled_slice_sum(s : DslistunrolledSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn ds_graph_edge_list_series_std(s : DsgraphedgelistSeries) -> Double { @_co
 pub fn ds_graph_edge_list_series_median(s : DsgraphedgelistSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_graph_edge_list_series_scale(s : DsgraphedgelistSeries, f : Double) -> DsgraphedgelistSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_graph_edge_list_series_add(a : DsgraphedgelistSeries, b : DsgraphedgelistSeries) -> DsgraphedgelistSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_graph_edge_list_series_sub(a : DsgraphedgelistSeries, b : DsgraphedgelistSeries) -> DsgraphedgelistSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_graph_edge_list_series_normalize(s : DsgraphedgelistSeries) -> DsgraphedgelistSeries {
@@ -254,22 +246,16 @@ pub fn ds_graph_edge_list_vector_zero(dim : Int) -> DsgraphedgelistVector {
 
 pub fn ds_graph_edge_list_vector_add(a : DsgraphedgelistVector, b : DsgraphedgelistVector) -> DsgraphedgelistVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_graph_edge_list_vector_sub(a : DsgraphedgelistVector, b : DsgraphedgelistVector) -> DsgraphedgelistVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_graph_edge_list_vector_scale(v : DsgraphedgelistVector, s : Double) -> DsgraphedgelistVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_graph_edge_list_vector_dot(a : DsgraphedgelistVector, b : DsgraphedgelistVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_graph_edge_list_frame_get(s : DsgraphedgelistFrame, i : Int) -> Double
 }
 
 pub fn ds_graph_edge_list_frame_set(s : DsgraphedgelistFrame, i : Int, v : Double) -> DsgraphedgelistFrame {
-  let result = ds_graph_edge_list_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_edge_list_frame_sum(s : DsgraphedgelistFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_graph_edge_list_table_get(s : DsgraphedgelistTable, i : Int) -> Double
 }
 
 pub fn ds_graph_edge_list_table_set(s : DsgraphedgelistTable, i : Int, v : Double) -> DsgraphedgelistTable {
-  let result = ds_graph_edge_list_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_edge_list_table_sum(s : DsgraphedgelistTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_graph_edge_list_graphn_get(s : DsgraphedgelistGraphN, i : Int) -> Doub
 }
 
 pub fn ds_graph_edge_list_graphn_set(s : DsgraphedgelistGraphN, i : Int, v : Double) -> DsgraphedgelistGraphN {
-  let result = ds_graph_edge_list_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_edge_list_graphn_sum(s : DsgraphedgelistGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_graph_edge_list_node_get(s : DsgraphedgelistNode, i : Int) -> Double {
 }
 
 pub fn ds_graph_edge_list_node_set(s : DsgraphedgelistNode, i : Int, v : Double) -> DsgraphedgelistNode {
-  let result = ds_graph_edge_list_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_edge_list_node_sum(s : DsgraphedgelistNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_graph_edge_list_edge_get(s : DsgraphedgelistEdge, i : Int) -> Double {
 }
 
 pub fn ds_graph_edge_list_edge_set(s : DsgraphedgelistEdge, i : Int, v : Double) -> DsgraphedgelistEdge {
-  let result = ds_graph_edge_list_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_edge_list_edge_sum(s : DsgraphedgelistEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_graph_edge_list_path_get(s : DsgraphedgelistPath, i : Int) -> Double {
 }
 
 pub fn ds_graph_edge_list_path_set(s : DsgraphedgelistPath, i : Int, v : Double) -> DsgraphedgelistPath {
-  let result = ds_graph_edge_list_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_edge_list_path_sum(s : DsgraphedgelistPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_graph_edge_list_cluster_get(s : DsgraphedgelistCluster, i : Int) -> Do
 }
 
 pub fn ds_graph_edge_list_cluster_set(s : DsgraphedgelistCluster, i : Int, v : Double) -> DsgraphedgelistCluster {
-  let result = ds_graph_edge_list_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_edge_list_cluster_sum(s : DsgraphedgelistCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_graph_edge_list_model_get(s : DsgraphedgelistModel, i : Int) -> Double
 }
 
 pub fn ds_graph_edge_list_model_set(s : DsgraphedgelistModel, i : Int, v : Double) -> DsgraphedgelistModel {
-  let result = ds_graph_edge_list_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_edge_list_model_sum(s : DsgraphedgelistModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_graph_edge_list_layer_get(s : DsgraphedgelistLayer, i : Int) -> Double
 }
 
 pub fn ds_graph_edge_list_layer_set(s : DsgraphedgelistLayer, i : Int, v : Double) -> DsgraphedgelistLayer {
-  let result = ds_graph_edge_list_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_edge_list_layer_sum(s : DsgraphedgelistLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_graph_edge_list_buffer_get(s : DsgraphedgelistBuffer, i : Int) -> Doub
 }
 
 pub fn ds_graph_edge_list_buffer_set(s : DsgraphedgelistBuffer, i : Int, v : Double) -> DsgraphedgelistBuffer {
-  let result = ds_graph_edge_list_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_edge_list_buffer_sum(s : DsgraphedgelistBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_graph_edge_list_cursor_get(s : DsgraphedgelistCursor, i : Int) -> Doub
 }
 
 pub fn ds_graph_edge_list_cursor_set(s : DsgraphedgelistCursor, i : Int, v : Double) -> DsgraphedgelistCursor {
-  let result = ds_graph_edge_list_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_edge_list_cursor_sum(s : DsgraphedgelistCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_graph_edge_list_view_get(s : DsgraphedgelistView, i : Int) -> Double {
 }
 
 pub fn ds_graph_edge_list_view_set(s : DsgraphedgelistView, i : Int, v : Double) -> DsgraphedgelistView {
-  let result = ds_graph_edge_list_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_edge_list_view_sum(s : DsgraphedgelistView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_graph_edge_list_range_get(s : DsgraphedgelistRange, i : Int) -> Double
 }
 
 pub fn ds_graph_edge_list_range_set(s : DsgraphedgelistRange, i : Int, v : Double) -> DsgraphedgelistRange {
-  let result = ds_graph_edge_list_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_edge_list_range_sum(s : DsgraphedgelistRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_graph_edge_list_slice_get(s : DsgraphedgelistSlice, i : Int) -> Double
 }
 
 pub fn ds_graph_edge_list_slice_set(s : DsgraphedgelistSlice, i : Int, v : Double) -> DsgraphedgelistSlice {
-  let result = ds_graph_edge_list_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_edge_list_slice_sum(s : DsgraphedgelistSlice) -> Double { @_common.sum(s.data) }

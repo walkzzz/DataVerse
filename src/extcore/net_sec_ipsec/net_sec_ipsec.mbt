@@ -107,23 +107,15 @@ pub fn net_sec_ipsec_series_std(s : NetsecipsecSeries) -> Double { @_common.std(
 pub fn net_sec_ipsec_series_median(s : NetsecipsecSeries) -> Double { @_common.median(s.vals) }
 
 pub fn net_sec_ipsec_series_scale(s : NetsecipsecSeries, f : Double) -> NetsecipsecSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn net_sec_ipsec_series_add(a : NetsecipsecSeries, b : NetsecipsecSeries) -> NetsecipsecSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn net_sec_ipsec_series_sub(a : NetsecipsecSeries, b : NetsecipsecSeries) -> NetsecipsecSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn net_sec_ipsec_series_normalize(s : NetsecipsecSeries) -> NetsecipsecSeries {
@@ -254,22 +246,16 @@ pub fn net_sec_ipsec_vector_zero(dim : Int) -> NetsecipsecVector {
 
 pub fn net_sec_ipsec_vector_add(a : NetsecipsecVector, b : NetsecipsecVector) -> NetsecipsecVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_sec_ipsec_vector_sub(a : NetsecipsecVector, b : NetsecipsecVector) -> NetsecipsecVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_sec_ipsec_vector_scale(v : NetsecipsecVector, s : Double) -> NetsecipsecVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn net_sec_ipsec_vector_dot(a : NetsecipsecVector, b : NetsecipsecVector) -> Double {
@@ -372,10 +358,9 @@ pub fn net_sec_ipsec_frame_get(s : NetsecipsecFrame, i : Int) -> Double {
 }
 
 pub fn net_sec_ipsec_frame_set(s : NetsecipsecFrame, i : Int, v : Double) -> NetsecipsecFrame {
-  let result = net_sec_ipsec_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ipsec_frame_sum(s : NetsecipsecFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn net_sec_ipsec_table_get(s : NetsecipsecTable, i : Int) -> Double {
 }
 
 pub fn net_sec_ipsec_table_set(s : NetsecipsecTable, i : Int, v : Double) -> NetsecipsecTable {
-  let result = net_sec_ipsec_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ipsec_table_sum(s : NetsecipsecTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn net_sec_ipsec_graphn_get(s : NetsecipsecGraphN, i : Int) -> Double {
 }
 
 pub fn net_sec_ipsec_graphn_set(s : NetsecipsecGraphN, i : Int, v : Double) -> NetsecipsecGraphN {
-  let result = net_sec_ipsec_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ipsec_graphn_sum(s : NetsecipsecGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn net_sec_ipsec_node_get(s : NetsecipsecNode, i : Int) -> Double {
 }
 
 pub fn net_sec_ipsec_node_set(s : NetsecipsecNode, i : Int, v : Double) -> NetsecipsecNode {
-  let result = net_sec_ipsec_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ipsec_node_sum(s : NetsecipsecNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn net_sec_ipsec_edge_get(s : NetsecipsecEdge, i : Int) -> Double {
 }
 
 pub fn net_sec_ipsec_edge_set(s : NetsecipsecEdge, i : Int, v : Double) -> NetsecipsecEdge {
-  let result = net_sec_ipsec_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ipsec_edge_sum(s : NetsecipsecEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn net_sec_ipsec_path_get(s : NetsecipsecPath, i : Int) -> Double {
 }
 
 pub fn net_sec_ipsec_path_set(s : NetsecipsecPath, i : Int, v : Double) -> NetsecipsecPath {
-  let result = net_sec_ipsec_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ipsec_path_sum(s : NetsecipsecPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn net_sec_ipsec_cluster_get(s : NetsecipsecCluster, i : Int) -> Double {
 }
 
 pub fn net_sec_ipsec_cluster_set(s : NetsecipsecCluster, i : Int, v : Double) -> NetsecipsecCluster {
-  let result = net_sec_ipsec_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ipsec_cluster_sum(s : NetsecipsecCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn net_sec_ipsec_model_get(s : NetsecipsecModel, i : Int) -> Double {
 }
 
 pub fn net_sec_ipsec_model_set(s : NetsecipsecModel, i : Int, v : Double) -> NetsecipsecModel {
-  let result = net_sec_ipsec_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ipsec_model_sum(s : NetsecipsecModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn net_sec_ipsec_layer_get(s : NetsecipsecLayer, i : Int) -> Double {
 }
 
 pub fn net_sec_ipsec_layer_set(s : NetsecipsecLayer, i : Int, v : Double) -> NetsecipsecLayer {
-  let result = net_sec_ipsec_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ipsec_layer_sum(s : NetsecipsecLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn net_sec_ipsec_buffer_get(s : NetsecipsecBuffer, i : Int) -> Double {
 }
 
 pub fn net_sec_ipsec_buffer_set(s : NetsecipsecBuffer, i : Int, v : Double) -> NetsecipsecBuffer {
-  let result = net_sec_ipsec_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ipsec_buffer_sum(s : NetsecipsecBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn net_sec_ipsec_cursor_get(s : NetsecipsecCursor, i : Int) -> Double {
 }
 
 pub fn net_sec_ipsec_cursor_set(s : NetsecipsecCursor, i : Int, v : Double) -> NetsecipsecCursor {
-  let result = net_sec_ipsec_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ipsec_cursor_sum(s : NetsecipsecCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn net_sec_ipsec_view_get(s : NetsecipsecView, i : Int) -> Double {
 }
 
 pub fn net_sec_ipsec_view_set(s : NetsecipsecView, i : Int, v : Double) -> NetsecipsecView {
-  let result = net_sec_ipsec_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ipsec_view_sum(s : NetsecipsecView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn net_sec_ipsec_range_get(s : NetsecipsecRange, i : Int) -> Double {
 }
 
 pub fn net_sec_ipsec_range_set(s : NetsecipsecRange, i : Int, v : Double) -> NetsecipsecRange {
-  let result = net_sec_ipsec_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ipsec_range_sum(s : NetsecipsecRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn net_sec_ipsec_slice_get(s : NetsecipsecSlice, i : Int) -> Double {
 }
 
 pub fn net_sec_ipsec_slice_set(s : NetsecipsecSlice, i : Int, v : Double) -> NetsecipsecSlice {
-  let result = net_sec_ipsec_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ipsec_slice_sum(s : NetsecipsecSlice) -> Double { @_common.sum(s.data) }

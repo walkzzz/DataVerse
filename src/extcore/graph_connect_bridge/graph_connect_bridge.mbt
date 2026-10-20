@@ -107,23 +107,15 @@ pub fn graph_connect_bridge_series_std(s : GraphconnectbridgeSeries) -> Double {
 pub fn graph_connect_bridge_series_median(s : GraphconnectbridgeSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_connect_bridge_series_scale(s : GraphconnectbridgeSeries, f : Double) -> GraphconnectbridgeSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_connect_bridge_series_add(a : GraphconnectbridgeSeries, b : GraphconnectbridgeSeries) -> GraphconnectbridgeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_connect_bridge_series_sub(a : GraphconnectbridgeSeries, b : GraphconnectbridgeSeries) -> GraphconnectbridgeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_connect_bridge_series_normalize(s : GraphconnectbridgeSeries) -> GraphconnectbridgeSeries {
@@ -254,22 +246,16 @@ pub fn graph_connect_bridge_vector_zero(dim : Int) -> GraphconnectbridgeVector {
 
 pub fn graph_connect_bridge_vector_add(a : GraphconnectbridgeVector, b : GraphconnectbridgeVector) -> GraphconnectbridgeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_connect_bridge_vector_sub(a : GraphconnectbridgeVector, b : GraphconnectbridgeVector) -> GraphconnectbridgeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_connect_bridge_vector_scale(v : GraphconnectbridgeVector, s : Double) -> GraphconnectbridgeVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_connect_bridge_vector_dot(a : GraphconnectbridgeVector, b : GraphconnectbridgeVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_connect_bridge_frame_get(s : GraphconnectbridgeFrame, i : Int) -> D
 }
 
 pub fn graph_connect_bridge_frame_set(s : GraphconnectbridgeFrame, i : Int, v : Double) -> GraphconnectbridgeFrame {
-  let result = graph_connect_bridge_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_bridge_frame_sum(s : GraphconnectbridgeFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_connect_bridge_table_get(s : GraphconnectbridgeTable, i : Int) -> D
 }
 
 pub fn graph_connect_bridge_table_set(s : GraphconnectbridgeTable, i : Int, v : Double) -> GraphconnectbridgeTable {
-  let result = graph_connect_bridge_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_bridge_table_sum(s : GraphconnectbridgeTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_connect_bridge_graphn_get(s : GraphconnectbridgeGraphN, i : Int) ->
 }
 
 pub fn graph_connect_bridge_graphn_set(s : GraphconnectbridgeGraphN, i : Int, v : Double) -> GraphconnectbridgeGraphN {
-  let result = graph_connect_bridge_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_bridge_graphn_sum(s : GraphconnectbridgeGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_connect_bridge_node_get(s : GraphconnectbridgeNode, i : Int) -> Dou
 }
 
 pub fn graph_connect_bridge_node_set(s : GraphconnectbridgeNode, i : Int, v : Double) -> GraphconnectbridgeNode {
-  let result = graph_connect_bridge_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_bridge_node_sum(s : GraphconnectbridgeNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_connect_bridge_edge_get(s : GraphconnectbridgeEdge, i : Int) -> Dou
 }
 
 pub fn graph_connect_bridge_edge_set(s : GraphconnectbridgeEdge, i : Int, v : Double) -> GraphconnectbridgeEdge {
-  let result = graph_connect_bridge_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_bridge_edge_sum(s : GraphconnectbridgeEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_connect_bridge_path_get(s : GraphconnectbridgePath, i : Int) -> Dou
 }
 
 pub fn graph_connect_bridge_path_set(s : GraphconnectbridgePath, i : Int, v : Double) -> GraphconnectbridgePath {
-  let result = graph_connect_bridge_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_bridge_path_sum(s : GraphconnectbridgePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_connect_bridge_cluster_get(s : GraphconnectbridgeCluster, i : Int) 
 }
 
 pub fn graph_connect_bridge_cluster_set(s : GraphconnectbridgeCluster, i : Int, v : Double) -> GraphconnectbridgeCluster {
-  let result = graph_connect_bridge_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_bridge_cluster_sum(s : GraphconnectbridgeCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_connect_bridge_model_get(s : GraphconnectbridgeModel, i : Int) -> D
 }
 
 pub fn graph_connect_bridge_model_set(s : GraphconnectbridgeModel, i : Int, v : Double) -> GraphconnectbridgeModel {
-  let result = graph_connect_bridge_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_bridge_model_sum(s : GraphconnectbridgeModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_connect_bridge_layer_get(s : GraphconnectbridgeLayer, i : Int) -> D
 }
 
 pub fn graph_connect_bridge_layer_set(s : GraphconnectbridgeLayer, i : Int, v : Double) -> GraphconnectbridgeLayer {
-  let result = graph_connect_bridge_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_bridge_layer_sum(s : GraphconnectbridgeLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_connect_bridge_buffer_get(s : GraphconnectbridgeBuffer, i : Int) ->
 }
 
 pub fn graph_connect_bridge_buffer_set(s : GraphconnectbridgeBuffer, i : Int, v : Double) -> GraphconnectbridgeBuffer {
-  let result = graph_connect_bridge_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_bridge_buffer_sum(s : GraphconnectbridgeBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_connect_bridge_cursor_get(s : GraphconnectbridgeCursor, i : Int) ->
 }
 
 pub fn graph_connect_bridge_cursor_set(s : GraphconnectbridgeCursor, i : Int, v : Double) -> GraphconnectbridgeCursor {
-  let result = graph_connect_bridge_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_bridge_cursor_sum(s : GraphconnectbridgeCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_connect_bridge_view_get(s : GraphconnectbridgeView, i : Int) -> Dou
 }
 
 pub fn graph_connect_bridge_view_set(s : GraphconnectbridgeView, i : Int, v : Double) -> GraphconnectbridgeView {
-  let result = graph_connect_bridge_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_bridge_view_sum(s : GraphconnectbridgeView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_connect_bridge_range_get(s : GraphconnectbridgeRange, i : Int) -> D
 }
 
 pub fn graph_connect_bridge_range_set(s : GraphconnectbridgeRange, i : Int, v : Double) -> GraphconnectbridgeRange {
-  let result = graph_connect_bridge_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_bridge_range_sum(s : GraphconnectbridgeRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_connect_bridge_slice_get(s : GraphconnectbridgeSlice, i : Int) -> D
 }
 
 pub fn graph_connect_bridge_slice_set(s : GraphconnectbridgeSlice, i : Int, v : Double) -> GraphconnectbridgeSlice {
-  let result = graph_connect_bridge_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_bridge_slice_sum(s : GraphconnectbridgeSlice) -> Double { @_common.sum(s.data) }

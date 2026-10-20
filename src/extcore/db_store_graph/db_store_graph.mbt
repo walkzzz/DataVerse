@@ -107,23 +107,15 @@ pub fn db_store_graph_series_std(s : DbstoregraphSeries) -> Double { @_common.st
 pub fn db_store_graph_series_median(s : DbstoregraphSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_store_graph_series_scale(s : DbstoregraphSeries, f : Double) -> DbstoregraphSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_store_graph_series_add(a : DbstoregraphSeries, b : DbstoregraphSeries) -> DbstoregraphSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_store_graph_series_sub(a : DbstoregraphSeries, b : DbstoregraphSeries) -> DbstoregraphSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_store_graph_series_normalize(s : DbstoregraphSeries) -> DbstoregraphSeries {
@@ -254,22 +246,16 @@ pub fn db_store_graph_vector_zero(dim : Int) -> DbstoregraphVector {
 
 pub fn db_store_graph_vector_add(a : DbstoregraphVector, b : DbstoregraphVector) -> DbstoregraphVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_store_graph_vector_sub(a : DbstoregraphVector, b : DbstoregraphVector) -> DbstoregraphVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_store_graph_vector_scale(v : DbstoregraphVector, s : Double) -> DbstoregraphVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_store_graph_vector_dot(a : DbstoregraphVector, b : DbstoregraphVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_store_graph_frame_get(s : DbstoregraphFrame, i : Int) -> Double {
 }
 
 pub fn db_store_graph_frame_set(s : DbstoregraphFrame, i : Int, v : Double) -> DbstoregraphFrame {
-  let result = db_store_graph_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_graph_frame_sum(s : DbstoregraphFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_store_graph_table_get(s : DbstoregraphTable, i : Int) -> Double {
 }
 
 pub fn db_store_graph_table_set(s : DbstoregraphTable, i : Int, v : Double) -> DbstoregraphTable {
-  let result = db_store_graph_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_graph_table_sum(s : DbstoregraphTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_store_graph_graphn_get(s : DbstoregraphGraphN, i : Int) -> Double {
 }
 
 pub fn db_store_graph_graphn_set(s : DbstoregraphGraphN, i : Int, v : Double) -> DbstoregraphGraphN {
-  let result = db_store_graph_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_graph_graphn_sum(s : DbstoregraphGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_store_graph_node_get(s : DbstoregraphNode, i : Int) -> Double {
 }
 
 pub fn db_store_graph_node_set(s : DbstoregraphNode, i : Int, v : Double) -> DbstoregraphNode {
-  let result = db_store_graph_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_graph_node_sum(s : DbstoregraphNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_store_graph_edge_get(s : DbstoregraphEdge, i : Int) -> Double {
 }
 
 pub fn db_store_graph_edge_set(s : DbstoregraphEdge, i : Int, v : Double) -> DbstoregraphEdge {
-  let result = db_store_graph_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_graph_edge_sum(s : DbstoregraphEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_store_graph_path_get(s : DbstoregraphPath, i : Int) -> Double {
 }
 
 pub fn db_store_graph_path_set(s : DbstoregraphPath, i : Int, v : Double) -> DbstoregraphPath {
-  let result = db_store_graph_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_graph_path_sum(s : DbstoregraphPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_store_graph_cluster_get(s : DbstoregraphCluster, i : Int) -> Double {
 }
 
 pub fn db_store_graph_cluster_set(s : DbstoregraphCluster, i : Int, v : Double) -> DbstoregraphCluster {
-  let result = db_store_graph_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_graph_cluster_sum(s : DbstoregraphCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_store_graph_model_get(s : DbstoregraphModel, i : Int) -> Double {
 }
 
 pub fn db_store_graph_model_set(s : DbstoregraphModel, i : Int, v : Double) -> DbstoregraphModel {
-  let result = db_store_graph_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_graph_model_sum(s : DbstoregraphModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_store_graph_layer_get(s : DbstoregraphLayer, i : Int) -> Double {
 }
 
 pub fn db_store_graph_layer_set(s : DbstoregraphLayer, i : Int, v : Double) -> DbstoregraphLayer {
-  let result = db_store_graph_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_graph_layer_sum(s : DbstoregraphLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_store_graph_buffer_get(s : DbstoregraphBuffer, i : Int) -> Double {
 }
 
 pub fn db_store_graph_buffer_set(s : DbstoregraphBuffer, i : Int, v : Double) -> DbstoregraphBuffer {
-  let result = db_store_graph_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_graph_buffer_sum(s : DbstoregraphBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_store_graph_cursor_get(s : DbstoregraphCursor, i : Int) -> Double {
 }
 
 pub fn db_store_graph_cursor_set(s : DbstoregraphCursor, i : Int, v : Double) -> DbstoregraphCursor {
-  let result = db_store_graph_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_graph_cursor_sum(s : DbstoregraphCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_store_graph_view_get(s : DbstoregraphView, i : Int) -> Double {
 }
 
 pub fn db_store_graph_view_set(s : DbstoregraphView, i : Int, v : Double) -> DbstoregraphView {
-  let result = db_store_graph_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_graph_view_sum(s : DbstoregraphView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_store_graph_range_get(s : DbstoregraphRange, i : Int) -> Double {
 }
 
 pub fn db_store_graph_range_set(s : DbstoregraphRange, i : Int, v : Double) -> DbstoregraphRange {
-  let result = db_store_graph_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_graph_range_sum(s : DbstoregraphRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_store_graph_slice_get(s : DbstoregraphSlice, i : Int) -> Double {
 }
 
 pub fn db_store_graph_slice_set(s : DbstoregraphSlice, i : Int, v : Double) -> DbstoregraphSlice {
-  let result = db_store_graph_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_graph_slice_sum(s : DbstoregraphSlice) -> Double { @_common.sum(s.data) }

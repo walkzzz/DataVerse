@@ -107,23 +107,15 @@ pub fn bio_seq_assembly_scaffold_series_std(s : BioseqassemblyscaffoldSeries) ->
 pub fn bio_seq_assembly_scaffold_series_median(s : BioseqassemblyscaffoldSeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_seq_assembly_scaffold_series_scale(s : BioseqassemblyscaffoldSeries, f : Double) -> BioseqassemblyscaffoldSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_seq_assembly_scaffold_series_add(a : BioseqassemblyscaffoldSeries, b : BioseqassemblyscaffoldSeries) -> BioseqassemblyscaffoldSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_assembly_scaffold_series_sub(a : BioseqassemblyscaffoldSeries, b : BioseqassemblyscaffoldSeries) -> BioseqassemblyscaffoldSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_assembly_scaffold_series_normalize(s : BioseqassemblyscaffoldSeries) -> BioseqassemblyscaffoldSeries {
@@ -254,22 +246,16 @@ pub fn bio_seq_assembly_scaffold_vector_zero(dim : Int) -> Bioseqassemblyscaffol
 
 pub fn bio_seq_assembly_scaffold_vector_add(a : BioseqassemblyscaffoldVector, b : BioseqassemblyscaffoldVector) -> BioseqassemblyscaffoldVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_assembly_scaffold_vector_sub(a : BioseqassemblyscaffoldVector, b : BioseqassemblyscaffoldVector) -> BioseqassemblyscaffoldVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_assembly_scaffold_vector_scale(v : BioseqassemblyscaffoldVector, s : Double) -> BioseqassemblyscaffoldVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_seq_assembly_scaffold_vector_dot(a : BioseqassemblyscaffoldVector, b : BioseqassemblyscaffoldVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_seq_assembly_scaffold_frame_get(s : BioseqassemblyscaffoldFrame, i : 
 }
 
 pub fn bio_seq_assembly_scaffold_frame_set(s : BioseqassemblyscaffoldFrame, i : Int, v : Double) -> BioseqassemblyscaffoldFrame {
-  let result = bio_seq_assembly_scaffold_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_scaffold_frame_sum(s : BioseqassemblyscaffoldFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_seq_assembly_scaffold_table_get(s : BioseqassemblyscaffoldTable, i : 
 }
 
 pub fn bio_seq_assembly_scaffold_table_set(s : BioseqassemblyscaffoldTable, i : Int, v : Double) -> BioseqassemblyscaffoldTable {
-  let result = bio_seq_assembly_scaffold_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_scaffold_table_sum(s : BioseqassemblyscaffoldTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_seq_assembly_scaffold_graphn_get(s : BioseqassemblyscaffoldGraphN, i 
 }
 
 pub fn bio_seq_assembly_scaffold_graphn_set(s : BioseqassemblyscaffoldGraphN, i : Int, v : Double) -> BioseqassemblyscaffoldGraphN {
-  let result = bio_seq_assembly_scaffold_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_scaffold_graphn_sum(s : BioseqassemblyscaffoldGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_seq_assembly_scaffold_node_get(s : BioseqassemblyscaffoldNode, i : In
 }
 
 pub fn bio_seq_assembly_scaffold_node_set(s : BioseqassemblyscaffoldNode, i : Int, v : Double) -> BioseqassemblyscaffoldNode {
-  let result = bio_seq_assembly_scaffold_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_scaffold_node_sum(s : BioseqassemblyscaffoldNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_seq_assembly_scaffold_edge_get(s : BioseqassemblyscaffoldEdge, i : In
 }
 
 pub fn bio_seq_assembly_scaffold_edge_set(s : BioseqassemblyscaffoldEdge, i : Int, v : Double) -> BioseqassemblyscaffoldEdge {
-  let result = bio_seq_assembly_scaffold_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_scaffold_edge_sum(s : BioseqassemblyscaffoldEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_seq_assembly_scaffold_path_get(s : BioseqassemblyscaffoldPath, i : In
 }
 
 pub fn bio_seq_assembly_scaffold_path_set(s : BioseqassemblyscaffoldPath, i : Int, v : Double) -> BioseqassemblyscaffoldPath {
-  let result = bio_seq_assembly_scaffold_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_scaffold_path_sum(s : BioseqassemblyscaffoldPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_seq_assembly_scaffold_cluster_get(s : BioseqassemblyscaffoldCluster, 
 }
 
 pub fn bio_seq_assembly_scaffold_cluster_set(s : BioseqassemblyscaffoldCluster, i : Int, v : Double) -> BioseqassemblyscaffoldCluster {
-  let result = bio_seq_assembly_scaffold_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_scaffold_cluster_sum(s : BioseqassemblyscaffoldCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_seq_assembly_scaffold_model_get(s : BioseqassemblyscaffoldModel, i : 
 }
 
 pub fn bio_seq_assembly_scaffold_model_set(s : BioseqassemblyscaffoldModel, i : Int, v : Double) -> BioseqassemblyscaffoldModel {
-  let result = bio_seq_assembly_scaffold_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_scaffold_model_sum(s : BioseqassemblyscaffoldModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_seq_assembly_scaffold_layer_get(s : BioseqassemblyscaffoldLayer, i : 
 }
 
 pub fn bio_seq_assembly_scaffold_layer_set(s : BioseqassemblyscaffoldLayer, i : Int, v : Double) -> BioseqassemblyscaffoldLayer {
-  let result = bio_seq_assembly_scaffold_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_scaffold_layer_sum(s : BioseqassemblyscaffoldLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_seq_assembly_scaffold_buffer_get(s : BioseqassemblyscaffoldBuffer, i 
 }
 
 pub fn bio_seq_assembly_scaffold_buffer_set(s : BioseqassemblyscaffoldBuffer, i : Int, v : Double) -> BioseqassemblyscaffoldBuffer {
-  let result = bio_seq_assembly_scaffold_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_scaffold_buffer_sum(s : BioseqassemblyscaffoldBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_seq_assembly_scaffold_cursor_get(s : BioseqassemblyscaffoldCursor, i 
 }
 
 pub fn bio_seq_assembly_scaffold_cursor_set(s : BioseqassemblyscaffoldCursor, i : Int, v : Double) -> BioseqassemblyscaffoldCursor {
-  let result = bio_seq_assembly_scaffold_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_scaffold_cursor_sum(s : BioseqassemblyscaffoldCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_seq_assembly_scaffold_view_get(s : BioseqassemblyscaffoldView, i : In
 }
 
 pub fn bio_seq_assembly_scaffold_view_set(s : BioseqassemblyscaffoldView, i : Int, v : Double) -> BioseqassemblyscaffoldView {
-  let result = bio_seq_assembly_scaffold_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_scaffold_view_sum(s : BioseqassemblyscaffoldView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_seq_assembly_scaffold_range_get(s : BioseqassemblyscaffoldRange, i : 
 }
 
 pub fn bio_seq_assembly_scaffold_range_set(s : BioseqassemblyscaffoldRange, i : Int, v : Double) -> BioseqassemblyscaffoldRange {
-  let result = bio_seq_assembly_scaffold_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_scaffold_range_sum(s : BioseqassemblyscaffoldRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_seq_assembly_scaffold_slice_get(s : BioseqassemblyscaffoldSlice, i : 
 }
 
 pub fn bio_seq_assembly_scaffold_slice_set(s : BioseqassemblyscaffoldSlice, i : Int, v : Double) -> BioseqassemblyscaffoldSlice {
-  let result = bio_seq_assembly_scaffold_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_scaffold_slice_sum(s : BioseqassemblyscaffoldSlice) -> Double { @_common.sum(s.data) }

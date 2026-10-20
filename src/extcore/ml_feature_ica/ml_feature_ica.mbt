@@ -107,23 +107,15 @@ pub fn ml_feature_ica_series_std(s : MlfeatureicaSeries) -> Double { @_common.st
 pub fn ml_feature_ica_series_median(s : MlfeatureicaSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_feature_ica_series_scale(s : MlfeatureicaSeries, f : Double) -> MlfeatureicaSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_feature_ica_series_add(a : MlfeatureicaSeries, b : MlfeatureicaSeries) -> MlfeatureicaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_feature_ica_series_sub(a : MlfeatureicaSeries, b : MlfeatureicaSeries) -> MlfeatureicaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_feature_ica_series_normalize(s : MlfeatureicaSeries) -> MlfeatureicaSeries {
@@ -254,22 +246,16 @@ pub fn ml_feature_ica_vector_zero(dim : Int) -> MlfeatureicaVector {
 
 pub fn ml_feature_ica_vector_add(a : MlfeatureicaVector, b : MlfeatureicaVector) -> MlfeatureicaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_feature_ica_vector_sub(a : MlfeatureicaVector, b : MlfeatureicaVector) -> MlfeatureicaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_feature_ica_vector_scale(v : MlfeatureicaVector, s : Double) -> MlfeatureicaVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_feature_ica_vector_dot(a : MlfeatureicaVector, b : MlfeatureicaVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_feature_ica_frame_get(s : MlfeatureicaFrame, i : Int) -> Double {
 }
 
 pub fn ml_feature_ica_frame_set(s : MlfeatureicaFrame, i : Int, v : Double) -> MlfeatureicaFrame {
-  let result = ml_feature_ica_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_ica_frame_sum(s : MlfeatureicaFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_feature_ica_table_get(s : MlfeatureicaTable, i : Int) -> Double {
 }
 
 pub fn ml_feature_ica_table_set(s : MlfeatureicaTable, i : Int, v : Double) -> MlfeatureicaTable {
-  let result = ml_feature_ica_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_ica_table_sum(s : MlfeatureicaTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_feature_ica_graphn_get(s : MlfeatureicaGraphN, i : Int) -> Double {
 }
 
 pub fn ml_feature_ica_graphn_set(s : MlfeatureicaGraphN, i : Int, v : Double) -> MlfeatureicaGraphN {
-  let result = ml_feature_ica_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_ica_graphn_sum(s : MlfeatureicaGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_feature_ica_node_get(s : MlfeatureicaNode, i : Int) -> Double {
 }
 
 pub fn ml_feature_ica_node_set(s : MlfeatureicaNode, i : Int, v : Double) -> MlfeatureicaNode {
-  let result = ml_feature_ica_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_ica_node_sum(s : MlfeatureicaNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_feature_ica_edge_get(s : MlfeatureicaEdge, i : Int) -> Double {
 }
 
 pub fn ml_feature_ica_edge_set(s : MlfeatureicaEdge, i : Int, v : Double) -> MlfeatureicaEdge {
-  let result = ml_feature_ica_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_ica_edge_sum(s : MlfeatureicaEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_feature_ica_path_get(s : MlfeatureicaPath, i : Int) -> Double {
 }
 
 pub fn ml_feature_ica_path_set(s : MlfeatureicaPath, i : Int, v : Double) -> MlfeatureicaPath {
-  let result = ml_feature_ica_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_ica_path_sum(s : MlfeatureicaPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_feature_ica_cluster_get(s : MlfeatureicaCluster, i : Int) -> Double {
 }
 
 pub fn ml_feature_ica_cluster_set(s : MlfeatureicaCluster, i : Int, v : Double) -> MlfeatureicaCluster {
-  let result = ml_feature_ica_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_ica_cluster_sum(s : MlfeatureicaCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_feature_ica_model_get(s : MlfeatureicaModel, i : Int) -> Double {
 }
 
 pub fn ml_feature_ica_model_set(s : MlfeatureicaModel, i : Int, v : Double) -> MlfeatureicaModel {
-  let result = ml_feature_ica_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_ica_model_sum(s : MlfeatureicaModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_feature_ica_layer_get(s : MlfeatureicaLayer, i : Int) -> Double {
 }
 
 pub fn ml_feature_ica_layer_set(s : MlfeatureicaLayer, i : Int, v : Double) -> MlfeatureicaLayer {
-  let result = ml_feature_ica_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_ica_layer_sum(s : MlfeatureicaLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_feature_ica_buffer_get(s : MlfeatureicaBuffer, i : Int) -> Double {
 }
 
 pub fn ml_feature_ica_buffer_set(s : MlfeatureicaBuffer, i : Int, v : Double) -> MlfeatureicaBuffer {
-  let result = ml_feature_ica_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_ica_buffer_sum(s : MlfeatureicaBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_feature_ica_cursor_get(s : MlfeatureicaCursor, i : Int) -> Double {
 }
 
 pub fn ml_feature_ica_cursor_set(s : MlfeatureicaCursor, i : Int, v : Double) -> MlfeatureicaCursor {
-  let result = ml_feature_ica_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_ica_cursor_sum(s : MlfeatureicaCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_feature_ica_view_get(s : MlfeatureicaView, i : Int) -> Double {
 }
 
 pub fn ml_feature_ica_view_set(s : MlfeatureicaView, i : Int, v : Double) -> MlfeatureicaView {
-  let result = ml_feature_ica_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_ica_view_sum(s : MlfeatureicaView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_feature_ica_range_get(s : MlfeatureicaRange, i : Int) -> Double {
 }
 
 pub fn ml_feature_ica_range_set(s : MlfeatureicaRange, i : Int, v : Double) -> MlfeatureicaRange {
-  let result = ml_feature_ica_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_ica_range_sum(s : MlfeatureicaRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_feature_ica_slice_get(s : MlfeatureicaSlice, i : Int) -> Double {
 }
 
 pub fn ml_feature_ica_slice_set(s : MlfeatureicaSlice, i : Int, v : Double) -> MlfeatureicaSlice {
-  let result = ml_feature_ica_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_ica_slice_sum(s : MlfeatureicaSlice) -> Double { @_common.sum(s.data) }

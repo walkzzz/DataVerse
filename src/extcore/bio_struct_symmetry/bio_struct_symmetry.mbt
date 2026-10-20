@@ -107,23 +107,15 @@ pub fn bio_struct_symmetry_series_std(s : BiostructsymmetrySeries) -> Double { @
 pub fn bio_struct_symmetry_series_median(s : BiostructsymmetrySeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_struct_symmetry_series_scale(s : BiostructsymmetrySeries, f : Double) -> BiostructsymmetrySeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_struct_symmetry_series_add(a : BiostructsymmetrySeries, b : BiostructsymmetrySeries) -> BiostructsymmetrySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_struct_symmetry_series_sub(a : BiostructsymmetrySeries, b : BiostructsymmetrySeries) -> BiostructsymmetrySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_struct_symmetry_series_normalize(s : BiostructsymmetrySeries) -> BiostructsymmetrySeries {
@@ -254,22 +246,16 @@ pub fn bio_struct_symmetry_vector_zero(dim : Int) -> BiostructsymmetryVector {
 
 pub fn bio_struct_symmetry_vector_add(a : BiostructsymmetryVector, b : BiostructsymmetryVector) -> BiostructsymmetryVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_struct_symmetry_vector_sub(a : BiostructsymmetryVector, b : BiostructsymmetryVector) -> BiostructsymmetryVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_struct_symmetry_vector_scale(v : BiostructsymmetryVector, s : Double) -> BiostructsymmetryVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_struct_symmetry_vector_dot(a : BiostructsymmetryVector, b : BiostructsymmetryVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_struct_symmetry_frame_get(s : BiostructsymmetryFrame, i : Int) -> Dou
 }
 
 pub fn bio_struct_symmetry_frame_set(s : BiostructsymmetryFrame, i : Int, v : Double) -> BiostructsymmetryFrame {
-  let result = bio_struct_symmetry_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_symmetry_frame_sum(s : BiostructsymmetryFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_struct_symmetry_table_get(s : BiostructsymmetryTable, i : Int) -> Dou
 }
 
 pub fn bio_struct_symmetry_table_set(s : BiostructsymmetryTable, i : Int, v : Double) -> BiostructsymmetryTable {
-  let result = bio_struct_symmetry_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_symmetry_table_sum(s : BiostructsymmetryTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_struct_symmetry_graphn_get(s : BiostructsymmetryGraphN, i : Int) -> D
 }
 
 pub fn bio_struct_symmetry_graphn_set(s : BiostructsymmetryGraphN, i : Int, v : Double) -> BiostructsymmetryGraphN {
-  let result = bio_struct_symmetry_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_symmetry_graphn_sum(s : BiostructsymmetryGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_struct_symmetry_node_get(s : BiostructsymmetryNode, i : Int) -> Doubl
 }
 
 pub fn bio_struct_symmetry_node_set(s : BiostructsymmetryNode, i : Int, v : Double) -> BiostructsymmetryNode {
-  let result = bio_struct_symmetry_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_symmetry_node_sum(s : BiostructsymmetryNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_struct_symmetry_edge_get(s : BiostructsymmetryEdge, i : Int) -> Doubl
 }
 
 pub fn bio_struct_symmetry_edge_set(s : BiostructsymmetryEdge, i : Int, v : Double) -> BiostructsymmetryEdge {
-  let result = bio_struct_symmetry_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_symmetry_edge_sum(s : BiostructsymmetryEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_struct_symmetry_path_get(s : BiostructsymmetryPath, i : Int) -> Doubl
 }
 
 pub fn bio_struct_symmetry_path_set(s : BiostructsymmetryPath, i : Int, v : Double) -> BiostructsymmetryPath {
-  let result = bio_struct_symmetry_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_symmetry_path_sum(s : BiostructsymmetryPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_struct_symmetry_cluster_get(s : BiostructsymmetryCluster, i : Int) ->
 }
 
 pub fn bio_struct_symmetry_cluster_set(s : BiostructsymmetryCluster, i : Int, v : Double) -> BiostructsymmetryCluster {
-  let result = bio_struct_symmetry_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_symmetry_cluster_sum(s : BiostructsymmetryCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_struct_symmetry_model_get(s : BiostructsymmetryModel, i : Int) -> Dou
 }
 
 pub fn bio_struct_symmetry_model_set(s : BiostructsymmetryModel, i : Int, v : Double) -> BiostructsymmetryModel {
-  let result = bio_struct_symmetry_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_symmetry_model_sum(s : BiostructsymmetryModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_struct_symmetry_layer_get(s : BiostructsymmetryLayer, i : Int) -> Dou
 }
 
 pub fn bio_struct_symmetry_layer_set(s : BiostructsymmetryLayer, i : Int, v : Double) -> BiostructsymmetryLayer {
-  let result = bio_struct_symmetry_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_symmetry_layer_sum(s : BiostructsymmetryLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_struct_symmetry_buffer_get(s : BiostructsymmetryBuffer, i : Int) -> D
 }
 
 pub fn bio_struct_symmetry_buffer_set(s : BiostructsymmetryBuffer, i : Int, v : Double) -> BiostructsymmetryBuffer {
-  let result = bio_struct_symmetry_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_symmetry_buffer_sum(s : BiostructsymmetryBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_struct_symmetry_cursor_get(s : BiostructsymmetryCursor, i : Int) -> D
 }
 
 pub fn bio_struct_symmetry_cursor_set(s : BiostructsymmetryCursor, i : Int, v : Double) -> BiostructsymmetryCursor {
-  let result = bio_struct_symmetry_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_symmetry_cursor_sum(s : BiostructsymmetryCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_struct_symmetry_view_get(s : BiostructsymmetryView, i : Int) -> Doubl
 }
 
 pub fn bio_struct_symmetry_view_set(s : BiostructsymmetryView, i : Int, v : Double) -> BiostructsymmetryView {
-  let result = bio_struct_symmetry_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_symmetry_view_sum(s : BiostructsymmetryView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_struct_symmetry_range_get(s : BiostructsymmetryRange, i : Int) -> Dou
 }
 
 pub fn bio_struct_symmetry_range_set(s : BiostructsymmetryRange, i : Int, v : Double) -> BiostructsymmetryRange {
-  let result = bio_struct_symmetry_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_symmetry_range_sum(s : BiostructsymmetryRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_struct_symmetry_slice_get(s : BiostructsymmetrySlice, i : Int) -> Dou
 }
 
 pub fn bio_struct_symmetry_slice_set(s : BiostructsymmetrySlice, i : Int, v : Double) -> BiostructsymmetrySlice {
-  let result = bio_struct_symmetry_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_symmetry_slice_sum(s : BiostructsymmetrySlice) -> Double { @_common.sum(s.data) }

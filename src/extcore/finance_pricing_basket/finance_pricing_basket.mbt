@@ -107,23 +107,15 @@ pub fn finance_pricing_basket_series_std(s : FinancepricingbasketSeries) -> Doub
 pub fn finance_pricing_basket_series_median(s : FinancepricingbasketSeries) -> Double { @_common.median(s.vals) }
 
 pub fn finance_pricing_basket_series_scale(s : FinancepricingbasketSeries, f : Double) -> FinancepricingbasketSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn finance_pricing_basket_series_add(a : FinancepricingbasketSeries, b : FinancepricingbasketSeries) -> FinancepricingbasketSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn finance_pricing_basket_series_sub(a : FinancepricingbasketSeries, b : FinancepricingbasketSeries) -> FinancepricingbasketSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn finance_pricing_basket_series_normalize(s : FinancepricingbasketSeries) -> FinancepricingbasketSeries {
@@ -254,22 +246,16 @@ pub fn finance_pricing_basket_vector_zero(dim : Int) -> FinancepricingbasketVect
 
 pub fn finance_pricing_basket_vector_add(a : FinancepricingbasketVector, b : FinancepricingbasketVector) -> FinancepricingbasketVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_pricing_basket_vector_sub(a : FinancepricingbasketVector, b : FinancepricingbasketVector) -> FinancepricingbasketVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_pricing_basket_vector_scale(v : FinancepricingbasketVector, s : Double) -> FinancepricingbasketVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn finance_pricing_basket_vector_dot(a : FinancepricingbasketVector, b : FinancepricingbasketVector) -> Double {
@@ -372,10 +358,9 @@ pub fn finance_pricing_basket_frame_get(s : FinancepricingbasketFrame, i : Int) 
 }
 
 pub fn finance_pricing_basket_frame_set(s : FinancepricingbasketFrame, i : Int, v : Double) -> FinancepricingbasketFrame {
-  let result = finance_pricing_basket_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_basket_frame_sum(s : FinancepricingbasketFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn finance_pricing_basket_table_get(s : FinancepricingbasketTable, i : Int) 
 }
 
 pub fn finance_pricing_basket_table_set(s : FinancepricingbasketTable, i : Int, v : Double) -> FinancepricingbasketTable {
-  let result = finance_pricing_basket_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_basket_table_sum(s : FinancepricingbasketTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn finance_pricing_basket_graphn_get(s : FinancepricingbasketGraphN, i : Int
 }
 
 pub fn finance_pricing_basket_graphn_set(s : FinancepricingbasketGraphN, i : Int, v : Double) -> FinancepricingbasketGraphN {
-  let result = finance_pricing_basket_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_basket_graphn_sum(s : FinancepricingbasketGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn finance_pricing_basket_node_get(s : FinancepricingbasketNode, i : Int) ->
 }
 
 pub fn finance_pricing_basket_node_set(s : FinancepricingbasketNode, i : Int, v : Double) -> FinancepricingbasketNode {
-  let result = finance_pricing_basket_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_basket_node_sum(s : FinancepricingbasketNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn finance_pricing_basket_edge_get(s : FinancepricingbasketEdge, i : Int) ->
 }
 
 pub fn finance_pricing_basket_edge_set(s : FinancepricingbasketEdge, i : Int, v : Double) -> FinancepricingbasketEdge {
-  let result = finance_pricing_basket_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_basket_edge_sum(s : FinancepricingbasketEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn finance_pricing_basket_path_get(s : FinancepricingbasketPath, i : Int) ->
 }
 
 pub fn finance_pricing_basket_path_set(s : FinancepricingbasketPath, i : Int, v : Double) -> FinancepricingbasketPath {
-  let result = finance_pricing_basket_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_basket_path_sum(s : FinancepricingbasketPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn finance_pricing_basket_cluster_get(s : FinancepricingbasketCluster, i : I
 }
 
 pub fn finance_pricing_basket_cluster_set(s : FinancepricingbasketCluster, i : Int, v : Double) -> FinancepricingbasketCluster {
-  let result = finance_pricing_basket_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_basket_cluster_sum(s : FinancepricingbasketCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn finance_pricing_basket_model_get(s : FinancepricingbasketModel, i : Int) 
 }
 
 pub fn finance_pricing_basket_model_set(s : FinancepricingbasketModel, i : Int, v : Double) -> FinancepricingbasketModel {
-  let result = finance_pricing_basket_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_basket_model_sum(s : FinancepricingbasketModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn finance_pricing_basket_layer_get(s : FinancepricingbasketLayer, i : Int) 
 }
 
 pub fn finance_pricing_basket_layer_set(s : FinancepricingbasketLayer, i : Int, v : Double) -> FinancepricingbasketLayer {
-  let result = finance_pricing_basket_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_basket_layer_sum(s : FinancepricingbasketLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn finance_pricing_basket_buffer_get(s : FinancepricingbasketBuffer, i : Int
 }
 
 pub fn finance_pricing_basket_buffer_set(s : FinancepricingbasketBuffer, i : Int, v : Double) -> FinancepricingbasketBuffer {
-  let result = finance_pricing_basket_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_basket_buffer_sum(s : FinancepricingbasketBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn finance_pricing_basket_cursor_get(s : FinancepricingbasketCursor, i : Int
 }
 
 pub fn finance_pricing_basket_cursor_set(s : FinancepricingbasketCursor, i : Int, v : Double) -> FinancepricingbasketCursor {
-  let result = finance_pricing_basket_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_basket_cursor_sum(s : FinancepricingbasketCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn finance_pricing_basket_view_get(s : FinancepricingbasketView, i : Int) ->
 }
 
 pub fn finance_pricing_basket_view_set(s : FinancepricingbasketView, i : Int, v : Double) -> FinancepricingbasketView {
-  let result = finance_pricing_basket_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_basket_view_sum(s : FinancepricingbasketView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn finance_pricing_basket_range_get(s : FinancepricingbasketRange, i : Int) 
 }
 
 pub fn finance_pricing_basket_range_set(s : FinancepricingbasketRange, i : Int, v : Double) -> FinancepricingbasketRange {
-  let result = finance_pricing_basket_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_basket_range_sum(s : FinancepricingbasketRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn finance_pricing_basket_slice_get(s : FinancepricingbasketSlice, i : Int) 
 }
 
 pub fn finance_pricing_basket_slice_set(s : FinancepricingbasketSlice, i : Int, v : Double) -> FinancepricingbasketSlice {
-  let result = finance_pricing_basket_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_basket_slice_sum(s : FinancepricingbasketSlice) -> Double { @_common.sum(s.data) }

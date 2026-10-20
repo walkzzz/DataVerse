@@ -107,23 +107,15 @@ pub fn stats_model_mixed_series_std(s : StatsmodelmixedSeries) -> Double { @_com
 pub fn stats_model_mixed_series_median(s : StatsmodelmixedSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_model_mixed_series_scale(s : StatsmodelmixedSeries, f : Double) -> StatsmodelmixedSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_model_mixed_series_add(a : StatsmodelmixedSeries, b : StatsmodelmixedSeries) -> StatsmodelmixedSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_model_mixed_series_sub(a : StatsmodelmixedSeries, b : StatsmodelmixedSeries) -> StatsmodelmixedSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_model_mixed_series_normalize(s : StatsmodelmixedSeries) -> StatsmodelmixedSeries {
@@ -254,22 +246,16 @@ pub fn stats_model_mixed_vector_zero(dim : Int) -> StatsmodelmixedVector {
 
 pub fn stats_model_mixed_vector_add(a : StatsmodelmixedVector, b : StatsmodelmixedVector) -> StatsmodelmixedVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_model_mixed_vector_sub(a : StatsmodelmixedVector, b : StatsmodelmixedVector) -> StatsmodelmixedVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_model_mixed_vector_scale(v : StatsmodelmixedVector, s : Double) -> StatsmodelmixedVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_model_mixed_vector_dot(a : StatsmodelmixedVector, b : StatsmodelmixedVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_model_mixed_frame_get(s : StatsmodelmixedFrame, i : Int) -> Double 
 }
 
 pub fn stats_model_mixed_frame_set(s : StatsmodelmixedFrame, i : Int, v : Double) -> StatsmodelmixedFrame {
-  let result = stats_model_mixed_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_mixed_frame_sum(s : StatsmodelmixedFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_model_mixed_table_get(s : StatsmodelmixedTable, i : Int) -> Double 
 }
 
 pub fn stats_model_mixed_table_set(s : StatsmodelmixedTable, i : Int, v : Double) -> StatsmodelmixedTable {
-  let result = stats_model_mixed_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_mixed_table_sum(s : StatsmodelmixedTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_model_mixed_graphn_get(s : StatsmodelmixedGraphN, i : Int) -> Doubl
 }
 
 pub fn stats_model_mixed_graphn_set(s : StatsmodelmixedGraphN, i : Int, v : Double) -> StatsmodelmixedGraphN {
-  let result = stats_model_mixed_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_mixed_graphn_sum(s : StatsmodelmixedGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_model_mixed_node_get(s : StatsmodelmixedNode, i : Int) -> Double {
 }
 
 pub fn stats_model_mixed_node_set(s : StatsmodelmixedNode, i : Int, v : Double) -> StatsmodelmixedNode {
-  let result = stats_model_mixed_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_mixed_node_sum(s : StatsmodelmixedNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_model_mixed_edge_get(s : StatsmodelmixedEdge, i : Int) -> Double {
 }
 
 pub fn stats_model_mixed_edge_set(s : StatsmodelmixedEdge, i : Int, v : Double) -> StatsmodelmixedEdge {
-  let result = stats_model_mixed_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_mixed_edge_sum(s : StatsmodelmixedEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_model_mixed_path_get(s : StatsmodelmixedPath, i : Int) -> Double {
 }
 
 pub fn stats_model_mixed_path_set(s : StatsmodelmixedPath, i : Int, v : Double) -> StatsmodelmixedPath {
-  let result = stats_model_mixed_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_mixed_path_sum(s : StatsmodelmixedPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_model_mixed_cluster_get(s : StatsmodelmixedCluster, i : Int) -> Dou
 }
 
 pub fn stats_model_mixed_cluster_set(s : StatsmodelmixedCluster, i : Int, v : Double) -> StatsmodelmixedCluster {
-  let result = stats_model_mixed_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_mixed_cluster_sum(s : StatsmodelmixedCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_model_mixed_model_get(s : StatsmodelmixedModel, i : Int) -> Double 
 }
 
 pub fn stats_model_mixed_model_set(s : StatsmodelmixedModel, i : Int, v : Double) -> StatsmodelmixedModel {
-  let result = stats_model_mixed_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_mixed_model_sum(s : StatsmodelmixedModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_model_mixed_layer_get(s : StatsmodelmixedLayer, i : Int) -> Double 
 }
 
 pub fn stats_model_mixed_layer_set(s : StatsmodelmixedLayer, i : Int, v : Double) -> StatsmodelmixedLayer {
-  let result = stats_model_mixed_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_mixed_layer_sum(s : StatsmodelmixedLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_model_mixed_buffer_get(s : StatsmodelmixedBuffer, i : Int) -> Doubl
 }
 
 pub fn stats_model_mixed_buffer_set(s : StatsmodelmixedBuffer, i : Int, v : Double) -> StatsmodelmixedBuffer {
-  let result = stats_model_mixed_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_mixed_buffer_sum(s : StatsmodelmixedBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_model_mixed_cursor_get(s : StatsmodelmixedCursor, i : Int) -> Doubl
 }
 
 pub fn stats_model_mixed_cursor_set(s : StatsmodelmixedCursor, i : Int, v : Double) -> StatsmodelmixedCursor {
-  let result = stats_model_mixed_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_mixed_cursor_sum(s : StatsmodelmixedCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_model_mixed_view_get(s : StatsmodelmixedView, i : Int) -> Double {
 }
 
 pub fn stats_model_mixed_view_set(s : StatsmodelmixedView, i : Int, v : Double) -> StatsmodelmixedView {
-  let result = stats_model_mixed_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_mixed_view_sum(s : StatsmodelmixedView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_model_mixed_range_get(s : StatsmodelmixedRange, i : Int) -> Double 
 }
 
 pub fn stats_model_mixed_range_set(s : StatsmodelmixedRange, i : Int, v : Double) -> StatsmodelmixedRange {
-  let result = stats_model_mixed_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_mixed_range_sum(s : StatsmodelmixedRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_model_mixed_slice_get(s : StatsmodelmixedSlice, i : Int) -> Double 
 }
 
 pub fn stats_model_mixed_slice_set(s : StatsmodelmixedSlice, i : Int, v : Double) -> StatsmodelmixedSlice {
-  let result = stats_model_mixed_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_mixed_slice_sum(s : StatsmodelmixedSlice) -> Double { @_common.sum(s.data) }

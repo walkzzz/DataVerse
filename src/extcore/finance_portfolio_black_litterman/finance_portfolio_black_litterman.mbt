@@ -107,23 +107,15 @@ pub fn finance_portfolio_black_litterman_series_std(s : Financeportfolioblacklit
 pub fn finance_portfolio_black_litterman_series_median(s : FinanceportfolioblacklittermanSeries) -> Double { @_common.median(s.vals) }
 
 pub fn finance_portfolio_black_litterman_series_scale(s : FinanceportfolioblacklittermanSeries, f : Double) -> FinanceportfolioblacklittermanSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn finance_portfolio_black_litterman_series_add(a : FinanceportfolioblacklittermanSeries, b : FinanceportfolioblacklittermanSeries) -> FinanceportfolioblacklittermanSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn finance_portfolio_black_litterman_series_sub(a : FinanceportfolioblacklittermanSeries, b : FinanceportfolioblacklittermanSeries) -> FinanceportfolioblacklittermanSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn finance_portfolio_black_litterman_series_normalize(s : FinanceportfolioblacklittermanSeries) -> FinanceportfolioblacklittermanSeries {
@@ -254,22 +246,16 @@ pub fn finance_portfolio_black_litterman_vector_zero(dim : Int) -> Financeportfo
 
 pub fn finance_portfolio_black_litterman_vector_add(a : FinanceportfolioblacklittermanVector, b : FinanceportfolioblacklittermanVector) -> FinanceportfolioblacklittermanVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_portfolio_black_litterman_vector_sub(a : FinanceportfolioblacklittermanVector, b : FinanceportfolioblacklittermanVector) -> FinanceportfolioblacklittermanVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_portfolio_black_litterman_vector_scale(v : FinanceportfolioblacklittermanVector, s : Double) -> FinanceportfolioblacklittermanVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn finance_portfolio_black_litterman_vector_dot(a : FinanceportfolioblacklittermanVector, b : FinanceportfolioblacklittermanVector) -> Double {
@@ -372,10 +358,9 @@ pub fn finance_portfolio_black_litterman_frame_get(s : Financeportfolioblacklitt
 }
 
 pub fn finance_portfolio_black_litterman_frame_set(s : FinanceportfolioblacklittermanFrame, i : Int, v : Double) -> FinanceportfolioblacklittermanFrame {
-  let result = finance_portfolio_black_litterman_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_frame_sum(s : FinanceportfolioblacklittermanFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn finance_portfolio_black_litterman_table_get(s : Financeportfolioblacklitt
 }
 
 pub fn finance_portfolio_black_litterman_table_set(s : FinanceportfolioblacklittermanTable, i : Int, v : Double) -> FinanceportfolioblacklittermanTable {
-  let result = finance_portfolio_black_litterman_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_table_sum(s : FinanceportfolioblacklittermanTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn finance_portfolio_black_litterman_graphn_get(s : Financeportfolioblacklit
 }
 
 pub fn finance_portfolio_black_litterman_graphn_set(s : FinanceportfolioblacklittermanGraphN, i : Int, v : Double) -> FinanceportfolioblacklittermanGraphN {
-  let result = finance_portfolio_black_litterman_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_graphn_sum(s : FinanceportfolioblacklittermanGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn finance_portfolio_black_litterman_node_get(s : Financeportfolioblacklitte
 }
 
 pub fn finance_portfolio_black_litterman_node_set(s : FinanceportfolioblacklittermanNode, i : Int, v : Double) -> FinanceportfolioblacklittermanNode {
-  let result = finance_portfolio_black_litterman_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_node_sum(s : FinanceportfolioblacklittermanNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn finance_portfolio_black_litterman_edge_get(s : Financeportfolioblacklitte
 }
 
 pub fn finance_portfolio_black_litterman_edge_set(s : FinanceportfolioblacklittermanEdge, i : Int, v : Double) -> FinanceportfolioblacklittermanEdge {
-  let result = finance_portfolio_black_litterman_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_edge_sum(s : FinanceportfolioblacklittermanEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn finance_portfolio_black_litterman_path_get(s : Financeportfolioblacklitte
 }
 
 pub fn finance_portfolio_black_litterman_path_set(s : FinanceportfolioblacklittermanPath, i : Int, v : Double) -> FinanceportfolioblacklittermanPath {
-  let result = finance_portfolio_black_litterman_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_path_sum(s : FinanceportfolioblacklittermanPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn finance_portfolio_black_litterman_cluster_get(s : Financeportfolioblackli
 }
 
 pub fn finance_portfolio_black_litterman_cluster_set(s : FinanceportfolioblacklittermanCluster, i : Int, v : Double) -> FinanceportfolioblacklittermanCluster {
-  let result = finance_portfolio_black_litterman_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_cluster_sum(s : FinanceportfolioblacklittermanCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn finance_portfolio_black_litterman_model_get(s : Financeportfolioblacklitt
 }
 
 pub fn finance_portfolio_black_litterman_model_set(s : FinanceportfolioblacklittermanModel, i : Int, v : Double) -> FinanceportfolioblacklittermanModel {
-  let result = finance_portfolio_black_litterman_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_model_sum(s : FinanceportfolioblacklittermanModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn finance_portfolio_black_litterman_layer_get(s : Financeportfolioblacklitt
 }
 
 pub fn finance_portfolio_black_litterman_layer_set(s : FinanceportfolioblacklittermanLayer, i : Int, v : Double) -> FinanceportfolioblacklittermanLayer {
-  let result = finance_portfolio_black_litterman_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_layer_sum(s : FinanceportfolioblacklittermanLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn finance_portfolio_black_litterman_buffer_get(s : Financeportfolioblacklit
 }
 
 pub fn finance_portfolio_black_litterman_buffer_set(s : FinanceportfolioblacklittermanBuffer, i : Int, v : Double) -> FinanceportfolioblacklittermanBuffer {
-  let result = finance_portfolio_black_litterman_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_buffer_sum(s : FinanceportfolioblacklittermanBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn finance_portfolio_black_litterman_cursor_get(s : Financeportfolioblacklit
 }
 
 pub fn finance_portfolio_black_litterman_cursor_set(s : FinanceportfolioblacklittermanCursor, i : Int, v : Double) -> FinanceportfolioblacklittermanCursor {
-  let result = finance_portfolio_black_litterman_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_cursor_sum(s : FinanceportfolioblacklittermanCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn finance_portfolio_black_litterman_view_get(s : Financeportfolioblacklitte
 }
 
 pub fn finance_portfolio_black_litterman_view_set(s : FinanceportfolioblacklittermanView, i : Int, v : Double) -> FinanceportfolioblacklittermanView {
-  let result = finance_portfolio_black_litterman_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_view_sum(s : FinanceportfolioblacklittermanView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn finance_portfolio_black_litterman_range_get(s : Financeportfolioblacklitt
 }
 
 pub fn finance_portfolio_black_litterman_range_set(s : FinanceportfolioblacklittermanRange, i : Int, v : Double) -> FinanceportfolioblacklittermanRange {
-  let result = finance_portfolio_black_litterman_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_range_sum(s : FinanceportfolioblacklittermanRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn finance_portfolio_black_litterman_slice_get(s : Financeportfolioblacklitt
 }
 
 pub fn finance_portfolio_black_litterman_slice_set(s : FinanceportfolioblacklittermanSlice, i : Int, v : Double) -> FinanceportfolioblacklittermanSlice {
-  let result = finance_portfolio_black_litterman_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_black_litterman_slice_sum(s : FinanceportfolioblacklittermanSlice) -> Double { @_common.sum(s.data) }

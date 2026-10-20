@@ -107,23 +107,15 @@ pub fn ml_regress_ridge_series_std(s : MlregressridgeSeries) -> Double { @_commo
 pub fn ml_regress_ridge_series_median(s : MlregressridgeSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_regress_ridge_series_scale(s : MlregressridgeSeries, f : Double) -> MlregressridgeSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_regress_ridge_series_add(a : MlregressridgeSeries, b : MlregressridgeSeries) -> MlregressridgeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_regress_ridge_series_sub(a : MlregressridgeSeries, b : MlregressridgeSeries) -> MlregressridgeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_regress_ridge_series_normalize(s : MlregressridgeSeries) -> MlregressridgeSeries {
@@ -254,22 +246,16 @@ pub fn ml_regress_ridge_vector_zero(dim : Int) -> MlregressridgeVector {
 
 pub fn ml_regress_ridge_vector_add(a : MlregressridgeVector, b : MlregressridgeVector) -> MlregressridgeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_regress_ridge_vector_sub(a : MlregressridgeVector, b : MlregressridgeVector) -> MlregressridgeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_regress_ridge_vector_scale(v : MlregressridgeVector, s : Double) -> MlregressridgeVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_regress_ridge_vector_dot(a : MlregressridgeVector, b : MlregressridgeVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_regress_ridge_frame_get(s : MlregressridgeFrame, i : Int) -> Double {
 }
 
 pub fn ml_regress_ridge_frame_set(s : MlregressridgeFrame, i : Int, v : Double) -> MlregressridgeFrame {
-  let result = ml_regress_ridge_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_ridge_frame_sum(s : MlregressridgeFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_regress_ridge_table_get(s : MlregressridgeTable, i : Int) -> Double {
 }
 
 pub fn ml_regress_ridge_table_set(s : MlregressridgeTable, i : Int, v : Double) -> MlregressridgeTable {
-  let result = ml_regress_ridge_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_ridge_table_sum(s : MlregressridgeTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_regress_ridge_graphn_get(s : MlregressridgeGraphN, i : Int) -> Double 
 }
 
 pub fn ml_regress_ridge_graphn_set(s : MlregressridgeGraphN, i : Int, v : Double) -> MlregressridgeGraphN {
-  let result = ml_regress_ridge_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_ridge_graphn_sum(s : MlregressridgeGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_regress_ridge_node_get(s : MlregressridgeNode, i : Int) -> Double {
 }
 
 pub fn ml_regress_ridge_node_set(s : MlregressridgeNode, i : Int, v : Double) -> MlregressridgeNode {
-  let result = ml_regress_ridge_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_ridge_node_sum(s : MlregressridgeNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_regress_ridge_edge_get(s : MlregressridgeEdge, i : Int) -> Double {
 }
 
 pub fn ml_regress_ridge_edge_set(s : MlregressridgeEdge, i : Int, v : Double) -> MlregressridgeEdge {
-  let result = ml_regress_ridge_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_ridge_edge_sum(s : MlregressridgeEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_regress_ridge_path_get(s : MlregressridgePath, i : Int) -> Double {
 }
 
 pub fn ml_regress_ridge_path_set(s : MlregressridgePath, i : Int, v : Double) -> MlregressridgePath {
-  let result = ml_regress_ridge_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_ridge_path_sum(s : MlregressridgePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_regress_ridge_cluster_get(s : MlregressridgeCluster, i : Int) -> Doubl
 }
 
 pub fn ml_regress_ridge_cluster_set(s : MlregressridgeCluster, i : Int, v : Double) -> MlregressridgeCluster {
-  let result = ml_regress_ridge_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_ridge_cluster_sum(s : MlregressridgeCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_regress_ridge_model_get(s : MlregressridgeModel, i : Int) -> Double {
 }
 
 pub fn ml_regress_ridge_model_set(s : MlregressridgeModel, i : Int, v : Double) -> MlregressridgeModel {
-  let result = ml_regress_ridge_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_ridge_model_sum(s : MlregressridgeModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_regress_ridge_layer_get(s : MlregressridgeLayer, i : Int) -> Double {
 }
 
 pub fn ml_regress_ridge_layer_set(s : MlregressridgeLayer, i : Int, v : Double) -> MlregressridgeLayer {
-  let result = ml_regress_ridge_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_ridge_layer_sum(s : MlregressridgeLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_regress_ridge_buffer_get(s : MlregressridgeBuffer, i : Int) -> Double 
 }
 
 pub fn ml_regress_ridge_buffer_set(s : MlregressridgeBuffer, i : Int, v : Double) -> MlregressridgeBuffer {
-  let result = ml_regress_ridge_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_ridge_buffer_sum(s : MlregressridgeBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_regress_ridge_cursor_get(s : MlregressridgeCursor, i : Int) -> Double 
 }
 
 pub fn ml_regress_ridge_cursor_set(s : MlregressridgeCursor, i : Int, v : Double) -> MlregressridgeCursor {
-  let result = ml_regress_ridge_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_ridge_cursor_sum(s : MlregressridgeCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_regress_ridge_view_get(s : MlregressridgeView, i : Int) -> Double {
 }
 
 pub fn ml_regress_ridge_view_set(s : MlregressridgeView, i : Int, v : Double) -> MlregressridgeView {
-  let result = ml_regress_ridge_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_ridge_view_sum(s : MlregressridgeView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_regress_ridge_range_get(s : MlregressridgeRange, i : Int) -> Double {
 }
 
 pub fn ml_regress_ridge_range_set(s : MlregressridgeRange, i : Int, v : Double) -> MlregressridgeRange {
-  let result = ml_regress_ridge_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_ridge_range_sum(s : MlregressridgeRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_regress_ridge_slice_get(s : MlregressridgeSlice, i : Int) -> Double {
 }
 
 pub fn ml_regress_ridge_slice_set(s : MlregressridgeSlice, i : Int, v : Double) -> MlregressridgeSlice {
-  let result = ml_regress_ridge_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_ridge_slice_sum(s : MlregressridgeSlice) -> Double { @_common.sum(s.data) }

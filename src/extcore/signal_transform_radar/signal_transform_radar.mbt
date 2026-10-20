@@ -107,23 +107,15 @@ pub fn signal_transform_radar_series_std(s : SignaltransformradarSeries) -> Doub
 pub fn signal_transform_radar_series_median(s : SignaltransformradarSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_transform_radar_series_scale(s : SignaltransformradarSeries, f : Double) -> SignaltransformradarSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_transform_radar_series_add(a : SignaltransformradarSeries, b : SignaltransformradarSeries) -> SignaltransformradarSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_transform_radar_series_sub(a : SignaltransformradarSeries, b : SignaltransformradarSeries) -> SignaltransformradarSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_transform_radar_series_normalize(s : SignaltransformradarSeries) -> SignaltransformradarSeries {
@@ -254,22 +246,16 @@ pub fn signal_transform_radar_vector_zero(dim : Int) -> SignaltransformradarVect
 
 pub fn signal_transform_radar_vector_add(a : SignaltransformradarVector, b : SignaltransformradarVector) -> SignaltransformradarVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_transform_radar_vector_sub(a : SignaltransformradarVector, b : SignaltransformradarVector) -> SignaltransformradarVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_transform_radar_vector_scale(v : SignaltransformradarVector, s : Double) -> SignaltransformradarVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_transform_radar_vector_dot(a : SignaltransformradarVector, b : SignaltransformradarVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_transform_radar_frame_get(s : SignaltransformradarFrame, i : Int) 
 }
 
 pub fn signal_transform_radar_frame_set(s : SignaltransformradarFrame, i : Int, v : Double) -> SignaltransformradarFrame {
-  let result = signal_transform_radar_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_frame_sum(s : SignaltransformradarFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_transform_radar_table_get(s : SignaltransformradarTable, i : Int) 
 }
 
 pub fn signal_transform_radar_table_set(s : SignaltransformradarTable, i : Int, v : Double) -> SignaltransformradarTable {
-  let result = signal_transform_radar_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_table_sum(s : SignaltransformradarTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_transform_radar_graphn_get(s : SignaltransformradarGraphN, i : Int
 }
 
 pub fn signal_transform_radar_graphn_set(s : SignaltransformradarGraphN, i : Int, v : Double) -> SignaltransformradarGraphN {
-  let result = signal_transform_radar_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_graphn_sum(s : SignaltransformradarGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_transform_radar_node_get(s : SignaltransformradarNode, i : Int) ->
 }
 
 pub fn signal_transform_radar_node_set(s : SignaltransformradarNode, i : Int, v : Double) -> SignaltransformradarNode {
-  let result = signal_transform_radar_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_node_sum(s : SignaltransformradarNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_transform_radar_edge_get(s : SignaltransformradarEdge, i : Int) ->
 }
 
 pub fn signal_transform_radar_edge_set(s : SignaltransformradarEdge, i : Int, v : Double) -> SignaltransformradarEdge {
-  let result = signal_transform_radar_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_edge_sum(s : SignaltransformradarEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_transform_radar_path_get(s : SignaltransformradarPath, i : Int) ->
 }
 
 pub fn signal_transform_radar_path_set(s : SignaltransformradarPath, i : Int, v : Double) -> SignaltransformradarPath {
-  let result = signal_transform_radar_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_path_sum(s : SignaltransformradarPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_transform_radar_cluster_get(s : SignaltransformradarCluster, i : I
 }
 
 pub fn signal_transform_radar_cluster_set(s : SignaltransformradarCluster, i : Int, v : Double) -> SignaltransformradarCluster {
-  let result = signal_transform_radar_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_cluster_sum(s : SignaltransformradarCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_transform_radar_model_get(s : SignaltransformradarModel, i : Int) 
 }
 
 pub fn signal_transform_radar_model_set(s : SignaltransformradarModel, i : Int, v : Double) -> SignaltransformradarModel {
-  let result = signal_transform_radar_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_model_sum(s : SignaltransformradarModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_transform_radar_layer_get(s : SignaltransformradarLayer, i : Int) 
 }
 
 pub fn signal_transform_radar_layer_set(s : SignaltransformradarLayer, i : Int, v : Double) -> SignaltransformradarLayer {
-  let result = signal_transform_radar_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_layer_sum(s : SignaltransformradarLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_transform_radar_buffer_get(s : SignaltransformradarBuffer, i : Int
 }
 
 pub fn signal_transform_radar_buffer_set(s : SignaltransformradarBuffer, i : Int, v : Double) -> SignaltransformradarBuffer {
-  let result = signal_transform_radar_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_buffer_sum(s : SignaltransformradarBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_transform_radar_cursor_get(s : SignaltransformradarCursor, i : Int
 }
 
 pub fn signal_transform_radar_cursor_set(s : SignaltransformradarCursor, i : Int, v : Double) -> SignaltransformradarCursor {
-  let result = signal_transform_radar_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_cursor_sum(s : SignaltransformradarCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_transform_radar_view_get(s : SignaltransformradarView, i : Int) ->
 }
 
 pub fn signal_transform_radar_view_set(s : SignaltransformradarView, i : Int, v : Double) -> SignaltransformradarView {
-  let result = signal_transform_radar_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_view_sum(s : SignaltransformradarView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_transform_radar_range_get(s : SignaltransformradarRange, i : Int) 
 }
 
 pub fn signal_transform_radar_range_set(s : SignaltransformradarRange, i : Int, v : Double) -> SignaltransformradarRange {
-  let result = signal_transform_radar_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_range_sum(s : SignaltransformradarRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_transform_radar_slice_get(s : SignaltransformradarSlice, i : Int) 
 }
 
 pub fn signal_transform_radar_slice_set(s : SignaltransformradarSlice, i : Int, v : Double) -> SignaltransformradarSlice {
-  let result = signal_transform_radar_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_transform_radar_slice_sum(s : SignaltransformradarSlice) -> Double { @_common.sum(s.data) }

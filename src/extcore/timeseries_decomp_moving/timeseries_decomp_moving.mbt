@@ -107,23 +107,15 @@ pub fn timeseries_decomp_moving_series_std(s : TimeseriesdecompmovingSeries) -> 
 pub fn timeseries_decomp_moving_series_median(s : TimeseriesdecompmovingSeries) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_decomp_moving_series_scale(s : TimeseriesdecompmovingSeries, f : Double) -> TimeseriesdecompmovingSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn timeseries_decomp_moving_series_add(a : TimeseriesdecompmovingSeries, b : TimeseriesdecompmovingSeries) -> TimeseriesdecompmovingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_decomp_moving_series_sub(a : TimeseriesdecompmovingSeries, b : TimeseriesdecompmovingSeries) -> TimeseriesdecompmovingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_decomp_moving_series_normalize(s : TimeseriesdecompmovingSeries) -> TimeseriesdecompmovingSeries {
@@ -254,22 +246,16 @@ pub fn timeseries_decomp_moving_vector_zero(dim : Int) -> Timeseriesdecompmoving
 
 pub fn timeseries_decomp_moving_vector_add(a : TimeseriesdecompmovingVector, b : TimeseriesdecompmovingVector) -> TimeseriesdecompmovingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_decomp_moving_vector_sub(a : TimeseriesdecompmovingVector, b : TimeseriesdecompmovingVector) -> TimeseriesdecompmovingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_decomp_moving_vector_scale(v : TimeseriesdecompmovingVector, s : Double) -> TimeseriesdecompmovingVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn timeseries_decomp_moving_vector_dot(a : TimeseriesdecompmovingVector, b : TimeseriesdecompmovingVector) -> Double {
@@ -372,10 +358,9 @@ pub fn timeseries_decomp_moving_frame_get(s : TimeseriesdecompmovingFrame, i : I
 }
 
 pub fn timeseries_decomp_moving_frame_set(s : TimeseriesdecompmovingFrame, i : Int, v : Double) -> TimeseriesdecompmovingFrame {
-  let result = timeseries_decomp_moving_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_moving_frame_sum(s : TimeseriesdecompmovingFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn timeseries_decomp_moving_table_get(s : TimeseriesdecompmovingTable, i : I
 }
 
 pub fn timeseries_decomp_moving_table_set(s : TimeseriesdecompmovingTable, i : Int, v : Double) -> TimeseriesdecompmovingTable {
-  let result = timeseries_decomp_moving_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_moving_table_sum(s : TimeseriesdecompmovingTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn timeseries_decomp_moving_graphn_get(s : TimeseriesdecompmovingGraphN, i :
 }
 
 pub fn timeseries_decomp_moving_graphn_set(s : TimeseriesdecompmovingGraphN, i : Int, v : Double) -> TimeseriesdecompmovingGraphN {
-  let result = timeseries_decomp_moving_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_moving_graphn_sum(s : TimeseriesdecompmovingGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn timeseries_decomp_moving_node_get(s : TimeseriesdecompmovingNode, i : Int
 }
 
 pub fn timeseries_decomp_moving_node_set(s : TimeseriesdecompmovingNode, i : Int, v : Double) -> TimeseriesdecompmovingNode {
-  let result = timeseries_decomp_moving_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_moving_node_sum(s : TimeseriesdecompmovingNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn timeseries_decomp_moving_edge_get(s : TimeseriesdecompmovingEdge, i : Int
 }
 
 pub fn timeseries_decomp_moving_edge_set(s : TimeseriesdecompmovingEdge, i : Int, v : Double) -> TimeseriesdecompmovingEdge {
-  let result = timeseries_decomp_moving_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_moving_edge_sum(s : TimeseriesdecompmovingEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn timeseries_decomp_moving_path_get(s : TimeseriesdecompmovingPath, i : Int
 }
 
 pub fn timeseries_decomp_moving_path_set(s : TimeseriesdecompmovingPath, i : Int, v : Double) -> TimeseriesdecompmovingPath {
-  let result = timeseries_decomp_moving_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_moving_path_sum(s : TimeseriesdecompmovingPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn timeseries_decomp_moving_cluster_get(s : TimeseriesdecompmovingCluster, i
 }
 
 pub fn timeseries_decomp_moving_cluster_set(s : TimeseriesdecompmovingCluster, i : Int, v : Double) -> TimeseriesdecompmovingCluster {
-  let result = timeseries_decomp_moving_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_moving_cluster_sum(s : TimeseriesdecompmovingCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn timeseries_decomp_moving_model_get(s : TimeseriesdecompmovingModel, i : I
 }
 
 pub fn timeseries_decomp_moving_model_set(s : TimeseriesdecompmovingModel, i : Int, v : Double) -> TimeseriesdecompmovingModel {
-  let result = timeseries_decomp_moving_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_moving_model_sum(s : TimeseriesdecompmovingModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn timeseries_decomp_moving_layer_get(s : TimeseriesdecompmovingLayer, i : I
 }
 
 pub fn timeseries_decomp_moving_layer_set(s : TimeseriesdecompmovingLayer, i : Int, v : Double) -> TimeseriesdecompmovingLayer {
-  let result = timeseries_decomp_moving_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_moving_layer_sum(s : TimeseriesdecompmovingLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn timeseries_decomp_moving_buffer_get(s : TimeseriesdecompmovingBuffer, i :
 }
 
 pub fn timeseries_decomp_moving_buffer_set(s : TimeseriesdecompmovingBuffer, i : Int, v : Double) -> TimeseriesdecompmovingBuffer {
-  let result = timeseries_decomp_moving_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_moving_buffer_sum(s : TimeseriesdecompmovingBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn timeseries_decomp_moving_cursor_get(s : TimeseriesdecompmovingCursor, i :
 }
 
 pub fn timeseries_decomp_moving_cursor_set(s : TimeseriesdecompmovingCursor, i : Int, v : Double) -> TimeseriesdecompmovingCursor {
-  let result = timeseries_decomp_moving_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_moving_cursor_sum(s : TimeseriesdecompmovingCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn timeseries_decomp_moving_view_get(s : TimeseriesdecompmovingView, i : Int
 }
 
 pub fn timeseries_decomp_moving_view_set(s : TimeseriesdecompmovingView, i : Int, v : Double) -> TimeseriesdecompmovingView {
-  let result = timeseries_decomp_moving_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_moving_view_sum(s : TimeseriesdecompmovingView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn timeseries_decomp_moving_range_get(s : TimeseriesdecompmovingRange, i : I
 }
 
 pub fn timeseries_decomp_moving_range_set(s : TimeseriesdecompmovingRange, i : Int, v : Double) -> TimeseriesdecompmovingRange {
-  let result = timeseries_decomp_moving_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_moving_range_sum(s : TimeseriesdecompmovingRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn timeseries_decomp_moving_slice_get(s : TimeseriesdecompmovingSlice, i : I
 }
 
 pub fn timeseries_decomp_moving_slice_set(s : TimeseriesdecompmovingSlice, i : Int, v : Double) -> TimeseriesdecompmovingSlice {
-  let result = timeseries_decomp_moving_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_moving_slice_sum(s : TimeseriesdecompmovingSlice) -> Double { @_common.sum(s.data) }

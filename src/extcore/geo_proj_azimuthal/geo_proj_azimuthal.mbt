@@ -107,23 +107,15 @@ pub fn geo_proj_azimuthal_series_std(s : GeoprojazimuthalSeries) -> Double { @_c
 pub fn geo_proj_azimuthal_series_median(s : GeoprojazimuthalSeries) -> Double { @_common.median(s.vals) }
 
 pub fn geo_proj_azimuthal_series_scale(s : GeoprojazimuthalSeries, f : Double) -> GeoprojazimuthalSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn geo_proj_azimuthal_series_add(a : GeoprojazimuthalSeries, b : GeoprojazimuthalSeries) -> GeoprojazimuthalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn geo_proj_azimuthal_series_sub(a : GeoprojazimuthalSeries, b : GeoprojazimuthalSeries) -> GeoprojazimuthalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn geo_proj_azimuthal_series_normalize(s : GeoprojazimuthalSeries) -> GeoprojazimuthalSeries {
@@ -254,22 +246,16 @@ pub fn geo_proj_azimuthal_vector_zero(dim : Int) -> GeoprojazimuthalVector {
 
 pub fn geo_proj_azimuthal_vector_add(a : GeoprojazimuthalVector, b : GeoprojazimuthalVector) -> GeoprojazimuthalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_proj_azimuthal_vector_sub(a : GeoprojazimuthalVector, b : GeoprojazimuthalVector) -> GeoprojazimuthalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_proj_azimuthal_vector_scale(v : GeoprojazimuthalVector, s : Double) -> GeoprojazimuthalVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn geo_proj_azimuthal_vector_dot(a : GeoprojazimuthalVector, b : GeoprojazimuthalVector) -> Double {
@@ -372,10 +358,9 @@ pub fn geo_proj_azimuthal_frame_get(s : GeoprojazimuthalFrame, i : Int) -> Doubl
 }
 
 pub fn geo_proj_azimuthal_frame_set(s : GeoprojazimuthalFrame, i : Int, v : Double) -> GeoprojazimuthalFrame {
-  let result = geo_proj_azimuthal_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_azimuthal_frame_sum(s : GeoprojazimuthalFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn geo_proj_azimuthal_table_get(s : GeoprojazimuthalTable, i : Int) -> Doubl
 }
 
 pub fn geo_proj_azimuthal_table_set(s : GeoprojazimuthalTable, i : Int, v : Double) -> GeoprojazimuthalTable {
-  let result = geo_proj_azimuthal_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_azimuthal_table_sum(s : GeoprojazimuthalTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn geo_proj_azimuthal_graphn_get(s : GeoprojazimuthalGraphN, i : Int) -> Dou
 }
 
 pub fn geo_proj_azimuthal_graphn_set(s : GeoprojazimuthalGraphN, i : Int, v : Double) -> GeoprojazimuthalGraphN {
-  let result = geo_proj_azimuthal_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_azimuthal_graphn_sum(s : GeoprojazimuthalGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn geo_proj_azimuthal_node_get(s : GeoprojazimuthalNode, i : Int) -> Double 
 }
 
 pub fn geo_proj_azimuthal_node_set(s : GeoprojazimuthalNode, i : Int, v : Double) -> GeoprojazimuthalNode {
-  let result = geo_proj_azimuthal_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_azimuthal_node_sum(s : GeoprojazimuthalNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn geo_proj_azimuthal_edge_get(s : GeoprojazimuthalEdge, i : Int) -> Double 
 }
 
 pub fn geo_proj_azimuthal_edge_set(s : GeoprojazimuthalEdge, i : Int, v : Double) -> GeoprojazimuthalEdge {
-  let result = geo_proj_azimuthal_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_azimuthal_edge_sum(s : GeoprojazimuthalEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn geo_proj_azimuthal_path_get(s : GeoprojazimuthalPath, i : Int) -> Double 
 }
 
 pub fn geo_proj_azimuthal_path_set(s : GeoprojazimuthalPath, i : Int, v : Double) -> GeoprojazimuthalPath {
-  let result = geo_proj_azimuthal_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_azimuthal_path_sum(s : GeoprojazimuthalPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn geo_proj_azimuthal_cluster_get(s : GeoprojazimuthalCluster, i : Int) -> D
 }
 
 pub fn geo_proj_azimuthal_cluster_set(s : GeoprojazimuthalCluster, i : Int, v : Double) -> GeoprojazimuthalCluster {
-  let result = geo_proj_azimuthal_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_azimuthal_cluster_sum(s : GeoprojazimuthalCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn geo_proj_azimuthal_model_get(s : GeoprojazimuthalModel, i : Int) -> Doubl
 }
 
 pub fn geo_proj_azimuthal_model_set(s : GeoprojazimuthalModel, i : Int, v : Double) -> GeoprojazimuthalModel {
-  let result = geo_proj_azimuthal_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_azimuthal_model_sum(s : GeoprojazimuthalModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn geo_proj_azimuthal_layer_get(s : GeoprojazimuthalLayer, i : Int) -> Doubl
 }
 
 pub fn geo_proj_azimuthal_layer_set(s : GeoprojazimuthalLayer, i : Int, v : Double) -> GeoprojazimuthalLayer {
-  let result = geo_proj_azimuthal_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_azimuthal_layer_sum(s : GeoprojazimuthalLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn geo_proj_azimuthal_buffer_get(s : GeoprojazimuthalBuffer, i : Int) -> Dou
 }
 
 pub fn geo_proj_azimuthal_buffer_set(s : GeoprojazimuthalBuffer, i : Int, v : Double) -> GeoprojazimuthalBuffer {
-  let result = geo_proj_azimuthal_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_azimuthal_buffer_sum(s : GeoprojazimuthalBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn geo_proj_azimuthal_cursor_get(s : GeoprojazimuthalCursor, i : Int) -> Dou
 }
 
 pub fn geo_proj_azimuthal_cursor_set(s : GeoprojazimuthalCursor, i : Int, v : Double) -> GeoprojazimuthalCursor {
-  let result = geo_proj_azimuthal_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_azimuthal_cursor_sum(s : GeoprojazimuthalCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn geo_proj_azimuthal_view_get(s : GeoprojazimuthalView, i : Int) -> Double 
 }
 
 pub fn geo_proj_azimuthal_view_set(s : GeoprojazimuthalView, i : Int, v : Double) -> GeoprojazimuthalView {
-  let result = geo_proj_azimuthal_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_azimuthal_view_sum(s : GeoprojazimuthalView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn geo_proj_azimuthal_range_get(s : GeoprojazimuthalRange, i : Int) -> Doubl
 }
 
 pub fn geo_proj_azimuthal_range_set(s : GeoprojazimuthalRange, i : Int, v : Double) -> GeoprojazimuthalRange {
-  let result = geo_proj_azimuthal_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_azimuthal_range_sum(s : GeoprojazimuthalRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn geo_proj_azimuthal_slice_get(s : GeoprojazimuthalSlice, i : Int) -> Doubl
 }
 
 pub fn geo_proj_azimuthal_slice_set(s : GeoprojazimuthalSlice, i : Int, v : Double) -> GeoprojazimuthalSlice {
-  let result = geo_proj_azimuthal_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_azimuthal_slice_sum(s : GeoprojazimuthalSlice) -> Double { @_common.sum(s.data) }

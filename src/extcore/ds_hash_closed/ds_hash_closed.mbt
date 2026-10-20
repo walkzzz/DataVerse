@@ -107,23 +107,15 @@ pub fn ds_hash_closed_series_std(s : DshashclosedSeries) -> Double { @_common.st
 pub fn ds_hash_closed_series_median(s : DshashclosedSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_hash_closed_series_scale(s : DshashclosedSeries, f : Double) -> DshashclosedSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_hash_closed_series_add(a : DshashclosedSeries, b : DshashclosedSeries) -> DshashclosedSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_hash_closed_series_sub(a : DshashclosedSeries, b : DshashclosedSeries) -> DshashclosedSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_hash_closed_series_normalize(s : DshashclosedSeries) -> DshashclosedSeries {
@@ -254,22 +246,16 @@ pub fn ds_hash_closed_vector_zero(dim : Int) -> DshashclosedVector {
 
 pub fn ds_hash_closed_vector_add(a : DshashclosedVector, b : DshashclosedVector) -> DshashclosedVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_hash_closed_vector_sub(a : DshashclosedVector, b : DshashclosedVector) -> DshashclosedVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_hash_closed_vector_scale(v : DshashclosedVector, s : Double) -> DshashclosedVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_hash_closed_vector_dot(a : DshashclosedVector, b : DshashclosedVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_hash_closed_frame_get(s : DshashclosedFrame, i : Int) -> Double {
 }
 
 pub fn ds_hash_closed_frame_set(s : DshashclosedFrame, i : Int, v : Double) -> DshashclosedFrame {
-  let result = ds_hash_closed_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_closed_frame_sum(s : DshashclosedFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_hash_closed_table_get(s : DshashclosedTable, i : Int) -> Double {
 }
 
 pub fn ds_hash_closed_table_set(s : DshashclosedTable, i : Int, v : Double) -> DshashclosedTable {
-  let result = ds_hash_closed_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_closed_table_sum(s : DshashclosedTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_hash_closed_graphn_get(s : DshashclosedGraphN, i : Int) -> Double {
 }
 
 pub fn ds_hash_closed_graphn_set(s : DshashclosedGraphN, i : Int, v : Double) -> DshashclosedGraphN {
-  let result = ds_hash_closed_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_closed_graphn_sum(s : DshashclosedGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_hash_closed_node_get(s : DshashclosedNode, i : Int) -> Double {
 }
 
 pub fn ds_hash_closed_node_set(s : DshashclosedNode, i : Int, v : Double) -> DshashclosedNode {
-  let result = ds_hash_closed_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_closed_node_sum(s : DshashclosedNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_hash_closed_edge_get(s : DshashclosedEdge, i : Int) -> Double {
 }
 
 pub fn ds_hash_closed_edge_set(s : DshashclosedEdge, i : Int, v : Double) -> DshashclosedEdge {
-  let result = ds_hash_closed_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_closed_edge_sum(s : DshashclosedEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_hash_closed_path_get(s : DshashclosedPath, i : Int) -> Double {
 }
 
 pub fn ds_hash_closed_path_set(s : DshashclosedPath, i : Int, v : Double) -> DshashclosedPath {
-  let result = ds_hash_closed_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_closed_path_sum(s : DshashclosedPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_hash_closed_cluster_get(s : DshashclosedCluster, i : Int) -> Double {
 }
 
 pub fn ds_hash_closed_cluster_set(s : DshashclosedCluster, i : Int, v : Double) -> DshashclosedCluster {
-  let result = ds_hash_closed_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_closed_cluster_sum(s : DshashclosedCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_hash_closed_model_get(s : DshashclosedModel, i : Int) -> Double {
 }
 
 pub fn ds_hash_closed_model_set(s : DshashclosedModel, i : Int, v : Double) -> DshashclosedModel {
-  let result = ds_hash_closed_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_closed_model_sum(s : DshashclosedModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_hash_closed_layer_get(s : DshashclosedLayer, i : Int) -> Double {
 }
 
 pub fn ds_hash_closed_layer_set(s : DshashclosedLayer, i : Int, v : Double) -> DshashclosedLayer {
-  let result = ds_hash_closed_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_closed_layer_sum(s : DshashclosedLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_hash_closed_buffer_get(s : DshashclosedBuffer, i : Int) -> Double {
 }
 
 pub fn ds_hash_closed_buffer_set(s : DshashclosedBuffer, i : Int, v : Double) -> DshashclosedBuffer {
-  let result = ds_hash_closed_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_closed_buffer_sum(s : DshashclosedBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_hash_closed_cursor_get(s : DshashclosedCursor, i : Int) -> Double {
 }
 
 pub fn ds_hash_closed_cursor_set(s : DshashclosedCursor, i : Int, v : Double) -> DshashclosedCursor {
-  let result = ds_hash_closed_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_closed_cursor_sum(s : DshashclosedCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_hash_closed_view_get(s : DshashclosedView, i : Int) -> Double {
 }
 
 pub fn ds_hash_closed_view_set(s : DshashclosedView, i : Int, v : Double) -> DshashclosedView {
-  let result = ds_hash_closed_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_closed_view_sum(s : DshashclosedView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_hash_closed_range_get(s : DshashclosedRange, i : Int) -> Double {
 }
 
 pub fn ds_hash_closed_range_set(s : DshashclosedRange, i : Int, v : Double) -> DshashclosedRange {
-  let result = ds_hash_closed_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_closed_range_sum(s : DshashclosedRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_hash_closed_slice_get(s : DshashclosedSlice, i : Int) -> Double {
 }
 
 pub fn ds_hash_closed_slice_set(s : DshashclosedSlice, i : Int, v : Double) -> DshashclosedSlice {
-  let result = ds_hash_closed_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_closed_slice_sum(s : DshashclosedSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn ml_metric_classify_series_std(s : MlmetricclassifySeries) -> Double { @_c
 pub fn ml_metric_classify_series_median(s : MlmetricclassifySeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_metric_classify_series_scale(s : MlmetricclassifySeries, f : Double) -> MlmetricclassifySeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_metric_classify_series_add(a : MlmetricclassifySeries, b : MlmetricclassifySeries) -> MlmetricclassifySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_metric_classify_series_sub(a : MlmetricclassifySeries, b : MlmetricclassifySeries) -> MlmetricclassifySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_metric_classify_series_normalize(s : MlmetricclassifySeries) -> MlmetricclassifySeries {
@@ -254,22 +246,16 @@ pub fn ml_metric_classify_vector_zero(dim : Int) -> MlmetricclassifyVector {
 
 pub fn ml_metric_classify_vector_add(a : MlmetricclassifyVector, b : MlmetricclassifyVector) -> MlmetricclassifyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_metric_classify_vector_sub(a : MlmetricclassifyVector, b : MlmetricclassifyVector) -> MlmetricclassifyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_metric_classify_vector_scale(v : MlmetricclassifyVector, s : Double) -> MlmetricclassifyVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_metric_classify_vector_dot(a : MlmetricclassifyVector, b : MlmetricclassifyVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_metric_classify_frame_get(s : MlmetricclassifyFrame, i : Int) -> Doubl
 }
 
 pub fn ml_metric_classify_frame_set(s : MlmetricclassifyFrame, i : Int, v : Double) -> MlmetricclassifyFrame {
-  let result = ml_metric_classify_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_frame_sum(s : MlmetricclassifyFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_metric_classify_table_get(s : MlmetricclassifyTable, i : Int) -> Doubl
 }
 
 pub fn ml_metric_classify_table_set(s : MlmetricclassifyTable, i : Int, v : Double) -> MlmetricclassifyTable {
-  let result = ml_metric_classify_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_table_sum(s : MlmetricclassifyTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_metric_classify_graphn_get(s : MlmetricclassifyGraphN, i : Int) -> Dou
 }
 
 pub fn ml_metric_classify_graphn_set(s : MlmetricclassifyGraphN, i : Int, v : Double) -> MlmetricclassifyGraphN {
-  let result = ml_metric_classify_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_graphn_sum(s : MlmetricclassifyGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_metric_classify_node_get(s : MlmetricclassifyNode, i : Int) -> Double 
 }
 
 pub fn ml_metric_classify_node_set(s : MlmetricclassifyNode, i : Int, v : Double) -> MlmetricclassifyNode {
-  let result = ml_metric_classify_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_node_sum(s : MlmetricclassifyNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_metric_classify_edge_get(s : MlmetricclassifyEdge, i : Int) -> Double 
 }
 
 pub fn ml_metric_classify_edge_set(s : MlmetricclassifyEdge, i : Int, v : Double) -> MlmetricclassifyEdge {
-  let result = ml_metric_classify_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_edge_sum(s : MlmetricclassifyEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_metric_classify_path_get(s : MlmetricclassifyPath, i : Int) -> Double 
 }
 
 pub fn ml_metric_classify_path_set(s : MlmetricclassifyPath, i : Int, v : Double) -> MlmetricclassifyPath {
-  let result = ml_metric_classify_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_path_sum(s : MlmetricclassifyPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_metric_classify_cluster_get(s : MlmetricclassifyCluster, i : Int) -> D
 }
 
 pub fn ml_metric_classify_cluster_set(s : MlmetricclassifyCluster, i : Int, v : Double) -> MlmetricclassifyCluster {
-  let result = ml_metric_classify_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_cluster_sum(s : MlmetricclassifyCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_metric_classify_model_get(s : MlmetricclassifyModel, i : Int) -> Doubl
 }
 
 pub fn ml_metric_classify_model_set(s : MlmetricclassifyModel, i : Int, v : Double) -> MlmetricclassifyModel {
-  let result = ml_metric_classify_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_model_sum(s : MlmetricclassifyModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_metric_classify_layer_get(s : MlmetricclassifyLayer, i : Int) -> Doubl
 }
 
 pub fn ml_metric_classify_layer_set(s : MlmetricclassifyLayer, i : Int, v : Double) -> MlmetricclassifyLayer {
-  let result = ml_metric_classify_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_layer_sum(s : MlmetricclassifyLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_metric_classify_buffer_get(s : MlmetricclassifyBuffer, i : Int) -> Dou
 }
 
 pub fn ml_metric_classify_buffer_set(s : MlmetricclassifyBuffer, i : Int, v : Double) -> MlmetricclassifyBuffer {
-  let result = ml_metric_classify_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_buffer_sum(s : MlmetricclassifyBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_metric_classify_cursor_get(s : MlmetricclassifyCursor, i : Int) -> Dou
 }
 
 pub fn ml_metric_classify_cursor_set(s : MlmetricclassifyCursor, i : Int, v : Double) -> MlmetricclassifyCursor {
-  let result = ml_metric_classify_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_cursor_sum(s : MlmetricclassifyCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_metric_classify_view_get(s : MlmetricclassifyView, i : Int) -> Double 
 }
 
 pub fn ml_metric_classify_view_set(s : MlmetricclassifyView, i : Int, v : Double) -> MlmetricclassifyView {
-  let result = ml_metric_classify_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_view_sum(s : MlmetricclassifyView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_metric_classify_range_get(s : MlmetricclassifyRange, i : Int) -> Doubl
 }
 
 pub fn ml_metric_classify_range_set(s : MlmetricclassifyRange, i : Int, v : Double) -> MlmetricclassifyRange {
-  let result = ml_metric_classify_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_range_sum(s : MlmetricclassifyRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_metric_classify_slice_get(s : MlmetricclassifySlice, i : Int) -> Doubl
 }
 
 pub fn ml_metric_classify_slice_set(s : MlmetricclassifySlice, i : Int, v : Double) -> MlmetricclassifySlice {
-  let result = ml_metric_classify_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_classify_slice_sum(s : MlmetricclassifySlice) -> Double { @_common.sum(s.data) }

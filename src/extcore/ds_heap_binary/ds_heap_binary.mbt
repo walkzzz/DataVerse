@@ -107,23 +107,15 @@ pub fn ds_heap_binary_series_std(s : DsheapbinarySeries) -> Double { @_common.st
 pub fn ds_heap_binary_series_median(s : DsheapbinarySeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_heap_binary_series_scale(s : DsheapbinarySeries, f : Double) -> DsheapbinarySeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_heap_binary_series_add(a : DsheapbinarySeries, b : DsheapbinarySeries) -> DsheapbinarySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_heap_binary_series_sub(a : DsheapbinarySeries, b : DsheapbinarySeries) -> DsheapbinarySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_heap_binary_series_normalize(s : DsheapbinarySeries) -> DsheapbinarySeries {
@@ -254,22 +246,16 @@ pub fn ds_heap_binary_vector_zero(dim : Int) -> DsheapbinaryVector {
 
 pub fn ds_heap_binary_vector_add(a : DsheapbinaryVector, b : DsheapbinaryVector) -> DsheapbinaryVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_heap_binary_vector_sub(a : DsheapbinaryVector, b : DsheapbinaryVector) -> DsheapbinaryVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_heap_binary_vector_scale(v : DsheapbinaryVector, s : Double) -> DsheapbinaryVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_heap_binary_vector_dot(a : DsheapbinaryVector, b : DsheapbinaryVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_heap_binary_frame_get(s : DsheapbinaryFrame, i : Int) -> Double {
 }
 
 pub fn ds_heap_binary_frame_set(s : DsheapbinaryFrame, i : Int, v : Double) -> DsheapbinaryFrame {
-  let result = ds_heap_binary_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binary_frame_sum(s : DsheapbinaryFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_heap_binary_table_get(s : DsheapbinaryTable, i : Int) -> Double {
 }
 
 pub fn ds_heap_binary_table_set(s : DsheapbinaryTable, i : Int, v : Double) -> DsheapbinaryTable {
-  let result = ds_heap_binary_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binary_table_sum(s : DsheapbinaryTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_heap_binary_graphn_get(s : DsheapbinaryGraphN, i : Int) -> Double {
 }
 
 pub fn ds_heap_binary_graphn_set(s : DsheapbinaryGraphN, i : Int, v : Double) -> DsheapbinaryGraphN {
-  let result = ds_heap_binary_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binary_graphn_sum(s : DsheapbinaryGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_heap_binary_node_get(s : DsheapbinaryNode, i : Int) -> Double {
 }
 
 pub fn ds_heap_binary_node_set(s : DsheapbinaryNode, i : Int, v : Double) -> DsheapbinaryNode {
-  let result = ds_heap_binary_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binary_node_sum(s : DsheapbinaryNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_heap_binary_edge_get(s : DsheapbinaryEdge, i : Int) -> Double {
 }
 
 pub fn ds_heap_binary_edge_set(s : DsheapbinaryEdge, i : Int, v : Double) -> DsheapbinaryEdge {
-  let result = ds_heap_binary_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binary_edge_sum(s : DsheapbinaryEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_heap_binary_path_get(s : DsheapbinaryPath, i : Int) -> Double {
 }
 
 pub fn ds_heap_binary_path_set(s : DsheapbinaryPath, i : Int, v : Double) -> DsheapbinaryPath {
-  let result = ds_heap_binary_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binary_path_sum(s : DsheapbinaryPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_heap_binary_cluster_get(s : DsheapbinaryCluster, i : Int) -> Double {
 }
 
 pub fn ds_heap_binary_cluster_set(s : DsheapbinaryCluster, i : Int, v : Double) -> DsheapbinaryCluster {
-  let result = ds_heap_binary_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binary_cluster_sum(s : DsheapbinaryCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_heap_binary_model_get(s : DsheapbinaryModel, i : Int) -> Double {
 }
 
 pub fn ds_heap_binary_model_set(s : DsheapbinaryModel, i : Int, v : Double) -> DsheapbinaryModel {
-  let result = ds_heap_binary_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binary_model_sum(s : DsheapbinaryModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_heap_binary_layer_get(s : DsheapbinaryLayer, i : Int) -> Double {
 }
 
 pub fn ds_heap_binary_layer_set(s : DsheapbinaryLayer, i : Int, v : Double) -> DsheapbinaryLayer {
-  let result = ds_heap_binary_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binary_layer_sum(s : DsheapbinaryLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_heap_binary_buffer_get(s : DsheapbinaryBuffer, i : Int) -> Double {
 }
 
 pub fn ds_heap_binary_buffer_set(s : DsheapbinaryBuffer, i : Int, v : Double) -> DsheapbinaryBuffer {
-  let result = ds_heap_binary_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binary_buffer_sum(s : DsheapbinaryBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_heap_binary_cursor_get(s : DsheapbinaryCursor, i : Int) -> Double {
 }
 
 pub fn ds_heap_binary_cursor_set(s : DsheapbinaryCursor, i : Int, v : Double) -> DsheapbinaryCursor {
-  let result = ds_heap_binary_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binary_cursor_sum(s : DsheapbinaryCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_heap_binary_view_get(s : DsheapbinaryView, i : Int) -> Double {
 }
 
 pub fn ds_heap_binary_view_set(s : DsheapbinaryView, i : Int, v : Double) -> DsheapbinaryView {
-  let result = ds_heap_binary_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binary_view_sum(s : DsheapbinaryView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_heap_binary_range_get(s : DsheapbinaryRange, i : Int) -> Double {
 }
 
 pub fn ds_heap_binary_range_set(s : DsheapbinaryRange, i : Int, v : Double) -> DsheapbinaryRange {
-  let result = ds_heap_binary_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binary_range_sum(s : DsheapbinaryRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_heap_binary_slice_get(s : DsheapbinarySlice, i : Int) -> Double {
 }
 
 pub fn ds_heap_binary_slice_set(s : DsheapbinarySlice, i : Int, v : Double) -> DsheapbinarySlice {
-  let result = ds_heap_binary_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_binary_slice_sum(s : DsheapbinarySlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn physics_em_wave_series_std(s : PhysicsemwaveSeries) -> Double { @_common.
 pub fn physics_em_wave_series_median(s : PhysicsemwaveSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_em_wave_series_scale(s : PhysicsemwaveSeries, f : Double) -> PhysicsemwaveSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_em_wave_series_add(a : PhysicsemwaveSeries, b : PhysicsemwaveSeries) -> PhysicsemwaveSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_em_wave_series_sub(a : PhysicsemwaveSeries, b : PhysicsemwaveSeries) -> PhysicsemwaveSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_em_wave_series_normalize(s : PhysicsemwaveSeries) -> PhysicsemwaveSeries {
@@ -254,22 +246,16 @@ pub fn physics_em_wave_vector_zero(dim : Int) -> PhysicsemwaveVector {
 
 pub fn physics_em_wave_vector_add(a : PhysicsemwaveVector, b : PhysicsemwaveVector) -> PhysicsemwaveVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_em_wave_vector_sub(a : PhysicsemwaveVector, b : PhysicsemwaveVector) -> PhysicsemwaveVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_em_wave_vector_scale(v : PhysicsemwaveVector, s : Double) -> PhysicsemwaveVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_em_wave_vector_dot(a : PhysicsemwaveVector, b : PhysicsemwaveVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_em_wave_frame_get(s : PhysicsemwaveFrame, i : Int) -> Double {
 }
 
 pub fn physics_em_wave_frame_set(s : PhysicsemwaveFrame, i : Int, v : Double) -> PhysicsemwaveFrame {
-  let result = physics_em_wave_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_frame_sum(s : PhysicsemwaveFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_em_wave_table_get(s : PhysicsemwaveTable, i : Int) -> Double {
 }
 
 pub fn physics_em_wave_table_set(s : PhysicsemwaveTable, i : Int, v : Double) -> PhysicsemwaveTable {
-  let result = physics_em_wave_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_table_sum(s : PhysicsemwaveTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_em_wave_graphn_get(s : PhysicsemwaveGraphN, i : Int) -> Double {
 }
 
 pub fn physics_em_wave_graphn_set(s : PhysicsemwaveGraphN, i : Int, v : Double) -> PhysicsemwaveGraphN {
-  let result = physics_em_wave_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_graphn_sum(s : PhysicsemwaveGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_em_wave_node_get(s : PhysicsemwaveNode, i : Int) -> Double {
 }
 
 pub fn physics_em_wave_node_set(s : PhysicsemwaveNode, i : Int, v : Double) -> PhysicsemwaveNode {
-  let result = physics_em_wave_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_node_sum(s : PhysicsemwaveNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_em_wave_edge_get(s : PhysicsemwaveEdge, i : Int) -> Double {
 }
 
 pub fn physics_em_wave_edge_set(s : PhysicsemwaveEdge, i : Int, v : Double) -> PhysicsemwaveEdge {
-  let result = physics_em_wave_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_edge_sum(s : PhysicsemwaveEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_em_wave_path_get(s : PhysicsemwavePath, i : Int) -> Double {
 }
 
 pub fn physics_em_wave_path_set(s : PhysicsemwavePath, i : Int, v : Double) -> PhysicsemwavePath {
-  let result = physics_em_wave_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_path_sum(s : PhysicsemwavePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_em_wave_cluster_get(s : PhysicsemwaveCluster, i : Int) -> Double 
 }
 
 pub fn physics_em_wave_cluster_set(s : PhysicsemwaveCluster, i : Int, v : Double) -> PhysicsemwaveCluster {
-  let result = physics_em_wave_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_cluster_sum(s : PhysicsemwaveCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_em_wave_model_get(s : PhysicsemwaveModel, i : Int) -> Double {
 }
 
 pub fn physics_em_wave_model_set(s : PhysicsemwaveModel, i : Int, v : Double) -> PhysicsemwaveModel {
-  let result = physics_em_wave_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_model_sum(s : PhysicsemwaveModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_em_wave_layer_get(s : PhysicsemwaveLayer, i : Int) -> Double {
 }
 
 pub fn physics_em_wave_layer_set(s : PhysicsemwaveLayer, i : Int, v : Double) -> PhysicsemwaveLayer {
-  let result = physics_em_wave_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_layer_sum(s : PhysicsemwaveLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_em_wave_buffer_get(s : PhysicsemwaveBuffer, i : Int) -> Double {
 }
 
 pub fn physics_em_wave_buffer_set(s : PhysicsemwaveBuffer, i : Int, v : Double) -> PhysicsemwaveBuffer {
-  let result = physics_em_wave_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_buffer_sum(s : PhysicsemwaveBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_em_wave_cursor_get(s : PhysicsemwaveCursor, i : Int) -> Double {
 }
 
 pub fn physics_em_wave_cursor_set(s : PhysicsemwaveCursor, i : Int, v : Double) -> PhysicsemwaveCursor {
-  let result = physics_em_wave_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_cursor_sum(s : PhysicsemwaveCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_em_wave_view_get(s : PhysicsemwaveView, i : Int) -> Double {
 }
 
 pub fn physics_em_wave_view_set(s : PhysicsemwaveView, i : Int, v : Double) -> PhysicsemwaveView {
-  let result = physics_em_wave_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_view_sum(s : PhysicsemwaveView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_em_wave_range_get(s : PhysicsemwaveRange, i : Int) -> Double {
 }
 
 pub fn physics_em_wave_range_set(s : PhysicsemwaveRange, i : Int, v : Double) -> PhysicsemwaveRange {
-  let result = physics_em_wave_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_range_sum(s : PhysicsemwaveRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_em_wave_slice_get(s : PhysicsemwaveSlice, i : Int) -> Double {
 }
 
 pub fn physics_em_wave_slice_set(s : PhysicsemwaveSlice, i : Int, v : Double) -> PhysicsemwaveSlice {
-  let result = physics_em_wave_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_wave_slice_sum(s : PhysicsemwaveSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn net_route_rip_series_std(s : NetrouteripSeries) -> Double { @_common.std(
 pub fn net_route_rip_series_median(s : NetrouteripSeries) -> Double { @_common.median(s.vals) }
 
 pub fn net_route_rip_series_scale(s : NetrouteripSeries, f : Double) -> NetrouteripSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn net_route_rip_series_add(a : NetrouteripSeries, b : NetrouteripSeries) -> NetrouteripSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn net_route_rip_series_sub(a : NetrouteripSeries, b : NetrouteripSeries) -> NetrouteripSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn net_route_rip_series_normalize(s : NetrouteripSeries) -> NetrouteripSeries {
@@ -254,22 +246,16 @@ pub fn net_route_rip_vector_zero(dim : Int) -> NetrouteripVector {
 
 pub fn net_route_rip_vector_add(a : NetrouteripVector, b : NetrouteripVector) -> NetrouteripVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_route_rip_vector_sub(a : NetrouteripVector, b : NetrouteripVector) -> NetrouteripVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_route_rip_vector_scale(v : NetrouteripVector, s : Double) -> NetrouteripVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn net_route_rip_vector_dot(a : NetrouteripVector, b : NetrouteripVector) -> Double {
@@ -372,10 +358,9 @@ pub fn net_route_rip_frame_get(s : NetrouteripFrame, i : Int) -> Double {
 }
 
 pub fn net_route_rip_frame_set(s : NetrouteripFrame, i : Int, v : Double) -> NetrouteripFrame {
-  let result = net_route_rip_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_rip_frame_sum(s : NetrouteripFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn net_route_rip_table_get(s : NetrouteripTable, i : Int) -> Double {
 }
 
 pub fn net_route_rip_table_set(s : NetrouteripTable, i : Int, v : Double) -> NetrouteripTable {
-  let result = net_route_rip_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_rip_table_sum(s : NetrouteripTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn net_route_rip_graphn_get(s : NetrouteripGraphN, i : Int) -> Double {
 }
 
 pub fn net_route_rip_graphn_set(s : NetrouteripGraphN, i : Int, v : Double) -> NetrouteripGraphN {
-  let result = net_route_rip_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_rip_graphn_sum(s : NetrouteripGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn net_route_rip_node_get(s : NetrouteripNode, i : Int) -> Double {
 }
 
 pub fn net_route_rip_node_set(s : NetrouteripNode, i : Int, v : Double) -> NetrouteripNode {
-  let result = net_route_rip_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_rip_node_sum(s : NetrouteripNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn net_route_rip_edge_get(s : NetrouteripEdge, i : Int) -> Double {
 }
 
 pub fn net_route_rip_edge_set(s : NetrouteripEdge, i : Int, v : Double) -> NetrouteripEdge {
-  let result = net_route_rip_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_rip_edge_sum(s : NetrouteripEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn net_route_rip_path_get(s : NetrouteripPath, i : Int) -> Double {
 }
 
 pub fn net_route_rip_path_set(s : NetrouteripPath, i : Int, v : Double) -> NetrouteripPath {
-  let result = net_route_rip_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_rip_path_sum(s : NetrouteripPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn net_route_rip_cluster_get(s : NetrouteripCluster, i : Int) -> Double {
 }
 
 pub fn net_route_rip_cluster_set(s : NetrouteripCluster, i : Int, v : Double) -> NetrouteripCluster {
-  let result = net_route_rip_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_rip_cluster_sum(s : NetrouteripCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn net_route_rip_model_get(s : NetrouteripModel, i : Int) -> Double {
 }
 
 pub fn net_route_rip_model_set(s : NetrouteripModel, i : Int, v : Double) -> NetrouteripModel {
-  let result = net_route_rip_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_rip_model_sum(s : NetrouteripModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn net_route_rip_layer_get(s : NetrouteripLayer, i : Int) -> Double {
 }
 
 pub fn net_route_rip_layer_set(s : NetrouteripLayer, i : Int, v : Double) -> NetrouteripLayer {
-  let result = net_route_rip_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_rip_layer_sum(s : NetrouteripLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn net_route_rip_buffer_get(s : NetrouteripBuffer, i : Int) -> Double {
 }
 
 pub fn net_route_rip_buffer_set(s : NetrouteripBuffer, i : Int, v : Double) -> NetrouteripBuffer {
-  let result = net_route_rip_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_rip_buffer_sum(s : NetrouteripBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn net_route_rip_cursor_get(s : NetrouteripCursor, i : Int) -> Double {
 }
 
 pub fn net_route_rip_cursor_set(s : NetrouteripCursor, i : Int, v : Double) -> NetrouteripCursor {
-  let result = net_route_rip_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_rip_cursor_sum(s : NetrouteripCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn net_route_rip_view_get(s : NetrouteripView, i : Int) -> Double {
 }
 
 pub fn net_route_rip_view_set(s : NetrouteripView, i : Int, v : Double) -> NetrouteripView {
-  let result = net_route_rip_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_rip_view_sum(s : NetrouteripView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn net_route_rip_range_get(s : NetrouteripRange, i : Int) -> Double {
 }
 
 pub fn net_route_rip_range_set(s : NetrouteripRange, i : Int, v : Double) -> NetrouteripRange {
-  let result = net_route_rip_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_rip_range_sum(s : NetrouteripRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn net_route_rip_slice_get(s : NetrouteripSlice, i : Int) -> Double {
 }
 
 pub fn net_route_rip_slice_set(s : NetrouteripSlice, i : Int, v : Double) -> NetrouteripSlice {
-  let result = net_route_rip_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_rip_slice_sum(s : NetrouteripSlice) -> Double { @_common.sum(s.data) }

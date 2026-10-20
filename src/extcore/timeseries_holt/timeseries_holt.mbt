@@ -107,23 +107,15 @@ pub fn timeseries_holt_series_std(s : TimeseriesholtSeries) -> Double { @_common
 pub fn timeseries_holt_series_median(s : TimeseriesholtSeries) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_holt_series_scale(s : TimeseriesholtSeries, f : Double) -> TimeseriesholtSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn timeseries_holt_series_add(a : TimeseriesholtSeries, b : TimeseriesholtSeries) -> TimeseriesholtSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_holt_series_sub(a : TimeseriesholtSeries, b : TimeseriesholtSeries) -> TimeseriesholtSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_holt_series_normalize(s : TimeseriesholtSeries) -> TimeseriesholtSeries {
@@ -254,22 +246,16 @@ pub fn timeseries_holt_vector_zero(dim : Int) -> TimeseriesholtVector {
 
 pub fn timeseries_holt_vector_add(a : TimeseriesholtVector, b : TimeseriesholtVector) -> TimeseriesholtVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_holt_vector_sub(a : TimeseriesholtVector, b : TimeseriesholtVector) -> TimeseriesholtVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_holt_vector_scale(v : TimeseriesholtVector, s : Double) -> TimeseriesholtVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn timeseries_holt_vector_dot(a : TimeseriesholtVector, b : TimeseriesholtVector) -> Double {
@@ -372,10 +358,9 @@ pub fn timeseries_holt_frame_get(s : TimeseriesholtFrame, i : Int) -> Double {
 }
 
 pub fn timeseries_holt_frame_set(s : TimeseriesholtFrame, i : Int, v : Double) -> TimeseriesholtFrame {
-  let result = timeseries_holt_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_holt_frame_sum(s : TimeseriesholtFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn timeseries_holt_table_get(s : TimeseriesholtTable, i : Int) -> Double {
 }
 
 pub fn timeseries_holt_table_set(s : TimeseriesholtTable, i : Int, v : Double) -> TimeseriesholtTable {
-  let result = timeseries_holt_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_holt_table_sum(s : TimeseriesholtTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn timeseries_holt_graphn_get(s : TimeseriesholtGraphN, i : Int) -> Double {
 }
 
 pub fn timeseries_holt_graphn_set(s : TimeseriesholtGraphN, i : Int, v : Double) -> TimeseriesholtGraphN {
-  let result = timeseries_holt_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_holt_graphn_sum(s : TimeseriesholtGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn timeseries_holt_node_get(s : TimeseriesholtNode, i : Int) -> Double {
 }
 
 pub fn timeseries_holt_node_set(s : TimeseriesholtNode, i : Int, v : Double) -> TimeseriesholtNode {
-  let result = timeseries_holt_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_holt_node_sum(s : TimeseriesholtNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn timeseries_holt_edge_get(s : TimeseriesholtEdge, i : Int) -> Double {
 }
 
 pub fn timeseries_holt_edge_set(s : TimeseriesholtEdge, i : Int, v : Double) -> TimeseriesholtEdge {
-  let result = timeseries_holt_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_holt_edge_sum(s : TimeseriesholtEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn timeseries_holt_path_get(s : TimeseriesholtPath, i : Int) -> Double {
 }
 
 pub fn timeseries_holt_path_set(s : TimeseriesholtPath, i : Int, v : Double) -> TimeseriesholtPath {
-  let result = timeseries_holt_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_holt_path_sum(s : TimeseriesholtPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn timeseries_holt_cluster_get(s : TimeseriesholtCluster, i : Int) -> Double
 }
 
 pub fn timeseries_holt_cluster_set(s : TimeseriesholtCluster, i : Int, v : Double) -> TimeseriesholtCluster {
-  let result = timeseries_holt_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_holt_cluster_sum(s : TimeseriesholtCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn timeseries_holt_model_get(s : TimeseriesholtModel, i : Int) -> Double {
 }
 
 pub fn timeseries_holt_model_set(s : TimeseriesholtModel, i : Int, v : Double) -> TimeseriesholtModel {
-  let result = timeseries_holt_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_holt_model_sum(s : TimeseriesholtModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn timeseries_holt_layer_get(s : TimeseriesholtLayer, i : Int) -> Double {
 }
 
 pub fn timeseries_holt_layer_set(s : TimeseriesholtLayer, i : Int, v : Double) -> TimeseriesholtLayer {
-  let result = timeseries_holt_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_holt_layer_sum(s : TimeseriesholtLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn timeseries_holt_buffer_get(s : TimeseriesholtBuffer, i : Int) -> Double {
 }
 
 pub fn timeseries_holt_buffer_set(s : TimeseriesholtBuffer, i : Int, v : Double) -> TimeseriesholtBuffer {
-  let result = timeseries_holt_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_holt_buffer_sum(s : TimeseriesholtBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn timeseries_holt_cursor_get(s : TimeseriesholtCursor, i : Int) -> Double {
 }
 
 pub fn timeseries_holt_cursor_set(s : TimeseriesholtCursor, i : Int, v : Double) -> TimeseriesholtCursor {
-  let result = timeseries_holt_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_holt_cursor_sum(s : TimeseriesholtCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn timeseries_holt_view_get(s : TimeseriesholtView, i : Int) -> Double {
 }
 
 pub fn timeseries_holt_view_set(s : TimeseriesholtView, i : Int, v : Double) -> TimeseriesholtView {
-  let result = timeseries_holt_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_holt_view_sum(s : TimeseriesholtView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn timeseries_holt_range_get(s : TimeseriesholtRange, i : Int) -> Double {
 }
 
 pub fn timeseries_holt_range_set(s : TimeseriesholtRange, i : Int, v : Double) -> TimeseriesholtRange {
-  let result = timeseries_holt_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_holt_range_sum(s : TimeseriesholtRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn timeseries_holt_slice_get(s : TimeseriesholtSlice, i : Int) -> Double {
 }
 
 pub fn timeseries_holt_slice_set(s : TimeseriesholtSlice, i : Int, v : Double) -> TimeseriesholtSlice {
-  let result = timeseries_holt_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_holt_slice_sum(s : TimeseriesholtSlice) -> Double { @_common.sum(s.data) }

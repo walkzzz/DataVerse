@@ -107,23 +107,15 @@ pub fn nlp_parse_cky_series_std(s : NlpparseckySeries) -> Double { @_common.std(
 pub fn nlp_parse_cky_series_median(s : NlpparseckySeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_parse_cky_series_scale(s : NlpparseckySeries, f : Double) -> NlpparseckySeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_parse_cky_series_add(a : NlpparseckySeries, b : NlpparseckySeries) -> NlpparseckySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_parse_cky_series_sub(a : NlpparseckySeries, b : NlpparseckySeries) -> NlpparseckySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_parse_cky_series_normalize(s : NlpparseckySeries) -> NlpparseckySeries {
@@ -254,22 +246,16 @@ pub fn nlp_parse_cky_vector_zero(dim : Int) -> NlpparseckyVector {
 
 pub fn nlp_parse_cky_vector_add(a : NlpparseckyVector, b : NlpparseckyVector) -> NlpparseckyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_parse_cky_vector_sub(a : NlpparseckyVector, b : NlpparseckyVector) -> NlpparseckyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_parse_cky_vector_scale(v : NlpparseckyVector, s : Double) -> NlpparseckyVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_parse_cky_vector_dot(a : NlpparseckyVector, b : NlpparseckyVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_parse_cky_frame_get(s : NlpparseckyFrame, i : Int) -> Double {
 }
 
 pub fn nlp_parse_cky_frame_set(s : NlpparseckyFrame, i : Int, v : Double) -> NlpparseckyFrame {
-  let result = nlp_parse_cky_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cky_frame_sum(s : NlpparseckyFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_parse_cky_table_get(s : NlpparseckyTable, i : Int) -> Double {
 }
 
 pub fn nlp_parse_cky_table_set(s : NlpparseckyTable, i : Int, v : Double) -> NlpparseckyTable {
-  let result = nlp_parse_cky_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cky_table_sum(s : NlpparseckyTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_parse_cky_graphn_get(s : NlpparseckyGraphN, i : Int) -> Double {
 }
 
 pub fn nlp_parse_cky_graphn_set(s : NlpparseckyGraphN, i : Int, v : Double) -> NlpparseckyGraphN {
-  let result = nlp_parse_cky_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cky_graphn_sum(s : NlpparseckyGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_parse_cky_node_get(s : NlpparseckyNode, i : Int) -> Double {
 }
 
 pub fn nlp_parse_cky_node_set(s : NlpparseckyNode, i : Int, v : Double) -> NlpparseckyNode {
-  let result = nlp_parse_cky_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cky_node_sum(s : NlpparseckyNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_parse_cky_edge_get(s : NlpparseckyEdge, i : Int) -> Double {
 }
 
 pub fn nlp_parse_cky_edge_set(s : NlpparseckyEdge, i : Int, v : Double) -> NlpparseckyEdge {
-  let result = nlp_parse_cky_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cky_edge_sum(s : NlpparseckyEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_parse_cky_path_get(s : NlpparseckyPath, i : Int) -> Double {
 }
 
 pub fn nlp_parse_cky_path_set(s : NlpparseckyPath, i : Int, v : Double) -> NlpparseckyPath {
-  let result = nlp_parse_cky_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cky_path_sum(s : NlpparseckyPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_parse_cky_cluster_get(s : NlpparseckyCluster, i : Int) -> Double {
 }
 
 pub fn nlp_parse_cky_cluster_set(s : NlpparseckyCluster, i : Int, v : Double) -> NlpparseckyCluster {
-  let result = nlp_parse_cky_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cky_cluster_sum(s : NlpparseckyCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_parse_cky_model_get(s : NlpparseckyModel, i : Int) -> Double {
 }
 
 pub fn nlp_parse_cky_model_set(s : NlpparseckyModel, i : Int, v : Double) -> NlpparseckyModel {
-  let result = nlp_parse_cky_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cky_model_sum(s : NlpparseckyModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_parse_cky_layer_get(s : NlpparseckyLayer, i : Int) -> Double {
 }
 
 pub fn nlp_parse_cky_layer_set(s : NlpparseckyLayer, i : Int, v : Double) -> NlpparseckyLayer {
-  let result = nlp_parse_cky_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cky_layer_sum(s : NlpparseckyLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_parse_cky_buffer_get(s : NlpparseckyBuffer, i : Int) -> Double {
 }
 
 pub fn nlp_parse_cky_buffer_set(s : NlpparseckyBuffer, i : Int, v : Double) -> NlpparseckyBuffer {
-  let result = nlp_parse_cky_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cky_buffer_sum(s : NlpparseckyBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_parse_cky_cursor_get(s : NlpparseckyCursor, i : Int) -> Double {
 }
 
 pub fn nlp_parse_cky_cursor_set(s : NlpparseckyCursor, i : Int, v : Double) -> NlpparseckyCursor {
-  let result = nlp_parse_cky_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cky_cursor_sum(s : NlpparseckyCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_parse_cky_view_get(s : NlpparseckyView, i : Int) -> Double {
 }
 
 pub fn nlp_parse_cky_view_set(s : NlpparseckyView, i : Int, v : Double) -> NlpparseckyView {
-  let result = nlp_parse_cky_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cky_view_sum(s : NlpparseckyView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_parse_cky_range_get(s : NlpparseckyRange, i : Int) -> Double {
 }
 
 pub fn nlp_parse_cky_range_set(s : NlpparseckyRange, i : Int, v : Double) -> NlpparseckyRange {
-  let result = nlp_parse_cky_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cky_range_sum(s : NlpparseckyRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_parse_cky_slice_get(s : NlpparseckySlice, i : Int) -> Double {
 }
 
 pub fn nlp_parse_cky_slice_set(s : NlpparseckySlice, i : Int, v : Double) -> NlpparseckySlice {
-  let result = nlp_parse_cky_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_cky_slice_sum(s : NlpparseckySlice) -> Double { @_common.sum(s.data) }

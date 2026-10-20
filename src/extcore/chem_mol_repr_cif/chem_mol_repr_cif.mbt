@@ -107,23 +107,15 @@ pub fn chem_mol_repr_cif_series_std(s : ChemmolreprcifSeries) -> Double { @_comm
 pub fn chem_mol_repr_cif_series_median(s : ChemmolreprcifSeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_mol_repr_cif_series_scale(s : ChemmolreprcifSeries, f : Double) -> ChemmolreprcifSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn chem_mol_repr_cif_series_add(a : ChemmolreprcifSeries, b : ChemmolreprcifSeries) -> ChemmolreprcifSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn chem_mol_repr_cif_series_sub(a : ChemmolreprcifSeries, b : ChemmolreprcifSeries) -> ChemmolreprcifSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn chem_mol_repr_cif_series_normalize(s : ChemmolreprcifSeries) -> ChemmolreprcifSeries {
@@ -254,22 +246,16 @@ pub fn chem_mol_repr_cif_vector_zero(dim : Int) -> ChemmolreprcifVector {
 
 pub fn chem_mol_repr_cif_vector_add(a : ChemmolreprcifVector, b : ChemmolreprcifVector) -> ChemmolreprcifVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_mol_repr_cif_vector_sub(a : ChemmolreprcifVector, b : ChemmolreprcifVector) -> ChemmolreprcifVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_mol_repr_cif_vector_scale(v : ChemmolreprcifVector, s : Double) -> ChemmolreprcifVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn chem_mol_repr_cif_vector_dot(a : ChemmolreprcifVector, b : ChemmolreprcifVector) -> Double {
@@ -372,10 +358,9 @@ pub fn chem_mol_repr_cif_frame_get(s : ChemmolreprcifFrame, i : Int) -> Double {
 }
 
 pub fn chem_mol_repr_cif_frame_set(s : ChemmolreprcifFrame, i : Int, v : Double) -> ChemmolreprcifFrame {
-  let result = chem_mol_repr_cif_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_cif_frame_sum(s : ChemmolreprcifFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn chem_mol_repr_cif_table_get(s : ChemmolreprcifTable, i : Int) -> Double {
 }
 
 pub fn chem_mol_repr_cif_table_set(s : ChemmolreprcifTable, i : Int, v : Double) -> ChemmolreprcifTable {
-  let result = chem_mol_repr_cif_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_cif_table_sum(s : ChemmolreprcifTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn chem_mol_repr_cif_graphn_get(s : ChemmolreprcifGraphN, i : Int) -> Double
 }
 
 pub fn chem_mol_repr_cif_graphn_set(s : ChemmolreprcifGraphN, i : Int, v : Double) -> ChemmolreprcifGraphN {
-  let result = chem_mol_repr_cif_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_cif_graphn_sum(s : ChemmolreprcifGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn chem_mol_repr_cif_node_get(s : ChemmolreprcifNode, i : Int) -> Double {
 }
 
 pub fn chem_mol_repr_cif_node_set(s : ChemmolreprcifNode, i : Int, v : Double) -> ChemmolreprcifNode {
-  let result = chem_mol_repr_cif_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_cif_node_sum(s : ChemmolreprcifNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn chem_mol_repr_cif_edge_get(s : ChemmolreprcifEdge, i : Int) -> Double {
 }
 
 pub fn chem_mol_repr_cif_edge_set(s : ChemmolreprcifEdge, i : Int, v : Double) -> ChemmolreprcifEdge {
-  let result = chem_mol_repr_cif_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_cif_edge_sum(s : ChemmolreprcifEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn chem_mol_repr_cif_path_get(s : ChemmolreprcifPath, i : Int) -> Double {
 }
 
 pub fn chem_mol_repr_cif_path_set(s : ChemmolreprcifPath, i : Int, v : Double) -> ChemmolreprcifPath {
-  let result = chem_mol_repr_cif_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_cif_path_sum(s : ChemmolreprcifPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn chem_mol_repr_cif_cluster_get(s : ChemmolreprcifCluster, i : Int) -> Doub
 }
 
 pub fn chem_mol_repr_cif_cluster_set(s : ChemmolreprcifCluster, i : Int, v : Double) -> ChemmolreprcifCluster {
-  let result = chem_mol_repr_cif_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_cif_cluster_sum(s : ChemmolreprcifCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn chem_mol_repr_cif_model_get(s : ChemmolreprcifModel, i : Int) -> Double {
 }
 
 pub fn chem_mol_repr_cif_model_set(s : ChemmolreprcifModel, i : Int, v : Double) -> ChemmolreprcifModel {
-  let result = chem_mol_repr_cif_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_cif_model_sum(s : ChemmolreprcifModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn chem_mol_repr_cif_layer_get(s : ChemmolreprcifLayer, i : Int) -> Double {
 }
 
 pub fn chem_mol_repr_cif_layer_set(s : ChemmolreprcifLayer, i : Int, v : Double) -> ChemmolreprcifLayer {
-  let result = chem_mol_repr_cif_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_cif_layer_sum(s : ChemmolreprcifLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn chem_mol_repr_cif_buffer_get(s : ChemmolreprcifBuffer, i : Int) -> Double
 }
 
 pub fn chem_mol_repr_cif_buffer_set(s : ChemmolreprcifBuffer, i : Int, v : Double) -> ChemmolreprcifBuffer {
-  let result = chem_mol_repr_cif_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_cif_buffer_sum(s : ChemmolreprcifBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn chem_mol_repr_cif_cursor_get(s : ChemmolreprcifCursor, i : Int) -> Double
 }
 
 pub fn chem_mol_repr_cif_cursor_set(s : ChemmolreprcifCursor, i : Int, v : Double) -> ChemmolreprcifCursor {
-  let result = chem_mol_repr_cif_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_cif_cursor_sum(s : ChemmolreprcifCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn chem_mol_repr_cif_view_get(s : ChemmolreprcifView, i : Int) -> Double {
 }
 
 pub fn chem_mol_repr_cif_view_set(s : ChemmolreprcifView, i : Int, v : Double) -> ChemmolreprcifView {
-  let result = chem_mol_repr_cif_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_cif_view_sum(s : ChemmolreprcifView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn chem_mol_repr_cif_range_get(s : ChemmolreprcifRange, i : Int) -> Double {
 }
 
 pub fn chem_mol_repr_cif_range_set(s : ChemmolreprcifRange, i : Int, v : Double) -> ChemmolreprcifRange {
-  let result = chem_mol_repr_cif_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_cif_range_sum(s : ChemmolreprcifRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn chem_mol_repr_cif_slice_get(s : ChemmolreprcifSlice, i : Int) -> Double {
 }
 
 pub fn chem_mol_repr_cif_slice_set(s : ChemmolreprcifSlice, i : Int, v : Double) -> ChemmolreprcifSlice {
-  let result = chem_mol_repr_cif_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_repr_cif_slice_sum(s : ChemmolreprcifSlice) -> Double { @_common.sum(s.data) }

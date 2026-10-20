@@ -107,23 +107,15 @@ pub fn image_transform_warp_series_std(s : ImagetransformwarpSeries) -> Double {
 pub fn image_transform_warp_series_median(s : ImagetransformwarpSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_transform_warp_series_scale(s : ImagetransformwarpSeries, f : Double) -> ImagetransformwarpSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_transform_warp_series_add(a : ImagetransformwarpSeries, b : ImagetransformwarpSeries) -> ImagetransformwarpSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_transform_warp_series_sub(a : ImagetransformwarpSeries, b : ImagetransformwarpSeries) -> ImagetransformwarpSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_transform_warp_series_normalize(s : ImagetransformwarpSeries) -> ImagetransformwarpSeries {
@@ -254,22 +246,16 @@ pub fn image_transform_warp_vector_zero(dim : Int) -> ImagetransformwarpVector {
 
 pub fn image_transform_warp_vector_add(a : ImagetransformwarpVector, b : ImagetransformwarpVector) -> ImagetransformwarpVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_transform_warp_vector_sub(a : ImagetransformwarpVector, b : ImagetransformwarpVector) -> ImagetransformwarpVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_transform_warp_vector_scale(v : ImagetransformwarpVector, s : Double) -> ImagetransformwarpVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_transform_warp_vector_dot(a : ImagetransformwarpVector, b : ImagetransformwarpVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_transform_warp_frame_get(s : ImagetransformwarpFrame, i : Int) -> D
 }
 
 pub fn image_transform_warp_frame_set(s : ImagetransformwarpFrame, i : Int, v : Double) -> ImagetransformwarpFrame {
-  let result = image_transform_warp_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_warp_frame_sum(s : ImagetransformwarpFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_transform_warp_table_get(s : ImagetransformwarpTable, i : Int) -> D
 }
 
 pub fn image_transform_warp_table_set(s : ImagetransformwarpTable, i : Int, v : Double) -> ImagetransformwarpTable {
-  let result = image_transform_warp_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_warp_table_sum(s : ImagetransformwarpTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_transform_warp_graphn_get(s : ImagetransformwarpGraphN, i : Int) ->
 }
 
 pub fn image_transform_warp_graphn_set(s : ImagetransformwarpGraphN, i : Int, v : Double) -> ImagetransformwarpGraphN {
-  let result = image_transform_warp_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_warp_graphn_sum(s : ImagetransformwarpGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_transform_warp_node_get(s : ImagetransformwarpNode, i : Int) -> Dou
 }
 
 pub fn image_transform_warp_node_set(s : ImagetransformwarpNode, i : Int, v : Double) -> ImagetransformwarpNode {
-  let result = image_transform_warp_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_warp_node_sum(s : ImagetransformwarpNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_transform_warp_edge_get(s : ImagetransformwarpEdge, i : Int) -> Dou
 }
 
 pub fn image_transform_warp_edge_set(s : ImagetransformwarpEdge, i : Int, v : Double) -> ImagetransformwarpEdge {
-  let result = image_transform_warp_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_warp_edge_sum(s : ImagetransformwarpEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_transform_warp_path_get(s : ImagetransformwarpPath, i : Int) -> Dou
 }
 
 pub fn image_transform_warp_path_set(s : ImagetransformwarpPath, i : Int, v : Double) -> ImagetransformwarpPath {
-  let result = image_transform_warp_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_warp_path_sum(s : ImagetransformwarpPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_transform_warp_cluster_get(s : ImagetransformwarpCluster, i : Int) 
 }
 
 pub fn image_transform_warp_cluster_set(s : ImagetransformwarpCluster, i : Int, v : Double) -> ImagetransformwarpCluster {
-  let result = image_transform_warp_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_warp_cluster_sum(s : ImagetransformwarpCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_transform_warp_model_get(s : ImagetransformwarpModel, i : Int) -> D
 }
 
 pub fn image_transform_warp_model_set(s : ImagetransformwarpModel, i : Int, v : Double) -> ImagetransformwarpModel {
-  let result = image_transform_warp_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_warp_model_sum(s : ImagetransformwarpModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_transform_warp_layer_get(s : ImagetransformwarpLayer, i : Int) -> D
 }
 
 pub fn image_transform_warp_layer_set(s : ImagetransformwarpLayer, i : Int, v : Double) -> ImagetransformwarpLayer {
-  let result = image_transform_warp_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_warp_layer_sum(s : ImagetransformwarpLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_transform_warp_buffer_get(s : ImagetransformwarpBuffer, i : Int) ->
 }
 
 pub fn image_transform_warp_buffer_set(s : ImagetransformwarpBuffer, i : Int, v : Double) -> ImagetransformwarpBuffer {
-  let result = image_transform_warp_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_warp_buffer_sum(s : ImagetransformwarpBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_transform_warp_cursor_get(s : ImagetransformwarpCursor, i : Int) ->
 }
 
 pub fn image_transform_warp_cursor_set(s : ImagetransformwarpCursor, i : Int, v : Double) -> ImagetransformwarpCursor {
-  let result = image_transform_warp_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_warp_cursor_sum(s : ImagetransformwarpCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_transform_warp_view_get(s : ImagetransformwarpView, i : Int) -> Dou
 }
 
 pub fn image_transform_warp_view_set(s : ImagetransformwarpView, i : Int, v : Double) -> ImagetransformwarpView {
-  let result = image_transform_warp_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_warp_view_sum(s : ImagetransformwarpView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_transform_warp_range_get(s : ImagetransformwarpRange, i : Int) -> D
 }
 
 pub fn image_transform_warp_range_set(s : ImagetransformwarpRange, i : Int, v : Double) -> ImagetransformwarpRange {
-  let result = image_transform_warp_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_warp_range_sum(s : ImagetransformwarpRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_transform_warp_slice_get(s : ImagetransformwarpSlice, i : Int) -> D
 }
 
 pub fn image_transform_warp_slice_set(s : ImagetransformwarpSlice, i : Int, v : Double) -> ImagetransformwarpSlice {
-  let result = image_transform_warp_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_warp_slice_sum(s : ImagetransformwarpSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn stats_desc_bivariate_series_std(s : StatsdescbivariateSeries) -> Double {
 pub fn stats_desc_bivariate_series_median(s : StatsdescbivariateSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_desc_bivariate_series_scale(s : StatsdescbivariateSeries, f : Double) -> StatsdescbivariateSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_desc_bivariate_series_add(a : StatsdescbivariateSeries, b : StatsdescbivariateSeries) -> StatsdescbivariateSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_desc_bivariate_series_sub(a : StatsdescbivariateSeries, b : StatsdescbivariateSeries) -> StatsdescbivariateSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_desc_bivariate_series_normalize(s : StatsdescbivariateSeries) -> StatsdescbivariateSeries {
@@ -254,22 +246,16 @@ pub fn stats_desc_bivariate_vector_zero(dim : Int) -> StatsdescbivariateVector {
 
 pub fn stats_desc_bivariate_vector_add(a : StatsdescbivariateVector, b : StatsdescbivariateVector) -> StatsdescbivariateVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_desc_bivariate_vector_sub(a : StatsdescbivariateVector, b : StatsdescbivariateVector) -> StatsdescbivariateVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_desc_bivariate_vector_scale(v : StatsdescbivariateVector, s : Double) -> StatsdescbivariateVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_desc_bivariate_vector_dot(a : StatsdescbivariateVector, b : StatsdescbivariateVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_desc_bivariate_frame_get(s : StatsdescbivariateFrame, i : Int) -> D
 }
 
 pub fn stats_desc_bivariate_frame_set(s : StatsdescbivariateFrame, i : Int, v : Double) -> StatsdescbivariateFrame {
-  let result = stats_desc_bivariate_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_frame_sum(s : StatsdescbivariateFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_desc_bivariate_table_get(s : StatsdescbivariateTable, i : Int) -> D
 }
 
 pub fn stats_desc_bivariate_table_set(s : StatsdescbivariateTable, i : Int, v : Double) -> StatsdescbivariateTable {
-  let result = stats_desc_bivariate_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_table_sum(s : StatsdescbivariateTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_desc_bivariate_graphn_get(s : StatsdescbivariateGraphN, i : Int) ->
 }
 
 pub fn stats_desc_bivariate_graphn_set(s : StatsdescbivariateGraphN, i : Int, v : Double) -> StatsdescbivariateGraphN {
-  let result = stats_desc_bivariate_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_graphn_sum(s : StatsdescbivariateGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_desc_bivariate_node_get(s : StatsdescbivariateNode, i : Int) -> Dou
 }
 
 pub fn stats_desc_bivariate_node_set(s : StatsdescbivariateNode, i : Int, v : Double) -> StatsdescbivariateNode {
-  let result = stats_desc_bivariate_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_node_sum(s : StatsdescbivariateNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_desc_bivariate_edge_get(s : StatsdescbivariateEdge, i : Int) -> Dou
 }
 
 pub fn stats_desc_bivariate_edge_set(s : StatsdescbivariateEdge, i : Int, v : Double) -> StatsdescbivariateEdge {
-  let result = stats_desc_bivariate_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_edge_sum(s : StatsdescbivariateEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_desc_bivariate_path_get(s : StatsdescbivariatePath, i : Int) -> Dou
 }
 
 pub fn stats_desc_bivariate_path_set(s : StatsdescbivariatePath, i : Int, v : Double) -> StatsdescbivariatePath {
-  let result = stats_desc_bivariate_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_path_sum(s : StatsdescbivariatePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_desc_bivariate_cluster_get(s : StatsdescbivariateCluster, i : Int) 
 }
 
 pub fn stats_desc_bivariate_cluster_set(s : StatsdescbivariateCluster, i : Int, v : Double) -> StatsdescbivariateCluster {
-  let result = stats_desc_bivariate_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_cluster_sum(s : StatsdescbivariateCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_desc_bivariate_model_get(s : StatsdescbivariateModel, i : Int) -> D
 }
 
 pub fn stats_desc_bivariate_model_set(s : StatsdescbivariateModel, i : Int, v : Double) -> StatsdescbivariateModel {
-  let result = stats_desc_bivariate_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_model_sum(s : StatsdescbivariateModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_desc_bivariate_layer_get(s : StatsdescbivariateLayer, i : Int) -> D
 }
 
 pub fn stats_desc_bivariate_layer_set(s : StatsdescbivariateLayer, i : Int, v : Double) -> StatsdescbivariateLayer {
-  let result = stats_desc_bivariate_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_layer_sum(s : StatsdescbivariateLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_desc_bivariate_buffer_get(s : StatsdescbivariateBuffer, i : Int) ->
 }
 
 pub fn stats_desc_bivariate_buffer_set(s : StatsdescbivariateBuffer, i : Int, v : Double) -> StatsdescbivariateBuffer {
-  let result = stats_desc_bivariate_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_buffer_sum(s : StatsdescbivariateBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_desc_bivariate_cursor_get(s : StatsdescbivariateCursor, i : Int) ->
 }
 
 pub fn stats_desc_bivariate_cursor_set(s : StatsdescbivariateCursor, i : Int, v : Double) -> StatsdescbivariateCursor {
-  let result = stats_desc_bivariate_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_cursor_sum(s : StatsdescbivariateCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_desc_bivariate_view_get(s : StatsdescbivariateView, i : Int) -> Dou
 }
 
 pub fn stats_desc_bivariate_view_set(s : StatsdescbivariateView, i : Int, v : Double) -> StatsdescbivariateView {
-  let result = stats_desc_bivariate_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_view_sum(s : StatsdescbivariateView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_desc_bivariate_range_get(s : StatsdescbivariateRange, i : Int) -> D
 }
 
 pub fn stats_desc_bivariate_range_set(s : StatsdescbivariateRange, i : Int, v : Double) -> StatsdescbivariateRange {
-  let result = stats_desc_bivariate_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_range_sum(s : StatsdescbivariateRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_desc_bivariate_slice_get(s : StatsdescbivariateSlice, i : Int) -> D
 }
 
 pub fn stats_desc_bivariate_slice_set(s : StatsdescbivariateSlice, i : Int, v : Double) -> StatsdescbivariateSlice {
-  let result = stats_desc_bivariate_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_desc_bivariate_slice_sum(s : StatsdescbivariateSlice) -> Double { @_common.sum(s.data) }

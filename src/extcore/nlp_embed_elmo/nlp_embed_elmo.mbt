@@ -107,23 +107,15 @@ pub fn nlp_embed_elmo_series_std(s : NlpembedelmoSeries) -> Double { @_common.st
 pub fn nlp_embed_elmo_series_median(s : NlpembedelmoSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_embed_elmo_series_scale(s : NlpembedelmoSeries, f : Double) -> NlpembedelmoSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_embed_elmo_series_add(a : NlpembedelmoSeries, b : NlpembedelmoSeries) -> NlpembedelmoSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_embed_elmo_series_sub(a : NlpembedelmoSeries, b : NlpembedelmoSeries) -> NlpembedelmoSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_embed_elmo_series_normalize(s : NlpembedelmoSeries) -> NlpembedelmoSeries {
@@ -254,22 +246,16 @@ pub fn nlp_embed_elmo_vector_zero(dim : Int) -> NlpembedelmoVector {
 
 pub fn nlp_embed_elmo_vector_add(a : NlpembedelmoVector, b : NlpembedelmoVector) -> NlpembedelmoVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_embed_elmo_vector_sub(a : NlpembedelmoVector, b : NlpembedelmoVector) -> NlpembedelmoVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_embed_elmo_vector_scale(v : NlpembedelmoVector, s : Double) -> NlpembedelmoVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_embed_elmo_vector_dot(a : NlpembedelmoVector, b : NlpembedelmoVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_embed_elmo_frame_get(s : NlpembedelmoFrame, i : Int) -> Double {
 }
 
 pub fn nlp_embed_elmo_frame_set(s : NlpembedelmoFrame, i : Int, v : Double) -> NlpembedelmoFrame {
-  let result = nlp_embed_elmo_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_elmo_frame_sum(s : NlpembedelmoFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_embed_elmo_table_get(s : NlpembedelmoTable, i : Int) -> Double {
 }
 
 pub fn nlp_embed_elmo_table_set(s : NlpembedelmoTable, i : Int, v : Double) -> NlpembedelmoTable {
-  let result = nlp_embed_elmo_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_elmo_table_sum(s : NlpembedelmoTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_embed_elmo_graphn_get(s : NlpembedelmoGraphN, i : Int) -> Double {
 }
 
 pub fn nlp_embed_elmo_graphn_set(s : NlpembedelmoGraphN, i : Int, v : Double) -> NlpembedelmoGraphN {
-  let result = nlp_embed_elmo_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_elmo_graphn_sum(s : NlpembedelmoGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_embed_elmo_node_get(s : NlpembedelmoNode, i : Int) -> Double {
 }
 
 pub fn nlp_embed_elmo_node_set(s : NlpembedelmoNode, i : Int, v : Double) -> NlpembedelmoNode {
-  let result = nlp_embed_elmo_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_elmo_node_sum(s : NlpembedelmoNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_embed_elmo_edge_get(s : NlpembedelmoEdge, i : Int) -> Double {
 }
 
 pub fn nlp_embed_elmo_edge_set(s : NlpembedelmoEdge, i : Int, v : Double) -> NlpembedelmoEdge {
-  let result = nlp_embed_elmo_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_elmo_edge_sum(s : NlpembedelmoEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_embed_elmo_path_get(s : NlpembedelmoPath, i : Int) -> Double {
 }
 
 pub fn nlp_embed_elmo_path_set(s : NlpembedelmoPath, i : Int, v : Double) -> NlpembedelmoPath {
-  let result = nlp_embed_elmo_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_elmo_path_sum(s : NlpembedelmoPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_embed_elmo_cluster_get(s : NlpembedelmoCluster, i : Int) -> Double {
 }
 
 pub fn nlp_embed_elmo_cluster_set(s : NlpembedelmoCluster, i : Int, v : Double) -> NlpembedelmoCluster {
-  let result = nlp_embed_elmo_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_elmo_cluster_sum(s : NlpembedelmoCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_embed_elmo_model_get(s : NlpembedelmoModel, i : Int) -> Double {
 }
 
 pub fn nlp_embed_elmo_model_set(s : NlpembedelmoModel, i : Int, v : Double) -> NlpembedelmoModel {
-  let result = nlp_embed_elmo_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_elmo_model_sum(s : NlpembedelmoModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_embed_elmo_layer_get(s : NlpembedelmoLayer, i : Int) -> Double {
 }
 
 pub fn nlp_embed_elmo_layer_set(s : NlpembedelmoLayer, i : Int, v : Double) -> NlpembedelmoLayer {
-  let result = nlp_embed_elmo_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_elmo_layer_sum(s : NlpembedelmoLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_embed_elmo_buffer_get(s : NlpembedelmoBuffer, i : Int) -> Double {
 }
 
 pub fn nlp_embed_elmo_buffer_set(s : NlpembedelmoBuffer, i : Int, v : Double) -> NlpembedelmoBuffer {
-  let result = nlp_embed_elmo_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_elmo_buffer_sum(s : NlpembedelmoBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_embed_elmo_cursor_get(s : NlpembedelmoCursor, i : Int) -> Double {
 }
 
 pub fn nlp_embed_elmo_cursor_set(s : NlpembedelmoCursor, i : Int, v : Double) -> NlpembedelmoCursor {
-  let result = nlp_embed_elmo_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_elmo_cursor_sum(s : NlpembedelmoCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_embed_elmo_view_get(s : NlpembedelmoView, i : Int) -> Double {
 }
 
 pub fn nlp_embed_elmo_view_set(s : NlpembedelmoView, i : Int, v : Double) -> NlpembedelmoView {
-  let result = nlp_embed_elmo_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_elmo_view_sum(s : NlpembedelmoView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_embed_elmo_range_get(s : NlpembedelmoRange, i : Int) -> Double {
 }
 
 pub fn nlp_embed_elmo_range_set(s : NlpembedelmoRange, i : Int, v : Double) -> NlpembedelmoRange {
-  let result = nlp_embed_elmo_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_elmo_range_sum(s : NlpembedelmoRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_embed_elmo_slice_get(s : NlpembedelmoSlice, i : Int) -> Double {
 }
 
 pub fn nlp_embed_elmo_slice_set(s : NlpembedelmoSlice, i : Int, v : Double) -> NlpembedelmoSlice {
-  let result = nlp_embed_elmo_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_elmo_slice_sum(s : NlpembedelmoSlice) -> Double { @_common.sum(s.data) }

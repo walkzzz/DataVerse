@@ -107,23 +107,15 @@ pub fn sort_compare_insertion_series_std(s : SortcompareinsertionSeries) -> Doub
 pub fn sort_compare_insertion_series_median(s : SortcompareinsertionSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_compare_insertion_series_scale(s : SortcompareinsertionSeries, f : Double) -> SortcompareinsertionSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn sort_compare_insertion_series_add(a : SortcompareinsertionSeries, b : SortcompareinsertionSeries) -> SortcompareinsertionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn sort_compare_insertion_series_sub(a : SortcompareinsertionSeries, b : SortcompareinsertionSeries) -> SortcompareinsertionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn sort_compare_insertion_series_normalize(s : SortcompareinsertionSeries) -> SortcompareinsertionSeries {
@@ -254,22 +246,16 @@ pub fn sort_compare_insertion_vector_zero(dim : Int) -> SortcompareinsertionVect
 
 pub fn sort_compare_insertion_vector_add(a : SortcompareinsertionVector, b : SortcompareinsertionVector) -> SortcompareinsertionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_compare_insertion_vector_sub(a : SortcompareinsertionVector, b : SortcompareinsertionVector) -> SortcompareinsertionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_compare_insertion_vector_scale(v : SortcompareinsertionVector, s : Double) -> SortcompareinsertionVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn sort_compare_insertion_vector_dot(a : SortcompareinsertionVector, b : SortcompareinsertionVector) -> Double {
@@ -372,10 +358,9 @@ pub fn sort_compare_insertion_frame_get(s : SortcompareinsertionFrame, i : Int) 
 }
 
 pub fn sort_compare_insertion_frame_set(s : SortcompareinsertionFrame, i : Int, v : Double) -> SortcompareinsertionFrame {
-  let result = sort_compare_insertion_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_insertion_frame_sum(s : SortcompareinsertionFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn sort_compare_insertion_table_get(s : SortcompareinsertionTable, i : Int) 
 }
 
 pub fn sort_compare_insertion_table_set(s : SortcompareinsertionTable, i : Int, v : Double) -> SortcompareinsertionTable {
-  let result = sort_compare_insertion_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_insertion_table_sum(s : SortcompareinsertionTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn sort_compare_insertion_graphn_get(s : SortcompareinsertionGraphN, i : Int
 }
 
 pub fn sort_compare_insertion_graphn_set(s : SortcompareinsertionGraphN, i : Int, v : Double) -> SortcompareinsertionGraphN {
-  let result = sort_compare_insertion_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_insertion_graphn_sum(s : SortcompareinsertionGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn sort_compare_insertion_node_get(s : SortcompareinsertionNode, i : Int) ->
 }
 
 pub fn sort_compare_insertion_node_set(s : SortcompareinsertionNode, i : Int, v : Double) -> SortcompareinsertionNode {
-  let result = sort_compare_insertion_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_insertion_node_sum(s : SortcompareinsertionNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn sort_compare_insertion_edge_get(s : SortcompareinsertionEdge, i : Int) ->
 }
 
 pub fn sort_compare_insertion_edge_set(s : SortcompareinsertionEdge, i : Int, v : Double) -> SortcompareinsertionEdge {
-  let result = sort_compare_insertion_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_insertion_edge_sum(s : SortcompareinsertionEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn sort_compare_insertion_path_get(s : SortcompareinsertionPath, i : Int) ->
 }
 
 pub fn sort_compare_insertion_path_set(s : SortcompareinsertionPath, i : Int, v : Double) -> SortcompareinsertionPath {
-  let result = sort_compare_insertion_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_insertion_path_sum(s : SortcompareinsertionPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn sort_compare_insertion_cluster_get(s : SortcompareinsertionCluster, i : I
 }
 
 pub fn sort_compare_insertion_cluster_set(s : SortcompareinsertionCluster, i : Int, v : Double) -> SortcompareinsertionCluster {
-  let result = sort_compare_insertion_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_insertion_cluster_sum(s : SortcompareinsertionCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn sort_compare_insertion_model_get(s : SortcompareinsertionModel, i : Int) 
 }
 
 pub fn sort_compare_insertion_model_set(s : SortcompareinsertionModel, i : Int, v : Double) -> SortcompareinsertionModel {
-  let result = sort_compare_insertion_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_insertion_model_sum(s : SortcompareinsertionModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn sort_compare_insertion_layer_get(s : SortcompareinsertionLayer, i : Int) 
 }
 
 pub fn sort_compare_insertion_layer_set(s : SortcompareinsertionLayer, i : Int, v : Double) -> SortcompareinsertionLayer {
-  let result = sort_compare_insertion_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_insertion_layer_sum(s : SortcompareinsertionLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn sort_compare_insertion_buffer_get(s : SortcompareinsertionBuffer, i : Int
 }
 
 pub fn sort_compare_insertion_buffer_set(s : SortcompareinsertionBuffer, i : Int, v : Double) -> SortcompareinsertionBuffer {
-  let result = sort_compare_insertion_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_insertion_buffer_sum(s : SortcompareinsertionBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn sort_compare_insertion_cursor_get(s : SortcompareinsertionCursor, i : Int
 }
 
 pub fn sort_compare_insertion_cursor_set(s : SortcompareinsertionCursor, i : Int, v : Double) -> SortcompareinsertionCursor {
-  let result = sort_compare_insertion_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_insertion_cursor_sum(s : SortcompareinsertionCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn sort_compare_insertion_view_get(s : SortcompareinsertionView, i : Int) ->
 }
 
 pub fn sort_compare_insertion_view_set(s : SortcompareinsertionView, i : Int, v : Double) -> SortcompareinsertionView {
-  let result = sort_compare_insertion_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_insertion_view_sum(s : SortcompareinsertionView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn sort_compare_insertion_range_get(s : SortcompareinsertionRange, i : Int) 
 }
 
 pub fn sort_compare_insertion_range_set(s : SortcompareinsertionRange, i : Int, v : Double) -> SortcompareinsertionRange {
-  let result = sort_compare_insertion_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_insertion_range_sum(s : SortcompareinsertionRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn sort_compare_insertion_slice_get(s : SortcompareinsertionSlice, i : Int) 
 }
 
 pub fn sort_compare_insertion_slice_set(s : SortcompareinsertionSlice, i : Int, v : Double) -> SortcompareinsertionSlice {
-  let result = sort_compare_insertion_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_insertion_slice_sum(s : SortcompareinsertionSlice) -> Double { @_common.sum(s.data) }

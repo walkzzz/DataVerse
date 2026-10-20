@@ -107,23 +107,15 @@ pub fn image_feature_brief_series_std(s : ImagefeaturebriefSeries) -> Double { @
 pub fn image_feature_brief_series_median(s : ImagefeaturebriefSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_feature_brief_series_scale(s : ImagefeaturebriefSeries, f : Double) -> ImagefeaturebriefSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_feature_brief_series_add(a : ImagefeaturebriefSeries, b : ImagefeaturebriefSeries) -> ImagefeaturebriefSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_feature_brief_series_sub(a : ImagefeaturebriefSeries, b : ImagefeaturebriefSeries) -> ImagefeaturebriefSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_feature_brief_series_normalize(s : ImagefeaturebriefSeries) -> ImagefeaturebriefSeries {
@@ -254,22 +246,16 @@ pub fn image_feature_brief_vector_zero(dim : Int) -> ImagefeaturebriefVector {
 
 pub fn image_feature_brief_vector_add(a : ImagefeaturebriefVector, b : ImagefeaturebriefVector) -> ImagefeaturebriefVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_feature_brief_vector_sub(a : ImagefeaturebriefVector, b : ImagefeaturebriefVector) -> ImagefeaturebriefVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_feature_brief_vector_scale(v : ImagefeaturebriefVector, s : Double) -> ImagefeaturebriefVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_feature_brief_vector_dot(a : ImagefeaturebriefVector, b : ImagefeaturebriefVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_feature_brief_frame_get(s : ImagefeaturebriefFrame, i : Int) -> Dou
 }
 
 pub fn image_feature_brief_frame_set(s : ImagefeaturebriefFrame, i : Int, v : Double) -> ImagefeaturebriefFrame {
-  let result = image_feature_brief_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_frame_sum(s : ImagefeaturebriefFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_feature_brief_table_get(s : ImagefeaturebriefTable, i : Int) -> Dou
 }
 
 pub fn image_feature_brief_table_set(s : ImagefeaturebriefTable, i : Int, v : Double) -> ImagefeaturebriefTable {
-  let result = image_feature_brief_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_table_sum(s : ImagefeaturebriefTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_feature_brief_graphn_get(s : ImagefeaturebriefGraphN, i : Int) -> D
 }
 
 pub fn image_feature_brief_graphn_set(s : ImagefeaturebriefGraphN, i : Int, v : Double) -> ImagefeaturebriefGraphN {
-  let result = image_feature_brief_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_graphn_sum(s : ImagefeaturebriefGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_feature_brief_node_get(s : ImagefeaturebriefNode, i : Int) -> Doubl
 }
 
 pub fn image_feature_brief_node_set(s : ImagefeaturebriefNode, i : Int, v : Double) -> ImagefeaturebriefNode {
-  let result = image_feature_brief_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_node_sum(s : ImagefeaturebriefNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_feature_brief_edge_get(s : ImagefeaturebriefEdge, i : Int) -> Doubl
 }
 
 pub fn image_feature_brief_edge_set(s : ImagefeaturebriefEdge, i : Int, v : Double) -> ImagefeaturebriefEdge {
-  let result = image_feature_brief_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_edge_sum(s : ImagefeaturebriefEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_feature_brief_path_get(s : ImagefeaturebriefPath, i : Int) -> Doubl
 }
 
 pub fn image_feature_brief_path_set(s : ImagefeaturebriefPath, i : Int, v : Double) -> ImagefeaturebriefPath {
-  let result = image_feature_brief_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_path_sum(s : ImagefeaturebriefPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_feature_brief_cluster_get(s : ImagefeaturebriefCluster, i : Int) ->
 }
 
 pub fn image_feature_brief_cluster_set(s : ImagefeaturebriefCluster, i : Int, v : Double) -> ImagefeaturebriefCluster {
-  let result = image_feature_brief_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_cluster_sum(s : ImagefeaturebriefCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_feature_brief_model_get(s : ImagefeaturebriefModel, i : Int) -> Dou
 }
 
 pub fn image_feature_brief_model_set(s : ImagefeaturebriefModel, i : Int, v : Double) -> ImagefeaturebriefModel {
-  let result = image_feature_brief_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_model_sum(s : ImagefeaturebriefModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_feature_brief_layer_get(s : ImagefeaturebriefLayer, i : Int) -> Dou
 }
 
 pub fn image_feature_brief_layer_set(s : ImagefeaturebriefLayer, i : Int, v : Double) -> ImagefeaturebriefLayer {
-  let result = image_feature_brief_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_layer_sum(s : ImagefeaturebriefLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_feature_brief_buffer_get(s : ImagefeaturebriefBuffer, i : Int) -> D
 }
 
 pub fn image_feature_brief_buffer_set(s : ImagefeaturebriefBuffer, i : Int, v : Double) -> ImagefeaturebriefBuffer {
-  let result = image_feature_brief_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_buffer_sum(s : ImagefeaturebriefBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_feature_brief_cursor_get(s : ImagefeaturebriefCursor, i : Int) -> D
 }
 
 pub fn image_feature_brief_cursor_set(s : ImagefeaturebriefCursor, i : Int, v : Double) -> ImagefeaturebriefCursor {
-  let result = image_feature_brief_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_cursor_sum(s : ImagefeaturebriefCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_feature_brief_view_get(s : ImagefeaturebriefView, i : Int) -> Doubl
 }
 
 pub fn image_feature_brief_view_set(s : ImagefeaturebriefView, i : Int, v : Double) -> ImagefeaturebriefView {
-  let result = image_feature_brief_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_view_sum(s : ImagefeaturebriefView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_feature_brief_range_get(s : ImagefeaturebriefRange, i : Int) -> Dou
 }
 
 pub fn image_feature_brief_range_set(s : ImagefeaturebriefRange, i : Int, v : Double) -> ImagefeaturebriefRange {
-  let result = image_feature_brief_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_range_sum(s : ImagefeaturebriefRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_feature_brief_slice_get(s : ImagefeaturebriefSlice, i : Int) -> Dou
 }
 
 pub fn image_feature_brief_slice_set(s : ImagefeaturebriefSlice, i : Int, v : Double) -> ImagefeaturebriefSlice {
-  let result = image_feature_brief_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_brief_slice_sum(s : ImagefeaturebriefSlice) -> Double { @_common.sum(s.data) }

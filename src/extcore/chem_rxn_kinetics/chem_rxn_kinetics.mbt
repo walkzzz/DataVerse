@@ -107,23 +107,15 @@ pub fn chem_rxn_kinetics_series_std(s : ChemrxnkineticsSeries) -> Double { @_com
 pub fn chem_rxn_kinetics_series_median(s : ChemrxnkineticsSeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_rxn_kinetics_series_scale(s : ChemrxnkineticsSeries, f : Double) -> ChemrxnkineticsSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn chem_rxn_kinetics_series_add(a : ChemrxnkineticsSeries, b : ChemrxnkineticsSeries) -> ChemrxnkineticsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn chem_rxn_kinetics_series_sub(a : ChemrxnkineticsSeries, b : ChemrxnkineticsSeries) -> ChemrxnkineticsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn chem_rxn_kinetics_series_normalize(s : ChemrxnkineticsSeries) -> ChemrxnkineticsSeries {
@@ -254,22 +246,16 @@ pub fn chem_rxn_kinetics_vector_zero(dim : Int) -> ChemrxnkineticsVector {
 
 pub fn chem_rxn_kinetics_vector_add(a : ChemrxnkineticsVector, b : ChemrxnkineticsVector) -> ChemrxnkineticsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_rxn_kinetics_vector_sub(a : ChemrxnkineticsVector, b : ChemrxnkineticsVector) -> ChemrxnkineticsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_rxn_kinetics_vector_scale(v : ChemrxnkineticsVector, s : Double) -> ChemrxnkineticsVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn chem_rxn_kinetics_vector_dot(a : ChemrxnkineticsVector, b : ChemrxnkineticsVector) -> Double {
@@ -372,10 +358,9 @@ pub fn chem_rxn_kinetics_frame_get(s : ChemrxnkineticsFrame, i : Int) -> Double 
 }
 
 pub fn chem_rxn_kinetics_frame_set(s : ChemrxnkineticsFrame, i : Int, v : Double) -> ChemrxnkineticsFrame {
-  let result = chem_rxn_kinetics_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_kinetics_frame_sum(s : ChemrxnkineticsFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn chem_rxn_kinetics_table_get(s : ChemrxnkineticsTable, i : Int) -> Double 
 }
 
 pub fn chem_rxn_kinetics_table_set(s : ChemrxnkineticsTable, i : Int, v : Double) -> ChemrxnkineticsTable {
-  let result = chem_rxn_kinetics_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_kinetics_table_sum(s : ChemrxnkineticsTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn chem_rxn_kinetics_graphn_get(s : ChemrxnkineticsGraphN, i : Int) -> Doubl
 }
 
 pub fn chem_rxn_kinetics_graphn_set(s : ChemrxnkineticsGraphN, i : Int, v : Double) -> ChemrxnkineticsGraphN {
-  let result = chem_rxn_kinetics_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_kinetics_graphn_sum(s : ChemrxnkineticsGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn chem_rxn_kinetics_node_get(s : ChemrxnkineticsNode, i : Int) -> Double {
 }
 
 pub fn chem_rxn_kinetics_node_set(s : ChemrxnkineticsNode, i : Int, v : Double) -> ChemrxnkineticsNode {
-  let result = chem_rxn_kinetics_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_kinetics_node_sum(s : ChemrxnkineticsNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn chem_rxn_kinetics_edge_get(s : ChemrxnkineticsEdge, i : Int) -> Double {
 }
 
 pub fn chem_rxn_kinetics_edge_set(s : ChemrxnkineticsEdge, i : Int, v : Double) -> ChemrxnkineticsEdge {
-  let result = chem_rxn_kinetics_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_kinetics_edge_sum(s : ChemrxnkineticsEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn chem_rxn_kinetics_path_get(s : ChemrxnkineticsPath, i : Int) -> Double {
 }
 
 pub fn chem_rxn_kinetics_path_set(s : ChemrxnkineticsPath, i : Int, v : Double) -> ChemrxnkineticsPath {
-  let result = chem_rxn_kinetics_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_kinetics_path_sum(s : ChemrxnkineticsPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn chem_rxn_kinetics_cluster_get(s : ChemrxnkineticsCluster, i : Int) -> Dou
 }
 
 pub fn chem_rxn_kinetics_cluster_set(s : ChemrxnkineticsCluster, i : Int, v : Double) -> ChemrxnkineticsCluster {
-  let result = chem_rxn_kinetics_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_kinetics_cluster_sum(s : ChemrxnkineticsCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn chem_rxn_kinetics_model_get(s : ChemrxnkineticsModel, i : Int) -> Double 
 }
 
 pub fn chem_rxn_kinetics_model_set(s : ChemrxnkineticsModel, i : Int, v : Double) -> ChemrxnkineticsModel {
-  let result = chem_rxn_kinetics_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_kinetics_model_sum(s : ChemrxnkineticsModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn chem_rxn_kinetics_layer_get(s : ChemrxnkineticsLayer, i : Int) -> Double 
 }
 
 pub fn chem_rxn_kinetics_layer_set(s : ChemrxnkineticsLayer, i : Int, v : Double) -> ChemrxnkineticsLayer {
-  let result = chem_rxn_kinetics_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_kinetics_layer_sum(s : ChemrxnkineticsLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn chem_rxn_kinetics_buffer_get(s : ChemrxnkineticsBuffer, i : Int) -> Doubl
 }
 
 pub fn chem_rxn_kinetics_buffer_set(s : ChemrxnkineticsBuffer, i : Int, v : Double) -> ChemrxnkineticsBuffer {
-  let result = chem_rxn_kinetics_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_kinetics_buffer_sum(s : ChemrxnkineticsBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn chem_rxn_kinetics_cursor_get(s : ChemrxnkineticsCursor, i : Int) -> Doubl
 }
 
 pub fn chem_rxn_kinetics_cursor_set(s : ChemrxnkineticsCursor, i : Int, v : Double) -> ChemrxnkineticsCursor {
-  let result = chem_rxn_kinetics_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_kinetics_cursor_sum(s : ChemrxnkineticsCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn chem_rxn_kinetics_view_get(s : ChemrxnkineticsView, i : Int) -> Double {
 }
 
 pub fn chem_rxn_kinetics_view_set(s : ChemrxnkineticsView, i : Int, v : Double) -> ChemrxnkineticsView {
-  let result = chem_rxn_kinetics_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_kinetics_view_sum(s : ChemrxnkineticsView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn chem_rxn_kinetics_range_get(s : ChemrxnkineticsRange, i : Int) -> Double 
 }
 
 pub fn chem_rxn_kinetics_range_set(s : ChemrxnkineticsRange, i : Int, v : Double) -> ChemrxnkineticsRange {
-  let result = chem_rxn_kinetics_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_kinetics_range_sum(s : ChemrxnkineticsRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn chem_rxn_kinetics_slice_get(s : ChemrxnkineticsSlice, i : Int) -> Double 
 }
 
 pub fn chem_rxn_kinetics_slice_set(s : ChemrxnkineticsSlice, i : Int, v : Double) -> ChemrxnkineticsSlice {
-  let result = chem_rxn_kinetics_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_kinetics_slice_sum(s : ChemrxnkineticsSlice) -> Double { @_common.sum(s.data) }

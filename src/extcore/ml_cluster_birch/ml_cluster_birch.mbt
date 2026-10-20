@@ -107,23 +107,15 @@ pub fn ml_cluster_birch_series_std(s : MlclusterbirchSeries) -> Double { @_commo
 pub fn ml_cluster_birch_series_median(s : MlclusterbirchSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_cluster_birch_series_scale(s : MlclusterbirchSeries, f : Double) -> MlclusterbirchSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_cluster_birch_series_add(a : MlclusterbirchSeries, b : MlclusterbirchSeries) -> MlclusterbirchSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_cluster_birch_series_sub(a : MlclusterbirchSeries, b : MlclusterbirchSeries) -> MlclusterbirchSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_cluster_birch_series_normalize(s : MlclusterbirchSeries) -> MlclusterbirchSeries {
@@ -254,22 +246,16 @@ pub fn ml_cluster_birch_vector_zero(dim : Int) -> MlclusterbirchVector {
 
 pub fn ml_cluster_birch_vector_add(a : MlclusterbirchVector, b : MlclusterbirchVector) -> MlclusterbirchVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_cluster_birch_vector_sub(a : MlclusterbirchVector, b : MlclusterbirchVector) -> MlclusterbirchVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_cluster_birch_vector_scale(v : MlclusterbirchVector, s : Double) -> MlclusterbirchVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_cluster_birch_vector_dot(a : MlclusterbirchVector, b : MlclusterbirchVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_cluster_birch_frame_get(s : MlclusterbirchFrame, i : Int) -> Double {
 }
 
 pub fn ml_cluster_birch_frame_set(s : MlclusterbirchFrame, i : Int, v : Double) -> MlclusterbirchFrame {
-  let result = ml_cluster_birch_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_birch_frame_sum(s : MlclusterbirchFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_cluster_birch_table_get(s : MlclusterbirchTable, i : Int) -> Double {
 }
 
 pub fn ml_cluster_birch_table_set(s : MlclusterbirchTable, i : Int, v : Double) -> MlclusterbirchTable {
-  let result = ml_cluster_birch_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_birch_table_sum(s : MlclusterbirchTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_cluster_birch_graphn_get(s : MlclusterbirchGraphN, i : Int) -> Double 
 }
 
 pub fn ml_cluster_birch_graphn_set(s : MlclusterbirchGraphN, i : Int, v : Double) -> MlclusterbirchGraphN {
-  let result = ml_cluster_birch_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_birch_graphn_sum(s : MlclusterbirchGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_cluster_birch_node_get(s : MlclusterbirchNode, i : Int) -> Double {
 }
 
 pub fn ml_cluster_birch_node_set(s : MlclusterbirchNode, i : Int, v : Double) -> MlclusterbirchNode {
-  let result = ml_cluster_birch_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_birch_node_sum(s : MlclusterbirchNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_cluster_birch_edge_get(s : MlclusterbirchEdge, i : Int) -> Double {
 }
 
 pub fn ml_cluster_birch_edge_set(s : MlclusterbirchEdge, i : Int, v : Double) -> MlclusterbirchEdge {
-  let result = ml_cluster_birch_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_birch_edge_sum(s : MlclusterbirchEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_cluster_birch_path_get(s : MlclusterbirchPath, i : Int) -> Double {
 }
 
 pub fn ml_cluster_birch_path_set(s : MlclusterbirchPath, i : Int, v : Double) -> MlclusterbirchPath {
-  let result = ml_cluster_birch_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_birch_path_sum(s : MlclusterbirchPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_cluster_birch_cluster_get(s : MlclusterbirchCluster, i : Int) -> Doubl
 }
 
 pub fn ml_cluster_birch_cluster_set(s : MlclusterbirchCluster, i : Int, v : Double) -> MlclusterbirchCluster {
-  let result = ml_cluster_birch_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_birch_cluster_sum(s : MlclusterbirchCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_cluster_birch_model_get(s : MlclusterbirchModel, i : Int) -> Double {
 }
 
 pub fn ml_cluster_birch_model_set(s : MlclusterbirchModel, i : Int, v : Double) -> MlclusterbirchModel {
-  let result = ml_cluster_birch_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_birch_model_sum(s : MlclusterbirchModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_cluster_birch_layer_get(s : MlclusterbirchLayer, i : Int) -> Double {
 }
 
 pub fn ml_cluster_birch_layer_set(s : MlclusterbirchLayer, i : Int, v : Double) -> MlclusterbirchLayer {
-  let result = ml_cluster_birch_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_birch_layer_sum(s : MlclusterbirchLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_cluster_birch_buffer_get(s : MlclusterbirchBuffer, i : Int) -> Double 
 }
 
 pub fn ml_cluster_birch_buffer_set(s : MlclusterbirchBuffer, i : Int, v : Double) -> MlclusterbirchBuffer {
-  let result = ml_cluster_birch_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_birch_buffer_sum(s : MlclusterbirchBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_cluster_birch_cursor_get(s : MlclusterbirchCursor, i : Int) -> Double 
 }
 
 pub fn ml_cluster_birch_cursor_set(s : MlclusterbirchCursor, i : Int, v : Double) -> MlclusterbirchCursor {
-  let result = ml_cluster_birch_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_birch_cursor_sum(s : MlclusterbirchCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_cluster_birch_view_get(s : MlclusterbirchView, i : Int) -> Double {
 }
 
 pub fn ml_cluster_birch_view_set(s : MlclusterbirchView, i : Int, v : Double) -> MlclusterbirchView {
-  let result = ml_cluster_birch_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_birch_view_sum(s : MlclusterbirchView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_cluster_birch_range_get(s : MlclusterbirchRange, i : Int) -> Double {
 }
 
 pub fn ml_cluster_birch_range_set(s : MlclusterbirchRange, i : Int, v : Double) -> MlclusterbirchRange {
-  let result = ml_cluster_birch_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_birch_range_sum(s : MlclusterbirchRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_cluster_birch_slice_get(s : MlclusterbirchSlice, i : Int) -> Double {
 }
 
 pub fn ml_cluster_birch_slice_set(s : MlclusterbirchSlice, i : Int, v : Double) -> MlclusterbirchSlice {
-  let result = ml_cluster_birch_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_birch_slice_sum(s : MlclusterbirchSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn math_tensor_calc_series_std(s : MathtensorcalcSeries) -> Double { @_commo
 pub fn math_tensor_calc_series_median(s : MathtensorcalcSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_tensor_calc_series_scale(s : MathtensorcalcSeries, f : Double) -> MathtensorcalcSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_tensor_calc_series_add(a : MathtensorcalcSeries, b : MathtensorcalcSeries) -> MathtensorcalcSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_tensor_calc_series_sub(a : MathtensorcalcSeries, b : MathtensorcalcSeries) -> MathtensorcalcSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_tensor_calc_series_normalize(s : MathtensorcalcSeries) -> MathtensorcalcSeries {
@@ -254,22 +246,16 @@ pub fn math_tensor_calc_vector_zero(dim : Int) -> MathtensorcalcVector {
 
 pub fn math_tensor_calc_vector_add(a : MathtensorcalcVector, b : MathtensorcalcVector) -> MathtensorcalcVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_tensor_calc_vector_sub(a : MathtensorcalcVector, b : MathtensorcalcVector) -> MathtensorcalcVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_tensor_calc_vector_scale(v : MathtensorcalcVector, s : Double) -> MathtensorcalcVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_tensor_calc_vector_dot(a : MathtensorcalcVector, b : MathtensorcalcVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_tensor_calc_frame_get(s : MathtensorcalcFrame, i : Int) -> Double {
 }
 
 pub fn math_tensor_calc_frame_set(s : MathtensorcalcFrame, i : Int, v : Double) -> MathtensorcalcFrame {
-  let result = math_tensor_calc_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_frame_sum(s : MathtensorcalcFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_tensor_calc_table_get(s : MathtensorcalcTable, i : Int) -> Double {
 }
 
 pub fn math_tensor_calc_table_set(s : MathtensorcalcTable, i : Int, v : Double) -> MathtensorcalcTable {
-  let result = math_tensor_calc_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_table_sum(s : MathtensorcalcTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_tensor_calc_graphn_get(s : MathtensorcalcGraphN, i : Int) -> Double 
 }
 
 pub fn math_tensor_calc_graphn_set(s : MathtensorcalcGraphN, i : Int, v : Double) -> MathtensorcalcGraphN {
-  let result = math_tensor_calc_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_graphn_sum(s : MathtensorcalcGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_tensor_calc_node_get(s : MathtensorcalcNode, i : Int) -> Double {
 }
 
 pub fn math_tensor_calc_node_set(s : MathtensorcalcNode, i : Int, v : Double) -> MathtensorcalcNode {
-  let result = math_tensor_calc_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_node_sum(s : MathtensorcalcNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_tensor_calc_edge_get(s : MathtensorcalcEdge, i : Int) -> Double {
 }
 
 pub fn math_tensor_calc_edge_set(s : MathtensorcalcEdge, i : Int, v : Double) -> MathtensorcalcEdge {
-  let result = math_tensor_calc_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_edge_sum(s : MathtensorcalcEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_tensor_calc_path_get(s : MathtensorcalcPath, i : Int) -> Double {
 }
 
 pub fn math_tensor_calc_path_set(s : MathtensorcalcPath, i : Int, v : Double) -> MathtensorcalcPath {
-  let result = math_tensor_calc_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_path_sum(s : MathtensorcalcPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_tensor_calc_cluster_get(s : MathtensorcalcCluster, i : Int) -> Doubl
 }
 
 pub fn math_tensor_calc_cluster_set(s : MathtensorcalcCluster, i : Int, v : Double) -> MathtensorcalcCluster {
-  let result = math_tensor_calc_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_cluster_sum(s : MathtensorcalcCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_tensor_calc_model_get(s : MathtensorcalcModel, i : Int) -> Double {
 }
 
 pub fn math_tensor_calc_model_set(s : MathtensorcalcModel, i : Int, v : Double) -> MathtensorcalcModel {
-  let result = math_tensor_calc_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_model_sum(s : MathtensorcalcModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_tensor_calc_layer_get(s : MathtensorcalcLayer, i : Int) -> Double {
 }
 
 pub fn math_tensor_calc_layer_set(s : MathtensorcalcLayer, i : Int, v : Double) -> MathtensorcalcLayer {
-  let result = math_tensor_calc_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_layer_sum(s : MathtensorcalcLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_tensor_calc_buffer_get(s : MathtensorcalcBuffer, i : Int) -> Double 
 }
 
 pub fn math_tensor_calc_buffer_set(s : MathtensorcalcBuffer, i : Int, v : Double) -> MathtensorcalcBuffer {
-  let result = math_tensor_calc_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_buffer_sum(s : MathtensorcalcBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_tensor_calc_cursor_get(s : MathtensorcalcCursor, i : Int) -> Double 
 }
 
 pub fn math_tensor_calc_cursor_set(s : MathtensorcalcCursor, i : Int, v : Double) -> MathtensorcalcCursor {
-  let result = math_tensor_calc_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_cursor_sum(s : MathtensorcalcCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_tensor_calc_view_get(s : MathtensorcalcView, i : Int) -> Double {
 }
 
 pub fn math_tensor_calc_view_set(s : MathtensorcalcView, i : Int, v : Double) -> MathtensorcalcView {
-  let result = math_tensor_calc_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_view_sum(s : MathtensorcalcView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_tensor_calc_range_get(s : MathtensorcalcRange, i : Int) -> Double {
 }
 
 pub fn math_tensor_calc_range_set(s : MathtensorcalcRange, i : Int, v : Double) -> MathtensorcalcRange {
-  let result = math_tensor_calc_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_range_sum(s : MathtensorcalcRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_tensor_calc_slice_get(s : MathtensorcalcSlice, i : Int) -> Double {
 }
 
 pub fn math_tensor_calc_slice_set(s : MathtensorcalcSlice, i : Int, v : Double) -> MathtensorcalcSlice {
-  let result = math_tensor_calc_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_tensor_calc_slice_sum(s : MathtensorcalcSlice) -> Double { @_common.sum(s.data) }

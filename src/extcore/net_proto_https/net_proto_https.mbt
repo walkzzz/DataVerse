@@ -107,23 +107,15 @@ pub fn net_proto_https_series_std(s : NetprotohttpsSeries) -> Double { @_common.
 pub fn net_proto_https_series_median(s : NetprotohttpsSeries) -> Double { @_common.median(s.vals) }
 
 pub fn net_proto_https_series_scale(s : NetprotohttpsSeries, f : Double) -> NetprotohttpsSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn net_proto_https_series_add(a : NetprotohttpsSeries, b : NetprotohttpsSeries) -> NetprotohttpsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn net_proto_https_series_sub(a : NetprotohttpsSeries, b : NetprotohttpsSeries) -> NetprotohttpsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn net_proto_https_series_normalize(s : NetprotohttpsSeries) -> NetprotohttpsSeries {
@@ -254,22 +246,16 @@ pub fn net_proto_https_vector_zero(dim : Int) -> NetprotohttpsVector {
 
 pub fn net_proto_https_vector_add(a : NetprotohttpsVector, b : NetprotohttpsVector) -> NetprotohttpsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_proto_https_vector_sub(a : NetprotohttpsVector, b : NetprotohttpsVector) -> NetprotohttpsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_proto_https_vector_scale(v : NetprotohttpsVector, s : Double) -> NetprotohttpsVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn net_proto_https_vector_dot(a : NetprotohttpsVector, b : NetprotohttpsVector) -> Double {
@@ -372,10 +358,9 @@ pub fn net_proto_https_frame_get(s : NetprotohttpsFrame, i : Int) -> Double {
 }
 
 pub fn net_proto_https_frame_set(s : NetprotohttpsFrame, i : Int, v : Double) -> NetprotohttpsFrame {
-  let result = net_proto_https_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_https_frame_sum(s : NetprotohttpsFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn net_proto_https_table_get(s : NetprotohttpsTable, i : Int) -> Double {
 }
 
 pub fn net_proto_https_table_set(s : NetprotohttpsTable, i : Int, v : Double) -> NetprotohttpsTable {
-  let result = net_proto_https_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_https_table_sum(s : NetprotohttpsTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn net_proto_https_graphn_get(s : NetprotohttpsGraphN, i : Int) -> Double {
 }
 
 pub fn net_proto_https_graphn_set(s : NetprotohttpsGraphN, i : Int, v : Double) -> NetprotohttpsGraphN {
-  let result = net_proto_https_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_https_graphn_sum(s : NetprotohttpsGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn net_proto_https_node_get(s : NetprotohttpsNode, i : Int) -> Double {
 }
 
 pub fn net_proto_https_node_set(s : NetprotohttpsNode, i : Int, v : Double) -> NetprotohttpsNode {
-  let result = net_proto_https_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_https_node_sum(s : NetprotohttpsNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn net_proto_https_edge_get(s : NetprotohttpsEdge, i : Int) -> Double {
 }
 
 pub fn net_proto_https_edge_set(s : NetprotohttpsEdge, i : Int, v : Double) -> NetprotohttpsEdge {
-  let result = net_proto_https_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_https_edge_sum(s : NetprotohttpsEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn net_proto_https_path_get(s : NetprotohttpsPath, i : Int) -> Double {
 }
 
 pub fn net_proto_https_path_set(s : NetprotohttpsPath, i : Int, v : Double) -> NetprotohttpsPath {
-  let result = net_proto_https_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_https_path_sum(s : NetprotohttpsPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn net_proto_https_cluster_get(s : NetprotohttpsCluster, i : Int) -> Double 
 }
 
 pub fn net_proto_https_cluster_set(s : NetprotohttpsCluster, i : Int, v : Double) -> NetprotohttpsCluster {
-  let result = net_proto_https_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_https_cluster_sum(s : NetprotohttpsCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn net_proto_https_model_get(s : NetprotohttpsModel, i : Int) -> Double {
 }
 
 pub fn net_proto_https_model_set(s : NetprotohttpsModel, i : Int, v : Double) -> NetprotohttpsModel {
-  let result = net_proto_https_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_https_model_sum(s : NetprotohttpsModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn net_proto_https_layer_get(s : NetprotohttpsLayer, i : Int) -> Double {
 }
 
 pub fn net_proto_https_layer_set(s : NetprotohttpsLayer, i : Int, v : Double) -> NetprotohttpsLayer {
-  let result = net_proto_https_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_https_layer_sum(s : NetprotohttpsLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn net_proto_https_buffer_get(s : NetprotohttpsBuffer, i : Int) -> Double {
 }
 
 pub fn net_proto_https_buffer_set(s : NetprotohttpsBuffer, i : Int, v : Double) -> NetprotohttpsBuffer {
-  let result = net_proto_https_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_https_buffer_sum(s : NetprotohttpsBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn net_proto_https_cursor_get(s : NetprotohttpsCursor, i : Int) -> Double {
 }
 
 pub fn net_proto_https_cursor_set(s : NetprotohttpsCursor, i : Int, v : Double) -> NetprotohttpsCursor {
-  let result = net_proto_https_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_https_cursor_sum(s : NetprotohttpsCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn net_proto_https_view_get(s : NetprotohttpsView, i : Int) -> Double {
 }
 
 pub fn net_proto_https_view_set(s : NetprotohttpsView, i : Int, v : Double) -> NetprotohttpsView {
-  let result = net_proto_https_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_https_view_sum(s : NetprotohttpsView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn net_proto_https_range_get(s : NetprotohttpsRange, i : Int) -> Double {
 }
 
 pub fn net_proto_https_range_set(s : NetprotohttpsRange, i : Int, v : Double) -> NetprotohttpsRange {
-  let result = net_proto_https_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_https_range_sum(s : NetprotohttpsRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn net_proto_https_slice_get(s : NetprotohttpsSlice, i : Int) -> Double {
 }
 
 pub fn net_proto_https_slice_set(s : NetprotohttpsSlice, i : Int, v : Double) -> NetprotohttpsSlice {
-  let result = net_proto_https_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_https_slice_sum(s : NetprotohttpsSlice) -> Double { @_common.sum(s.data) }

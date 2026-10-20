@@ -107,23 +107,15 @@ pub fn ml_classify_knn_series_std(s : MlclassifyknnSeries) -> Double { @_common.
 pub fn ml_classify_knn_series_median(s : MlclassifyknnSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_classify_knn_series_scale(s : MlclassifyknnSeries, f : Double) -> MlclassifyknnSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_classify_knn_series_add(a : MlclassifyknnSeries, b : MlclassifyknnSeries) -> MlclassifyknnSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_classify_knn_series_sub(a : MlclassifyknnSeries, b : MlclassifyknnSeries) -> MlclassifyknnSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_classify_knn_series_normalize(s : MlclassifyknnSeries) -> MlclassifyknnSeries {
@@ -254,22 +246,16 @@ pub fn ml_classify_knn_vector_zero(dim : Int) -> MlclassifyknnVector {
 
 pub fn ml_classify_knn_vector_add(a : MlclassifyknnVector, b : MlclassifyknnVector) -> MlclassifyknnVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_classify_knn_vector_sub(a : MlclassifyknnVector, b : MlclassifyknnVector) -> MlclassifyknnVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_classify_knn_vector_scale(v : MlclassifyknnVector, s : Double) -> MlclassifyknnVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_classify_knn_vector_dot(a : MlclassifyknnVector, b : MlclassifyknnVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_classify_knn_frame_get(s : MlclassifyknnFrame, i : Int) -> Double {
 }
 
 pub fn ml_classify_knn_frame_set(s : MlclassifyknnFrame, i : Int, v : Double) -> MlclassifyknnFrame {
-  let result = ml_classify_knn_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_knn_frame_sum(s : MlclassifyknnFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_classify_knn_table_get(s : MlclassifyknnTable, i : Int) -> Double {
 }
 
 pub fn ml_classify_knn_table_set(s : MlclassifyknnTable, i : Int, v : Double) -> MlclassifyknnTable {
-  let result = ml_classify_knn_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_knn_table_sum(s : MlclassifyknnTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_classify_knn_graphn_get(s : MlclassifyknnGraphN, i : Int) -> Double {
 }
 
 pub fn ml_classify_knn_graphn_set(s : MlclassifyknnGraphN, i : Int, v : Double) -> MlclassifyknnGraphN {
-  let result = ml_classify_knn_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_knn_graphn_sum(s : MlclassifyknnGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_classify_knn_node_get(s : MlclassifyknnNode, i : Int) -> Double {
 }
 
 pub fn ml_classify_knn_node_set(s : MlclassifyknnNode, i : Int, v : Double) -> MlclassifyknnNode {
-  let result = ml_classify_knn_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_knn_node_sum(s : MlclassifyknnNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_classify_knn_edge_get(s : MlclassifyknnEdge, i : Int) -> Double {
 }
 
 pub fn ml_classify_knn_edge_set(s : MlclassifyknnEdge, i : Int, v : Double) -> MlclassifyknnEdge {
-  let result = ml_classify_knn_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_knn_edge_sum(s : MlclassifyknnEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_classify_knn_path_get(s : MlclassifyknnPath, i : Int) -> Double {
 }
 
 pub fn ml_classify_knn_path_set(s : MlclassifyknnPath, i : Int, v : Double) -> MlclassifyknnPath {
-  let result = ml_classify_knn_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_knn_path_sum(s : MlclassifyknnPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_classify_knn_cluster_get(s : MlclassifyknnCluster, i : Int) -> Double 
 }
 
 pub fn ml_classify_knn_cluster_set(s : MlclassifyknnCluster, i : Int, v : Double) -> MlclassifyknnCluster {
-  let result = ml_classify_knn_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_knn_cluster_sum(s : MlclassifyknnCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_classify_knn_model_get(s : MlclassifyknnModel, i : Int) -> Double {
 }
 
 pub fn ml_classify_knn_model_set(s : MlclassifyknnModel, i : Int, v : Double) -> MlclassifyknnModel {
-  let result = ml_classify_knn_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_knn_model_sum(s : MlclassifyknnModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_classify_knn_layer_get(s : MlclassifyknnLayer, i : Int) -> Double {
 }
 
 pub fn ml_classify_knn_layer_set(s : MlclassifyknnLayer, i : Int, v : Double) -> MlclassifyknnLayer {
-  let result = ml_classify_knn_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_knn_layer_sum(s : MlclassifyknnLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_classify_knn_buffer_get(s : MlclassifyknnBuffer, i : Int) -> Double {
 }
 
 pub fn ml_classify_knn_buffer_set(s : MlclassifyknnBuffer, i : Int, v : Double) -> MlclassifyknnBuffer {
-  let result = ml_classify_knn_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_knn_buffer_sum(s : MlclassifyknnBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_classify_knn_cursor_get(s : MlclassifyknnCursor, i : Int) -> Double {
 }
 
 pub fn ml_classify_knn_cursor_set(s : MlclassifyknnCursor, i : Int, v : Double) -> MlclassifyknnCursor {
-  let result = ml_classify_knn_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_knn_cursor_sum(s : MlclassifyknnCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_classify_knn_view_get(s : MlclassifyknnView, i : Int) -> Double {
 }
 
 pub fn ml_classify_knn_view_set(s : MlclassifyknnView, i : Int, v : Double) -> MlclassifyknnView {
-  let result = ml_classify_knn_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_knn_view_sum(s : MlclassifyknnView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_classify_knn_range_get(s : MlclassifyknnRange, i : Int) -> Double {
 }
 
 pub fn ml_classify_knn_range_set(s : MlclassifyknnRange, i : Int, v : Double) -> MlclassifyknnRange {
-  let result = ml_classify_knn_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_knn_range_sum(s : MlclassifyknnRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_classify_knn_slice_get(s : MlclassifyknnSlice, i : Int) -> Double {
 }
 
 pub fn ml_classify_knn_slice_set(s : MlclassifyknnSlice, i : Int, v : Double) -> MlclassifyknnSlice {
-  let result = ml_classify_knn_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_knn_slice_sum(s : MlclassifyknnSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn sort_hybrid_timsort_series_std(s : SorthybridtimsortSeries) -> Double { @
 pub fn sort_hybrid_timsort_series_median(s : SorthybridtimsortSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_hybrid_timsort_series_scale(s : SorthybridtimsortSeries, f : Double) -> SorthybridtimsortSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn sort_hybrid_timsort_series_add(a : SorthybridtimsortSeries, b : SorthybridtimsortSeries) -> SorthybridtimsortSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn sort_hybrid_timsort_series_sub(a : SorthybridtimsortSeries, b : SorthybridtimsortSeries) -> SorthybridtimsortSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn sort_hybrid_timsort_series_normalize(s : SorthybridtimsortSeries) -> SorthybridtimsortSeries {
@@ -254,22 +246,16 @@ pub fn sort_hybrid_timsort_vector_zero(dim : Int) -> SorthybridtimsortVector {
 
 pub fn sort_hybrid_timsort_vector_add(a : SorthybridtimsortVector, b : SorthybridtimsortVector) -> SorthybridtimsortVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_hybrid_timsort_vector_sub(a : SorthybridtimsortVector, b : SorthybridtimsortVector) -> SorthybridtimsortVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_hybrid_timsort_vector_scale(v : SorthybridtimsortVector, s : Double) -> SorthybridtimsortVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn sort_hybrid_timsort_vector_dot(a : SorthybridtimsortVector, b : SorthybridtimsortVector) -> Double {
@@ -372,10 +358,9 @@ pub fn sort_hybrid_timsort_frame_get(s : SorthybridtimsortFrame, i : Int) -> Dou
 }
 
 pub fn sort_hybrid_timsort_frame_set(s : SorthybridtimsortFrame, i : Int, v : Double) -> SorthybridtimsortFrame {
-  let result = sort_hybrid_timsort_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_timsort_frame_sum(s : SorthybridtimsortFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn sort_hybrid_timsort_table_get(s : SorthybridtimsortTable, i : Int) -> Dou
 }
 
 pub fn sort_hybrid_timsort_table_set(s : SorthybridtimsortTable, i : Int, v : Double) -> SorthybridtimsortTable {
-  let result = sort_hybrid_timsort_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_timsort_table_sum(s : SorthybridtimsortTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn sort_hybrid_timsort_graphn_get(s : SorthybridtimsortGraphN, i : Int) -> D
 }
 
 pub fn sort_hybrid_timsort_graphn_set(s : SorthybridtimsortGraphN, i : Int, v : Double) -> SorthybridtimsortGraphN {
-  let result = sort_hybrid_timsort_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_timsort_graphn_sum(s : SorthybridtimsortGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn sort_hybrid_timsort_node_get(s : SorthybridtimsortNode, i : Int) -> Doubl
 }
 
 pub fn sort_hybrid_timsort_node_set(s : SorthybridtimsortNode, i : Int, v : Double) -> SorthybridtimsortNode {
-  let result = sort_hybrid_timsort_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_timsort_node_sum(s : SorthybridtimsortNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn sort_hybrid_timsort_edge_get(s : SorthybridtimsortEdge, i : Int) -> Doubl
 }
 
 pub fn sort_hybrid_timsort_edge_set(s : SorthybridtimsortEdge, i : Int, v : Double) -> SorthybridtimsortEdge {
-  let result = sort_hybrid_timsort_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_timsort_edge_sum(s : SorthybridtimsortEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn sort_hybrid_timsort_path_get(s : SorthybridtimsortPath, i : Int) -> Doubl
 }
 
 pub fn sort_hybrid_timsort_path_set(s : SorthybridtimsortPath, i : Int, v : Double) -> SorthybridtimsortPath {
-  let result = sort_hybrid_timsort_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_timsort_path_sum(s : SorthybridtimsortPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn sort_hybrid_timsort_cluster_get(s : SorthybridtimsortCluster, i : Int) ->
 }
 
 pub fn sort_hybrid_timsort_cluster_set(s : SorthybridtimsortCluster, i : Int, v : Double) -> SorthybridtimsortCluster {
-  let result = sort_hybrid_timsort_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_timsort_cluster_sum(s : SorthybridtimsortCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn sort_hybrid_timsort_model_get(s : SorthybridtimsortModel, i : Int) -> Dou
 }
 
 pub fn sort_hybrid_timsort_model_set(s : SorthybridtimsortModel, i : Int, v : Double) -> SorthybridtimsortModel {
-  let result = sort_hybrid_timsort_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_timsort_model_sum(s : SorthybridtimsortModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn sort_hybrid_timsort_layer_get(s : SorthybridtimsortLayer, i : Int) -> Dou
 }
 
 pub fn sort_hybrid_timsort_layer_set(s : SorthybridtimsortLayer, i : Int, v : Double) -> SorthybridtimsortLayer {
-  let result = sort_hybrid_timsort_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_timsort_layer_sum(s : SorthybridtimsortLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn sort_hybrid_timsort_buffer_get(s : SorthybridtimsortBuffer, i : Int) -> D
 }
 
 pub fn sort_hybrid_timsort_buffer_set(s : SorthybridtimsortBuffer, i : Int, v : Double) -> SorthybridtimsortBuffer {
-  let result = sort_hybrid_timsort_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_timsort_buffer_sum(s : SorthybridtimsortBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn sort_hybrid_timsort_cursor_get(s : SorthybridtimsortCursor, i : Int) -> D
 }
 
 pub fn sort_hybrid_timsort_cursor_set(s : SorthybridtimsortCursor, i : Int, v : Double) -> SorthybridtimsortCursor {
-  let result = sort_hybrid_timsort_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_timsort_cursor_sum(s : SorthybridtimsortCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn sort_hybrid_timsort_view_get(s : SorthybridtimsortView, i : Int) -> Doubl
 }
 
 pub fn sort_hybrid_timsort_view_set(s : SorthybridtimsortView, i : Int, v : Double) -> SorthybridtimsortView {
-  let result = sort_hybrid_timsort_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_timsort_view_sum(s : SorthybridtimsortView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn sort_hybrid_timsort_range_get(s : SorthybridtimsortRange, i : Int) -> Dou
 }
 
 pub fn sort_hybrid_timsort_range_set(s : SorthybridtimsortRange, i : Int, v : Double) -> SorthybridtimsortRange {
-  let result = sort_hybrid_timsort_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_timsort_range_sum(s : SorthybridtimsortRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn sort_hybrid_timsort_slice_get(s : SorthybridtimsortSlice, i : Int) -> Dou
 }
 
 pub fn sort_hybrid_timsort_slice_set(s : SorthybridtimsortSlice, i : Int, v : Double) -> SorthybridtimsortSlice {
-  let result = sort_hybrid_timsort_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_timsort_slice_sum(s : SorthybridtimsortSlice) -> Double { @_common.sum(s.data) }

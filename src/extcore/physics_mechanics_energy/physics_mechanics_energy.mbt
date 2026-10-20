@@ -107,23 +107,15 @@ pub fn physics_mechanics_energy_series_std(s : PhysicsmechanicsenergySeries) -> 
 pub fn physics_mechanics_energy_series_median(s : PhysicsmechanicsenergySeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_mechanics_energy_series_scale(s : PhysicsmechanicsenergySeries, f : Double) -> PhysicsmechanicsenergySeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_mechanics_energy_series_add(a : PhysicsmechanicsenergySeries, b : PhysicsmechanicsenergySeries) -> PhysicsmechanicsenergySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_mechanics_energy_series_sub(a : PhysicsmechanicsenergySeries, b : PhysicsmechanicsenergySeries) -> PhysicsmechanicsenergySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_mechanics_energy_series_normalize(s : PhysicsmechanicsenergySeries) -> PhysicsmechanicsenergySeries {
@@ -254,22 +246,16 @@ pub fn physics_mechanics_energy_vector_zero(dim : Int) -> Physicsmechanicsenergy
 
 pub fn physics_mechanics_energy_vector_add(a : PhysicsmechanicsenergyVector, b : PhysicsmechanicsenergyVector) -> PhysicsmechanicsenergyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_mechanics_energy_vector_sub(a : PhysicsmechanicsenergyVector, b : PhysicsmechanicsenergyVector) -> PhysicsmechanicsenergyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_mechanics_energy_vector_scale(v : PhysicsmechanicsenergyVector, s : Double) -> PhysicsmechanicsenergyVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_mechanics_energy_vector_dot(a : PhysicsmechanicsenergyVector, b : PhysicsmechanicsenergyVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_mechanics_energy_frame_get(s : PhysicsmechanicsenergyFrame, i : I
 }
 
 pub fn physics_mechanics_energy_frame_set(s : PhysicsmechanicsenergyFrame, i : Int, v : Double) -> PhysicsmechanicsenergyFrame {
-  let result = physics_mechanics_energy_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_energy_frame_sum(s : PhysicsmechanicsenergyFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_mechanics_energy_table_get(s : PhysicsmechanicsenergyTable, i : I
 }
 
 pub fn physics_mechanics_energy_table_set(s : PhysicsmechanicsenergyTable, i : Int, v : Double) -> PhysicsmechanicsenergyTable {
-  let result = physics_mechanics_energy_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_energy_table_sum(s : PhysicsmechanicsenergyTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_mechanics_energy_graphn_get(s : PhysicsmechanicsenergyGraphN, i :
 }
 
 pub fn physics_mechanics_energy_graphn_set(s : PhysicsmechanicsenergyGraphN, i : Int, v : Double) -> PhysicsmechanicsenergyGraphN {
-  let result = physics_mechanics_energy_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_energy_graphn_sum(s : PhysicsmechanicsenergyGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_mechanics_energy_node_get(s : PhysicsmechanicsenergyNode, i : Int
 }
 
 pub fn physics_mechanics_energy_node_set(s : PhysicsmechanicsenergyNode, i : Int, v : Double) -> PhysicsmechanicsenergyNode {
-  let result = physics_mechanics_energy_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_energy_node_sum(s : PhysicsmechanicsenergyNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_mechanics_energy_edge_get(s : PhysicsmechanicsenergyEdge, i : Int
 }
 
 pub fn physics_mechanics_energy_edge_set(s : PhysicsmechanicsenergyEdge, i : Int, v : Double) -> PhysicsmechanicsenergyEdge {
-  let result = physics_mechanics_energy_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_energy_edge_sum(s : PhysicsmechanicsenergyEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_mechanics_energy_path_get(s : PhysicsmechanicsenergyPath, i : Int
 }
 
 pub fn physics_mechanics_energy_path_set(s : PhysicsmechanicsenergyPath, i : Int, v : Double) -> PhysicsmechanicsenergyPath {
-  let result = physics_mechanics_energy_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_energy_path_sum(s : PhysicsmechanicsenergyPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_mechanics_energy_cluster_get(s : PhysicsmechanicsenergyCluster, i
 }
 
 pub fn physics_mechanics_energy_cluster_set(s : PhysicsmechanicsenergyCluster, i : Int, v : Double) -> PhysicsmechanicsenergyCluster {
-  let result = physics_mechanics_energy_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_energy_cluster_sum(s : PhysicsmechanicsenergyCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_mechanics_energy_model_get(s : PhysicsmechanicsenergyModel, i : I
 }
 
 pub fn physics_mechanics_energy_model_set(s : PhysicsmechanicsenergyModel, i : Int, v : Double) -> PhysicsmechanicsenergyModel {
-  let result = physics_mechanics_energy_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_energy_model_sum(s : PhysicsmechanicsenergyModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_mechanics_energy_layer_get(s : PhysicsmechanicsenergyLayer, i : I
 }
 
 pub fn physics_mechanics_energy_layer_set(s : PhysicsmechanicsenergyLayer, i : Int, v : Double) -> PhysicsmechanicsenergyLayer {
-  let result = physics_mechanics_energy_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_energy_layer_sum(s : PhysicsmechanicsenergyLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_mechanics_energy_buffer_get(s : PhysicsmechanicsenergyBuffer, i :
 }
 
 pub fn physics_mechanics_energy_buffer_set(s : PhysicsmechanicsenergyBuffer, i : Int, v : Double) -> PhysicsmechanicsenergyBuffer {
-  let result = physics_mechanics_energy_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_energy_buffer_sum(s : PhysicsmechanicsenergyBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_mechanics_energy_cursor_get(s : PhysicsmechanicsenergyCursor, i :
 }
 
 pub fn physics_mechanics_energy_cursor_set(s : PhysicsmechanicsenergyCursor, i : Int, v : Double) -> PhysicsmechanicsenergyCursor {
-  let result = physics_mechanics_energy_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_energy_cursor_sum(s : PhysicsmechanicsenergyCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_mechanics_energy_view_get(s : PhysicsmechanicsenergyView, i : Int
 }
 
 pub fn physics_mechanics_energy_view_set(s : PhysicsmechanicsenergyView, i : Int, v : Double) -> PhysicsmechanicsenergyView {
-  let result = physics_mechanics_energy_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_energy_view_sum(s : PhysicsmechanicsenergyView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_mechanics_energy_range_get(s : PhysicsmechanicsenergyRange, i : I
 }
 
 pub fn physics_mechanics_energy_range_set(s : PhysicsmechanicsenergyRange, i : Int, v : Double) -> PhysicsmechanicsenergyRange {
-  let result = physics_mechanics_energy_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_energy_range_sum(s : PhysicsmechanicsenergyRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_mechanics_energy_slice_get(s : PhysicsmechanicsenergySlice, i : I
 }
 
 pub fn physics_mechanics_energy_slice_set(s : PhysicsmechanicsenergySlice, i : Int, v : Double) -> PhysicsmechanicsenergySlice {
-  let result = physics_mechanics_energy_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_energy_slice_sum(s : PhysicsmechanicsenergySlice) -> Double { @_common.sum(s.data) }

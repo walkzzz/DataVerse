@@ -107,23 +107,15 @@ pub fn math_linear_prog_series_std(s : MathlinearprogSeries) -> Double { @_commo
 pub fn math_linear_prog_series_median(s : MathlinearprogSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_linear_prog_series_scale(s : MathlinearprogSeries, f : Double) -> MathlinearprogSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_linear_prog_series_add(a : MathlinearprogSeries, b : MathlinearprogSeries) -> MathlinearprogSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_linear_prog_series_sub(a : MathlinearprogSeries, b : MathlinearprogSeries) -> MathlinearprogSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_linear_prog_series_normalize(s : MathlinearprogSeries) -> MathlinearprogSeries {
@@ -254,22 +246,16 @@ pub fn math_linear_prog_vector_zero(dim : Int) -> MathlinearprogVector {
 
 pub fn math_linear_prog_vector_add(a : MathlinearprogVector, b : MathlinearprogVector) -> MathlinearprogVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_linear_prog_vector_sub(a : MathlinearprogVector, b : MathlinearprogVector) -> MathlinearprogVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_linear_prog_vector_scale(v : MathlinearprogVector, s : Double) -> MathlinearprogVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_linear_prog_vector_dot(a : MathlinearprogVector, b : MathlinearprogVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_linear_prog_frame_get(s : MathlinearprogFrame, i : Int) -> Double {
 }
 
 pub fn math_linear_prog_frame_set(s : MathlinearprogFrame, i : Int, v : Double) -> MathlinearprogFrame {
-  let result = math_linear_prog_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_prog_frame_sum(s : MathlinearprogFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_linear_prog_table_get(s : MathlinearprogTable, i : Int) -> Double {
 }
 
 pub fn math_linear_prog_table_set(s : MathlinearprogTable, i : Int, v : Double) -> MathlinearprogTable {
-  let result = math_linear_prog_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_prog_table_sum(s : MathlinearprogTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_linear_prog_graphn_get(s : MathlinearprogGraphN, i : Int) -> Double 
 }
 
 pub fn math_linear_prog_graphn_set(s : MathlinearprogGraphN, i : Int, v : Double) -> MathlinearprogGraphN {
-  let result = math_linear_prog_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_prog_graphn_sum(s : MathlinearprogGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_linear_prog_node_get(s : MathlinearprogNode, i : Int) -> Double {
 }
 
 pub fn math_linear_prog_node_set(s : MathlinearprogNode, i : Int, v : Double) -> MathlinearprogNode {
-  let result = math_linear_prog_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_prog_node_sum(s : MathlinearprogNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_linear_prog_edge_get(s : MathlinearprogEdge, i : Int) -> Double {
 }
 
 pub fn math_linear_prog_edge_set(s : MathlinearprogEdge, i : Int, v : Double) -> MathlinearprogEdge {
-  let result = math_linear_prog_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_prog_edge_sum(s : MathlinearprogEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_linear_prog_path_get(s : MathlinearprogPath, i : Int) -> Double {
 }
 
 pub fn math_linear_prog_path_set(s : MathlinearprogPath, i : Int, v : Double) -> MathlinearprogPath {
-  let result = math_linear_prog_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_prog_path_sum(s : MathlinearprogPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_linear_prog_cluster_get(s : MathlinearprogCluster, i : Int) -> Doubl
 }
 
 pub fn math_linear_prog_cluster_set(s : MathlinearprogCluster, i : Int, v : Double) -> MathlinearprogCluster {
-  let result = math_linear_prog_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_prog_cluster_sum(s : MathlinearprogCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_linear_prog_model_get(s : MathlinearprogModel, i : Int) -> Double {
 }
 
 pub fn math_linear_prog_model_set(s : MathlinearprogModel, i : Int, v : Double) -> MathlinearprogModel {
-  let result = math_linear_prog_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_prog_model_sum(s : MathlinearprogModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_linear_prog_layer_get(s : MathlinearprogLayer, i : Int) -> Double {
 }
 
 pub fn math_linear_prog_layer_set(s : MathlinearprogLayer, i : Int, v : Double) -> MathlinearprogLayer {
-  let result = math_linear_prog_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_prog_layer_sum(s : MathlinearprogLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_linear_prog_buffer_get(s : MathlinearprogBuffer, i : Int) -> Double 
 }
 
 pub fn math_linear_prog_buffer_set(s : MathlinearprogBuffer, i : Int, v : Double) -> MathlinearprogBuffer {
-  let result = math_linear_prog_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_prog_buffer_sum(s : MathlinearprogBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_linear_prog_cursor_get(s : MathlinearprogCursor, i : Int) -> Double 
 }
 
 pub fn math_linear_prog_cursor_set(s : MathlinearprogCursor, i : Int, v : Double) -> MathlinearprogCursor {
-  let result = math_linear_prog_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_prog_cursor_sum(s : MathlinearprogCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_linear_prog_view_get(s : MathlinearprogView, i : Int) -> Double {
 }
 
 pub fn math_linear_prog_view_set(s : MathlinearprogView, i : Int, v : Double) -> MathlinearprogView {
-  let result = math_linear_prog_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_prog_view_sum(s : MathlinearprogView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_linear_prog_range_get(s : MathlinearprogRange, i : Int) -> Double {
 }
 
 pub fn math_linear_prog_range_set(s : MathlinearprogRange, i : Int, v : Double) -> MathlinearprogRange {
-  let result = math_linear_prog_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_prog_range_sum(s : MathlinearprogRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_linear_prog_slice_get(s : MathlinearprogSlice, i : Int) -> Double {
 }
 
 pub fn math_linear_prog_slice_set(s : MathlinearprogSlice, i : Int, v : Double) -> MathlinearprogSlice {
-  let result = math_linear_prog_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_linear_prog_slice_sum(s : MathlinearprogSlice) -> Double { @_common.sum(s.data) }

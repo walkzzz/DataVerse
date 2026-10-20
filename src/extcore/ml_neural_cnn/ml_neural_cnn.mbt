@@ -107,23 +107,15 @@ pub fn ml_neural_cnn_series_std(s : MlneuralcnnSeries) -> Double { @_common.std(
 pub fn ml_neural_cnn_series_median(s : MlneuralcnnSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_neural_cnn_series_scale(s : MlneuralcnnSeries, f : Double) -> MlneuralcnnSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_neural_cnn_series_add(a : MlneuralcnnSeries, b : MlneuralcnnSeries) -> MlneuralcnnSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_neural_cnn_series_sub(a : MlneuralcnnSeries, b : MlneuralcnnSeries) -> MlneuralcnnSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_neural_cnn_series_normalize(s : MlneuralcnnSeries) -> MlneuralcnnSeries {
@@ -254,22 +246,16 @@ pub fn ml_neural_cnn_vector_zero(dim : Int) -> MlneuralcnnVector {
 
 pub fn ml_neural_cnn_vector_add(a : MlneuralcnnVector, b : MlneuralcnnVector) -> MlneuralcnnVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_neural_cnn_vector_sub(a : MlneuralcnnVector, b : MlneuralcnnVector) -> MlneuralcnnVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_neural_cnn_vector_scale(v : MlneuralcnnVector, s : Double) -> MlneuralcnnVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_neural_cnn_vector_dot(a : MlneuralcnnVector, b : MlneuralcnnVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_neural_cnn_frame_get(s : MlneuralcnnFrame, i : Int) -> Double {
 }
 
 pub fn ml_neural_cnn_frame_set(s : MlneuralcnnFrame, i : Int, v : Double) -> MlneuralcnnFrame {
-  let result = ml_neural_cnn_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_cnn_frame_sum(s : MlneuralcnnFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_neural_cnn_table_get(s : MlneuralcnnTable, i : Int) -> Double {
 }
 
 pub fn ml_neural_cnn_table_set(s : MlneuralcnnTable, i : Int, v : Double) -> MlneuralcnnTable {
-  let result = ml_neural_cnn_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_cnn_table_sum(s : MlneuralcnnTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_neural_cnn_graphn_get(s : MlneuralcnnGraphN, i : Int) -> Double {
 }
 
 pub fn ml_neural_cnn_graphn_set(s : MlneuralcnnGraphN, i : Int, v : Double) -> MlneuralcnnGraphN {
-  let result = ml_neural_cnn_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_cnn_graphn_sum(s : MlneuralcnnGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_neural_cnn_node_get(s : MlneuralcnnNode, i : Int) -> Double {
 }
 
 pub fn ml_neural_cnn_node_set(s : MlneuralcnnNode, i : Int, v : Double) -> MlneuralcnnNode {
-  let result = ml_neural_cnn_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_cnn_node_sum(s : MlneuralcnnNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_neural_cnn_edge_get(s : MlneuralcnnEdge, i : Int) -> Double {
 }
 
 pub fn ml_neural_cnn_edge_set(s : MlneuralcnnEdge, i : Int, v : Double) -> MlneuralcnnEdge {
-  let result = ml_neural_cnn_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_cnn_edge_sum(s : MlneuralcnnEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_neural_cnn_path_get(s : MlneuralcnnPath, i : Int) -> Double {
 }
 
 pub fn ml_neural_cnn_path_set(s : MlneuralcnnPath, i : Int, v : Double) -> MlneuralcnnPath {
-  let result = ml_neural_cnn_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_cnn_path_sum(s : MlneuralcnnPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_neural_cnn_cluster_get(s : MlneuralcnnCluster, i : Int) -> Double {
 }
 
 pub fn ml_neural_cnn_cluster_set(s : MlneuralcnnCluster, i : Int, v : Double) -> MlneuralcnnCluster {
-  let result = ml_neural_cnn_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_cnn_cluster_sum(s : MlneuralcnnCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_neural_cnn_model_get(s : MlneuralcnnModel, i : Int) -> Double {
 }
 
 pub fn ml_neural_cnn_model_set(s : MlneuralcnnModel, i : Int, v : Double) -> MlneuralcnnModel {
-  let result = ml_neural_cnn_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_cnn_model_sum(s : MlneuralcnnModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_neural_cnn_layer_get(s : MlneuralcnnLayer, i : Int) -> Double {
 }
 
 pub fn ml_neural_cnn_layer_set(s : MlneuralcnnLayer, i : Int, v : Double) -> MlneuralcnnLayer {
-  let result = ml_neural_cnn_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_cnn_layer_sum(s : MlneuralcnnLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_neural_cnn_buffer_get(s : MlneuralcnnBuffer, i : Int) -> Double {
 }
 
 pub fn ml_neural_cnn_buffer_set(s : MlneuralcnnBuffer, i : Int, v : Double) -> MlneuralcnnBuffer {
-  let result = ml_neural_cnn_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_cnn_buffer_sum(s : MlneuralcnnBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_neural_cnn_cursor_get(s : MlneuralcnnCursor, i : Int) -> Double {
 }
 
 pub fn ml_neural_cnn_cursor_set(s : MlneuralcnnCursor, i : Int, v : Double) -> MlneuralcnnCursor {
-  let result = ml_neural_cnn_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_cnn_cursor_sum(s : MlneuralcnnCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_neural_cnn_view_get(s : MlneuralcnnView, i : Int) -> Double {
 }
 
 pub fn ml_neural_cnn_view_set(s : MlneuralcnnView, i : Int, v : Double) -> MlneuralcnnView {
-  let result = ml_neural_cnn_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_cnn_view_sum(s : MlneuralcnnView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_neural_cnn_range_get(s : MlneuralcnnRange, i : Int) -> Double {
 }
 
 pub fn ml_neural_cnn_range_set(s : MlneuralcnnRange, i : Int, v : Double) -> MlneuralcnnRange {
-  let result = ml_neural_cnn_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_cnn_range_sum(s : MlneuralcnnRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_neural_cnn_slice_get(s : MlneuralcnnSlice, i : Int) -> Double {
 }
 
 pub fn ml_neural_cnn_slice_set(s : MlneuralcnnSlice, i : Int, v : Double) -> MlneuralcnnSlice {
-  let result = ml_neural_cnn_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_neural_cnn_slice_sum(s : MlneuralcnnSlice) -> Double { @_common.sum(s.data) }

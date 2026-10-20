@@ -107,23 +107,15 @@ pub fn chem_desc_maccs_series_std(s : ChemdescmaccsSeries) -> Double { @_common.
 pub fn chem_desc_maccs_series_median(s : ChemdescmaccsSeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_desc_maccs_series_scale(s : ChemdescmaccsSeries, f : Double) -> ChemdescmaccsSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn chem_desc_maccs_series_add(a : ChemdescmaccsSeries, b : ChemdescmaccsSeries) -> ChemdescmaccsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn chem_desc_maccs_series_sub(a : ChemdescmaccsSeries, b : ChemdescmaccsSeries) -> ChemdescmaccsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn chem_desc_maccs_series_normalize(s : ChemdescmaccsSeries) -> ChemdescmaccsSeries {
@@ -254,22 +246,16 @@ pub fn chem_desc_maccs_vector_zero(dim : Int) -> ChemdescmaccsVector {
 
 pub fn chem_desc_maccs_vector_add(a : ChemdescmaccsVector, b : ChemdescmaccsVector) -> ChemdescmaccsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_desc_maccs_vector_sub(a : ChemdescmaccsVector, b : ChemdescmaccsVector) -> ChemdescmaccsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_desc_maccs_vector_scale(v : ChemdescmaccsVector, s : Double) -> ChemdescmaccsVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn chem_desc_maccs_vector_dot(a : ChemdescmaccsVector, b : ChemdescmaccsVector) -> Double {
@@ -372,10 +358,9 @@ pub fn chem_desc_maccs_frame_get(s : ChemdescmaccsFrame, i : Int) -> Double {
 }
 
 pub fn chem_desc_maccs_frame_set(s : ChemdescmaccsFrame, i : Int, v : Double) -> ChemdescmaccsFrame {
-  let result = chem_desc_maccs_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_frame_sum(s : ChemdescmaccsFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn chem_desc_maccs_table_get(s : ChemdescmaccsTable, i : Int) -> Double {
 }
 
 pub fn chem_desc_maccs_table_set(s : ChemdescmaccsTable, i : Int, v : Double) -> ChemdescmaccsTable {
-  let result = chem_desc_maccs_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_table_sum(s : ChemdescmaccsTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn chem_desc_maccs_graphn_get(s : ChemdescmaccsGraphN, i : Int) -> Double {
 }
 
 pub fn chem_desc_maccs_graphn_set(s : ChemdescmaccsGraphN, i : Int, v : Double) -> ChemdescmaccsGraphN {
-  let result = chem_desc_maccs_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_graphn_sum(s : ChemdescmaccsGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn chem_desc_maccs_node_get(s : ChemdescmaccsNode, i : Int) -> Double {
 }
 
 pub fn chem_desc_maccs_node_set(s : ChemdescmaccsNode, i : Int, v : Double) -> ChemdescmaccsNode {
-  let result = chem_desc_maccs_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_node_sum(s : ChemdescmaccsNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn chem_desc_maccs_edge_get(s : ChemdescmaccsEdge, i : Int) -> Double {
 }
 
 pub fn chem_desc_maccs_edge_set(s : ChemdescmaccsEdge, i : Int, v : Double) -> ChemdescmaccsEdge {
-  let result = chem_desc_maccs_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_edge_sum(s : ChemdescmaccsEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn chem_desc_maccs_path_get(s : ChemdescmaccsPath, i : Int) -> Double {
 }
 
 pub fn chem_desc_maccs_path_set(s : ChemdescmaccsPath, i : Int, v : Double) -> ChemdescmaccsPath {
-  let result = chem_desc_maccs_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_path_sum(s : ChemdescmaccsPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn chem_desc_maccs_cluster_get(s : ChemdescmaccsCluster, i : Int) -> Double 
 }
 
 pub fn chem_desc_maccs_cluster_set(s : ChemdescmaccsCluster, i : Int, v : Double) -> ChemdescmaccsCluster {
-  let result = chem_desc_maccs_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_cluster_sum(s : ChemdescmaccsCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn chem_desc_maccs_model_get(s : ChemdescmaccsModel, i : Int) -> Double {
 }
 
 pub fn chem_desc_maccs_model_set(s : ChemdescmaccsModel, i : Int, v : Double) -> ChemdescmaccsModel {
-  let result = chem_desc_maccs_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_model_sum(s : ChemdescmaccsModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn chem_desc_maccs_layer_get(s : ChemdescmaccsLayer, i : Int) -> Double {
 }
 
 pub fn chem_desc_maccs_layer_set(s : ChemdescmaccsLayer, i : Int, v : Double) -> ChemdescmaccsLayer {
-  let result = chem_desc_maccs_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_layer_sum(s : ChemdescmaccsLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn chem_desc_maccs_buffer_get(s : ChemdescmaccsBuffer, i : Int) -> Double {
 }
 
 pub fn chem_desc_maccs_buffer_set(s : ChemdescmaccsBuffer, i : Int, v : Double) -> ChemdescmaccsBuffer {
-  let result = chem_desc_maccs_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_buffer_sum(s : ChemdescmaccsBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn chem_desc_maccs_cursor_get(s : ChemdescmaccsCursor, i : Int) -> Double {
 }
 
 pub fn chem_desc_maccs_cursor_set(s : ChemdescmaccsCursor, i : Int, v : Double) -> ChemdescmaccsCursor {
-  let result = chem_desc_maccs_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_cursor_sum(s : ChemdescmaccsCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn chem_desc_maccs_view_get(s : ChemdescmaccsView, i : Int) -> Double {
 }
 
 pub fn chem_desc_maccs_view_set(s : ChemdescmaccsView, i : Int, v : Double) -> ChemdescmaccsView {
-  let result = chem_desc_maccs_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_view_sum(s : ChemdescmaccsView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn chem_desc_maccs_range_get(s : ChemdescmaccsRange, i : Int) -> Double {
 }
 
 pub fn chem_desc_maccs_range_set(s : ChemdescmaccsRange, i : Int, v : Double) -> ChemdescmaccsRange {
-  let result = chem_desc_maccs_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_range_sum(s : ChemdescmaccsRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn chem_desc_maccs_slice_get(s : ChemdescmaccsSlice, i : Int) -> Double {
 }
 
 pub fn chem_desc_maccs_slice_set(s : ChemdescmaccsSlice, i : Int, v : Double) -> ChemdescmaccsSlice {
-  let result = chem_desc_maccs_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_maccs_slice_sum(s : ChemdescmaccsSlice) -> Double { @_common.sum(s.data) }

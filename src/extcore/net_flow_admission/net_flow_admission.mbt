@@ -107,23 +107,15 @@ pub fn net_flow_admission_series_std(s : NetflowadmissionSeries) -> Double { @_c
 pub fn net_flow_admission_series_median(s : NetflowadmissionSeries) -> Double { @_common.median(s.vals) }
 
 pub fn net_flow_admission_series_scale(s : NetflowadmissionSeries, f : Double) -> NetflowadmissionSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn net_flow_admission_series_add(a : NetflowadmissionSeries, b : NetflowadmissionSeries) -> NetflowadmissionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn net_flow_admission_series_sub(a : NetflowadmissionSeries, b : NetflowadmissionSeries) -> NetflowadmissionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn net_flow_admission_series_normalize(s : NetflowadmissionSeries) -> NetflowadmissionSeries {
@@ -254,22 +246,16 @@ pub fn net_flow_admission_vector_zero(dim : Int) -> NetflowadmissionVector {
 
 pub fn net_flow_admission_vector_add(a : NetflowadmissionVector, b : NetflowadmissionVector) -> NetflowadmissionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_flow_admission_vector_sub(a : NetflowadmissionVector, b : NetflowadmissionVector) -> NetflowadmissionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_flow_admission_vector_scale(v : NetflowadmissionVector, s : Double) -> NetflowadmissionVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn net_flow_admission_vector_dot(a : NetflowadmissionVector, b : NetflowadmissionVector) -> Double {
@@ -372,10 +358,9 @@ pub fn net_flow_admission_frame_get(s : NetflowadmissionFrame, i : Int) -> Doubl
 }
 
 pub fn net_flow_admission_frame_set(s : NetflowadmissionFrame, i : Int, v : Double) -> NetflowadmissionFrame {
-  let result = net_flow_admission_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_admission_frame_sum(s : NetflowadmissionFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn net_flow_admission_table_get(s : NetflowadmissionTable, i : Int) -> Doubl
 }
 
 pub fn net_flow_admission_table_set(s : NetflowadmissionTable, i : Int, v : Double) -> NetflowadmissionTable {
-  let result = net_flow_admission_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_admission_table_sum(s : NetflowadmissionTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn net_flow_admission_graphn_get(s : NetflowadmissionGraphN, i : Int) -> Dou
 }
 
 pub fn net_flow_admission_graphn_set(s : NetflowadmissionGraphN, i : Int, v : Double) -> NetflowadmissionGraphN {
-  let result = net_flow_admission_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_admission_graphn_sum(s : NetflowadmissionGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn net_flow_admission_node_get(s : NetflowadmissionNode, i : Int) -> Double 
 }
 
 pub fn net_flow_admission_node_set(s : NetflowadmissionNode, i : Int, v : Double) -> NetflowadmissionNode {
-  let result = net_flow_admission_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_admission_node_sum(s : NetflowadmissionNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn net_flow_admission_edge_get(s : NetflowadmissionEdge, i : Int) -> Double 
 }
 
 pub fn net_flow_admission_edge_set(s : NetflowadmissionEdge, i : Int, v : Double) -> NetflowadmissionEdge {
-  let result = net_flow_admission_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_admission_edge_sum(s : NetflowadmissionEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn net_flow_admission_path_get(s : NetflowadmissionPath, i : Int) -> Double 
 }
 
 pub fn net_flow_admission_path_set(s : NetflowadmissionPath, i : Int, v : Double) -> NetflowadmissionPath {
-  let result = net_flow_admission_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_admission_path_sum(s : NetflowadmissionPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn net_flow_admission_cluster_get(s : NetflowadmissionCluster, i : Int) -> D
 }
 
 pub fn net_flow_admission_cluster_set(s : NetflowadmissionCluster, i : Int, v : Double) -> NetflowadmissionCluster {
-  let result = net_flow_admission_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_admission_cluster_sum(s : NetflowadmissionCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn net_flow_admission_model_get(s : NetflowadmissionModel, i : Int) -> Doubl
 }
 
 pub fn net_flow_admission_model_set(s : NetflowadmissionModel, i : Int, v : Double) -> NetflowadmissionModel {
-  let result = net_flow_admission_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_admission_model_sum(s : NetflowadmissionModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn net_flow_admission_layer_get(s : NetflowadmissionLayer, i : Int) -> Doubl
 }
 
 pub fn net_flow_admission_layer_set(s : NetflowadmissionLayer, i : Int, v : Double) -> NetflowadmissionLayer {
-  let result = net_flow_admission_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_admission_layer_sum(s : NetflowadmissionLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn net_flow_admission_buffer_get(s : NetflowadmissionBuffer, i : Int) -> Dou
 }
 
 pub fn net_flow_admission_buffer_set(s : NetflowadmissionBuffer, i : Int, v : Double) -> NetflowadmissionBuffer {
-  let result = net_flow_admission_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_admission_buffer_sum(s : NetflowadmissionBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn net_flow_admission_cursor_get(s : NetflowadmissionCursor, i : Int) -> Dou
 }
 
 pub fn net_flow_admission_cursor_set(s : NetflowadmissionCursor, i : Int, v : Double) -> NetflowadmissionCursor {
-  let result = net_flow_admission_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_admission_cursor_sum(s : NetflowadmissionCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn net_flow_admission_view_get(s : NetflowadmissionView, i : Int) -> Double 
 }
 
 pub fn net_flow_admission_view_set(s : NetflowadmissionView, i : Int, v : Double) -> NetflowadmissionView {
-  let result = net_flow_admission_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_admission_view_sum(s : NetflowadmissionView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn net_flow_admission_range_get(s : NetflowadmissionRange, i : Int) -> Doubl
 }
 
 pub fn net_flow_admission_range_set(s : NetflowadmissionRange, i : Int, v : Double) -> NetflowadmissionRange {
-  let result = net_flow_admission_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_admission_range_sum(s : NetflowadmissionRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn net_flow_admission_slice_get(s : NetflowadmissionSlice, i : Int) -> Doubl
 }
 
 pub fn net_flow_admission_slice_set(s : NetflowadmissionSlice, i : Int, v : Double) -> NetflowadmissionSlice {
-  let result = net_flow_admission_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_admission_slice_sum(s : NetflowadmissionSlice) -> Double { @_common.sum(s.data) }

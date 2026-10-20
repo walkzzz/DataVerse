@@ -107,23 +107,15 @@ pub fn ds_graph_multi_series_std(s : DsgraphmultiSeries) -> Double { @_common.st
 pub fn ds_graph_multi_series_median(s : DsgraphmultiSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_graph_multi_series_scale(s : DsgraphmultiSeries, f : Double) -> DsgraphmultiSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_graph_multi_series_add(a : DsgraphmultiSeries, b : DsgraphmultiSeries) -> DsgraphmultiSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_graph_multi_series_sub(a : DsgraphmultiSeries, b : DsgraphmultiSeries) -> DsgraphmultiSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_graph_multi_series_normalize(s : DsgraphmultiSeries) -> DsgraphmultiSeries {
@@ -254,22 +246,16 @@ pub fn ds_graph_multi_vector_zero(dim : Int) -> DsgraphmultiVector {
 
 pub fn ds_graph_multi_vector_add(a : DsgraphmultiVector, b : DsgraphmultiVector) -> DsgraphmultiVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_graph_multi_vector_sub(a : DsgraphmultiVector, b : DsgraphmultiVector) -> DsgraphmultiVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_graph_multi_vector_scale(v : DsgraphmultiVector, s : Double) -> DsgraphmultiVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_graph_multi_vector_dot(a : DsgraphmultiVector, b : DsgraphmultiVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_graph_multi_frame_get(s : DsgraphmultiFrame, i : Int) -> Double {
 }
 
 pub fn ds_graph_multi_frame_set(s : DsgraphmultiFrame, i : Int, v : Double) -> DsgraphmultiFrame {
-  let result = ds_graph_multi_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_frame_sum(s : DsgraphmultiFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_graph_multi_table_get(s : DsgraphmultiTable, i : Int) -> Double {
 }
 
 pub fn ds_graph_multi_table_set(s : DsgraphmultiTable, i : Int, v : Double) -> DsgraphmultiTable {
-  let result = ds_graph_multi_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_table_sum(s : DsgraphmultiTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_graph_multi_graphn_get(s : DsgraphmultiGraphN, i : Int) -> Double {
 }
 
 pub fn ds_graph_multi_graphn_set(s : DsgraphmultiGraphN, i : Int, v : Double) -> DsgraphmultiGraphN {
-  let result = ds_graph_multi_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_graphn_sum(s : DsgraphmultiGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_graph_multi_node_get(s : DsgraphmultiNode, i : Int) -> Double {
 }
 
 pub fn ds_graph_multi_node_set(s : DsgraphmultiNode, i : Int, v : Double) -> DsgraphmultiNode {
-  let result = ds_graph_multi_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_node_sum(s : DsgraphmultiNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_graph_multi_edge_get(s : DsgraphmultiEdge, i : Int) -> Double {
 }
 
 pub fn ds_graph_multi_edge_set(s : DsgraphmultiEdge, i : Int, v : Double) -> DsgraphmultiEdge {
-  let result = ds_graph_multi_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_edge_sum(s : DsgraphmultiEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_graph_multi_path_get(s : DsgraphmultiPath, i : Int) -> Double {
 }
 
 pub fn ds_graph_multi_path_set(s : DsgraphmultiPath, i : Int, v : Double) -> DsgraphmultiPath {
-  let result = ds_graph_multi_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_path_sum(s : DsgraphmultiPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_graph_multi_cluster_get(s : DsgraphmultiCluster, i : Int) -> Double {
 }
 
 pub fn ds_graph_multi_cluster_set(s : DsgraphmultiCluster, i : Int, v : Double) -> DsgraphmultiCluster {
-  let result = ds_graph_multi_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_cluster_sum(s : DsgraphmultiCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_graph_multi_model_get(s : DsgraphmultiModel, i : Int) -> Double {
 }
 
 pub fn ds_graph_multi_model_set(s : DsgraphmultiModel, i : Int, v : Double) -> DsgraphmultiModel {
-  let result = ds_graph_multi_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_model_sum(s : DsgraphmultiModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_graph_multi_layer_get(s : DsgraphmultiLayer, i : Int) -> Double {
 }
 
 pub fn ds_graph_multi_layer_set(s : DsgraphmultiLayer, i : Int, v : Double) -> DsgraphmultiLayer {
-  let result = ds_graph_multi_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_layer_sum(s : DsgraphmultiLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_graph_multi_buffer_get(s : DsgraphmultiBuffer, i : Int) -> Double {
 }
 
 pub fn ds_graph_multi_buffer_set(s : DsgraphmultiBuffer, i : Int, v : Double) -> DsgraphmultiBuffer {
-  let result = ds_graph_multi_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_buffer_sum(s : DsgraphmultiBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_graph_multi_cursor_get(s : DsgraphmultiCursor, i : Int) -> Double {
 }
 
 pub fn ds_graph_multi_cursor_set(s : DsgraphmultiCursor, i : Int, v : Double) -> DsgraphmultiCursor {
-  let result = ds_graph_multi_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_cursor_sum(s : DsgraphmultiCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_graph_multi_view_get(s : DsgraphmultiView, i : Int) -> Double {
 }
 
 pub fn ds_graph_multi_view_set(s : DsgraphmultiView, i : Int, v : Double) -> DsgraphmultiView {
-  let result = ds_graph_multi_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_view_sum(s : DsgraphmultiView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_graph_multi_range_get(s : DsgraphmultiRange, i : Int) -> Double {
 }
 
 pub fn ds_graph_multi_range_set(s : DsgraphmultiRange, i : Int, v : Double) -> DsgraphmultiRange {
-  let result = ds_graph_multi_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_range_sum(s : DsgraphmultiRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_graph_multi_slice_get(s : DsgraphmultiSlice, i : Int) -> Double {
 }
 
 pub fn ds_graph_multi_slice_set(s : DsgraphmultiSlice, i : Int, v : Double) -> DsgraphmultiSlice {
-  let result = ds_graph_multi_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_multi_slice_sum(s : DsgraphmultiSlice) -> Double { @_common.sum(s.data) }

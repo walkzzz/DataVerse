@@ -107,23 +107,15 @@ pub fn ml_cluster_agglomerative_series_std(s : MlclusteragglomerativeSeries) -> 
 pub fn ml_cluster_agglomerative_series_median(s : MlclusteragglomerativeSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_cluster_agglomerative_series_scale(s : MlclusteragglomerativeSeries, f : Double) -> MlclusteragglomerativeSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_cluster_agglomerative_series_add(a : MlclusteragglomerativeSeries, b : MlclusteragglomerativeSeries) -> MlclusteragglomerativeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_cluster_agglomerative_series_sub(a : MlclusteragglomerativeSeries, b : MlclusteragglomerativeSeries) -> MlclusteragglomerativeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_cluster_agglomerative_series_normalize(s : MlclusteragglomerativeSeries) -> MlclusteragglomerativeSeries {
@@ -254,22 +246,16 @@ pub fn ml_cluster_agglomerative_vector_zero(dim : Int) -> Mlclusteragglomerative
 
 pub fn ml_cluster_agglomerative_vector_add(a : MlclusteragglomerativeVector, b : MlclusteragglomerativeVector) -> MlclusteragglomerativeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_cluster_agglomerative_vector_sub(a : MlclusteragglomerativeVector, b : MlclusteragglomerativeVector) -> MlclusteragglomerativeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_cluster_agglomerative_vector_scale(v : MlclusteragglomerativeVector, s : Double) -> MlclusteragglomerativeVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_cluster_agglomerative_vector_dot(a : MlclusteragglomerativeVector, b : MlclusteragglomerativeVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_cluster_agglomerative_frame_get(s : MlclusteragglomerativeFrame, i : I
 }
 
 pub fn ml_cluster_agglomerative_frame_set(s : MlclusteragglomerativeFrame, i : Int, v : Double) -> MlclusteragglomerativeFrame {
-  let result = ml_cluster_agglomerative_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_frame_sum(s : MlclusteragglomerativeFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_cluster_agglomerative_table_get(s : MlclusteragglomerativeTable, i : I
 }
 
 pub fn ml_cluster_agglomerative_table_set(s : MlclusteragglomerativeTable, i : Int, v : Double) -> MlclusteragglomerativeTable {
-  let result = ml_cluster_agglomerative_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_table_sum(s : MlclusteragglomerativeTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_cluster_agglomerative_graphn_get(s : MlclusteragglomerativeGraphN, i :
 }
 
 pub fn ml_cluster_agglomerative_graphn_set(s : MlclusteragglomerativeGraphN, i : Int, v : Double) -> MlclusteragglomerativeGraphN {
-  let result = ml_cluster_agglomerative_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_graphn_sum(s : MlclusteragglomerativeGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_cluster_agglomerative_node_get(s : MlclusteragglomerativeNode, i : Int
 }
 
 pub fn ml_cluster_agglomerative_node_set(s : MlclusteragglomerativeNode, i : Int, v : Double) -> MlclusteragglomerativeNode {
-  let result = ml_cluster_agglomerative_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_node_sum(s : MlclusteragglomerativeNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_cluster_agglomerative_edge_get(s : MlclusteragglomerativeEdge, i : Int
 }
 
 pub fn ml_cluster_agglomerative_edge_set(s : MlclusteragglomerativeEdge, i : Int, v : Double) -> MlclusteragglomerativeEdge {
-  let result = ml_cluster_agglomerative_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_edge_sum(s : MlclusteragglomerativeEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_cluster_agglomerative_path_get(s : MlclusteragglomerativePath, i : Int
 }
 
 pub fn ml_cluster_agglomerative_path_set(s : MlclusteragglomerativePath, i : Int, v : Double) -> MlclusteragglomerativePath {
-  let result = ml_cluster_agglomerative_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_path_sum(s : MlclusteragglomerativePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_cluster_agglomerative_cluster_get(s : MlclusteragglomerativeCluster, i
 }
 
 pub fn ml_cluster_agglomerative_cluster_set(s : MlclusteragglomerativeCluster, i : Int, v : Double) -> MlclusteragglomerativeCluster {
-  let result = ml_cluster_agglomerative_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_cluster_sum(s : MlclusteragglomerativeCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_cluster_agglomerative_model_get(s : MlclusteragglomerativeModel, i : I
 }
 
 pub fn ml_cluster_agglomerative_model_set(s : MlclusteragglomerativeModel, i : Int, v : Double) -> MlclusteragglomerativeModel {
-  let result = ml_cluster_agglomerative_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_model_sum(s : MlclusteragglomerativeModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_cluster_agglomerative_layer_get(s : MlclusteragglomerativeLayer, i : I
 }
 
 pub fn ml_cluster_agglomerative_layer_set(s : MlclusteragglomerativeLayer, i : Int, v : Double) -> MlclusteragglomerativeLayer {
-  let result = ml_cluster_agglomerative_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_layer_sum(s : MlclusteragglomerativeLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_cluster_agglomerative_buffer_get(s : MlclusteragglomerativeBuffer, i :
 }
 
 pub fn ml_cluster_agglomerative_buffer_set(s : MlclusteragglomerativeBuffer, i : Int, v : Double) -> MlclusteragglomerativeBuffer {
-  let result = ml_cluster_agglomerative_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_buffer_sum(s : MlclusteragglomerativeBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_cluster_agglomerative_cursor_get(s : MlclusteragglomerativeCursor, i :
 }
 
 pub fn ml_cluster_agglomerative_cursor_set(s : MlclusteragglomerativeCursor, i : Int, v : Double) -> MlclusteragglomerativeCursor {
-  let result = ml_cluster_agglomerative_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_cursor_sum(s : MlclusteragglomerativeCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_cluster_agglomerative_view_get(s : MlclusteragglomerativeView, i : Int
 }
 
 pub fn ml_cluster_agglomerative_view_set(s : MlclusteragglomerativeView, i : Int, v : Double) -> MlclusteragglomerativeView {
-  let result = ml_cluster_agglomerative_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_view_sum(s : MlclusteragglomerativeView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_cluster_agglomerative_range_get(s : MlclusteragglomerativeRange, i : I
 }
 
 pub fn ml_cluster_agglomerative_range_set(s : MlclusteragglomerativeRange, i : Int, v : Double) -> MlclusteragglomerativeRange {
-  let result = ml_cluster_agglomerative_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_range_sum(s : MlclusteragglomerativeRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_cluster_agglomerative_slice_get(s : MlclusteragglomerativeSlice, i : I
 }
 
 pub fn ml_cluster_agglomerative_slice_set(s : MlclusteragglomerativeSlice, i : Int, v : Double) -> MlclusteragglomerativeSlice {
-  let result = ml_cluster_agglomerative_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_agglomerative_slice_sum(s : MlclusteragglomerativeSlice) -> Double { @_common.sum(s.data) }

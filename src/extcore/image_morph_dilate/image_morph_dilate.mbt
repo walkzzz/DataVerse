@@ -107,23 +107,15 @@ pub fn image_morph_dilate_series_std(s : ImagemorphdilateSeries) -> Double { @_c
 pub fn image_morph_dilate_series_median(s : ImagemorphdilateSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_morph_dilate_series_scale(s : ImagemorphdilateSeries, f : Double) -> ImagemorphdilateSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_morph_dilate_series_add(a : ImagemorphdilateSeries, b : ImagemorphdilateSeries) -> ImagemorphdilateSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_morph_dilate_series_sub(a : ImagemorphdilateSeries, b : ImagemorphdilateSeries) -> ImagemorphdilateSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_morph_dilate_series_normalize(s : ImagemorphdilateSeries) -> ImagemorphdilateSeries {
@@ -254,22 +246,16 @@ pub fn image_morph_dilate_vector_zero(dim : Int) -> ImagemorphdilateVector {
 
 pub fn image_morph_dilate_vector_add(a : ImagemorphdilateVector, b : ImagemorphdilateVector) -> ImagemorphdilateVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_morph_dilate_vector_sub(a : ImagemorphdilateVector, b : ImagemorphdilateVector) -> ImagemorphdilateVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_morph_dilate_vector_scale(v : ImagemorphdilateVector, s : Double) -> ImagemorphdilateVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_morph_dilate_vector_dot(a : ImagemorphdilateVector, b : ImagemorphdilateVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_morph_dilate_frame_get(s : ImagemorphdilateFrame, i : Int) -> Doubl
 }
 
 pub fn image_morph_dilate_frame_set(s : ImagemorphdilateFrame, i : Int, v : Double) -> ImagemorphdilateFrame {
-  let result = image_morph_dilate_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_frame_sum(s : ImagemorphdilateFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_morph_dilate_table_get(s : ImagemorphdilateTable, i : Int) -> Doubl
 }
 
 pub fn image_morph_dilate_table_set(s : ImagemorphdilateTable, i : Int, v : Double) -> ImagemorphdilateTable {
-  let result = image_morph_dilate_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_table_sum(s : ImagemorphdilateTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_morph_dilate_graphn_get(s : ImagemorphdilateGraphN, i : Int) -> Dou
 }
 
 pub fn image_morph_dilate_graphn_set(s : ImagemorphdilateGraphN, i : Int, v : Double) -> ImagemorphdilateGraphN {
-  let result = image_morph_dilate_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_graphn_sum(s : ImagemorphdilateGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_morph_dilate_node_get(s : ImagemorphdilateNode, i : Int) -> Double 
 }
 
 pub fn image_morph_dilate_node_set(s : ImagemorphdilateNode, i : Int, v : Double) -> ImagemorphdilateNode {
-  let result = image_morph_dilate_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_node_sum(s : ImagemorphdilateNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_morph_dilate_edge_get(s : ImagemorphdilateEdge, i : Int) -> Double 
 }
 
 pub fn image_morph_dilate_edge_set(s : ImagemorphdilateEdge, i : Int, v : Double) -> ImagemorphdilateEdge {
-  let result = image_morph_dilate_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_edge_sum(s : ImagemorphdilateEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_morph_dilate_path_get(s : ImagemorphdilatePath, i : Int) -> Double 
 }
 
 pub fn image_morph_dilate_path_set(s : ImagemorphdilatePath, i : Int, v : Double) -> ImagemorphdilatePath {
-  let result = image_morph_dilate_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_path_sum(s : ImagemorphdilatePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_morph_dilate_cluster_get(s : ImagemorphdilateCluster, i : Int) -> D
 }
 
 pub fn image_morph_dilate_cluster_set(s : ImagemorphdilateCluster, i : Int, v : Double) -> ImagemorphdilateCluster {
-  let result = image_morph_dilate_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_cluster_sum(s : ImagemorphdilateCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_morph_dilate_model_get(s : ImagemorphdilateModel, i : Int) -> Doubl
 }
 
 pub fn image_morph_dilate_model_set(s : ImagemorphdilateModel, i : Int, v : Double) -> ImagemorphdilateModel {
-  let result = image_morph_dilate_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_model_sum(s : ImagemorphdilateModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_morph_dilate_layer_get(s : ImagemorphdilateLayer, i : Int) -> Doubl
 }
 
 pub fn image_morph_dilate_layer_set(s : ImagemorphdilateLayer, i : Int, v : Double) -> ImagemorphdilateLayer {
-  let result = image_morph_dilate_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_layer_sum(s : ImagemorphdilateLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_morph_dilate_buffer_get(s : ImagemorphdilateBuffer, i : Int) -> Dou
 }
 
 pub fn image_morph_dilate_buffer_set(s : ImagemorphdilateBuffer, i : Int, v : Double) -> ImagemorphdilateBuffer {
-  let result = image_morph_dilate_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_buffer_sum(s : ImagemorphdilateBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_morph_dilate_cursor_get(s : ImagemorphdilateCursor, i : Int) -> Dou
 }
 
 pub fn image_morph_dilate_cursor_set(s : ImagemorphdilateCursor, i : Int, v : Double) -> ImagemorphdilateCursor {
-  let result = image_morph_dilate_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_cursor_sum(s : ImagemorphdilateCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_morph_dilate_view_get(s : ImagemorphdilateView, i : Int) -> Double 
 }
 
 pub fn image_morph_dilate_view_set(s : ImagemorphdilateView, i : Int, v : Double) -> ImagemorphdilateView {
-  let result = image_morph_dilate_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_view_sum(s : ImagemorphdilateView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_morph_dilate_range_get(s : ImagemorphdilateRange, i : Int) -> Doubl
 }
 
 pub fn image_morph_dilate_range_set(s : ImagemorphdilateRange, i : Int, v : Double) -> ImagemorphdilateRange {
-  let result = image_morph_dilate_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_range_sum(s : ImagemorphdilateRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_morph_dilate_slice_get(s : ImagemorphdilateSlice, i : Int) -> Doubl
 }
 
 pub fn image_morph_dilate_slice_set(s : ImagemorphdilateSlice, i : Int, v : Double) -> ImagemorphdilateSlice {
-  let result = image_morph_dilate_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_dilate_slice_sum(s : ImagemorphdilateSlice) -> Double { @_common.sum(s.data) }

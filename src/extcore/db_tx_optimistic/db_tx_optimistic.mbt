@@ -107,23 +107,15 @@ pub fn db_tx_optimistic_series_std(s : DbtxoptimisticSeries) -> Double { @_commo
 pub fn db_tx_optimistic_series_median(s : DbtxoptimisticSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_tx_optimistic_series_scale(s : DbtxoptimisticSeries, f : Double) -> DbtxoptimisticSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_tx_optimistic_series_add(a : DbtxoptimisticSeries, b : DbtxoptimisticSeries) -> DbtxoptimisticSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_tx_optimistic_series_sub(a : DbtxoptimisticSeries, b : DbtxoptimisticSeries) -> DbtxoptimisticSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_tx_optimistic_series_normalize(s : DbtxoptimisticSeries) -> DbtxoptimisticSeries {
@@ -254,22 +246,16 @@ pub fn db_tx_optimistic_vector_zero(dim : Int) -> DbtxoptimisticVector {
 
 pub fn db_tx_optimistic_vector_add(a : DbtxoptimisticVector, b : DbtxoptimisticVector) -> DbtxoptimisticVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_tx_optimistic_vector_sub(a : DbtxoptimisticVector, b : DbtxoptimisticVector) -> DbtxoptimisticVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_tx_optimistic_vector_scale(v : DbtxoptimisticVector, s : Double) -> DbtxoptimisticVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_tx_optimistic_vector_dot(a : DbtxoptimisticVector, b : DbtxoptimisticVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_tx_optimistic_frame_get(s : DbtxoptimisticFrame, i : Int) -> Double {
 }
 
 pub fn db_tx_optimistic_frame_set(s : DbtxoptimisticFrame, i : Int, v : Double) -> DbtxoptimisticFrame {
-  let result = db_tx_optimistic_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_optimistic_frame_sum(s : DbtxoptimisticFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_tx_optimistic_table_get(s : DbtxoptimisticTable, i : Int) -> Double {
 }
 
 pub fn db_tx_optimistic_table_set(s : DbtxoptimisticTable, i : Int, v : Double) -> DbtxoptimisticTable {
-  let result = db_tx_optimistic_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_optimistic_table_sum(s : DbtxoptimisticTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_tx_optimistic_graphn_get(s : DbtxoptimisticGraphN, i : Int) -> Double 
 }
 
 pub fn db_tx_optimistic_graphn_set(s : DbtxoptimisticGraphN, i : Int, v : Double) -> DbtxoptimisticGraphN {
-  let result = db_tx_optimistic_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_optimistic_graphn_sum(s : DbtxoptimisticGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_tx_optimistic_node_get(s : DbtxoptimisticNode, i : Int) -> Double {
 }
 
 pub fn db_tx_optimistic_node_set(s : DbtxoptimisticNode, i : Int, v : Double) -> DbtxoptimisticNode {
-  let result = db_tx_optimistic_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_optimistic_node_sum(s : DbtxoptimisticNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_tx_optimistic_edge_get(s : DbtxoptimisticEdge, i : Int) -> Double {
 }
 
 pub fn db_tx_optimistic_edge_set(s : DbtxoptimisticEdge, i : Int, v : Double) -> DbtxoptimisticEdge {
-  let result = db_tx_optimistic_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_optimistic_edge_sum(s : DbtxoptimisticEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_tx_optimistic_path_get(s : DbtxoptimisticPath, i : Int) -> Double {
 }
 
 pub fn db_tx_optimistic_path_set(s : DbtxoptimisticPath, i : Int, v : Double) -> DbtxoptimisticPath {
-  let result = db_tx_optimistic_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_optimistic_path_sum(s : DbtxoptimisticPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_tx_optimistic_cluster_get(s : DbtxoptimisticCluster, i : Int) -> Doubl
 }
 
 pub fn db_tx_optimistic_cluster_set(s : DbtxoptimisticCluster, i : Int, v : Double) -> DbtxoptimisticCluster {
-  let result = db_tx_optimistic_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_optimistic_cluster_sum(s : DbtxoptimisticCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_tx_optimistic_model_get(s : DbtxoptimisticModel, i : Int) -> Double {
 }
 
 pub fn db_tx_optimistic_model_set(s : DbtxoptimisticModel, i : Int, v : Double) -> DbtxoptimisticModel {
-  let result = db_tx_optimistic_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_optimistic_model_sum(s : DbtxoptimisticModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_tx_optimistic_layer_get(s : DbtxoptimisticLayer, i : Int) -> Double {
 }
 
 pub fn db_tx_optimistic_layer_set(s : DbtxoptimisticLayer, i : Int, v : Double) -> DbtxoptimisticLayer {
-  let result = db_tx_optimistic_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_optimistic_layer_sum(s : DbtxoptimisticLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_tx_optimistic_buffer_get(s : DbtxoptimisticBuffer, i : Int) -> Double 
 }
 
 pub fn db_tx_optimistic_buffer_set(s : DbtxoptimisticBuffer, i : Int, v : Double) -> DbtxoptimisticBuffer {
-  let result = db_tx_optimistic_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_optimistic_buffer_sum(s : DbtxoptimisticBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_tx_optimistic_cursor_get(s : DbtxoptimisticCursor, i : Int) -> Double 
 }
 
 pub fn db_tx_optimistic_cursor_set(s : DbtxoptimisticCursor, i : Int, v : Double) -> DbtxoptimisticCursor {
-  let result = db_tx_optimistic_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_optimistic_cursor_sum(s : DbtxoptimisticCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_tx_optimistic_view_get(s : DbtxoptimisticView, i : Int) -> Double {
 }
 
 pub fn db_tx_optimistic_view_set(s : DbtxoptimisticView, i : Int, v : Double) -> DbtxoptimisticView {
-  let result = db_tx_optimistic_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_optimistic_view_sum(s : DbtxoptimisticView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_tx_optimistic_range_get(s : DbtxoptimisticRange, i : Int) -> Double {
 }
 
 pub fn db_tx_optimistic_range_set(s : DbtxoptimisticRange, i : Int, v : Double) -> DbtxoptimisticRange {
-  let result = db_tx_optimistic_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_optimistic_range_sum(s : DbtxoptimisticRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_tx_optimistic_slice_get(s : DbtxoptimisticSlice, i : Int) -> Double {
 }
 
 pub fn db_tx_optimistic_slice_set(s : DbtxoptimisticSlice, i : Int, v : Double) -> DbtxoptimisticSlice {
-  let result = db_tx_optimistic_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_tx_optimistic_slice_sum(s : DbtxoptimisticSlice) -> Double { @_common.sum(s.data) }

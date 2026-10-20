@@ -107,23 +107,15 @@ pub fn db_index_gpu_series_std(s : DbindexgpuSeries) -> Double { @_common.std(s.
 pub fn db_index_gpu_series_median(s : DbindexgpuSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_index_gpu_series_scale(s : DbindexgpuSeries, f : Double) -> DbindexgpuSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_index_gpu_series_add(a : DbindexgpuSeries, b : DbindexgpuSeries) -> DbindexgpuSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_index_gpu_series_sub(a : DbindexgpuSeries, b : DbindexgpuSeries) -> DbindexgpuSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_index_gpu_series_normalize(s : DbindexgpuSeries) -> DbindexgpuSeries {
@@ -254,22 +246,16 @@ pub fn db_index_gpu_vector_zero(dim : Int) -> DbindexgpuVector {
 
 pub fn db_index_gpu_vector_add(a : DbindexgpuVector, b : DbindexgpuVector) -> DbindexgpuVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_index_gpu_vector_sub(a : DbindexgpuVector, b : DbindexgpuVector) -> DbindexgpuVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_index_gpu_vector_scale(v : DbindexgpuVector, s : Double) -> DbindexgpuVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_index_gpu_vector_dot(a : DbindexgpuVector, b : DbindexgpuVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_index_gpu_frame_get(s : DbindexgpuFrame, i : Int) -> Double {
 }
 
 pub fn db_index_gpu_frame_set(s : DbindexgpuFrame, i : Int, v : Double) -> DbindexgpuFrame {
-  let result = db_index_gpu_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gpu_frame_sum(s : DbindexgpuFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_index_gpu_table_get(s : DbindexgpuTable, i : Int) -> Double {
 }
 
 pub fn db_index_gpu_table_set(s : DbindexgpuTable, i : Int, v : Double) -> DbindexgpuTable {
-  let result = db_index_gpu_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gpu_table_sum(s : DbindexgpuTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_index_gpu_graphn_get(s : DbindexgpuGraphN, i : Int) -> Double {
 }
 
 pub fn db_index_gpu_graphn_set(s : DbindexgpuGraphN, i : Int, v : Double) -> DbindexgpuGraphN {
-  let result = db_index_gpu_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gpu_graphn_sum(s : DbindexgpuGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_index_gpu_node_get(s : DbindexgpuNode, i : Int) -> Double {
 }
 
 pub fn db_index_gpu_node_set(s : DbindexgpuNode, i : Int, v : Double) -> DbindexgpuNode {
-  let result = db_index_gpu_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gpu_node_sum(s : DbindexgpuNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_index_gpu_edge_get(s : DbindexgpuEdge, i : Int) -> Double {
 }
 
 pub fn db_index_gpu_edge_set(s : DbindexgpuEdge, i : Int, v : Double) -> DbindexgpuEdge {
-  let result = db_index_gpu_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gpu_edge_sum(s : DbindexgpuEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_index_gpu_path_get(s : DbindexgpuPath, i : Int) -> Double {
 }
 
 pub fn db_index_gpu_path_set(s : DbindexgpuPath, i : Int, v : Double) -> DbindexgpuPath {
-  let result = db_index_gpu_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gpu_path_sum(s : DbindexgpuPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_index_gpu_cluster_get(s : DbindexgpuCluster, i : Int) -> Double {
 }
 
 pub fn db_index_gpu_cluster_set(s : DbindexgpuCluster, i : Int, v : Double) -> DbindexgpuCluster {
-  let result = db_index_gpu_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gpu_cluster_sum(s : DbindexgpuCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_index_gpu_model_get(s : DbindexgpuModel, i : Int) -> Double {
 }
 
 pub fn db_index_gpu_model_set(s : DbindexgpuModel, i : Int, v : Double) -> DbindexgpuModel {
-  let result = db_index_gpu_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gpu_model_sum(s : DbindexgpuModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_index_gpu_layer_get(s : DbindexgpuLayer, i : Int) -> Double {
 }
 
 pub fn db_index_gpu_layer_set(s : DbindexgpuLayer, i : Int, v : Double) -> DbindexgpuLayer {
-  let result = db_index_gpu_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gpu_layer_sum(s : DbindexgpuLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_index_gpu_buffer_get(s : DbindexgpuBuffer, i : Int) -> Double {
 }
 
 pub fn db_index_gpu_buffer_set(s : DbindexgpuBuffer, i : Int, v : Double) -> DbindexgpuBuffer {
-  let result = db_index_gpu_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gpu_buffer_sum(s : DbindexgpuBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_index_gpu_cursor_get(s : DbindexgpuCursor, i : Int) -> Double {
 }
 
 pub fn db_index_gpu_cursor_set(s : DbindexgpuCursor, i : Int, v : Double) -> DbindexgpuCursor {
-  let result = db_index_gpu_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gpu_cursor_sum(s : DbindexgpuCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_index_gpu_view_get(s : DbindexgpuView, i : Int) -> Double {
 }
 
 pub fn db_index_gpu_view_set(s : DbindexgpuView, i : Int, v : Double) -> DbindexgpuView {
-  let result = db_index_gpu_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gpu_view_sum(s : DbindexgpuView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_index_gpu_range_get(s : DbindexgpuRange, i : Int) -> Double {
 }
 
 pub fn db_index_gpu_range_set(s : DbindexgpuRange, i : Int, v : Double) -> DbindexgpuRange {
-  let result = db_index_gpu_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gpu_range_sum(s : DbindexgpuRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_index_gpu_slice_get(s : DbindexgpuSlice, i : Int) -> Double {
 }
 
 pub fn db_index_gpu_slice_set(s : DbindexgpuSlice, i : Int, v : Double) -> DbindexgpuSlice {
-  let result = db_index_gpu_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_gpu_slice_sum(s : DbindexgpuSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn timeseries_forecast_nbeats_series_std(s : TimeseriesforecastnbeatsSeries)
 pub fn timeseries_forecast_nbeats_series_median(s : TimeseriesforecastnbeatsSeries) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_forecast_nbeats_series_scale(s : TimeseriesforecastnbeatsSeries, f : Double) -> TimeseriesforecastnbeatsSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn timeseries_forecast_nbeats_series_add(a : TimeseriesforecastnbeatsSeries, b : TimeseriesforecastnbeatsSeries) -> TimeseriesforecastnbeatsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_forecast_nbeats_series_sub(a : TimeseriesforecastnbeatsSeries, b : TimeseriesforecastnbeatsSeries) -> TimeseriesforecastnbeatsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_forecast_nbeats_series_normalize(s : TimeseriesforecastnbeatsSeries) -> TimeseriesforecastnbeatsSeries {
@@ -254,22 +246,16 @@ pub fn timeseries_forecast_nbeats_vector_zero(dim : Int) -> Timeseriesforecastnb
 
 pub fn timeseries_forecast_nbeats_vector_add(a : TimeseriesforecastnbeatsVector, b : TimeseriesforecastnbeatsVector) -> TimeseriesforecastnbeatsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_forecast_nbeats_vector_sub(a : TimeseriesforecastnbeatsVector, b : TimeseriesforecastnbeatsVector) -> TimeseriesforecastnbeatsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_forecast_nbeats_vector_scale(v : TimeseriesforecastnbeatsVector, s : Double) -> TimeseriesforecastnbeatsVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn timeseries_forecast_nbeats_vector_dot(a : TimeseriesforecastnbeatsVector, b : TimeseriesforecastnbeatsVector) -> Double {
@@ -372,10 +358,9 @@ pub fn timeseries_forecast_nbeats_frame_get(s : TimeseriesforecastnbeatsFrame, i
 }
 
 pub fn timeseries_forecast_nbeats_frame_set(s : TimeseriesforecastnbeatsFrame, i : Int, v : Double) -> TimeseriesforecastnbeatsFrame {
-  let result = timeseries_forecast_nbeats_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_nbeats_frame_sum(s : TimeseriesforecastnbeatsFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn timeseries_forecast_nbeats_table_get(s : TimeseriesforecastnbeatsTable, i
 }
 
 pub fn timeseries_forecast_nbeats_table_set(s : TimeseriesforecastnbeatsTable, i : Int, v : Double) -> TimeseriesforecastnbeatsTable {
-  let result = timeseries_forecast_nbeats_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_nbeats_table_sum(s : TimeseriesforecastnbeatsTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn timeseries_forecast_nbeats_graphn_get(s : TimeseriesforecastnbeatsGraphN,
 }
 
 pub fn timeseries_forecast_nbeats_graphn_set(s : TimeseriesforecastnbeatsGraphN, i : Int, v : Double) -> TimeseriesforecastnbeatsGraphN {
-  let result = timeseries_forecast_nbeats_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_nbeats_graphn_sum(s : TimeseriesforecastnbeatsGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn timeseries_forecast_nbeats_node_get(s : TimeseriesforecastnbeatsNode, i :
 }
 
 pub fn timeseries_forecast_nbeats_node_set(s : TimeseriesforecastnbeatsNode, i : Int, v : Double) -> TimeseriesforecastnbeatsNode {
-  let result = timeseries_forecast_nbeats_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_nbeats_node_sum(s : TimeseriesforecastnbeatsNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn timeseries_forecast_nbeats_edge_get(s : TimeseriesforecastnbeatsEdge, i :
 }
 
 pub fn timeseries_forecast_nbeats_edge_set(s : TimeseriesforecastnbeatsEdge, i : Int, v : Double) -> TimeseriesforecastnbeatsEdge {
-  let result = timeseries_forecast_nbeats_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_nbeats_edge_sum(s : TimeseriesforecastnbeatsEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn timeseries_forecast_nbeats_path_get(s : TimeseriesforecastnbeatsPath, i :
 }
 
 pub fn timeseries_forecast_nbeats_path_set(s : TimeseriesforecastnbeatsPath, i : Int, v : Double) -> TimeseriesforecastnbeatsPath {
-  let result = timeseries_forecast_nbeats_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_nbeats_path_sum(s : TimeseriesforecastnbeatsPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn timeseries_forecast_nbeats_cluster_get(s : TimeseriesforecastnbeatsCluste
 }
 
 pub fn timeseries_forecast_nbeats_cluster_set(s : TimeseriesforecastnbeatsCluster, i : Int, v : Double) -> TimeseriesforecastnbeatsCluster {
-  let result = timeseries_forecast_nbeats_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_nbeats_cluster_sum(s : TimeseriesforecastnbeatsCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn timeseries_forecast_nbeats_model_get(s : TimeseriesforecastnbeatsModel, i
 }
 
 pub fn timeseries_forecast_nbeats_model_set(s : TimeseriesforecastnbeatsModel, i : Int, v : Double) -> TimeseriesforecastnbeatsModel {
-  let result = timeseries_forecast_nbeats_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_nbeats_model_sum(s : TimeseriesforecastnbeatsModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn timeseries_forecast_nbeats_layer_get(s : TimeseriesforecastnbeatsLayer, i
 }
 
 pub fn timeseries_forecast_nbeats_layer_set(s : TimeseriesforecastnbeatsLayer, i : Int, v : Double) -> TimeseriesforecastnbeatsLayer {
-  let result = timeseries_forecast_nbeats_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_nbeats_layer_sum(s : TimeseriesforecastnbeatsLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn timeseries_forecast_nbeats_buffer_get(s : TimeseriesforecastnbeatsBuffer,
 }
 
 pub fn timeseries_forecast_nbeats_buffer_set(s : TimeseriesforecastnbeatsBuffer, i : Int, v : Double) -> TimeseriesforecastnbeatsBuffer {
-  let result = timeseries_forecast_nbeats_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_nbeats_buffer_sum(s : TimeseriesforecastnbeatsBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn timeseries_forecast_nbeats_cursor_get(s : TimeseriesforecastnbeatsCursor,
 }
 
 pub fn timeseries_forecast_nbeats_cursor_set(s : TimeseriesforecastnbeatsCursor, i : Int, v : Double) -> TimeseriesforecastnbeatsCursor {
-  let result = timeseries_forecast_nbeats_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_nbeats_cursor_sum(s : TimeseriesforecastnbeatsCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn timeseries_forecast_nbeats_view_get(s : TimeseriesforecastnbeatsView, i :
 }
 
 pub fn timeseries_forecast_nbeats_view_set(s : TimeseriesforecastnbeatsView, i : Int, v : Double) -> TimeseriesforecastnbeatsView {
-  let result = timeseries_forecast_nbeats_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_nbeats_view_sum(s : TimeseriesforecastnbeatsView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn timeseries_forecast_nbeats_range_get(s : TimeseriesforecastnbeatsRange, i
 }
 
 pub fn timeseries_forecast_nbeats_range_set(s : TimeseriesforecastnbeatsRange, i : Int, v : Double) -> TimeseriesforecastnbeatsRange {
-  let result = timeseries_forecast_nbeats_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_nbeats_range_sum(s : TimeseriesforecastnbeatsRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn timeseries_forecast_nbeats_slice_get(s : TimeseriesforecastnbeatsSlice, i
 }
 
 pub fn timeseries_forecast_nbeats_slice_set(s : TimeseriesforecastnbeatsSlice, i : Int, v : Double) -> TimeseriesforecastnbeatsSlice {
-  let result = timeseries_forecast_nbeats_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_nbeats_slice_sum(s : TimeseriesforecastnbeatsSlice) -> Double { @_common.sum(s.data) }

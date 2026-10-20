@@ -107,23 +107,15 @@ pub fn geo_buffer_collection_series_std(s : GeobuffercollectionSeries) -> Double
 pub fn geo_buffer_collection_series_median(s : GeobuffercollectionSeries) -> Double { @_common.median(s.vals) }
 
 pub fn geo_buffer_collection_series_scale(s : GeobuffercollectionSeries, f : Double) -> GeobuffercollectionSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn geo_buffer_collection_series_add(a : GeobuffercollectionSeries, b : GeobuffercollectionSeries) -> GeobuffercollectionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn geo_buffer_collection_series_sub(a : GeobuffercollectionSeries, b : GeobuffercollectionSeries) -> GeobuffercollectionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn geo_buffer_collection_series_normalize(s : GeobuffercollectionSeries) -> GeobuffercollectionSeries {
@@ -254,22 +246,16 @@ pub fn geo_buffer_collection_vector_zero(dim : Int) -> GeobuffercollectionVector
 
 pub fn geo_buffer_collection_vector_add(a : GeobuffercollectionVector, b : GeobuffercollectionVector) -> GeobuffercollectionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_buffer_collection_vector_sub(a : GeobuffercollectionVector, b : GeobuffercollectionVector) -> GeobuffercollectionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_buffer_collection_vector_scale(v : GeobuffercollectionVector, s : Double) -> GeobuffercollectionVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn geo_buffer_collection_vector_dot(a : GeobuffercollectionVector, b : GeobuffercollectionVector) -> Double {
@@ -372,10 +358,9 @@ pub fn geo_buffer_collection_frame_get(s : GeobuffercollectionFrame, i : Int) ->
 }
 
 pub fn geo_buffer_collection_frame_set(s : GeobuffercollectionFrame, i : Int, v : Double) -> GeobuffercollectionFrame {
-  let result = geo_buffer_collection_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_collection_frame_sum(s : GeobuffercollectionFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn geo_buffer_collection_table_get(s : GeobuffercollectionTable, i : Int) ->
 }
 
 pub fn geo_buffer_collection_table_set(s : GeobuffercollectionTable, i : Int, v : Double) -> GeobuffercollectionTable {
-  let result = geo_buffer_collection_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_collection_table_sum(s : GeobuffercollectionTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn geo_buffer_collection_graphn_get(s : GeobuffercollectionGraphN, i : Int) 
 }
 
 pub fn geo_buffer_collection_graphn_set(s : GeobuffercollectionGraphN, i : Int, v : Double) -> GeobuffercollectionGraphN {
-  let result = geo_buffer_collection_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_collection_graphn_sum(s : GeobuffercollectionGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn geo_buffer_collection_node_get(s : GeobuffercollectionNode, i : Int) -> D
 }
 
 pub fn geo_buffer_collection_node_set(s : GeobuffercollectionNode, i : Int, v : Double) -> GeobuffercollectionNode {
-  let result = geo_buffer_collection_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_collection_node_sum(s : GeobuffercollectionNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn geo_buffer_collection_edge_get(s : GeobuffercollectionEdge, i : Int) -> D
 }
 
 pub fn geo_buffer_collection_edge_set(s : GeobuffercollectionEdge, i : Int, v : Double) -> GeobuffercollectionEdge {
-  let result = geo_buffer_collection_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_collection_edge_sum(s : GeobuffercollectionEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn geo_buffer_collection_path_get(s : GeobuffercollectionPath, i : Int) -> D
 }
 
 pub fn geo_buffer_collection_path_set(s : GeobuffercollectionPath, i : Int, v : Double) -> GeobuffercollectionPath {
-  let result = geo_buffer_collection_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_collection_path_sum(s : GeobuffercollectionPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn geo_buffer_collection_cluster_get(s : GeobuffercollectionCluster, i : Int
 }
 
 pub fn geo_buffer_collection_cluster_set(s : GeobuffercollectionCluster, i : Int, v : Double) -> GeobuffercollectionCluster {
-  let result = geo_buffer_collection_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_collection_cluster_sum(s : GeobuffercollectionCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn geo_buffer_collection_model_get(s : GeobuffercollectionModel, i : Int) ->
 }
 
 pub fn geo_buffer_collection_model_set(s : GeobuffercollectionModel, i : Int, v : Double) -> GeobuffercollectionModel {
-  let result = geo_buffer_collection_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_collection_model_sum(s : GeobuffercollectionModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn geo_buffer_collection_layer_get(s : GeobuffercollectionLayer, i : Int) ->
 }
 
 pub fn geo_buffer_collection_layer_set(s : GeobuffercollectionLayer, i : Int, v : Double) -> GeobuffercollectionLayer {
-  let result = geo_buffer_collection_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_collection_layer_sum(s : GeobuffercollectionLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn geo_buffer_collection_buffer_get(s : GeobuffercollectionBuffer, i : Int) 
 }
 
 pub fn geo_buffer_collection_buffer_set(s : GeobuffercollectionBuffer, i : Int, v : Double) -> GeobuffercollectionBuffer {
-  let result = geo_buffer_collection_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_collection_buffer_sum(s : GeobuffercollectionBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn geo_buffer_collection_cursor_get(s : GeobuffercollectionCursor, i : Int) 
 }
 
 pub fn geo_buffer_collection_cursor_set(s : GeobuffercollectionCursor, i : Int, v : Double) -> GeobuffercollectionCursor {
-  let result = geo_buffer_collection_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_collection_cursor_sum(s : GeobuffercollectionCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn geo_buffer_collection_view_get(s : GeobuffercollectionView, i : Int) -> D
 }
 
 pub fn geo_buffer_collection_view_set(s : GeobuffercollectionView, i : Int, v : Double) -> GeobuffercollectionView {
-  let result = geo_buffer_collection_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_collection_view_sum(s : GeobuffercollectionView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn geo_buffer_collection_range_get(s : GeobuffercollectionRange, i : Int) ->
 }
 
 pub fn geo_buffer_collection_range_set(s : GeobuffercollectionRange, i : Int, v : Double) -> GeobuffercollectionRange {
-  let result = geo_buffer_collection_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_collection_range_sum(s : GeobuffercollectionRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn geo_buffer_collection_slice_get(s : GeobuffercollectionSlice, i : Int) ->
 }
 
 pub fn geo_buffer_collection_slice_set(s : GeobuffercollectionSlice, i : Int, v : Double) -> GeobuffercollectionSlice {
-  let result = geo_buffer_collection_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_buffer_collection_slice_sum(s : GeobuffercollectionSlice) -> Double { @_common.sum(s.data) }

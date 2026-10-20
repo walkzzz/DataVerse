@@ -107,23 +107,15 @@ pub fn opt_meta_sa_series_std(s : OptmetasaSeries) -> Double { @_common.std(s.va
 pub fn opt_meta_sa_series_median(s : OptmetasaSeries) -> Double { @_common.median(s.vals) }
 
 pub fn opt_meta_sa_series_scale(s : OptmetasaSeries, f : Double) -> OptmetasaSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn opt_meta_sa_series_add(a : OptmetasaSeries, b : OptmetasaSeries) -> OptmetasaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn opt_meta_sa_series_sub(a : OptmetasaSeries, b : OptmetasaSeries) -> OptmetasaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn opt_meta_sa_series_normalize(s : OptmetasaSeries) -> OptmetasaSeries {
@@ -254,22 +246,16 @@ pub fn opt_meta_sa_vector_zero(dim : Int) -> OptmetasaVector {
 
 pub fn opt_meta_sa_vector_add(a : OptmetasaVector, b : OptmetasaVector) -> OptmetasaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_meta_sa_vector_sub(a : OptmetasaVector, b : OptmetasaVector) -> OptmetasaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_meta_sa_vector_scale(v : OptmetasaVector, s : Double) -> OptmetasaVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn opt_meta_sa_vector_dot(a : OptmetasaVector, b : OptmetasaVector) -> Double {
@@ -372,10 +358,9 @@ pub fn opt_meta_sa_frame_get(s : OptmetasaFrame, i : Int) -> Double {
 }
 
 pub fn opt_meta_sa_frame_set(s : OptmetasaFrame, i : Int, v : Double) -> OptmetasaFrame {
-  let result = opt_meta_sa_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_frame_sum(s : OptmetasaFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn opt_meta_sa_table_get(s : OptmetasaTable, i : Int) -> Double {
 }
 
 pub fn opt_meta_sa_table_set(s : OptmetasaTable, i : Int, v : Double) -> OptmetasaTable {
-  let result = opt_meta_sa_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_table_sum(s : OptmetasaTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn opt_meta_sa_graphn_get(s : OptmetasaGraphN, i : Int) -> Double {
 }
 
 pub fn opt_meta_sa_graphn_set(s : OptmetasaGraphN, i : Int, v : Double) -> OptmetasaGraphN {
-  let result = opt_meta_sa_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_graphn_sum(s : OptmetasaGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn opt_meta_sa_node_get(s : OptmetasaNode, i : Int) -> Double {
 }
 
 pub fn opt_meta_sa_node_set(s : OptmetasaNode, i : Int, v : Double) -> OptmetasaNode {
-  let result = opt_meta_sa_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_node_sum(s : OptmetasaNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn opt_meta_sa_edge_get(s : OptmetasaEdge, i : Int) -> Double {
 }
 
 pub fn opt_meta_sa_edge_set(s : OptmetasaEdge, i : Int, v : Double) -> OptmetasaEdge {
-  let result = opt_meta_sa_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_edge_sum(s : OptmetasaEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn opt_meta_sa_path_get(s : OptmetasaPath, i : Int) -> Double {
 }
 
 pub fn opt_meta_sa_path_set(s : OptmetasaPath, i : Int, v : Double) -> OptmetasaPath {
-  let result = opt_meta_sa_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_path_sum(s : OptmetasaPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn opt_meta_sa_cluster_get(s : OptmetasaCluster, i : Int) -> Double {
 }
 
 pub fn opt_meta_sa_cluster_set(s : OptmetasaCluster, i : Int, v : Double) -> OptmetasaCluster {
-  let result = opt_meta_sa_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_cluster_sum(s : OptmetasaCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn opt_meta_sa_model_get(s : OptmetasaModel, i : Int) -> Double {
 }
 
 pub fn opt_meta_sa_model_set(s : OptmetasaModel, i : Int, v : Double) -> OptmetasaModel {
-  let result = opt_meta_sa_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_model_sum(s : OptmetasaModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn opt_meta_sa_layer_get(s : OptmetasaLayer, i : Int) -> Double {
 }
 
 pub fn opt_meta_sa_layer_set(s : OptmetasaLayer, i : Int, v : Double) -> OptmetasaLayer {
-  let result = opt_meta_sa_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_layer_sum(s : OptmetasaLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn opt_meta_sa_buffer_get(s : OptmetasaBuffer, i : Int) -> Double {
 }
 
 pub fn opt_meta_sa_buffer_set(s : OptmetasaBuffer, i : Int, v : Double) -> OptmetasaBuffer {
-  let result = opt_meta_sa_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_buffer_sum(s : OptmetasaBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn opt_meta_sa_cursor_get(s : OptmetasaCursor, i : Int) -> Double {
 }
 
 pub fn opt_meta_sa_cursor_set(s : OptmetasaCursor, i : Int, v : Double) -> OptmetasaCursor {
-  let result = opt_meta_sa_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_cursor_sum(s : OptmetasaCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn opt_meta_sa_view_get(s : OptmetasaView, i : Int) -> Double {
 }
 
 pub fn opt_meta_sa_view_set(s : OptmetasaView, i : Int, v : Double) -> OptmetasaView {
-  let result = opt_meta_sa_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_view_sum(s : OptmetasaView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn opt_meta_sa_range_get(s : OptmetasaRange, i : Int) -> Double {
 }
 
 pub fn opt_meta_sa_range_set(s : OptmetasaRange, i : Int, v : Double) -> OptmetasaRange {
-  let result = opt_meta_sa_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_range_sum(s : OptmetasaRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn opt_meta_sa_slice_get(s : OptmetasaSlice, i : Int) -> Double {
 }
 
 pub fn opt_meta_sa_slice_set(s : OptmetasaSlice, i : Int, v : Double) -> OptmetasaSlice {
-  let result = opt_meta_sa_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_meta_sa_slice_sum(s : OptmetasaSlice) -> Double { @_common.sum(s.data) }

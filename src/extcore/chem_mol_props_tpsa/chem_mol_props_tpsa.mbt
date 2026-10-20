@@ -107,23 +107,15 @@ pub fn chem_mol_props_tpsa_series_std(s : ChemmolpropstpsaSeries) -> Double { @_
 pub fn chem_mol_props_tpsa_series_median(s : ChemmolpropstpsaSeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_mol_props_tpsa_series_scale(s : ChemmolpropstpsaSeries, f : Double) -> ChemmolpropstpsaSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn chem_mol_props_tpsa_series_add(a : ChemmolpropstpsaSeries, b : ChemmolpropstpsaSeries) -> ChemmolpropstpsaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn chem_mol_props_tpsa_series_sub(a : ChemmolpropstpsaSeries, b : ChemmolpropstpsaSeries) -> ChemmolpropstpsaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn chem_mol_props_tpsa_series_normalize(s : ChemmolpropstpsaSeries) -> ChemmolpropstpsaSeries {
@@ -254,22 +246,16 @@ pub fn chem_mol_props_tpsa_vector_zero(dim : Int) -> ChemmolpropstpsaVector {
 
 pub fn chem_mol_props_tpsa_vector_add(a : ChemmolpropstpsaVector, b : ChemmolpropstpsaVector) -> ChemmolpropstpsaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_mol_props_tpsa_vector_sub(a : ChemmolpropstpsaVector, b : ChemmolpropstpsaVector) -> ChemmolpropstpsaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_mol_props_tpsa_vector_scale(v : ChemmolpropstpsaVector, s : Double) -> ChemmolpropstpsaVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn chem_mol_props_tpsa_vector_dot(a : ChemmolpropstpsaVector, b : ChemmolpropstpsaVector) -> Double {
@@ -372,10 +358,9 @@ pub fn chem_mol_props_tpsa_frame_get(s : ChemmolpropstpsaFrame, i : Int) -> Doub
 }
 
 pub fn chem_mol_props_tpsa_frame_set(s : ChemmolpropstpsaFrame, i : Int, v : Double) -> ChemmolpropstpsaFrame {
-  let result = chem_mol_props_tpsa_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_tpsa_frame_sum(s : ChemmolpropstpsaFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn chem_mol_props_tpsa_table_get(s : ChemmolpropstpsaTable, i : Int) -> Doub
 }
 
 pub fn chem_mol_props_tpsa_table_set(s : ChemmolpropstpsaTable, i : Int, v : Double) -> ChemmolpropstpsaTable {
-  let result = chem_mol_props_tpsa_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_tpsa_table_sum(s : ChemmolpropstpsaTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn chem_mol_props_tpsa_graphn_get(s : ChemmolpropstpsaGraphN, i : Int) -> Do
 }
 
 pub fn chem_mol_props_tpsa_graphn_set(s : ChemmolpropstpsaGraphN, i : Int, v : Double) -> ChemmolpropstpsaGraphN {
-  let result = chem_mol_props_tpsa_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_tpsa_graphn_sum(s : ChemmolpropstpsaGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn chem_mol_props_tpsa_node_get(s : ChemmolpropstpsaNode, i : Int) -> Double
 }
 
 pub fn chem_mol_props_tpsa_node_set(s : ChemmolpropstpsaNode, i : Int, v : Double) -> ChemmolpropstpsaNode {
-  let result = chem_mol_props_tpsa_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_tpsa_node_sum(s : ChemmolpropstpsaNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn chem_mol_props_tpsa_edge_get(s : ChemmolpropstpsaEdge, i : Int) -> Double
 }
 
 pub fn chem_mol_props_tpsa_edge_set(s : ChemmolpropstpsaEdge, i : Int, v : Double) -> ChemmolpropstpsaEdge {
-  let result = chem_mol_props_tpsa_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_tpsa_edge_sum(s : ChemmolpropstpsaEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn chem_mol_props_tpsa_path_get(s : ChemmolpropstpsaPath, i : Int) -> Double
 }
 
 pub fn chem_mol_props_tpsa_path_set(s : ChemmolpropstpsaPath, i : Int, v : Double) -> ChemmolpropstpsaPath {
-  let result = chem_mol_props_tpsa_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_tpsa_path_sum(s : ChemmolpropstpsaPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn chem_mol_props_tpsa_cluster_get(s : ChemmolpropstpsaCluster, i : Int) -> 
 }
 
 pub fn chem_mol_props_tpsa_cluster_set(s : ChemmolpropstpsaCluster, i : Int, v : Double) -> ChemmolpropstpsaCluster {
-  let result = chem_mol_props_tpsa_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_tpsa_cluster_sum(s : ChemmolpropstpsaCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn chem_mol_props_tpsa_model_get(s : ChemmolpropstpsaModel, i : Int) -> Doub
 }
 
 pub fn chem_mol_props_tpsa_model_set(s : ChemmolpropstpsaModel, i : Int, v : Double) -> ChemmolpropstpsaModel {
-  let result = chem_mol_props_tpsa_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_tpsa_model_sum(s : ChemmolpropstpsaModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn chem_mol_props_tpsa_layer_get(s : ChemmolpropstpsaLayer, i : Int) -> Doub
 }
 
 pub fn chem_mol_props_tpsa_layer_set(s : ChemmolpropstpsaLayer, i : Int, v : Double) -> ChemmolpropstpsaLayer {
-  let result = chem_mol_props_tpsa_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_tpsa_layer_sum(s : ChemmolpropstpsaLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn chem_mol_props_tpsa_buffer_get(s : ChemmolpropstpsaBuffer, i : Int) -> Do
 }
 
 pub fn chem_mol_props_tpsa_buffer_set(s : ChemmolpropstpsaBuffer, i : Int, v : Double) -> ChemmolpropstpsaBuffer {
-  let result = chem_mol_props_tpsa_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_tpsa_buffer_sum(s : ChemmolpropstpsaBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn chem_mol_props_tpsa_cursor_get(s : ChemmolpropstpsaCursor, i : Int) -> Do
 }
 
 pub fn chem_mol_props_tpsa_cursor_set(s : ChemmolpropstpsaCursor, i : Int, v : Double) -> ChemmolpropstpsaCursor {
-  let result = chem_mol_props_tpsa_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_tpsa_cursor_sum(s : ChemmolpropstpsaCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn chem_mol_props_tpsa_view_get(s : ChemmolpropstpsaView, i : Int) -> Double
 }
 
 pub fn chem_mol_props_tpsa_view_set(s : ChemmolpropstpsaView, i : Int, v : Double) -> ChemmolpropstpsaView {
-  let result = chem_mol_props_tpsa_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_tpsa_view_sum(s : ChemmolpropstpsaView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn chem_mol_props_tpsa_range_get(s : ChemmolpropstpsaRange, i : Int) -> Doub
 }
 
 pub fn chem_mol_props_tpsa_range_set(s : ChemmolpropstpsaRange, i : Int, v : Double) -> ChemmolpropstpsaRange {
-  let result = chem_mol_props_tpsa_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_tpsa_range_sum(s : ChemmolpropstpsaRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn chem_mol_props_tpsa_slice_get(s : ChemmolpropstpsaSlice, i : Int) -> Doub
 }
 
 pub fn chem_mol_props_tpsa_slice_set(s : ChemmolpropstpsaSlice, i : Int, v : Double) -> ChemmolpropstpsaSlice {
-  let result = chem_mol_props_tpsa_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_tpsa_slice_sum(s : ChemmolpropstpsaSlice) -> Double { @_common.sum(s.data) }

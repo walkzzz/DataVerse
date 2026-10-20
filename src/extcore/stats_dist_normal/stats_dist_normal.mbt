@@ -107,23 +107,15 @@ pub fn stats_dist_normal_series_std(s : StatsdistnormalSeries) -> Double { @_com
 pub fn stats_dist_normal_series_median(s : StatsdistnormalSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_dist_normal_series_scale(s : StatsdistnormalSeries, f : Double) -> StatsdistnormalSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_dist_normal_series_add(a : StatsdistnormalSeries, b : StatsdistnormalSeries) -> StatsdistnormalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_dist_normal_series_sub(a : StatsdistnormalSeries, b : StatsdistnormalSeries) -> StatsdistnormalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_dist_normal_series_normalize(s : StatsdistnormalSeries) -> StatsdistnormalSeries {
@@ -254,22 +246,16 @@ pub fn stats_dist_normal_vector_zero(dim : Int) -> StatsdistnormalVector {
 
 pub fn stats_dist_normal_vector_add(a : StatsdistnormalVector, b : StatsdistnormalVector) -> StatsdistnormalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_dist_normal_vector_sub(a : StatsdistnormalVector, b : StatsdistnormalVector) -> StatsdistnormalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_dist_normal_vector_scale(v : StatsdistnormalVector, s : Double) -> StatsdistnormalVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_dist_normal_vector_dot(a : StatsdistnormalVector, b : StatsdistnormalVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_dist_normal_frame_get(s : StatsdistnormalFrame, i : Int) -> Double 
 }
 
 pub fn stats_dist_normal_frame_set(s : StatsdistnormalFrame, i : Int, v : Double) -> StatsdistnormalFrame {
-  let result = stats_dist_normal_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_normal_frame_sum(s : StatsdistnormalFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_dist_normal_table_get(s : StatsdistnormalTable, i : Int) -> Double 
 }
 
 pub fn stats_dist_normal_table_set(s : StatsdistnormalTable, i : Int, v : Double) -> StatsdistnormalTable {
-  let result = stats_dist_normal_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_normal_table_sum(s : StatsdistnormalTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_dist_normal_graphn_get(s : StatsdistnormalGraphN, i : Int) -> Doubl
 }
 
 pub fn stats_dist_normal_graphn_set(s : StatsdistnormalGraphN, i : Int, v : Double) -> StatsdistnormalGraphN {
-  let result = stats_dist_normal_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_normal_graphn_sum(s : StatsdistnormalGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_dist_normal_node_get(s : StatsdistnormalNode, i : Int) -> Double {
 }
 
 pub fn stats_dist_normal_node_set(s : StatsdistnormalNode, i : Int, v : Double) -> StatsdistnormalNode {
-  let result = stats_dist_normal_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_normal_node_sum(s : StatsdistnormalNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_dist_normal_edge_get(s : StatsdistnormalEdge, i : Int) -> Double {
 }
 
 pub fn stats_dist_normal_edge_set(s : StatsdistnormalEdge, i : Int, v : Double) -> StatsdistnormalEdge {
-  let result = stats_dist_normal_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_normal_edge_sum(s : StatsdistnormalEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_dist_normal_path_get(s : StatsdistnormalPath, i : Int) -> Double {
 }
 
 pub fn stats_dist_normal_path_set(s : StatsdistnormalPath, i : Int, v : Double) -> StatsdistnormalPath {
-  let result = stats_dist_normal_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_normal_path_sum(s : StatsdistnormalPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_dist_normal_cluster_get(s : StatsdistnormalCluster, i : Int) -> Dou
 }
 
 pub fn stats_dist_normal_cluster_set(s : StatsdistnormalCluster, i : Int, v : Double) -> StatsdistnormalCluster {
-  let result = stats_dist_normal_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_normal_cluster_sum(s : StatsdistnormalCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_dist_normal_model_get(s : StatsdistnormalModel, i : Int) -> Double 
 }
 
 pub fn stats_dist_normal_model_set(s : StatsdistnormalModel, i : Int, v : Double) -> StatsdistnormalModel {
-  let result = stats_dist_normal_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_normal_model_sum(s : StatsdistnormalModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_dist_normal_layer_get(s : StatsdistnormalLayer, i : Int) -> Double 
 }
 
 pub fn stats_dist_normal_layer_set(s : StatsdistnormalLayer, i : Int, v : Double) -> StatsdistnormalLayer {
-  let result = stats_dist_normal_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_normal_layer_sum(s : StatsdistnormalLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_dist_normal_buffer_get(s : StatsdistnormalBuffer, i : Int) -> Doubl
 }
 
 pub fn stats_dist_normal_buffer_set(s : StatsdistnormalBuffer, i : Int, v : Double) -> StatsdistnormalBuffer {
-  let result = stats_dist_normal_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_normal_buffer_sum(s : StatsdistnormalBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_dist_normal_cursor_get(s : StatsdistnormalCursor, i : Int) -> Doubl
 }
 
 pub fn stats_dist_normal_cursor_set(s : StatsdistnormalCursor, i : Int, v : Double) -> StatsdistnormalCursor {
-  let result = stats_dist_normal_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_normal_cursor_sum(s : StatsdistnormalCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_dist_normal_view_get(s : StatsdistnormalView, i : Int) -> Double {
 }
 
 pub fn stats_dist_normal_view_set(s : StatsdistnormalView, i : Int, v : Double) -> StatsdistnormalView {
-  let result = stats_dist_normal_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_normal_view_sum(s : StatsdistnormalView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_dist_normal_range_get(s : StatsdistnormalRange, i : Int) -> Double 
 }
 
 pub fn stats_dist_normal_range_set(s : StatsdistnormalRange, i : Int, v : Double) -> StatsdistnormalRange {
-  let result = stats_dist_normal_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_normal_range_sum(s : StatsdistnormalRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_dist_normal_slice_get(s : StatsdistnormalSlice, i : Int) -> Double 
 }
 
 pub fn stats_dist_normal_slice_set(s : StatsdistnormalSlice, i : Int, v : Double) -> StatsdistnormalSlice {
-  let result = stats_dist_normal_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_normal_slice_sum(s : StatsdistnormalSlice) -> Double { @_common.sum(s.data) }

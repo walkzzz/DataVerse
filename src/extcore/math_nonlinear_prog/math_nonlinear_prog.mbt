@@ -107,23 +107,15 @@ pub fn math_nonlinear_prog_series_std(s : MathnonlinearprogSeries) -> Double { @
 pub fn math_nonlinear_prog_series_median(s : MathnonlinearprogSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_nonlinear_prog_series_scale(s : MathnonlinearprogSeries, f : Double) -> MathnonlinearprogSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_nonlinear_prog_series_add(a : MathnonlinearprogSeries, b : MathnonlinearprogSeries) -> MathnonlinearprogSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_nonlinear_prog_series_sub(a : MathnonlinearprogSeries, b : MathnonlinearprogSeries) -> MathnonlinearprogSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_nonlinear_prog_series_normalize(s : MathnonlinearprogSeries) -> MathnonlinearprogSeries {
@@ -254,22 +246,16 @@ pub fn math_nonlinear_prog_vector_zero(dim : Int) -> MathnonlinearprogVector {
 
 pub fn math_nonlinear_prog_vector_add(a : MathnonlinearprogVector, b : MathnonlinearprogVector) -> MathnonlinearprogVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_nonlinear_prog_vector_sub(a : MathnonlinearprogVector, b : MathnonlinearprogVector) -> MathnonlinearprogVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_nonlinear_prog_vector_scale(v : MathnonlinearprogVector, s : Double) -> MathnonlinearprogVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_nonlinear_prog_vector_dot(a : MathnonlinearprogVector, b : MathnonlinearprogVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_nonlinear_prog_frame_get(s : MathnonlinearprogFrame, i : Int) -> Dou
 }
 
 pub fn math_nonlinear_prog_frame_set(s : MathnonlinearprogFrame, i : Int, v : Double) -> MathnonlinearprogFrame {
-  let result = math_nonlinear_prog_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_frame_sum(s : MathnonlinearprogFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_nonlinear_prog_table_get(s : MathnonlinearprogTable, i : Int) -> Dou
 }
 
 pub fn math_nonlinear_prog_table_set(s : MathnonlinearprogTable, i : Int, v : Double) -> MathnonlinearprogTable {
-  let result = math_nonlinear_prog_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_table_sum(s : MathnonlinearprogTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_nonlinear_prog_graphn_get(s : MathnonlinearprogGraphN, i : Int) -> D
 }
 
 pub fn math_nonlinear_prog_graphn_set(s : MathnonlinearprogGraphN, i : Int, v : Double) -> MathnonlinearprogGraphN {
-  let result = math_nonlinear_prog_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_graphn_sum(s : MathnonlinearprogGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_nonlinear_prog_node_get(s : MathnonlinearprogNode, i : Int) -> Doubl
 }
 
 pub fn math_nonlinear_prog_node_set(s : MathnonlinearprogNode, i : Int, v : Double) -> MathnonlinearprogNode {
-  let result = math_nonlinear_prog_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_node_sum(s : MathnonlinearprogNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_nonlinear_prog_edge_get(s : MathnonlinearprogEdge, i : Int) -> Doubl
 }
 
 pub fn math_nonlinear_prog_edge_set(s : MathnonlinearprogEdge, i : Int, v : Double) -> MathnonlinearprogEdge {
-  let result = math_nonlinear_prog_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_edge_sum(s : MathnonlinearprogEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_nonlinear_prog_path_get(s : MathnonlinearprogPath, i : Int) -> Doubl
 }
 
 pub fn math_nonlinear_prog_path_set(s : MathnonlinearprogPath, i : Int, v : Double) -> MathnonlinearprogPath {
-  let result = math_nonlinear_prog_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_path_sum(s : MathnonlinearprogPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_nonlinear_prog_cluster_get(s : MathnonlinearprogCluster, i : Int) ->
 }
 
 pub fn math_nonlinear_prog_cluster_set(s : MathnonlinearprogCluster, i : Int, v : Double) -> MathnonlinearprogCluster {
-  let result = math_nonlinear_prog_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_cluster_sum(s : MathnonlinearprogCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_nonlinear_prog_model_get(s : MathnonlinearprogModel, i : Int) -> Dou
 }
 
 pub fn math_nonlinear_prog_model_set(s : MathnonlinearprogModel, i : Int, v : Double) -> MathnonlinearprogModel {
-  let result = math_nonlinear_prog_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_model_sum(s : MathnonlinearprogModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_nonlinear_prog_layer_get(s : MathnonlinearprogLayer, i : Int) -> Dou
 }
 
 pub fn math_nonlinear_prog_layer_set(s : MathnonlinearprogLayer, i : Int, v : Double) -> MathnonlinearprogLayer {
-  let result = math_nonlinear_prog_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_layer_sum(s : MathnonlinearprogLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_nonlinear_prog_buffer_get(s : MathnonlinearprogBuffer, i : Int) -> D
 }
 
 pub fn math_nonlinear_prog_buffer_set(s : MathnonlinearprogBuffer, i : Int, v : Double) -> MathnonlinearprogBuffer {
-  let result = math_nonlinear_prog_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_buffer_sum(s : MathnonlinearprogBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_nonlinear_prog_cursor_get(s : MathnonlinearprogCursor, i : Int) -> D
 }
 
 pub fn math_nonlinear_prog_cursor_set(s : MathnonlinearprogCursor, i : Int, v : Double) -> MathnonlinearprogCursor {
-  let result = math_nonlinear_prog_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_cursor_sum(s : MathnonlinearprogCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_nonlinear_prog_view_get(s : MathnonlinearprogView, i : Int) -> Doubl
 }
 
 pub fn math_nonlinear_prog_view_set(s : MathnonlinearprogView, i : Int, v : Double) -> MathnonlinearprogView {
-  let result = math_nonlinear_prog_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_view_sum(s : MathnonlinearprogView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_nonlinear_prog_range_get(s : MathnonlinearprogRange, i : Int) -> Dou
 }
 
 pub fn math_nonlinear_prog_range_set(s : MathnonlinearprogRange, i : Int, v : Double) -> MathnonlinearprogRange {
-  let result = math_nonlinear_prog_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_range_sum(s : MathnonlinearprogRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_nonlinear_prog_slice_get(s : MathnonlinearprogSlice, i : Int) -> Dou
 }
 
 pub fn math_nonlinear_prog_slice_set(s : MathnonlinearprogSlice, i : Int, v : Double) -> MathnonlinearprogSlice {
-  let result = math_nonlinear_prog_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_nonlinear_prog_slice_sum(s : MathnonlinearprogSlice) -> Double { @_common.sum(s.data) }

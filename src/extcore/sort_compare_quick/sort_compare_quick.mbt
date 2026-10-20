@@ -107,23 +107,15 @@ pub fn sort_compare_quick_series_std(s : SortcomparequickSeries) -> Double { @_c
 pub fn sort_compare_quick_series_median(s : SortcomparequickSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_compare_quick_series_scale(s : SortcomparequickSeries, f : Double) -> SortcomparequickSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn sort_compare_quick_series_add(a : SortcomparequickSeries, b : SortcomparequickSeries) -> SortcomparequickSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn sort_compare_quick_series_sub(a : SortcomparequickSeries, b : SortcomparequickSeries) -> SortcomparequickSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn sort_compare_quick_series_normalize(s : SortcomparequickSeries) -> SortcomparequickSeries {
@@ -254,22 +246,16 @@ pub fn sort_compare_quick_vector_zero(dim : Int) -> SortcomparequickVector {
 
 pub fn sort_compare_quick_vector_add(a : SortcomparequickVector, b : SortcomparequickVector) -> SortcomparequickVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_compare_quick_vector_sub(a : SortcomparequickVector, b : SortcomparequickVector) -> SortcomparequickVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_compare_quick_vector_scale(v : SortcomparequickVector, s : Double) -> SortcomparequickVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn sort_compare_quick_vector_dot(a : SortcomparequickVector, b : SortcomparequickVector) -> Double {
@@ -372,10 +358,9 @@ pub fn sort_compare_quick_frame_get(s : SortcomparequickFrame, i : Int) -> Doubl
 }
 
 pub fn sort_compare_quick_frame_set(s : SortcomparequickFrame, i : Int, v : Double) -> SortcomparequickFrame {
-  let result = sort_compare_quick_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_quick_frame_sum(s : SortcomparequickFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn sort_compare_quick_table_get(s : SortcomparequickTable, i : Int) -> Doubl
 }
 
 pub fn sort_compare_quick_table_set(s : SortcomparequickTable, i : Int, v : Double) -> SortcomparequickTable {
-  let result = sort_compare_quick_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_quick_table_sum(s : SortcomparequickTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn sort_compare_quick_graphn_get(s : SortcomparequickGraphN, i : Int) -> Dou
 }
 
 pub fn sort_compare_quick_graphn_set(s : SortcomparequickGraphN, i : Int, v : Double) -> SortcomparequickGraphN {
-  let result = sort_compare_quick_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_quick_graphn_sum(s : SortcomparequickGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn sort_compare_quick_node_get(s : SortcomparequickNode, i : Int) -> Double 
 }
 
 pub fn sort_compare_quick_node_set(s : SortcomparequickNode, i : Int, v : Double) -> SortcomparequickNode {
-  let result = sort_compare_quick_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_quick_node_sum(s : SortcomparequickNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn sort_compare_quick_edge_get(s : SortcomparequickEdge, i : Int) -> Double 
 }
 
 pub fn sort_compare_quick_edge_set(s : SortcomparequickEdge, i : Int, v : Double) -> SortcomparequickEdge {
-  let result = sort_compare_quick_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_quick_edge_sum(s : SortcomparequickEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn sort_compare_quick_path_get(s : SortcomparequickPath, i : Int) -> Double 
 }
 
 pub fn sort_compare_quick_path_set(s : SortcomparequickPath, i : Int, v : Double) -> SortcomparequickPath {
-  let result = sort_compare_quick_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_quick_path_sum(s : SortcomparequickPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn sort_compare_quick_cluster_get(s : SortcomparequickCluster, i : Int) -> D
 }
 
 pub fn sort_compare_quick_cluster_set(s : SortcomparequickCluster, i : Int, v : Double) -> SortcomparequickCluster {
-  let result = sort_compare_quick_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_quick_cluster_sum(s : SortcomparequickCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn sort_compare_quick_model_get(s : SortcomparequickModel, i : Int) -> Doubl
 }
 
 pub fn sort_compare_quick_model_set(s : SortcomparequickModel, i : Int, v : Double) -> SortcomparequickModel {
-  let result = sort_compare_quick_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_quick_model_sum(s : SortcomparequickModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn sort_compare_quick_layer_get(s : SortcomparequickLayer, i : Int) -> Doubl
 }
 
 pub fn sort_compare_quick_layer_set(s : SortcomparequickLayer, i : Int, v : Double) -> SortcomparequickLayer {
-  let result = sort_compare_quick_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_quick_layer_sum(s : SortcomparequickLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn sort_compare_quick_buffer_get(s : SortcomparequickBuffer, i : Int) -> Dou
 }
 
 pub fn sort_compare_quick_buffer_set(s : SortcomparequickBuffer, i : Int, v : Double) -> SortcomparequickBuffer {
-  let result = sort_compare_quick_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_quick_buffer_sum(s : SortcomparequickBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn sort_compare_quick_cursor_get(s : SortcomparequickCursor, i : Int) -> Dou
 }
 
 pub fn sort_compare_quick_cursor_set(s : SortcomparequickCursor, i : Int, v : Double) -> SortcomparequickCursor {
-  let result = sort_compare_quick_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_quick_cursor_sum(s : SortcomparequickCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn sort_compare_quick_view_get(s : SortcomparequickView, i : Int) -> Double 
 }
 
 pub fn sort_compare_quick_view_set(s : SortcomparequickView, i : Int, v : Double) -> SortcomparequickView {
-  let result = sort_compare_quick_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_quick_view_sum(s : SortcomparequickView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn sort_compare_quick_range_get(s : SortcomparequickRange, i : Int) -> Doubl
 }
 
 pub fn sort_compare_quick_range_set(s : SortcomparequickRange, i : Int, v : Double) -> SortcomparequickRange {
-  let result = sort_compare_quick_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_quick_range_sum(s : SortcomparequickRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn sort_compare_quick_slice_get(s : SortcomparequickSlice, i : Int) -> Doubl
 }
 
 pub fn sort_compare_quick_slice_set(s : SortcomparequickSlice, i : Int, v : Double) -> SortcomparequickSlice {
-  let result = sort_compare_quick_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_quick_slice_sum(s : SortcomparequickSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn sort_hybrid_dropsort_series_std(s : SorthybriddropsortSeries) -> Double {
 pub fn sort_hybrid_dropsort_series_median(s : SorthybriddropsortSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_hybrid_dropsort_series_scale(s : SorthybriddropsortSeries, f : Double) -> SorthybriddropsortSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn sort_hybrid_dropsort_series_add(a : SorthybriddropsortSeries, b : SorthybriddropsortSeries) -> SorthybriddropsortSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn sort_hybrid_dropsort_series_sub(a : SorthybriddropsortSeries, b : SorthybriddropsortSeries) -> SorthybriddropsortSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn sort_hybrid_dropsort_series_normalize(s : SorthybriddropsortSeries) -> SorthybriddropsortSeries {
@@ -254,22 +246,16 @@ pub fn sort_hybrid_dropsort_vector_zero(dim : Int) -> SorthybriddropsortVector {
 
 pub fn sort_hybrid_dropsort_vector_add(a : SorthybriddropsortVector, b : SorthybriddropsortVector) -> SorthybriddropsortVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_hybrid_dropsort_vector_sub(a : SorthybriddropsortVector, b : SorthybriddropsortVector) -> SorthybriddropsortVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_hybrid_dropsort_vector_scale(v : SorthybriddropsortVector, s : Double) -> SorthybriddropsortVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn sort_hybrid_dropsort_vector_dot(a : SorthybriddropsortVector, b : SorthybriddropsortVector) -> Double {
@@ -372,10 +358,9 @@ pub fn sort_hybrid_dropsort_frame_get(s : SorthybriddropsortFrame, i : Int) -> D
 }
 
 pub fn sort_hybrid_dropsort_frame_set(s : SorthybriddropsortFrame, i : Int, v : Double) -> SorthybriddropsortFrame {
-  let result = sort_hybrid_dropsort_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_dropsort_frame_sum(s : SorthybriddropsortFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn sort_hybrid_dropsort_table_get(s : SorthybriddropsortTable, i : Int) -> D
 }
 
 pub fn sort_hybrid_dropsort_table_set(s : SorthybriddropsortTable, i : Int, v : Double) -> SorthybriddropsortTable {
-  let result = sort_hybrid_dropsort_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_dropsort_table_sum(s : SorthybriddropsortTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn sort_hybrid_dropsort_graphn_get(s : SorthybriddropsortGraphN, i : Int) ->
 }
 
 pub fn sort_hybrid_dropsort_graphn_set(s : SorthybriddropsortGraphN, i : Int, v : Double) -> SorthybriddropsortGraphN {
-  let result = sort_hybrid_dropsort_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_dropsort_graphn_sum(s : SorthybriddropsortGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn sort_hybrid_dropsort_node_get(s : SorthybriddropsortNode, i : Int) -> Dou
 }
 
 pub fn sort_hybrid_dropsort_node_set(s : SorthybriddropsortNode, i : Int, v : Double) -> SorthybriddropsortNode {
-  let result = sort_hybrid_dropsort_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_dropsort_node_sum(s : SorthybriddropsortNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn sort_hybrid_dropsort_edge_get(s : SorthybriddropsortEdge, i : Int) -> Dou
 }
 
 pub fn sort_hybrid_dropsort_edge_set(s : SorthybriddropsortEdge, i : Int, v : Double) -> SorthybriddropsortEdge {
-  let result = sort_hybrid_dropsort_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_dropsort_edge_sum(s : SorthybriddropsortEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn sort_hybrid_dropsort_path_get(s : SorthybriddropsortPath, i : Int) -> Dou
 }
 
 pub fn sort_hybrid_dropsort_path_set(s : SorthybriddropsortPath, i : Int, v : Double) -> SorthybriddropsortPath {
-  let result = sort_hybrid_dropsort_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_dropsort_path_sum(s : SorthybriddropsortPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn sort_hybrid_dropsort_cluster_get(s : SorthybriddropsortCluster, i : Int) 
 }
 
 pub fn sort_hybrid_dropsort_cluster_set(s : SorthybriddropsortCluster, i : Int, v : Double) -> SorthybriddropsortCluster {
-  let result = sort_hybrid_dropsort_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_dropsort_cluster_sum(s : SorthybriddropsortCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn sort_hybrid_dropsort_model_get(s : SorthybriddropsortModel, i : Int) -> D
 }
 
 pub fn sort_hybrid_dropsort_model_set(s : SorthybriddropsortModel, i : Int, v : Double) -> SorthybriddropsortModel {
-  let result = sort_hybrid_dropsort_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_dropsort_model_sum(s : SorthybriddropsortModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn sort_hybrid_dropsort_layer_get(s : SorthybriddropsortLayer, i : Int) -> D
 }
 
 pub fn sort_hybrid_dropsort_layer_set(s : SorthybriddropsortLayer, i : Int, v : Double) -> SorthybriddropsortLayer {
-  let result = sort_hybrid_dropsort_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_dropsort_layer_sum(s : SorthybriddropsortLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn sort_hybrid_dropsort_buffer_get(s : SorthybriddropsortBuffer, i : Int) ->
 }
 
 pub fn sort_hybrid_dropsort_buffer_set(s : SorthybriddropsortBuffer, i : Int, v : Double) -> SorthybriddropsortBuffer {
-  let result = sort_hybrid_dropsort_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_dropsort_buffer_sum(s : SorthybriddropsortBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn sort_hybrid_dropsort_cursor_get(s : SorthybriddropsortCursor, i : Int) ->
 }
 
 pub fn sort_hybrid_dropsort_cursor_set(s : SorthybriddropsortCursor, i : Int, v : Double) -> SorthybriddropsortCursor {
-  let result = sort_hybrid_dropsort_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_dropsort_cursor_sum(s : SorthybriddropsortCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn sort_hybrid_dropsort_view_get(s : SorthybriddropsortView, i : Int) -> Dou
 }
 
 pub fn sort_hybrid_dropsort_view_set(s : SorthybriddropsortView, i : Int, v : Double) -> SorthybriddropsortView {
-  let result = sort_hybrid_dropsort_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_dropsort_view_sum(s : SorthybriddropsortView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn sort_hybrid_dropsort_range_get(s : SorthybriddropsortRange, i : Int) -> D
 }
 
 pub fn sort_hybrid_dropsort_range_set(s : SorthybriddropsortRange, i : Int, v : Double) -> SorthybriddropsortRange {
-  let result = sort_hybrid_dropsort_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_dropsort_range_sum(s : SorthybriddropsortRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn sort_hybrid_dropsort_slice_get(s : SorthybriddropsortSlice, i : Int) -> D
 }
 
 pub fn sort_hybrid_dropsort_slice_set(s : SorthybriddropsortSlice, i : Int, v : Double) -> SorthybriddropsortSlice {
-  let result = sort_hybrid_dropsort_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_dropsort_slice_sum(s : SorthybriddropsortSlice) -> Double { @_common.sum(s.data) }

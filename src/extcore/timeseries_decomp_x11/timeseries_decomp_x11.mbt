@@ -107,23 +107,15 @@ pub fn timeseries_decomp_x11_series_std(s : Timeseriesdecompx11Series) -> Double
 pub fn timeseries_decomp_x11_series_median(s : Timeseriesdecompx11Series) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_decomp_x11_series_scale(s : Timeseriesdecompx11Series, f : Double) -> Timeseriesdecompx11Series {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn timeseries_decomp_x11_series_add(a : Timeseriesdecompx11Series, b : Timeseriesdecompx11Series) -> Timeseriesdecompx11Series {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_decomp_x11_series_sub(a : Timeseriesdecompx11Series, b : Timeseriesdecompx11Series) -> Timeseriesdecompx11Series {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_decomp_x11_series_normalize(s : Timeseriesdecompx11Series) -> Timeseriesdecompx11Series {
@@ -254,22 +246,16 @@ pub fn timeseries_decomp_x11_vector_zero(dim : Int) -> Timeseriesdecompx11Vector
 
 pub fn timeseries_decomp_x11_vector_add(a : Timeseriesdecompx11Vector, b : Timeseriesdecompx11Vector) -> Timeseriesdecompx11Vector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_decomp_x11_vector_sub(a : Timeseriesdecompx11Vector, b : Timeseriesdecompx11Vector) -> Timeseriesdecompx11Vector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_decomp_x11_vector_scale(v : Timeseriesdecompx11Vector, s : Double) -> Timeseriesdecompx11Vector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn timeseries_decomp_x11_vector_dot(a : Timeseriesdecompx11Vector, b : Timeseriesdecompx11Vector) -> Double {
@@ -372,10 +358,9 @@ pub fn timeseries_decomp_x11_frame_get(s : Timeseriesdecompx11Frame, i : Int) ->
 }
 
 pub fn timeseries_decomp_x11_frame_set(s : Timeseriesdecompx11Frame, i : Int, v : Double) -> Timeseriesdecompx11Frame {
-  let result = timeseries_decomp_x11_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_x11_frame_sum(s : Timeseriesdecompx11Frame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn timeseries_decomp_x11_table_get(s : Timeseriesdecompx11Table, i : Int) ->
 }
 
 pub fn timeseries_decomp_x11_table_set(s : Timeseriesdecompx11Table, i : Int, v : Double) -> Timeseriesdecompx11Table {
-  let result = timeseries_decomp_x11_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_x11_table_sum(s : Timeseriesdecompx11Table) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn timeseries_decomp_x11_graphn_get(s : Timeseriesdecompx11GraphN, i : Int) 
 }
 
 pub fn timeseries_decomp_x11_graphn_set(s : Timeseriesdecompx11GraphN, i : Int, v : Double) -> Timeseriesdecompx11GraphN {
-  let result = timeseries_decomp_x11_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_x11_graphn_sum(s : Timeseriesdecompx11GraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn timeseries_decomp_x11_node_get(s : Timeseriesdecompx11Node, i : Int) -> D
 }
 
 pub fn timeseries_decomp_x11_node_set(s : Timeseriesdecompx11Node, i : Int, v : Double) -> Timeseriesdecompx11Node {
-  let result = timeseries_decomp_x11_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_x11_node_sum(s : Timeseriesdecompx11Node) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn timeseries_decomp_x11_edge_get(s : Timeseriesdecompx11Edge, i : Int) -> D
 }
 
 pub fn timeseries_decomp_x11_edge_set(s : Timeseriesdecompx11Edge, i : Int, v : Double) -> Timeseriesdecompx11Edge {
-  let result = timeseries_decomp_x11_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_x11_edge_sum(s : Timeseriesdecompx11Edge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn timeseries_decomp_x11_path_get(s : Timeseriesdecompx11Path, i : Int) -> D
 }
 
 pub fn timeseries_decomp_x11_path_set(s : Timeseriesdecompx11Path, i : Int, v : Double) -> Timeseriesdecompx11Path {
-  let result = timeseries_decomp_x11_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_x11_path_sum(s : Timeseriesdecompx11Path) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn timeseries_decomp_x11_cluster_get(s : Timeseriesdecompx11Cluster, i : Int
 }
 
 pub fn timeseries_decomp_x11_cluster_set(s : Timeseriesdecompx11Cluster, i : Int, v : Double) -> Timeseriesdecompx11Cluster {
-  let result = timeseries_decomp_x11_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_x11_cluster_sum(s : Timeseriesdecompx11Cluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn timeseries_decomp_x11_model_get(s : Timeseriesdecompx11Model, i : Int) ->
 }
 
 pub fn timeseries_decomp_x11_model_set(s : Timeseriesdecompx11Model, i : Int, v : Double) -> Timeseriesdecompx11Model {
-  let result = timeseries_decomp_x11_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_x11_model_sum(s : Timeseriesdecompx11Model) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn timeseries_decomp_x11_layer_get(s : Timeseriesdecompx11Layer, i : Int) ->
 }
 
 pub fn timeseries_decomp_x11_layer_set(s : Timeseriesdecompx11Layer, i : Int, v : Double) -> Timeseriesdecompx11Layer {
-  let result = timeseries_decomp_x11_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_x11_layer_sum(s : Timeseriesdecompx11Layer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn timeseries_decomp_x11_buffer_get(s : Timeseriesdecompx11Buffer, i : Int) 
 }
 
 pub fn timeseries_decomp_x11_buffer_set(s : Timeseriesdecompx11Buffer, i : Int, v : Double) -> Timeseriesdecompx11Buffer {
-  let result = timeseries_decomp_x11_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_x11_buffer_sum(s : Timeseriesdecompx11Buffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn timeseries_decomp_x11_cursor_get(s : Timeseriesdecompx11Cursor, i : Int) 
 }
 
 pub fn timeseries_decomp_x11_cursor_set(s : Timeseriesdecompx11Cursor, i : Int, v : Double) -> Timeseriesdecompx11Cursor {
-  let result = timeseries_decomp_x11_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_x11_cursor_sum(s : Timeseriesdecompx11Cursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn timeseries_decomp_x11_view_get(s : Timeseriesdecompx11View, i : Int) -> D
 }
 
 pub fn timeseries_decomp_x11_view_set(s : Timeseriesdecompx11View, i : Int, v : Double) -> Timeseriesdecompx11View {
-  let result = timeseries_decomp_x11_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_x11_view_sum(s : Timeseriesdecompx11View) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn timeseries_decomp_x11_range_get(s : Timeseriesdecompx11Range, i : Int) ->
 }
 
 pub fn timeseries_decomp_x11_range_set(s : Timeseriesdecompx11Range, i : Int, v : Double) -> Timeseriesdecompx11Range {
-  let result = timeseries_decomp_x11_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_x11_range_sum(s : Timeseriesdecompx11Range) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn timeseries_decomp_x11_slice_get(s : Timeseriesdecompx11Slice, i : Int) ->
 }
 
 pub fn timeseries_decomp_x11_slice_set(s : Timeseriesdecompx11Slice, i : Int, v : Double) -> Timeseriesdecompx11Slice {
-  let result = timeseries_decomp_x11_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_x11_slice_sum(s : Timeseriesdecompx11Slice) -> Double { @_common.sum(s.data) }

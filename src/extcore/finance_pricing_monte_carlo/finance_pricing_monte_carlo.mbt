@@ -107,23 +107,15 @@ pub fn finance_pricing_monte_carlo_series_std(s : FinancepricingmontecarloSeries
 pub fn finance_pricing_monte_carlo_series_median(s : FinancepricingmontecarloSeries) -> Double { @_common.median(s.vals) }
 
 pub fn finance_pricing_monte_carlo_series_scale(s : FinancepricingmontecarloSeries, f : Double) -> FinancepricingmontecarloSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn finance_pricing_monte_carlo_series_add(a : FinancepricingmontecarloSeries, b : FinancepricingmontecarloSeries) -> FinancepricingmontecarloSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn finance_pricing_monte_carlo_series_sub(a : FinancepricingmontecarloSeries, b : FinancepricingmontecarloSeries) -> FinancepricingmontecarloSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn finance_pricing_monte_carlo_series_normalize(s : FinancepricingmontecarloSeries) -> FinancepricingmontecarloSeries {
@@ -254,22 +246,16 @@ pub fn finance_pricing_monte_carlo_vector_zero(dim : Int) -> Financepricingmonte
 
 pub fn finance_pricing_monte_carlo_vector_add(a : FinancepricingmontecarloVector, b : FinancepricingmontecarloVector) -> FinancepricingmontecarloVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_pricing_monte_carlo_vector_sub(a : FinancepricingmontecarloVector, b : FinancepricingmontecarloVector) -> FinancepricingmontecarloVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_pricing_monte_carlo_vector_scale(v : FinancepricingmontecarloVector, s : Double) -> FinancepricingmontecarloVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn finance_pricing_monte_carlo_vector_dot(a : FinancepricingmontecarloVector, b : FinancepricingmontecarloVector) -> Double {
@@ -372,10 +358,9 @@ pub fn finance_pricing_monte_carlo_frame_get(s : FinancepricingmontecarloFrame, 
 }
 
 pub fn finance_pricing_monte_carlo_frame_set(s : FinancepricingmontecarloFrame, i : Int, v : Double) -> FinancepricingmontecarloFrame {
-  let result = finance_pricing_monte_carlo_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_monte_carlo_frame_sum(s : FinancepricingmontecarloFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn finance_pricing_monte_carlo_table_get(s : FinancepricingmontecarloTable, 
 }
 
 pub fn finance_pricing_monte_carlo_table_set(s : FinancepricingmontecarloTable, i : Int, v : Double) -> FinancepricingmontecarloTable {
-  let result = finance_pricing_monte_carlo_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_monte_carlo_table_sum(s : FinancepricingmontecarloTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn finance_pricing_monte_carlo_graphn_get(s : FinancepricingmontecarloGraphN
 }
 
 pub fn finance_pricing_monte_carlo_graphn_set(s : FinancepricingmontecarloGraphN, i : Int, v : Double) -> FinancepricingmontecarloGraphN {
-  let result = finance_pricing_monte_carlo_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_monte_carlo_graphn_sum(s : FinancepricingmontecarloGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn finance_pricing_monte_carlo_node_get(s : FinancepricingmontecarloNode, i 
 }
 
 pub fn finance_pricing_monte_carlo_node_set(s : FinancepricingmontecarloNode, i : Int, v : Double) -> FinancepricingmontecarloNode {
-  let result = finance_pricing_monte_carlo_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_monte_carlo_node_sum(s : FinancepricingmontecarloNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn finance_pricing_monte_carlo_edge_get(s : FinancepricingmontecarloEdge, i 
 }
 
 pub fn finance_pricing_monte_carlo_edge_set(s : FinancepricingmontecarloEdge, i : Int, v : Double) -> FinancepricingmontecarloEdge {
-  let result = finance_pricing_monte_carlo_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_monte_carlo_edge_sum(s : FinancepricingmontecarloEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn finance_pricing_monte_carlo_path_get(s : FinancepricingmontecarloPath, i 
 }
 
 pub fn finance_pricing_monte_carlo_path_set(s : FinancepricingmontecarloPath, i : Int, v : Double) -> FinancepricingmontecarloPath {
-  let result = finance_pricing_monte_carlo_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_monte_carlo_path_sum(s : FinancepricingmontecarloPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn finance_pricing_monte_carlo_cluster_get(s : FinancepricingmontecarloClust
 }
 
 pub fn finance_pricing_monte_carlo_cluster_set(s : FinancepricingmontecarloCluster, i : Int, v : Double) -> FinancepricingmontecarloCluster {
-  let result = finance_pricing_monte_carlo_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_monte_carlo_cluster_sum(s : FinancepricingmontecarloCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn finance_pricing_monte_carlo_model_get(s : FinancepricingmontecarloModel, 
 }
 
 pub fn finance_pricing_monte_carlo_model_set(s : FinancepricingmontecarloModel, i : Int, v : Double) -> FinancepricingmontecarloModel {
-  let result = finance_pricing_monte_carlo_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_monte_carlo_model_sum(s : FinancepricingmontecarloModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn finance_pricing_monte_carlo_layer_get(s : FinancepricingmontecarloLayer, 
 }
 
 pub fn finance_pricing_monte_carlo_layer_set(s : FinancepricingmontecarloLayer, i : Int, v : Double) -> FinancepricingmontecarloLayer {
-  let result = finance_pricing_monte_carlo_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_monte_carlo_layer_sum(s : FinancepricingmontecarloLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn finance_pricing_monte_carlo_buffer_get(s : FinancepricingmontecarloBuffer
 }
 
 pub fn finance_pricing_monte_carlo_buffer_set(s : FinancepricingmontecarloBuffer, i : Int, v : Double) -> FinancepricingmontecarloBuffer {
-  let result = finance_pricing_monte_carlo_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_monte_carlo_buffer_sum(s : FinancepricingmontecarloBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn finance_pricing_monte_carlo_cursor_get(s : FinancepricingmontecarloCursor
 }
 
 pub fn finance_pricing_monte_carlo_cursor_set(s : FinancepricingmontecarloCursor, i : Int, v : Double) -> FinancepricingmontecarloCursor {
-  let result = finance_pricing_monte_carlo_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_monte_carlo_cursor_sum(s : FinancepricingmontecarloCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn finance_pricing_monte_carlo_view_get(s : FinancepricingmontecarloView, i 
 }
 
 pub fn finance_pricing_monte_carlo_view_set(s : FinancepricingmontecarloView, i : Int, v : Double) -> FinancepricingmontecarloView {
-  let result = finance_pricing_monte_carlo_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_monte_carlo_view_sum(s : FinancepricingmontecarloView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn finance_pricing_monte_carlo_range_get(s : FinancepricingmontecarloRange, 
 }
 
 pub fn finance_pricing_monte_carlo_range_set(s : FinancepricingmontecarloRange, i : Int, v : Double) -> FinancepricingmontecarloRange {
-  let result = finance_pricing_monte_carlo_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_monte_carlo_range_sum(s : FinancepricingmontecarloRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn finance_pricing_monte_carlo_slice_get(s : FinancepricingmontecarloSlice, 
 }
 
 pub fn finance_pricing_monte_carlo_slice_set(s : FinancepricingmontecarloSlice, i : Int, v : Double) -> FinancepricingmontecarloSlice {
-  let result = finance_pricing_monte_carlo_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_monte_carlo_slice_sum(s : FinancepricingmontecarloSlice) -> Double { @_common.sum(s.data) }

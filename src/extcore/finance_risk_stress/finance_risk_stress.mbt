@@ -107,23 +107,15 @@ pub fn finance_risk_stress_series_std(s : FinanceriskstressSeries) -> Double { @
 pub fn finance_risk_stress_series_median(s : FinanceriskstressSeries) -> Double { @_common.median(s.vals) }
 
 pub fn finance_risk_stress_series_scale(s : FinanceriskstressSeries, f : Double) -> FinanceriskstressSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn finance_risk_stress_series_add(a : FinanceriskstressSeries, b : FinanceriskstressSeries) -> FinanceriskstressSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn finance_risk_stress_series_sub(a : FinanceriskstressSeries, b : FinanceriskstressSeries) -> FinanceriskstressSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn finance_risk_stress_series_normalize(s : FinanceriskstressSeries) -> FinanceriskstressSeries {
@@ -254,22 +246,16 @@ pub fn finance_risk_stress_vector_zero(dim : Int) -> FinanceriskstressVector {
 
 pub fn finance_risk_stress_vector_add(a : FinanceriskstressVector, b : FinanceriskstressVector) -> FinanceriskstressVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_risk_stress_vector_sub(a : FinanceriskstressVector, b : FinanceriskstressVector) -> FinanceriskstressVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_risk_stress_vector_scale(v : FinanceriskstressVector, s : Double) -> FinanceriskstressVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn finance_risk_stress_vector_dot(a : FinanceriskstressVector, b : FinanceriskstressVector) -> Double {
@@ -372,10 +358,9 @@ pub fn finance_risk_stress_frame_get(s : FinanceriskstressFrame, i : Int) -> Dou
 }
 
 pub fn finance_risk_stress_frame_set(s : FinanceriskstressFrame, i : Int, v : Double) -> FinanceriskstressFrame {
-  let result = finance_risk_stress_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_stress_frame_sum(s : FinanceriskstressFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn finance_risk_stress_table_get(s : FinanceriskstressTable, i : Int) -> Dou
 }
 
 pub fn finance_risk_stress_table_set(s : FinanceriskstressTable, i : Int, v : Double) -> FinanceriskstressTable {
-  let result = finance_risk_stress_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_stress_table_sum(s : FinanceriskstressTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn finance_risk_stress_graphn_get(s : FinanceriskstressGraphN, i : Int) -> D
 }
 
 pub fn finance_risk_stress_graphn_set(s : FinanceriskstressGraphN, i : Int, v : Double) -> FinanceriskstressGraphN {
-  let result = finance_risk_stress_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_stress_graphn_sum(s : FinanceriskstressGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn finance_risk_stress_node_get(s : FinanceriskstressNode, i : Int) -> Doubl
 }
 
 pub fn finance_risk_stress_node_set(s : FinanceriskstressNode, i : Int, v : Double) -> FinanceriskstressNode {
-  let result = finance_risk_stress_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_stress_node_sum(s : FinanceriskstressNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn finance_risk_stress_edge_get(s : FinanceriskstressEdge, i : Int) -> Doubl
 }
 
 pub fn finance_risk_stress_edge_set(s : FinanceriskstressEdge, i : Int, v : Double) -> FinanceriskstressEdge {
-  let result = finance_risk_stress_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_stress_edge_sum(s : FinanceriskstressEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn finance_risk_stress_path_get(s : FinanceriskstressPath, i : Int) -> Doubl
 }
 
 pub fn finance_risk_stress_path_set(s : FinanceriskstressPath, i : Int, v : Double) -> FinanceriskstressPath {
-  let result = finance_risk_stress_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_stress_path_sum(s : FinanceriskstressPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn finance_risk_stress_cluster_get(s : FinanceriskstressCluster, i : Int) ->
 }
 
 pub fn finance_risk_stress_cluster_set(s : FinanceriskstressCluster, i : Int, v : Double) -> FinanceriskstressCluster {
-  let result = finance_risk_stress_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_stress_cluster_sum(s : FinanceriskstressCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn finance_risk_stress_model_get(s : FinanceriskstressModel, i : Int) -> Dou
 }
 
 pub fn finance_risk_stress_model_set(s : FinanceriskstressModel, i : Int, v : Double) -> FinanceriskstressModel {
-  let result = finance_risk_stress_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_stress_model_sum(s : FinanceriskstressModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn finance_risk_stress_layer_get(s : FinanceriskstressLayer, i : Int) -> Dou
 }
 
 pub fn finance_risk_stress_layer_set(s : FinanceriskstressLayer, i : Int, v : Double) -> FinanceriskstressLayer {
-  let result = finance_risk_stress_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_stress_layer_sum(s : FinanceriskstressLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn finance_risk_stress_buffer_get(s : FinanceriskstressBuffer, i : Int) -> D
 }
 
 pub fn finance_risk_stress_buffer_set(s : FinanceriskstressBuffer, i : Int, v : Double) -> FinanceriskstressBuffer {
-  let result = finance_risk_stress_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_stress_buffer_sum(s : FinanceriskstressBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn finance_risk_stress_cursor_get(s : FinanceriskstressCursor, i : Int) -> D
 }
 
 pub fn finance_risk_stress_cursor_set(s : FinanceriskstressCursor, i : Int, v : Double) -> FinanceriskstressCursor {
-  let result = finance_risk_stress_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_stress_cursor_sum(s : FinanceriskstressCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn finance_risk_stress_view_get(s : FinanceriskstressView, i : Int) -> Doubl
 }
 
 pub fn finance_risk_stress_view_set(s : FinanceriskstressView, i : Int, v : Double) -> FinanceriskstressView {
-  let result = finance_risk_stress_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_stress_view_sum(s : FinanceriskstressView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn finance_risk_stress_range_get(s : FinanceriskstressRange, i : Int) -> Dou
 }
 
 pub fn finance_risk_stress_range_set(s : FinanceriskstressRange, i : Int, v : Double) -> FinanceriskstressRange {
-  let result = finance_risk_stress_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_stress_range_sum(s : FinanceriskstressRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn finance_risk_stress_slice_get(s : FinanceriskstressSlice, i : Int) -> Dou
 }
 
 pub fn finance_risk_stress_slice_set(s : FinanceriskstressSlice, i : Int, v : Double) -> FinanceriskstressSlice {
-  let result = finance_risk_stress_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_stress_slice_sum(s : FinanceriskstressSlice) -> Double { @_common.sum(s.data) }

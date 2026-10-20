@@ -107,23 +107,15 @@ pub fn graph_tree_mst_series_std(s : GraphtreemstSeries) -> Double { @_common.st
 pub fn graph_tree_mst_series_median(s : GraphtreemstSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_tree_mst_series_scale(s : GraphtreemstSeries, f : Double) -> GraphtreemstSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_tree_mst_series_add(a : GraphtreemstSeries, b : GraphtreemstSeries) -> GraphtreemstSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_tree_mst_series_sub(a : GraphtreemstSeries, b : GraphtreemstSeries) -> GraphtreemstSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_tree_mst_series_normalize(s : GraphtreemstSeries) -> GraphtreemstSeries {
@@ -254,22 +246,16 @@ pub fn graph_tree_mst_vector_zero(dim : Int) -> GraphtreemstVector {
 
 pub fn graph_tree_mst_vector_add(a : GraphtreemstVector, b : GraphtreemstVector) -> GraphtreemstVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_tree_mst_vector_sub(a : GraphtreemstVector, b : GraphtreemstVector) -> GraphtreemstVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_tree_mst_vector_scale(v : GraphtreemstVector, s : Double) -> GraphtreemstVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_tree_mst_vector_dot(a : GraphtreemstVector, b : GraphtreemstVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_tree_mst_frame_get(s : GraphtreemstFrame, i : Int) -> Double {
 }
 
 pub fn graph_tree_mst_frame_set(s : GraphtreemstFrame, i : Int, v : Double) -> GraphtreemstFrame {
-  let result = graph_tree_mst_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_frame_sum(s : GraphtreemstFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_tree_mst_table_get(s : GraphtreemstTable, i : Int) -> Double {
 }
 
 pub fn graph_tree_mst_table_set(s : GraphtreemstTable, i : Int, v : Double) -> GraphtreemstTable {
-  let result = graph_tree_mst_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_table_sum(s : GraphtreemstTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_tree_mst_graphn_get(s : GraphtreemstGraphN, i : Int) -> Double {
 }
 
 pub fn graph_tree_mst_graphn_set(s : GraphtreemstGraphN, i : Int, v : Double) -> GraphtreemstGraphN {
-  let result = graph_tree_mst_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_graphn_sum(s : GraphtreemstGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_tree_mst_node_get(s : GraphtreemstNode, i : Int) -> Double {
 }
 
 pub fn graph_tree_mst_node_set(s : GraphtreemstNode, i : Int, v : Double) -> GraphtreemstNode {
-  let result = graph_tree_mst_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_node_sum(s : GraphtreemstNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_tree_mst_edge_get(s : GraphtreemstEdge, i : Int) -> Double {
 }
 
 pub fn graph_tree_mst_edge_set(s : GraphtreemstEdge, i : Int, v : Double) -> GraphtreemstEdge {
-  let result = graph_tree_mst_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_edge_sum(s : GraphtreemstEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_tree_mst_path_get(s : GraphtreemstPath, i : Int) -> Double {
 }
 
 pub fn graph_tree_mst_path_set(s : GraphtreemstPath, i : Int, v : Double) -> GraphtreemstPath {
-  let result = graph_tree_mst_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_path_sum(s : GraphtreemstPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_tree_mst_cluster_get(s : GraphtreemstCluster, i : Int) -> Double {
 }
 
 pub fn graph_tree_mst_cluster_set(s : GraphtreemstCluster, i : Int, v : Double) -> GraphtreemstCluster {
-  let result = graph_tree_mst_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_cluster_sum(s : GraphtreemstCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_tree_mst_model_get(s : GraphtreemstModel, i : Int) -> Double {
 }
 
 pub fn graph_tree_mst_model_set(s : GraphtreemstModel, i : Int, v : Double) -> GraphtreemstModel {
-  let result = graph_tree_mst_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_model_sum(s : GraphtreemstModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_tree_mst_layer_get(s : GraphtreemstLayer, i : Int) -> Double {
 }
 
 pub fn graph_tree_mst_layer_set(s : GraphtreemstLayer, i : Int, v : Double) -> GraphtreemstLayer {
-  let result = graph_tree_mst_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_layer_sum(s : GraphtreemstLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_tree_mst_buffer_get(s : GraphtreemstBuffer, i : Int) -> Double {
 }
 
 pub fn graph_tree_mst_buffer_set(s : GraphtreemstBuffer, i : Int, v : Double) -> GraphtreemstBuffer {
-  let result = graph_tree_mst_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_buffer_sum(s : GraphtreemstBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_tree_mst_cursor_get(s : GraphtreemstCursor, i : Int) -> Double {
 }
 
 pub fn graph_tree_mst_cursor_set(s : GraphtreemstCursor, i : Int, v : Double) -> GraphtreemstCursor {
-  let result = graph_tree_mst_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_cursor_sum(s : GraphtreemstCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_tree_mst_view_get(s : GraphtreemstView, i : Int) -> Double {
 }
 
 pub fn graph_tree_mst_view_set(s : GraphtreemstView, i : Int, v : Double) -> GraphtreemstView {
-  let result = graph_tree_mst_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_view_sum(s : GraphtreemstView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_tree_mst_range_get(s : GraphtreemstRange, i : Int) -> Double {
 }
 
 pub fn graph_tree_mst_range_set(s : GraphtreemstRange, i : Int, v : Double) -> GraphtreemstRange {
-  let result = graph_tree_mst_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_range_sum(s : GraphtreemstRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_tree_mst_slice_get(s : GraphtreemstSlice, i : Int) -> Double {
 }
 
 pub fn graph_tree_mst_slice_set(s : GraphtreemstSlice, i : Int, v : Double) -> GraphtreemstSlice {
-  let result = graph_tree_mst_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_slice_sum(s : GraphtreemstSlice) -> Double { @_common.sum(s.data) }

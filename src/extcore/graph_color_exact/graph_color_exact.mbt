@@ -107,23 +107,15 @@ pub fn graph_color_exact_series_std(s : GraphcolorexactSeries) -> Double { @_com
 pub fn graph_color_exact_series_median(s : GraphcolorexactSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_color_exact_series_scale(s : GraphcolorexactSeries, f : Double) -> GraphcolorexactSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_color_exact_series_add(a : GraphcolorexactSeries, b : GraphcolorexactSeries) -> GraphcolorexactSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_color_exact_series_sub(a : GraphcolorexactSeries, b : GraphcolorexactSeries) -> GraphcolorexactSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_color_exact_series_normalize(s : GraphcolorexactSeries) -> GraphcolorexactSeries {
@@ -254,22 +246,16 @@ pub fn graph_color_exact_vector_zero(dim : Int) -> GraphcolorexactVector {
 
 pub fn graph_color_exact_vector_add(a : GraphcolorexactVector, b : GraphcolorexactVector) -> GraphcolorexactVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_color_exact_vector_sub(a : GraphcolorexactVector, b : GraphcolorexactVector) -> GraphcolorexactVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_color_exact_vector_scale(v : GraphcolorexactVector, s : Double) -> GraphcolorexactVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_color_exact_vector_dot(a : GraphcolorexactVector, b : GraphcolorexactVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_color_exact_frame_get(s : GraphcolorexactFrame, i : Int) -> Double 
 }
 
 pub fn graph_color_exact_frame_set(s : GraphcolorexactFrame, i : Int, v : Double) -> GraphcolorexactFrame {
-  let result = graph_color_exact_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_frame_sum(s : GraphcolorexactFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_color_exact_table_get(s : GraphcolorexactTable, i : Int) -> Double 
 }
 
 pub fn graph_color_exact_table_set(s : GraphcolorexactTable, i : Int, v : Double) -> GraphcolorexactTable {
-  let result = graph_color_exact_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_table_sum(s : GraphcolorexactTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_color_exact_graphn_get(s : GraphcolorexactGraphN, i : Int) -> Doubl
 }
 
 pub fn graph_color_exact_graphn_set(s : GraphcolorexactGraphN, i : Int, v : Double) -> GraphcolorexactGraphN {
-  let result = graph_color_exact_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_graphn_sum(s : GraphcolorexactGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_color_exact_node_get(s : GraphcolorexactNode, i : Int) -> Double {
 }
 
 pub fn graph_color_exact_node_set(s : GraphcolorexactNode, i : Int, v : Double) -> GraphcolorexactNode {
-  let result = graph_color_exact_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_node_sum(s : GraphcolorexactNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_color_exact_edge_get(s : GraphcolorexactEdge, i : Int) -> Double {
 }
 
 pub fn graph_color_exact_edge_set(s : GraphcolorexactEdge, i : Int, v : Double) -> GraphcolorexactEdge {
-  let result = graph_color_exact_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_edge_sum(s : GraphcolorexactEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_color_exact_path_get(s : GraphcolorexactPath, i : Int) -> Double {
 }
 
 pub fn graph_color_exact_path_set(s : GraphcolorexactPath, i : Int, v : Double) -> GraphcolorexactPath {
-  let result = graph_color_exact_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_path_sum(s : GraphcolorexactPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_color_exact_cluster_get(s : GraphcolorexactCluster, i : Int) -> Dou
 }
 
 pub fn graph_color_exact_cluster_set(s : GraphcolorexactCluster, i : Int, v : Double) -> GraphcolorexactCluster {
-  let result = graph_color_exact_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_cluster_sum(s : GraphcolorexactCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_color_exact_model_get(s : GraphcolorexactModel, i : Int) -> Double 
 }
 
 pub fn graph_color_exact_model_set(s : GraphcolorexactModel, i : Int, v : Double) -> GraphcolorexactModel {
-  let result = graph_color_exact_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_model_sum(s : GraphcolorexactModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_color_exact_layer_get(s : GraphcolorexactLayer, i : Int) -> Double 
 }
 
 pub fn graph_color_exact_layer_set(s : GraphcolorexactLayer, i : Int, v : Double) -> GraphcolorexactLayer {
-  let result = graph_color_exact_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_layer_sum(s : GraphcolorexactLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_color_exact_buffer_get(s : GraphcolorexactBuffer, i : Int) -> Doubl
 }
 
 pub fn graph_color_exact_buffer_set(s : GraphcolorexactBuffer, i : Int, v : Double) -> GraphcolorexactBuffer {
-  let result = graph_color_exact_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_buffer_sum(s : GraphcolorexactBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_color_exact_cursor_get(s : GraphcolorexactCursor, i : Int) -> Doubl
 }
 
 pub fn graph_color_exact_cursor_set(s : GraphcolorexactCursor, i : Int, v : Double) -> GraphcolorexactCursor {
-  let result = graph_color_exact_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_cursor_sum(s : GraphcolorexactCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_color_exact_view_get(s : GraphcolorexactView, i : Int) -> Double {
 }
 
 pub fn graph_color_exact_view_set(s : GraphcolorexactView, i : Int, v : Double) -> GraphcolorexactView {
-  let result = graph_color_exact_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_view_sum(s : GraphcolorexactView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_color_exact_range_get(s : GraphcolorexactRange, i : Int) -> Double 
 }
 
 pub fn graph_color_exact_range_set(s : GraphcolorexactRange, i : Int, v : Double) -> GraphcolorexactRange {
-  let result = graph_color_exact_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_range_sum(s : GraphcolorexactRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_color_exact_slice_get(s : GraphcolorexactSlice, i : Int) -> Double 
 }
 
 pub fn graph_color_exact_slice_set(s : GraphcolorexactSlice, i : Int, v : Double) -> GraphcolorexactSlice {
-  let result = graph_color_exact_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_exact_slice_sum(s : GraphcolorexactSlice) -> Double { @_common.sum(s.data) }

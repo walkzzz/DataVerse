@@ -107,23 +107,15 @@ pub fn ml_ensemble_xgboost_series_std(s : MlensemblexgboostSeries) -> Double { @
 pub fn ml_ensemble_xgboost_series_median(s : MlensemblexgboostSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_ensemble_xgboost_series_scale(s : MlensemblexgboostSeries, f : Double) -> MlensemblexgboostSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_ensemble_xgboost_series_add(a : MlensemblexgboostSeries, b : MlensemblexgboostSeries) -> MlensemblexgboostSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_ensemble_xgboost_series_sub(a : MlensemblexgboostSeries, b : MlensemblexgboostSeries) -> MlensemblexgboostSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_ensemble_xgboost_series_normalize(s : MlensemblexgboostSeries) -> MlensemblexgboostSeries {
@@ -254,22 +246,16 @@ pub fn ml_ensemble_xgboost_vector_zero(dim : Int) -> MlensemblexgboostVector {
 
 pub fn ml_ensemble_xgboost_vector_add(a : MlensemblexgboostVector, b : MlensemblexgboostVector) -> MlensemblexgboostVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_ensemble_xgboost_vector_sub(a : MlensemblexgboostVector, b : MlensemblexgboostVector) -> MlensemblexgboostVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_ensemble_xgboost_vector_scale(v : MlensemblexgboostVector, s : Double) -> MlensemblexgboostVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_ensemble_xgboost_vector_dot(a : MlensemblexgboostVector, b : MlensemblexgboostVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_ensemble_xgboost_frame_get(s : MlensemblexgboostFrame, i : Int) -> Dou
 }
 
 pub fn ml_ensemble_xgboost_frame_set(s : MlensemblexgboostFrame, i : Int, v : Double) -> MlensemblexgboostFrame {
-  let result = ml_ensemble_xgboost_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_xgboost_frame_sum(s : MlensemblexgboostFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_ensemble_xgboost_table_get(s : MlensemblexgboostTable, i : Int) -> Dou
 }
 
 pub fn ml_ensemble_xgboost_table_set(s : MlensemblexgboostTable, i : Int, v : Double) -> MlensemblexgboostTable {
-  let result = ml_ensemble_xgboost_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_xgboost_table_sum(s : MlensemblexgboostTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_ensemble_xgboost_graphn_get(s : MlensemblexgboostGraphN, i : Int) -> D
 }
 
 pub fn ml_ensemble_xgboost_graphn_set(s : MlensemblexgboostGraphN, i : Int, v : Double) -> MlensemblexgboostGraphN {
-  let result = ml_ensemble_xgboost_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_xgboost_graphn_sum(s : MlensemblexgboostGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_ensemble_xgboost_node_get(s : MlensemblexgboostNode, i : Int) -> Doubl
 }
 
 pub fn ml_ensemble_xgboost_node_set(s : MlensemblexgboostNode, i : Int, v : Double) -> MlensemblexgboostNode {
-  let result = ml_ensemble_xgboost_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_xgboost_node_sum(s : MlensemblexgboostNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_ensemble_xgboost_edge_get(s : MlensemblexgboostEdge, i : Int) -> Doubl
 }
 
 pub fn ml_ensemble_xgboost_edge_set(s : MlensemblexgboostEdge, i : Int, v : Double) -> MlensemblexgboostEdge {
-  let result = ml_ensemble_xgboost_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_xgboost_edge_sum(s : MlensemblexgboostEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_ensemble_xgboost_path_get(s : MlensemblexgboostPath, i : Int) -> Doubl
 }
 
 pub fn ml_ensemble_xgboost_path_set(s : MlensemblexgboostPath, i : Int, v : Double) -> MlensemblexgboostPath {
-  let result = ml_ensemble_xgboost_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_xgboost_path_sum(s : MlensemblexgboostPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_ensemble_xgboost_cluster_get(s : MlensemblexgboostCluster, i : Int) ->
 }
 
 pub fn ml_ensemble_xgboost_cluster_set(s : MlensemblexgboostCluster, i : Int, v : Double) -> MlensemblexgboostCluster {
-  let result = ml_ensemble_xgboost_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_xgboost_cluster_sum(s : MlensemblexgboostCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_ensemble_xgboost_model_get(s : MlensemblexgboostModel, i : Int) -> Dou
 }
 
 pub fn ml_ensemble_xgboost_model_set(s : MlensemblexgboostModel, i : Int, v : Double) -> MlensemblexgboostModel {
-  let result = ml_ensemble_xgboost_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_xgboost_model_sum(s : MlensemblexgboostModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_ensemble_xgboost_layer_get(s : MlensemblexgboostLayer, i : Int) -> Dou
 }
 
 pub fn ml_ensemble_xgboost_layer_set(s : MlensemblexgboostLayer, i : Int, v : Double) -> MlensemblexgboostLayer {
-  let result = ml_ensemble_xgboost_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_xgboost_layer_sum(s : MlensemblexgboostLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_ensemble_xgboost_buffer_get(s : MlensemblexgboostBuffer, i : Int) -> D
 }
 
 pub fn ml_ensemble_xgboost_buffer_set(s : MlensemblexgboostBuffer, i : Int, v : Double) -> MlensemblexgboostBuffer {
-  let result = ml_ensemble_xgboost_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_xgboost_buffer_sum(s : MlensemblexgboostBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_ensemble_xgboost_cursor_get(s : MlensemblexgboostCursor, i : Int) -> D
 }
 
 pub fn ml_ensemble_xgboost_cursor_set(s : MlensemblexgboostCursor, i : Int, v : Double) -> MlensemblexgboostCursor {
-  let result = ml_ensemble_xgboost_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_xgboost_cursor_sum(s : MlensemblexgboostCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_ensemble_xgboost_view_get(s : MlensemblexgboostView, i : Int) -> Doubl
 }
 
 pub fn ml_ensemble_xgboost_view_set(s : MlensemblexgboostView, i : Int, v : Double) -> MlensemblexgboostView {
-  let result = ml_ensemble_xgboost_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_xgboost_view_sum(s : MlensemblexgboostView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_ensemble_xgboost_range_get(s : MlensemblexgboostRange, i : Int) -> Dou
 }
 
 pub fn ml_ensemble_xgboost_range_set(s : MlensemblexgboostRange, i : Int, v : Double) -> MlensemblexgboostRange {
-  let result = ml_ensemble_xgboost_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_xgboost_range_sum(s : MlensemblexgboostRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_ensemble_xgboost_slice_get(s : MlensemblexgboostSlice, i : Int) -> Dou
 }
 
 pub fn ml_ensemble_xgboost_slice_set(s : MlensemblexgboostSlice, i : Int, v : Double) -> MlensemblexgboostSlice {
-  let result = ml_ensemble_xgboost_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_xgboost_slice_sum(s : MlensemblexgboostSlice) -> Double { @_common.sum(s.data) }

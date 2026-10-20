@@ -107,23 +107,15 @@ pub fn image_filter_box_series_std(s : ImagefilterboxSeries) -> Double { @_commo
 pub fn image_filter_box_series_median(s : ImagefilterboxSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_filter_box_series_scale(s : ImagefilterboxSeries, f : Double) -> ImagefilterboxSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_filter_box_series_add(a : ImagefilterboxSeries, b : ImagefilterboxSeries) -> ImagefilterboxSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_filter_box_series_sub(a : ImagefilterboxSeries, b : ImagefilterboxSeries) -> ImagefilterboxSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_filter_box_series_normalize(s : ImagefilterboxSeries) -> ImagefilterboxSeries {
@@ -254,22 +246,16 @@ pub fn image_filter_box_vector_zero(dim : Int) -> ImagefilterboxVector {
 
 pub fn image_filter_box_vector_add(a : ImagefilterboxVector, b : ImagefilterboxVector) -> ImagefilterboxVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_filter_box_vector_sub(a : ImagefilterboxVector, b : ImagefilterboxVector) -> ImagefilterboxVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_filter_box_vector_scale(v : ImagefilterboxVector, s : Double) -> ImagefilterboxVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_filter_box_vector_dot(a : ImagefilterboxVector, b : ImagefilterboxVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_filter_box_frame_get(s : ImagefilterboxFrame, i : Int) -> Double {
 }
 
 pub fn image_filter_box_frame_set(s : ImagefilterboxFrame, i : Int, v : Double) -> ImagefilterboxFrame {
-  let result = image_filter_box_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_frame_sum(s : ImagefilterboxFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_filter_box_table_get(s : ImagefilterboxTable, i : Int) -> Double {
 }
 
 pub fn image_filter_box_table_set(s : ImagefilterboxTable, i : Int, v : Double) -> ImagefilterboxTable {
-  let result = image_filter_box_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_table_sum(s : ImagefilterboxTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_filter_box_graphn_get(s : ImagefilterboxGraphN, i : Int) -> Double 
 }
 
 pub fn image_filter_box_graphn_set(s : ImagefilterboxGraphN, i : Int, v : Double) -> ImagefilterboxGraphN {
-  let result = image_filter_box_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_graphn_sum(s : ImagefilterboxGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_filter_box_node_get(s : ImagefilterboxNode, i : Int) -> Double {
 }
 
 pub fn image_filter_box_node_set(s : ImagefilterboxNode, i : Int, v : Double) -> ImagefilterboxNode {
-  let result = image_filter_box_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_node_sum(s : ImagefilterboxNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_filter_box_edge_get(s : ImagefilterboxEdge, i : Int) -> Double {
 }
 
 pub fn image_filter_box_edge_set(s : ImagefilterboxEdge, i : Int, v : Double) -> ImagefilterboxEdge {
-  let result = image_filter_box_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_edge_sum(s : ImagefilterboxEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_filter_box_path_get(s : ImagefilterboxPath, i : Int) -> Double {
 }
 
 pub fn image_filter_box_path_set(s : ImagefilterboxPath, i : Int, v : Double) -> ImagefilterboxPath {
-  let result = image_filter_box_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_path_sum(s : ImagefilterboxPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_filter_box_cluster_get(s : ImagefilterboxCluster, i : Int) -> Doubl
 }
 
 pub fn image_filter_box_cluster_set(s : ImagefilterboxCluster, i : Int, v : Double) -> ImagefilterboxCluster {
-  let result = image_filter_box_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_cluster_sum(s : ImagefilterboxCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_filter_box_model_get(s : ImagefilterboxModel, i : Int) -> Double {
 }
 
 pub fn image_filter_box_model_set(s : ImagefilterboxModel, i : Int, v : Double) -> ImagefilterboxModel {
-  let result = image_filter_box_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_model_sum(s : ImagefilterboxModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_filter_box_layer_get(s : ImagefilterboxLayer, i : Int) -> Double {
 }
 
 pub fn image_filter_box_layer_set(s : ImagefilterboxLayer, i : Int, v : Double) -> ImagefilterboxLayer {
-  let result = image_filter_box_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_layer_sum(s : ImagefilterboxLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_filter_box_buffer_get(s : ImagefilterboxBuffer, i : Int) -> Double 
 }
 
 pub fn image_filter_box_buffer_set(s : ImagefilterboxBuffer, i : Int, v : Double) -> ImagefilterboxBuffer {
-  let result = image_filter_box_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_buffer_sum(s : ImagefilterboxBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_filter_box_cursor_get(s : ImagefilterboxCursor, i : Int) -> Double 
 }
 
 pub fn image_filter_box_cursor_set(s : ImagefilterboxCursor, i : Int, v : Double) -> ImagefilterboxCursor {
-  let result = image_filter_box_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_cursor_sum(s : ImagefilterboxCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_filter_box_view_get(s : ImagefilterboxView, i : Int) -> Double {
 }
 
 pub fn image_filter_box_view_set(s : ImagefilterboxView, i : Int, v : Double) -> ImagefilterboxView {
-  let result = image_filter_box_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_view_sum(s : ImagefilterboxView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_filter_box_range_get(s : ImagefilterboxRange, i : Int) -> Double {
 }
 
 pub fn image_filter_box_range_set(s : ImagefilterboxRange, i : Int, v : Double) -> ImagefilterboxRange {
-  let result = image_filter_box_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_range_sum(s : ImagefilterboxRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_filter_box_slice_get(s : ImagefilterboxSlice, i : Int) -> Double {
 }
 
 pub fn image_filter_box_slice_set(s : ImagefilterboxSlice, i : Int, v : Double) -> ImagefilterboxSlice {
-  let result = image_filter_box_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_box_slice_sum(s : ImagefilterboxSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn crypto_sign_ring_series_std(s : CryptosignringSeries) -> Double { @_commo
 pub fn crypto_sign_ring_series_median(s : CryptosignringSeries) -> Double { @_common.median(s.vals) }
 
 pub fn crypto_sign_ring_series_scale(s : CryptosignringSeries, f : Double) -> CryptosignringSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn crypto_sign_ring_series_add(a : CryptosignringSeries, b : CryptosignringSeries) -> CryptosignringSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn crypto_sign_ring_series_sub(a : CryptosignringSeries, b : CryptosignringSeries) -> CryptosignringSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn crypto_sign_ring_series_normalize(s : CryptosignringSeries) -> CryptosignringSeries {
@@ -254,22 +246,16 @@ pub fn crypto_sign_ring_vector_zero(dim : Int) -> CryptosignringVector {
 
 pub fn crypto_sign_ring_vector_add(a : CryptosignringVector, b : CryptosignringVector) -> CryptosignringVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_sign_ring_vector_sub(a : CryptosignringVector, b : CryptosignringVector) -> CryptosignringVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_sign_ring_vector_scale(v : CryptosignringVector, s : Double) -> CryptosignringVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn crypto_sign_ring_vector_dot(a : CryptosignringVector, b : CryptosignringVector) -> Double {
@@ -372,10 +358,9 @@ pub fn crypto_sign_ring_frame_get(s : CryptosignringFrame, i : Int) -> Double {
 }
 
 pub fn crypto_sign_ring_frame_set(s : CryptosignringFrame, i : Int, v : Double) -> CryptosignringFrame {
-  let result = crypto_sign_ring_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ring_frame_sum(s : CryptosignringFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn crypto_sign_ring_table_get(s : CryptosignringTable, i : Int) -> Double {
 }
 
 pub fn crypto_sign_ring_table_set(s : CryptosignringTable, i : Int, v : Double) -> CryptosignringTable {
-  let result = crypto_sign_ring_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ring_table_sum(s : CryptosignringTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn crypto_sign_ring_graphn_get(s : CryptosignringGraphN, i : Int) -> Double 
 }
 
 pub fn crypto_sign_ring_graphn_set(s : CryptosignringGraphN, i : Int, v : Double) -> CryptosignringGraphN {
-  let result = crypto_sign_ring_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ring_graphn_sum(s : CryptosignringGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn crypto_sign_ring_node_get(s : CryptosignringNode, i : Int) -> Double {
 }
 
 pub fn crypto_sign_ring_node_set(s : CryptosignringNode, i : Int, v : Double) -> CryptosignringNode {
-  let result = crypto_sign_ring_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ring_node_sum(s : CryptosignringNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn crypto_sign_ring_edge_get(s : CryptosignringEdge, i : Int) -> Double {
 }
 
 pub fn crypto_sign_ring_edge_set(s : CryptosignringEdge, i : Int, v : Double) -> CryptosignringEdge {
-  let result = crypto_sign_ring_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ring_edge_sum(s : CryptosignringEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn crypto_sign_ring_path_get(s : CryptosignringPath, i : Int) -> Double {
 }
 
 pub fn crypto_sign_ring_path_set(s : CryptosignringPath, i : Int, v : Double) -> CryptosignringPath {
-  let result = crypto_sign_ring_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ring_path_sum(s : CryptosignringPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn crypto_sign_ring_cluster_get(s : CryptosignringCluster, i : Int) -> Doubl
 }
 
 pub fn crypto_sign_ring_cluster_set(s : CryptosignringCluster, i : Int, v : Double) -> CryptosignringCluster {
-  let result = crypto_sign_ring_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ring_cluster_sum(s : CryptosignringCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn crypto_sign_ring_model_get(s : CryptosignringModel, i : Int) -> Double {
 }
 
 pub fn crypto_sign_ring_model_set(s : CryptosignringModel, i : Int, v : Double) -> CryptosignringModel {
-  let result = crypto_sign_ring_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ring_model_sum(s : CryptosignringModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn crypto_sign_ring_layer_get(s : CryptosignringLayer, i : Int) -> Double {
 }
 
 pub fn crypto_sign_ring_layer_set(s : CryptosignringLayer, i : Int, v : Double) -> CryptosignringLayer {
-  let result = crypto_sign_ring_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ring_layer_sum(s : CryptosignringLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn crypto_sign_ring_buffer_get(s : CryptosignringBuffer, i : Int) -> Double 
 }
 
 pub fn crypto_sign_ring_buffer_set(s : CryptosignringBuffer, i : Int, v : Double) -> CryptosignringBuffer {
-  let result = crypto_sign_ring_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ring_buffer_sum(s : CryptosignringBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn crypto_sign_ring_cursor_get(s : CryptosignringCursor, i : Int) -> Double 
 }
 
 pub fn crypto_sign_ring_cursor_set(s : CryptosignringCursor, i : Int, v : Double) -> CryptosignringCursor {
-  let result = crypto_sign_ring_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ring_cursor_sum(s : CryptosignringCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn crypto_sign_ring_view_get(s : CryptosignringView, i : Int) -> Double {
 }
 
 pub fn crypto_sign_ring_view_set(s : CryptosignringView, i : Int, v : Double) -> CryptosignringView {
-  let result = crypto_sign_ring_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ring_view_sum(s : CryptosignringView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn crypto_sign_ring_range_get(s : CryptosignringRange, i : Int) -> Double {
 }
 
 pub fn crypto_sign_ring_range_set(s : CryptosignringRange, i : Int, v : Double) -> CryptosignringRange {
-  let result = crypto_sign_ring_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ring_range_sum(s : CryptosignringRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn crypto_sign_ring_slice_get(s : CryptosignringSlice, i : Int) -> Double {
 }
 
 pub fn crypto_sign_ring_slice_set(s : CryptosignringSlice, i : Int, v : Double) -> CryptosignringSlice {
-  let result = crypto_sign_ring_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_sign_ring_slice_sum(s : CryptosignringSlice) -> Double { @_common.sum(s.data) }

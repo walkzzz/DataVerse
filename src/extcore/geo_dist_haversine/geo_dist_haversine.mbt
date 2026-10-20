@@ -107,23 +107,15 @@ pub fn geo_dist_haversine_series_std(s : GeodisthaversineSeries) -> Double { @_c
 pub fn geo_dist_haversine_series_median(s : GeodisthaversineSeries) -> Double { @_common.median(s.vals) }
 
 pub fn geo_dist_haversine_series_scale(s : GeodisthaversineSeries, f : Double) -> GeodisthaversineSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn geo_dist_haversine_series_add(a : GeodisthaversineSeries, b : GeodisthaversineSeries) -> GeodisthaversineSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn geo_dist_haversine_series_sub(a : GeodisthaversineSeries, b : GeodisthaversineSeries) -> GeodisthaversineSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn geo_dist_haversine_series_normalize(s : GeodisthaversineSeries) -> GeodisthaversineSeries {
@@ -254,22 +246,16 @@ pub fn geo_dist_haversine_vector_zero(dim : Int) -> GeodisthaversineVector {
 
 pub fn geo_dist_haversine_vector_add(a : GeodisthaversineVector, b : GeodisthaversineVector) -> GeodisthaversineVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_dist_haversine_vector_sub(a : GeodisthaversineVector, b : GeodisthaversineVector) -> GeodisthaversineVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_dist_haversine_vector_scale(v : GeodisthaversineVector, s : Double) -> GeodisthaversineVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn geo_dist_haversine_vector_dot(a : GeodisthaversineVector, b : GeodisthaversineVector) -> Double {
@@ -372,10 +358,9 @@ pub fn geo_dist_haversine_frame_get(s : GeodisthaversineFrame, i : Int) -> Doubl
 }
 
 pub fn geo_dist_haversine_frame_set(s : GeodisthaversineFrame, i : Int, v : Double) -> GeodisthaversineFrame {
-  let result = geo_dist_haversine_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_haversine_frame_sum(s : GeodisthaversineFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn geo_dist_haversine_table_get(s : GeodisthaversineTable, i : Int) -> Doubl
 }
 
 pub fn geo_dist_haversine_table_set(s : GeodisthaversineTable, i : Int, v : Double) -> GeodisthaversineTable {
-  let result = geo_dist_haversine_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_haversine_table_sum(s : GeodisthaversineTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn geo_dist_haversine_graphn_get(s : GeodisthaversineGraphN, i : Int) -> Dou
 }
 
 pub fn geo_dist_haversine_graphn_set(s : GeodisthaversineGraphN, i : Int, v : Double) -> GeodisthaversineGraphN {
-  let result = geo_dist_haversine_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_haversine_graphn_sum(s : GeodisthaversineGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn geo_dist_haversine_node_get(s : GeodisthaversineNode, i : Int) -> Double 
 }
 
 pub fn geo_dist_haversine_node_set(s : GeodisthaversineNode, i : Int, v : Double) -> GeodisthaversineNode {
-  let result = geo_dist_haversine_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_haversine_node_sum(s : GeodisthaversineNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn geo_dist_haversine_edge_get(s : GeodisthaversineEdge, i : Int) -> Double 
 }
 
 pub fn geo_dist_haversine_edge_set(s : GeodisthaversineEdge, i : Int, v : Double) -> GeodisthaversineEdge {
-  let result = geo_dist_haversine_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_haversine_edge_sum(s : GeodisthaversineEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn geo_dist_haversine_path_get(s : GeodisthaversinePath, i : Int) -> Double 
 }
 
 pub fn geo_dist_haversine_path_set(s : GeodisthaversinePath, i : Int, v : Double) -> GeodisthaversinePath {
-  let result = geo_dist_haversine_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_haversine_path_sum(s : GeodisthaversinePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn geo_dist_haversine_cluster_get(s : GeodisthaversineCluster, i : Int) -> D
 }
 
 pub fn geo_dist_haversine_cluster_set(s : GeodisthaversineCluster, i : Int, v : Double) -> GeodisthaversineCluster {
-  let result = geo_dist_haversine_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_haversine_cluster_sum(s : GeodisthaversineCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn geo_dist_haversine_model_get(s : GeodisthaversineModel, i : Int) -> Doubl
 }
 
 pub fn geo_dist_haversine_model_set(s : GeodisthaversineModel, i : Int, v : Double) -> GeodisthaversineModel {
-  let result = geo_dist_haversine_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_haversine_model_sum(s : GeodisthaversineModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn geo_dist_haversine_layer_get(s : GeodisthaversineLayer, i : Int) -> Doubl
 }
 
 pub fn geo_dist_haversine_layer_set(s : GeodisthaversineLayer, i : Int, v : Double) -> GeodisthaversineLayer {
-  let result = geo_dist_haversine_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_haversine_layer_sum(s : GeodisthaversineLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn geo_dist_haversine_buffer_get(s : GeodisthaversineBuffer, i : Int) -> Dou
 }
 
 pub fn geo_dist_haversine_buffer_set(s : GeodisthaversineBuffer, i : Int, v : Double) -> GeodisthaversineBuffer {
-  let result = geo_dist_haversine_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_haversine_buffer_sum(s : GeodisthaversineBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn geo_dist_haversine_cursor_get(s : GeodisthaversineCursor, i : Int) -> Dou
 }
 
 pub fn geo_dist_haversine_cursor_set(s : GeodisthaversineCursor, i : Int, v : Double) -> GeodisthaversineCursor {
-  let result = geo_dist_haversine_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_haversine_cursor_sum(s : GeodisthaversineCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn geo_dist_haversine_view_get(s : GeodisthaversineView, i : Int) -> Double 
 }
 
 pub fn geo_dist_haversine_view_set(s : GeodisthaversineView, i : Int, v : Double) -> GeodisthaversineView {
-  let result = geo_dist_haversine_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_haversine_view_sum(s : GeodisthaversineView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn geo_dist_haversine_range_get(s : GeodisthaversineRange, i : Int) -> Doubl
 }
 
 pub fn geo_dist_haversine_range_set(s : GeodisthaversineRange, i : Int, v : Double) -> GeodisthaversineRange {
-  let result = geo_dist_haversine_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_haversine_range_sum(s : GeodisthaversineRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn geo_dist_haversine_slice_get(s : GeodisthaversineSlice, i : Int) -> Doubl
 }
 
 pub fn geo_dist_haversine_slice_set(s : GeodisthaversineSlice, i : Int, v : Double) -> GeodisthaversineSlice {
-  let result = geo_dist_haversine_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_haversine_slice_sum(s : GeodisthaversineSlice) -> Double { @_common.sum(s.data) }

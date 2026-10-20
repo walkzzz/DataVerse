@@ -107,23 +107,15 @@ pub fn ds_hash_universal_series_std(s : DshashuniversalSeries) -> Double { @_com
 pub fn ds_hash_universal_series_median(s : DshashuniversalSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_hash_universal_series_scale(s : DshashuniversalSeries, f : Double) -> DshashuniversalSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_hash_universal_series_add(a : DshashuniversalSeries, b : DshashuniversalSeries) -> DshashuniversalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_hash_universal_series_sub(a : DshashuniversalSeries, b : DshashuniversalSeries) -> DshashuniversalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_hash_universal_series_normalize(s : DshashuniversalSeries) -> DshashuniversalSeries {
@@ -254,22 +246,16 @@ pub fn ds_hash_universal_vector_zero(dim : Int) -> DshashuniversalVector {
 
 pub fn ds_hash_universal_vector_add(a : DshashuniversalVector, b : DshashuniversalVector) -> DshashuniversalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_hash_universal_vector_sub(a : DshashuniversalVector, b : DshashuniversalVector) -> DshashuniversalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_hash_universal_vector_scale(v : DshashuniversalVector, s : Double) -> DshashuniversalVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_hash_universal_vector_dot(a : DshashuniversalVector, b : DshashuniversalVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_hash_universal_frame_get(s : DshashuniversalFrame, i : Int) -> Double 
 }
 
 pub fn ds_hash_universal_frame_set(s : DshashuniversalFrame, i : Int, v : Double) -> DshashuniversalFrame {
-  let result = ds_hash_universal_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_universal_frame_sum(s : DshashuniversalFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_hash_universal_table_get(s : DshashuniversalTable, i : Int) -> Double 
 }
 
 pub fn ds_hash_universal_table_set(s : DshashuniversalTable, i : Int, v : Double) -> DshashuniversalTable {
-  let result = ds_hash_universal_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_universal_table_sum(s : DshashuniversalTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_hash_universal_graphn_get(s : DshashuniversalGraphN, i : Int) -> Doubl
 }
 
 pub fn ds_hash_universal_graphn_set(s : DshashuniversalGraphN, i : Int, v : Double) -> DshashuniversalGraphN {
-  let result = ds_hash_universal_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_universal_graphn_sum(s : DshashuniversalGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_hash_universal_node_get(s : DshashuniversalNode, i : Int) -> Double {
 }
 
 pub fn ds_hash_universal_node_set(s : DshashuniversalNode, i : Int, v : Double) -> DshashuniversalNode {
-  let result = ds_hash_universal_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_universal_node_sum(s : DshashuniversalNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_hash_universal_edge_get(s : DshashuniversalEdge, i : Int) -> Double {
 }
 
 pub fn ds_hash_universal_edge_set(s : DshashuniversalEdge, i : Int, v : Double) -> DshashuniversalEdge {
-  let result = ds_hash_universal_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_universal_edge_sum(s : DshashuniversalEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_hash_universal_path_get(s : DshashuniversalPath, i : Int) -> Double {
 }
 
 pub fn ds_hash_universal_path_set(s : DshashuniversalPath, i : Int, v : Double) -> DshashuniversalPath {
-  let result = ds_hash_universal_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_universal_path_sum(s : DshashuniversalPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_hash_universal_cluster_get(s : DshashuniversalCluster, i : Int) -> Dou
 }
 
 pub fn ds_hash_universal_cluster_set(s : DshashuniversalCluster, i : Int, v : Double) -> DshashuniversalCluster {
-  let result = ds_hash_universal_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_universal_cluster_sum(s : DshashuniversalCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_hash_universal_model_get(s : DshashuniversalModel, i : Int) -> Double 
 }
 
 pub fn ds_hash_universal_model_set(s : DshashuniversalModel, i : Int, v : Double) -> DshashuniversalModel {
-  let result = ds_hash_universal_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_universal_model_sum(s : DshashuniversalModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_hash_universal_layer_get(s : DshashuniversalLayer, i : Int) -> Double 
 }
 
 pub fn ds_hash_universal_layer_set(s : DshashuniversalLayer, i : Int, v : Double) -> DshashuniversalLayer {
-  let result = ds_hash_universal_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_universal_layer_sum(s : DshashuniversalLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_hash_universal_buffer_get(s : DshashuniversalBuffer, i : Int) -> Doubl
 }
 
 pub fn ds_hash_universal_buffer_set(s : DshashuniversalBuffer, i : Int, v : Double) -> DshashuniversalBuffer {
-  let result = ds_hash_universal_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_universal_buffer_sum(s : DshashuniversalBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_hash_universal_cursor_get(s : DshashuniversalCursor, i : Int) -> Doubl
 }
 
 pub fn ds_hash_universal_cursor_set(s : DshashuniversalCursor, i : Int, v : Double) -> DshashuniversalCursor {
-  let result = ds_hash_universal_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_universal_cursor_sum(s : DshashuniversalCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_hash_universal_view_get(s : DshashuniversalView, i : Int) -> Double {
 }
 
 pub fn ds_hash_universal_view_set(s : DshashuniversalView, i : Int, v : Double) -> DshashuniversalView {
-  let result = ds_hash_universal_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_universal_view_sum(s : DshashuniversalView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_hash_universal_range_get(s : DshashuniversalRange, i : Int) -> Double 
 }
 
 pub fn ds_hash_universal_range_set(s : DshashuniversalRange, i : Int, v : Double) -> DshashuniversalRange {
-  let result = ds_hash_universal_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_universal_range_sum(s : DshashuniversalRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_hash_universal_slice_get(s : DshashuniversalSlice, i : Int) -> Double 
 }
 
 pub fn ds_hash_universal_slice_set(s : DshashuniversalSlice, i : Int, v : Double) -> DshashuniversalSlice {
-  let result = ds_hash_universal_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_universal_slice_sum(s : DshashuniversalSlice) -> Double { @_common.sum(s.data) }

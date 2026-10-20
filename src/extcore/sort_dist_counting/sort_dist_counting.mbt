@@ -107,23 +107,15 @@ pub fn sort_dist_counting_series_std(s : SortdistcountingSeries) -> Double { @_c
 pub fn sort_dist_counting_series_median(s : SortdistcountingSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_dist_counting_series_scale(s : SortdistcountingSeries, f : Double) -> SortdistcountingSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn sort_dist_counting_series_add(a : SortdistcountingSeries, b : SortdistcountingSeries) -> SortdistcountingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn sort_dist_counting_series_sub(a : SortdistcountingSeries, b : SortdistcountingSeries) -> SortdistcountingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn sort_dist_counting_series_normalize(s : SortdistcountingSeries) -> SortdistcountingSeries {
@@ -254,22 +246,16 @@ pub fn sort_dist_counting_vector_zero(dim : Int) -> SortdistcountingVector {
 
 pub fn sort_dist_counting_vector_add(a : SortdistcountingVector, b : SortdistcountingVector) -> SortdistcountingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_dist_counting_vector_sub(a : SortdistcountingVector, b : SortdistcountingVector) -> SortdistcountingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_dist_counting_vector_scale(v : SortdistcountingVector, s : Double) -> SortdistcountingVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn sort_dist_counting_vector_dot(a : SortdistcountingVector, b : SortdistcountingVector) -> Double {
@@ -372,10 +358,9 @@ pub fn sort_dist_counting_frame_get(s : SortdistcountingFrame, i : Int) -> Doubl
 }
 
 pub fn sort_dist_counting_frame_set(s : SortdistcountingFrame, i : Int, v : Double) -> SortdistcountingFrame {
-  let result = sort_dist_counting_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_counting_frame_sum(s : SortdistcountingFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn sort_dist_counting_table_get(s : SortdistcountingTable, i : Int) -> Doubl
 }
 
 pub fn sort_dist_counting_table_set(s : SortdistcountingTable, i : Int, v : Double) -> SortdistcountingTable {
-  let result = sort_dist_counting_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_counting_table_sum(s : SortdistcountingTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn sort_dist_counting_graphn_get(s : SortdistcountingGraphN, i : Int) -> Dou
 }
 
 pub fn sort_dist_counting_graphn_set(s : SortdistcountingGraphN, i : Int, v : Double) -> SortdistcountingGraphN {
-  let result = sort_dist_counting_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_counting_graphn_sum(s : SortdistcountingGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn sort_dist_counting_node_get(s : SortdistcountingNode, i : Int) -> Double 
 }
 
 pub fn sort_dist_counting_node_set(s : SortdistcountingNode, i : Int, v : Double) -> SortdistcountingNode {
-  let result = sort_dist_counting_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_counting_node_sum(s : SortdistcountingNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn sort_dist_counting_edge_get(s : SortdistcountingEdge, i : Int) -> Double 
 }
 
 pub fn sort_dist_counting_edge_set(s : SortdistcountingEdge, i : Int, v : Double) -> SortdistcountingEdge {
-  let result = sort_dist_counting_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_counting_edge_sum(s : SortdistcountingEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn sort_dist_counting_path_get(s : SortdistcountingPath, i : Int) -> Double 
 }
 
 pub fn sort_dist_counting_path_set(s : SortdistcountingPath, i : Int, v : Double) -> SortdistcountingPath {
-  let result = sort_dist_counting_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_counting_path_sum(s : SortdistcountingPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn sort_dist_counting_cluster_get(s : SortdistcountingCluster, i : Int) -> D
 }
 
 pub fn sort_dist_counting_cluster_set(s : SortdistcountingCluster, i : Int, v : Double) -> SortdistcountingCluster {
-  let result = sort_dist_counting_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_counting_cluster_sum(s : SortdistcountingCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn sort_dist_counting_model_get(s : SortdistcountingModel, i : Int) -> Doubl
 }
 
 pub fn sort_dist_counting_model_set(s : SortdistcountingModel, i : Int, v : Double) -> SortdistcountingModel {
-  let result = sort_dist_counting_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_counting_model_sum(s : SortdistcountingModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn sort_dist_counting_layer_get(s : SortdistcountingLayer, i : Int) -> Doubl
 }
 
 pub fn sort_dist_counting_layer_set(s : SortdistcountingLayer, i : Int, v : Double) -> SortdistcountingLayer {
-  let result = sort_dist_counting_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_counting_layer_sum(s : SortdistcountingLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn sort_dist_counting_buffer_get(s : SortdistcountingBuffer, i : Int) -> Dou
 }
 
 pub fn sort_dist_counting_buffer_set(s : SortdistcountingBuffer, i : Int, v : Double) -> SortdistcountingBuffer {
-  let result = sort_dist_counting_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_counting_buffer_sum(s : SortdistcountingBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn sort_dist_counting_cursor_get(s : SortdistcountingCursor, i : Int) -> Dou
 }
 
 pub fn sort_dist_counting_cursor_set(s : SortdistcountingCursor, i : Int, v : Double) -> SortdistcountingCursor {
-  let result = sort_dist_counting_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_counting_cursor_sum(s : SortdistcountingCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn sort_dist_counting_view_get(s : SortdistcountingView, i : Int) -> Double 
 }
 
 pub fn sort_dist_counting_view_set(s : SortdistcountingView, i : Int, v : Double) -> SortdistcountingView {
-  let result = sort_dist_counting_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_counting_view_sum(s : SortdistcountingView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn sort_dist_counting_range_get(s : SortdistcountingRange, i : Int) -> Doubl
 }
 
 pub fn sort_dist_counting_range_set(s : SortdistcountingRange, i : Int, v : Double) -> SortdistcountingRange {
-  let result = sort_dist_counting_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_counting_range_sum(s : SortdistcountingRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn sort_dist_counting_slice_get(s : SortdistcountingSlice, i : Int) -> Doubl
 }
 
 pub fn sort_dist_counting_slice_set(s : SortdistcountingSlice, i : Int, v : Double) -> SortdistcountingSlice {
-  let result = sort_dist_counting_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_counting_slice_sum(s : SortdistcountingSlice) -> Double { @_common.sum(s.data) }

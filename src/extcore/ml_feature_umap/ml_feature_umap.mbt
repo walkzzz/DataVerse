@@ -107,23 +107,15 @@ pub fn ml_feature_umap_series_std(s : MlfeatureumapSeries) -> Double { @_common.
 pub fn ml_feature_umap_series_median(s : MlfeatureumapSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_feature_umap_series_scale(s : MlfeatureumapSeries, f : Double) -> MlfeatureumapSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_feature_umap_series_add(a : MlfeatureumapSeries, b : MlfeatureumapSeries) -> MlfeatureumapSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_feature_umap_series_sub(a : MlfeatureumapSeries, b : MlfeatureumapSeries) -> MlfeatureumapSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_feature_umap_series_normalize(s : MlfeatureumapSeries) -> MlfeatureumapSeries {
@@ -254,22 +246,16 @@ pub fn ml_feature_umap_vector_zero(dim : Int) -> MlfeatureumapVector {
 
 pub fn ml_feature_umap_vector_add(a : MlfeatureumapVector, b : MlfeatureumapVector) -> MlfeatureumapVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_feature_umap_vector_sub(a : MlfeatureumapVector, b : MlfeatureumapVector) -> MlfeatureumapVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_feature_umap_vector_scale(v : MlfeatureumapVector, s : Double) -> MlfeatureumapVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_feature_umap_vector_dot(a : MlfeatureumapVector, b : MlfeatureumapVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_feature_umap_frame_get(s : MlfeatureumapFrame, i : Int) -> Double {
 }
 
 pub fn ml_feature_umap_frame_set(s : MlfeatureumapFrame, i : Int, v : Double) -> MlfeatureumapFrame {
-  let result = ml_feature_umap_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_umap_frame_sum(s : MlfeatureumapFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_feature_umap_table_get(s : MlfeatureumapTable, i : Int) -> Double {
 }
 
 pub fn ml_feature_umap_table_set(s : MlfeatureumapTable, i : Int, v : Double) -> MlfeatureumapTable {
-  let result = ml_feature_umap_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_umap_table_sum(s : MlfeatureumapTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_feature_umap_graphn_get(s : MlfeatureumapGraphN, i : Int) -> Double {
 }
 
 pub fn ml_feature_umap_graphn_set(s : MlfeatureumapGraphN, i : Int, v : Double) -> MlfeatureumapGraphN {
-  let result = ml_feature_umap_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_umap_graphn_sum(s : MlfeatureumapGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_feature_umap_node_get(s : MlfeatureumapNode, i : Int) -> Double {
 }
 
 pub fn ml_feature_umap_node_set(s : MlfeatureumapNode, i : Int, v : Double) -> MlfeatureumapNode {
-  let result = ml_feature_umap_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_umap_node_sum(s : MlfeatureumapNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_feature_umap_edge_get(s : MlfeatureumapEdge, i : Int) -> Double {
 }
 
 pub fn ml_feature_umap_edge_set(s : MlfeatureumapEdge, i : Int, v : Double) -> MlfeatureumapEdge {
-  let result = ml_feature_umap_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_umap_edge_sum(s : MlfeatureumapEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_feature_umap_path_get(s : MlfeatureumapPath, i : Int) -> Double {
 }
 
 pub fn ml_feature_umap_path_set(s : MlfeatureumapPath, i : Int, v : Double) -> MlfeatureumapPath {
-  let result = ml_feature_umap_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_umap_path_sum(s : MlfeatureumapPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_feature_umap_cluster_get(s : MlfeatureumapCluster, i : Int) -> Double 
 }
 
 pub fn ml_feature_umap_cluster_set(s : MlfeatureumapCluster, i : Int, v : Double) -> MlfeatureumapCluster {
-  let result = ml_feature_umap_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_umap_cluster_sum(s : MlfeatureumapCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_feature_umap_model_get(s : MlfeatureumapModel, i : Int) -> Double {
 }
 
 pub fn ml_feature_umap_model_set(s : MlfeatureumapModel, i : Int, v : Double) -> MlfeatureumapModel {
-  let result = ml_feature_umap_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_umap_model_sum(s : MlfeatureumapModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_feature_umap_layer_get(s : MlfeatureumapLayer, i : Int) -> Double {
 }
 
 pub fn ml_feature_umap_layer_set(s : MlfeatureumapLayer, i : Int, v : Double) -> MlfeatureumapLayer {
-  let result = ml_feature_umap_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_umap_layer_sum(s : MlfeatureumapLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_feature_umap_buffer_get(s : MlfeatureumapBuffer, i : Int) -> Double {
 }
 
 pub fn ml_feature_umap_buffer_set(s : MlfeatureumapBuffer, i : Int, v : Double) -> MlfeatureumapBuffer {
-  let result = ml_feature_umap_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_umap_buffer_sum(s : MlfeatureumapBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_feature_umap_cursor_get(s : MlfeatureumapCursor, i : Int) -> Double {
 }
 
 pub fn ml_feature_umap_cursor_set(s : MlfeatureumapCursor, i : Int, v : Double) -> MlfeatureumapCursor {
-  let result = ml_feature_umap_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_umap_cursor_sum(s : MlfeatureumapCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_feature_umap_view_get(s : MlfeatureumapView, i : Int) -> Double {
 }
 
 pub fn ml_feature_umap_view_set(s : MlfeatureumapView, i : Int, v : Double) -> MlfeatureumapView {
-  let result = ml_feature_umap_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_umap_view_sum(s : MlfeatureumapView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_feature_umap_range_get(s : MlfeatureumapRange, i : Int) -> Double {
 }
 
 pub fn ml_feature_umap_range_set(s : MlfeatureumapRange, i : Int, v : Double) -> MlfeatureumapRange {
-  let result = ml_feature_umap_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_umap_range_sum(s : MlfeatureumapRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_feature_umap_slice_get(s : MlfeatureumapSlice, i : Int) -> Double {
 }
 
 pub fn ml_feature_umap_slice_set(s : MlfeatureumapSlice, i : Int, v : Double) -> MlfeatureumapSlice {
-  let result = ml_feature_umap_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_umap_slice_sum(s : MlfeatureumapSlice) -> Double { @_common.sum(s.data) }

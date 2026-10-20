@@ -107,23 +107,15 @@ pub fn sort_compare_tim_series_std(s : SortcomparetimSeries) -> Double { @_commo
 pub fn sort_compare_tim_series_median(s : SortcomparetimSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_compare_tim_series_scale(s : SortcomparetimSeries, f : Double) -> SortcomparetimSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn sort_compare_tim_series_add(a : SortcomparetimSeries, b : SortcomparetimSeries) -> SortcomparetimSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn sort_compare_tim_series_sub(a : SortcomparetimSeries, b : SortcomparetimSeries) -> SortcomparetimSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn sort_compare_tim_series_normalize(s : SortcomparetimSeries) -> SortcomparetimSeries {
@@ -254,22 +246,16 @@ pub fn sort_compare_tim_vector_zero(dim : Int) -> SortcomparetimVector {
 
 pub fn sort_compare_tim_vector_add(a : SortcomparetimVector, b : SortcomparetimVector) -> SortcomparetimVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_compare_tim_vector_sub(a : SortcomparetimVector, b : SortcomparetimVector) -> SortcomparetimVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_compare_tim_vector_scale(v : SortcomparetimVector, s : Double) -> SortcomparetimVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn sort_compare_tim_vector_dot(a : SortcomparetimVector, b : SortcomparetimVector) -> Double {
@@ -372,10 +358,9 @@ pub fn sort_compare_tim_frame_get(s : SortcomparetimFrame, i : Int) -> Double {
 }
 
 pub fn sort_compare_tim_frame_set(s : SortcomparetimFrame, i : Int, v : Double) -> SortcomparetimFrame {
-  let result = sort_compare_tim_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_frame_sum(s : SortcomparetimFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn sort_compare_tim_table_get(s : SortcomparetimTable, i : Int) -> Double {
 }
 
 pub fn sort_compare_tim_table_set(s : SortcomparetimTable, i : Int, v : Double) -> SortcomparetimTable {
-  let result = sort_compare_tim_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_table_sum(s : SortcomparetimTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn sort_compare_tim_graphn_get(s : SortcomparetimGraphN, i : Int) -> Double 
 }
 
 pub fn sort_compare_tim_graphn_set(s : SortcomparetimGraphN, i : Int, v : Double) -> SortcomparetimGraphN {
-  let result = sort_compare_tim_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_graphn_sum(s : SortcomparetimGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn sort_compare_tim_node_get(s : SortcomparetimNode, i : Int) -> Double {
 }
 
 pub fn sort_compare_tim_node_set(s : SortcomparetimNode, i : Int, v : Double) -> SortcomparetimNode {
-  let result = sort_compare_tim_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_node_sum(s : SortcomparetimNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn sort_compare_tim_edge_get(s : SortcomparetimEdge, i : Int) -> Double {
 }
 
 pub fn sort_compare_tim_edge_set(s : SortcomparetimEdge, i : Int, v : Double) -> SortcomparetimEdge {
-  let result = sort_compare_tim_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_edge_sum(s : SortcomparetimEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn sort_compare_tim_path_get(s : SortcomparetimPath, i : Int) -> Double {
 }
 
 pub fn sort_compare_tim_path_set(s : SortcomparetimPath, i : Int, v : Double) -> SortcomparetimPath {
-  let result = sort_compare_tim_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_path_sum(s : SortcomparetimPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn sort_compare_tim_cluster_get(s : SortcomparetimCluster, i : Int) -> Doubl
 }
 
 pub fn sort_compare_tim_cluster_set(s : SortcomparetimCluster, i : Int, v : Double) -> SortcomparetimCluster {
-  let result = sort_compare_tim_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_cluster_sum(s : SortcomparetimCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn sort_compare_tim_model_get(s : SortcomparetimModel, i : Int) -> Double {
 }
 
 pub fn sort_compare_tim_model_set(s : SortcomparetimModel, i : Int, v : Double) -> SortcomparetimModel {
-  let result = sort_compare_tim_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_model_sum(s : SortcomparetimModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn sort_compare_tim_layer_get(s : SortcomparetimLayer, i : Int) -> Double {
 }
 
 pub fn sort_compare_tim_layer_set(s : SortcomparetimLayer, i : Int, v : Double) -> SortcomparetimLayer {
-  let result = sort_compare_tim_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_layer_sum(s : SortcomparetimLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn sort_compare_tim_buffer_get(s : SortcomparetimBuffer, i : Int) -> Double 
 }
 
 pub fn sort_compare_tim_buffer_set(s : SortcomparetimBuffer, i : Int, v : Double) -> SortcomparetimBuffer {
-  let result = sort_compare_tim_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_buffer_sum(s : SortcomparetimBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn sort_compare_tim_cursor_get(s : SortcomparetimCursor, i : Int) -> Double 
 }
 
 pub fn sort_compare_tim_cursor_set(s : SortcomparetimCursor, i : Int, v : Double) -> SortcomparetimCursor {
-  let result = sort_compare_tim_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_cursor_sum(s : SortcomparetimCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn sort_compare_tim_view_get(s : SortcomparetimView, i : Int) -> Double {
 }
 
 pub fn sort_compare_tim_view_set(s : SortcomparetimView, i : Int, v : Double) -> SortcomparetimView {
-  let result = sort_compare_tim_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_view_sum(s : SortcomparetimView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn sort_compare_tim_range_get(s : SortcomparetimRange, i : Int) -> Double {
 }
 
 pub fn sort_compare_tim_range_set(s : SortcomparetimRange, i : Int, v : Double) -> SortcomparetimRange {
-  let result = sort_compare_tim_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_range_sum(s : SortcomparetimRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn sort_compare_tim_slice_get(s : SortcomparetimSlice, i : Int) -> Double {
 }
 
 pub fn sort_compare_tim_slice_set(s : SortcomparetimSlice, i : Int, v : Double) -> SortcomparetimSlice {
-  let result = sort_compare_tim_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_tim_slice_sum(s : SortcomparetimSlice) -> Double { @_common.sum(s.data) }

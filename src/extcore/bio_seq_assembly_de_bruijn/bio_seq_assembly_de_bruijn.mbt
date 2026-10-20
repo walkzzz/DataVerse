@@ -107,23 +107,15 @@ pub fn bio_seq_assembly_de_bruijn_series_std(s : BioseqassemblydebruijnSeries) -
 pub fn bio_seq_assembly_de_bruijn_series_median(s : BioseqassemblydebruijnSeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_seq_assembly_de_bruijn_series_scale(s : BioseqassemblydebruijnSeries, f : Double) -> BioseqassemblydebruijnSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_seq_assembly_de_bruijn_series_add(a : BioseqassemblydebruijnSeries, b : BioseqassemblydebruijnSeries) -> BioseqassemblydebruijnSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_assembly_de_bruijn_series_sub(a : BioseqassemblydebruijnSeries, b : BioseqassemblydebruijnSeries) -> BioseqassemblydebruijnSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_assembly_de_bruijn_series_normalize(s : BioseqassemblydebruijnSeries) -> BioseqassemblydebruijnSeries {
@@ -254,22 +246,16 @@ pub fn bio_seq_assembly_de_bruijn_vector_zero(dim : Int) -> Bioseqassemblydebrui
 
 pub fn bio_seq_assembly_de_bruijn_vector_add(a : BioseqassemblydebruijnVector, b : BioseqassemblydebruijnVector) -> BioseqassemblydebruijnVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_assembly_de_bruijn_vector_sub(a : BioseqassemblydebruijnVector, b : BioseqassemblydebruijnVector) -> BioseqassemblydebruijnVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_assembly_de_bruijn_vector_scale(v : BioseqassemblydebruijnVector, s : Double) -> BioseqassemblydebruijnVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_seq_assembly_de_bruijn_vector_dot(a : BioseqassemblydebruijnVector, b : BioseqassemblydebruijnVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_seq_assembly_de_bruijn_frame_get(s : BioseqassemblydebruijnFrame, i :
 }
 
 pub fn bio_seq_assembly_de_bruijn_frame_set(s : BioseqassemblydebruijnFrame, i : Int, v : Double) -> BioseqassemblydebruijnFrame {
-  let result = bio_seq_assembly_de_bruijn_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_de_bruijn_frame_sum(s : BioseqassemblydebruijnFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_seq_assembly_de_bruijn_table_get(s : BioseqassemblydebruijnTable, i :
 }
 
 pub fn bio_seq_assembly_de_bruijn_table_set(s : BioseqassemblydebruijnTable, i : Int, v : Double) -> BioseqassemblydebruijnTable {
-  let result = bio_seq_assembly_de_bruijn_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_de_bruijn_table_sum(s : BioseqassemblydebruijnTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_seq_assembly_de_bruijn_graphn_get(s : BioseqassemblydebruijnGraphN, i
 }
 
 pub fn bio_seq_assembly_de_bruijn_graphn_set(s : BioseqassemblydebruijnGraphN, i : Int, v : Double) -> BioseqassemblydebruijnGraphN {
-  let result = bio_seq_assembly_de_bruijn_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_de_bruijn_graphn_sum(s : BioseqassemblydebruijnGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_seq_assembly_de_bruijn_node_get(s : BioseqassemblydebruijnNode, i : I
 }
 
 pub fn bio_seq_assembly_de_bruijn_node_set(s : BioseqassemblydebruijnNode, i : Int, v : Double) -> BioseqassemblydebruijnNode {
-  let result = bio_seq_assembly_de_bruijn_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_de_bruijn_node_sum(s : BioseqassemblydebruijnNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_seq_assembly_de_bruijn_edge_get(s : BioseqassemblydebruijnEdge, i : I
 }
 
 pub fn bio_seq_assembly_de_bruijn_edge_set(s : BioseqassemblydebruijnEdge, i : Int, v : Double) -> BioseqassemblydebruijnEdge {
-  let result = bio_seq_assembly_de_bruijn_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_de_bruijn_edge_sum(s : BioseqassemblydebruijnEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_seq_assembly_de_bruijn_path_get(s : BioseqassemblydebruijnPath, i : I
 }
 
 pub fn bio_seq_assembly_de_bruijn_path_set(s : BioseqassemblydebruijnPath, i : Int, v : Double) -> BioseqassemblydebruijnPath {
-  let result = bio_seq_assembly_de_bruijn_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_de_bruijn_path_sum(s : BioseqassemblydebruijnPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_seq_assembly_de_bruijn_cluster_get(s : BioseqassemblydebruijnCluster,
 }
 
 pub fn bio_seq_assembly_de_bruijn_cluster_set(s : BioseqassemblydebruijnCluster, i : Int, v : Double) -> BioseqassemblydebruijnCluster {
-  let result = bio_seq_assembly_de_bruijn_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_de_bruijn_cluster_sum(s : BioseqassemblydebruijnCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_seq_assembly_de_bruijn_model_get(s : BioseqassemblydebruijnModel, i :
 }
 
 pub fn bio_seq_assembly_de_bruijn_model_set(s : BioseqassemblydebruijnModel, i : Int, v : Double) -> BioseqassemblydebruijnModel {
-  let result = bio_seq_assembly_de_bruijn_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_de_bruijn_model_sum(s : BioseqassemblydebruijnModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_seq_assembly_de_bruijn_layer_get(s : BioseqassemblydebruijnLayer, i :
 }
 
 pub fn bio_seq_assembly_de_bruijn_layer_set(s : BioseqassemblydebruijnLayer, i : Int, v : Double) -> BioseqassemblydebruijnLayer {
-  let result = bio_seq_assembly_de_bruijn_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_de_bruijn_layer_sum(s : BioseqassemblydebruijnLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_seq_assembly_de_bruijn_buffer_get(s : BioseqassemblydebruijnBuffer, i
 }
 
 pub fn bio_seq_assembly_de_bruijn_buffer_set(s : BioseqassemblydebruijnBuffer, i : Int, v : Double) -> BioseqassemblydebruijnBuffer {
-  let result = bio_seq_assembly_de_bruijn_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_de_bruijn_buffer_sum(s : BioseqassemblydebruijnBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_seq_assembly_de_bruijn_cursor_get(s : BioseqassemblydebruijnCursor, i
 }
 
 pub fn bio_seq_assembly_de_bruijn_cursor_set(s : BioseqassemblydebruijnCursor, i : Int, v : Double) -> BioseqassemblydebruijnCursor {
-  let result = bio_seq_assembly_de_bruijn_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_de_bruijn_cursor_sum(s : BioseqassemblydebruijnCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_seq_assembly_de_bruijn_view_get(s : BioseqassemblydebruijnView, i : I
 }
 
 pub fn bio_seq_assembly_de_bruijn_view_set(s : BioseqassemblydebruijnView, i : Int, v : Double) -> BioseqassemblydebruijnView {
-  let result = bio_seq_assembly_de_bruijn_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_de_bruijn_view_sum(s : BioseqassemblydebruijnView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_seq_assembly_de_bruijn_range_get(s : BioseqassemblydebruijnRange, i :
 }
 
 pub fn bio_seq_assembly_de_bruijn_range_set(s : BioseqassemblydebruijnRange, i : Int, v : Double) -> BioseqassemblydebruijnRange {
-  let result = bio_seq_assembly_de_bruijn_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_de_bruijn_range_sum(s : BioseqassemblydebruijnRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_seq_assembly_de_bruijn_slice_get(s : BioseqassemblydebruijnSlice, i :
 }
 
 pub fn bio_seq_assembly_de_bruijn_slice_set(s : BioseqassemblydebruijnSlice, i : Int, v : Double) -> BioseqassemblydebruijnSlice {
-  let result = bio_seq_assembly_de_bruijn_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_de_bruijn_slice_sum(s : BioseqassemblydebruijnSlice) -> Double { @_common.sum(s.data) }

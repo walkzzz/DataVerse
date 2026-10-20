@@ -107,23 +107,15 @@ pub fn db_query_aggregate_series_std(s : DbqueryaggregateSeries) -> Double { @_c
 pub fn db_query_aggregate_series_median(s : DbqueryaggregateSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_query_aggregate_series_scale(s : DbqueryaggregateSeries, f : Double) -> DbqueryaggregateSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_query_aggregate_series_add(a : DbqueryaggregateSeries, b : DbqueryaggregateSeries) -> DbqueryaggregateSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_query_aggregate_series_sub(a : DbqueryaggregateSeries, b : DbqueryaggregateSeries) -> DbqueryaggregateSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_query_aggregate_series_normalize(s : DbqueryaggregateSeries) -> DbqueryaggregateSeries {
@@ -254,22 +246,16 @@ pub fn db_query_aggregate_vector_zero(dim : Int) -> DbqueryaggregateVector {
 
 pub fn db_query_aggregate_vector_add(a : DbqueryaggregateVector, b : DbqueryaggregateVector) -> DbqueryaggregateVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_query_aggregate_vector_sub(a : DbqueryaggregateVector, b : DbqueryaggregateVector) -> DbqueryaggregateVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_query_aggregate_vector_scale(v : DbqueryaggregateVector, s : Double) -> DbqueryaggregateVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_query_aggregate_vector_dot(a : DbqueryaggregateVector, b : DbqueryaggregateVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_query_aggregate_frame_get(s : DbqueryaggregateFrame, i : Int) -> Doubl
 }
 
 pub fn db_query_aggregate_frame_set(s : DbqueryaggregateFrame, i : Int, v : Double) -> DbqueryaggregateFrame {
-  let result = db_query_aggregate_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_aggregate_frame_sum(s : DbqueryaggregateFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_query_aggregate_table_get(s : DbqueryaggregateTable, i : Int) -> Doubl
 }
 
 pub fn db_query_aggregate_table_set(s : DbqueryaggregateTable, i : Int, v : Double) -> DbqueryaggregateTable {
-  let result = db_query_aggregate_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_aggregate_table_sum(s : DbqueryaggregateTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_query_aggregate_graphn_get(s : DbqueryaggregateGraphN, i : Int) -> Dou
 }
 
 pub fn db_query_aggregate_graphn_set(s : DbqueryaggregateGraphN, i : Int, v : Double) -> DbqueryaggregateGraphN {
-  let result = db_query_aggregate_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_aggregate_graphn_sum(s : DbqueryaggregateGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_query_aggregate_node_get(s : DbqueryaggregateNode, i : Int) -> Double 
 }
 
 pub fn db_query_aggregate_node_set(s : DbqueryaggregateNode, i : Int, v : Double) -> DbqueryaggregateNode {
-  let result = db_query_aggregate_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_aggregate_node_sum(s : DbqueryaggregateNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_query_aggregate_edge_get(s : DbqueryaggregateEdge, i : Int) -> Double 
 }
 
 pub fn db_query_aggregate_edge_set(s : DbqueryaggregateEdge, i : Int, v : Double) -> DbqueryaggregateEdge {
-  let result = db_query_aggregate_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_aggregate_edge_sum(s : DbqueryaggregateEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_query_aggregate_path_get(s : DbqueryaggregatePath, i : Int) -> Double 
 }
 
 pub fn db_query_aggregate_path_set(s : DbqueryaggregatePath, i : Int, v : Double) -> DbqueryaggregatePath {
-  let result = db_query_aggregate_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_aggregate_path_sum(s : DbqueryaggregatePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_query_aggregate_cluster_get(s : DbqueryaggregateCluster, i : Int) -> D
 }
 
 pub fn db_query_aggregate_cluster_set(s : DbqueryaggregateCluster, i : Int, v : Double) -> DbqueryaggregateCluster {
-  let result = db_query_aggregate_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_aggregate_cluster_sum(s : DbqueryaggregateCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_query_aggregate_model_get(s : DbqueryaggregateModel, i : Int) -> Doubl
 }
 
 pub fn db_query_aggregate_model_set(s : DbqueryaggregateModel, i : Int, v : Double) -> DbqueryaggregateModel {
-  let result = db_query_aggregate_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_aggregate_model_sum(s : DbqueryaggregateModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_query_aggregate_layer_get(s : DbqueryaggregateLayer, i : Int) -> Doubl
 }
 
 pub fn db_query_aggregate_layer_set(s : DbqueryaggregateLayer, i : Int, v : Double) -> DbqueryaggregateLayer {
-  let result = db_query_aggregate_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_aggregate_layer_sum(s : DbqueryaggregateLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_query_aggregate_buffer_get(s : DbqueryaggregateBuffer, i : Int) -> Dou
 }
 
 pub fn db_query_aggregate_buffer_set(s : DbqueryaggregateBuffer, i : Int, v : Double) -> DbqueryaggregateBuffer {
-  let result = db_query_aggregate_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_aggregate_buffer_sum(s : DbqueryaggregateBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_query_aggregate_cursor_get(s : DbqueryaggregateCursor, i : Int) -> Dou
 }
 
 pub fn db_query_aggregate_cursor_set(s : DbqueryaggregateCursor, i : Int, v : Double) -> DbqueryaggregateCursor {
-  let result = db_query_aggregate_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_aggregate_cursor_sum(s : DbqueryaggregateCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_query_aggregate_view_get(s : DbqueryaggregateView, i : Int) -> Double 
 }
 
 pub fn db_query_aggregate_view_set(s : DbqueryaggregateView, i : Int, v : Double) -> DbqueryaggregateView {
-  let result = db_query_aggregate_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_aggregate_view_sum(s : DbqueryaggregateView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_query_aggregate_range_get(s : DbqueryaggregateRange, i : Int) -> Doubl
 }
 
 pub fn db_query_aggregate_range_set(s : DbqueryaggregateRange, i : Int, v : Double) -> DbqueryaggregateRange {
-  let result = db_query_aggregate_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_aggregate_range_sum(s : DbqueryaggregateRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_query_aggregate_slice_get(s : DbqueryaggregateSlice, i : Int) -> Doubl
 }
 
 pub fn db_query_aggregate_slice_set(s : DbqueryaggregateSlice, i : Int, v : Double) -> DbqueryaggregateSlice {
-  let result = db_query_aggregate_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_query_aggregate_slice_sum(s : DbqueryaggregateSlice) -> Double { @_common.sum(s.data) }

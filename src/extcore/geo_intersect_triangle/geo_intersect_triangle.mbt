@@ -107,23 +107,15 @@ pub fn geo_intersect_triangle_series_std(s : GeointersecttriangleSeries) -> Doub
 pub fn geo_intersect_triangle_series_median(s : GeointersecttriangleSeries) -> Double { @_common.median(s.vals) }
 
 pub fn geo_intersect_triangle_series_scale(s : GeointersecttriangleSeries, f : Double) -> GeointersecttriangleSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn geo_intersect_triangle_series_add(a : GeointersecttriangleSeries, b : GeointersecttriangleSeries) -> GeointersecttriangleSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn geo_intersect_triangle_series_sub(a : GeointersecttriangleSeries, b : GeointersecttriangleSeries) -> GeointersecttriangleSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn geo_intersect_triangle_series_normalize(s : GeointersecttriangleSeries) -> GeointersecttriangleSeries {
@@ -254,22 +246,16 @@ pub fn geo_intersect_triangle_vector_zero(dim : Int) -> GeointersecttriangleVect
 
 pub fn geo_intersect_triangle_vector_add(a : GeointersecttriangleVector, b : GeointersecttriangleVector) -> GeointersecttriangleVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_intersect_triangle_vector_sub(a : GeointersecttriangleVector, b : GeointersecttriangleVector) -> GeointersecttriangleVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_intersect_triangle_vector_scale(v : GeointersecttriangleVector, s : Double) -> GeointersecttriangleVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn geo_intersect_triangle_vector_dot(a : GeointersecttriangleVector, b : GeointersecttriangleVector) -> Double {
@@ -372,10 +358,9 @@ pub fn geo_intersect_triangle_frame_get(s : GeointersecttriangleFrame, i : Int) 
 }
 
 pub fn geo_intersect_triangle_frame_set(s : GeointersecttriangleFrame, i : Int, v : Double) -> GeointersecttriangleFrame {
-  let result = geo_intersect_triangle_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_frame_sum(s : GeointersecttriangleFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn geo_intersect_triangle_table_get(s : GeointersecttriangleTable, i : Int) 
 }
 
 pub fn geo_intersect_triangle_table_set(s : GeointersecttriangleTable, i : Int, v : Double) -> GeointersecttriangleTable {
-  let result = geo_intersect_triangle_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_table_sum(s : GeointersecttriangleTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn geo_intersect_triangle_graphn_get(s : GeointersecttriangleGraphN, i : Int
 }
 
 pub fn geo_intersect_triangle_graphn_set(s : GeointersecttriangleGraphN, i : Int, v : Double) -> GeointersecttriangleGraphN {
-  let result = geo_intersect_triangle_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_graphn_sum(s : GeointersecttriangleGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn geo_intersect_triangle_node_get(s : GeointersecttriangleNode, i : Int) ->
 }
 
 pub fn geo_intersect_triangle_node_set(s : GeointersecttriangleNode, i : Int, v : Double) -> GeointersecttriangleNode {
-  let result = geo_intersect_triangle_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_node_sum(s : GeointersecttriangleNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn geo_intersect_triangle_edge_get(s : GeointersecttriangleEdge, i : Int) ->
 }
 
 pub fn geo_intersect_triangle_edge_set(s : GeointersecttriangleEdge, i : Int, v : Double) -> GeointersecttriangleEdge {
-  let result = geo_intersect_triangle_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_edge_sum(s : GeointersecttriangleEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn geo_intersect_triangle_path_get(s : GeointersecttrianglePath, i : Int) ->
 }
 
 pub fn geo_intersect_triangle_path_set(s : GeointersecttrianglePath, i : Int, v : Double) -> GeointersecttrianglePath {
-  let result = geo_intersect_triangle_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_path_sum(s : GeointersecttrianglePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn geo_intersect_triangle_cluster_get(s : GeointersecttriangleCluster, i : I
 }
 
 pub fn geo_intersect_triangle_cluster_set(s : GeointersecttriangleCluster, i : Int, v : Double) -> GeointersecttriangleCluster {
-  let result = geo_intersect_triangle_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_cluster_sum(s : GeointersecttriangleCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn geo_intersect_triangle_model_get(s : GeointersecttriangleModel, i : Int) 
 }
 
 pub fn geo_intersect_triangle_model_set(s : GeointersecttriangleModel, i : Int, v : Double) -> GeointersecttriangleModel {
-  let result = geo_intersect_triangle_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_model_sum(s : GeointersecttriangleModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn geo_intersect_triangle_layer_get(s : GeointersecttriangleLayer, i : Int) 
 }
 
 pub fn geo_intersect_triangle_layer_set(s : GeointersecttriangleLayer, i : Int, v : Double) -> GeointersecttriangleLayer {
-  let result = geo_intersect_triangle_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_layer_sum(s : GeointersecttriangleLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn geo_intersect_triangle_buffer_get(s : GeointersecttriangleBuffer, i : Int
 }
 
 pub fn geo_intersect_triangle_buffer_set(s : GeointersecttriangleBuffer, i : Int, v : Double) -> GeointersecttriangleBuffer {
-  let result = geo_intersect_triangle_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_buffer_sum(s : GeointersecttriangleBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn geo_intersect_triangle_cursor_get(s : GeointersecttriangleCursor, i : Int
 }
 
 pub fn geo_intersect_triangle_cursor_set(s : GeointersecttriangleCursor, i : Int, v : Double) -> GeointersecttriangleCursor {
-  let result = geo_intersect_triangle_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_cursor_sum(s : GeointersecttriangleCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn geo_intersect_triangle_view_get(s : GeointersecttriangleView, i : Int) ->
 }
 
 pub fn geo_intersect_triangle_view_set(s : GeointersecttriangleView, i : Int, v : Double) -> GeointersecttriangleView {
-  let result = geo_intersect_triangle_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_view_sum(s : GeointersecttriangleView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn geo_intersect_triangle_range_get(s : GeointersecttriangleRange, i : Int) 
 }
 
 pub fn geo_intersect_triangle_range_set(s : GeointersecttriangleRange, i : Int, v : Double) -> GeointersecttriangleRange {
-  let result = geo_intersect_triangle_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_range_sum(s : GeointersecttriangleRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn geo_intersect_triangle_slice_get(s : GeointersecttriangleSlice, i : Int) 
 }
 
 pub fn geo_intersect_triangle_slice_set(s : GeointersecttriangleSlice, i : Int, v : Double) -> GeointersecttriangleSlice {
-  let result = geo_intersect_triangle_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_intersect_triangle_slice_sum(s : GeointersecttriangleSlice) -> Double { @_common.sum(s.data) }

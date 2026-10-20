@@ -107,23 +107,15 @@ pub fn physics_mechanics_dynamic_series_std(s : PhysicsmechanicsdynamicSeries) -
 pub fn physics_mechanics_dynamic_series_median(s : PhysicsmechanicsdynamicSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_mechanics_dynamic_series_scale(s : PhysicsmechanicsdynamicSeries, f : Double) -> PhysicsmechanicsdynamicSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_mechanics_dynamic_series_add(a : PhysicsmechanicsdynamicSeries, b : PhysicsmechanicsdynamicSeries) -> PhysicsmechanicsdynamicSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_mechanics_dynamic_series_sub(a : PhysicsmechanicsdynamicSeries, b : PhysicsmechanicsdynamicSeries) -> PhysicsmechanicsdynamicSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_mechanics_dynamic_series_normalize(s : PhysicsmechanicsdynamicSeries) -> PhysicsmechanicsdynamicSeries {
@@ -254,22 +246,16 @@ pub fn physics_mechanics_dynamic_vector_zero(dim : Int) -> Physicsmechanicsdynam
 
 pub fn physics_mechanics_dynamic_vector_add(a : PhysicsmechanicsdynamicVector, b : PhysicsmechanicsdynamicVector) -> PhysicsmechanicsdynamicVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_mechanics_dynamic_vector_sub(a : PhysicsmechanicsdynamicVector, b : PhysicsmechanicsdynamicVector) -> PhysicsmechanicsdynamicVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_mechanics_dynamic_vector_scale(v : PhysicsmechanicsdynamicVector, s : Double) -> PhysicsmechanicsdynamicVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_mechanics_dynamic_vector_dot(a : PhysicsmechanicsdynamicVector, b : PhysicsmechanicsdynamicVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_mechanics_dynamic_frame_get(s : PhysicsmechanicsdynamicFrame, i :
 }
 
 pub fn physics_mechanics_dynamic_frame_set(s : PhysicsmechanicsdynamicFrame, i : Int, v : Double) -> PhysicsmechanicsdynamicFrame {
-  let result = physics_mechanics_dynamic_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_dynamic_frame_sum(s : PhysicsmechanicsdynamicFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_mechanics_dynamic_table_get(s : PhysicsmechanicsdynamicTable, i :
 }
 
 pub fn physics_mechanics_dynamic_table_set(s : PhysicsmechanicsdynamicTable, i : Int, v : Double) -> PhysicsmechanicsdynamicTable {
-  let result = physics_mechanics_dynamic_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_dynamic_table_sum(s : PhysicsmechanicsdynamicTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_mechanics_dynamic_graphn_get(s : PhysicsmechanicsdynamicGraphN, i
 }
 
 pub fn physics_mechanics_dynamic_graphn_set(s : PhysicsmechanicsdynamicGraphN, i : Int, v : Double) -> PhysicsmechanicsdynamicGraphN {
-  let result = physics_mechanics_dynamic_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_dynamic_graphn_sum(s : PhysicsmechanicsdynamicGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_mechanics_dynamic_node_get(s : PhysicsmechanicsdynamicNode, i : I
 }
 
 pub fn physics_mechanics_dynamic_node_set(s : PhysicsmechanicsdynamicNode, i : Int, v : Double) -> PhysicsmechanicsdynamicNode {
-  let result = physics_mechanics_dynamic_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_dynamic_node_sum(s : PhysicsmechanicsdynamicNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_mechanics_dynamic_edge_get(s : PhysicsmechanicsdynamicEdge, i : I
 }
 
 pub fn physics_mechanics_dynamic_edge_set(s : PhysicsmechanicsdynamicEdge, i : Int, v : Double) -> PhysicsmechanicsdynamicEdge {
-  let result = physics_mechanics_dynamic_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_dynamic_edge_sum(s : PhysicsmechanicsdynamicEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_mechanics_dynamic_path_get(s : PhysicsmechanicsdynamicPath, i : I
 }
 
 pub fn physics_mechanics_dynamic_path_set(s : PhysicsmechanicsdynamicPath, i : Int, v : Double) -> PhysicsmechanicsdynamicPath {
-  let result = physics_mechanics_dynamic_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_dynamic_path_sum(s : PhysicsmechanicsdynamicPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_mechanics_dynamic_cluster_get(s : PhysicsmechanicsdynamicCluster,
 }
 
 pub fn physics_mechanics_dynamic_cluster_set(s : PhysicsmechanicsdynamicCluster, i : Int, v : Double) -> PhysicsmechanicsdynamicCluster {
-  let result = physics_mechanics_dynamic_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_dynamic_cluster_sum(s : PhysicsmechanicsdynamicCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_mechanics_dynamic_model_get(s : PhysicsmechanicsdynamicModel, i :
 }
 
 pub fn physics_mechanics_dynamic_model_set(s : PhysicsmechanicsdynamicModel, i : Int, v : Double) -> PhysicsmechanicsdynamicModel {
-  let result = physics_mechanics_dynamic_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_dynamic_model_sum(s : PhysicsmechanicsdynamicModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_mechanics_dynamic_layer_get(s : PhysicsmechanicsdynamicLayer, i :
 }
 
 pub fn physics_mechanics_dynamic_layer_set(s : PhysicsmechanicsdynamicLayer, i : Int, v : Double) -> PhysicsmechanicsdynamicLayer {
-  let result = physics_mechanics_dynamic_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_dynamic_layer_sum(s : PhysicsmechanicsdynamicLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_mechanics_dynamic_buffer_get(s : PhysicsmechanicsdynamicBuffer, i
 }
 
 pub fn physics_mechanics_dynamic_buffer_set(s : PhysicsmechanicsdynamicBuffer, i : Int, v : Double) -> PhysicsmechanicsdynamicBuffer {
-  let result = physics_mechanics_dynamic_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_dynamic_buffer_sum(s : PhysicsmechanicsdynamicBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_mechanics_dynamic_cursor_get(s : PhysicsmechanicsdynamicCursor, i
 }
 
 pub fn physics_mechanics_dynamic_cursor_set(s : PhysicsmechanicsdynamicCursor, i : Int, v : Double) -> PhysicsmechanicsdynamicCursor {
-  let result = physics_mechanics_dynamic_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_dynamic_cursor_sum(s : PhysicsmechanicsdynamicCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_mechanics_dynamic_view_get(s : PhysicsmechanicsdynamicView, i : I
 }
 
 pub fn physics_mechanics_dynamic_view_set(s : PhysicsmechanicsdynamicView, i : Int, v : Double) -> PhysicsmechanicsdynamicView {
-  let result = physics_mechanics_dynamic_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_dynamic_view_sum(s : PhysicsmechanicsdynamicView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_mechanics_dynamic_range_get(s : PhysicsmechanicsdynamicRange, i :
 }
 
 pub fn physics_mechanics_dynamic_range_set(s : PhysicsmechanicsdynamicRange, i : Int, v : Double) -> PhysicsmechanicsdynamicRange {
-  let result = physics_mechanics_dynamic_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_dynamic_range_sum(s : PhysicsmechanicsdynamicRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_mechanics_dynamic_slice_get(s : PhysicsmechanicsdynamicSlice, i :
 }
 
 pub fn physics_mechanics_dynamic_slice_set(s : PhysicsmechanicsdynamicSlice, i : Int, v : Double) -> PhysicsmechanicsdynamicSlice {
-  let result = physics_mechanics_dynamic_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_dynamic_slice_sum(s : PhysicsmechanicsdynamicSlice) -> Double { @_common.sum(s.data) }

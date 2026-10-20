@@ -107,23 +107,15 @@ pub fn ds_heap_interval_series_std(s : DsheapintervalSeries) -> Double { @_commo
 pub fn ds_heap_interval_series_median(s : DsheapintervalSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_heap_interval_series_scale(s : DsheapintervalSeries, f : Double) -> DsheapintervalSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_heap_interval_series_add(a : DsheapintervalSeries, b : DsheapintervalSeries) -> DsheapintervalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_heap_interval_series_sub(a : DsheapintervalSeries, b : DsheapintervalSeries) -> DsheapintervalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_heap_interval_series_normalize(s : DsheapintervalSeries) -> DsheapintervalSeries {
@@ -254,22 +246,16 @@ pub fn ds_heap_interval_vector_zero(dim : Int) -> DsheapintervalVector {
 
 pub fn ds_heap_interval_vector_add(a : DsheapintervalVector, b : DsheapintervalVector) -> DsheapintervalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_heap_interval_vector_sub(a : DsheapintervalVector, b : DsheapintervalVector) -> DsheapintervalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_heap_interval_vector_scale(v : DsheapintervalVector, s : Double) -> DsheapintervalVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_heap_interval_vector_dot(a : DsheapintervalVector, b : DsheapintervalVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_heap_interval_frame_get(s : DsheapintervalFrame, i : Int) -> Double {
 }
 
 pub fn ds_heap_interval_frame_set(s : DsheapintervalFrame, i : Int, v : Double) -> DsheapintervalFrame {
-  let result = ds_heap_interval_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_frame_sum(s : DsheapintervalFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_heap_interval_table_get(s : DsheapintervalTable, i : Int) -> Double {
 }
 
 pub fn ds_heap_interval_table_set(s : DsheapintervalTable, i : Int, v : Double) -> DsheapintervalTable {
-  let result = ds_heap_interval_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_table_sum(s : DsheapintervalTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_heap_interval_graphn_get(s : DsheapintervalGraphN, i : Int) -> Double 
 }
 
 pub fn ds_heap_interval_graphn_set(s : DsheapintervalGraphN, i : Int, v : Double) -> DsheapintervalGraphN {
-  let result = ds_heap_interval_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_graphn_sum(s : DsheapintervalGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_heap_interval_node_get(s : DsheapintervalNode, i : Int) -> Double {
 }
 
 pub fn ds_heap_interval_node_set(s : DsheapintervalNode, i : Int, v : Double) -> DsheapintervalNode {
-  let result = ds_heap_interval_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_node_sum(s : DsheapintervalNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_heap_interval_edge_get(s : DsheapintervalEdge, i : Int) -> Double {
 }
 
 pub fn ds_heap_interval_edge_set(s : DsheapintervalEdge, i : Int, v : Double) -> DsheapintervalEdge {
-  let result = ds_heap_interval_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_edge_sum(s : DsheapintervalEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_heap_interval_path_get(s : DsheapintervalPath, i : Int) -> Double {
 }
 
 pub fn ds_heap_interval_path_set(s : DsheapintervalPath, i : Int, v : Double) -> DsheapintervalPath {
-  let result = ds_heap_interval_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_path_sum(s : DsheapintervalPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_heap_interval_cluster_get(s : DsheapintervalCluster, i : Int) -> Doubl
 }
 
 pub fn ds_heap_interval_cluster_set(s : DsheapintervalCluster, i : Int, v : Double) -> DsheapintervalCluster {
-  let result = ds_heap_interval_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_cluster_sum(s : DsheapintervalCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_heap_interval_model_get(s : DsheapintervalModel, i : Int) -> Double {
 }
 
 pub fn ds_heap_interval_model_set(s : DsheapintervalModel, i : Int, v : Double) -> DsheapintervalModel {
-  let result = ds_heap_interval_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_model_sum(s : DsheapintervalModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_heap_interval_layer_get(s : DsheapintervalLayer, i : Int) -> Double {
 }
 
 pub fn ds_heap_interval_layer_set(s : DsheapintervalLayer, i : Int, v : Double) -> DsheapintervalLayer {
-  let result = ds_heap_interval_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_layer_sum(s : DsheapintervalLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_heap_interval_buffer_get(s : DsheapintervalBuffer, i : Int) -> Double 
 }
 
 pub fn ds_heap_interval_buffer_set(s : DsheapintervalBuffer, i : Int, v : Double) -> DsheapintervalBuffer {
-  let result = ds_heap_interval_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_buffer_sum(s : DsheapintervalBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_heap_interval_cursor_get(s : DsheapintervalCursor, i : Int) -> Double 
 }
 
 pub fn ds_heap_interval_cursor_set(s : DsheapintervalCursor, i : Int, v : Double) -> DsheapintervalCursor {
-  let result = ds_heap_interval_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_cursor_sum(s : DsheapintervalCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_heap_interval_view_get(s : DsheapintervalView, i : Int) -> Double {
 }
 
 pub fn ds_heap_interval_view_set(s : DsheapintervalView, i : Int, v : Double) -> DsheapintervalView {
-  let result = ds_heap_interval_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_view_sum(s : DsheapintervalView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_heap_interval_range_get(s : DsheapintervalRange, i : Int) -> Double {
 }
 
 pub fn ds_heap_interval_range_set(s : DsheapintervalRange, i : Int, v : Double) -> DsheapintervalRange {
-  let result = ds_heap_interval_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_range_sum(s : DsheapintervalRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_heap_interval_slice_get(s : DsheapintervalSlice, i : Int) -> Double {
 }
 
 pub fn ds_heap_interval_slice_set(s : DsheapintervalSlice, i : Int, v : Double) -> DsheapintervalSlice {
-  let result = ds_heap_interval_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_interval_slice_sum(s : DsheapintervalSlice) -> Double { @_common.sum(s.data) }

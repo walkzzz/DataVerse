@@ -107,23 +107,15 @@ pub fn image_feature_kaze_series_std(s : ImagefeaturekazeSeries) -> Double { @_c
 pub fn image_feature_kaze_series_median(s : ImagefeaturekazeSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_feature_kaze_series_scale(s : ImagefeaturekazeSeries, f : Double) -> ImagefeaturekazeSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_feature_kaze_series_add(a : ImagefeaturekazeSeries, b : ImagefeaturekazeSeries) -> ImagefeaturekazeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_feature_kaze_series_sub(a : ImagefeaturekazeSeries, b : ImagefeaturekazeSeries) -> ImagefeaturekazeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_feature_kaze_series_normalize(s : ImagefeaturekazeSeries) -> ImagefeaturekazeSeries {
@@ -254,22 +246,16 @@ pub fn image_feature_kaze_vector_zero(dim : Int) -> ImagefeaturekazeVector {
 
 pub fn image_feature_kaze_vector_add(a : ImagefeaturekazeVector, b : ImagefeaturekazeVector) -> ImagefeaturekazeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_feature_kaze_vector_sub(a : ImagefeaturekazeVector, b : ImagefeaturekazeVector) -> ImagefeaturekazeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_feature_kaze_vector_scale(v : ImagefeaturekazeVector, s : Double) -> ImagefeaturekazeVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_feature_kaze_vector_dot(a : ImagefeaturekazeVector, b : ImagefeaturekazeVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_feature_kaze_frame_get(s : ImagefeaturekazeFrame, i : Int) -> Doubl
 }
 
 pub fn image_feature_kaze_frame_set(s : ImagefeaturekazeFrame, i : Int, v : Double) -> ImagefeaturekazeFrame {
-  let result = image_feature_kaze_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_kaze_frame_sum(s : ImagefeaturekazeFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_feature_kaze_table_get(s : ImagefeaturekazeTable, i : Int) -> Doubl
 }
 
 pub fn image_feature_kaze_table_set(s : ImagefeaturekazeTable, i : Int, v : Double) -> ImagefeaturekazeTable {
-  let result = image_feature_kaze_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_kaze_table_sum(s : ImagefeaturekazeTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_feature_kaze_graphn_get(s : ImagefeaturekazeGraphN, i : Int) -> Dou
 }
 
 pub fn image_feature_kaze_graphn_set(s : ImagefeaturekazeGraphN, i : Int, v : Double) -> ImagefeaturekazeGraphN {
-  let result = image_feature_kaze_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_kaze_graphn_sum(s : ImagefeaturekazeGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_feature_kaze_node_get(s : ImagefeaturekazeNode, i : Int) -> Double 
 }
 
 pub fn image_feature_kaze_node_set(s : ImagefeaturekazeNode, i : Int, v : Double) -> ImagefeaturekazeNode {
-  let result = image_feature_kaze_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_kaze_node_sum(s : ImagefeaturekazeNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_feature_kaze_edge_get(s : ImagefeaturekazeEdge, i : Int) -> Double 
 }
 
 pub fn image_feature_kaze_edge_set(s : ImagefeaturekazeEdge, i : Int, v : Double) -> ImagefeaturekazeEdge {
-  let result = image_feature_kaze_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_kaze_edge_sum(s : ImagefeaturekazeEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_feature_kaze_path_get(s : ImagefeaturekazePath, i : Int) -> Double 
 }
 
 pub fn image_feature_kaze_path_set(s : ImagefeaturekazePath, i : Int, v : Double) -> ImagefeaturekazePath {
-  let result = image_feature_kaze_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_kaze_path_sum(s : ImagefeaturekazePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_feature_kaze_cluster_get(s : ImagefeaturekazeCluster, i : Int) -> D
 }
 
 pub fn image_feature_kaze_cluster_set(s : ImagefeaturekazeCluster, i : Int, v : Double) -> ImagefeaturekazeCluster {
-  let result = image_feature_kaze_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_kaze_cluster_sum(s : ImagefeaturekazeCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_feature_kaze_model_get(s : ImagefeaturekazeModel, i : Int) -> Doubl
 }
 
 pub fn image_feature_kaze_model_set(s : ImagefeaturekazeModel, i : Int, v : Double) -> ImagefeaturekazeModel {
-  let result = image_feature_kaze_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_kaze_model_sum(s : ImagefeaturekazeModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_feature_kaze_layer_get(s : ImagefeaturekazeLayer, i : Int) -> Doubl
 }
 
 pub fn image_feature_kaze_layer_set(s : ImagefeaturekazeLayer, i : Int, v : Double) -> ImagefeaturekazeLayer {
-  let result = image_feature_kaze_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_kaze_layer_sum(s : ImagefeaturekazeLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_feature_kaze_buffer_get(s : ImagefeaturekazeBuffer, i : Int) -> Dou
 }
 
 pub fn image_feature_kaze_buffer_set(s : ImagefeaturekazeBuffer, i : Int, v : Double) -> ImagefeaturekazeBuffer {
-  let result = image_feature_kaze_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_kaze_buffer_sum(s : ImagefeaturekazeBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_feature_kaze_cursor_get(s : ImagefeaturekazeCursor, i : Int) -> Dou
 }
 
 pub fn image_feature_kaze_cursor_set(s : ImagefeaturekazeCursor, i : Int, v : Double) -> ImagefeaturekazeCursor {
-  let result = image_feature_kaze_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_kaze_cursor_sum(s : ImagefeaturekazeCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_feature_kaze_view_get(s : ImagefeaturekazeView, i : Int) -> Double 
 }
 
 pub fn image_feature_kaze_view_set(s : ImagefeaturekazeView, i : Int, v : Double) -> ImagefeaturekazeView {
-  let result = image_feature_kaze_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_kaze_view_sum(s : ImagefeaturekazeView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_feature_kaze_range_get(s : ImagefeaturekazeRange, i : Int) -> Doubl
 }
 
 pub fn image_feature_kaze_range_set(s : ImagefeaturekazeRange, i : Int, v : Double) -> ImagefeaturekazeRange {
-  let result = image_feature_kaze_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_kaze_range_sum(s : ImagefeaturekazeRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_feature_kaze_slice_get(s : ImagefeaturekazeSlice, i : Int) -> Doubl
 }
 
 pub fn image_feature_kaze_slice_set(s : ImagefeaturekazeSlice, i : Int, v : Double) -> ImagefeaturekazeSlice {
-  let result = image_feature_kaze_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_kaze_slice_sum(s : ImagefeaturekazeSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn geo_proj_utm_series_std(s : GeoprojutmSeries) -> Double { @_common.std(s.
 pub fn geo_proj_utm_series_median(s : GeoprojutmSeries) -> Double { @_common.median(s.vals) }
 
 pub fn geo_proj_utm_series_scale(s : GeoprojutmSeries, f : Double) -> GeoprojutmSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn geo_proj_utm_series_add(a : GeoprojutmSeries, b : GeoprojutmSeries) -> GeoprojutmSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn geo_proj_utm_series_sub(a : GeoprojutmSeries, b : GeoprojutmSeries) -> GeoprojutmSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn geo_proj_utm_series_normalize(s : GeoprojutmSeries) -> GeoprojutmSeries {
@@ -254,22 +246,16 @@ pub fn geo_proj_utm_vector_zero(dim : Int) -> GeoprojutmVector {
 
 pub fn geo_proj_utm_vector_add(a : GeoprojutmVector, b : GeoprojutmVector) -> GeoprojutmVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_proj_utm_vector_sub(a : GeoprojutmVector, b : GeoprojutmVector) -> GeoprojutmVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_proj_utm_vector_scale(v : GeoprojutmVector, s : Double) -> GeoprojutmVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn geo_proj_utm_vector_dot(a : GeoprojutmVector, b : GeoprojutmVector) -> Double {
@@ -372,10 +358,9 @@ pub fn geo_proj_utm_frame_get(s : GeoprojutmFrame, i : Int) -> Double {
 }
 
 pub fn geo_proj_utm_frame_set(s : GeoprojutmFrame, i : Int, v : Double) -> GeoprojutmFrame {
-  let result = geo_proj_utm_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_utm_frame_sum(s : GeoprojutmFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn geo_proj_utm_table_get(s : GeoprojutmTable, i : Int) -> Double {
 }
 
 pub fn geo_proj_utm_table_set(s : GeoprojutmTable, i : Int, v : Double) -> GeoprojutmTable {
-  let result = geo_proj_utm_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_utm_table_sum(s : GeoprojutmTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn geo_proj_utm_graphn_get(s : GeoprojutmGraphN, i : Int) -> Double {
 }
 
 pub fn geo_proj_utm_graphn_set(s : GeoprojutmGraphN, i : Int, v : Double) -> GeoprojutmGraphN {
-  let result = geo_proj_utm_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_utm_graphn_sum(s : GeoprojutmGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn geo_proj_utm_node_get(s : GeoprojutmNode, i : Int) -> Double {
 }
 
 pub fn geo_proj_utm_node_set(s : GeoprojutmNode, i : Int, v : Double) -> GeoprojutmNode {
-  let result = geo_proj_utm_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_utm_node_sum(s : GeoprojutmNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn geo_proj_utm_edge_get(s : GeoprojutmEdge, i : Int) -> Double {
 }
 
 pub fn geo_proj_utm_edge_set(s : GeoprojutmEdge, i : Int, v : Double) -> GeoprojutmEdge {
-  let result = geo_proj_utm_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_utm_edge_sum(s : GeoprojutmEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn geo_proj_utm_path_get(s : GeoprojutmPath, i : Int) -> Double {
 }
 
 pub fn geo_proj_utm_path_set(s : GeoprojutmPath, i : Int, v : Double) -> GeoprojutmPath {
-  let result = geo_proj_utm_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_utm_path_sum(s : GeoprojutmPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn geo_proj_utm_cluster_get(s : GeoprojutmCluster, i : Int) -> Double {
 }
 
 pub fn geo_proj_utm_cluster_set(s : GeoprojutmCluster, i : Int, v : Double) -> GeoprojutmCluster {
-  let result = geo_proj_utm_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_utm_cluster_sum(s : GeoprojutmCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn geo_proj_utm_model_get(s : GeoprojutmModel, i : Int) -> Double {
 }
 
 pub fn geo_proj_utm_model_set(s : GeoprojutmModel, i : Int, v : Double) -> GeoprojutmModel {
-  let result = geo_proj_utm_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_utm_model_sum(s : GeoprojutmModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn geo_proj_utm_layer_get(s : GeoprojutmLayer, i : Int) -> Double {
 }
 
 pub fn geo_proj_utm_layer_set(s : GeoprojutmLayer, i : Int, v : Double) -> GeoprojutmLayer {
-  let result = geo_proj_utm_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_utm_layer_sum(s : GeoprojutmLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn geo_proj_utm_buffer_get(s : GeoprojutmBuffer, i : Int) -> Double {
 }
 
 pub fn geo_proj_utm_buffer_set(s : GeoprojutmBuffer, i : Int, v : Double) -> GeoprojutmBuffer {
-  let result = geo_proj_utm_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_utm_buffer_sum(s : GeoprojutmBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn geo_proj_utm_cursor_get(s : GeoprojutmCursor, i : Int) -> Double {
 }
 
 pub fn geo_proj_utm_cursor_set(s : GeoprojutmCursor, i : Int, v : Double) -> GeoprojutmCursor {
-  let result = geo_proj_utm_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_utm_cursor_sum(s : GeoprojutmCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn geo_proj_utm_view_get(s : GeoprojutmView, i : Int) -> Double {
 }
 
 pub fn geo_proj_utm_view_set(s : GeoprojutmView, i : Int, v : Double) -> GeoprojutmView {
-  let result = geo_proj_utm_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_utm_view_sum(s : GeoprojutmView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn geo_proj_utm_range_get(s : GeoprojutmRange, i : Int) -> Double {
 }
 
 pub fn geo_proj_utm_range_set(s : GeoprojutmRange, i : Int, v : Double) -> GeoprojutmRange {
-  let result = geo_proj_utm_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_utm_range_sum(s : GeoprojutmRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn geo_proj_utm_slice_get(s : GeoprojutmSlice, i : Int) -> Double {
 }
 
 pub fn geo_proj_utm_slice_set(s : GeoprojutmSlice, i : Int, v : Double) -> GeoprojutmSlice {
-  let result = geo_proj_utm_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_utm_slice_sum(s : GeoprojutmSlice) -> Double { @_common.sum(s.data) }

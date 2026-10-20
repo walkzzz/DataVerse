@@ -107,23 +107,15 @@ pub fn ml_classify_probit_series_std(s : MlclassifyprobitSeries) -> Double { @_c
 pub fn ml_classify_probit_series_median(s : MlclassifyprobitSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_classify_probit_series_scale(s : MlclassifyprobitSeries, f : Double) -> MlclassifyprobitSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_classify_probit_series_add(a : MlclassifyprobitSeries, b : MlclassifyprobitSeries) -> MlclassifyprobitSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_classify_probit_series_sub(a : MlclassifyprobitSeries, b : MlclassifyprobitSeries) -> MlclassifyprobitSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_classify_probit_series_normalize(s : MlclassifyprobitSeries) -> MlclassifyprobitSeries {
@@ -254,22 +246,16 @@ pub fn ml_classify_probit_vector_zero(dim : Int) -> MlclassifyprobitVector {
 
 pub fn ml_classify_probit_vector_add(a : MlclassifyprobitVector, b : MlclassifyprobitVector) -> MlclassifyprobitVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_classify_probit_vector_sub(a : MlclassifyprobitVector, b : MlclassifyprobitVector) -> MlclassifyprobitVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_classify_probit_vector_scale(v : MlclassifyprobitVector, s : Double) -> MlclassifyprobitVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_classify_probit_vector_dot(a : MlclassifyprobitVector, b : MlclassifyprobitVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_classify_probit_frame_get(s : MlclassifyprobitFrame, i : Int) -> Doubl
 }
 
 pub fn ml_classify_probit_frame_set(s : MlclassifyprobitFrame, i : Int, v : Double) -> MlclassifyprobitFrame {
-  let result = ml_classify_probit_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_probit_frame_sum(s : MlclassifyprobitFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_classify_probit_table_get(s : MlclassifyprobitTable, i : Int) -> Doubl
 }
 
 pub fn ml_classify_probit_table_set(s : MlclassifyprobitTable, i : Int, v : Double) -> MlclassifyprobitTable {
-  let result = ml_classify_probit_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_probit_table_sum(s : MlclassifyprobitTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_classify_probit_graphn_get(s : MlclassifyprobitGraphN, i : Int) -> Dou
 }
 
 pub fn ml_classify_probit_graphn_set(s : MlclassifyprobitGraphN, i : Int, v : Double) -> MlclassifyprobitGraphN {
-  let result = ml_classify_probit_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_probit_graphn_sum(s : MlclassifyprobitGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_classify_probit_node_get(s : MlclassifyprobitNode, i : Int) -> Double 
 }
 
 pub fn ml_classify_probit_node_set(s : MlclassifyprobitNode, i : Int, v : Double) -> MlclassifyprobitNode {
-  let result = ml_classify_probit_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_probit_node_sum(s : MlclassifyprobitNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_classify_probit_edge_get(s : MlclassifyprobitEdge, i : Int) -> Double 
 }
 
 pub fn ml_classify_probit_edge_set(s : MlclassifyprobitEdge, i : Int, v : Double) -> MlclassifyprobitEdge {
-  let result = ml_classify_probit_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_probit_edge_sum(s : MlclassifyprobitEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_classify_probit_path_get(s : MlclassifyprobitPath, i : Int) -> Double 
 }
 
 pub fn ml_classify_probit_path_set(s : MlclassifyprobitPath, i : Int, v : Double) -> MlclassifyprobitPath {
-  let result = ml_classify_probit_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_probit_path_sum(s : MlclassifyprobitPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_classify_probit_cluster_get(s : MlclassifyprobitCluster, i : Int) -> D
 }
 
 pub fn ml_classify_probit_cluster_set(s : MlclassifyprobitCluster, i : Int, v : Double) -> MlclassifyprobitCluster {
-  let result = ml_classify_probit_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_probit_cluster_sum(s : MlclassifyprobitCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_classify_probit_model_get(s : MlclassifyprobitModel, i : Int) -> Doubl
 }
 
 pub fn ml_classify_probit_model_set(s : MlclassifyprobitModel, i : Int, v : Double) -> MlclassifyprobitModel {
-  let result = ml_classify_probit_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_probit_model_sum(s : MlclassifyprobitModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_classify_probit_layer_get(s : MlclassifyprobitLayer, i : Int) -> Doubl
 }
 
 pub fn ml_classify_probit_layer_set(s : MlclassifyprobitLayer, i : Int, v : Double) -> MlclassifyprobitLayer {
-  let result = ml_classify_probit_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_probit_layer_sum(s : MlclassifyprobitLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_classify_probit_buffer_get(s : MlclassifyprobitBuffer, i : Int) -> Dou
 }
 
 pub fn ml_classify_probit_buffer_set(s : MlclassifyprobitBuffer, i : Int, v : Double) -> MlclassifyprobitBuffer {
-  let result = ml_classify_probit_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_probit_buffer_sum(s : MlclassifyprobitBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_classify_probit_cursor_get(s : MlclassifyprobitCursor, i : Int) -> Dou
 }
 
 pub fn ml_classify_probit_cursor_set(s : MlclassifyprobitCursor, i : Int, v : Double) -> MlclassifyprobitCursor {
-  let result = ml_classify_probit_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_probit_cursor_sum(s : MlclassifyprobitCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_classify_probit_view_get(s : MlclassifyprobitView, i : Int) -> Double 
 }
 
 pub fn ml_classify_probit_view_set(s : MlclassifyprobitView, i : Int, v : Double) -> MlclassifyprobitView {
-  let result = ml_classify_probit_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_probit_view_sum(s : MlclassifyprobitView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_classify_probit_range_get(s : MlclassifyprobitRange, i : Int) -> Doubl
 }
 
 pub fn ml_classify_probit_range_set(s : MlclassifyprobitRange, i : Int, v : Double) -> MlclassifyprobitRange {
-  let result = ml_classify_probit_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_probit_range_sum(s : MlclassifyprobitRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_classify_probit_slice_get(s : MlclassifyprobitSlice, i : Int) -> Doubl
 }
 
 pub fn ml_classify_probit_slice_set(s : MlclassifyprobitSlice, i : Int, v : Double) -> MlclassifyprobitSlice {
-  let result = ml_classify_probit_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_classify_probit_slice_sum(s : MlclassifyprobitSlice) -> Double { @_common.sum(s.data) }

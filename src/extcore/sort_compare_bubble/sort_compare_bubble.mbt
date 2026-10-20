@@ -107,23 +107,15 @@ pub fn sort_compare_bubble_series_std(s : SortcomparebubbleSeries) -> Double { @
 pub fn sort_compare_bubble_series_median(s : SortcomparebubbleSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_compare_bubble_series_scale(s : SortcomparebubbleSeries, f : Double) -> SortcomparebubbleSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn sort_compare_bubble_series_add(a : SortcomparebubbleSeries, b : SortcomparebubbleSeries) -> SortcomparebubbleSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn sort_compare_bubble_series_sub(a : SortcomparebubbleSeries, b : SortcomparebubbleSeries) -> SortcomparebubbleSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn sort_compare_bubble_series_normalize(s : SortcomparebubbleSeries) -> SortcomparebubbleSeries {
@@ -254,22 +246,16 @@ pub fn sort_compare_bubble_vector_zero(dim : Int) -> SortcomparebubbleVector {
 
 pub fn sort_compare_bubble_vector_add(a : SortcomparebubbleVector, b : SortcomparebubbleVector) -> SortcomparebubbleVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_compare_bubble_vector_sub(a : SortcomparebubbleVector, b : SortcomparebubbleVector) -> SortcomparebubbleVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_compare_bubble_vector_scale(v : SortcomparebubbleVector, s : Double) -> SortcomparebubbleVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn sort_compare_bubble_vector_dot(a : SortcomparebubbleVector, b : SortcomparebubbleVector) -> Double {
@@ -372,10 +358,9 @@ pub fn sort_compare_bubble_frame_get(s : SortcomparebubbleFrame, i : Int) -> Dou
 }
 
 pub fn sort_compare_bubble_frame_set(s : SortcomparebubbleFrame, i : Int, v : Double) -> SortcomparebubbleFrame {
-  let result = sort_compare_bubble_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_bubble_frame_sum(s : SortcomparebubbleFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn sort_compare_bubble_table_get(s : SortcomparebubbleTable, i : Int) -> Dou
 }
 
 pub fn sort_compare_bubble_table_set(s : SortcomparebubbleTable, i : Int, v : Double) -> SortcomparebubbleTable {
-  let result = sort_compare_bubble_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_bubble_table_sum(s : SortcomparebubbleTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn sort_compare_bubble_graphn_get(s : SortcomparebubbleGraphN, i : Int) -> D
 }
 
 pub fn sort_compare_bubble_graphn_set(s : SortcomparebubbleGraphN, i : Int, v : Double) -> SortcomparebubbleGraphN {
-  let result = sort_compare_bubble_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_bubble_graphn_sum(s : SortcomparebubbleGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn sort_compare_bubble_node_get(s : SortcomparebubbleNode, i : Int) -> Doubl
 }
 
 pub fn sort_compare_bubble_node_set(s : SortcomparebubbleNode, i : Int, v : Double) -> SortcomparebubbleNode {
-  let result = sort_compare_bubble_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_bubble_node_sum(s : SortcomparebubbleNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn sort_compare_bubble_edge_get(s : SortcomparebubbleEdge, i : Int) -> Doubl
 }
 
 pub fn sort_compare_bubble_edge_set(s : SortcomparebubbleEdge, i : Int, v : Double) -> SortcomparebubbleEdge {
-  let result = sort_compare_bubble_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_bubble_edge_sum(s : SortcomparebubbleEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn sort_compare_bubble_path_get(s : SortcomparebubblePath, i : Int) -> Doubl
 }
 
 pub fn sort_compare_bubble_path_set(s : SortcomparebubblePath, i : Int, v : Double) -> SortcomparebubblePath {
-  let result = sort_compare_bubble_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_bubble_path_sum(s : SortcomparebubblePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn sort_compare_bubble_cluster_get(s : SortcomparebubbleCluster, i : Int) ->
 }
 
 pub fn sort_compare_bubble_cluster_set(s : SortcomparebubbleCluster, i : Int, v : Double) -> SortcomparebubbleCluster {
-  let result = sort_compare_bubble_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_bubble_cluster_sum(s : SortcomparebubbleCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn sort_compare_bubble_model_get(s : SortcomparebubbleModel, i : Int) -> Dou
 }
 
 pub fn sort_compare_bubble_model_set(s : SortcomparebubbleModel, i : Int, v : Double) -> SortcomparebubbleModel {
-  let result = sort_compare_bubble_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_bubble_model_sum(s : SortcomparebubbleModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn sort_compare_bubble_layer_get(s : SortcomparebubbleLayer, i : Int) -> Dou
 }
 
 pub fn sort_compare_bubble_layer_set(s : SortcomparebubbleLayer, i : Int, v : Double) -> SortcomparebubbleLayer {
-  let result = sort_compare_bubble_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_bubble_layer_sum(s : SortcomparebubbleLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn sort_compare_bubble_buffer_get(s : SortcomparebubbleBuffer, i : Int) -> D
 }
 
 pub fn sort_compare_bubble_buffer_set(s : SortcomparebubbleBuffer, i : Int, v : Double) -> SortcomparebubbleBuffer {
-  let result = sort_compare_bubble_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_bubble_buffer_sum(s : SortcomparebubbleBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn sort_compare_bubble_cursor_get(s : SortcomparebubbleCursor, i : Int) -> D
 }
 
 pub fn sort_compare_bubble_cursor_set(s : SortcomparebubbleCursor, i : Int, v : Double) -> SortcomparebubbleCursor {
-  let result = sort_compare_bubble_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_bubble_cursor_sum(s : SortcomparebubbleCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn sort_compare_bubble_view_get(s : SortcomparebubbleView, i : Int) -> Doubl
 }
 
 pub fn sort_compare_bubble_view_set(s : SortcomparebubbleView, i : Int, v : Double) -> SortcomparebubbleView {
-  let result = sort_compare_bubble_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_bubble_view_sum(s : SortcomparebubbleView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn sort_compare_bubble_range_get(s : SortcomparebubbleRange, i : Int) -> Dou
 }
 
 pub fn sort_compare_bubble_range_set(s : SortcomparebubbleRange, i : Int, v : Double) -> SortcomparebubbleRange {
-  let result = sort_compare_bubble_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_bubble_range_sum(s : SortcomparebubbleRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn sort_compare_bubble_slice_get(s : SortcomparebubbleSlice, i : Int) -> Dou
 }
 
 pub fn sort_compare_bubble_slice_set(s : SortcomparebubbleSlice, i : Int, v : Double) -> SortcomparebubbleSlice {
-  let result = sort_compare_bubble_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_bubble_slice_sum(s : SortcomparebubbleSlice) -> Double { @_common.sum(s.data) }

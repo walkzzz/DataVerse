@@ -107,23 +107,15 @@ pub fn signal_window_flattop_series_std(s : SignalwindowflattopSeries) -> Double
 pub fn signal_window_flattop_series_median(s : SignalwindowflattopSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_window_flattop_series_scale(s : SignalwindowflattopSeries, f : Double) -> SignalwindowflattopSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_window_flattop_series_add(a : SignalwindowflattopSeries, b : SignalwindowflattopSeries) -> SignalwindowflattopSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_window_flattop_series_sub(a : SignalwindowflattopSeries, b : SignalwindowflattopSeries) -> SignalwindowflattopSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_window_flattop_series_normalize(s : SignalwindowflattopSeries) -> SignalwindowflattopSeries {
@@ -254,22 +246,16 @@ pub fn signal_window_flattop_vector_zero(dim : Int) -> SignalwindowflattopVector
 
 pub fn signal_window_flattop_vector_add(a : SignalwindowflattopVector, b : SignalwindowflattopVector) -> SignalwindowflattopVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_window_flattop_vector_sub(a : SignalwindowflattopVector, b : SignalwindowflattopVector) -> SignalwindowflattopVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_window_flattop_vector_scale(v : SignalwindowflattopVector, s : Double) -> SignalwindowflattopVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_window_flattop_vector_dot(a : SignalwindowflattopVector, b : SignalwindowflattopVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_window_flattop_frame_get(s : SignalwindowflattopFrame, i : Int) ->
 }
 
 pub fn signal_window_flattop_frame_set(s : SignalwindowflattopFrame, i : Int, v : Double) -> SignalwindowflattopFrame {
-  let result = signal_window_flattop_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_flattop_frame_sum(s : SignalwindowflattopFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_window_flattop_table_get(s : SignalwindowflattopTable, i : Int) ->
 }
 
 pub fn signal_window_flattop_table_set(s : SignalwindowflattopTable, i : Int, v : Double) -> SignalwindowflattopTable {
-  let result = signal_window_flattop_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_flattop_table_sum(s : SignalwindowflattopTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_window_flattop_graphn_get(s : SignalwindowflattopGraphN, i : Int) 
 }
 
 pub fn signal_window_flattop_graphn_set(s : SignalwindowflattopGraphN, i : Int, v : Double) -> SignalwindowflattopGraphN {
-  let result = signal_window_flattop_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_flattop_graphn_sum(s : SignalwindowflattopGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_window_flattop_node_get(s : SignalwindowflattopNode, i : Int) -> D
 }
 
 pub fn signal_window_flattop_node_set(s : SignalwindowflattopNode, i : Int, v : Double) -> SignalwindowflattopNode {
-  let result = signal_window_flattop_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_flattop_node_sum(s : SignalwindowflattopNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_window_flattop_edge_get(s : SignalwindowflattopEdge, i : Int) -> D
 }
 
 pub fn signal_window_flattop_edge_set(s : SignalwindowflattopEdge, i : Int, v : Double) -> SignalwindowflattopEdge {
-  let result = signal_window_flattop_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_flattop_edge_sum(s : SignalwindowflattopEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_window_flattop_path_get(s : SignalwindowflattopPath, i : Int) -> D
 }
 
 pub fn signal_window_flattop_path_set(s : SignalwindowflattopPath, i : Int, v : Double) -> SignalwindowflattopPath {
-  let result = signal_window_flattop_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_flattop_path_sum(s : SignalwindowflattopPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_window_flattop_cluster_get(s : SignalwindowflattopCluster, i : Int
 }
 
 pub fn signal_window_flattop_cluster_set(s : SignalwindowflattopCluster, i : Int, v : Double) -> SignalwindowflattopCluster {
-  let result = signal_window_flattop_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_flattop_cluster_sum(s : SignalwindowflattopCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_window_flattop_model_get(s : SignalwindowflattopModel, i : Int) ->
 }
 
 pub fn signal_window_flattop_model_set(s : SignalwindowflattopModel, i : Int, v : Double) -> SignalwindowflattopModel {
-  let result = signal_window_flattop_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_flattop_model_sum(s : SignalwindowflattopModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_window_flattop_layer_get(s : SignalwindowflattopLayer, i : Int) ->
 }
 
 pub fn signal_window_flattop_layer_set(s : SignalwindowflattopLayer, i : Int, v : Double) -> SignalwindowflattopLayer {
-  let result = signal_window_flattop_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_flattop_layer_sum(s : SignalwindowflattopLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_window_flattop_buffer_get(s : SignalwindowflattopBuffer, i : Int) 
 }
 
 pub fn signal_window_flattop_buffer_set(s : SignalwindowflattopBuffer, i : Int, v : Double) -> SignalwindowflattopBuffer {
-  let result = signal_window_flattop_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_flattop_buffer_sum(s : SignalwindowflattopBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_window_flattop_cursor_get(s : SignalwindowflattopCursor, i : Int) 
 }
 
 pub fn signal_window_flattop_cursor_set(s : SignalwindowflattopCursor, i : Int, v : Double) -> SignalwindowflattopCursor {
-  let result = signal_window_flattop_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_flattop_cursor_sum(s : SignalwindowflattopCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_window_flattop_view_get(s : SignalwindowflattopView, i : Int) -> D
 }
 
 pub fn signal_window_flattop_view_set(s : SignalwindowflattopView, i : Int, v : Double) -> SignalwindowflattopView {
-  let result = signal_window_flattop_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_flattop_view_sum(s : SignalwindowflattopView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_window_flattop_range_get(s : SignalwindowflattopRange, i : Int) ->
 }
 
 pub fn signal_window_flattop_range_set(s : SignalwindowflattopRange, i : Int, v : Double) -> SignalwindowflattopRange {
-  let result = signal_window_flattop_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_flattop_range_sum(s : SignalwindowflattopRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_window_flattop_slice_get(s : SignalwindowflattopSlice, i : Int) ->
 }
 
 pub fn signal_window_flattop_slice_set(s : SignalwindowflattopSlice, i : Int, v : Double) -> SignalwindowflattopSlice {
-  let result = signal_window_flattop_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_flattop_slice_sum(s : SignalwindowflattopSlice) -> Double { @_common.sum(s.data) }

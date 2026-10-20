@@ -107,23 +107,15 @@ pub fn chem_rxn_selectivity_series_std(s : ChemrxnselectivitySeries) -> Double {
 pub fn chem_rxn_selectivity_series_median(s : ChemrxnselectivitySeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_rxn_selectivity_series_scale(s : ChemrxnselectivitySeries, f : Double) -> ChemrxnselectivitySeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn chem_rxn_selectivity_series_add(a : ChemrxnselectivitySeries, b : ChemrxnselectivitySeries) -> ChemrxnselectivitySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn chem_rxn_selectivity_series_sub(a : ChemrxnselectivitySeries, b : ChemrxnselectivitySeries) -> ChemrxnselectivitySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn chem_rxn_selectivity_series_normalize(s : ChemrxnselectivitySeries) -> ChemrxnselectivitySeries {
@@ -254,22 +246,16 @@ pub fn chem_rxn_selectivity_vector_zero(dim : Int) -> ChemrxnselectivityVector {
 
 pub fn chem_rxn_selectivity_vector_add(a : ChemrxnselectivityVector, b : ChemrxnselectivityVector) -> ChemrxnselectivityVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_rxn_selectivity_vector_sub(a : ChemrxnselectivityVector, b : ChemrxnselectivityVector) -> ChemrxnselectivityVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_rxn_selectivity_vector_scale(v : ChemrxnselectivityVector, s : Double) -> ChemrxnselectivityVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn chem_rxn_selectivity_vector_dot(a : ChemrxnselectivityVector, b : ChemrxnselectivityVector) -> Double {
@@ -372,10 +358,9 @@ pub fn chem_rxn_selectivity_frame_get(s : ChemrxnselectivityFrame, i : Int) -> D
 }
 
 pub fn chem_rxn_selectivity_frame_set(s : ChemrxnselectivityFrame, i : Int, v : Double) -> ChemrxnselectivityFrame {
-  let result = chem_rxn_selectivity_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_selectivity_frame_sum(s : ChemrxnselectivityFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn chem_rxn_selectivity_table_get(s : ChemrxnselectivityTable, i : Int) -> D
 }
 
 pub fn chem_rxn_selectivity_table_set(s : ChemrxnselectivityTable, i : Int, v : Double) -> ChemrxnselectivityTable {
-  let result = chem_rxn_selectivity_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_selectivity_table_sum(s : ChemrxnselectivityTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn chem_rxn_selectivity_graphn_get(s : ChemrxnselectivityGraphN, i : Int) ->
 }
 
 pub fn chem_rxn_selectivity_graphn_set(s : ChemrxnselectivityGraphN, i : Int, v : Double) -> ChemrxnselectivityGraphN {
-  let result = chem_rxn_selectivity_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_selectivity_graphn_sum(s : ChemrxnselectivityGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn chem_rxn_selectivity_node_get(s : ChemrxnselectivityNode, i : Int) -> Dou
 }
 
 pub fn chem_rxn_selectivity_node_set(s : ChemrxnselectivityNode, i : Int, v : Double) -> ChemrxnselectivityNode {
-  let result = chem_rxn_selectivity_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_selectivity_node_sum(s : ChemrxnselectivityNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn chem_rxn_selectivity_edge_get(s : ChemrxnselectivityEdge, i : Int) -> Dou
 }
 
 pub fn chem_rxn_selectivity_edge_set(s : ChemrxnselectivityEdge, i : Int, v : Double) -> ChemrxnselectivityEdge {
-  let result = chem_rxn_selectivity_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_selectivity_edge_sum(s : ChemrxnselectivityEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn chem_rxn_selectivity_path_get(s : ChemrxnselectivityPath, i : Int) -> Dou
 }
 
 pub fn chem_rxn_selectivity_path_set(s : ChemrxnselectivityPath, i : Int, v : Double) -> ChemrxnselectivityPath {
-  let result = chem_rxn_selectivity_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_selectivity_path_sum(s : ChemrxnselectivityPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn chem_rxn_selectivity_cluster_get(s : ChemrxnselectivityCluster, i : Int) 
 }
 
 pub fn chem_rxn_selectivity_cluster_set(s : ChemrxnselectivityCluster, i : Int, v : Double) -> ChemrxnselectivityCluster {
-  let result = chem_rxn_selectivity_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_selectivity_cluster_sum(s : ChemrxnselectivityCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn chem_rxn_selectivity_model_get(s : ChemrxnselectivityModel, i : Int) -> D
 }
 
 pub fn chem_rxn_selectivity_model_set(s : ChemrxnselectivityModel, i : Int, v : Double) -> ChemrxnselectivityModel {
-  let result = chem_rxn_selectivity_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_selectivity_model_sum(s : ChemrxnselectivityModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn chem_rxn_selectivity_layer_get(s : ChemrxnselectivityLayer, i : Int) -> D
 }
 
 pub fn chem_rxn_selectivity_layer_set(s : ChemrxnselectivityLayer, i : Int, v : Double) -> ChemrxnselectivityLayer {
-  let result = chem_rxn_selectivity_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_selectivity_layer_sum(s : ChemrxnselectivityLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn chem_rxn_selectivity_buffer_get(s : ChemrxnselectivityBuffer, i : Int) ->
 }
 
 pub fn chem_rxn_selectivity_buffer_set(s : ChemrxnselectivityBuffer, i : Int, v : Double) -> ChemrxnselectivityBuffer {
-  let result = chem_rxn_selectivity_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_selectivity_buffer_sum(s : ChemrxnselectivityBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn chem_rxn_selectivity_cursor_get(s : ChemrxnselectivityCursor, i : Int) ->
 }
 
 pub fn chem_rxn_selectivity_cursor_set(s : ChemrxnselectivityCursor, i : Int, v : Double) -> ChemrxnselectivityCursor {
-  let result = chem_rxn_selectivity_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_selectivity_cursor_sum(s : ChemrxnselectivityCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn chem_rxn_selectivity_view_get(s : ChemrxnselectivityView, i : Int) -> Dou
 }
 
 pub fn chem_rxn_selectivity_view_set(s : ChemrxnselectivityView, i : Int, v : Double) -> ChemrxnselectivityView {
-  let result = chem_rxn_selectivity_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_selectivity_view_sum(s : ChemrxnselectivityView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn chem_rxn_selectivity_range_get(s : ChemrxnselectivityRange, i : Int) -> D
 }
 
 pub fn chem_rxn_selectivity_range_set(s : ChemrxnselectivityRange, i : Int, v : Double) -> ChemrxnselectivityRange {
-  let result = chem_rxn_selectivity_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_selectivity_range_sum(s : ChemrxnselectivityRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn chem_rxn_selectivity_slice_get(s : ChemrxnselectivitySlice, i : Int) -> D
 }
 
 pub fn chem_rxn_selectivity_slice_set(s : ChemrxnselectivitySlice, i : Int, v : Double) -> ChemrxnselectivitySlice {
-  let result = chem_rxn_selectivity_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_rxn_selectivity_slice_sum(s : ChemrxnselectivitySlice) -> Double { @_common.sum(s.data) }

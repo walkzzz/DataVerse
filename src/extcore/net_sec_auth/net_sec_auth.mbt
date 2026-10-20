@@ -107,23 +107,15 @@ pub fn net_sec_auth_series_std(s : NetsecauthSeries) -> Double { @_common.std(s.
 pub fn net_sec_auth_series_median(s : NetsecauthSeries) -> Double { @_common.median(s.vals) }
 
 pub fn net_sec_auth_series_scale(s : NetsecauthSeries, f : Double) -> NetsecauthSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn net_sec_auth_series_add(a : NetsecauthSeries, b : NetsecauthSeries) -> NetsecauthSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn net_sec_auth_series_sub(a : NetsecauthSeries, b : NetsecauthSeries) -> NetsecauthSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn net_sec_auth_series_normalize(s : NetsecauthSeries) -> NetsecauthSeries {
@@ -254,22 +246,16 @@ pub fn net_sec_auth_vector_zero(dim : Int) -> NetsecauthVector {
 
 pub fn net_sec_auth_vector_add(a : NetsecauthVector, b : NetsecauthVector) -> NetsecauthVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_sec_auth_vector_sub(a : NetsecauthVector, b : NetsecauthVector) -> NetsecauthVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_sec_auth_vector_scale(v : NetsecauthVector, s : Double) -> NetsecauthVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn net_sec_auth_vector_dot(a : NetsecauthVector, b : NetsecauthVector) -> Double {
@@ -372,10 +358,9 @@ pub fn net_sec_auth_frame_get(s : NetsecauthFrame, i : Int) -> Double {
 }
 
 pub fn net_sec_auth_frame_set(s : NetsecauthFrame, i : Int, v : Double) -> NetsecauthFrame {
-  let result = net_sec_auth_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_auth_frame_sum(s : NetsecauthFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn net_sec_auth_table_get(s : NetsecauthTable, i : Int) -> Double {
 }
 
 pub fn net_sec_auth_table_set(s : NetsecauthTable, i : Int, v : Double) -> NetsecauthTable {
-  let result = net_sec_auth_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_auth_table_sum(s : NetsecauthTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn net_sec_auth_graphn_get(s : NetsecauthGraphN, i : Int) -> Double {
 }
 
 pub fn net_sec_auth_graphn_set(s : NetsecauthGraphN, i : Int, v : Double) -> NetsecauthGraphN {
-  let result = net_sec_auth_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_auth_graphn_sum(s : NetsecauthGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn net_sec_auth_node_get(s : NetsecauthNode, i : Int) -> Double {
 }
 
 pub fn net_sec_auth_node_set(s : NetsecauthNode, i : Int, v : Double) -> NetsecauthNode {
-  let result = net_sec_auth_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_auth_node_sum(s : NetsecauthNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn net_sec_auth_edge_get(s : NetsecauthEdge, i : Int) -> Double {
 }
 
 pub fn net_sec_auth_edge_set(s : NetsecauthEdge, i : Int, v : Double) -> NetsecauthEdge {
-  let result = net_sec_auth_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_auth_edge_sum(s : NetsecauthEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn net_sec_auth_path_get(s : NetsecauthPath, i : Int) -> Double {
 }
 
 pub fn net_sec_auth_path_set(s : NetsecauthPath, i : Int, v : Double) -> NetsecauthPath {
-  let result = net_sec_auth_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_auth_path_sum(s : NetsecauthPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn net_sec_auth_cluster_get(s : NetsecauthCluster, i : Int) -> Double {
 }
 
 pub fn net_sec_auth_cluster_set(s : NetsecauthCluster, i : Int, v : Double) -> NetsecauthCluster {
-  let result = net_sec_auth_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_auth_cluster_sum(s : NetsecauthCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn net_sec_auth_model_get(s : NetsecauthModel, i : Int) -> Double {
 }
 
 pub fn net_sec_auth_model_set(s : NetsecauthModel, i : Int, v : Double) -> NetsecauthModel {
-  let result = net_sec_auth_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_auth_model_sum(s : NetsecauthModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn net_sec_auth_layer_get(s : NetsecauthLayer, i : Int) -> Double {
 }
 
 pub fn net_sec_auth_layer_set(s : NetsecauthLayer, i : Int, v : Double) -> NetsecauthLayer {
-  let result = net_sec_auth_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_auth_layer_sum(s : NetsecauthLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn net_sec_auth_buffer_get(s : NetsecauthBuffer, i : Int) -> Double {
 }
 
 pub fn net_sec_auth_buffer_set(s : NetsecauthBuffer, i : Int, v : Double) -> NetsecauthBuffer {
-  let result = net_sec_auth_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_auth_buffer_sum(s : NetsecauthBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn net_sec_auth_cursor_get(s : NetsecauthCursor, i : Int) -> Double {
 }
 
 pub fn net_sec_auth_cursor_set(s : NetsecauthCursor, i : Int, v : Double) -> NetsecauthCursor {
-  let result = net_sec_auth_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_auth_cursor_sum(s : NetsecauthCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn net_sec_auth_view_get(s : NetsecauthView, i : Int) -> Double {
 }
 
 pub fn net_sec_auth_view_set(s : NetsecauthView, i : Int, v : Double) -> NetsecauthView {
-  let result = net_sec_auth_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_auth_view_sum(s : NetsecauthView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn net_sec_auth_range_get(s : NetsecauthRange, i : Int) -> Double {
 }
 
 pub fn net_sec_auth_range_set(s : NetsecauthRange, i : Int, v : Double) -> NetsecauthRange {
-  let result = net_sec_auth_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_auth_range_sum(s : NetsecauthRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn net_sec_auth_slice_get(s : NetsecauthSlice, i : Int) -> Double {
 }
 
 pub fn net_sec_auth_slice_set(s : NetsecauthSlice, i : Int, v : Double) -> NetsecauthSlice {
-  let result = net_sec_auth_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_auth_slice_sum(s : NetsecauthSlice) -> Double { @_common.sum(s.data) }

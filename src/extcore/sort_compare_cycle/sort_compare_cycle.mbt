@@ -107,23 +107,15 @@ pub fn sort_compare_cycle_series_std(s : SortcomparecycleSeries) -> Double { @_c
 pub fn sort_compare_cycle_series_median(s : SortcomparecycleSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_compare_cycle_series_scale(s : SortcomparecycleSeries, f : Double) -> SortcomparecycleSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn sort_compare_cycle_series_add(a : SortcomparecycleSeries, b : SortcomparecycleSeries) -> SortcomparecycleSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn sort_compare_cycle_series_sub(a : SortcomparecycleSeries, b : SortcomparecycleSeries) -> SortcomparecycleSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn sort_compare_cycle_series_normalize(s : SortcomparecycleSeries) -> SortcomparecycleSeries {
@@ -254,22 +246,16 @@ pub fn sort_compare_cycle_vector_zero(dim : Int) -> SortcomparecycleVector {
 
 pub fn sort_compare_cycle_vector_add(a : SortcomparecycleVector, b : SortcomparecycleVector) -> SortcomparecycleVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_compare_cycle_vector_sub(a : SortcomparecycleVector, b : SortcomparecycleVector) -> SortcomparecycleVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_compare_cycle_vector_scale(v : SortcomparecycleVector, s : Double) -> SortcomparecycleVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn sort_compare_cycle_vector_dot(a : SortcomparecycleVector, b : SortcomparecycleVector) -> Double {
@@ -372,10 +358,9 @@ pub fn sort_compare_cycle_frame_get(s : SortcomparecycleFrame, i : Int) -> Doubl
 }
 
 pub fn sort_compare_cycle_frame_set(s : SortcomparecycleFrame, i : Int, v : Double) -> SortcomparecycleFrame {
-  let result = sort_compare_cycle_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_cycle_frame_sum(s : SortcomparecycleFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn sort_compare_cycle_table_get(s : SortcomparecycleTable, i : Int) -> Doubl
 }
 
 pub fn sort_compare_cycle_table_set(s : SortcomparecycleTable, i : Int, v : Double) -> SortcomparecycleTable {
-  let result = sort_compare_cycle_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_cycle_table_sum(s : SortcomparecycleTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn sort_compare_cycle_graphn_get(s : SortcomparecycleGraphN, i : Int) -> Dou
 }
 
 pub fn sort_compare_cycle_graphn_set(s : SortcomparecycleGraphN, i : Int, v : Double) -> SortcomparecycleGraphN {
-  let result = sort_compare_cycle_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_cycle_graphn_sum(s : SortcomparecycleGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn sort_compare_cycle_node_get(s : SortcomparecycleNode, i : Int) -> Double 
 }
 
 pub fn sort_compare_cycle_node_set(s : SortcomparecycleNode, i : Int, v : Double) -> SortcomparecycleNode {
-  let result = sort_compare_cycle_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_cycle_node_sum(s : SortcomparecycleNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn sort_compare_cycle_edge_get(s : SortcomparecycleEdge, i : Int) -> Double 
 }
 
 pub fn sort_compare_cycle_edge_set(s : SortcomparecycleEdge, i : Int, v : Double) -> SortcomparecycleEdge {
-  let result = sort_compare_cycle_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_cycle_edge_sum(s : SortcomparecycleEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn sort_compare_cycle_path_get(s : SortcomparecyclePath, i : Int) -> Double 
 }
 
 pub fn sort_compare_cycle_path_set(s : SortcomparecyclePath, i : Int, v : Double) -> SortcomparecyclePath {
-  let result = sort_compare_cycle_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_cycle_path_sum(s : SortcomparecyclePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn sort_compare_cycle_cluster_get(s : SortcomparecycleCluster, i : Int) -> D
 }
 
 pub fn sort_compare_cycle_cluster_set(s : SortcomparecycleCluster, i : Int, v : Double) -> SortcomparecycleCluster {
-  let result = sort_compare_cycle_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_cycle_cluster_sum(s : SortcomparecycleCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn sort_compare_cycle_model_get(s : SortcomparecycleModel, i : Int) -> Doubl
 }
 
 pub fn sort_compare_cycle_model_set(s : SortcomparecycleModel, i : Int, v : Double) -> SortcomparecycleModel {
-  let result = sort_compare_cycle_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_cycle_model_sum(s : SortcomparecycleModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn sort_compare_cycle_layer_get(s : SortcomparecycleLayer, i : Int) -> Doubl
 }
 
 pub fn sort_compare_cycle_layer_set(s : SortcomparecycleLayer, i : Int, v : Double) -> SortcomparecycleLayer {
-  let result = sort_compare_cycle_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_cycle_layer_sum(s : SortcomparecycleLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn sort_compare_cycle_buffer_get(s : SortcomparecycleBuffer, i : Int) -> Dou
 }
 
 pub fn sort_compare_cycle_buffer_set(s : SortcomparecycleBuffer, i : Int, v : Double) -> SortcomparecycleBuffer {
-  let result = sort_compare_cycle_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_cycle_buffer_sum(s : SortcomparecycleBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn sort_compare_cycle_cursor_get(s : SortcomparecycleCursor, i : Int) -> Dou
 }
 
 pub fn sort_compare_cycle_cursor_set(s : SortcomparecycleCursor, i : Int, v : Double) -> SortcomparecycleCursor {
-  let result = sort_compare_cycle_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_cycle_cursor_sum(s : SortcomparecycleCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn sort_compare_cycle_view_get(s : SortcomparecycleView, i : Int) -> Double 
 }
 
 pub fn sort_compare_cycle_view_set(s : SortcomparecycleView, i : Int, v : Double) -> SortcomparecycleView {
-  let result = sort_compare_cycle_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_cycle_view_sum(s : SortcomparecycleView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn sort_compare_cycle_range_get(s : SortcomparecycleRange, i : Int) -> Doubl
 }
 
 pub fn sort_compare_cycle_range_set(s : SortcomparecycleRange, i : Int, v : Double) -> SortcomparecycleRange {
-  let result = sort_compare_cycle_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_cycle_range_sum(s : SortcomparecycleRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn sort_compare_cycle_slice_get(s : SortcomparecycleSlice, i : Int) -> Doubl
 }
 
 pub fn sort_compare_cycle_slice_set(s : SortcomparecycleSlice, i : Int, v : Double) -> SortcomparecycleSlice {
-  let result = sort_compare_cycle_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_cycle_slice_sum(s : SortcomparecycleSlice) -> Double { @_common.sum(s.data) }

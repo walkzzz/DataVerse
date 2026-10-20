@@ -107,23 +107,15 @@ pub fn physics_em_mom_series_std(s : PhysicsemmomSeries) -> Double { @_common.st
 pub fn physics_em_mom_series_median(s : PhysicsemmomSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_em_mom_series_scale(s : PhysicsemmomSeries, f : Double) -> PhysicsemmomSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_em_mom_series_add(a : PhysicsemmomSeries, b : PhysicsemmomSeries) -> PhysicsemmomSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_em_mom_series_sub(a : PhysicsemmomSeries, b : PhysicsemmomSeries) -> PhysicsemmomSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_em_mom_series_normalize(s : PhysicsemmomSeries) -> PhysicsemmomSeries {
@@ -254,22 +246,16 @@ pub fn physics_em_mom_vector_zero(dim : Int) -> PhysicsemmomVector {
 
 pub fn physics_em_mom_vector_add(a : PhysicsemmomVector, b : PhysicsemmomVector) -> PhysicsemmomVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_em_mom_vector_sub(a : PhysicsemmomVector, b : PhysicsemmomVector) -> PhysicsemmomVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_em_mom_vector_scale(v : PhysicsemmomVector, s : Double) -> PhysicsemmomVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_em_mom_vector_dot(a : PhysicsemmomVector, b : PhysicsemmomVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_em_mom_frame_get(s : PhysicsemmomFrame, i : Int) -> Double {
 }
 
 pub fn physics_em_mom_frame_set(s : PhysicsemmomFrame, i : Int, v : Double) -> PhysicsemmomFrame {
-  let result = physics_em_mom_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_frame_sum(s : PhysicsemmomFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_em_mom_table_get(s : PhysicsemmomTable, i : Int) -> Double {
 }
 
 pub fn physics_em_mom_table_set(s : PhysicsemmomTable, i : Int, v : Double) -> PhysicsemmomTable {
-  let result = physics_em_mom_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_table_sum(s : PhysicsemmomTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_em_mom_graphn_get(s : PhysicsemmomGraphN, i : Int) -> Double {
 }
 
 pub fn physics_em_mom_graphn_set(s : PhysicsemmomGraphN, i : Int, v : Double) -> PhysicsemmomGraphN {
-  let result = physics_em_mom_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_graphn_sum(s : PhysicsemmomGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_em_mom_node_get(s : PhysicsemmomNode, i : Int) -> Double {
 }
 
 pub fn physics_em_mom_node_set(s : PhysicsemmomNode, i : Int, v : Double) -> PhysicsemmomNode {
-  let result = physics_em_mom_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_node_sum(s : PhysicsemmomNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_em_mom_edge_get(s : PhysicsemmomEdge, i : Int) -> Double {
 }
 
 pub fn physics_em_mom_edge_set(s : PhysicsemmomEdge, i : Int, v : Double) -> PhysicsemmomEdge {
-  let result = physics_em_mom_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_edge_sum(s : PhysicsemmomEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_em_mom_path_get(s : PhysicsemmomPath, i : Int) -> Double {
 }
 
 pub fn physics_em_mom_path_set(s : PhysicsemmomPath, i : Int, v : Double) -> PhysicsemmomPath {
-  let result = physics_em_mom_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_path_sum(s : PhysicsemmomPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_em_mom_cluster_get(s : PhysicsemmomCluster, i : Int) -> Double {
 }
 
 pub fn physics_em_mom_cluster_set(s : PhysicsemmomCluster, i : Int, v : Double) -> PhysicsemmomCluster {
-  let result = physics_em_mom_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_cluster_sum(s : PhysicsemmomCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_em_mom_model_get(s : PhysicsemmomModel, i : Int) -> Double {
 }
 
 pub fn physics_em_mom_model_set(s : PhysicsemmomModel, i : Int, v : Double) -> PhysicsemmomModel {
-  let result = physics_em_mom_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_model_sum(s : PhysicsemmomModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_em_mom_layer_get(s : PhysicsemmomLayer, i : Int) -> Double {
 }
 
 pub fn physics_em_mom_layer_set(s : PhysicsemmomLayer, i : Int, v : Double) -> PhysicsemmomLayer {
-  let result = physics_em_mom_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_layer_sum(s : PhysicsemmomLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_em_mom_buffer_get(s : PhysicsemmomBuffer, i : Int) -> Double {
 }
 
 pub fn physics_em_mom_buffer_set(s : PhysicsemmomBuffer, i : Int, v : Double) -> PhysicsemmomBuffer {
-  let result = physics_em_mom_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_buffer_sum(s : PhysicsemmomBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_em_mom_cursor_get(s : PhysicsemmomCursor, i : Int) -> Double {
 }
 
 pub fn physics_em_mom_cursor_set(s : PhysicsemmomCursor, i : Int, v : Double) -> PhysicsemmomCursor {
-  let result = physics_em_mom_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_cursor_sum(s : PhysicsemmomCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_em_mom_view_get(s : PhysicsemmomView, i : Int) -> Double {
 }
 
 pub fn physics_em_mom_view_set(s : PhysicsemmomView, i : Int, v : Double) -> PhysicsemmomView {
-  let result = physics_em_mom_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_view_sum(s : PhysicsemmomView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_em_mom_range_get(s : PhysicsemmomRange, i : Int) -> Double {
 }
 
 pub fn physics_em_mom_range_set(s : PhysicsemmomRange, i : Int, v : Double) -> PhysicsemmomRange {
-  let result = physics_em_mom_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_range_sum(s : PhysicsemmomRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_em_mom_slice_get(s : PhysicsemmomSlice, i : Int) -> Double {
 }
 
 pub fn physics_em_mom_slice_set(s : PhysicsemmomSlice, i : Int, v : Double) -> PhysicsemmomSlice {
-  let result = physics_em_mom_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_mom_slice_sum(s : PhysicsemmomSlice) -> Double { @_common.sum(s.data) }

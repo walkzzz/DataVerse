@@ -107,23 +107,15 @@ pub fn math_sparse_matrix_series_std(s : MathsparsematrixSeries) -> Double { @_c
 pub fn math_sparse_matrix_series_median(s : MathsparsematrixSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_sparse_matrix_series_scale(s : MathsparsematrixSeries, f : Double) -> MathsparsematrixSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_sparse_matrix_series_add(a : MathsparsematrixSeries, b : MathsparsematrixSeries) -> MathsparsematrixSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_sparse_matrix_series_sub(a : MathsparsematrixSeries, b : MathsparsematrixSeries) -> MathsparsematrixSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_sparse_matrix_series_normalize(s : MathsparsematrixSeries) -> MathsparsematrixSeries {
@@ -254,22 +246,16 @@ pub fn math_sparse_matrix_vector_zero(dim : Int) -> MathsparsematrixVector {
 
 pub fn math_sparse_matrix_vector_add(a : MathsparsematrixVector, b : MathsparsematrixVector) -> MathsparsematrixVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_sparse_matrix_vector_sub(a : MathsparsematrixVector, b : MathsparsematrixVector) -> MathsparsematrixVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_sparse_matrix_vector_scale(v : MathsparsematrixVector, s : Double) -> MathsparsematrixVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_sparse_matrix_vector_dot(a : MathsparsematrixVector, b : MathsparsematrixVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_sparse_matrix_frame_get(s : MathsparsematrixFrame, i : Int) -> Doubl
 }
 
 pub fn math_sparse_matrix_frame_set(s : MathsparsematrixFrame, i : Int, v : Double) -> MathsparsematrixFrame {
-  let result = math_sparse_matrix_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_sparse_matrix_frame_sum(s : MathsparsematrixFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_sparse_matrix_table_get(s : MathsparsematrixTable, i : Int) -> Doubl
 }
 
 pub fn math_sparse_matrix_table_set(s : MathsparsematrixTable, i : Int, v : Double) -> MathsparsematrixTable {
-  let result = math_sparse_matrix_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_sparse_matrix_table_sum(s : MathsparsematrixTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_sparse_matrix_graphn_get(s : MathsparsematrixGraphN, i : Int) -> Dou
 }
 
 pub fn math_sparse_matrix_graphn_set(s : MathsparsematrixGraphN, i : Int, v : Double) -> MathsparsematrixGraphN {
-  let result = math_sparse_matrix_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_sparse_matrix_graphn_sum(s : MathsparsematrixGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_sparse_matrix_node_get(s : MathsparsematrixNode, i : Int) -> Double 
 }
 
 pub fn math_sparse_matrix_node_set(s : MathsparsematrixNode, i : Int, v : Double) -> MathsparsematrixNode {
-  let result = math_sparse_matrix_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_sparse_matrix_node_sum(s : MathsparsematrixNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_sparse_matrix_edge_get(s : MathsparsematrixEdge, i : Int) -> Double 
 }
 
 pub fn math_sparse_matrix_edge_set(s : MathsparsematrixEdge, i : Int, v : Double) -> MathsparsematrixEdge {
-  let result = math_sparse_matrix_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_sparse_matrix_edge_sum(s : MathsparsematrixEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_sparse_matrix_path_get(s : MathsparsematrixPath, i : Int) -> Double 
 }
 
 pub fn math_sparse_matrix_path_set(s : MathsparsematrixPath, i : Int, v : Double) -> MathsparsematrixPath {
-  let result = math_sparse_matrix_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_sparse_matrix_path_sum(s : MathsparsematrixPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_sparse_matrix_cluster_get(s : MathsparsematrixCluster, i : Int) -> D
 }
 
 pub fn math_sparse_matrix_cluster_set(s : MathsparsematrixCluster, i : Int, v : Double) -> MathsparsematrixCluster {
-  let result = math_sparse_matrix_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_sparse_matrix_cluster_sum(s : MathsparsematrixCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_sparse_matrix_model_get(s : MathsparsematrixModel, i : Int) -> Doubl
 }
 
 pub fn math_sparse_matrix_model_set(s : MathsparsematrixModel, i : Int, v : Double) -> MathsparsematrixModel {
-  let result = math_sparse_matrix_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_sparse_matrix_model_sum(s : MathsparsematrixModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_sparse_matrix_layer_get(s : MathsparsematrixLayer, i : Int) -> Doubl
 }
 
 pub fn math_sparse_matrix_layer_set(s : MathsparsematrixLayer, i : Int, v : Double) -> MathsparsematrixLayer {
-  let result = math_sparse_matrix_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_sparse_matrix_layer_sum(s : MathsparsematrixLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_sparse_matrix_buffer_get(s : MathsparsematrixBuffer, i : Int) -> Dou
 }
 
 pub fn math_sparse_matrix_buffer_set(s : MathsparsematrixBuffer, i : Int, v : Double) -> MathsparsematrixBuffer {
-  let result = math_sparse_matrix_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_sparse_matrix_buffer_sum(s : MathsparsematrixBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_sparse_matrix_cursor_get(s : MathsparsematrixCursor, i : Int) -> Dou
 }
 
 pub fn math_sparse_matrix_cursor_set(s : MathsparsematrixCursor, i : Int, v : Double) -> MathsparsematrixCursor {
-  let result = math_sparse_matrix_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_sparse_matrix_cursor_sum(s : MathsparsematrixCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_sparse_matrix_view_get(s : MathsparsematrixView, i : Int) -> Double 
 }
 
 pub fn math_sparse_matrix_view_set(s : MathsparsematrixView, i : Int, v : Double) -> MathsparsematrixView {
-  let result = math_sparse_matrix_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_sparse_matrix_view_sum(s : MathsparsematrixView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_sparse_matrix_range_get(s : MathsparsematrixRange, i : Int) -> Doubl
 }
 
 pub fn math_sparse_matrix_range_set(s : MathsparsematrixRange, i : Int, v : Double) -> MathsparsematrixRange {
-  let result = math_sparse_matrix_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_sparse_matrix_range_sum(s : MathsparsematrixRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_sparse_matrix_slice_get(s : MathsparsematrixSlice, i : Int) -> Doubl
 }
 
 pub fn math_sparse_matrix_slice_set(s : MathsparsematrixSlice, i : Int, v : Double) -> MathsparsematrixSlice {
-  let result = math_sparse_matrix_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_sparse_matrix_slice_sum(s : MathsparsematrixSlice) -> Double { @_common.sum(s.data) }

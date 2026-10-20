@@ -107,23 +107,15 @@ pub fn physics_mechanics_collision_series_std(s : PhysicsmechanicscollisionSerie
 pub fn physics_mechanics_collision_series_median(s : PhysicsmechanicscollisionSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_mechanics_collision_series_scale(s : PhysicsmechanicscollisionSeries, f : Double) -> PhysicsmechanicscollisionSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_mechanics_collision_series_add(a : PhysicsmechanicscollisionSeries, b : PhysicsmechanicscollisionSeries) -> PhysicsmechanicscollisionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_mechanics_collision_series_sub(a : PhysicsmechanicscollisionSeries, b : PhysicsmechanicscollisionSeries) -> PhysicsmechanicscollisionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_mechanics_collision_series_normalize(s : PhysicsmechanicscollisionSeries) -> PhysicsmechanicscollisionSeries {
@@ -254,22 +246,16 @@ pub fn physics_mechanics_collision_vector_zero(dim : Int) -> Physicsmechanicscol
 
 pub fn physics_mechanics_collision_vector_add(a : PhysicsmechanicscollisionVector, b : PhysicsmechanicscollisionVector) -> PhysicsmechanicscollisionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_mechanics_collision_vector_sub(a : PhysicsmechanicscollisionVector, b : PhysicsmechanicscollisionVector) -> PhysicsmechanicscollisionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_mechanics_collision_vector_scale(v : PhysicsmechanicscollisionVector, s : Double) -> PhysicsmechanicscollisionVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_mechanics_collision_vector_dot(a : PhysicsmechanicscollisionVector, b : PhysicsmechanicscollisionVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_mechanics_collision_frame_get(s : PhysicsmechanicscollisionFrame,
 }
 
 pub fn physics_mechanics_collision_frame_set(s : PhysicsmechanicscollisionFrame, i : Int, v : Double) -> PhysicsmechanicscollisionFrame {
-  let result = physics_mechanics_collision_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_frame_sum(s : PhysicsmechanicscollisionFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_mechanics_collision_table_get(s : PhysicsmechanicscollisionTable,
 }
 
 pub fn physics_mechanics_collision_table_set(s : PhysicsmechanicscollisionTable, i : Int, v : Double) -> PhysicsmechanicscollisionTable {
-  let result = physics_mechanics_collision_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_table_sum(s : PhysicsmechanicscollisionTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_mechanics_collision_graphn_get(s : PhysicsmechanicscollisionGraph
 }
 
 pub fn physics_mechanics_collision_graphn_set(s : PhysicsmechanicscollisionGraphN, i : Int, v : Double) -> PhysicsmechanicscollisionGraphN {
-  let result = physics_mechanics_collision_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_graphn_sum(s : PhysicsmechanicscollisionGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_mechanics_collision_node_get(s : PhysicsmechanicscollisionNode, i
 }
 
 pub fn physics_mechanics_collision_node_set(s : PhysicsmechanicscollisionNode, i : Int, v : Double) -> PhysicsmechanicscollisionNode {
-  let result = physics_mechanics_collision_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_node_sum(s : PhysicsmechanicscollisionNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_mechanics_collision_edge_get(s : PhysicsmechanicscollisionEdge, i
 }
 
 pub fn physics_mechanics_collision_edge_set(s : PhysicsmechanicscollisionEdge, i : Int, v : Double) -> PhysicsmechanicscollisionEdge {
-  let result = physics_mechanics_collision_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_edge_sum(s : PhysicsmechanicscollisionEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_mechanics_collision_path_get(s : PhysicsmechanicscollisionPath, i
 }
 
 pub fn physics_mechanics_collision_path_set(s : PhysicsmechanicscollisionPath, i : Int, v : Double) -> PhysicsmechanicscollisionPath {
-  let result = physics_mechanics_collision_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_path_sum(s : PhysicsmechanicscollisionPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_mechanics_collision_cluster_get(s : PhysicsmechanicscollisionClus
 }
 
 pub fn physics_mechanics_collision_cluster_set(s : PhysicsmechanicscollisionCluster, i : Int, v : Double) -> PhysicsmechanicscollisionCluster {
-  let result = physics_mechanics_collision_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_cluster_sum(s : PhysicsmechanicscollisionCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_mechanics_collision_model_get(s : PhysicsmechanicscollisionModel,
 }
 
 pub fn physics_mechanics_collision_model_set(s : PhysicsmechanicscollisionModel, i : Int, v : Double) -> PhysicsmechanicscollisionModel {
-  let result = physics_mechanics_collision_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_model_sum(s : PhysicsmechanicscollisionModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_mechanics_collision_layer_get(s : PhysicsmechanicscollisionLayer,
 }
 
 pub fn physics_mechanics_collision_layer_set(s : PhysicsmechanicscollisionLayer, i : Int, v : Double) -> PhysicsmechanicscollisionLayer {
-  let result = physics_mechanics_collision_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_layer_sum(s : PhysicsmechanicscollisionLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_mechanics_collision_buffer_get(s : PhysicsmechanicscollisionBuffe
 }
 
 pub fn physics_mechanics_collision_buffer_set(s : PhysicsmechanicscollisionBuffer, i : Int, v : Double) -> PhysicsmechanicscollisionBuffer {
-  let result = physics_mechanics_collision_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_buffer_sum(s : PhysicsmechanicscollisionBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_mechanics_collision_cursor_get(s : PhysicsmechanicscollisionCurso
 }
 
 pub fn physics_mechanics_collision_cursor_set(s : PhysicsmechanicscollisionCursor, i : Int, v : Double) -> PhysicsmechanicscollisionCursor {
-  let result = physics_mechanics_collision_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_cursor_sum(s : PhysicsmechanicscollisionCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_mechanics_collision_view_get(s : PhysicsmechanicscollisionView, i
 }
 
 pub fn physics_mechanics_collision_view_set(s : PhysicsmechanicscollisionView, i : Int, v : Double) -> PhysicsmechanicscollisionView {
-  let result = physics_mechanics_collision_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_view_sum(s : PhysicsmechanicscollisionView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_mechanics_collision_range_get(s : PhysicsmechanicscollisionRange,
 }
 
 pub fn physics_mechanics_collision_range_set(s : PhysicsmechanicscollisionRange, i : Int, v : Double) -> PhysicsmechanicscollisionRange {
-  let result = physics_mechanics_collision_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_range_sum(s : PhysicsmechanicscollisionRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_mechanics_collision_slice_get(s : PhysicsmechanicscollisionSlice,
 }
 
 pub fn physics_mechanics_collision_slice_set(s : PhysicsmechanicscollisionSlice, i : Int, v : Double) -> PhysicsmechanicscollisionSlice {
-  let result = physics_mechanics_collision_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_collision_slice_sum(s : PhysicsmechanicscollisionSlice) -> Double { @_common.sum(s.data) }

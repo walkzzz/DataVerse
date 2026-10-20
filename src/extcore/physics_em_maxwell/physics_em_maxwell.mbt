@@ -107,23 +107,15 @@ pub fn physics_em_maxwell_series_std(s : PhysicsemmaxwellSeries) -> Double { @_c
 pub fn physics_em_maxwell_series_median(s : PhysicsemmaxwellSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_em_maxwell_series_scale(s : PhysicsemmaxwellSeries, f : Double) -> PhysicsemmaxwellSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_em_maxwell_series_add(a : PhysicsemmaxwellSeries, b : PhysicsemmaxwellSeries) -> PhysicsemmaxwellSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_em_maxwell_series_sub(a : PhysicsemmaxwellSeries, b : PhysicsemmaxwellSeries) -> PhysicsemmaxwellSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_em_maxwell_series_normalize(s : PhysicsemmaxwellSeries) -> PhysicsemmaxwellSeries {
@@ -254,22 +246,16 @@ pub fn physics_em_maxwell_vector_zero(dim : Int) -> PhysicsemmaxwellVector {
 
 pub fn physics_em_maxwell_vector_add(a : PhysicsemmaxwellVector, b : PhysicsemmaxwellVector) -> PhysicsemmaxwellVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_em_maxwell_vector_sub(a : PhysicsemmaxwellVector, b : PhysicsemmaxwellVector) -> PhysicsemmaxwellVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_em_maxwell_vector_scale(v : PhysicsemmaxwellVector, s : Double) -> PhysicsemmaxwellVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_em_maxwell_vector_dot(a : PhysicsemmaxwellVector, b : PhysicsemmaxwellVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_em_maxwell_frame_get(s : PhysicsemmaxwellFrame, i : Int) -> Doubl
 }
 
 pub fn physics_em_maxwell_frame_set(s : PhysicsemmaxwellFrame, i : Int, v : Double) -> PhysicsemmaxwellFrame {
-  let result = physics_em_maxwell_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_maxwell_frame_sum(s : PhysicsemmaxwellFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_em_maxwell_table_get(s : PhysicsemmaxwellTable, i : Int) -> Doubl
 }
 
 pub fn physics_em_maxwell_table_set(s : PhysicsemmaxwellTable, i : Int, v : Double) -> PhysicsemmaxwellTable {
-  let result = physics_em_maxwell_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_maxwell_table_sum(s : PhysicsemmaxwellTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_em_maxwell_graphn_get(s : PhysicsemmaxwellGraphN, i : Int) -> Dou
 }
 
 pub fn physics_em_maxwell_graphn_set(s : PhysicsemmaxwellGraphN, i : Int, v : Double) -> PhysicsemmaxwellGraphN {
-  let result = physics_em_maxwell_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_maxwell_graphn_sum(s : PhysicsemmaxwellGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_em_maxwell_node_get(s : PhysicsemmaxwellNode, i : Int) -> Double 
 }
 
 pub fn physics_em_maxwell_node_set(s : PhysicsemmaxwellNode, i : Int, v : Double) -> PhysicsemmaxwellNode {
-  let result = physics_em_maxwell_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_maxwell_node_sum(s : PhysicsemmaxwellNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_em_maxwell_edge_get(s : PhysicsemmaxwellEdge, i : Int) -> Double 
 }
 
 pub fn physics_em_maxwell_edge_set(s : PhysicsemmaxwellEdge, i : Int, v : Double) -> PhysicsemmaxwellEdge {
-  let result = physics_em_maxwell_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_maxwell_edge_sum(s : PhysicsemmaxwellEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_em_maxwell_path_get(s : PhysicsemmaxwellPath, i : Int) -> Double 
 }
 
 pub fn physics_em_maxwell_path_set(s : PhysicsemmaxwellPath, i : Int, v : Double) -> PhysicsemmaxwellPath {
-  let result = physics_em_maxwell_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_maxwell_path_sum(s : PhysicsemmaxwellPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_em_maxwell_cluster_get(s : PhysicsemmaxwellCluster, i : Int) -> D
 }
 
 pub fn physics_em_maxwell_cluster_set(s : PhysicsemmaxwellCluster, i : Int, v : Double) -> PhysicsemmaxwellCluster {
-  let result = physics_em_maxwell_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_maxwell_cluster_sum(s : PhysicsemmaxwellCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_em_maxwell_model_get(s : PhysicsemmaxwellModel, i : Int) -> Doubl
 }
 
 pub fn physics_em_maxwell_model_set(s : PhysicsemmaxwellModel, i : Int, v : Double) -> PhysicsemmaxwellModel {
-  let result = physics_em_maxwell_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_maxwell_model_sum(s : PhysicsemmaxwellModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_em_maxwell_layer_get(s : PhysicsemmaxwellLayer, i : Int) -> Doubl
 }
 
 pub fn physics_em_maxwell_layer_set(s : PhysicsemmaxwellLayer, i : Int, v : Double) -> PhysicsemmaxwellLayer {
-  let result = physics_em_maxwell_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_maxwell_layer_sum(s : PhysicsemmaxwellLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_em_maxwell_buffer_get(s : PhysicsemmaxwellBuffer, i : Int) -> Dou
 }
 
 pub fn physics_em_maxwell_buffer_set(s : PhysicsemmaxwellBuffer, i : Int, v : Double) -> PhysicsemmaxwellBuffer {
-  let result = physics_em_maxwell_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_maxwell_buffer_sum(s : PhysicsemmaxwellBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_em_maxwell_cursor_get(s : PhysicsemmaxwellCursor, i : Int) -> Dou
 }
 
 pub fn physics_em_maxwell_cursor_set(s : PhysicsemmaxwellCursor, i : Int, v : Double) -> PhysicsemmaxwellCursor {
-  let result = physics_em_maxwell_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_maxwell_cursor_sum(s : PhysicsemmaxwellCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_em_maxwell_view_get(s : PhysicsemmaxwellView, i : Int) -> Double 
 }
 
 pub fn physics_em_maxwell_view_set(s : PhysicsemmaxwellView, i : Int, v : Double) -> PhysicsemmaxwellView {
-  let result = physics_em_maxwell_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_maxwell_view_sum(s : PhysicsemmaxwellView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_em_maxwell_range_get(s : PhysicsemmaxwellRange, i : Int) -> Doubl
 }
 
 pub fn physics_em_maxwell_range_set(s : PhysicsemmaxwellRange, i : Int, v : Double) -> PhysicsemmaxwellRange {
-  let result = physics_em_maxwell_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_maxwell_range_sum(s : PhysicsemmaxwellRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_em_maxwell_slice_get(s : PhysicsemmaxwellSlice, i : Int) -> Doubl
 }
 
 pub fn physics_em_maxwell_slice_set(s : PhysicsemmaxwellSlice, i : Int, v : Double) -> PhysicsemmaxwellSlice {
-  let result = physics_em_maxwell_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_maxwell_slice_sum(s : PhysicsemmaxwellSlice) -> Double { @_common.sum(s.data) }

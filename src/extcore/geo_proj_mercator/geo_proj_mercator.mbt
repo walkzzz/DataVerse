@@ -107,23 +107,15 @@ pub fn geo_proj_mercator_series_std(s : GeoprojmercatorSeries) -> Double { @_com
 pub fn geo_proj_mercator_series_median(s : GeoprojmercatorSeries) -> Double { @_common.median(s.vals) }
 
 pub fn geo_proj_mercator_series_scale(s : GeoprojmercatorSeries, f : Double) -> GeoprojmercatorSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn geo_proj_mercator_series_add(a : GeoprojmercatorSeries, b : GeoprojmercatorSeries) -> GeoprojmercatorSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn geo_proj_mercator_series_sub(a : GeoprojmercatorSeries, b : GeoprojmercatorSeries) -> GeoprojmercatorSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn geo_proj_mercator_series_normalize(s : GeoprojmercatorSeries) -> GeoprojmercatorSeries {
@@ -254,22 +246,16 @@ pub fn geo_proj_mercator_vector_zero(dim : Int) -> GeoprojmercatorVector {
 
 pub fn geo_proj_mercator_vector_add(a : GeoprojmercatorVector, b : GeoprojmercatorVector) -> GeoprojmercatorVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_proj_mercator_vector_sub(a : GeoprojmercatorVector, b : GeoprojmercatorVector) -> GeoprojmercatorVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_proj_mercator_vector_scale(v : GeoprojmercatorVector, s : Double) -> GeoprojmercatorVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn geo_proj_mercator_vector_dot(a : GeoprojmercatorVector, b : GeoprojmercatorVector) -> Double {
@@ -372,10 +358,9 @@ pub fn geo_proj_mercator_frame_get(s : GeoprojmercatorFrame, i : Int) -> Double 
 }
 
 pub fn geo_proj_mercator_frame_set(s : GeoprojmercatorFrame, i : Int, v : Double) -> GeoprojmercatorFrame {
-  let result = geo_proj_mercator_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_mercator_frame_sum(s : GeoprojmercatorFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn geo_proj_mercator_table_get(s : GeoprojmercatorTable, i : Int) -> Double 
 }
 
 pub fn geo_proj_mercator_table_set(s : GeoprojmercatorTable, i : Int, v : Double) -> GeoprojmercatorTable {
-  let result = geo_proj_mercator_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_mercator_table_sum(s : GeoprojmercatorTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn geo_proj_mercator_graphn_get(s : GeoprojmercatorGraphN, i : Int) -> Doubl
 }
 
 pub fn geo_proj_mercator_graphn_set(s : GeoprojmercatorGraphN, i : Int, v : Double) -> GeoprojmercatorGraphN {
-  let result = geo_proj_mercator_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_mercator_graphn_sum(s : GeoprojmercatorGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn geo_proj_mercator_node_get(s : GeoprojmercatorNode, i : Int) -> Double {
 }
 
 pub fn geo_proj_mercator_node_set(s : GeoprojmercatorNode, i : Int, v : Double) -> GeoprojmercatorNode {
-  let result = geo_proj_mercator_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_mercator_node_sum(s : GeoprojmercatorNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn geo_proj_mercator_edge_get(s : GeoprojmercatorEdge, i : Int) -> Double {
 }
 
 pub fn geo_proj_mercator_edge_set(s : GeoprojmercatorEdge, i : Int, v : Double) -> GeoprojmercatorEdge {
-  let result = geo_proj_mercator_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_mercator_edge_sum(s : GeoprojmercatorEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn geo_proj_mercator_path_get(s : GeoprojmercatorPath, i : Int) -> Double {
 }
 
 pub fn geo_proj_mercator_path_set(s : GeoprojmercatorPath, i : Int, v : Double) -> GeoprojmercatorPath {
-  let result = geo_proj_mercator_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_mercator_path_sum(s : GeoprojmercatorPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn geo_proj_mercator_cluster_get(s : GeoprojmercatorCluster, i : Int) -> Dou
 }
 
 pub fn geo_proj_mercator_cluster_set(s : GeoprojmercatorCluster, i : Int, v : Double) -> GeoprojmercatorCluster {
-  let result = geo_proj_mercator_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_mercator_cluster_sum(s : GeoprojmercatorCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn geo_proj_mercator_model_get(s : GeoprojmercatorModel, i : Int) -> Double 
 }
 
 pub fn geo_proj_mercator_model_set(s : GeoprojmercatorModel, i : Int, v : Double) -> GeoprojmercatorModel {
-  let result = geo_proj_mercator_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_mercator_model_sum(s : GeoprojmercatorModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn geo_proj_mercator_layer_get(s : GeoprojmercatorLayer, i : Int) -> Double 
 }
 
 pub fn geo_proj_mercator_layer_set(s : GeoprojmercatorLayer, i : Int, v : Double) -> GeoprojmercatorLayer {
-  let result = geo_proj_mercator_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_mercator_layer_sum(s : GeoprojmercatorLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn geo_proj_mercator_buffer_get(s : GeoprojmercatorBuffer, i : Int) -> Doubl
 }
 
 pub fn geo_proj_mercator_buffer_set(s : GeoprojmercatorBuffer, i : Int, v : Double) -> GeoprojmercatorBuffer {
-  let result = geo_proj_mercator_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_mercator_buffer_sum(s : GeoprojmercatorBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn geo_proj_mercator_cursor_get(s : GeoprojmercatorCursor, i : Int) -> Doubl
 }
 
 pub fn geo_proj_mercator_cursor_set(s : GeoprojmercatorCursor, i : Int, v : Double) -> GeoprojmercatorCursor {
-  let result = geo_proj_mercator_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_mercator_cursor_sum(s : GeoprojmercatorCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn geo_proj_mercator_view_get(s : GeoprojmercatorView, i : Int) -> Double {
 }
 
 pub fn geo_proj_mercator_view_set(s : GeoprojmercatorView, i : Int, v : Double) -> GeoprojmercatorView {
-  let result = geo_proj_mercator_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_mercator_view_sum(s : GeoprojmercatorView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn geo_proj_mercator_range_get(s : GeoprojmercatorRange, i : Int) -> Double 
 }
 
 pub fn geo_proj_mercator_range_set(s : GeoprojmercatorRange, i : Int, v : Double) -> GeoprojmercatorRange {
-  let result = geo_proj_mercator_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_mercator_range_sum(s : GeoprojmercatorRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn geo_proj_mercator_slice_get(s : GeoprojmercatorSlice, i : Int) -> Double 
 }
 
 pub fn geo_proj_mercator_slice_set(s : GeoprojmercatorSlice, i : Int, v : Double) -> GeoprojmercatorSlice {
-  let result = geo_proj_mercator_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_mercator_slice_sum(s : GeoprojmercatorSlice) -> Double { @_common.sum(s.data) }

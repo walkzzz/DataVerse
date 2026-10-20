@@ -107,23 +107,15 @@ pub fn image_filter_sobel_series_std(s : ImagefiltersobelSeries) -> Double { @_c
 pub fn image_filter_sobel_series_median(s : ImagefiltersobelSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_filter_sobel_series_scale(s : ImagefiltersobelSeries, f : Double) -> ImagefiltersobelSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_filter_sobel_series_add(a : ImagefiltersobelSeries, b : ImagefiltersobelSeries) -> ImagefiltersobelSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_filter_sobel_series_sub(a : ImagefiltersobelSeries, b : ImagefiltersobelSeries) -> ImagefiltersobelSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_filter_sobel_series_normalize(s : ImagefiltersobelSeries) -> ImagefiltersobelSeries {
@@ -254,22 +246,16 @@ pub fn image_filter_sobel_vector_zero(dim : Int) -> ImagefiltersobelVector {
 
 pub fn image_filter_sobel_vector_add(a : ImagefiltersobelVector, b : ImagefiltersobelVector) -> ImagefiltersobelVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_filter_sobel_vector_sub(a : ImagefiltersobelVector, b : ImagefiltersobelVector) -> ImagefiltersobelVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_filter_sobel_vector_scale(v : ImagefiltersobelVector, s : Double) -> ImagefiltersobelVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_filter_sobel_vector_dot(a : ImagefiltersobelVector, b : ImagefiltersobelVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_filter_sobel_frame_get(s : ImagefiltersobelFrame, i : Int) -> Doubl
 }
 
 pub fn image_filter_sobel_frame_set(s : ImagefiltersobelFrame, i : Int, v : Double) -> ImagefiltersobelFrame {
-  let result = image_filter_sobel_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_sobel_frame_sum(s : ImagefiltersobelFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_filter_sobel_table_get(s : ImagefiltersobelTable, i : Int) -> Doubl
 }
 
 pub fn image_filter_sobel_table_set(s : ImagefiltersobelTable, i : Int, v : Double) -> ImagefiltersobelTable {
-  let result = image_filter_sobel_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_sobel_table_sum(s : ImagefiltersobelTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_filter_sobel_graphn_get(s : ImagefiltersobelGraphN, i : Int) -> Dou
 }
 
 pub fn image_filter_sobel_graphn_set(s : ImagefiltersobelGraphN, i : Int, v : Double) -> ImagefiltersobelGraphN {
-  let result = image_filter_sobel_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_sobel_graphn_sum(s : ImagefiltersobelGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_filter_sobel_node_get(s : ImagefiltersobelNode, i : Int) -> Double 
 }
 
 pub fn image_filter_sobel_node_set(s : ImagefiltersobelNode, i : Int, v : Double) -> ImagefiltersobelNode {
-  let result = image_filter_sobel_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_sobel_node_sum(s : ImagefiltersobelNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_filter_sobel_edge_get(s : ImagefiltersobelEdge, i : Int) -> Double 
 }
 
 pub fn image_filter_sobel_edge_set(s : ImagefiltersobelEdge, i : Int, v : Double) -> ImagefiltersobelEdge {
-  let result = image_filter_sobel_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_sobel_edge_sum(s : ImagefiltersobelEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_filter_sobel_path_get(s : ImagefiltersobelPath, i : Int) -> Double 
 }
 
 pub fn image_filter_sobel_path_set(s : ImagefiltersobelPath, i : Int, v : Double) -> ImagefiltersobelPath {
-  let result = image_filter_sobel_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_sobel_path_sum(s : ImagefiltersobelPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_filter_sobel_cluster_get(s : ImagefiltersobelCluster, i : Int) -> D
 }
 
 pub fn image_filter_sobel_cluster_set(s : ImagefiltersobelCluster, i : Int, v : Double) -> ImagefiltersobelCluster {
-  let result = image_filter_sobel_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_sobel_cluster_sum(s : ImagefiltersobelCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_filter_sobel_model_get(s : ImagefiltersobelModel, i : Int) -> Doubl
 }
 
 pub fn image_filter_sobel_model_set(s : ImagefiltersobelModel, i : Int, v : Double) -> ImagefiltersobelModel {
-  let result = image_filter_sobel_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_sobel_model_sum(s : ImagefiltersobelModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_filter_sobel_layer_get(s : ImagefiltersobelLayer, i : Int) -> Doubl
 }
 
 pub fn image_filter_sobel_layer_set(s : ImagefiltersobelLayer, i : Int, v : Double) -> ImagefiltersobelLayer {
-  let result = image_filter_sobel_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_sobel_layer_sum(s : ImagefiltersobelLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_filter_sobel_buffer_get(s : ImagefiltersobelBuffer, i : Int) -> Dou
 }
 
 pub fn image_filter_sobel_buffer_set(s : ImagefiltersobelBuffer, i : Int, v : Double) -> ImagefiltersobelBuffer {
-  let result = image_filter_sobel_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_sobel_buffer_sum(s : ImagefiltersobelBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_filter_sobel_cursor_get(s : ImagefiltersobelCursor, i : Int) -> Dou
 }
 
 pub fn image_filter_sobel_cursor_set(s : ImagefiltersobelCursor, i : Int, v : Double) -> ImagefiltersobelCursor {
-  let result = image_filter_sobel_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_sobel_cursor_sum(s : ImagefiltersobelCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_filter_sobel_view_get(s : ImagefiltersobelView, i : Int) -> Double 
 }
 
 pub fn image_filter_sobel_view_set(s : ImagefiltersobelView, i : Int, v : Double) -> ImagefiltersobelView {
-  let result = image_filter_sobel_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_sobel_view_sum(s : ImagefiltersobelView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_filter_sobel_range_get(s : ImagefiltersobelRange, i : Int) -> Doubl
 }
 
 pub fn image_filter_sobel_range_set(s : ImagefiltersobelRange, i : Int, v : Double) -> ImagefiltersobelRange {
-  let result = image_filter_sobel_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_sobel_range_sum(s : ImagefiltersobelRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_filter_sobel_slice_get(s : ImagefiltersobelSlice, i : Int) -> Doubl
 }
 
 pub fn image_filter_sobel_slice_set(s : ImagefiltersobelSlice, i : Int, v : Double) -> ImagefiltersobelSlice {
-  let result = image_filter_sobel_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_sobel_slice_sum(s : ImagefiltersobelSlice) -> Double { @_common.sum(s.data) }

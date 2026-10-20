@@ -107,23 +107,15 @@ pub fn signal_filter_elliptic_series_std(s : SignalfilterellipticSeries) -> Doub
 pub fn signal_filter_elliptic_series_median(s : SignalfilterellipticSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_filter_elliptic_series_scale(s : SignalfilterellipticSeries, f : Double) -> SignalfilterellipticSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_filter_elliptic_series_add(a : SignalfilterellipticSeries, b : SignalfilterellipticSeries) -> SignalfilterellipticSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_filter_elliptic_series_sub(a : SignalfilterellipticSeries, b : SignalfilterellipticSeries) -> SignalfilterellipticSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_filter_elliptic_series_normalize(s : SignalfilterellipticSeries) -> SignalfilterellipticSeries {
@@ -254,22 +246,16 @@ pub fn signal_filter_elliptic_vector_zero(dim : Int) -> SignalfilterellipticVect
 
 pub fn signal_filter_elliptic_vector_add(a : SignalfilterellipticVector, b : SignalfilterellipticVector) -> SignalfilterellipticVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_filter_elliptic_vector_sub(a : SignalfilterellipticVector, b : SignalfilterellipticVector) -> SignalfilterellipticVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_filter_elliptic_vector_scale(v : SignalfilterellipticVector, s : Double) -> SignalfilterellipticVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_filter_elliptic_vector_dot(a : SignalfilterellipticVector, b : SignalfilterellipticVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_filter_elliptic_frame_get(s : SignalfilterellipticFrame, i : Int) 
 }
 
 pub fn signal_filter_elliptic_frame_set(s : SignalfilterellipticFrame, i : Int, v : Double) -> SignalfilterellipticFrame {
-  let result = signal_filter_elliptic_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_elliptic_frame_sum(s : SignalfilterellipticFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_filter_elliptic_table_get(s : SignalfilterellipticTable, i : Int) 
 }
 
 pub fn signal_filter_elliptic_table_set(s : SignalfilterellipticTable, i : Int, v : Double) -> SignalfilterellipticTable {
-  let result = signal_filter_elliptic_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_elliptic_table_sum(s : SignalfilterellipticTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_filter_elliptic_graphn_get(s : SignalfilterellipticGraphN, i : Int
 }
 
 pub fn signal_filter_elliptic_graphn_set(s : SignalfilterellipticGraphN, i : Int, v : Double) -> SignalfilterellipticGraphN {
-  let result = signal_filter_elliptic_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_elliptic_graphn_sum(s : SignalfilterellipticGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_filter_elliptic_node_get(s : SignalfilterellipticNode, i : Int) ->
 }
 
 pub fn signal_filter_elliptic_node_set(s : SignalfilterellipticNode, i : Int, v : Double) -> SignalfilterellipticNode {
-  let result = signal_filter_elliptic_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_elliptic_node_sum(s : SignalfilterellipticNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_filter_elliptic_edge_get(s : SignalfilterellipticEdge, i : Int) ->
 }
 
 pub fn signal_filter_elliptic_edge_set(s : SignalfilterellipticEdge, i : Int, v : Double) -> SignalfilterellipticEdge {
-  let result = signal_filter_elliptic_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_elliptic_edge_sum(s : SignalfilterellipticEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_filter_elliptic_path_get(s : SignalfilterellipticPath, i : Int) ->
 }
 
 pub fn signal_filter_elliptic_path_set(s : SignalfilterellipticPath, i : Int, v : Double) -> SignalfilterellipticPath {
-  let result = signal_filter_elliptic_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_elliptic_path_sum(s : SignalfilterellipticPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_filter_elliptic_cluster_get(s : SignalfilterellipticCluster, i : I
 }
 
 pub fn signal_filter_elliptic_cluster_set(s : SignalfilterellipticCluster, i : Int, v : Double) -> SignalfilterellipticCluster {
-  let result = signal_filter_elliptic_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_elliptic_cluster_sum(s : SignalfilterellipticCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_filter_elliptic_model_get(s : SignalfilterellipticModel, i : Int) 
 }
 
 pub fn signal_filter_elliptic_model_set(s : SignalfilterellipticModel, i : Int, v : Double) -> SignalfilterellipticModel {
-  let result = signal_filter_elliptic_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_elliptic_model_sum(s : SignalfilterellipticModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_filter_elliptic_layer_get(s : SignalfilterellipticLayer, i : Int) 
 }
 
 pub fn signal_filter_elliptic_layer_set(s : SignalfilterellipticLayer, i : Int, v : Double) -> SignalfilterellipticLayer {
-  let result = signal_filter_elliptic_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_elliptic_layer_sum(s : SignalfilterellipticLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_filter_elliptic_buffer_get(s : SignalfilterellipticBuffer, i : Int
 }
 
 pub fn signal_filter_elliptic_buffer_set(s : SignalfilterellipticBuffer, i : Int, v : Double) -> SignalfilterellipticBuffer {
-  let result = signal_filter_elliptic_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_elliptic_buffer_sum(s : SignalfilterellipticBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_filter_elliptic_cursor_get(s : SignalfilterellipticCursor, i : Int
 }
 
 pub fn signal_filter_elliptic_cursor_set(s : SignalfilterellipticCursor, i : Int, v : Double) -> SignalfilterellipticCursor {
-  let result = signal_filter_elliptic_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_elliptic_cursor_sum(s : SignalfilterellipticCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_filter_elliptic_view_get(s : SignalfilterellipticView, i : Int) ->
 }
 
 pub fn signal_filter_elliptic_view_set(s : SignalfilterellipticView, i : Int, v : Double) -> SignalfilterellipticView {
-  let result = signal_filter_elliptic_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_elliptic_view_sum(s : SignalfilterellipticView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_filter_elliptic_range_get(s : SignalfilterellipticRange, i : Int) 
 }
 
 pub fn signal_filter_elliptic_range_set(s : SignalfilterellipticRange, i : Int, v : Double) -> SignalfilterellipticRange {
-  let result = signal_filter_elliptic_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_elliptic_range_sum(s : SignalfilterellipticRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_filter_elliptic_slice_get(s : SignalfilterellipticSlice, i : Int) 
 }
 
 pub fn signal_filter_elliptic_slice_set(s : SignalfilterellipticSlice, i : Int, v : Double) -> SignalfilterellipticSlice {
-  let result = signal_filter_elliptic_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_filter_elliptic_slice_sum(s : SignalfilterellipticSlice) -> Double { @_common.sum(s.data) }

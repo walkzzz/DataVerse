@@ -107,23 +107,15 @@ pub fn graph_flow_circulation_series_std(s : GraphflowcirculationSeries) -> Doub
 pub fn graph_flow_circulation_series_median(s : GraphflowcirculationSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_flow_circulation_series_scale(s : GraphflowcirculationSeries, f : Double) -> GraphflowcirculationSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_flow_circulation_series_add(a : GraphflowcirculationSeries, b : GraphflowcirculationSeries) -> GraphflowcirculationSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_flow_circulation_series_sub(a : GraphflowcirculationSeries, b : GraphflowcirculationSeries) -> GraphflowcirculationSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_flow_circulation_series_normalize(s : GraphflowcirculationSeries) -> GraphflowcirculationSeries {
@@ -254,22 +246,16 @@ pub fn graph_flow_circulation_vector_zero(dim : Int) -> GraphflowcirculationVect
 
 pub fn graph_flow_circulation_vector_add(a : GraphflowcirculationVector, b : GraphflowcirculationVector) -> GraphflowcirculationVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_flow_circulation_vector_sub(a : GraphflowcirculationVector, b : GraphflowcirculationVector) -> GraphflowcirculationVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_flow_circulation_vector_scale(v : GraphflowcirculationVector, s : Double) -> GraphflowcirculationVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_flow_circulation_vector_dot(a : GraphflowcirculationVector, b : GraphflowcirculationVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_flow_circulation_frame_get(s : GraphflowcirculationFrame, i : Int) 
 }
 
 pub fn graph_flow_circulation_frame_set(s : GraphflowcirculationFrame, i : Int, v : Double) -> GraphflowcirculationFrame {
-  let result = graph_flow_circulation_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_circulation_frame_sum(s : GraphflowcirculationFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_flow_circulation_table_get(s : GraphflowcirculationTable, i : Int) 
 }
 
 pub fn graph_flow_circulation_table_set(s : GraphflowcirculationTable, i : Int, v : Double) -> GraphflowcirculationTable {
-  let result = graph_flow_circulation_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_circulation_table_sum(s : GraphflowcirculationTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_flow_circulation_graphn_get(s : GraphflowcirculationGraphN, i : Int
 }
 
 pub fn graph_flow_circulation_graphn_set(s : GraphflowcirculationGraphN, i : Int, v : Double) -> GraphflowcirculationGraphN {
-  let result = graph_flow_circulation_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_circulation_graphn_sum(s : GraphflowcirculationGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_flow_circulation_node_get(s : GraphflowcirculationNode, i : Int) ->
 }
 
 pub fn graph_flow_circulation_node_set(s : GraphflowcirculationNode, i : Int, v : Double) -> GraphflowcirculationNode {
-  let result = graph_flow_circulation_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_circulation_node_sum(s : GraphflowcirculationNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_flow_circulation_edge_get(s : GraphflowcirculationEdge, i : Int) ->
 }
 
 pub fn graph_flow_circulation_edge_set(s : GraphflowcirculationEdge, i : Int, v : Double) -> GraphflowcirculationEdge {
-  let result = graph_flow_circulation_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_circulation_edge_sum(s : GraphflowcirculationEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_flow_circulation_path_get(s : GraphflowcirculationPath, i : Int) ->
 }
 
 pub fn graph_flow_circulation_path_set(s : GraphflowcirculationPath, i : Int, v : Double) -> GraphflowcirculationPath {
-  let result = graph_flow_circulation_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_circulation_path_sum(s : GraphflowcirculationPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_flow_circulation_cluster_get(s : GraphflowcirculationCluster, i : I
 }
 
 pub fn graph_flow_circulation_cluster_set(s : GraphflowcirculationCluster, i : Int, v : Double) -> GraphflowcirculationCluster {
-  let result = graph_flow_circulation_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_circulation_cluster_sum(s : GraphflowcirculationCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_flow_circulation_model_get(s : GraphflowcirculationModel, i : Int) 
 }
 
 pub fn graph_flow_circulation_model_set(s : GraphflowcirculationModel, i : Int, v : Double) -> GraphflowcirculationModel {
-  let result = graph_flow_circulation_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_circulation_model_sum(s : GraphflowcirculationModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_flow_circulation_layer_get(s : GraphflowcirculationLayer, i : Int) 
 }
 
 pub fn graph_flow_circulation_layer_set(s : GraphflowcirculationLayer, i : Int, v : Double) -> GraphflowcirculationLayer {
-  let result = graph_flow_circulation_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_circulation_layer_sum(s : GraphflowcirculationLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_flow_circulation_buffer_get(s : GraphflowcirculationBuffer, i : Int
 }
 
 pub fn graph_flow_circulation_buffer_set(s : GraphflowcirculationBuffer, i : Int, v : Double) -> GraphflowcirculationBuffer {
-  let result = graph_flow_circulation_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_circulation_buffer_sum(s : GraphflowcirculationBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_flow_circulation_cursor_get(s : GraphflowcirculationCursor, i : Int
 }
 
 pub fn graph_flow_circulation_cursor_set(s : GraphflowcirculationCursor, i : Int, v : Double) -> GraphflowcirculationCursor {
-  let result = graph_flow_circulation_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_circulation_cursor_sum(s : GraphflowcirculationCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_flow_circulation_view_get(s : GraphflowcirculationView, i : Int) ->
 }
 
 pub fn graph_flow_circulation_view_set(s : GraphflowcirculationView, i : Int, v : Double) -> GraphflowcirculationView {
-  let result = graph_flow_circulation_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_circulation_view_sum(s : GraphflowcirculationView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_flow_circulation_range_get(s : GraphflowcirculationRange, i : Int) 
 }
 
 pub fn graph_flow_circulation_range_set(s : GraphflowcirculationRange, i : Int, v : Double) -> GraphflowcirculationRange {
-  let result = graph_flow_circulation_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_circulation_range_sum(s : GraphflowcirculationRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_flow_circulation_slice_get(s : GraphflowcirculationSlice, i : Int) 
 }
 
 pub fn graph_flow_circulation_slice_set(s : GraphflowcirculationSlice, i : Int, v : Double) -> GraphflowcirculationSlice {
-  let result = graph_flow_circulation_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_flow_circulation_slice_sum(s : GraphflowcirculationSlice) -> Double { @_common.sum(s.data) }

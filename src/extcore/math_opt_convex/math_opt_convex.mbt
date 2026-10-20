@@ -107,23 +107,15 @@ pub fn math_opt_convex_series_std(s : MathoptconvexSeries) -> Double { @_common.
 pub fn math_opt_convex_series_median(s : MathoptconvexSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_opt_convex_series_scale(s : MathoptconvexSeries, f : Double) -> MathoptconvexSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_opt_convex_series_add(a : MathoptconvexSeries, b : MathoptconvexSeries) -> MathoptconvexSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_opt_convex_series_sub(a : MathoptconvexSeries, b : MathoptconvexSeries) -> MathoptconvexSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_opt_convex_series_normalize(s : MathoptconvexSeries) -> MathoptconvexSeries {
@@ -254,22 +246,16 @@ pub fn math_opt_convex_vector_zero(dim : Int) -> MathoptconvexVector {
 
 pub fn math_opt_convex_vector_add(a : MathoptconvexVector, b : MathoptconvexVector) -> MathoptconvexVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_opt_convex_vector_sub(a : MathoptconvexVector, b : MathoptconvexVector) -> MathoptconvexVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_opt_convex_vector_scale(v : MathoptconvexVector, s : Double) -> MathoptconvexVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_opt_convex_vector_dot(a : MathoptconvexVector, b : MathoptconvexVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_opt_convex_frame_get(s : MathoptconvexFrame, i : Int) -> Double {
 }
 
 pub fn math_opt_convex_frame_set(s : MathoptconvexFrame, i : Int, v : Double) -> MathoptconvexFrame {
-  let result = math_opt_convex_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_frame_sum(s : MathoptconvexFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_opt_convex_table_get(s : MathoptconvexTable, i : Int) -> Double {
 }
 
 pub fn math_opt_convex_table_set(s : MathoptconvexTable, i : Int, v : Double) -> MathoptconvexTable {
-  let result = math_opt_convex_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_table_sum(s : MathoptconvexTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_opt_convex_graphn_get(s : MathoptconvexGraphN, i : Int) -> Double {
 }
 
 pub fn math_opt_convex_graphn_set(s : MathoptconvexGraphN, i : Int, v : Double) -> MathoptconvexGraphN {
-  let result = math_opt_convex_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_graphn_sum(s : MathoptconvexGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_opt_convex_node_get(s : MathoptconvexNode, i : Int) -> Double {
 }
 
 pub fn math_opt_convex_node_set(s : MathoptconvexNode, i : Int, v : Double) -> MathoptconvexNode {
-  let result = math_opt_convex_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_node_sum(s : MathoptconvexNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_opt_convex_edge_get(s : MathoptconvexEdge, i : Int) -> Double {
 }
 
 pub fn math_opt_convex_edge_set(s : MathoptconvexEdge, i : Int, v : Double) -> MathoptconvexEdge {
-  let result = math_opt_convex_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_edge_sum(s : MathoptconvexEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_opt_convex_path_get(s : MathoptconvexPath, i : Int) -> Double {
 }
 
 pub fn math_opt_convex_path_set(s : MathoptconvexPath, i : Int, v : Double) -> MathoptconvexPath {
-  let result = math_opt_convex_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_path_sum(s : MathoptconvexPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_opt_convex_cluster_get(s : MathoptconvexCluster, i : Int) -> Double 
 }
 
 pub fn math_opt_convex_cluster_set(s : MathoptconvexCluster, i : Int, v : Double) -> MathoptconvexCluster {
-  let result = math_opt_convex_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_cluster_sum(s : MathoptconvexCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_opt_convex_model_get(s : MathoptconvexModel, i : Int) -> Double {
 }
 
 pub fn math_opt_convex_model_set(s : MathoptconvexModel, i : Int, v : Double) -> MathoptconvexModel {
-  let result = math_opt_convex_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_model_sum(s : MathoptconvexModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_opt_convex_layer_get(s : MathoptconvexLayer, i : Int) -> Double {
 }
 
 pub fn math_opt_convex_layer_set(s : MathoptconvexLayer, i : Int, v : Double) -> MathoptconvexLayer {
-  let result = math_opt_convex_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_layer_sum(s : MathoptconvexLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_opt_convex_buffer_get(s : MathoptconvexBuffer, i : Int) -> Double {
 }
 
 pub fn math_opt_convex_buffer_set(s : MathoptconvexBuffer, i : Int, v : Double) -> MathoptconvexBuffer {
-  let result = math_opt_convex_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_buffer_sum(s : MathoptconvexBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_opt_convex_cursor_get(s : MathoptconvexCursor, i : Int) -> Double {
 }
 
 pub fn math_opt_convex_cursor_set(s : MathoptconvexCursor, i : Int, v : Double) -> MathoptconvexCursor {
-  let result = math_opt_convex_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_cursor_sum(s : MathoptconvexCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_opt_convex_view_get(s : MathoptconvexView, i : Int) -> Double {
 }
 
 pub fn math_opt_convex_view_set(s : MathoptconvexView, i : Int, v : Double) -> MathoptconvexView {
-  let result = math_opt_convex_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_view_sum(s : MathoptconvexView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_opt_convex_range_get(s : MathoptconvexRange, i : Int) -> Double {
 }
 
 pub fn math_opt_convex_range_set(s : MathoptconvexRange, i : Int, v : Double) -> MathoptconvexRange {
-  let result = math_opt_convex_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_range_sum(s : MathoptconvexRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_opt_convex_slice_get(s : MathoptconvexSlice, i : Int) -> Double {
 }
 
 pub fn math_opt_convex_slice_set(s : MathoptconvexSlice, i : Int, v : Double) -> MathoptconvexSlice {
-  let result = math_opt_convex_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_opt_convex_slice_sum(s : MathoptconvexSlice) -> Double { @_common.sum(s.data) }

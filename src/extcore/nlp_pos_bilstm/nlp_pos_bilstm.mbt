@@ -107,23 +107,15 @@ pub fn nlp_pos_bilstm_series_std(s : NlpposbilstmSeries) -> Double { @_common.st
 pub fn nlp_pos_bilstm_series_median(s : NlpposbilstmSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_pos_bilstm_series_scale(s : NlpposbilstmSeries, f : Double) -> NlpposbilstmSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_pos_bilstm_series_add(a : NlpposbilstmSeries, b : NlpposbilstmSeries) -> NlpposbilstmSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_pos_bilstm_series_sub(a : NlpposbilstmSeries, b : NlpposbilstmSeries) -> NlpposbilstmSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_pos_bilstm_series_normalize(s : NlpposbilstmSeries) -> NlpposbilstmSeries {
@@ -254,22 +246,16 @@ pub fn nlp_pos_bilstm_vector_zero(dim : Int) -> NlpposbilstmVector {
 
 pub fn nlp_pos_bilstm_vector_add(a : NlpposbilstmVector, b : NlpposbilstmVector) -> NlpposbilstmVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_pos_bilstm_vector_sub(a : NlpposbilstmVector, b : NlpposbilstmVector) -> NlpposbilstmVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_pos_bilstm_vector_scale(v : NlpposbilstmVector, s : Double) -> NlpposbilstmVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_pos_bilstm_vector_dot(a : NlpposbilstmVector, b : NlpposbilstmVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_pos_bilstm_frame_get(s : NlpposbilstmFrame, i : Int) -> Double {
 }
 
 pub fn nlp_pos_bilstm_frame_set(s : NlpposbilstmFrame, i : Int, v : Double) -> NlpposbilstmFrame {
-  let result = nlp_pos_bilstm_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_frame_sum(s : NlpposbilstmFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_pos_bilstm_table_get(s : NlpposbilstmTable, i : Int) -> Double {
 }
 
 pub fn nlp_pos_bilstm_table_set(s : NlpposbilstmTable, i : Int, v : Double) -> NlpposbilstmTable {
-  let result = nlp_pos_bilstm_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_table_sum(s : NlpposbilstmTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_pos_bilstm_graphn_get(s : NlpposbilstmGraphN, i : Int) -> Double {
 }
 
 pub fn nlp_pos_bilstm_graphn_set(s : NlpposbilstmGraphN, i : Int, v : Double) -> NlpposbilstmGraphN {
-  let result = nlp_pos_bilstm_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_graphn_sum(s : NlpposbilstmGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_pos_bilstm_node_get(s : NlpposbilstmNode, i : Int) -> Double {
 }
 
 pub fn nlp_pos_bilstm_node_set(s : NlpposbilstmNode, i : Int, v : Double) -> NlpposbilstmNode {
-  let result = nlp_pos_bilstm_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_node_sum(s : NlpposbilstmNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_pos_bilstm_edge_get(s : NlpposbilstmEdge, i : Int) -> Double {
 }
 
 pub fn nlp_pos_bilstm_edge_set(s : NlpposbilstmEdge, i : Int, v : Double) -> NlpposbilstmEdge {
-  let result = nlp_pos_bilstm_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_edge_sum(s : NlpposbilstmEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_pos_bilstm_path_get(s : NlpposbilstmPath, i : Int) -> Double {
 }
 
 pub fn nlp_pos_bilstm_path_set(s : NlpposbilstmPath, i : Int, v : Double) -> NlpposbilstmPath {
-  let result = nlp_pos_bilstm_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_path_sum(s : NlpposbilstmPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_pos_bilstm_cluster_get(s : NlpposbilstmCluster, i : Int) -> Double {
 }
 
 pub fn nlp_pos_bilstm_cluster_set(s : NlpposbilstmCluster, i : Int, v : Double) -> NlpposbilstmCluster {
-  let result = nlp_pos_bilstm_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_cluster_sum(s : NlpposbilstmCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_pos_bilstm_model_get(s : NlpposbilstmModel, i : Int) -> Double {
 }
 
 pub fn nlp_pos_bilstm_model_set(s : NlpposbilstmModel, i : Int, v : Double) -> NlpposbilstmModel {
-  let result = nlp_pos_bilstm_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_model_sum(s : NlpposbilstmModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_pos_bilstm_layer_get(s : NlpposbilstmLayer, i : Int) -> Double {
 }
 
 pub fn nlp_pos_bilstm_layer_set(s : NlpposbilstmLayer, i : Int, v : Double) -> NlpposbilstmLayer {
-  let result = nlp_pos_bilstm_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_layer_sum(s : NlpposbilstmLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_pos_bilstm_buffer_get(s : NlpposbilstmBuffer, i : Int) -> Double {
 }
 
 pub fn nlp_pos_bilstm_buffer_set(s : NlpposbilstmBuffer, i : Int, v : Double) -> NlpposbilstmBuffer {
-  let result = nlp_pos_bilstm_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_buffer_sum(s : NlpposbilstmBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_pos_bilstm_cursor_get(s : NlpposbilstmCursor, i : Int) -> Double {
 }
 
 pub fn nlp_pos_bilstm_cursor_set(s : NlpposbilstmCursor, i : Int, v : Double) -> NlpposbilstmCursor {
-  let result = nlp_pos_bilstm_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_cursor_sum(s : NlpposbilstmCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_pos_bilstm_view_get(s : NlpposbilstmView, i : Int) -> Double {
 }
 
 pub fn nlp_pos_bilstm_view_set(s : NlpposbilstmView, i : Int, v : Double) -> NlpposbilstmView {
-  let result = nlp_pos_bilstm_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_view_sum(s : NlpposbilstmView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_pos_bilstm_range_get(s : NlpposbilstmRange, i : Int) -> Double {
 }
 
 pub fn nlp_pos_bilstm_range_set(s : NlpposbilstmRange, i : Int, v : Double) -> NlpposbilstmRange {
-  let result = nlp_pos_bilstm_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_range_sum(s : NlpposbilstmRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_pos_bilstm_slice_get(s : NlpposbilstmSlice, i : Int) -> Double {
 }
 
 pub fn nlp_pos_bilstm_slice_set(s : NlpposbilstmSlice, i : Int, v : Double) -> NlpposbilstmSlice {
-  let result = nlp_pos_bilstm_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_pos_bilstm_slice_sum(s : NlpposbilstmSlice) -> Double { @_common.sum(s.data) }

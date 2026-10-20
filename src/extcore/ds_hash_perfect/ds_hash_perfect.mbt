@@ -107,23 +107,15 @@ pub fn ds_hash_perfect_series_std(s : DshashperfectSeries) -> Double { @_common.
 pub fn ds_hash_perfect_series_median(s : DshashperfectSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_hash_perfect_series_scale(s : DshashperfectSeries, f : Double) -> DshashperfectSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_hash_perfect_series_add(a : DshashperfectSeries, b : DshashperfectSeries) -> DshashperfectSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_hash_perfect_series_sub(a : DshashperfectSeries, b : DshashperfectSeries) -> DshashperfectSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_hash_perfect_series_normalize(s : DshashperfectSeries) -> DshashperfectSeries {
@@ -254,22 +246,16 @@ pub fn ds_hash_perfect_vector_zero(dim : Int) -> DshashperfectVector {
 
 pub fn ds_hash_perfect_vector_add(a : DshashperfectVector, b : DshashperfectVector) -> DshashperfectVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_hash_perfect_vector_sub(a : DshashperfectVector, b : DshashperfectVector) -> DshashperfectVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_hash_perfect_vector_scale(v : DshashperfectVector, s : Double) -> DshashperfectVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_hash_perfect_vector_dot(a : DshashperfectVector, b : DshashperfectVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_hash_perfect_frame_get(s : DshashperfectFrame, i : Int) -> Double {
 }
 
 pub fn ds_hash_perfect_frame_set(s : DshashperfectFrame, i : Int, v : Double) -> DshashperfectFrame {
-  let result = ds_hash_perfect_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_frame_sum(s : DshashperfectFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_hash_perfect_table_get(s : DshashperfectTable, i : Int) -> Double {
 }
 
 pub fn ds_hash_perfect_table_set(s : DshashperfectTable, i : Int, v : Double) -> DshashperfectTable {
-  let result = ds_hash_perfect_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_table_sum(s : DshashperfectTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_hash_perfect_graphn_get(s : DshashperfectGraphN, i : Int) -> Double {
 }
 
 pub fn ds_hash_perfect_graphn_set(s : DshashperfectGraphN, i : Int, v : Double) -> DshashperfectGraphN {
-  let result = ds_hash_perfect_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_graphn_sum(s : DshashperfectGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_hash_perfect_node_get(s : DshashperfectNode, i : Int) -> Double {
 }
 
 pub fn ds_hash_perfect_node_set(s : DshashperfectNode, i : Int, v : Double) -> DshashperfectNode {
-  let result = ds_hash_perfect_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_node_sum(s : DshashperfectNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_hash_perfect_edge_get(s : DshashperfectEdge, i : Int) -> Double {
 }
 
 pub fn ds_hash_perfect_edge_set(s : DshashperfectEdge, i : Int, v : Double) -> DshashperfectEdge {
-  let result = ds_hash_perfect_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_edge_sum(s : DshashperfectEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_hash_perfect_path_get(s : DshashperfectPath, i : Int) -> Double {
 }
 
 pub fn ds_hash_perfect_path_set(s : DshashperfectPath, i : Int, v : Double) -> DshashperfectPath {
-  let result = ds_hash_perfect_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_path_sum(s : DshashperfectPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_hash_perfect_cluster_get(s : DshashperfectCluster, i : Int) -> Double 
 }
 
 pub fn ds_hash_perfect_cluster_set(s : DshashperfectCluster, i : Int, v : Double) -> DshashperfectCluster {
-  let result = ds_hash_perfect_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_cluster_sum(s : DshashperfectCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_hash_perfect_model_get(s : DshashperfectModel, i : Int) -> Double {
 }
 
 pub fn ds_hash_perfect_model_set(s : DshashperfectModel, i : Int, v : Double) -> DshashperfectModel {
-  let result = ds_hash_perfect_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_model_sum(s : DshashperfectModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_hash_perfect_layer_get(s : DshashperfectLayer, i : Int) -> Double {
 }
 
 pub fn ds_hash_perfect_layer_set(s : DshashperfectLayer, i : Int, v : Double) -> DshashperfectLayer {
-  let result = ds_hash_perfect_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_layer_sum(s : DshashperfectLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_hash_perfect_buffer_get(s : DshashperfectBuffer, i : Int) -> Double {
 }
 
 pub fn ds_hash_perfect_buffer_set(s : DshashperfectBuffer, i : Int, v : Double) -> DshashperfectBuffer {
-  let result = ds_hash_perfect_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_buffer_sum(s : DshashperfectBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_hash_perfect_cursor_get(s : DshashperfectCursor, i : Int) -> Double {
 }
 
 pub fn ds_hash_perfect_cursor_set(s : DshashperfectCursor, i : Int, v : Double) -> DshashperfectCursor {
-  let result = ds_hash_perfect_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_cursor_sum(s : DshashperfectCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_hash_perfect_view_get(s : DshashperfectView, i : Int) -> Double {
 }
 
 pub fn ds_hash_perfect_view_set(s : DshashperfectView, i : Int, v : Double) -> DshashperfectView {
-  let result = ds_hash_perfect_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_view_sum(s : DshashperfectView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_hash_perfect_range_get(s : DshashperfectRange, i : Int) -> Double {
 }
 
 pub fn ds_hash_perfect_range_set(s : DshashperfectRange, i : Int, v : Double) -> DshashperfectRange {
-  let result = ds_hash_perfect_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_range_sum(s : DshashperfectRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_hash_perfect_slice_get(s : DshashperfectSlice, i : Int) -> Double {
 }
 
 pub fn ds_hash_perfect_slice_set(s : DshashperfectSlice, i : Int, v : Double) -> DshashperfectSlice {
-  let result = ds_hash_perfect_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_perfect_slice_sum(s : DshashperfectSlice) -> Double { @_common.sum(s.data) }

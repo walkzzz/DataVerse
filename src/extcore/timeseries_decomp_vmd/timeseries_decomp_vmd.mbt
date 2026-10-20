@@ -107,23 +107,15 @@ pub fn timeseries_decomp_vmd_series_std(s : TimeseriesdecompvmdSeries) -> Double
 pub fn timeseries_decomp_vmd_series_median(s : TimeseriesdecompvmdSeries) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_decomp_vmd_series_scale(s : TimeseriesdecompvmdSeries, f : Double) -> TimeseriesdecompvmdSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn timeseries_decomp_vmd_series_add(a : TimeseriesdecompvmdSeries, b : TimeseriesdecompvmdSeries) -> TimeseriesdecompvmdSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_decomp_vmd_series_sub(a : TimeseriesdecompvmdSeries, b : TimeseriesdecompvmdSeries) -> TimeseriesdecompvmdSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_decomp_vmd_series_normalize(s : TimeseriesdecompvmdSeries) -> TimeseriesdecompvmdSeries {
@@ -254,22 +246,16 @@ pub fn timeseries_decomp_vmd_vector_zero(dim : Int) -> TimeseriesdecompvmdVector
 
 pub fn timeseries_decomp_vmd_vector_add(a : TimeseriesdecompvmdVector, b : TimeseriesdecompvmdVector) -> TimeseriesdecompvmdVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_decomp_vmd_vector_sub(a : TimeseriesdecompvmdVector, b : TimeseriesdecompvmdVector) -> TimeseriesdecompvmdVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_decomp_vmd_vector_scale(v : TimeseriesdecompvmdVector, s : Double) -> TimeseriesdecompvmdVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn timeseries_decomp_vmd_vector_dot(a : TimeseriesdecompvmdVector, b : TimeseriesdecompvmdVector) -> Double {
@@ -372,10 +358,9 @@ pub fn timeseries_decomp_vmd_frame_get(s : TimeseriesdecompvmdFrame, i : Int) ->
 }
 
 pub fn timeseries_decomp_vmd_frame_set(s : TimeseriesdecompvmdFrame, i : Int, v : Double) -> TimeseriesdecompvmdFrame {
-  let result = timeseries_decomp_vmd_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_vmd_frame_sum(s : TimeseriesdecompvmdFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn timeseries_decomp_vmd_table_get(s : TimeseriesdecompvmdTable, i : Int) ->
 }
 
 pub fn timeseries_decomp_vmd_table_set(s : TimeseriesdecompvmdTable, i : Int, v : Double) -> TimeseriesdecompvmdTable {
-  let result = timeseries_decomp_vmd_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_vmd_table_sum(s : TimeseriesdecompvmdTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn timeseries_decomp_vmd_graphn_get(s : TimeseriesdecompvmdGraphN, i : Int) 
 }
 
 pub fn timeseries_decomp_vmd_graphn_set(s : TimeseriesdecompvmdGraphN, i : Int, v : Double) -> TimeseriesdecompvmdGraphN {
-  let result = timeseries_decomp_vmd_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_vmd_graphn_sum(s : TimeseriesdecompvmdGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn timeseries_decomp_vmd_node_get(s : TimeseriesdecompvmdNode, i : Int) -> D
 }
 
 pub fn timeseries_decomp_vmd_node_set(s : TimeseriesdecompvmdNode, i : Int, v : Double) -> TimeseriesdecompvmdNode {
-  let result = timeseries_decomp_vmd_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_vmd_node_sum(s : TimeseriesdecompvmdNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn timeseries_decomp_vmd_edge_get(s : TimeseriesdecompvmdEdge, i : Int) -> D
 }
 
 pub fn timeseries_decomp_vmd_edge_set(s : TimeseriesdecompvmdEdge, i : Int, v : Double) -> TimeseriesdecompvmdEdge {
-  let result = timeseries_decomp_vmd_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_vmd_edge_sum(s : TimeseriesdecompvmdEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn timeseries_decomp_vmd_path_get(s : TimeseriesdecompvmdPath, i : Int) -> D
 }
 
 pub fn timeseries_decomp_vmd_path_set(s : TimeseriesdecompvmdPath, i : Int, v : Double) -> TimeseriesdecompvmdPath {
-  let result = timeseries_decomp_vmd_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_vmd_path_sum(s : TimeseriesdecompvmdPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn timeseries_decomp_vmd_cluster_get(s : TimeseriesdecompvmdCluster, i : Int
 }
 
 pub fn timeseries_decomp_vmd_cluster_set(s : TimeseriesdecompvmdCluster, i : Int, v : Double) -> TimeseriesdecompvmdCluster {
-  let result = timeseries_decomp_vmd_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_vmd_cluster_sum(s : TimeseriesdecompvmdCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn timeseries_decomp_vmd_model_get(s : TimeseriesdecompvmdModel, i : Int) ->
 }
 
 pub fn timeseries_decomp_vmd_model_set(s : TimeseriesdecompvmdModel, i : Int, v : Double) -> TimeseriesdecompvmdModel {
-  let result = timeseries_decomp_vmd_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_vmd_model_sum(s : TimeseriesdecompvmdModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn timeseries_decomp_vmd_layer_get(s : TimeseriesdecompvmdLayer, i : Int) ->
 }
 
 pub fn timeseries_decomp_vmd_layer_set(s : TimeseriesdecompvmdLayer, i : Int, v : Double) -> TimeseriesdecompvmdLayer {
-  let result = timeseries_decomp_vmd_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_vmd_layer_sum(s : TimeseriesdecompvmdLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn timeseries_decomp_vmd_buffer_get(s : TimeseriesdecompvmdBuffer, i : Int) 
 }
 
 pub fn timeseries_decomp_vmd_buffer_set(s : TimeseriesdecompvmdBuffer, i : Int, v : Double) -> TimeseriesdecompvmdBuffer {
-  let result = timeseries_decomp_vmd_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_vmd_buffer_sum(s : TimeseriesdecompvmdBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn timeseries_decomp_vmd_cursor_get(s : TimeseriesdecompvmdCursor, i : Int) 
 }
 
 pub fn timeseries_decomp_vmd_cursor_set(s : TimeseriesdecompvmdCursor, i : Int, v : Double) -> TimeseriesdecompvmdCursor {
-  let result = timeseries_decomp_vmd_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_vmd_cursor_sum(s : TimeseriesdecompvmdCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn timeseries_decomp_vmd_view_get(s : TimeseriesdecompvmdView, i : Int) -> D
 }
 
 pub fn timeseries_decomp_vmd_view_set(s : TimeseriesdecompvmdView, i : Int, v : Double) -> TimeseriesdecompvmdView {
-  let result = timeseries_decomp_vmd_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_vmd_view_sum(s : TimeseriesdecompvmdView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn timeseries_decomp_vmd_range_get(s : TimeseriesdecompvmdRange, i : Int) ->
 }
 
 pub fn timeseries_decomp_vmd_range_set(s : TimeseriesdecompvmdRange, i : Int, v : Double) -> TimeseriesdecompvmdRange {
-  let result = timeseries_decomp_vmd_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_vmd_range_sum(s : TimeseriesdecompvmdRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn timeseries_decomp_vmd_slice_get(s : TimeseriesdecompvmdSlice, i : Int) ->
 }
 
 pub fn timeseries_decomp_vmd_slice_set(s : TimeseriesdecompvmdSlice, i : Int, v : Double) -> TimeseriesdecompvmdSlice {
-  let result = timeseries_decomp_vmd_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_vmd_slice_sum(s : TimeseriesdecompvmdSlice) -> Double { @_common.sum(s.data) }

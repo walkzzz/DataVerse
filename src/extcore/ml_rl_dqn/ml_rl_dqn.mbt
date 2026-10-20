@@ -107,23 +107,15 @@ pub fn ml_rl_dqn_series_std(s : MlrldqnSeries) -> Double { @_common.std(s.vals) 
 pub fn ml_rl_dqn_series_median(s : MlrldqnSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_rl_dqn_series_scale(s : MlrldqnSeries, f : Double) -> MlrldqnSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_rl_dqn_series_add(a : MlrldqnSeries, b : MlrldqnSeries) -> MlrldqnSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_rl_dqn_series_sub(a : MlrldqnSeries, b : MlrldqnSeries) -> MlrldqnSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_rl_dqn_series_normalize(s : MlrldqnSeries) -> MlrldqnSeries {
@@ -254,22 +246,16 @@ pub fn ml_rl_dqn_vector_zero(dim : Int) -> MlrldqnVector {
 
 pub fn ml_rl_dqn_vector_add(a : MlrldqnVector, b : MlrldqnVector) -> MlrldqnVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_rl_dqn_vector_sub(a : MlrldqnVector, b : MlrldqnVector) -> MlrldqnVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_rl_dqn_vector_scale(v : MlrldqnVector, s : Double) -> MlrldqnVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_rl_dqn_vector_dot(a : MlrldqnVector, b : MlrldqnVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_rl_dqn_frame_get(s : MlrldqnFrame, i : Int) -> Double {
 }
 
 pub fn ml_rl_dqn_frame_set(s : MlrldqnFrame, i : Int, v : Double) -> MlrldqnFrame {
-  let result = ml_rl_dqn_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_frame_sum(s : MlrldqnFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_rl_dqn_table_get(s : MlrldqnTable, i : Int) -> Double {
 }
 
 pub fn ml_rl_dqn_table_set(s : MlrldqnTable, i : Int, v : Double) -> MlrldqnTable {
-  let result = ml_rl_dqn_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_table_sum(s : MlrldqnTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_rl_dqn_graphn_get(s : MlrldqnGraphN, i : Int) -> Double {
 }
 
 pub fn ml_rl_dqn_graphn_set(s : MlrldqnGraphN, i : Int, v : Double) -> MlrldqnGraphN {
-  let result = ml_rl_dqn_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_graphn_sum(s : MlrldqnGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_rl_dqn_node_get(s : MlrldqnNode, i : Int) -> Double {
 }
 
 pub fn ml_rl_dqn_node_set(s : MlrldqnNode, i : Int, v : Double) -> MlrldqnNode {
-  let result = ml_rl_dqn_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_node_sum(s : MlrldqnNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_rl_dqn_edge_get(s : MlrldqnEdge, i : Int) -> Double {
 }
 
 pub fn ml_rl_dqn_edge_set(s : MlrldqnEdge, i : Int, v : Double) -> MlrldqnEdge {
-  let result = ml_rl_dqn_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_edge_sum(s : MlrldqnEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_rl_dqn_path_get(s : MlrldqnPath, i : Int) -> Double {
 }
 
 pub fn ml_rl_dqn_path_set(s : MlrldqnPath, i : Int, v : Double) -> MlrldqnPath {
-  let result = ml_rl_dqn_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_path_sum(s : MlrldqnPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_rl_dqn_cluster_get(s : MlrldqnCluster, i : Int) -> Double {
 }
 
 pub fn ml_rl_dqn_cluster_set(s : MlrldqnCluster, i : Int, v : Double) -> MlrldqnCluster {
-  let result = ml_rl_dqn_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_cluster_sum(s : MlrldqnCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_rl_dqn_model_get(s : MlrldqnModel, i : Int) -> Double {
 }
 
 pub fn ml_rl_dqn_model_set(s : MlrldqnModel, i : Int, v : Double) -> MlrldqnModel {
-  let result = ml_rl_dqn_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_model_sum(s : MlrldqnModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_rl_dqn_layer_get(s : MlrldqnLayer, i : Int) -> Double {
 }
 
 pub fn ml_rl_dqn_layer_set(s : MlrldqnLayer, i : Int, v : Double) -> MlrldqnLayer {
-  let result = ml_rl_dqn_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_layer_sum(s : MlrldqnLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_rl_dqn_buffer_get(s : MlrldqnBuffer, i : Int) -> Double {
 }
 
 pub fn ml_rl_dqn_buffer_set(s : MlrldqnBuffer, i : Int, v : Double) -> MlrldqnBuffer {
-  let result = ml_rl_dqn_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_buffer_sum(s : MlrldqnBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_rl_dqn_cursor_get(s : MlrldqnCursor, i : Int) -> Double {
 }
 
 pub fn ml_rl_dqn_cursor_set(s : MlrldqnCursor, i : Int, v : Double) -> MlrldqnCursor {
-  let result = ml_rl_dqn_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_cursor_sum(s : MlrldqnCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_rl_dqn_view_get(s : MlrldqnView, i : Int) -> Double {
 }
 
 pub fn ml_rl_dqn_view_set(s : MlrldqnView, i : Int, v : Double) -> MlrldqnView {
-  let result = ml_rl_dqn_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_view_sum(s : MlrldqnView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_rl_dqn_range_get(s : MlrldqnRange, i : Int) -> Double {
 }
 
 pub fn ml_rl_dqn_range_set(s : MlrldqnRange, i : Int, v : Double) -> MlrldqnRange {
-  let result = ml_rl_dqn_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_range_sum(s : MlrldqnRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_rl_dqn_slice_get(s : MlrldqnSlice, i : Int) -> Double {
 }
 
 pub fn ml_rl_dqn_slice_set(s : MlrldqnSlice, i : Int, v : Double) -> MlrldqnSlice {
-  let result = ml_rl_dqn_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_rl_dqn_slice_sum(s : MlrldqnSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn timeseries_var_series_std(s : TimeseriesvarSeries) -> Double { @_common.s
 pub fn timeseries_var_series_median(s : TimeseriesvarSeries) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_var_series_scale(s : TimeseriesvarSeries, f : Double) -> TimeseriesvarSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn timeseries_var_series_add(a : TimeseriesvarSeries, b : TimeseriesvarSeries) -> TimeseriesvarSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_var_series_sub(a : TimeseriesvarSeries, b : TimeseriesvarSeries) -> TimeseriesvarSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_var_series_normalize(s : TimeseriesvarSeries) -> TimeseriesvarSeries {
@@ -254,22 +246,16 @@ pub fn timeseries_var_vector_zero(dim : Int) -> TimeseriesvarVector {
 
 pub fn timeseries_var_vector_add(a : TimeseriesvarVector, b : TimeseriesvarVector) -> TimeseriesvarVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_var_vector_sub(a : TimeseriesvarVector, b : TimeseriesvarVector) -> TimeseriesvarVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_var_vector_scale(v : TimeseriesvarVector, s : Double) -> TimeseriesvarVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn timeseries_var_vector_dot(a : TimeseriesvarVector, b : TimeseriesvarVector) -> Double {
@@ -372,10 +358,9 @@ pub fn timeseries_var_frame_get(s : TimeseriesvarFrame, i : Int) -> Double {
 }
 
 pub fn timeseries_var_frame_set(s : TimeseriesvarFrame, i : Int, v : Double) -> TimeseriesvarFrame {
-  let result = timeseries_var_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_var_frame_sum(s : TimeseriesvarFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn timeseries_var_table_get(s : TimeseriesvarTable, i : Int) -> Double {
 }
 
 pub fn timeseries_var_table_set(s : TimeseriesvarTable, i : Int, v : Double) -> TimeseriesvarTable {
-  let result = timeseries_var_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_var_table_sum(s : TimeseriesvarTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn timeseries_var_graphn_get(s : TimeseriesvarGraphN, i : Int) -> Double {
 }
 
 pub fn timeseries_var_graphn_set(s : TimeseriesvarGraphN, i : Int, v : Double) -> TimeseriesvarGraphN {
-  let result = timeseries_var_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_var_graphn_sum(s : TimeseriesvarGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn timeseries_var_node_get(s : TimeseriesvarNode, i : Int) -> Double {
 }
 
 pub fn timeseries_var_node_set(s : TimeseriesvarNode, i : Int, v : Double) -> TimeseriesvarNode {
-  let result = timeseries_var_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_var_node_sum(s : TimeseriesvarNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn timeseries_var_edge_get(s : TimeseriesvarEdge, i : Int) -> Double {
 }
 
 pub fn timeseries_var_edge_set(s : TimeseriesvarEdge, i : Int, v : Double) -> TimeseriesvarEdge {
-  let result = timeseries_var_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_var_edge_sum(s : TimeseriesvarEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn timeseries_var_path_get(s : TimeseriesvarPath, i : Int) -> Double {
 }
 
 pub fn timeseries_var_path_set(s : TimeseriesvarPath, i : Int, v : Double) -> TimeseriesvarPath {
-  let result = timeseries_var_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_var_path_sum(s : TimeseriesvarPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn timeseries_var_cluster_get(s : TimeseriesvarCluster, i : Int) -> Double {
 }
 
 pub fn timeseries_var_cluster_set(s : TimeseriesvarCluster, i : Int, v : Double) -> TimeseriesvarCluster {
-  let result = timeseries_var_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_var_cluster_sum(s : TimeseriesvarCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn timeseries_var_model_get(s : TimeseriesvarModel, i : Int) -> Double {
 }
 
 pub fn timeseries_var_model_set(s : TimeseriesvarModel, i : Int, v : Double) -> TimeseriesvarModel {
-  let result = timeseries_var_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_var_model_sum(s : TimeseriesvarModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn timeseries_var_layer_get(s : TimeseriesvarLayer, i : Int) -> Double {
 }
 
 pub fn timeseries_var_layer_set(s : TimeseriesvarLayer, i : Int, v : Double) -> TimeseriesvarLayer {
-  let result = timeseries_var_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_var_layer_sum(s : TimeseriesvarLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn timeseries_var_buffer_get(s : TimeseriesvarBuffer, i : Int) -> Double {
 }
 
 pub fn timeseries_var_buffer_set(s : TimeseriesvarBuffer, i : Int, v : Double) -> TimeseriesvarBuffer {
-  let result = timeseries_var_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_var_buffer_sum(s : TimeseriesvarBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn timeseries_var_cursor_get(s : TimeseriesvarCursor, i : Int) -> Double {
 }
 
 pub fn timeseries_var_cursor_set(s : TimeseriesvarCursor, i : Int, v : Double) -> TimeseriesvarCursor {
-  let result = timeseries_var_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_var_cursor_sum(s : TimeseriesvarCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn timeseries_var_view_get(s : TimeseriesvarView, i : Int) -> Double {
 }
 
 pub fn timeseries_var_view_set(s : TimeseriesvarView, i : Int, v : Double) -> TimeseriesvarView {
-  let result = timeseries_var_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_var_view_sum(s : TimeseriesvarView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn timeseries_var_range_get(s : TimeseriesvarRange, i : Int) -> Double {
 }
 
 pub fn timeseries_var_range_set(s : TimeseriesvarRange, i : Int, v : Double) -> TimeseriesvarRange {
-  let result = timeseries_var_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_var_range_sum(s : TimeseriesvarRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn timeseries_var_slice_get(s : TimeseriesvarSlice, i : Int) -> Double {
 }
 
 pub fn timeseries_var_slice_set(s : TimeseriesvarSlice, i : Int, v : Double) -> TimeseriesvarSlice {
-  let result = timeseries_var_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_var_slice_sum(s : TimeseriesvarSlice) -> Double { @_common.sum(s.data) }

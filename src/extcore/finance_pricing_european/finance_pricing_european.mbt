@@ -107,23 +107,15 @@ pub fn finance_pricing_european_series_std(s : FinancepricingeuropeanSeries) -> 
 pub fn finance_pricing_european_series_median(s : FinancepricingeuropeanSeries) -> Double { @_common.median(s.vals) }
 
 pub fn finance_pricing_european_series_scale(s : FinancepricingeuropeanSeries, f : Double) -> FinancepricingeuropeanSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn finance_pricing_european_series_add(a : FinancepricingeuropeanSeries, b : FinancepricingeuropeanSeries) -> FinancepricingeuropeanSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn finance_pricing_european_series_sub(a : FinancepricingeuropeanSeries, b : FinancepricingeuropeanSeries) -> FinancepricingeuropeanSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn finance_pricing_european_series_normalize(s : FinancepricingeuropeanSeries) -> FinancepricingeuropeanSeries {
@@ -254,22 +246,16 @@ pub fn finance_pricing_european_vector_zero(dim : Int) -> Financepricingeuropean
 
 pub fn finance_pricing_european_vector_add(a : FinancepricingeuropeanVector, b : FinancepricingeuropeanVector) -> FinancepricingeuropeanVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_pricing_european_vector_sub(a : FinancepricingeuropeanVector, b : FinancepricingeuropeanVector) -> FinancepricingeuropeanVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_pricing_european_vector_scale(v : FinancepricingeuropeanVector, s : Double) -> FinancepricingeuropeanVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn finance_pricing_european_vector_dot(a : FinancepricingeuropeanVector, b : FinancepricingeuropeanVector) -> Double {
@@ -372,10 +358,9 @@ pub fn finance_pricing_european_frame_get(s : FinancepricingeuropeanFrame, i : I
 }
 
 pub fn finance_pricing_european_frame_set(s : FinancepricingeuropeanFrame, i : Int, v : Double) -> FinancepricingeuropeanFrame {
-  let result = finance_pricing_european_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_european_frame_sum(s : FinancepricingeuropeanFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn finance_pricing_european_table_get(s : FinancepricingeuropeanTable, i : I
 }
 
 pub fn finance_pricing_european_table_set(s : FinancepricingeuropeanTable, i : Int, v : Double) -> FinancepricingeuropeanTable {
-  let result = finance_pricing_european_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_european_table_sum(s : FinancepricingeuropeanTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn finance_pricing_european_graphn_get(s : FinancepricingeuropeanGraphN, i :
 }
 
 pub fn finance_pricing_european_graphn_set(s : FinancepricingeuropeanGraphN, i : Int, v : Double) -> FinancepricingeuropeanGraphN {
-  let result = finance_pricing_european_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_european_graphn_sum(s : FinancepricingeuropeanGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn finance_pricing_european_node_get(s : FinancepricingeuropeanNode, i : Int
 }
 
 pub fn finance_pricing_european_node_set(s : FinancepricingeuropeanNode, i : Int, v : Double) -> FinancepricingeuropeanNode {
-  let result = finance_pricing_european_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_european_node_sum(s : FinancepricingeuropeanNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn finance_pricing_european_edge_get(s : FinancepricingeuropeanEdge, i : Int
 }
 
 pub fn finance_pricing_european_edge_set(s : FinancepricingeuropeanEdge, i : Int, v : Double) -> FinancepricingeuropeanEdge {
-  let result = finance_pricing_european_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_european_edge_sum(s : FinancepricingeuropeanEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn finance_pricing_european_path_get(s : FinancepricingeuropeanPath, i : Int
 }
 
 pub fn finance_pricing_european_path_set(s : FinancepricingeuropeanPath, i : Int, v : Double) -> FinancepricingeuropeanPath {
-  let result = finance_pricing_european_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_european_path_sum(s : FinancepricingeuropeanPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn finance_pricing_european_cluster_get(s : FinancepricingeuropeanCluster, i
 }
 
 pub fn finance_pricing_european_cluster_set(s : FinancepricingeuropeanCluster, i : Int, v : Double) -> FinancepricingeuropeanCluster {
-  let result = finance_pricing_european_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_european_cluster_sum(s : FinancepricingeuropeanCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn finance_pricing_european_model_get(s : FinancepricingeuropeanModel, i : I
 }
 
 pub fn finance_pricing_european_model_set(s : FinancepricingeuropeanModel, i : Int, v : Double) -> FinancepricingeuropeanModel {
-  let result = finance_pricing_european_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_european_model_sum(s : FinancepricingeuropeanModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn finance_pricing_european_layer_get(s : FinancepricingeuropeanLayer, i : I
 }
 
 pub fn finance_pricing_european_layer_set(s : FinancepricingeuropeanLayer, i : Int, v : Double) -> FinancepricingeuropeanLayer {
-  let result = finance_pricing_european_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_european_layer_sum(s : FinancepricingeuropeanLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn finance_pricing_european_buffer_get(s : FinancepricingeuropeanBuffer, i :
 }
 
 pub fn finance_pricing_european_buffer_set(s : FinancepricingeuropeanBuffer, i : Int, v : Double) -> FinancepricingeuropeanBuffer {
-  let result = finance_pricing_european_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_european_buffer_sum(s : FinancepricingeuropeanBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn finance_pricing_european_cursor_get(s : FinancepricingeuropeanCursor, i :
 }
 
 pub fn finance_pricing_european_cursor_set(s : FinancepricingeuropeanCursor, i : Int, v : Double) -> FinancepricingeuropeanCursor {
-  let result = finance_pricing_european_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_european_cursor_sum(s : FinancepricingeuropeanCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn finance_pricing_european_view_get(s : FinancepricingeuropeanView, i : Int
 }
 
 pub fn finance_pricing_european_view_set(s : FinancepricingeuropeanView, i : Int, v : Double) -> FinancepricingeuropeanView {
-  let result = finance_pricing_european_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_european_view_sum(s : FinancepricingeuropeanView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn finance_pricing_european_range_get(s : FinancepricingeuropeanRange, i : I
 }
 
 pub fn finance_pricing_european_range_set(s : FinancepricingeuropeanRange, i : Int, v : Double) -> FinancepricingeuropeanRange {
-  let result = finance_pricing_european_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_european_range_sum(s : FinancepricingeuropeanRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn finance_pricing_european_slice_get(s : FinancepricingeuropeanSlice, i : I
 }
 
 pub fn finance_pricing_european_slice_set(s : FinancepricingeuropeanSlice, i : Int, v : Double) -> FinancepricingeuropeanSlice {
-  let result = finance_pricing_european_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_european_slice_sum(s : FinancepricingeuropeanSlice) -> Double { @_common.sum(s.data) }

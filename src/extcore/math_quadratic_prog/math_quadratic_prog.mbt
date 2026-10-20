@@ -107,23 +107,15 @@ pub fn math_quadratic_prog_series_std(s : MathquadraticprogSeries) -> Double { @
 pub fn math_quadratic_prog_series_median(s : MathquadraticprogSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_quadratic_prog_series_scale(s : MathquadraticprogSeries, f : Double) -> MathquadraticprogSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_quadratic_prog_series_add(a : MathquadraticprogSeries, b : MathquadraticprogSeries) -> MathquadraticprogSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_quadratic_prog_series_sub(a : MathquadraticprogSeries, b : MathquadraticprogSeries) -> MathquadraticprogSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_quadratic_prog_series_normalize(s : MathquadraticprogSeries) -> MathquadraticprogSeries {
@@ -254,22 +246,16 @@ pub fn math_quadratic_prog_vector_zero(dim : Int) -> MathquadraticprogVector {
 
 pub fn math_quadratic_prog_vector_add(a : MathquadraticprogVector, b : MathquadraticprogVector) -> MathquadraticprogVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_quadratic_prog_vector_sub(a : MathquadraticprogVector, b : MathquadraticprogVector) -> MathquadraticprogVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_quadratic_prog_vector_scale(v : MathquadraticprogVector, s : Double) -> MathquadraticprogVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_quadratic_prog_vector_dot(a : MathquadraticprogVector, b : MathquadraticprogVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_quadratic_prog_frame_get(s : MathquadraticprogFrame, i : Int) -> Dou
 }
 
 pub fn math_quadratic_prog_frame_set(s : MathquadraticprogFrame, i : Int, v : Double) -> MathquadraticprogFrame {
-  let result = math_quadratic_prog_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quadratic_prog_frame_sum(s : MathquadraticprogFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_quadratic_prog_table_get(s : MathquadraticprogTable, i : Int) -> Dou
 }
 
 pub fn math_quadratic_prog_table_set(s : MathquadraticprogTable, i : Int, v : Double) -> MathquadraticprogTable {
-  let result = math_quadratic_prog_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quadratic_prog_table_sum(s : MathquadraticprogTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_quadratic_prog_graphn_get(s : MathquadraticprogGraphN, i : Int) -> D
 }
 
 pub fn math_quadratic_prog_graphn_set(s : MathquadraticprogGraphN, i : Int, v : Double) -> MathquadraticprogGraphN {
-  let result = math_quadratic_prog_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quadratic_prog_graphn_sum(s : MathquadraticprogGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_quadratic_prog_node_get(s : MathquadraticprogNode, i : Int) -> Doubl
 }
 
 pub fn math_quadratic_prog_node_set(s : MathquadraticprogNode, i : Int, v : Double) -> MathquadraticprogNode {
-  let result = math_quadratic_prog_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quadratic_prog_node_sum(s : MathquadraticprogNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_quadratic_prog_edge_get(s : MathquadraticprogEdge, i : Int) -> Doubl
 }
 
 pub fn math_quadratic_prog_edge_set(s : MathquadraticprogEdge, i : Int, v : Double) -> MathquadraticprogEdge {
-  let result = math_quadratic_prog_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quadratic_prog_edge_sum(s : MathquadraticprogEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_quadratic_prog_path_get(s : MathquadraticprogPath, i : Int) -> Doubl
 }
 
 pub fn math_quadratic_prog_path_set(s : MathquadraticprogPath, i : Int, v : Double) -> MathquadraticprogPath {
-  let result = math_quadratic_prog_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quadratic_prog_path_sum(s : MathquadraticprogPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_quadratic_prog_cluster_get(s : MathquadraticprogCluster, i : Int) ->
 }
 
 pub fn math_quadratic_prog_cluster_set(s : MathquadraticprogCluster, i : Int, v : Double) -> MathquadraticprogCluster {
-  let result = math_quadratic_prog_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quadratic_prog_cluster_sum(s : MathquadraticprogCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_quadratic_prog_model_get(s : MathquadraticprogModel, i : Int) -> Dou
 }
 
 pub fn math_quadratic_prog_model_set(s : MathquadraticprogModel, i : Int, v : Double) -> MathquadraticprogModel {
-  let result = math_quadratic_prog_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quadratic_prog_model_sum(s : MathquadraticprogModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_quadratic_prog_layer_get(s : MathquadraticprogLayer, i : Int) -> Dou
 }
 
 pub fn math_quadratic_prog_layer_set(s : MathquadraticprogLayer, i : Int, v : Double) -> MathquadraticprogLayer {
-  let result = math_quadratic_prog_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quadratic_prog_layer_sum(s : MathquadraticprogLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_quadratic_prog_buffer_get(s : MathquadraticprogBuffer, i : Int) -> D
 }
 
 pub fn math_quadratic_prog_buffer_set(s : MathquadraticprogBuffer, i : Int, v : Double) -> MathquadraticprogBuffer {
-  let result = math_quadratic_prog_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quadratic_prog_buffer_sum(s : MathquadraticprogBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_quadratic_prog_cursor_get(s : MathquadraticprogCursor, i : Int) -> D
 }
 
 pub fn math_quadratic_prog_cursor_set(s : MathquadraticprogCursor, i : Int, v : Double) -> MathquadraticprogCursor {
-  let result = math_quadratic_prog_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quadratic_prog_cursor_sum(s : MathquadraticprogCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_quadratic_prog_view_get(s : MathquadraticprogView, i : Int) -> Doubl
 }
 
 pub fn math_quadratic_prog_view_set(s : MathquadraticprogView, i : Int, v : Double) -> MathquadraticprogView {
-  let result = math_quadratic_prog_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quadratic_prog_view_sum(s : MathquadraticprogView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_quadratic_prog_range_get(s : MathquadraticprogRange, i : Int) -> Dou
 }
 
 pub fn math_quadratic_prog_range_set(s : MathquadraticprogRange, i : Int, v : Double) -> MathquadraticprogRange {
-  let result = math_quadratic_prog_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quadratic_prog_range_sum(s : MathquadraticprogRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_quadratic_prog_slice_get(s : MathquadraticprogSlice, i : Int) -> Dou
 }
 
 pub fn math_quadratic_prog_slice_set(s : MathquadraticprogSlice, i : Int, v : Double) -> MathquadraticprogSlice {
-  let result = math_quadratic_prog_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_quadratic_prog_slice_sum(s : MathquadraticprogSlice) -> Double { @_common.sum(s.data) }

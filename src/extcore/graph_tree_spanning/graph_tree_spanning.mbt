@@ -107,23 +107,15 @@ pub fn graph_tree_spanning_series_std(s : GraphtreespanningSeries) -> Double { @
 pub fn graph_tree_spanning_series_median(s : GraphtreespanningSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_tree_spanning_series_scale(s : GraphtreespanningSeries, f : Double) -> GraphtreespanningSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_tree_spanning_series_add(a : GraphtreespanningSeries, b : GraphtreespanningSeries) -> GraphtreespanningSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_tree_spanning_series_sub(a : GraphtreespanningSeries, b : GraphtreespanningSeries) -> GraphtreespanningSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_tree_spanning_series_normalize(s : GraphtreespanningSeries) -> GraphtreespanningSeries {
@@ -254,22 +246,16 @@ pub fn graph_tree_spanning_vector_zero(dim : Int) -> GraphtreespanningVector {
 
 pub fn graph_tree_spanning_vector_add(a : GraphtreespanningVector, b : GraphtreespanningVector) -> GraphtreespanningVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_tree_spanning_vector_sub(a : GraphtreespanningVector, b : GraphtreespanningVector) -> GraphtreespanningVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_tree_spanning_vector_scale(v : GraphtreespanningVector, s : Double) -> GraphtreespanningVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_tree_spanning_vector_dot(a : GraphtreespanningVector, b : GraphtreespanningVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_tree_spanning_frame_get(s : GraphtreespanningFrame, i : Int) -> Dou
 }
 
 pub fn graph_tree_spanning_frame_set(s : GraphtreespanningFrame, i : Int, v : Double) -> GraphtreespanningFrame {
-  let result = graph_tree_spanning_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_spanning_frame_sum(s : GraphtreespanningFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_tree_spanning_table_get(s : GraphtreespanningTable, i : Int) -> Dou
 }
 
 pub fn graph_tree_spanning_table_set(s : GraphtreespanningTable, i : Int, v : Double) -> GraphtreespanningTable {
-  let result = graph_tree_spanning_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_spanning_table_sum(s : GraphtreespanningTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_tree_spanning_graphn_get(s : GraphtreespanningGraphN, i : Int) -> D
 }
 
 pub fn graph_tree_spanning_graphn_set(s : GraphtreespanningGraphN, i : Int, v : Double) -> GraphtreespanningGraphN {
-  let result = graph_tree_spanning_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_spanning_graphn_sum(s : GraphtreespanningGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_tree_spanning_node_get(s : GraphtreespanningNode, i : Int) -> Doubl
 }
 
 pub fn graph_tree_spanning_node_set(s : GraphtreespanningNode, i : Int, v : Double) -> GraphtreespanningNode {
-  let result = graph_tree_spanning_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_spanning_node_sum(s : GraphtreespanningNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_tree_spanning_edge_get(s : GraphtreespanningEdge, i : Int) -> Doubl
 }
 
 pub fn graph_tree_spanning_edge_set(s : GraphtreespanningEdge, i : Int, v : Double) -> GraphtreespanningEdge {
-  let result = graph_tree_spanning_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_spanning_edge_sum(s : GraphtreespanningEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_tree_spanning_path_get(s : GraphtreespanningPath, i : Int) -> Doubl
 }
 
 pub fn graph_tree_spanning_path_set(s : GraphtreespanningPath, i : Int, v : Double) -> GraphtreespanningPath {
-  let result = graph_tree_spanning_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_spanning_path_sum(s : GraphtreespanningPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_tree_spanning_cluster_get(s : GraphtreespanningCluster, i : Int) ->
 }
 
 pub fn graph_tree_spanning_cluster_set(s : GraphtreespanningCluster, i : Int, v : Double) -> GraphtreespanningCluster {
-  let result = graph_tree_spanning_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_spanning_cluster_sum(s : GraphtreespanningCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_tree_spanning_model_get(s : GraphtreespanningModel, i : Int) -> Dou
 }
 
 pub fn graph_tree_spanning_model_set(s : GraphtreespanningModel, i : Int, v : Double) -> GraphtreespanningModel {
-  let result = graph_tree_spanning_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_spanning_model_sum(s : GraphtreespanningModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_tree_spanning_layer_get(s : GraphtreespanningLayer, i : Int) -> Dou
 }
 
 pub fn graph_tree_spanning_layer_set(s : GraphtreespanningLayer, i : Int, v : Double) -> GraphtreespanningLayer {
-  let result = graph_tree_spanning_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_spanning_layer_sum(s : GraphtreespanningLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_tree_spanning_buffer_get(s : GraphtreespanningBuffer, i : Int) -> D
 }
 
 pub fn graph_tree_spanning_buffer_set(s : GraphtreespanningBuffer, i : Int, v : Double) -> GraphtreespanningBuffer {
-  let result = graph_tree_spanning_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_spanning_buffer_sum(s : GraphtreespanningBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_tree_spanning_cursor_get(s : GraphtreespanningCursor, i : Int) -> D
 }
 
 pub fn graph_tree_spanning_cursor_set(s : GraphtreespanningCursor, i : Int, v : Double) -> GraphtreespanningCursor {
-  let result = graph_tree_spanning_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_spanning_cursor_sum(s : GraphtreespanningCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_tree_spanning_view_get(s : GraphtreespanningView, i : Int) -> Doubl
 }
 
 pub fn graph_tree_spanning_view_set(s : GraphtreespanningView, i : Int, v : Double) -> GraphtreespanningView {
-  let result = graph_tree_spanning_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_spanning_view_sum(s : GraphtreespanningView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_tree_spanning_range_get(s : GraphtreespanningRange, i : Int) -> Dou
 }
 
 pub fn graph_tree_spanning_range_set(s : GraphtreespanningRange, i : Int, v : Double) -> GraphtreespanningRange {
-  let result = graph_tree_spanning_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_spanning_range_sum(s : GraphtreespanningRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_tree_spanning_slice_get(s : GraphtreespanningSlice, i : Int) -> Dou
 }
 
 pub fn graph_tree_spanning_slice_set(s : GraphtreespanningSlice, i : Int, v : Double) -> GraphtreespanningSlice {
-  let result = graph_tree_spanning_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_spanning_slice_sum(s : GraphtreespanningSlice) -> Double { @_common.sum(s.data) }

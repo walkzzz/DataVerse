@@ -107,23 +107,15 @@ pub fn graph_color_approx_series_std(s : GraphcolorapproxSeries) -> Double { @_c
 pub fn graph_color_approx_series_median(s : GraphcolorapproxSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_color_approx_series_scale(s : GraphcolorapproxSeries, f : Double) -> GraphcolorapproxSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_color_approx_series_add(a : GraphcolorapproxSeries, b : GraphcolorapproxSeries) -> GraphcolorapproxSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_color_approx_series_sub(a : GraphcolorapproxSeries, b : GraphcolorapproxSeries) -> GraphcolorapproxSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_color_approx_series_normalize(s : GraphcolorapproxSeries) -> GraphcolorapproxSeries {
@@ -254,22 +246,16 @@ pub fn graph_color_approx_vector_zero(dim : Int) -> GraphcolorapproxVector {
 
 pub fn graph_color_approx_vector_add(a : GraphcolorapproxVector, b : GraphcolorapproxVector) -> GraphcolorapproxVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_color_approx_vector_sub(a : GraphcolorapproxVector, b : GraphcolorapproxVector) -> GraphcolorapproxVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_color_approx_vector_scale(v : GraphcolorapproxVector, s : Double) -> GraphcolorapproxVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_color_approx_vector_dot(a : GraphcolorapproxVector, b : GraphcolorapproxVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_color_approx_frame_get(s : GraphcolorapproxFrame, i : Int) -> Doubl
 }
 
 pub fn graph_color_approx_frame_set(s : GraphcolorapproxFrame, i : Int, v : Double) -> GraphcolorapproxFrame {
-  let result = graph_color_approx_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_approx_frame_sum(s : GraphcolorapproxFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_color_approx_table_get(s : GraphcolorapproxTable, i : Int) -> Doubl
 }
 
 pub fn graph_color_approx_table_set(s : GraphcolorapproxTable, i : Int, v : Double) -> GraphcolorapproxTable {
-  let result = graph_color_approx_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_approx_table_sum(s : GraphcolorapproxTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_color_approx_graphn_get(s : GraphcolorapproxGraphN, i : Int) -> Dou
 }
 
 pub fn graph_color_approx_graphn_set(s : GraphcolorapproxGraphN, i : Int, v : Double) -> GraphcolorapproxGraphN {
-  let result = graph_color_approx_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_approx_graphn_sum(s : GraphcolorapproxGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_color_approx_node_get(s : GraphcolorapproxNode, i : Int) -> Double 
 }
 
 pub fn graph_color_approx_node_set(s : GraphcolorapproxNode, i : Int, v : Double) -> GraphcolorapproxNode {
-  let result = graph_color_approx_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_approx_node_sum(s : GraphcolorapproxNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_color_approx_edge_get(s : GraphcolorapproxEdge, i : Int) -> Double 
 }
 
 pub fn graph_color_approx_edge_set(s : GraphcolorapproxEdge, i : Int, v : Double) -> GraphcolorapproxEdge {
-  let result = graph_color_approx_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_approx_edge_sum(s : GraphcolorapproxEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_color_approx_path_get(s : GraphcolorapproxPath, i : Int) -> Double 
 }
 
 pub fn graph_color_approx_path_set(s : GraphcolorapproxPath, i : Int, v : Double) -> GraphcolorapproxPath {
-  let result = graph_color_approx_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_approx_path_sum(s : GraphcolorapproxPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_color_approx_cluster_get(s : GraphcolorapproxCluster, i : Int) -> D
 }
 
 pub fn graph_color_approx_cluster_set(s : GraphcolorapproxCluster, i : Int, v : Double) -> GraphcolorapproxCluster {
-  let result = graph_color_approx_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_approx_cluster_sum(s : GraphcolorapproxCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_color_approx_model_get(s : GraphcolorapproxModel, i : Int) -> Doubl
 }
 
 pub fn graph_color_approx_model_set(s : GraphcolorapproxModel, i : Int, v : Double) -> GraphcolorapproxModel {
-  let result = graph_color_approx_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_approx_model_sum(s : GraphcolorapproxModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_color_approx_layer_get(s : GraphcolorapproxLayer, i : Int) -> Doubl
 }
 
 pub fn graph_color_approx_layer_set(s : GraphcolorapproxLayer, i : Int, v : Double) -> GraphcolorapproxLayer {
-  let result = graph_color_approx_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_approx_layer_sum(s : GraphcolorapproxLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_color_approx_buffer_get(s : GraphcolorapproxBuffer, i : Int) -> Dou
 }
 
 pub fn graph_color_approx_buffer_set(s : GraphcolorapproxBuffer, i : Int, v : Double) -> GraphcolorapproxBuffer {
-  let result = graph_color_approx_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_approx_buffer_sum(s : GraphcolorapproxBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_color_approx_cursor_get(s : GraphcolorapproxCursor, i : Int) -> Dou
 }
 
 pub fn graph_color_approx_cursor_set(s : GraphcolorapproxCursor, i : Int, v : Double) -> GraphcolorapproxCursor {
-  let result = graph_color_approx_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_approx_cursor_sum(s : GraphcolorapproxCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_color_approx_view_get(s : GraphcolorapproxView, i : Int) -> Double 
 }
 
 pub fn graph_color_approx_view_set(s : GraphcolorapproxView, i : Int, v : Double) -> GraphcolorapproxView {
-  let result = graph_color_approx_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_approx_view_sum(s : GraphcolorapproxView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_color_approx_range_get(s : GraphcolorapproxRange, i : Int) -> Doubl
 }
 
 pub fn graph_color_approx_range_set(s : GraphcolorapproxRange, i : Int, v : Double) -> GraphcolorapproxRange {
-  let result = graph_color_approx_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_approx_range_sum(s : GraphcolorapproxRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_color_approx_slice_get(s : GraphcolorapproxSlice, i : Int) -> Doubl
 }
 
 pub fn graph_color_approx_slice_set(s : GraphcolorapproxSlice, i : Int, v : Double) -> GraphcolorapproxSlice {
-  let result = graph_color_approx_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_color_approx_slice_sum(s : GraphcolorapproxSlice) -> Double { @_common.sum(s.data) }

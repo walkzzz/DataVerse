@@ -107,23 +107,15 @@ pub fn bio_struct_volume_series_std(s : BiostructvolumeSeries) -> Double { @_com
 pub fn bio_struct_volume_series_median(s : BiostructvolumeSeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_struct_volume_series_scale(s : BiostructvolumeSeries, f : Double) -> BiostructvolumeSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_struct_volume_series_add(a : BiostructvolumeSeries, b : BiostructvolumeSeries) -> BiostructvolumeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_struct_volume_series_sub(a : BiostructvolumeSeries, b : BiostructvolumeSeries) -> BiostructvolumeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_struct_volume_series_normalize(s : BiostructvolumeSeries) -> BiostructvolumeSeries {
@@ -254,22 +246,16 @@ pub fn bio_struct_volume_vector_zero(dim : Int) -> BiostructvolumeVector {
 
 pub fn bio_struct_volume_vector_add(a : BiostructvolumeVector, b : BiostructvolumeVector) -> BiostructvolumeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_struct_volume_vector_sub(a : BiostructvolumeVector, b : BiostructvolumeVector) -> BiostructvolumeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_struct_volume_vector_scale(v : BiostructvolumeVector, s : Double) -> BiostructvolumeVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_struct_volume_vector_dot(a : BiostructvolumeVector, b : BiostructvolumeVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_struct_volume_frame_get(s : BiostructvolumeFrame, i : Int) -> Double 
 }
 
 pub fn bio_struct_volume_frame_set(s : BiostructvolumeFrame, i : Int, v : Double) -> BiostructvolumeFrame {
-  let result = bio_struct_volume_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_volume_frame_sum(s : BiostructvolumeFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_struct_volume_table_get(s : BiostructvolumeTable, i : Int) -> Double 
 }
 
 pub fn bio_struct_volume_table_set(s : BiostructvolumeTable, i : Int, v : Double) -> BiostructvolumeTable {
-  let result = bio_struct_volume_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_volume_table_sum(s : BiostructvolumeTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_struct_volume_graphn_get(s : BiostructvolumeGraphN, i : Int) -> Doubl
 }
 
 pub fn bio_struct_volume_graphn_set(s : BiostructvolumeGraphN, i : Int, v : Double) -> BiostructvolumeGraphN {
-  let result = bio_struct_volume_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_volume_graphn_sum(s : BiostructvolumeGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_struct_volume_node_get(s : BiostructvolumeNode, i : Int) -> Double {
 }
 
 pub fn bio_struct_volume_node_set(s : BiostructvolumeNode, i : Int, v : Double) -> BiostructvolumeNode {
-  let result = bio_struct_volume_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_volume_node_sum(s : BiostructvolumeNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_struct_volume_edge_get(s : BiostructvolumeEdge, i : Int) -> Double {
 }
 
 pub fn bio_struct_volume_edge_set(s : BiostructvolumeEdge, i : Int, v : Double) -> BiostructvolumeEdge {
-  let result = bio_struct_volume_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_volume_edge_sum(s : BiostructvolumeEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_struct_volume_path_get(s : BiostructvolumePath, i : Int) -> Double {
 }
 
 pub fn bio_struct_volume_path_set(s : BiostructvolumePath, i : Int, v : Double) -> BiostructvolumePath {
-  let result = bio_struct_volume_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_volume_path_sum(s : BiostructvolumePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_struct_volume_cluster_get(s : BiostructvolumeCluster, i : Int) -> Dou
 }
 
 pub fn bio_struct_volume_cluster_set(s : BiostructvolumeCluster, i : Int, v : Double) -> BiostructvolumeCluster {
-  let result = bio_struct_volume_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_volume_cluster_sum(s : BiostructvolumeCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_struct_volume_model_get(s : BiostructvolumeModel, i : Int) -> Double 
 }
 
 pub fn bio_struct_volume_model_set(s : BiostructvolumeModel, i : Int, v : Double) -> BiostructvolumeModel {
-  let result = bio_struct_volume_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_volume_model_sum(s : BiostructvolumeModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_struct_volume_layer_get(s : BiostructvolumeLayer, i : Int) -> Double 
 }
 
 pub fn bio_struct_volume_layer_set(s : BiostructvolumeLayer, i : Int, v : Double) -> BiostructvolumeLayer {
-  let result = bio_struct_volume_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_volume_layer_sum(s : BiostructvolumeLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_struct_volume_buffer_get(s : BiostructvolumeBuffer, i : Int) -> Doubl
 }
 
 pub fn bio_struct_volume_buffer_set(s : BiostructvolumeBuffer, i : Int, v : Double) -> BiostructvolumeBuffer {
-  let result = bio_struct_volume_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_volume_buffer_sum(s : BiostructvolumeBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_struct_volume_cursor_get(s : BiostructvolumeCursor, i : Int) -> Doubl
 }
 
 pub fn bio_struct_volume_cursor_set(s : BiostructvolumeCursor, i : Int, v : Double) -> BiostructvolumeCursor {
-  let result = bio_struct_volume_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_volume_cursor_sum(s : BiostructvolumeCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_struct_volume_view_get(s : BiostructvolumeView, i : Int) -> Double {
 }
 
 pub fn bio_struct_volume_view_set(s : BiostructvolumeView, i : Int, v : Double) -> BiostructvolumeView {
-  let result = bio_struct_volume_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_volume_view_sum(s : BiostructvolumeView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_struct_volume_range_get(s : BiostructvolumeRange, i : Int) -> Double 
 }
 
 pub fn bio_struct_volume_range_set(s : BiostructvolumeRange, i : Int, v : Double) -> BiostructvolumeRange {
-  let result = bio_struct_volume_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_volume_range_sum(s : BiostructvolumeRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_struct_volume_slice_get(s : BiostructvolumeSlice, i : Int) -> Double 
 }
 
 pub fn bio_struct_volume_slice_set(s : BiostructvolumeSlice, i : Int, v : Double) -> BiostructvolumeSlice {
-  let result = bio_struct_volume_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_volume_slice_sum(s : BiostructvolumeSlice) -> Double { @_common.sum(s.data) }

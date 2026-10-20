@@ -107,23 +107,15 @@ pub fn graph_connect_biconnect_series_std(s : GraphconnectbiconnectSeries) -> Do
 pub fn graph_connect_biconnect_series_median(s : GraphconnectbiconnectSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_connect_biconnect_series_scale(s : GraphconnectbiconnectSeries, f : Double) -> GraphconnectbiconnectSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_connect_biconnect_series_add(a : GraphconnectbiconnectSeries, b : GraphconnectbiconnectSeries) -> GraphconnectbiconnectSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_connect_biconnect_series_sub(a : GraphconnectbiconnectSeries, b : GraphconnectbiconnectSeries) -> GraphconnectbiconnectSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_connect_biconnect_series_normalize(s : GraphconnectbiconnectSeries) -> GraphconnectbiconnectSeries {
@@ -254,22 +246,16 @@ pub fn graph_connect_biconnect_vector_zero(dim : Int) -> GraphconnectbiconnectVe
 
 pub fn graph_connect_biconnect_vector_add(a : GraphconnectbiconnectVector, b : GraphconnectbiconnectVector) -> GraphconnectbiconnectVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_connect_biconnect_vector_sub(a : GraphconnectbiconnectVector, b : GraphconnectbiconnectVector) -> GraphconnectbiconnectVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_connect_biconnect_vector_scale(v : GraphconnectbiconnectVector, s : Double) -> GraphconnectbiconnectVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_connect_biconnect_vector_dot(a : GraphconnectbiconnectVector, b : GraphconnectbiconnectVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_connect_biconnect_frame_get(s : GraphconnectbiconnectFrame, i : Int
 }
 
 pub fn graph_connect_biconnect_frame_set(s : GraphconnectbiconnectFrame, i : Int, v : Double) -> GraphconnectbiconnectFrame {
-  let result = graph_connect_biconnect_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_biconnect_frame_sum(s : GraphconnectbiconnectFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_connect_biconnect_table_get(s : GraphconnectbiconnectTable, i : Int
 }
 
 pub fn graph_connect_biconnect_table_set(s : GraphconnectbiconnectTable, i : Int, v : Double) -> GraphconnectbiconnectTable {
-  let result = graph_connect_biconnect_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_biconnect_table_sum(s : GraphconnectbiconnectTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_connect_biconnect_graphn_get(s : GraphconnectbiconnectGraphN, i : I
 }
 
 pub fn graph_connect_biconnect_graphn_set(s : GraphconnectbiconnectGraphN, i : Int, v : Double) -> GraphconnectbiconnectGraphN {
-  let result = graph_connect_biconnect_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_biconnect_graphn_sum(s : GraphconnectbiconnectGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_connect_biconnect_node_get(s : GraphconnectbiconnectNode, i : Int) 
 }
 
 pub fn graph_connect_biconnect_node_set(s : GraphconnectbiconnectNode, i : Int, v : Double) -> GraphconnectbiconnectNode {
-  let result = graph_connect_biconnect_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_biconnect_node_sum(s : GraphconnectbiconnectNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_connect_biconnect_edge_get(s : GraphconnectbiconnectEdge, i : Int) 
 }
 
 pub fn graph_connect_biconnect_edge_set(s : GraphconnectbiconnectEdge, i : Int, v : Double) -> GraphconnectbiconnectEdge {
-  let result = graph_connect_biconnect_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_biconnect_edge_sum(s : GraphconnectbiconnectEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_connect_biconnect_path_get(s : GraphconnectbiconnectPath, i : Int) 
 }
 
 pub fn graph_connect_biconnect_path_set(s : GraphconnectbiconnectPath, i : Int, v : Double) -> GraphconnectbiconnectPath {
-  let result = graph_connect_biconnect_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_biconnect_path_sum(s : GraphconnectbiconnectPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_connect_biconnect_cluster_get(s : GraphconnectbiconnectCluster, i :
 }
 
 pub fn graph_connect_biconnect_cluster_set(s : GraphconnectbiconnectCluster, i : Int, v : Double) -> GraphconnectbiconnectCluster {
-  let result = graph_connect_biconnect_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_biconnect_cluster_sum(s : GraphconnectbiconnectCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_connect_biconnect_model_get(s : GraphconnectbiconnectModel, i : Int
 }
 
 pub fn graph_connect_biconnect_model_set(s : GraphconnectbiconnectModel, i : Int, v : Double) -> GraphconnectbiconnectModel {
-  let result = graph_connect_biconnect_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_biconnect_model_sum(s : GraphconnectbiconnectModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_connect_biconnect_layer_get(s : GraphconnectbiconnectLayer, i : Int
 }
 
 pub fn graph_connect_biconnect_layer_set(s : GraphconnectbiconnectLayer, i : Int, v : Double) -> GraphconnectbiconnectLayer {
-  let result = graph_connect_biconnect_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_biconnect_layer_sum(s : GraphconnectbiconnectLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_connect_biconnect_buffer_get(s : GraphconnectbiconnectBuffer, i : I
 }
 
 pub fn graph_connect_biconnect_buffer_set(s : GraphconnectbiconnectBuffer, i : Int, v : Double) -> GraphconnectbiconnectBuffer {
-  let result = graph_connect_biconnect_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_biconnect_buffer_sum(s : GraphconnectbiconnectBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_connect_biconnect_cursor_get(s : GraphconnectbiconnectCursor, i : I
 }
 
 pub fn graph_connect_biconnect_cursor_set(s : GraphconnectbiconnectCursor, i : Int, v : Double) -> GraphconnectbiconnectCursor {
-  let result = graph_connect_biconnect_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_biconnect_cursor_sum(s : GraphconnectbiconnectCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_connect_biconnect_view_get(s : GraphconnectbiconnectView, i : Int) 
 }
 
 pub fn graph_connect_biconnect_view_set(s : GraphconnectbiconnectView, i : Int, v : Double) -> GraphconnectbiconnectView {
-  let result = graph_connect_biconnect_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_biconnect_view_sum(s : GraphconnectbiconnectView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_connect_biconnect_range_get(s : GraphconnectbiconnectRange, i : Int
 }
 
 pub fn graph_connect_biconnect_range_set(s : GraphconnectbiconnectRange, i : Int, v : Double) -> GraphconnectbiconnectRange {
-  let result = graph_connect_biconnect_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_biconnect_range_sum(s : GraphconnectbiconnectRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_connect_biconnect_slice_get(s : GraphconnectbiconnectSlice, i : Int
 }
 
 pub fn graph_connect_biconnect_slice_set(s : GraphconnectbiconnectSlice, i : Int, v : Double) -> GraphconnectbiconnectSlice {
-  let result = graph_connect_biconnect_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_biconnect_slice_sum(s : GraphconnectbiconnectSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn math_kkt_conditions_series_std(s : MathkktconditionsSeries) -> Double { @
 pub fn math_kkt_conditions_series_median(s : MathkktconditionsSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_kkt_conditions_series_scale(s : MathkktconditionsSeries, f : Double) -> MathkktconditionsSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_kkt_conditions_series_add(a : MathkktconditionsSeries, b : MathkktconditionsSeries) -> MathkktconditionsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_kkt_conditions_series_sub(a : MathkktconditionsSeries, b : MathkktconditionsSeries) -> MathkktconditionsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_kkt_conditions_series_normalize(s : MathkktconditionsSeries) -> MathkktconditionsSeries {
@@ -254,22 +246,16 @@ pub fn math_kkt_conditions_vector_zero(dim : Int) -> MathkktconditionsVector {
 
 pub fn math_kkt_conditions_vector_add(a : MathkktconditionsVector, b : MathkktconditionsVector) -> MathkktconditionsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_kkt_conditions_vector_sub(a : MathkktconditionsVector, b : MathkktconditionsVector) -> MathkktconditionsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_kkt_conditions_vector_scale(v : MathkktconditionsVector, s : Double) -> MathkktconditionsVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_kkt_conditions_vector_dot(a : MathkktconditionsVector, b : MathkktconditionsVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_kkt_conditions_frame_get(s : MathkktconditionsFrame, i : Int) -> Dou
 }
 
 pub fn math_kkt_conditions_frame_set(s : MathkktconditionsFrame, i : Int, v : Double) -> MathkktconditionsFrame {
-  let result = math_kkt_conditions_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_kkt_conditions_frame_sum(s : MathkktconditionsFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_kkt_conditions_table_get(s : MathkktconditionsTable, i : Int) -> Dou
 }
 
 pub fn math_kkt_conditions_table_set(s : MathkktconditionsTable, i : Int, v : Double) -> MathkktconditionsTable {
-  let result = math_kkt_conditions_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_kkt_conditions_table_sum(s : MathkktconditionsTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_kkt_conditions_graphn_get(s : MathkktconditionsGraphN, i : Int) -> D
 }
 
 pub fn math_kkt_conditions_graphn_set(s : MathkktconditionsGraphN, i : Int, v : Double) -> MathkktconditionsGraphN {
-  let result = math_kkt_conditions_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_kkt_conditions_graphn_sum(s : MathkktconditionsGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_kkt_conditions_node_get(s : MathkktconditionsNode, i : Int) -> Doubl
 }
 
 pub fn math_kkt_conditions_node_set(s : MathkktconditionsNode, i : Int, v : Double) -> MathkktconditionsNode {
-  let result = math_kkt_conditions_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_kkt_conditions_node_sum(s : MathkktconditionsNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_kkt_conditions_edge_get(s : MathkktconditionsEdge, i : Int) -> Doubl
 }
 
 pub fn math_kkt_conditions_edge_set(s : MathkktconditionsEdge, i : Int, v : Double) -> MathkktconditionsEdge {
-  let result = math_kkt_conditions_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_kkt_conditions_edge_sum(s : MathkktconditionsEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_kkt_conditions_path_get(s : MathkktconditionsPath, i : Int) -> Doubl
 }
 
 pub fn math_kkt_conditions_path_set(s : MathkktconditionsPath, i : Int, v : Double) -> MathkktconditionsPath {
-  let result = math_kkt_conditions_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_kkt_conditions_path_sum(s : MathkktconditionsPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_kkt_conditions_cluster_get(s : MathkktconditionsCluster, i : Int) ->
 }
 
 pub fn math_kkt_conditions_cluster_set(s : MathkktconditionsCluster, i : Int, v : Double) -> MathkktconditionsCluster {
-  let result = math_kkt_conditions_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_kkt_conditions_cluster_sum(s : MathkktconditionsCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_kkt_conditions_model_get(s : MathkktconditionsModel, i : Int) -> Dou
 }
 
 pub fn math_kkt_conditions_model_set(s : MathkktconditionsModel, i : Int, v : Double) -> MathkktconditionsModel {
-  let result = math_kkt_conditions_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_kkt_conditions_model_sum(s : MathkktconditionsModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_kkt_conditions_layer_get(s : MathkktconditionsLayer, i : Int) -> Dou
 }
 
 pub fn math_kkt_conditions_layer_set(s : MathkktconditionsLayer, i : Int, v : Double) -> MathkktconditionsLayer {
-  let result = math_kkt_conditions_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_kkt_conditions_layer_sum(s : MathkktconditionsLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_kkt_conditions_buffer_get(s : MathkktconditionsBuffer, i : Int) -> D
 }
 
 pub fn math_kkt_conditions_buffer_set(s : MathkktconditionsBuffer, i : Int, v : Double) -> MathkktconditionsBuffer {
-  let result = math_kkt_conditions_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_kkt_conditions_buffer_sum(s : MathkktconditionsBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_kkt_conditions_cursor_get(s : MathkktconditionsCursor, i : Int) -> D
 }
 
 pub fn math_kkt_conditions_cursor_set(s : MathkktconditionsCursor, i : Int, v : Double) -> MathkktconditionsCursor {
-  let result = math_kkt_conditions_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_kkt_conditions_cursor_sum(s : MathkktconditionsCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_kkt_conditions_view_get(s : MathkktconditionsView, i : Int) -> Doubl
 }
 
 pub fn math_kkt_conditions_view_set(s : MathkktconditionsView, i : Int, v : Double) -> MathkktconditionsView {
-  let result = math_kkt_conditions_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_kkt_conditions_view_sum(s : MathkktconditionsView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_kkt_conditions_range_get(s : MathkktconditionsRange, i : Int) -> Dou
 }
 
 pub fn math_kkt_conditions_range_set(s : MathkktconditionsRange, i : Int, v : Double) -> MathkktconditionsRange {
-  let result = math_kkt_conditions_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_kkt_conditions_range_sum(s : MathkktconditionsRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_kkt_conditions_slice_get(s : MathkktconditionsSlice, i : Int) -> Dou
 }
 
 pub fn math_kkt_conditions_slice_set(s : MathkktconditionsSlice, i : Int, v : Double) -> MathkktconditionsSlice {
-  let result = math_kkt_conditions_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_kkt_conditions_slice_sum(s : MathkktconditionsSlice) -> Double { @_common.sum(s.data) }

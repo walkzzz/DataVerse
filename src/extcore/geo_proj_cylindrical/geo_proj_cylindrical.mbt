@@ -107,23 +107,15 @@ pub fn geo_proj_cylindrical_series_std(s : GeoprojcylindricalSeries) -> Double {
 pub fn geo_proj_cylindrical_series_median(s : GeoprojcylindricalSeries) -> Double { @_common.median(s.vals) }
 
 pub fn geo_proj_cylindrical_series_scale(s : GeoprojcylindricalSeries, f : Double) -> GeoprojcylindricalSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn geo_proj_cylindrical_series_add(a : GeoprojcylindricalSeries, b : GeoprojcylindricalSeries) -> GeoprojcylindricalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn geo_proj_cylindrical_series_sub(a : GeoprojcylindricalSeries, b : GeoprojcylindricalSeries) -> GeoprojcylindricalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn geo_proj_cylindrical_series_normalize(s : GeoprojcylindricalSeries) -> GeoprojcylindricalSeries {
@@ -254,22 +246,16 @@ pub fn geo_proj_cylindrical_vector_zero(dim : Int) -> GeoprojcylindricalVector {
 
 pub fn geo_proj_cylindrical_vector_add(a : GeoprojcylindricalVector, b : GeoprojcylindricalVector) -> GeoprojcylindricalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_proj_cylindrical_vector_sub(a : GeoprojcylindricalVector, b : GeoprojcylindricalVector) -> GeoprojcylindricalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_proj_cylindrical_vector_scale(v : GeoprojcylindricalVector, s : Double) -> GeoprojcylindricalVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn geo_proj_cylindrical_vector_dot(a : GeoprojcylindricalVector, b : GeoprojcylindricalVector) -> Double {
@@ -372,10 +358,9 @@ pub fn geo_proj_cylindrical_frame_get(s : GeoprojcylindricalFrame, i : Int) -> D
 }
 
 pub fn geo_proj_cylindrical_frame_set(s : GeoprojcylindricalFrame, i : Int, v : Double) -> GeoprojcylindricalFrame {
-  let result = geo_proj_cylindrical_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_cylindrical_frame_sum(s : GeoprojcylindricalFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn geo_proj_cylindrical_table_get(s : GeoprojcylindricalTable, i : Int) -> D
 }
 
 pub fn geo_proj_cylindrical_table_set(s : GeoprojcylindricalTable, i : Int, v : Double) -> GeoprojcylindricalTable {
-  let result = geo_proj_cylindrical_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_cylindrical_table_sum(s : GeoprojcylindricalTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn geo_proj_cylindrical_graphn_get(s : GeoprojcylindricalGraphN, i : Int) ->
 }
 
 pub fn geo_proj_cylindrical_graphn_set(s : GeoprojcylindricalGraphN, i : Int, v : Double) -> GeoprojcylindricalGraphN {
-  let result = geo_proj_cylindrical_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_cylindrical_graphn_sum(s : GeoprojcylindricalGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn geo_proj_cylindrical_node_get(s : GeoprojcylindricalNode, i : Int) -> Dou
 }
 
 pub fn geo_proj_cylindrical_node_set(s : GeoprojcylindricalNode, i : Int, v : Double) -> GeoprojcylindricalNode {
-  let result = geo_proj_cylindrical_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_cylindrical_node_sum(s : GeoprojcylindricalNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn geo_proj_cylindrical_edge_get(s : GeoprojcylindricalEdge, i : Int) -> Dou
 }
 
 pub fn geo_proj_cylindrical_edge_set(s : GeoprojcylindricalEdge, i : Int, v : Double) -> GeoprojcylindricalEdge {
-  let result = geo_proj_cylindrical_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_cylindrical_edge_sum(s : GeoprojcylindricalEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn geo_proj_cylindrical_path_get(s : GeoprojcylindricalPath, i : Int) -> Dou
 }
 
 pub fn geo_proj_cylindrical_path_set(s : GeoprojcylindricalPath, i : Int, v : Double) -> GeoprojcylindricalPath {
-  let result = geo_proj_cylindrical_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_cylindrical_path_sum(s : GeoprojcylindricalPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn geo_proj_cylindrical_cluster_get(s : GeoprojcylindricalCluster, i : Int) 
 }
 
 pub fn geo_proj_cylindrical_cluster_set(s : GeoprojcylindricalCluster, i : Int, v : Double) -> GeoprojcylindricalCluster {
-  let result = geo_proj_cylindrical_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_cylindrical_cluster_sum(s : GeoprojcylindricalCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn geo_proj_cylindrical_model_get(s : GeoprojcylindricalModel, i : Int) -> D
 }
 
 pub fn geo_proj_cylindrical_model_set(s : GeoprojcylindricalModel, i : Int, v : Double) -> GeoprojcylindricalModel {
-  let result = geo_proj_cylindrical_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_cylindrical_model_sum(s : GeoprojcylindricalModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn geo_proj_cylindrical_layer_get(s : GeoprojcylindricalLayer, i : Int) -> D
 }
 
 pub fn geo_proj_cylindrical_layer_set(s : GeoprojcylindricalLayer, i : Int, v : Double) -> GeoprojcylindricalLayer {
-  let result = geo_proj_cylindrical_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_cylindrical_layer_sum(s : GeoprojcylindricalLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn geo_proj_cylindrical_buffer_get(s : GeoprojcylindricalBuffer, i : Int) ->
 }
 
 pub fn geo_proj_cylindrical_buffer_set(s : GeoprojcylindricalBuffer, i : Int, v : Double) -> GeoprojcylindricalBuffer {
-  let result = geo_proj_cylindrical_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_cylindrical_buffer_sum(s : GeoprojcylindricalBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn geo_proj_cylindrical_cursor_get(s : GeoprojcylindricalCursor, i : Int) ->
 }
 
 pub fn geo_proj_cylindrical_cursor_set(s : GeoprojcylindricalCursor, i : Int, v : Double) -> GeoprojcylindricalCursor {
-  let result = geo_proj_cylindrical_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_cylindrical_cursor_sum(s : GeoprojcylindricalCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn geo_proj_cylindrical_view_get(s : GeoprojcylindricalView, i : Int) -> Dou
 }
 
 pub fn geo_proj_cylindrical_view_set(s : GeoprojcylindricalView, i : Int, v : Double) -> GeoprojcylindricalView {
-  let result = geo_proj_cylindrical_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_cylindrical_view_sum(s : GeoprojcylindricalView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn geo_proj_cylindrical_range_get(s : GeoprojcylindricalRange, i : Int) -> D
 }
 
 pub fn geo_proj_cylindrical_range_set(s : GeoprojcylindricalRange, i : Int, v : Double) -> GeoprojcylindricalRange {
-  let result = geo_proj_cylindrical_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_cylindrical_range_sum(s : GeoprojcylindricalRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn geo_proj_cylindrical_slice_get(s : GeoprojcylindricalSlice, i : Int) -> D
 }
 
 pub fn geo_proj_cylindrical_slice_set(s : GeoprojcylindricalSlice, i : Int, v : Double) -> GeoprojcylindricalSlice {
-  let result = geo_proj_cylindrical_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_cylindrical_slice_sum(s : GeoprojcylindricalSlice) -> Double { @_common.sum(s.data) }

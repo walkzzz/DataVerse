@@ -107,23 +107,15 @@ pub fn math_svd_series_std(s : MathsvdSeries) -> Double { @_common.std(s.vals) }
 pub fn math_svd_series_median(s : MathsvdSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_svd_series_scale(s : MathsvdSeries, f : Double) -> MathsvdSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_svd_series_add(a : MathsvdSeries, b : MathsvdSeries) -> MathsvdSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_svd_series_sub(a : MathsvdSeries, b : MathsvdSeries) -> MathsvdSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_svd_series_normalize(s : MathsvdSeries) -> MathsvdSeries {
@@ -254,22 +246,16 @@ pub fn math_svd_vector_zero(dim : Int) -> MathsvdVector {
 
 pub fn math_svd_vector_add(a : MathsvdVector, b : MathsvdVector) -> MathsvdVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_svd_vector_sub(a : MathsvdVector, b : MathsvdVector) -> MathsvdVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_svd_vector_scale(v : MathsvdVector, s : Double) -> MathsvdVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_svd_vector_dot(a : MathsvdVector, b : MathsvdVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_svd_frame_get(s : MathsvdFrame, i : Int) -> Double {
 }
 
 pub fn math_svd_frame_set(s : MathsvdFrame, i : Int, v : Double) -> MathsvdFrame {
-  let result = math_svd_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_svd_frame_sum(s : MathsvdFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_svd_table_get(s : MathsvdTable, i : Int) -> Double {
 }
 
 pub fn math_svd_table_set(s : MathsvdTable, i : Int, v : Double) -> MathsvdTable {
-  let result = math_svd_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_svd_table_sum(s : MathsvdTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_svd_graphn_get(s : MathsvdGraphN, i : Int) -> Double {
 }
 
 pub fn math_svd_graphn_set(s : MathsvdGraphN, i : Int, v : Double) -> MathsvdGraphN {
-  let result = math_svd_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_svd_graphn_sum(s : MathsvdGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_svd_node_get(s : MathsvdNode, i : Int) -> Double {
 }
 
 pub fn math_svd_node_set(s : MathsvdNode, i : Int, v : Double) -> MathsvdNode {
-  let result = math_svd_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_svd_node_sum(s : MathsvdNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_svd_edge_get(s : MathsvdEdge, i : Int) -> Double {
 }
 
 pub fn math_svd_edge_set(s : MathsvdEdge, i : Int, v : Double) -> MathsvdEdge {
-  let result = math_svd_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_svd_edge_sum(s : MathsvdEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_svd_path_get(s : MathsvdPath, i : Int) -> Double {
 }
 
 pub fn math_svd_path_set(s : MathsvdPath, i : Int, v : Double) -> MathsvdPath {
-  let result = math_svd_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_svd_path_sum(s : MathsvdPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_svd_cluster_get(s : MathsvdCluster, i : Int) -> Double {
 }
 
 pub fn math_svd_cluster_set(s : MathsvdCluster, i : Int, v : Double) -> MathsvdCluster {
-  let result = math_svd_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_svd_cluster_sum(s : MathsvdCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_svd_model_get(s : MathsvdModel, i : Int) -> Double {
 }
 
 pub fn math_svd_model_set(s : MathsvdModel, i : Int, v : Double) -> MathsvdModel {
-  let result = math_svd_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_svd_model_sum(s : MathsvdModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_svd_layer_get(s : MathsvdLayer, i : Int) -> Double {
 }
 
 pub fn math_svd_layer_set(s : MathsvdLayer, i : Int, v : Double) -> MathsvdLayer {
-  let result = math_svd_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_svd_layer_sum(s : MathsvdLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_svd_buffer_get(s : MathsvdBuffer, i : Int) -> Double {
 }
 
 pub fn math_svd_buffer_set(s : MathsvdBuffer, i : Int, v : Double) -> MathsvdBuffer {
-  let result = math_svd_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_svd_buffer_sum(s : MathsvdBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_svd_cursor_get(s : MathsvdCursor, i : Int) -> Double {
 }
 
 pub fn math_svd_cursor_set(s : MathsvdCursor, i : Int, v : Double) -> MathsvdCursor {
-  let result = math_svd_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_svd_cursor_sum(s : MathsvdCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_svd_view_get(s : MathsvdView, i : Int) -> Double {
 }
 
 pub fn math_svd_view_set(s : MathsvdView, i : Int, v : Double) -> MathsvdView {
-  let result = math_svd_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_svd_view_sum(s : MathsvdView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_svd_range_get(s : MathsvdRange, i : Int) -> Double {
 }
 
 pub fn math_svd_range_set(s : MathsvdRange, i : Int, v : Double) -> MathsvdRange {
-  let result = math_svd_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_svd_range_sum(s : MathsvdRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_svd_slice_get(s : MathsvdSlice, i : Int) -> Double {
 }
 
 pub fn math_svd_slice_set(s : MathsvdSlice, i : Int, v : Double) -> MathsvdSlice {
-  let result = math_svd_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_svd_slice_sum(s : MathsvdSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn stats_dist_exponential_series_std(s : StatsdistexponentialSeries) -> Doub
 pub fn stats_dist_exponential_series_median(s : StatsdistexponentialSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_dist_exponential_series_scale(s : StatsdistexponentialSeries, f : Double) -> StatsdistexponentialSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_dist_exponential_series_add(a : StatsdistexponentialSeries, b : StatsdistexponentialSeries) -> StatsdistexponentialSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_dist_exponential_series_sub(a : StatsdistexponentialSeries, b : StatsdistexponentialSeries) -> StatsdistexponentialSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_dist_exponential_series_normalize(s : StatsdistexponentialSeries) -> StatsdistexponentialSeries {
@@ -254,22 +246,16 @@ pub fn stats_dist_exponential_vector_zero(dim : Int) -> StatsdistexponentialVect
 
 pub fn stats_dist_exponential_vector_add(a : StatsdistexponentialVector, b : StatsdistexponentialVector) -> StatsdistexponentialVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_dist_exponential_vector_sub(a : StatsdistexponentialVector, b : StatsdistexponentialVector) -> StatsdistexponentialVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_dist_exponential_vector_scale(v : StatsdistexponentialVector, s : Double) -> StatsdistexponentialVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_dist_exponential_vector_dot(a : StatsdistexponentialVector, b : StatsdistexponentialVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_dist_exponential_frame_get(s : StatsdistexponentialFrame, i : Int) 
 }
 
 pub fn stats_dist_exponential_frame_set(s : StatsdistexponentialFrame, i : Int, v : Double) -> StatsdistexponentialFrame {
-  let result = stats_dist_exponential_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_frame_sum(s : StatsdistexponentialFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_dist_exponential_table_get(s : StatsdistexponentialTable, i : Int) 
 }
 
 pub fn stats_dist_exponential_table_set(s : StatsdistexponentialTable, i : Int, v : Double) -> StatsdistexponentialTable {
-  let result = stats_dist_exponential_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_table_sum(s : StatsdistexponentialTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_dist_exponential_graphn_get(s : StatsdistexponentialGraphN, i : Int
 }
 
 pub fn stats_dist_exponential_graphn_set(s : StatsdistexponentialGraphN, i : Int, v : Double) -> StatsdistexponentialGraphN {
-  let result = stats_dist_exponential_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_graphn_sum(s : StatsdistexponentialGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_dist_exponential_node_get(s : StatsdistexponentialNode, i : Int) ->
 }
 
 pub fn stats_dist_exponential_node_set(s : StatsdistexponentialNode, i : Int, v : Double) -> StatsdistexponentialNode {
-  let result = stats_dist_exponential_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_node_sum(s : StatsdistexponentialNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_dist_exponential_edge_get(s : StatsdistexponentialEdge, i : Int) ->
 }
 
 pub fn stats_dist_exponential_edge_set(s : StatsdistexponentialEdge, i : Int, v : Double) -> StatsdistexponentialEdge {
-  let result = stats_dist_exponential_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_edge_sum(s : StatsdistexponentialEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_dist_exponential_path_get(s : StatsdistexponentialPath, i : Int) ->
 }
 
 pub fn stats_dist_exponential_path_set(s : StatsdistexponentialPath, i : Int, v : Double) -> StatsdistexponentialPath {
-  let result = stats_dist_exponential_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_path_sum(s : StatsdistexponentialPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_dist_exponential_cluster_get(s : StatsdistexponentialCluster, i : I
 }
 
 pub fn stats_dist_exponential_cluster_set(s : StatsdistexponentialCluster, i : Int, v : Double) -> StatsdistexponentialCluster {
-  let result = stats_dist_exponential_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_cluster_sum(s : StatsdistexponentialCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_dist_exponential_model_get(s : StatsdistexponentialModel, i : Int) 
 }
 
 pub fn stats_dist_exponential_model_set(s : StatsdistexponentialModel, i : Int, v : Double) -> StatsdistexponentialModel {
-  let result = stats_dist_exponential_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_model_sum(s : StatsdistexponentialModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_dist_exponential_layer_get(s : StatsdistexponentialLayer, i : Int) 
 }
 
 pub fn stats_dist_exponential_layer_set(s : StatsdistexponentialLayer, i : Int, v : Double) -> StatsdistexponentialLayer {
-  let result = stats_dist_exponential_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_layer_sum(s : StatsdistexponentialLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_dist_exponential_buffer_get(s : StatsdistexponentialBuffer, i : Int
 }
 
 pub fn stats_dist_exponential_buffer_set(s : StatsdistexponentialBuffer, i : Int, v : Double) -> StatsdistexponentialBuffer {
-  let result = stats_dist_exponential_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_buffer_sum(s : StatsdistexponentialBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_dist_exponential_cursor_get(s : StatsdistexponentialCursor, i : Int
 }
 
 pub fn stats_dist_exponential_cursor_set(s : StatsdistexponentialCursor, i : Int, v : Double) -> StatsdistexponentialCursor {
-  let result = stats_dist_exponential_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_cursor_sum(s : StatsdistexponentialCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_dist_exponential_view_get(s : StatsdistexponentialView, i : Int) ->
 }
 
 pub fn stats_dist_exponential_view_set(s : StatsdistexponentialView, i : Int, v : Double) -> StatsdistexponentialView {
-  let result = stats_dist_exponential_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_view_sum(s : StatsdistexponentialView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_dist_exponential_range_get(s : StatsdistexponentialRange, i : Int) 
 }
 
 pub fn stats_dist_exponential_range_set(s : StatsdistexponentialRange, i : Int, v : Double) -> StatsdistexponentialRange {
-  let result = stats_dist_exponential_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_range_sum(s : StatsdistexponentialRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_dist_exponential_slice_get(s : StatsdistexponentialSlice, i : Int) 
 }
 
 pub fn stats_dist_exponential_slice_set(s : StatsdistexponentialSlice, i : Int, v : Double) -> StatsdistexponentialSlice {
-  let result = stats_dist_exponential_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_exponential_slice_sum(s : StatsdistexponentialSlice) -> Double { @_common.sum(s.data) }

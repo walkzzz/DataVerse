@@ -107,23 +107,15 @@ pub fn signal_window_blackman_series_std(s : SignalwindowblackmanSeries) -> Doub
 pub fn signal_window_blackman_series_median(s : SignalwindowblackmanSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_window_blackman_series_scale(s : SignalwindowblackmanSeries, f : Double) -> SignalwindowblackmanSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_window_blackman_series_add(a : SignalwindowblackmanSeries, b : SignalwindowblackmanSeries) -> SignalwindowblackmanSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_window_blackman_series_sub(a : SignalwindowblackmanSeries, b : SignalwindowblackmanSeries) -> SignalwindowblackmanSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_window_blackman_series_normalize(s : SignalwindowblackmanSeries) -> SignalwindowblackmanSeries {
@@ -254,22 +246,16 @@ pub fn signal_window_blackman_vector_zero(dim : Int) -> SignalwindowblackmanVect
 
 pub fn signal_window_blackman_vector_add(a : SignalwindowblackmanVector, b : SignalwindowblackmanVector) -> SignalwindowblackmanVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_window_blackman_vector_sub(a : SignalwindowblackmanVector, b : SignalwindowblackmanVector) -> SignalwindowblackmanVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_window_blackman_vector_scale(v : SignalwindowblackmanVector, s : Double) -> SignalwindowblackmanVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_window_blackman_vector_dot(a : SignalwindowblackmanVector, b : SignalwindowblackmanVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_window_blackman_frame_get(s : SignalwindowblackmanFrame, i : Int) 
 }
 
 pub fn signal_window_blackman_frame_set(s : SignalwindowblackmanFrame, i : Int, v : Double) -> SignalwindowblackmanFrame {
-  let result = signal_window_blackman_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_frame_sum(s : SignalwindowblackmanFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_window_blackman_table_get(s : SignalwindowblackmanTable, i : Int) 
 }
 
 pub fn signal_window_blackman_table_set(s : SignalwindowblackmanTable, i : Int, v : Double) -> SignalwindowblackmanTable {
-  let result = signal_window_blackman_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_table_sum(s : SignalwindowblackmanTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_window_blackman_graphn_get(s : SignalwindowblackmanGraphN, i : Int
 }
 
 pub fn signal_window_blackman_graphn_set(s : SignalwindowblackmanGraphN, i : Int, v : Double) -> SignalwindowblackmanGraphN {
-  let result = signal_window_blackman_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_graphn_sum(s : SignalwindowblackmanGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_window_blackman_node_get(s : SignalwindowblackmanNode, i : Int) ->
 }
 
 pub fn signal_window_blackman_node_set(s : SignalwindowblackmanNode, i : Int, v : Double) -> SignalwindowblackmanNode {
-  let result = signal_window_blackman_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_node_sum(s : SignalwindowblackmanNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_window_blackman_edge_get(s : SignalwindowblackmanEdge, i : Int) ->
 }
 
 pub fn signal_window_blackman_edge_set(s : SignalwindowblackmanEdge, i : Int, v : Double) -> SignalwindowblackmanEdge {
-  let result = signal_window_blackman_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_edge_sum(s : SignalwindowblackmanEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_window_blackman_path_get(s : SignalwindowblackmanPath, i : Int) ->
 }
 
 pub fn signal_window_blackman_path_set(s : SignalwindowblackmanPath, i : Int, v : Double) -> SignalwindowblackmanPath {
-  let result = signal_window_blackman_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_path_sum(s : SignalwindowblackmanPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_window_blackman_cluster_get(s : SignalwindowblackmanCluster, i : I
 }
 
 pub fn signal_window_blackman_cluster_set(s : SignalwindowblackmanCluster, i : Int, v : Double) -> SignalwindowblackmanCluster {
-  let result = signal_window_blackman_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_cluster_sum(s : SignalwindowblackmanCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_window_blackman_model_get(s : SignalwindowblackmanModel, i : Int) 
 }
 
 pub fn signal_window_blackman_model_set(s : SignalwindowblackmanModel, i : Int, v : Double) -> SignalwindowblackmanModel {
-  let result = signal_window_blackman_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_model_sum(s : SignalwindowblackmanModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_window_blackman_layer_get(s : SignalwindowblackmanLayer, i : Int) 
 }
 
 pub fn signal_window_blackman_layer_set(s : SignalwindowblackmanLayer, i : Int, v : Double) -> SignalwindowblackmanLayer {
-  let result = signal_window_blackman_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_layer_sum(s : SignalwindowblackmanLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_window_blackman_buffer_get(s : SignalwindowblackmanBuffer, i : Int
 }
 
 pub fn signal_window_blackman_buffer_set(s : SignalwindowblackmanBuffer, i : Int, v : Double) -> SignalwindowblackmanBuffer {
-  let result = signal_window_blackman_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_buffer_sum(s : SignalwindowblackmanBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_window_blackman_cursor_get(s : SignalwindowblackmanCursor, i : Int
 }
 
 pub fn signal_window_blackman_cursor_set(s : SignalwindowblackmanCursor, i : Int, v : Double) -> SignalwindowblackmanCursor {
-  let result = signal_window_blackman_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_cursor_sum(s : SignalwindowblackmanCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_window_blackman_view_get(s : SignalwindowblackmanView, i : Int) ->
 }
 
 pub fn signal_window_blackman_view_set(s : SignalwindowblackmanView, i : Int, v : Double) -> SignalwindowblackmanView {
-  let result = signal_window_blackman_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_view_sum(s : SignalwindowblackmanView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_window_blackman_range_get(s : SignalwindowblackmanRange, i : Int) 
 }
 
 pub fn signal_window_blackman_range_set(s : SignalwindowblackmanRange, i : Int, v : Double) -> SignalwindowblackmanRange {
-  let result = signal_window_blackman_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_range_sum(s : SignalwindowblackmanRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_window_blackman_slice_get(s : SignalwindowblackmanSlice, i : Int) 
 }
 
 pub fn signal_window_blackman_slice_set(s : SignalwindowblackmanSlice, i : Int, v : Double) -> SignalwindowblackmanSlice {
-  let result = signal_window_blackman_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_window_blackman_slice_sum(s : SignalwindowblackmanSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn nlp_tokenize_regex_series_std(s : NlptokenizeregexSeries) -> Double { @_c
 pub fn nlp_tokenize_regex_series_median(s : NlptokenizeregexSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_tokenize_regex_series_scale(s : NlptokenizeregexSeries, f : Double) -> NlptokenizeregexSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_tokenize_regex_series_add(a : NlptokenizeregexSeries, b : NlptokenizeregexSeries) -> NlptokenizeregexSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_tokenize_regex_series_sub(a : NlptokenizeregexSeries, b : NlptokenizeregexSeries) -> NlptokenizeregexSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_tokenize_regex_series_normalize(s : NlptokenizeregexSeries) -> NlptokenizeregexSeries {
@@ -254,22 +246,16 @@ pub fn nlp_tokenize_regex_vector_zero(dim : Int) -> NlptokenizeregexVector {
 
 pub fn nlp_tokenize_regex_vector_add(a : NlptokenizeregexVector, b : NlptokenizeregexVector) -> NlptokenizeregexVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_tokenize_regex_vector_sub(a : NlptokenizeregexVector, b : NlptokenizeregexVector) -> NlptokenizeregexVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_tokenize_regex_vector_scale(v : NlptokenizeregexVector, s : Double) -> NlptokenizeregexVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_tokenize_regex_vector_dot(a : NlptokenizeregexVector, b : NlptokenizeregexVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_tokenize_regex_frame_get(s : NlptokenizeregexFrame, i : Int) -> Doubl
 }
 
 pub fn nlp_tokenize_regex_frame_set(s : NlptokenizeregexFrame, i : Int, v : Double) -> NlptokenizeregexFrame {
-  let result = nlp_tokenize_regex_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_regex_frame_sum(s : NlptokenizeregexFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_tokenize_regex_table_get(s : NlptokenizeregexTable, i : Int) -> Doubl
 }
 
 pub fn nlp_tokenize_regex_table_set(s : NlptokenizeregexTable, i : Int, v : Double) -> NlptokenizeregexTable {
-  let result = nlp_tokenize_regex_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_regex_table_sum(s : NlptokenizeregexTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_tokenize_regex_graphn_get(s : NlptokenizeregexGraphN, i : Int) -> Dou
 }
 
 pub fn nlp_tokenize_regex_graphn_set(s : NlptokenizeregexGraphN, i : Int, v : Double) -> NlptokenizeregexGraphN {
-  let result = nlp_tokenize_regex_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_regex_graphn_sum(s : NlptokenizeregexGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_tokenize_regex_node_get(s : NlptokenizeregexNode, i : Int) -> Double 
 }
 
 pub fn nlp_tokenize_regex_node_set(s : NlptokenizeregexNode, i : Int, v : Double) -> NlptokenizeregexNode {
-  let result = nlp_tokenize_regex_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_regex_node_sum(s : NlptokenizeregexNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_tokenize_regex_edge_get(s : NlptokenizeregexEdge, i : Int) -> Double 
 }
 
 pub fn nlp_tokenize_regex_edge_set(s : NlptokenizeregexEdge, i : Int, v : Double) -> NlptokenizeregexEdge {
-  let result = nlp_tokenize_regex_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_regex_edge_sum(s : NlptokenizeregexEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_tokenize_regex_path_get(s : NlptokenizeregexPath, i : Int) -> Double 
 }
 
 pub fn nlp_tokenize_regex_path_set(s : NlptokenizeregexPath, i : Int, v : Double) -> NlptokenizeregexPath {
-  let result = nlp_tokenize_regex_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_regex_path_sum(s : NlptokenizeregexPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_tokenize_regex_cluster_get(s : NlptokenizeregexCluster, i : Int) -> D
 }
 
 pub fn nlp_tokenize_regex_cluster_set(s : NlptokenizeregexCluster, i : Int, v : Double) -> NlptokenizeregexCluster {
-  let result = nlp_tokenize_regex_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_regex_cluster_sum(s : NlptokenizeregexCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_tokenize_regex_model_get(s : NlptokenizeregexModel, i : Int) -> Doubl
 }
 
 pub fn nlp_tokenize_regex_model_set(s : NlptokenizeregexModel, i : Int, v : Double) -> NlptokenizeregexModel {
-  let result = nlp_tokenize_regex_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_regex_model_sum(s : NlptokenizeregexModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_tokenize_regex_layer_get(s : NlptokenizeregexLayer, i : Int) -> Doubl
 }
 
 pub fn nlp_tokenize_regex_layer_set(s : NlptokenizeregexLayer, i : Int, v : Double) -> NlptokenizeregexLayer {
-  let result = nlp_tokenize_regex_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_regex_layer_sum(s : NlptokenizeregexLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_tokenize_regex_buffer_get(s : NlptokenizeregexBuffer, i : Int) -> Dou
 }
 
 pub fn nlp_tokenize_regex_buffer_set(s : NlptokenizeregexBuffer, i : Int, v : Double) -> NlptokenizeregexBuffer {
-  let result = nlp_tokenize_regex_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_regex_buffer_sum(s : NlptokenizeregexBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_tokenize_regex_cursor_get(s : NlptokenizeregexCursor, i : Int) -> Dou
 }
 
 pub fn nlp_tokenize_regex_cursor_set(s : NlptokenizeregexCursor, i : Int, v : Double) -> NlptokenizeregexCursor {
-  let result = nlp_tokenize_regex_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_regex_cursor_sum(s : NlptokenizeregexCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_tokenize_regex_view_get(s : NlptokenizeregexView, i : Int) -> Double 
 }
 
 pub fn nlp_tokenize_regex_view_set(s : NlptokenizeregexView, i : Int, v : Double) -> NlptokenizeregexView {
-  let result = nlp_tokenize_regex_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_regex_view_sum(s : NlptokenizeregexView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_tokenize_regex_range_get(s : NlptokenizeregexRange, i : Int) -> Doubl
 }
 
 pub fn nlp_tokenize_regex_range_set(s : NlptokenizeregexRange, i : Int, v : Double) -> NlptokenizeregexRange {
-  let result = nlp_tokenize_regex_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_regex_range_sum(s : NlptokenizeregexRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_tokenize_regex_slice_get(s : NlptokenizeregexSlice, i : Int) -> Doubl
 }
 
 pub fn nlp_tokenize_regex_slice_set(s : NlptokenizeregexSlice, i : Int, v : Double) -> NlptokenizeregexSlice {
-  let result = nlp_tokenize_regex_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_regex_slice_sum(s : NlptokenizeregexSlice) -> Double { @_common.sum(s.data) }

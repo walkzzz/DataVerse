@@ -107,23 +107,15 @@ pub fn geo_dist_vincenty_series_std(s : GeodistvincentySeries) -> Double { @_com
 pub fn geo_dist_vincenty_series_median(s : GeodistvincentySeries) -> Double { @_common.median(s.vals) }
 
 pub fn geo_dist_vincenty_series_scale(s : GeodistvincentySeries, f : Double) -> GeodistvincentySeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn geo_dist_vincenty_series_add(a : GeodistvincentySeries, b : GeodistvincentySeries) -> GeodistvincentySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn geo_dist_vincenty_series_sub(a : GeodistvincentySeries, b : GeodistvincentySeries) -> GeodistvincentySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn geo_dist_vincenty_series_normalize(s : GeodistvincentySeries) -> GeodistvincentySeries {
@@ -254,22 +246,16 @@ pub fn geo_dist_vincenty_vector_zero(dim : Int) -> GeodistvincentyVector {
 
 pub fn geo_dist_vincenty_vector_add(a : GeodistvincentyVector, b : GeodistvincentyVector) -> GeodistvincentyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_dist_vincenty_vector_sub(a : GeodistvincentyVector, b : GeodistvincentyVector) -> GeodistvincentyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_dist_vincenty_vector_scale(v : GeodistvincentyVector, s : Double) -> GeodistvincentyVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn geo_dist_vincenty_vector_dot(a : GeodistvincentyVector, b : GeodistvincentyVector) -> Double {
@@ -372,10 +358,9 @@ pub fn geo_dist_vincenty_frame_get(s : GeodistvincentyFrame, i : Int) -> Double 
 }
 
 pub fn geo_dist_vincenty_frame_set(s : GeodistvincentyFrame, i : Int, v : Double) -> GeodistvincentyFrame {
-  let result = geo_dist_vincenty_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_vincenty_frame_sum(s : GeodistvincentyFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn geo_dist_vincenty_table_get(s : GeodistvincentyTable, i : Int) -> Double 
 }
 
 pub fn geo_dist_vincenty_table_set(s : GeodistvincentyTable, i : Int, v : Double) -> GeodistvincentyTable {
-  let result = geo_dist_vincenty_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_vincenty_table_sum(s : GeodistvincentyTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn geo_dist_vincenty_graphn_get(s : GeodistvincentyGraphN, i : Int) -> Doubl
 }
 
 pub fn geo_dist_vincenty_graphn_set(s : GeodistvincentyGraphN, i : Int, v : Double) -> GeodistvincentyGraphN {
-  let result = geo_dist_vincenty_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_vincenty_graphn_sum(s : GeodistvincentyGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn geo_dist_vincenty_node_get(s : GeodistvincentyNode, i : Int) -> Double {
 }
 
 pub fn geo_dist_vincenty_node_set(s : GeodistvincentyNode, i : Int, v : Double) -> GeodistvincentyNode {
-  let result = geo_dist_vincenty_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_vincenty_node_sum(s : GeodistvincentyNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn geo_dist_vincenty_edge_get(s : GeodistvincentyEdge, i : Int) -> Double {
 }
 
 pub fn geo_dist_vincenty_edge_set(s : GeodistvincentyEdge, i : Int, v : Double) -> GeodistvincentyEdge {
-  let result = geo_dist_vincenty_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_vincenty_edge_sum(s : GeodistvincentyEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn geo_dist_vincenty_path_get(s : GeodistvincentyPath, i : Int) -> Double {
 }
 
 pub fn geo_dist_vincenty_path_set(s : GeodistvincentyPath, i : Int, v : Double) -> GeodistvincentyPath {
-  let result = geo_dist_vincenty_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_vincenty_path_sum(s : GeodistvincentyPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn geo_dist_vincenty_cluster_get(s : GeodistvincentyCluster, i : Int) -> Dou
 }
 
 pub fn geo_dist_vincenty_cluster_set(s : GeodistvincentyCluster, i : Int, v : Double) -> GeodistvincentyCluster {
-  let result = geo_dist_vincenty_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_vincenty_cluster_sum(s : GeodistvincentyCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn geo_dist_vincenty_model_get(s : GeodistvincentyModel, i : Int) -> Double 
 }
 
 pub fn geo_dist_vincenty_model_set(s : GeodistvincentyModel, i : Int, v : Double) -> GeodistvincentyModel {
-  let result = geo_dist_vincenty_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_vincenty_model_sum(s : GeodistvincentyModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn geo_dist_vincenty_layer_get(s : GeodistvincentyLayer, i : Int) -> Double 
 }
 
 pub fn geo_dist_vincenty_layer_set(s : GeodistvincentyLayer, i : Int, v : Double) -> GeodistvincentyLayer {
-  let result = geo_dist_vincenty_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_vincenty_layer_sum(s : GeodistvincentyLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn geo_dist_vincenty_buffer_get(s : GeodistvincentyBuffer, i : Int) -> Doubl
 }
 
 pub fn geo_dist_vincenty_buffer_set(s : GeodistvincentyBuffer, i : Int, v : Double) -> GeodistvincentyBuffer {
-  let result = geo_dist_vincenty_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_vincenty_buffer_sum(s : GeodistvincentyBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn geo_dist_vincenty_cursor_get(s : GeodistvincentyCursor, i : Int) -> Doubl
 }
 
 pub fn geo_dist_vincenty_cursor_set(s : GeodistvincentyCursor, i : Int, v : Double) -> GeodistvincentyCursor {
-  let result = geo_dist_vincenty_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_vincenty_cursor_sum(s : GeodistvincentyCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn geo_dist_vincenty_view_get(s : GeodistvincentyView, i : Int) -> Double {
 }
 
 pub fn geo_dist_vincenty_view_set(s : GeodistvincentyView, i : Int, v : Double) -> GeodistvincentyView {
-  let result = geo_dist_vincenty_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_vincenty_view_sum(s : GeodistvincentyView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn geo_dist_vincenty_range_get(s : GeodistvincentyRange, i : Int) -> Double 
 }
 
 pub fn geo_dist_vincenty_range_set(s : GeodistvincentyRange, i : Int, v : Double) -> GeodistvincentyRange {
-  let result = geo_dist_vincenty_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_vincenty_range_sum(s : GeodistvincentyRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn geo_dist_vincenty_slice_get(s : GeodistvincentySlice, i : Int) -> Double 
 }
 
 pub fn geo_dist_vincenty_slice_set(s : GeodistvincentySlice, i : Int, v : Double) -> GeodistvincentySlice {
-  let result = geo_dist_vincenty_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_dist_vincenty_slice_sum(s : GeodistvincentySlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn bio_seq_align_consistency_series_std(s : BioseqalignconsistencySeries) ->
 pub fn bio_seq_align_consistency_series_median(s : BioseqalignconsistencySeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_seq_align_consistency_series_scale(s : BioseqalignconsistencySeries, f : Double) -> BioseqalignconsistencySeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_seq_align_consistency_series_add(a : BioseqalignconsistencySeries, b : BioseqalignconsistencySeries) -> BioseqalignconsistencySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_align_consistency_series_sub(a : BioseqalignconsistencySeries, b : BioseqalignconsistencySeries) -> BioseqalignconsistencySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_align_consistency_series_normalize(s : BioseqalignconsistencySeries) -> BioseqalignconsistencySeries {
@@ -254,22 +246,16 @@ pub fn bio_seq_align_consistency_vector_zero(dim : Int) -> Bioseqalignconsistenc
 
 pub fn bio_seq_align_consistency_vector_add(a : BioseqalignconsistencyVector, b : BioseqalignconsistencyVector) -> BioseqalignconsistencyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_align_consistency_vector_sub(a : BioseqalignconsistencyVector, b : BioseqalignconsistencyVector) -> BioseqalignconsistencyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_align_consistency_vector_scale(v : BioseqalignconsistencyVector, s : Double) -> BioseqalignconsistencyVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_seq_align_consistency_vector_dot(a : BioseqalignconsistencyVector, b : BioseqalignconsistencyVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_seq_align_consistency_frame_get(s : BioseqalignconsistencyFrame, i : 
 }
 
 pub fn bio_seq_align_consistency_frame_set(s : BioseqalignconsistencyFrame, i : Int, v : Double) -> BioseqalignconsistencyFrame {
-  let result = bio_seq_align_consistency_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_consistency_frame_sum(s : BioseqalignconsistencyFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_seq_align_consistency_table_get(s : BioseqalignconsistencyTable, i : 
 }
 
 pub fn bio_seq_align_consistency_table_set(s : BioseqalignconsistencyTable, i : Int, v : Double) -> BioseqalignconsistencyTable {
-  let result = bio_seq_align_consistency_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_consistency_table_sum(s : BioseqalignconsistencyTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_seq_align_consistency_graphn_get(s : BioseqalignconsistencyGraphN, i 
 }
 
 pub fn bio_seq_align_consistency_graphn_set(s : BioseqalignconsistencyGraphN, i : Int, v : Double) -> BioseqalignconsistencyGraphN {
-  let result = bio_seq_align_consistency_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_consistency_graphn_sum(s : BioseqalignconsistencyGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_seq_align_consistency_node_get(s : BioseqalignconsistencyNode, i : In
 }
 
 pub fn bio_seq_align_consistency_node_set(s : BioseqalignconsistencyNode, i : Int, v : Double) -> BioseqalignconsistencyNode {
-  let result = bio_seq_align_consistency_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_consistency_node_sum(s : BioseqalignconsistencyNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_seq_align_consistency_edge_get(s : BioseqalignconsistencyEdge, i : In
 }
 
 pub fn bio_seq_align_consistency_edge_set(s : BioseqalignconsistencyEdge, i : Int, v : Double) -> BioseqalignconsistencyEdge {
-  let result = bio_seq_align_consistency_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_consistency_edge_sum(s : BioseqalignconsistencyEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_seq_align_consistency_path_get(s : BioseqalignconsistencyPath, i : In
 }
 
 pub fn bio_seq_align_consistency_path_set(s : BioseqalignconsistencyPath, i : Int, v : Double) -> BioseqalignconsistencyPath {
-  let result = bio_seq_align_consistency_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_consistency_path_sum(s : BioseqalignconsistencyPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_seq_align_consistency_cluster_get(s : BioseqalignconsistencyCluster, 
 }
 
 pub fn bio_seq_align_consistency_cluster_set(s : BioseqalignconsistencyCluster, i : Int, v : Double) -> BioseqalignconsistencyCluster {
-  let result = bio_seq_align_consistency_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_consistency_cluster_sum(s : BioseqalignconsistencyCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_seq_align_consistency_model_get(s : BioseqalignconsistencyModel, i : 
 }
 
 pub fn bio_seq_align_consistency_model_set(s : BioseqalignconsistencyModel, i : Int, v : Double) -> BioseqalignconsistencyModel {
-  let result = bio_seq_align_consistency_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_consistency_model_sum(s : BioseqalignconsistencyModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_seq_align_consistency_layer_get(s : BioseqalignconsistencyLayer, i : 
 }
 
 pub fn bio_seq_align_consistency_layer_set(s : BioseqalignconsistencyLayer, i : Int, v : Double) -> BioseqalignconsistencyLayer {
-  let result = bio_seq_align_consistency_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_consistency_layer_sum(s : BioseqalignconsistencyLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_seq_align_consistency_buffer_get(s : BioseqalignconsistencyBuffer, i 
 }
 
 pub fn bio_seq_align_consistency_buffer_set(s : BioseqalignconsistencyBuffer, i : Int, v : Double) -> BioseqalignconsistencyBuffer {
-  let result = bio_seq_align_consistency_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_consistency_buffer_sum(s : BioseqalignconsistencyBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_seq_align_consistency_cursor_get(s : BioseqalignconsistencyCursor, i 
 }
 
 pub fn bio_seq_align_consistency_cursor_set(s : BioseqalignconsistencyCursor, i : Int, v : Double) -> BioseqalignconsistencyCursor {
-  let result = bio_seq_align_consistency_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_consistency_cursor_sum(s : BioseqalignconsistencyCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_seq_align_consistency_view_get(s : BioseqalignconsistencyView, i : In
 }
 
 pub fn bio_seq_align_consistency_view_set(s : BioseqalignconsistencyView, i : Int, v : Double) -> BioseqalignconsistencyView {
-  let result = bio_seq_align_consistency_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_consistency_view_sum(s : BioseqalignconsistencyView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_seq_align_consistency_range_get(s : BioseqalignconsistencyRange, i : 
 }
 
 pub fn bio_seq_align_consistency_range_set(s : BioseqalignconsistencyRange, i : Int, v : Double) -> BioseqalignconsistencyRange {
-  let result = bio_seq_align_consistency_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_consistency_range_sum(s : BioseqalignconsistencyRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_seq_align_consistency_slice_get(s : BioseqalignconsistencySlice, i : 
 }
 
 pub fn bio_seq_align_consistency_slice_set(s : BioseqalignconsistencySlice, i : Int, v : Double) -> BioseqalignconsistencySlice {
-  let result = bio_seq_align_consistency_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_consistency_slice_sum(s : BioseqalignconsistencySlice) -> Double { @_common.sum(s.data) }

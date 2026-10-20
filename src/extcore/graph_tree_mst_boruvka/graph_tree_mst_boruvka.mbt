@@ -107,23 +107,15 @@ pub fn graph_tree_mst_boruvka_series_std(s : GraphtreemstboruvkaSeries) -> Doubl
 pub fn graph_tree_mst_boruvka_series_median(s : GraphtreemstboruvkaSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_tree_mst_boruvka_series_scale(s : GraphtreemstboruvkaSeries, f : Double) -> GraphtreemstboruvkaSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_tree_mst_boruvka_series_add(a : GraphtreemstboruvkaSeries, b : GraphtreemstboruvkaSeries) -> GraphtreemstboruvkaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_tree_mst_boruvka_series_sub(a : GraphtreemstboruvkaSeries, b : GraphtreemstboruvkaSeries) -> GraphtreemstboruvkaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_tree_mst_boruvka_series_normalize(s : GraphtreemstboruvkaSeries) -> GraphtreemstboruvkaSeries {
@@ -254,22 +246,16 @@ pub fn graph_tree_mst_boruvka_vector_zero(dim : Int) -> GraphtreemstboruvkaVecto
 
 pub fn graph_tree_mst_boruvka_vector_add(a : GraphtreemstboruvkaVector, b : GraphtreemstboruvkaVector) -> GraphtreemstboruvkaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_tree_mst_boruvka_vector_sub(a : GraphtreemstboruvkaVector, b : GraphtreemstboruvkaVector) -> GraphtreemstboruvkaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_tree_mst_boruvka_vector_scale(v : GraphtreemstboruvkaVector, s : Double) -> GraphtreemstboruvkaVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_tree_mst_boruvka_vector_dot(a : GraphtreemstboruvkaVector, b : GraphtreemstboruvkaVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_tree_mst_boruvka_frame_get(s : GraphtreemstboruvkaFrame, i : Int) -
 }
 
 pub fn graph_tree_mst_boruvka_frame_set(s : GraphtreemstboruvkaFrame, i : Int, v : Double) -> GraphtreemstboruvkaFrame {
-  let result = graph_tree_mst_boruvka_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_boruvka_frame_sum(s : GraphtreemstboruvkaFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_tree_mst_boruvka_table_get(s : GraphtreemstboruvkaTable, i : Int) -
 }
 
 pub fn graph_tree_mst_boruvka_table_set(s : GraphtreemstboruvkaTable, i : Int, v : Double) -> GraphtreemstboruvkaTable {
-  let result = graph_tree_mst_boruvka_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_boruvka_table_sum(s : GraphtreemstboruvkaTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_tree_mst_boruvka_graphn_get(s : GraphtreemstboruvkaGraphN, i : Int)
 }
 
 pub fn graph_tree_mst_boruvka_graphn_set(s : GraphtreemstboruvkaGraphN, i : Int, v : Double) -> GraphtreemstboruvkaGraphN {
-  let result = graph_tree_mst_boruvka_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_boruvka_graphn_sum(s : GraphtreemstboruvkaGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_tree_mst_boruvka_node_get(s : GraphtreemstboruvkaNode, i : Int) -> 
 }
 
 pub fn graph_tree_mst_boruvka_node_set(s : GraphtreemstboruvkaNode, i : Int, v : Double) -> GraphtreemstboruvkaNode {
-  let result = graph_tree_mst_boruvka_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_boruvka_node_sum(s : GraphtreemstboruvkaNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_tree_mst_boruvka_edge_get(s : GraphtreemstboruvkaEdge, i : Int) -> 
 }
 
 pub fn graph_tree_mst_boruvka_edge_set(s : GraphtreemstboruvkaEdge, i : Int, v : Double) -> GraphtreemstboruvkaEdge {
-  let result = graph_tree_mst_boruvka_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_boruvka_edge_sum(s : GraphtreemstboruvkaEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_tree_mst_boruvka_path_get(s : GraphtreemstboruvkaPath, i : Int) -> 
 }
 
 pub fn graph_tree_mst_boruvka_path_set(s : GraphtreemstboruvkaPath, i : Int, v : Double) -> GraphtreemstboruvkaPath {
-  let result = graph_tree_mst_boruvka_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_boruvka_path_sum(s : GraphtreemstboruvkaPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_tree_mst_boruvka_cluster_get(s : GraphtreemstboruvkaCluster, i : In
 }
 
 pub fn graph_tree_mst_boruvka_cluster_set(s : GraphtreemstboruvkaCluster, i : Int, v : Double) -> GraphtreemstboruvkaCluster {
-  let result = graph_tree_mst_boruvka_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_boruvka_cluster_sum(s : GraphtreemstboruvkaCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_tree_mst_boruvka_model_get(s : GraphtreemstboruvkaModel, i : Int) -
 }
 
 pub fn graph_tree_mst_boruvka_model_set(s : GraphtreemstboruvkaModel, i : Int, v : Double) -> GraphtreemstboruvkaModel {
-  let result = graph_tree_mst_boruvka_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_boruvka_model_sum(s : GraphtreemstboruvkaModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_tree_mst_boruvka_layer_get(s : GraphtreemstboruvkaLayer, i : Int) -
 }
 
 pub fn graph_tree_mst_boruvka_layer_set(s : GraphtreemstboruvkaLayer, i : Int, v : Double) -> GraphtreemstboruvkaLayer {
-  let result = graph_tree_mst_boruvka_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_boruvka_layer_sum(s : GraphtreemstboruvkaLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_tree_mst_boruvka_buffer_get(s : GraphtreemstboruvkaBuffer, i : Int)
 }
 
 pub fn graph_tree_mst_boruvka_buffer_set(s : GraphtreemstboruvkaBuffer, i : Int, v : Double) -> GraphtreemstboruvkaBuffer {
-  let result = graph_tree_mst_boruvka_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_boruvka_buffer_sum(s : GraphtreemstboruvkaBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_tree_mst_boruvka_cursor_get(s : GraphtreemstboruvkaCursor, i : Int)
 }
 
 pub fn graph_tree_mst_boruvka_cursor_set(s : GraphtreemstboruvkaCursor, i : Int, v : Double) -> GraphtreemstboruvkaCursor {
-  let result = graph_tree_mst_boruvka_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_boruvka_cursor_sum(s : GraphtreemstboruvkaCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_tree_mst_boruvka_view_get(s : GraphtreemstboruvkaView, i : Int) -> 
 }
 
 pub fn graph_tree_mst_boruvka_view_set(s : GraphtreemstboruvkaView, i : Int, v : Double) -> GraphtreemstboruvkaView {
-  let result = graph_tree_mst_boruvka_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_boruvka_view_sum(s : GraphtreemstboruvkaView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_tree_mst_boruvka_range_get(s : GraphtreemstboruvkaRange, i : Int) -
 }
 
 pub fn graph_tree_mst_boruvka_range_set(s : GraphtreemstboruvkaRange, i : Int, v : Double) -> GraphtreemstboruvkaRange {
-  let result = graph_tree_mst_boruvka_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_boruvka_range_sum(s : GraphtreemstboruvkaRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_tree_mst_boruvka_slice_get(s : GraphtreemstboruvkaSlice, i : Int) -
 }
 
 pub fn graph_tree_mst_boruvka_slice_set(s : GraphtreemstboruvkaSlice, i : Int, v : Double) -> GraphtreemstboruvkaSlice {
-  let result = graph_tree_mst_boruvka_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_tree_mst_boruvka_slice_sum(s : GraphtreemstboruvkaSlice) -> Double { @_common.sum(s.data) }

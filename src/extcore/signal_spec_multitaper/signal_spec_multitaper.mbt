@@ -107,23 +107,15 @@ pub fn signal_spec_multitaper_series_std(s : SignalspecmultitaperSeries) -> Doub
 pub fn signal_spec_multitaper_series_median(s : SignalspecmultitaperSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_spec_multitaper_series_scale(s : SignalspecmultitaperSeries, f : Double) -> SignalspecmultitaperSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_spec_multitaper_series_add(a : SignalspecmultitaperSeries, b : SignalspecmultitaperSeries) -> SignalspecmultitaperSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_spec_multitaper_series_sub(a : SignalspecmultitaperSeries, b : SignalspecmultitaperSeries) -> SignalspecmultitaperSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_spec_multitaper_series_normalize(s : SignalspecmultitaperSeries) -> SignalspecmultitaperSeries {
@@ -254,22 +246,16 @@ pub fn signal_spec_multitaper_vector_zero(dim : Int) -> SignalspecmultitaperVect
 
 pub fn signal_spec_multitaper_vector_add(a : SignalspecmultitaperVector, b : SignalspecmultitaperVector) -> SignalspecmultitaperVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_spec_multitaper_vector_sub(a : SignalspecmultitaperVector, b : SignalspecmultitaperVector) -> SignalspecmultitaperVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_spec_multitaper_vector_scale(v : SignalspecmultitaperVector, s : Double) -> SignalspecmultitaperVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_spec_multitaper_vector_dot(a : SignalspecmultitaperVector, b : SignalspecmultitaperVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_spec_multitaper_frame_get(s : SignalspecmultitaperFrame, i : Int) 
 }
 
 pub fn signal_spec_multitaper_frame_set(s : SignalspecmultitaperFrame, i : Int, v : Double) -> SignalspecmultitaperFrame {
-  let result = signal_spec_multitaper_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_multitaper_frame_sum(s : SignalspecmultitaperFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_spec_multitaper_table_get(s : SignalspecmultitaperTable, i : Int) 
 }
 
 pub fn signal_spec_multitaper_table_set(s : SignalspecmultitaperTable, i : Int, v : Double) -> SignalspecmultitaperTable {
-  let result = signal_spec_multitaper_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_multitaper_table_sum(s : SignalspecmultitaperTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_spec_multitaper_graphn_get(s : SignalspecmultitaperGraphN, i : Int
 }
 
 pub fn signal_spec_multitaper_graphn_set(s : SignalspecmultitaperGraphN, i : Int, v : Double) -> SignalspecmultitaperGraphN {
-  let result = signal_spec_multitaper_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_multitaper_graphn_sum(s : SignalspecmultitaperGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_spec_multitaper_node_get(s : SignalspecmultitaperNode, i : Int) ->
 }
 
 pub fn signal_spec_multitaper_node_set(s : SignalspecmultitaperNode, i : Int, v : Double) -> SignalspecmultitaperNode {
-  let result = signal_spec_multitaper_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_multitaper_node_sum(s : SignalspecmultitaperNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_spec_multitaper_edge_get(s : SignalspecmultitaperEdge, i : Int) ->
 }
 
 pub fn signal_spec_multitaper_edge_set(s : SignalspecmultitaperEdge, i : Int, v : Double) -> SignalspecmultitaperEdge {
-  let result = signal_spec_multitaper_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_multitaper_edge_sum(s : SignalspecmultitaperEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_spec_multitaper_path_get(s : SignalspecmultitaperPath, i : Int) ->
 }
 
 pub fn signal_spec_multitaper_path_set(s : SignalspecmultitaperPath, i : Int, v : Double) -> SignalspecmultitaperPath {
-  let result = signal_spec_multitaper_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_multitaper_path_sum(s : SignalspecmultitaperPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_spec_multitaper_cluster_get(s : SignalspecmultitaperCluster, i : I
 }
 
 pub fn signal_spec_multitaper_cluster_set(s : SignalspecmultitaperCluster, i : Int, v : Double) -> SignalspecmultitaperCluster {
-  let result = signal_spec_multitaper_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_multitaper_cluster_sum(s : SignalspecmultitaperCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_spec_multitaper_model_get(s : SignalspecmultitaperModel, i : Int) 
 }
 
 pub fn signal_spec_multitaper_model_set(s : SignalspecmultitaperModel, i : Int, v : Double) -> SignalspecmultitaperModel {
-  let result = signal_spec_multitaper_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_multitaper_model_sum(s : SignalspecmultitaperModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_spec_multitaper_layer_get(s : SignalspecmultitaperLayer, i : Int) 
 }
 
 pub fn signal_spec_multitaper_layer_set(s : SignalspecmultitaperLayer, i : Int, v : Double) -> SignalspecmultitaperLayer {
-  let result = signal_spec_multitaper_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_multitaper_layer_sum(s : SignalspecmultitaperLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_spec_multitaper_buffer_get(s : SignalspecmultitaperBuffer, i : Int
 }
 
 pub fn signal_spec_multitaper_buffer_set(s : SignalspecmultitaperBuffer, i : Int, v : Double) -> SignalspecmultitaperBuffer {
-  let result = signal_spec_multitaper_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_multitaper_buffer_sum(s : SignalspecmultitaperBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_spec_multitaper_cursor_get(s : SignalspecmultitaperCursor, i : Int
 }
 
 pub fn signal_spec_multitaper_cursor_set(s : SignalspecmultitaperCursor, i : Int, v : Double) -> SignalspecmultitaperCursor {
-  let result = signal_spec_multitaper_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_multitaper_cursor_sum(s : SignalspecmultitaperCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_spec_multitaper_view_get(s : SignalspecmultitaperView, i : Int) ->
 }
 
 pub fn signal_spec_multitaper_view_set(s : SignalspecmultitaperView, i : Int, v : Double) -> SignalspecmultitaperView {
-  let result = signal_spec_multitaper_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_multitaper_view_sum(s : SignalspecmultitaperView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_spec_multitaper_range_get(s : SignalspecmultitaperRange, i : Int) 
 }
 
 pub fn signal_spec_multitaper_range_set(s : SignalspecmultitaperRange, i : Int, v : Double) -> SignalspecmultitaperRange {
-  let result = signal_spec_multitaper_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_multitaper_range_sum(s : SignalspecmultitaperRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_spec_multitaper_slice_get(s : SignalspecmultitaperSlice, i : Int) 
 }
 
 pub fn signal_spec_multitaper_slice_set(s : SignalspecmultitaperSlice, i : Int, v : Double) -> SignalspecmultitaperSlice {
-  let result = signal_spec_multitaper_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_multitaper_slice_sum(s : SignalspecmultitaperSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn ds_heap_pairing_series_std(s : DsheappairingSeries) -> Double { @_common.
 pub fn ds_heap_pairing_series_median(s : DsheappairingSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_heap_pairing_series_scale(s : DsheappairingSeries, f : Double) -> DsheappairingSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_heap_pairing_series_add(a : DsheappairingSeries, b : DsheappairingSeries) -> DsheappairingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_heap_pairing_series_sub(a : DsheappairingSeries, b : DsheappairingSeries) -> DsheappairingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_heap_pairing_series_normalize(s : DsheappairingSeries) -> DsheappairingSeries {
@@ -254,22 +246,16 @@ pub fn ds_heap_pairing_vector_zero(dim : Int) -> DsheappairingVector {
 
 pub fn ds_heap_pairing_vector_add(a : DsheappairingVector, b : DsheappairingVector) -> DsheappairingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_heap_pairing_vector_sub(a : DsheappairingVector, b : DsheappairingVector) -> DsheappairingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_heap_pairing_vector_scale(v : DsheappairingVector, s : Double) -> DsheappairingVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_heap_pairing_vector_dot(a : DsheappairingVector, b : DsheappairingVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_heap_pairing_frame_get(s : DsheappairingFrame, i : Int) -> Double {
 }
 
 pub fn ds_heap_pairing_frame_set(s : DsheappairingFrame, i : Int, v : Double) -> DsheappairingFrame {
-  let result = ds_heap_pairing_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_pairing_frame_sum(s : DsheappairingFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_heap_pairing_table_get(s : DsheappairingTable, i : Int) -> Double {
 }
 
 pub fn ds_heap_pairing_table_set(s : DsheappairingTable, i : Int, v : Double) -> DsheappairingTable {
-  let result = ds_heap_pairing_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_pairing_table_sum(s : DsheappairingTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_heap_pairing_graphn_get(s : DsheappairingGraphN, i : Int) -> Double {
 }
 
 pub fn ds_heap_pairing_graphn_set(s : DsheappairingGraphN, i : Int, v : Double) -> DsheappairingGraphN {
-  let result = ds_heap_pairing_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_pairing_graphn_sum(s : DsheappairingGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_heap_pairing_node_get(s : DsheappairingNode, i : Int) -> Double {
 }
 
 pub fn ds_heap_pairing_node_set(s : DsheappairingNode, i : Int, v : Double) -> DsheappairingNode {
-  let result = ds_heap_pairing_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_pairing_node_sum(s : DsheappairingNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_heap_pairing_edge_get(s : DsheappairingEdge, i : Int) -> Double {
 }
 
 pub fn ds_heap_pairing_edge_set(s : DsheappairingEdge, i : Int, v : Double) -> DsheappairingEdge {
-  let result = ds_heap_pairing_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_pairing_edge_sum(s : DsheappairingEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_heap_pairing_path_get(s : DsheappairingPath, i : Int) -> Double {
 }
 
 pub fn ds_heap_pairing_path_set(s : DsheappairingPath, i : Int, v : Double) -> DsheappairingPath {
-  let result = ds_heap_pairing_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_pairing_path_sum(s : DsheappairingPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_heap_pairing_cluster_get(s : DsheappairingCluster, i : Int) -> Double 
 }
 
 pub fn ds_heap_pairing_cluster_set(s : DsheappairingCluster, i : Int, v : Double) -> DsheappairingCluster {
-  let result = ds_heap_pairing_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_pairing_cluster_sum(s : DsheappairingCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_heap_pairing_model_get(s : DsheappairingModel, i : Int) -> Double {
 }
 
 pub fn ds_heap_pairing_model_set(s : DsheappairingModel, i : Int, v : Double) -> DsheappairingModel {
-  let result = ds_heap_pairing_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_pairing_model_sum(s : DsheappairingModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_heap_pairing_layer_get(s : DsheappairingLayer, i : Int) -> Double {
 }
 
 pub fn ds_heap_pairing_layer_set(s : DsheappairingLayer, i : Int, v : Double) -> DsheappairingLayer {
-  let result = ds_heap_pairing_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_pairing_layer_sum(s : DsheappairingLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_heap_pairing_buffer_get(s : DsheappairingBuffer, i : Int) -> Double {
 }
 
 pub fn ds_heap_pairing_buffer_set(s : DsheappairingBuffer, i : Int, v : Double) -> DsheappairingBuffer {
-  let result = ds_heap_pairing_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_pairing_buffer_sum(s : DsheappairingBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_heap_pairing_cursor_get(s : DsheappairingCursor, i : Int) -> Double {
 }
 
 pub fn ds_heap_pairing_cursor_set(s : DsheappairingCursor, i : Int, v : Double) -> DsheappairingCursor {
-  let result = ds_heap_pairing_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_pairing_cursor_sum(s : DsheappairingCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_heap_pairing_view_get(s : DsheappairingView, i : Int) -> Double {
 }
 
 pub fn ds_heap_pairing_view_set(s : DsheappairingView, i : Int, v : Double) -> DsheappairingView {
-  let result = ds_heap_pairing_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_pairing_view_sum(s : DsheappairingView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_heap_pairing_range_get(s : DsheappairingRange, i : Int) -> Double {
 }
 
 pub fn ds_heap_pairing_range_set(s : DsheappairingRange, i : Int, v : Double) -> DsheappairingRange {
-  let result = ds_heap_pairing_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_pairing_range_sum(s : DsheappairingRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_heap_pairing_slice_get(s : DsheappairingSlice, i : Int) -> Double {
 }
 
 pub fn ds_heap_pairing_slice_set(s : DsheappairingSlice, i : Int, v : Double) -> DsheappairingSlice {
-  let result = ds_heap_pairing_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_heap_pairing_slice_sum(s : DsheappairingSlice) -> Double { @_common.sum(s.data) }

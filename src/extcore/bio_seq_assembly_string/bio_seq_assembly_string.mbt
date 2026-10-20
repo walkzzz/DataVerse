@@ -107,23 +107,15 @@ pub fn bio_seq_assembly_string_series_std(s : BioseqassemblystringSeries) -> Dou
 pub fn bio_seq_assembly_string_series_median(s : BioseqassemblystringSeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_seq_assembly_string_series_scale(s : BioseqassemblystringSeries, f : Double) -> BioseqassemblystringSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_seq_assembly_string_series_add(a : BioseqassemblystringSeries, b : BioseqassemblystringSeries) -> BioseqassemblystringSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_assembly_string_series_sub(a : BioseqassemblystringSeries, b : BioseqassemblystringSeries) -> BioseqassemblystringSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_assembly_string_series_normalize(s : BioseqassemblystringSeries) -> BioseqassemblystringSeries {
@@ -254,22 +246,16 @@ pub fn bio_seq_assembly_string_vector_zero(dim : Int) -> BioseqassemblystringVec
 
 pub fn bio_seq_assembly_string_vector_add(a : BioseqassemblystringVector, b : BioseqassemblystringVector) -> BioseqassemblystringVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_assembly_string_vector_sub(a : BioseqassemblystringVector, b : BioseqassemblystringVector) -> BioseqassemblystringVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_assembly_string_vector_scale(v : BioseqassemblystringVector, s : Double) -> BioseqassemblystringVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_seq_assembly_string_vector_dot(a : BioseqassemblystringVector, b : BioseqassemblystringVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_seq_assembly_string_frame_get(s : BioseqassemblystringFrame, i : Int)
 }
 
 pub fn bio_seq_assembly_string_frame_set(s : BioseqassemblystringFrame, i : Int, v : Double) -> BioseqassemblystringFrame {
-  let result = bio_seq_assembly_string_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_string_frame_sum(s : BioseqassemblystringFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_seq_assembly_string_table_get(s : BioseqassemblystringTable, i : Int)
 }
 
 pub fn bio_seq_assembly_string_table_set(s : BioseqassemblystringTable, i : Int, v : Double) -> BioseqassemblystringTable {
-  let result = bio_seq_assembly_string_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_string_table_sum(s : BioseqassemblystringTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_seq_assembly_string_graphn_get(s : BioseqassemblystringGraphN, i : In
 }
 
 pub fn bio_seq_assembly_string_graphn_set(s : BioseqassemblystringGraphN, i : Int, v : Double) -> BioseqassemblystringGraphN {
-  let result = bio_seq_assembly_string_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_string_graphn_sum(s : BioseqassemblystringGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_seq_assembly_string_node_get(s : BioseqassemblystringNode, i : Int) -
 }
 
 pub fn bio_seq_assembly_string_node_set(s : BioseqassemblystringNode, i : Int, v : Double) -> BioseqassemblystringNode {
-  let result = bio_seq_assembly_string_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_string_node_sum(s : BioseqassemblystringNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_seq_assembly_string_edge_get(s : BioseqassemblystringEdge, i : Int) -
 }
 
 pub fn bio_seq_assembly_string_edge_set(s : BioseqassemblystringEdge, i : Int, v : Double) -> BioseqassemblystringEdge {
-  let result = bio_seq_assembly_string_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_string_edge_sum(s : BioseqassemblystringEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_seq_assembly_string_path_get(s : BioseqassemblystringPath, i : Int) -
 }
 
 pub fn bio_seq_assembly_string_path_set(s : BioseqassemblystringPath, i : Int, v : Double) -> BioseqassemblystringPath {
-  let result = bio_seq_assembly_string_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_string_path_sum(s : BioseqassemblystringPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_seq_assembly_string_cluster_get(s : BioseqassemblystringCluster, i : 
 }
 
 pub fn bio_seq_assembly_string_cluster_set(s : BioseqassemblystringCluster, i : Int, v : Double) -> BioseqassemblystringCluster {
-  let result = bio_seq_assembly_string_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_string_cluster_sum(s : BioseqassemblystringCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_seq_assembly_string_model_get(s : BioseqassemblystringModel, i : Int)
 }
 
 pub fn bio_seq_assembly_string_model_set(s : BioseqassemblystringModel, i : Int, v : Double) -> BioseqassemblystringModel {
-  let result = bio_seq_assembly_string_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_string_model_sum(s : BioseqassemblystringModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_seq_assembly_string_layer_get(s : BioseqassemblystringLayer, i : Int)
 }
 
 pub fn bio_seq_assembly_string_layer_set(s : BioseqassemblystringLayer, i : Int, v : Double) -> BioseqassemblystringLayer {
-  let result = bio_seq_assembly_string_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_string_layer_sum(s : BioseqassemblystringLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_seq_assembly_string_buffer_get(s : BioseqassemblystringBuffer, i : In
 }
 
 pub fn bio_seq_assembly_string_buffer_set(s : BioseqassemblystringBuffer, i : Int, v : Double) -> BioseqassemblystringBuffer {
-  let result = bio_seq_assembly_string_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_string_buffer_sum(s : BioseqassemblystringBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_seq_assembly_string_cursor_get(s : BioseqassemblystringCursor, i : In
 }
 
 pub fn bio_seq_assembly_string_cursor_set(s : BioseqassemblystringCursor, i : Int, v : Double) -> BioseqassemblystringCursor {
-  let result = bio_seq_assembly_string_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_string_cursor_sum(s : BioseqassemblystringCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_seq_assembly_string_view_get(s : BioseqassemblystringView, i : Int) -
 }
 
 pub fn bio_seq_assembly_string_view_set(s : BioseqassemblystringView, i : Int, v : Double) -> BioseqassemblystringView {
-  let result = bio_seq_assembly_string_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_string_view_sum(s : BioseqassemblystringView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_seq_assembly_string_range_get(s : BioseqassemblystringRange, i : Int)
 }
 
 pub fn bio_seq_assembly_string_range_set(s : BioseqassemblystringRange, i : Int, v : Double) -> BioseqassemblystringRange {
-  let result = bio_seq_assembly_string_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_string_range_sum(s : BioseqassemblystringRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_seq_assembly_string_slice_get(s : BioseqassemblystringSlice, i : Int)
 }
 
 pub fn bio_seq_assembly_string_slice_set(s : BioseqassemblystringSlice, i : Int, v : Double) -> BioseqassemblystringSlice {
-  let result = bio_seq_assembly_string_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_assembly_string_slice_sum(s : BioseqassemblystringSlice) -> Double { @_common.sum(s.data) }

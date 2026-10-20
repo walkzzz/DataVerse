@@ -107,23 +107,15 @@ pub fn image_feature_surf_series_std(s : ImagefeaturesurfSeries) -> Double { @_c
 pub fn image_feature_surf_series_median(s : ImagefeaturesurfSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_feature_surf_series_scale(s : ImagefeaturesurfSeries, f : Double) -> ImagefeaturesurfSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_feature_surf_series_add(a : ImagefeaturesurfSeries, b : ImagefeaturesurfSeries) -> ImagefeaturesurfSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_feature_surf_series_sub(a : ImagefeaturesurfSeries, b : ImagefeaturesurfSeries) -> ImagefeaturesurfSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_feature_surf_series_normalize(s : ImagefeaturesurfSeries) -> ImagefeaturesurfSeries {
@@ -254,22 +246,16 @@ pub fn image_feature_surf_vector_zero(dim : Int) -> ImagefeaturesurfVector {
 
 pub fn image_feature_surf_vector_add(a : ImagefeaturesurfVector, b : ImagefeaturesurfVector) -> ImagefeaturesurfVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_feature_surf_vector_sub(a : ImagefeaturesurfVector, b : ImagefeaturesurfVector) -> ImagefeaturesurfVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_feature_surf_vector_scale(v : ImagefeaturesurfVector, s : Double) -> ImagefeaturesurfVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_feature_surf_vector_dot(a : ImagefeaturesurfVector, b : ImagefeaturesurfVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_feature_surf_frame_get(s : ImagefeaturesurfFrame, i : Int) -> Doubl
 }
 
 pub fn image_feature_surf_frame_set(s : ImagefeaturesurfFrame, i : Int, v : Double) -> ImagefeaturesurfFrame {
-  let result = image_feature_surf_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_frame_sum(s : ImagefeaturesurfFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_feature_surf_table_get(s : ImagefeaturesurfTable, i : Int) -> Doubl
 }
 
 pub fn image_feature_surf_table_set(s : ImagefeaturesurfTable, i : Int, v : Double) -> ImagefeaturesurfTable {
-  let result = image_feature_surf_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_table_sum(s : ImagefeaturesurfTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_feature_surf_graphn_get(s : ImagefeaturesurfGraphN, i : Int) -> Dou
 }
 
 pub fn image_feature_surf_graphn_set(s : ImagefeaturesurfGraphN, i : Int, v : Double) -> ImagefeaturesurfGraphN {
-  let result = image_feature_surf_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_graphn_sum(s : ImagefeaturesurfGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_feature_surf_node_get(s : ImagefeaturesurfNode, i : Int) -> Double 
 }
 
 pub fn image_feature_surf_node_set(s : ImagefeaturesurfNode, i : Int, v : Double) -> ImagefeaturesurfNode {
-  let result = image_feature_surf_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_node_sum(s : ImagefeaturesurfNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_feature_surf_edge_get(s : ImagefeaturesurfEdge, i : Int) -> Double 
 }
 
 pub fn image_feature_surf_edge_set(s : ImagefeaturesurfEdge, i : Int, v : Double) -> ImagefeaturesurfEdge {
-  let result = image_feature_surf_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_edge_sum(s : ImagefeaturesurfEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_feature_surf_path_get(s : ImagefeaturesurfPath, i : Int) -> Double 
 }
 
 pub fn image_feature_surf_path_set(s : ImagefeaturesurfPath, i : Int, v : Double) -> ImagefeaturesurfPath {
-  let result = image_feature_surf_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_path_sum(s : ImagefeaturesurfPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_feature_surf_cluster_get(s : ImagefeaturesurfCluster, i : Int) -> D
 }
 
 pub fn image_feature_surf_cluster_set(s : ImagefeaturesurfCluster, i : Int, v : Double) -> ImagefeaturesurfCluster {
-  let result = image_feature_surf_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_cluster_sum(s : ImagefeaturesurfCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_feature_surf_model_get(s : ImagefeaturesurfModel, i : Int) -> Doubl
 }
 
 pub fn image_feature_surf_model_set(s : ImagefeaturesurfModel, i : Int, v : Double) -> ImagefeaturesurfModel {
-  let result = image_feature_surf_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_model_sum(s : ImagefeaturesurfModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_feature_surf_layer_get(s : ImagefeaturesurfLayer, i : Int) -> Doubl
 }
 
 pub fn image_feature_surf_layer_set(s : ImagefeaturesurfLayer, i : Int, v : Double) -> ImagefeaturesurfLayer {
-  let result = image_feature_surf_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_layer_sum(s : ImagefeaturesurfLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_feature_surf_buffer_get(s : ImagefeaturesurfBuffer, i : Int) -> Dou
 }
 
 pub fn image_feature_surf_buffer_set(s : ImagefeaturesurfBuffer, i : Int, v : Double) -> ImagefeaturesurfBuffer {
-  let result = image_feature_surf_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_buffer_sum(s : ImagefeaturesurfBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_feature_surf_cursor_get(s : ImagefeaturesurfCursor, i : Int) -> Dou
 }
 
 pub fn image_feature_surf_cursor_set(s : ImagefeaturesurfCursor, i : Int, v : Double) -> ImagefeaturesurfCursor {
-  let result = image_feature_surf_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_cursor_sum(s : ImagefeaturesurfCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_feature_surf_view_get(s : ImagefeaturesurfView, i : Int) -> Double 
 }
 
 pub fn image_feature_surf_view_set(s : ImagefeaturesurfView, i : Int, v : Double) -> ImagefeaturesurfView {
-  let result = image_feature_surf_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_view_sum(s : ImagefeaturesurfView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_feature_surf_range_get(s : ImagefeaturesurfRange, i : Int) -> Doubl
 }
 
 pub fn image_feature_surf_range_set(s : ImagefeaturesurfRange, i : Int, v : Double) -> ImagefeaturesurfRange {
-  let result = image_feature_surf_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_range_sum(s : ImagefeaturesurfRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_feature_surf_slice_get(s : ImagefeaturesurfSlice, i : Int) -> Doubl
 }
 
 pub fn image_feature_surf_slice_set(s : ImagefeaturesurfSlice, i : Int, v : Double) -> ImagefeaturesurfSlice {
-  let result = image_feature_surf_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_surf_slice_sum(s : ImagefeaturesurfSlice) -> Double { @_common.sum(s.data) }

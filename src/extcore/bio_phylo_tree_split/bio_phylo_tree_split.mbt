@@ -107,23 +107,15 @@ pub fn bio_phylo_tree_split_series_std(s : BiophylotreesplitSeries) -> Double { 
 pub fn bio_phylo_tree_split_series_median(s : BiophylotreesplitSeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_phylo_tree_split_series_scale(s : BiophylotreesplitSeries, f : Double) -> BiophylotreesplitSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_phylo_tree_split_series_add(a : BiophylotreesplitSeries, b : BiophylotreesplitSeries) -> BiophylotreesplitSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_phylo_tree_split_series_sub(a : BiophylotreesplitSeries, b : BiophylotreesplitSeries) -> BiophylotreesplitSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_phylo_tree_split_series_normalize(s : BiophylotreesplitSeries) -> BiophylotreesplitSeries {
@@ -254,22 +246,16 @@ pub fn bio_phylo_tree_split_vector_zero(dim : Int) -> BiophylotreesplitVector {
 
 pub fn bio_phylo_tree_split_vector_add(a : BiophylotreesplitVector, b : BiophylotreesplitVector) -> BiophylotreesplitVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_phylo_tree_split_vector_sub(a : BiophylotreesplitVector, b : BiophylotreesplitVector) -> BiophylotreesplitVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_phylo_tree_split_vector_scale(v : BiophylotreesplitVector, s : Double) -> BiophylotreesplitVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_phylo_tree_split_vector_dot(a : BiophylotreesplitVector, b : BiophylotreesplitVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_phylo_tree_split_frame_get(s : BiophylotreesplitFrame, i : Int) -> Do
 }
 
 pub fn bio_phylo_tree_split_frame_set(s : BiophylotreesplitFrame, i : Int, v : Double) -> BiophylotreesplitFrame {
-  let result = bio_phylo_tree_split_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_tree_split_frame_sum(s : BiophylotreesplitFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_phylo_tree_split_table_get(s : BiophylotreesplitTable, i : Int) -> Do
 }
 
 pub fn bio_phylo_tree_split_table_set(s : BiophylotreesplitTable, i : Int, v : Double) -> BiophylotreesplitTable {
-  let result = bio_phylo_tree_split_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_tree_split_table_sum(s : BiophylotreesplitTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_phylo_tree_split_graphn_get(s : BiophylotreesplitGraphN, i : Int) -> 
 }
 
 pub fn bio_phylo_tree_split_graphn_set(s : BiophylotreesplitGraphN, i : Int, v : Double) -> BiophylotreesplitGraphN {
-  let result = bio_phylo_tree_split_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_tree_split_graphn_sum(s : BiophylotreesplitGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_phylo_tree_split_node_get(s : BiophylotreesplitNode, i : Int) -> Doub
 }
 
 pub fn bio_phylo_tree_split_node_set(s : BiophylotreesplitNode, i : Int, v : Double) -> BiophylotreesplitNode {
-  let result = bio_phylo_tree_split_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_tree_split_node_sum(s : BiophylotreesplitNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_phylo_tree_split_edge_get(s : BiophylotreesplitEdge, i : Int) -> Doub
 }
 
 pub fn bio_phylo_tree_split_edge_set(s : BiophylotreesplitEdge, i : Int, v : Double) -> BiophylotreesplitEdge {
-  let result = bio_phylo_tree_split_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_tree_split_edge_sum(s : BiophylotreesplitEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_phylo_tree_split_path_get(s : BiophylotreesplitPath, i : Int) -> Doub
 }
 
 pub fn bio_phylo_tree_split_path_set(s : BiophylotreesplitPath, i : Int, v : Double) -> BiophylotreesplitPath {
-  let result = bio_phylo_tree_split_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_tree_split_path_sum(s : BiophylotreesplitPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_phylo_tree_split_cluster_get(s : BiophylotreesplitCluster, i : Int) -
 }
 
 pub fn bio_phylo_tree_split_cluster_set(s : BiophylotreesplitCluster, i : Int, v : Double) -> BiophylotreesplitCluster {
-  let result = bio_phylo_tree_split_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_tree_split_cluster_sum(s : BiophylotreesplitCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_phylo_tree_split_model_get(s : BiophylotreesplitModel, i : Int) -> Do
 }
 
 pub fn bio_phylo_tree_split_model_set(s : BiophylotreesplitModel, i : Int, v : Double) -> BiophylotreesplitModel {
-  let result = bio_phylo_tree_split_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_tree_split_model_sum(s : BiophylotreesplitModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_phylo_tree_split_layer_get(s : BiophylotreesplitLayer, i : Int) -> Do
 }
 
 pub fn bio_phylo_tree_split_layer_set(s : BiophylotreesplitLayer, i : Int, v : Double) -> BiophylotreesplitLayer {
-  let result = bio_phylo_tree_split_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_tree_split_layer_sum(s : BiophylotreesplitLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_phylo_tree_split_buffer_get(s : BiophylotreesplitBuffer, i : Int) -> 
 }
 
 pub fn bio_phylo_tree_split_buffer_set(s : BiophylotreesplitBuffer, i : Int, v : Double) -> BiophylotreesplitBuffer {
-  let result = bio_phylo_tree_split_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_tree_split_buffer_sum(s : BiophylotreesplitBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_phylo_tree_split_cursor_get(s : BiophylotreesplitCursor, i : Int) -> 
 }
 
 pub fn bio_phylo_tree_split_cursor_set(s : BiophylotreesplitCursor, i : Int, v : Double) -> BiophylotreesplitCursor {
-  let result = bio_phylo_tree_split_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_tree_split_cursor_sum(s : BiophylotreesplitCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_phylo_tree_split_view_get(s : BiophylotreesplitView, i : Int) -> Doub
 }
 
 pub fn bio_phylo_tree_split_view_set(s : BiophylotreesplitView, i : Int, v : Double) -> BiophylotreesplitView {
-  let result = bio_phylo_tree_split_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_tree_split_view_sum(s : BiophylotreesplitView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_phylo_tree_split_range_get(s : BiophylotreesplitRange, i : Int) -> Do
 }
 
 pub fn bio_phylo_tree_split_range_set(s : BiophylotreesplitRange, i : Int, v : Double) -> BiophylotreesplitRange {
-  let result = bio_phylo_tree_split_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_tree_split_range_sum(s : BiophylotreesplitRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_phylo_tree_split_slice_get(s : BiophylotreesplitSlice, i : Int) -> Do
 }
 
 pub fn bio_phylo_tree_split_slice_set(s : BiophylotreesplitSlice, i : Int, v : Double) -> BiophylotreesplitSlice {
-  let result = bio_phylo_tree_split_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_tree_split_slice_sum(s : BiophylotreesplitSlice) -> Double { @_common.sum(s.data) }

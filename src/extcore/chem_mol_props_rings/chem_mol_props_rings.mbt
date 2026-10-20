@@ -107,23 +107,15 @@ pub fn chem_mol_props_rings_series_std(s : ChemmolpropsringsSeries) -> Double { 
 pub fn chem_mol_props_rings_series_median(s : ChemmolpropsringsSeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_mol_props_rings_series_scale(s : ChemmolpropsringsSeries, f : Double) -> ChemmolpropsringsSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn chem_mol_props_rings_series_add(a : ChemmolpropsringsSeries, b : ChemmolpropsringsSeries) -> ChemmolpropsringsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn chem_mol_props_rings_series_sub(a : ChemmolpropsringsSeries, b : ChemmolpropsringsSeries) -> ChemmolpropsringsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn chem_mol_props_rings_series_normalize(s : ChemmolpropsringsSeries) -> ChemmolpropsringsSeries {
@@ -254,22 +246,16 @@ pub fn chem_mol_props_rings_vector_zero(dim : Int) -> ChemmolpropsringsVector {
 
 pub fn chem_mol_props_rings_vector_add(a : ChemmolpropsringsVector, b : ChemmolpropsringsVector) -> ChemmolpropsringsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_mol_props_rings_vector_sub(a : ChemmolpropsringsVector, b : ChemmolpropsringsVector) -> ChemmolpropsringsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_mol_props_rings_vector_scale(v : ChemmolpropsringsVector, s : Double) -> ChemmolpropsringsVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn chem_mol_props_rings_vector_dot(a : ChemmolpropsringsVector, b : ChemmolpropsringsVector) -> Double {
@@ -372,10 +358,9 @@ pub fn chem_mol_props_rings_frame_get(s : ChemmolpropsringsFrame, i : Int) -> Do
 }
 
 pub fn chem_mol_props_rings_frame_set(s : ChemmolpropsringsFrame, i : Int, v : Double) -> ChemmolpropsringsFrame {
-  let result = chem_mol_props_rings_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rings_frame_sum(s : ChemmolpropsringsFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn chem_mol_props_rings_table_get(s : ChemmolpropsringsTable, i : Int) -> Do
 }
 
 pub fn chem_mol_props_rings_table_set(s : ChemmolpropsringsTable, i : Int, v : Double) -> ChemmolpropsringsTable {
-  let result = chem_mol_props_rings_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rings_table_sum(s : ChemmolpropsringsTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn chem_mol_props_rings_graphn_get(s : ChemmolpropsringsGraphN, i : Int) -> 
 }
 
 pub fn chem_mol_props_rings_graphn_set(s : ChemmolpropsringsGraphN, i : Int, v : Double) -> ChemmolpropsringsGraphN {
-  let result = chem_mol_props_rings_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rings_graphn_sum(s : ChemmolpropsringsGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn chem_mol_props_rings_node_get(s : ChemmolpropsringsNode, i : Int) -> Doub
 }
 
 pub fn chem_mol_props_rings_node_set(s : ChemmolpropsringsNode, i : Int, v : Double) -> ChemmolpropsringsNode {
-  let result = chem_mol_props_rings_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rings_node_sum(s : ChemmolpropsringsNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn chem_mol_props_rings_edge_get(s : ChemmolpropsringsEdge, i : Int) -> Doub
 }
 
 pub fn chem_mol_props_rings_edge_set(s : ChemmolpropsringsEdge, i : Int, v : Double) -> ChemmolpropsringsEdge {
-  let result = chem_mol_props_rings_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rings_edge_sum(s : ChemmolpropsringsEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn chem_mol_props_rings_path_get(s : ChemmolpropsringsPath, i : Int) -> Doub
 }
 
 pub fn chem_mol_props_rings_path_set(s : ChemmolpropsringsPath, i : Int, v : Double) -> ChemmolpropsringsPath {
-  let result = chem_mol_props_rings_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rings_path_sum(s : ChemmolpropsringsPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn chem_mol_props_rings_cluster_get(s : ChemmolpropsringsCluster, i : Int) -
 }
 
 pub fn chem_mol_props_rings_cluster_set(s : ChemmolpropsringsCluster, i : Int, v : Double) -> ChemmolpropsringsCluster {
-  let result = chem_mol_props_rings_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rings_cluster_sum(s : ChemmolpropsringsCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn chem_mol_props_rings_model_get(s : ChemmolpropsringsModel, i : Int) -> Do
 }
 
 pub fn chem_mol_props_rings_model_set(s : ChemmolpropsringsModel, i : Int, v : Double) -> ChemmolpropsringsModel {
-  let result = chem_mol_props_rings_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rings_model_sum(s : ChemmolpropsringsModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn chem_mol_props_rings_layer_get(s : ChemmolpropsringsLayer, i : Int) -> Do
 }
 
 pub fn chem_mol_props_rings_layer_set(s : ChemmolpropsringsLayer, i : Int, v : Double) -> ChemmolpropsringsLayer {
-  let result = chem_mol_props_rings_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rings_layer_sum(s : ChemmolpropsringsLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn chem_mol_props_rings_buffer_get(s : ChemmolpropsringsBuffer, i : Int) -> 
 }
 
 pub fn chem_mol_props_rings_buffer_set(s : ChemmolpropsringsBuffer, i : Int, v : Double) -> ChemmolpropsringsBuffer {
-  let result = chem_mol_props_rings_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rings_buffer_sum(s : ChemmolpropsringsBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn chem_mol_props_rings_cursor_get(s : ChemmolpropsringsCursor, i : Int) -> 
 }
 
 pub fn chem_mol_props_rings_cursor_set(s : ChemmolpropsringsCursor, i : Int, v : Double) -> ChemmolpropsringsCursor {
-  let result = chem_mol_props_rings_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rings_cursor_sum(s : ChemmolpropsringsCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn chem_mol_props_rings_view_get(s : ChemmolpropsringsView, i : Int) -> Doub
 }
 
 pub fn chem_mol_props_rings_view_set(s : ChemmolpropsringsView, i : Int, v : Double) -> ChemmolpropsringsView {
-  let result = chem_mol_props_rings_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rings_view_sum(s : ChemmolpropsringsView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn chem_mol_props_rings_range_get(s : ChemmolpropsringsRange, i : Int) -> Do
 }
 
 pub fn chem_mol_props_rings_range_set(s : ChemmolpropsringsRange, i : Int, v : Double) -> ChemmolpropsringsRange {
-  let result = chem_mol_props_rings_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rings_range_sum(s : ChemmolpropsringsRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn chem_mol_props_rings_slice_get(s : ChemmolpropsringsSlice, i : Int) -> Do
 }
 
 pub fn chem_mol_props_rings_slice_set(s : ChemmolpropsringsSlice, i : Int, v : Double) -> ChemmolpropsringsSlice {
-  let result = chem_mol_props_rings_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_rings_slice_sum(s : ChemmolpropsringsSlice) -> Double { @_common.sum(s.data) }

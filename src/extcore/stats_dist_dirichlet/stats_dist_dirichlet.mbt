@@ -107,23 +107,15 @@ pub fn stats_dist_dirichlet_series_std(s : StatsdistdirichletSeries) -> Double {
 pub fn stats_dist_dirichlet_series_median(s : StatsdistdirichletSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_dist_dirichlet_series_scale(s : StatsdistdirichletSeries, f : Double) -> StatsdistdirichletSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_dist_dirichlet_series_add(a : StatsdistdirichletSeries, b : StatsdistdirichletSeries) -> StatsdistdirichletSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_dist_dirichlet_series_sub(a : StatsdistdirichletSeries, b : StatsdistdirichletSeries) -> StatsdistdirichletSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_dist_dirichlet_series_normalize(s : StatsdistdirichletSeries) -> StatsdistdirichletSeries {
@@ -254,22 +246,16 @@ pub fn stats_dist_dirichlet_vector_zero(dim : Int) -> StatsdistdirichletVector {
 
 pub fn stats_dist_dirichlet_vector_add(a : StatsdistdirichletVector, b : StatsdistdirichletVector) -> StatsdistdirichletVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_dist_dirichlet_vector_sub(a : StatsdistdirichletVector, b : StatsdistdirichletVector) -> StatsdistdirichletVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_dist_dirichlet_vector_scale(v : StatsdistdirichletVector, s : Double) -> StatsdistdirichletVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_dist_dirichlet_vector_dot(a : StatsdistdirichletVector, b : StatsdistdirichletVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_dist_dirichlet_frame_get(s : StatsdistdirichletFrame, i : Int) -> D
 }
 
 pub fn stats_dist_dirichlet_frame_set(s : StatsdistdirichletFrame, i : Int, v : Double) -> StatsdistdirichletFrame {
-  let result = stats_dist_dirichlet_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_dirichlet_frame_sum(s : StatsdistdirichletFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_dist_dirichlet_table_get(s : StatsdistdirichletTable, i : Int) -> D
 }
 
 pub fn stats_dist_dirichlet_table_set(s : StatsdistdirichletTable, i : Int, v : Double) -> StatsdistdirichletTable {
-  let result = stats_dist_dirichlet_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_dirichlet_table_sum(s : StatsdistdirichletTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_dist_dirichlet_graphn_get(s : StatsdistdirichletGraphN, i : Int) ->
 }
 
 pub fn stats_dist_dirichlet_graphn_set(s : StatsdistdirichletGraphN, i : Int, v : Double) -> StatsdistdirichletGraphN {
-  let result = stats_dist_dirichlet_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_dirichlet_graphn_sum(s : StatsdistdirichletGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_dist_dirichlet_node_get(s : StatsdistdirichletNode, i : Int) -> Dou
 }
 
 pub fn stats_dist_dirichlet_node_set(s : StatsdistdirichletNode, i : Int, v : Double) -> StatsdistdirichletNode {
-  let result = stats_dist_dirichlet_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_dirichlet_node_sum(s : StatsdistdirichletNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_dist_dirichlet_edge_get(s : StatsdistdirichletEdge, i : Int) -> Dou
 }
 
 pub fn stats_dist_dirichlet_edge_set(s : StatsdistdirichletEdge, i : Int, v : Double) -> StatsdistdirichletEdge {
-  let result = stats_dist_dirichlet_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_dirichlet_edge_sum(s : StatsdistdirichletEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_dist_dirichlet_path_get(s : StatsdistdirichletPath, i : Int) -> Dou
 }
 
 pub fn stats_dist_dirichlet_path_set(s : StatsdistdirichletPath, i : Int, v : Double) -> StatsdistdirichletPath {
-  let result = stats_dist_dirichlet_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_dirichlet_path_sum(s : StatsdistdirichletPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_dist_dirichlet_cluster_get(s : StatsdistdirichletCluster, i : Int) 
 }
 
 pub fn stats_dist_dirichlet_cluster_set(s : StatsdistdirichletCluster, i : Int, v : Double) -> StatsdistdirichletCluster {
-  let result = stats_dist_dirichlet_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_dirichlet_cluster_sum(s : StatsdistdirichletCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_dist_dirichlet_model_get(s : StatsdistdirichletModel, i : Int) -> D
 }
 
 pub fn stats_dist_dirichlet_model_set(s : StatsdistdirichletModel, i : Int, v : Double) -> StatsdistdirichletModel {
-  let result = stats_dist_dirichlet_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_dirichlet_model_sum(s : StatsdistdirichletModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_dist_dirichlet_layer_get(s : StatsdistdirichletLayer, i : Int) -> D
 }
 
 pub fn stats_dist_dirichlet_layer_set(s : StatsdistdirichletLayer, i : Int, v : Double) -> StatsdistdirichletLayer {
-  let result = stats_dist_dirichlet_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_dirichlet_layer_sum(s : StatsdistdirichletLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_dist_dirichlet_buffer_get(s : StatsdistdirichletBuffer, i : Int) ->
 }
 
 pub fn stats_dist_dirichlet_buffer_set(s : StatsdistdirichletBuffer, i : Int, v : Double) -> StatsdistdirichletBuffer {
-  let result = stats_dist_dirichlet_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_dirichlet_buffer_sum(s : StatsdistdirichletBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_dist_dirichlet_cursor_get(s : StatsdistdirichletCursor, i : Int) ->
 }
 
 pub fn stats_dist_dirichlet_cursor_set(s : StatsdistdirichletCursor, i : Int, v : Double) -> StatsdistdirichletCursor {
-  let result = stats_dist_dirichlet_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_dirichlet_cursor_sum(s : StatsdistdirichletCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_dist_dirichlet_view_get(s : StatsdistdirichletView, i : Int) -> Dou
 }
 
 pub fn stats_dist_dirichlet_view_set(s : StatsdistdirichletView, i : Int, v : Double) -> StatsdistdirichletView {
-  let result = stats_dist_dirichlet_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_dirichlet_view_sum(s : StatsdistdirichletView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_dist_dirichlet_range_get(s : StatsdistdirichletRange, i : Int) -> D
 }
 
 pub fn stats_dist_dirichlet_range_set(s : StatsdistdirichletRange, i : Int, v : Double) -> StatsdistdirichletRange {
-  let result = stats_dist_dirichlet_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_dirichlet_range_sum(s : StatsdistdirichletRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_dist_dirichlet_slice_get(s : StatsdistdirichletSlice, i : Int) -> D
 }
 
 pub fn stats_dist_dirichlet_slice_set(s : StatsdistdirichletSlice, i : Int, v : Double) -> StatsdistdirichletSlice {
-  let result = stats_dist_dirichlet_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_dirichlet_slice_sum(s : StatsdistdirichletSlice) -> Double { @_common.sum(s.data) }

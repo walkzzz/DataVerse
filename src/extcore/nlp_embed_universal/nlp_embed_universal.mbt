@@ -107,23 +107,15 @@ pub fn nlp_embed_universal_series_std(s : NlpembeduniversalSeries) -> Double { @
 pub fn nlp_embed_universal_series_median(s : NlpembeduniversalSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_embed_universal_series_scale(s : NlpembeduniversalSeries, f : Double) -> NlpembeduniversalSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_embed_universal_series_add(a : NlpembeduniversalSeries, b : NlpembeduniversalSeries) -> NlpembeduniversalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_embed_universal_series_sub(a : NlpembeduniversalSeries, b : NlpembeduniversalSeries) -> NlpembeduniversalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_embed_universal_series_normalize(s : NlpembeduniversalSeries) -> NlpembeduniversalSeries {
@@ -254,22 +246,16 @@ pub fn nlp_embed_universal_vector_zero(dim : Int) -> NlpembeduniversalVector {
 
 pub fn nlp_embed_universal_vector_add(a : NlpembeduniversalVector, b : NlpembeduniversalVector) -> NlpembeduniversalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_embed_universal_vector_sub(a : NlpembeduniversalVector, b : NlpembeduniversalVector) -> NlpembeduniversalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_embed_universal_vector_scale(v : NlpembeduniversalVector, s : Double) -> NlpembeduniversalVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_embed_universal_vector_dot(a : NlpembeduniversalVector, b : NlpembeduniversalVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_embed_universal_frame_get(s : NlpembeduniversalFrame, i : Int) -> Dou
 }
 
 pub fn nlp_embed_universal_frame_set(s : NlpembeduniversalFrame, i : Int, v : Double) -> NlpembeduniversalFrame {
-  let result = nlp_embed_universal_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_universal_frame_sum(s : NlpembeduniversalFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_embed_universal_table_get(s : NlpembeduniversalTable, i : Int) -> Dou
 }
 
 pub fn nlp_embed_universal_table_set(s : NlpembeduniversalTable, i : Int, v : Double) -> NlpembeduniversalTable {
-  let result = nlp_embed_universal_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_universal_table_sum(s : NlpembeduniversalTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_embed_universal_graphn_get(s : NlpembeduniversalGraphN, i : Int) -> D
 }
 
 pub fn nlp_embed_universal_graphn_set(s : NlpembeduniversalGraphN, i : Int, v : Double) -> NlpembeduniversalGraphN {
-  let result = nlp_embed_universal_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_universal_graphn_sum(s : NlpembeduniversalGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_embed_universal_node_get(s : NlpembeduniversalNode, i : Int) -> Doubl
 }
 
 pub fn nlp_embed_universal_node_set(s : NlpembeduniversalNode, i : Int, v : Double) -> NlpembeduniversalNode {
-  let result = nlp_embed_universal_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_universal_node_sum(s : NlpembeduniversalNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_embed_universal_edge_get(s : NlpembeduniversalEdge, i : Int) -> Doubl
 }
 
 pub fn nlp_embed_universal_edge_set(s : NlpembeduniversalEdge, i : Int, v : Double) -> NlpembeduniversalEdge {
-  let result = nlp_embed_universal_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_universal_edge_sum(s : NlpembeduniversalEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_embed_universal_path_get(s : NlpembeduniversalPath, i : Int) -> Doubl
 }
 
 pub fn nlp_embed_universal_path_set(s : NlpembeduniversalPath, i : Int, v : Double) -> NlpembeduniversalPath {
-  let result = nlp_embed_universal_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_universal_path_sum(s : NlpembeduniversalPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_embed_universal_cluster_get(s : NlpembeduniversalCluster, i : Int) ->
 }
 
 pub fn nlp_embed_universal_cluster_set(s : NlpembeduniversalCluster, i : Int, v : Double) -> NlpembeduniversalCluster {
-  let result = nlp_embed_universal_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_universal_cluster_sum(s : NlpembeduniversalCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_embed_universal_model_get(s : NlpembeduniversalModel, i : Int) -> Dou
 }
 
 pub fn nlp_embed_universal_model_set(s : NlpembeduniversalModel, i : Int, v : Double) -> NlpembeduniversalModel {
-  let result = nlp_embed_universal_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_universal_model_sum(s : NlpembeduniversalModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_embed_universal_layer_get(s : NlpembeduniversalLayer, i : Int) -> Dou
 }
 
 pub fn nlp_embed_universal_layer_set(s : NlpembeduniversalLayer, i : Int, v : Double) -> NlpembeduniversalLayer {
-  let result = nlp_embed_universal_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_universal_layer_sum(s : NlpembeduniversalLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_embed_universal_buffer_get(s : NlpembeduniversalBuffer, i : Int) -> D
 }
 
 pub fn nlp_embed_universal_buffer_set(s : NlpembeduniversalBuffer, i : Int, v : Double) -> NlpembeduniversalBuffer {
-  let result = nlp_embed_universal_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_universal_buffer_sum(s : NlpembeduniversalBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_embed_universal_cursor_get(s : NlpembeduniversalCursor, i : Int) -> D
 }
 
 pub fn nlp_embed_universal_cursor_set(s : NlpembeduniversalCursor, i : Int, v : Double) -> NlpembeduniversalCursor {
-  let result = nlp_embed_universal_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_universal_cursor_sum(s : NlpembeduniversalCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_embed_universal_view_get(s : NlpembeduniversalView, i : Int) -> Doubl
 }
 
 pub fn nlp_embed_universal_view_set(s : NlpembeduniversalView, i : Int, v : Double) -> NlpembeduniversalView {
-  let result = nlp_embed_universal_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_universal_view_sum(s : NlpembeduniversalView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_embed_universal_range_get(s : NlpembeduniversalRange, i : Int) -> Dou
 }
 
 pub fn nlp_embed_universal_range_set(s : NlpembeduniversalRange, i : Int, v : Double) -> NlpembeduniversalRange {
-  let result = nlp_embed_universal_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_universal_range_sum(s : NlpembeduniversalRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_embed_universal_slice_get(s : NlpembeduniversalSlice, i : Int) -> Dou
 }
 
 pub fn nlp_embed_universal_slice_set(s : NlpembeduniversalSlice, i : Int, v : Double) -> NlpembeduniversalSlice {
-  let result = nlp_embed_universal_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_universal_slice_sum(s : NlpembeduniversalSlice) -> Double { @_common.sum(s.data) }

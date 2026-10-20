@@ -107,23 +107,15 @@ pub fn image_morph_thickening_series_std(s : ImagemorphthickeningSeries) -> Doub
 pub fn image_morph_thickening_series_median(s : ImagemorphthickeningSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_morph_thickening_series_scale(s : ImagemorphthickeningSeries, f : Double) -> ImagemorphthickeningSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_morph_thickening_series_add(a : ImagemorphthickeningSeries, b : ImagemorphthickeningSeries) -> ImagemorphthickeningSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_morph_thickening_series_sub(a : ImagemorphthickeningSeries, b : ImagemorphthickeningSeries) -> ImagemorphthickeningSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_morph_thickening_series_normalize(s : ImagemorphthickeningSeries) -> ImagemorphthickeningSeries {
@@ -254,22 +246,16 @@ pub fn image_morph_thickening_vector_zero(dim : Int) -> ImagemorphthickeningVect
 
 pub fn image_morph_thickening_vector_add(a : ImagemorphthickeningVector, b : ImagemorphthickeningVector) -> ImagemorphthickeningVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_morph_thickening_vector_sub(a : ImagemorphthickeningVector, b : ImagemorphthickeningVector) -> ImagemorphthickeningVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_morph_thickening_vector_scale(v : ImagemorphthickeningVector, s : Double) -> ImagemorphthickeningVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_morph_thickening_vector_dot(a : ImagemorphthickeningVector, b : ImagemorphthickeningVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_morph_thickening_frame_get(s : ImagemorphthickeningFrame, i : Int) 
 }
 
 pub fn image_morph_thickening_frame_set(s : ImagemorphthickeningFrame, i : Int, v : Double) -> ImagemorphthickeningFrame {
-  let result = image_morph_thickening_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thickening_frame_sum(s : ImagemorphthickeningFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_morph_thickening_table_get(s : ImagemorphthickeningTable, i : Int) 
 }
 
 pub fn image_morph_thickening_table_set(s : ImagemorphthickeningTable, i : Int, v : Double) -> ImagemorphthickeningTable {
-  let result = image_morph_thickening_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thickening_table_sum(s : ImagemorphthickeningTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_morph_thickening_graphn_get(s : ImagemorphthickeningGraphN, i : Int
 }
 
 pub fn image_morph_thickening_graphn_set(s : ImagemorphthickeningGraphN, i : Int, v : Double) -> ImagemorphthickeningGraphN {
-  let result = image_morph_thickening_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thickening_graphn_sum(s : ImagemorphthickeningGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_morph_thickening_node_get(s : ImagemorphthickeningNode, i : Int) ->
 }
 
 pub fn image_morph_thickening_node_set(s : ImagemorphthickeningNode, i : Int, v : Double) -> ImagemorphthickeningNode {
-  let result = image_morph_thickening_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thickening_node_sum(s : ImagemorphthickeningNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_morph_thickening_edge_get(s : ImagemorphthickeningEdge, i : Int) ->
 }
 
 pub fn image_morph_thickening_edge_set(s : ImagemorphthickeningEdge, i : Int, v : Double) -> ImagemorphthickeningEdge {
-  let result = image_morph_thickening_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thickening_edge_sum(s : ImagemorphthickeningEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_morph_thickening_path_get(s : ImagemorphthickeningPath, i : Int) ->
 }
 
 pub fn image_morph_thickening_path_set(s : ImagemorphthickeningPath, i : Int, v : Double) -> ImagemorphthickeningPath {
-  let result = image_morph_thickening_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thickening_path_sum(s : ImagemorphthickeningPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_morph_thickening_cluster_get(s : ImagemorphthickeningCluster, i : I
 }
 
 pub fn image_morph_thickening_cluster_set(s : ImagemorphthickeningCluster, i : Int, v : Double) -> ImagemorphthickeningCluster {
-  let result = image_morph_thickening_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thickening_cluster_sum(s : ImagemorphthickeningCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_morph_thickening_model_get(s : ImagemorphthickeningModel, i : Int) 
 }
 
 pub fn image_morph_thickening_model_set(s : ImagemorphthickeningModel, i : Int, v : Double) -> ImagemorphthickeningModel {
-  let result = image_morph_thickening_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thickening_model_sum(s : ImagemorphthickeningModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_morph_thickening_layer_get(s : ImagemorphthickeningLayer, i : Int) 
 }
 
 pub fn image_morph_thickening_layer_set(s : ImagemorphthickeningLayer, i : Int, v : Double) -> ImagemorphthickeningLayer {
-  let result = image_morph_thickening_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thickening_layer_sum(s : ImagemorphthickeningLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_morph_thickening_buffer_get(s : ImagemorphthickeningBuffer, i : Int
 }
 
 pub fn image_morph_thickening_buffer_set(s : ImagemorphthickeningBuffer, i : Int, v : Double) -> ImagemorphthickeningBuffer {
-  let result = image_morph_thickening_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thickening_buffer_sum(s : ImagemorphthickeningBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_morph_thickening_cursor_get(s : ImagemorphthickeningCursor, i : Int
 }
 
 pub fn image_morph_thickening_cursor_set(s : ImagemorphthickeningCursor, i : Int, v : Double) -> ImagemorphthickeningCursor {
-  let result = image_morph_thickening_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thickening_cursor_sum(s : ImagemorphthickeningCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_morph_thickening_view_get(s : ImagemorphthickeningView, i : Int) ->
 }
 
 pub fn image_morph_thickening_view_set(s : ImagemorphthickeningView, i : Int, v : Double) -> ImagemorphthickeningView {
-  let result = image_morph_thickening_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thickening_view_sum(s : ImagemorphthickeningView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_morph_thickening_range_get(s : ImagemorphthickeningRange, i : Int) 
 }
 
 pub fn image_morph_thickening_range_set(s : ImagemorphthickeningRange, i : Int, v : Double) -> ImagemorphthickeningRange {
-  let result = image_morph_thickening_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thickening_range_sum(s : ImagemorphthickeningRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_morph_thickening_slice_get(s : ImagemorphthickeningSlice, i : Int) 
 }
 
 pub fn image_morph_thickening_slice_set(s : ImagemorphthickeningSlice, i : Int, v : Double) -> ImagemorphthickeningSlice {
-  let result = image_morph_thickening_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_thickening_slice_sum(s : ImagemorphthickeningSlice) -> Double { @_common.sum(s.data) }

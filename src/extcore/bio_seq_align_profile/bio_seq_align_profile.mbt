@@ -107,23 +107,15 @@ pub fn bio_seq_align_profile_series_std(s : BioseqalignprofileSeries) -> Double 
 pub fn bio_seq_align_profile_series_median(s : BioseqalignprofileSeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_seq_align_profile_series_scale(s : BioseqalignprofileSeries, f : Double) -> BioseqalignprofileSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_seq_align_profile_series_add(a : BioseqalignprofileSeries, b : BioseqalignprofileSeries) -> BioseqalignprofileSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_align_profile_series_sub(a : BioseqalignprofileSeries, b : BioseqalignprofileSeries) -> BioseqalignprofileSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_align_profile_series_normalize(s : BioseqalignprofileSeries) -> BioseqalignprofileSeries {
@@ -254,22 +246,16 @@ pub fn bio_seq_align_profile_vector_zero(dim : Int) -> BioseqalignprofileVector 
 
 pub fn bio_seq_align_profile_vector_add(a : BioseqalignprofileVector, b : BioseqalignprofileVector) -> BioseqalignprofileVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_align_profile_vector_sub(a : BioseqalignprofileVector, b : BioseqalignprofileVector) -> BioseqalignprofileVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_align_profile_vector_scale(v : BioseqalignprofileVector, s : Double) -> BioseqalignprofileVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_seq_align_profile_vector_dot(a : BioseqalignprofileVector, b : BioseqalignprofileVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_seq_align_profile_frame_get(s : BioseqalignprofileFrame, i : Int) -> 
 }
 
 pub fn bio_seq_align_profile_frame_set(s : BioseqalignprofileFrame, i : Int, v : Double) -> BioseqalignprofileFrame {
-  let result = bio_seq_align_profile_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_profile_frame_sum(s : BioseqalignprofileFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_seq_align_profile_table_get(s : BioseqalignprofileTable, i : Int) -> 
 }
 
 pub fn bio_seq_align_profile_table_set(s : BioseqalignprofileTable, i : Int, v : Double) -> BioseqalignprofileTable {
-  let result = bio_seq_align_profile_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_profile_table_sum(s : BioseqalignprofileTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_seq_align_profile_graphn_get(s : BioseqalignprofileGraphN, i : Int) -
 }
 
 pub fn bio_seq_align_profile_graphn_set(s : BioseqalignprofileGraphN, i : Int, v : Double) -> BioseqalignprofileGraphN {
-  let result = bio_seq_align_profile_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_profile_graphn_sum(s : BioseqalignprofileGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_seq_align_profile_node_get(s : BioseqalignprofileNode, i : Int) -> Do
 }
 
 pub fn bio_seq_align_profile_node_set(s : BioseqalignprofileNode, i : Int, v : Double) -> BioseqalignprofileNode {
-  let result = bio_seq_align_profile_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_profile_node_sum(s : BioseqalignprofileNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_seq_align_profile_edge_get(s : BioseqalignprofileEdge, i : Int) -> Do
 }
 
 pub fn bio_seq_align_profile_edge_set(s : BioseqalignprofileEdge, i : Int, v : Double) -> BioseqalignprofileEdge {
-  let result = bio_seq_align_profile_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_profile_edge_sum(s : BioseqalignprofileEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_seq_align_profile_path_get(s : BioseqalignprofilePath, i : Int) -> Do
 }
 
 pub fn bio_seq_align_profile_path_set(s : BioseqalignprofilePath, i : Int, v : Double) -> BioseqalignprofilePath {
-  let result = bio_seq_align_profile_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_profile_path_sum(s : BioseqalignprofilePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_seq_align_profile_cluster_get(s : BioseqalignprofileCluster, i : Int)
 }
 
 pub fn bio_seq_align_profile_cluster_set(s : BioseqalignprofileCluster, i : Int, v : Double) -> BioseqalignprofileCluster {
-  let result = bio_seq_align_profile_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_profile_cluster_sum(s : BioseqalignprofileCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_seq_align_profile_model_get(s : BioseqalignprofileModel, i : Int) -> 
 }
 
 pub fn bio_seq_align_profile_model_set(s : BioseqalignprofileModel, i : Int, v : Double) -> BioseqalignprofileModel {
-  let result = bio_seq_align_profile_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_profile_model_sum(s : BioseqalignprofileModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_seq_align_profile_layer_get(s : BioseqalignprofileLayer, i : Int) -> 
 }
 
 pub fn bio_seq_align_profile_layer_set(s : BioseqalignprofileLayer, i : Int, v : Double) -> BioseqalignprofileLayer {
-  let result = bio_seq_align_profile_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_profile_layer_sum(s : BioseqalignprofileLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_seq_align_profile_buffer_get(s : BioseqalignprofileBuffer, i : Int) -
 }
 
 pub fn bio_seq_align_profile_buffer_set(s : BioseqalignprofileBuffer, i : Int, v : Double) -> BioseqalignprofileBuffer {
-  let result = bio_seq_align_profile_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_profile_buffer_sum(s : BioseqalignprofileBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_seq_align_profile_cursor_get(s : BioseqalignprofileCursor, i : Int) -
 }
 
 pub fn bio_seq_align_profile_cursor_set(s : BioseqalignprofileCursor, i : Int, v : Double) -> BioseqalignprofileCursor {
-  let result = bio_seq_align_profile_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_profile_cursor_sum(s : BioseqalignprofileCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_seq_align_profile_view_get(s : BioseqalignprofileView, i : Int) -> Do
 }
 
 pub fn bio_seq_align_profile_view_set(s : BioseqalignprofileView, i : Int, v : Double) -> BioseqalignprofileView {
-  let result = bio_seq_align_profile_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_profile_view_sum(s : BioseqalignprofileView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_seq_align_profile_range_get(s : BioseqalignprofileRange, i : Int) -> 
 }
 
 pub fn bio_seq_align_profile_range_set(s : BioseqalignprofileRange, i : Int, v : Double) -> BioseqalignprofileRange {
-  let result = bio_seq_align_profile_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_profile_range_sum(s : BioseqalignprofileRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_seq_align_profile_slice_get(s : BioseqalignprofileSlice, i : Int) -> 
 }
 
 pub fn bio_seq_align_profile_slice_set(s : BioseqalignprofileSlice, i : Int, v : Double) -> BioseqalignprofileSlice {
-  let result = bio_seq_align_profile_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_profile_slice_sum(s : BioseqalignprofileSlice) -> Double { @_common.sum(s.data) }

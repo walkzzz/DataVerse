@@ -107,23 +107,15 @@ pub fn math_approx_wavelet_series_std(s : MathapproxwaveletSeries) -> Double { @
 pub fn math_approx_wavelet_series_median(s : MathapproxwaveletSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_approx_wavelet_series_scale(s : MathapproxwaveletSeries, f : Double) -> MathapproxwaveletSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_approx_wavelet_series_add(a : MathapproxwaveletSeries, b : MathapproxwaveletSeries) -> MathapproxwaveletSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_approx_wavelet_series_sub(a : MathapproxwaveletSeries, b : MathapproxwaveletSeries) -> MathapproxwaveletSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_approx_wavelet_series_normalize(s : MathapproxwaveletSeries) -> MathapproxwaveletSeries {
@@ -254,22 +246,16 @@ pub fn math_approx_wavelet_vector_zero(dim : Int) -> MathapproxwaveletVector {
 
 pub fn math_approx_wavelet_vector_add(a : MathapproxwaveletVector, b : MathapproxwaveletVector) -> MathapproxwaveletVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_approx_wavelet_vector_sub(a : MathapproxwaveletVector, b : MathapproxwaveletVector) -> MathapproxwaveletVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_approx_wavelet_vector_scale(v : MathapproxwaveletVector, s : Double) -> MathapproxwaveletVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_approx_wavelet_vector_dot(a : MathapproxwaveletVector, b : MathapproxwaveletVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_approx_wavelet_frame_get(s : MathapproxwaveletFrame, i : Int) -> Dou
 }
 
 pub fn math_approx_wavelet_frame_set(s : MathapproxwaveletFrame, i : Int, v : Double) -> MathapproxwaveletFrame {
-  let result = math_approx_wavelet_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_wavelet_frame_sum(s : MathapproxwaveletFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_approx_wavelet_table_get(s : MathapproxwaveletTable, i : Int) -> Dou
 }
 
 pub fn math_approx_wavelet_table_set(s : MathapproxwaveletTable, i : Int, v : Double) -> MathapproxwaveletTable {
-  let result = math_approx_wavelet_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_wavelet_table_sum(s : MathapproxwaveletTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_approx_wavelet_graphn_get(s : MathapproxwaveletGraphN, i : Int) -> D
 }
 
 pub fn math_approx_wavelet_graphn_set(s : MathapproxwaveletGraphN, i : Int, v : Double) -> MathapproxwaveletGraphN {
-  let result = math_approx_wavelet_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_wavelet_graphn_sum(s : MathapproxwaveletGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_approx_wavelet_node_get(s : MathapproxwaveletNode, i : Int) -> Doubl
 }
 
 pub fn math_approx_wavelet_node_set(s : MathapproxwaveletNode, i : Int, v : Double) -> MathapproxwaveletNode {
-  let result = math_approx_wavelet_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_wavelet_node_sum(s : MathapproxwaveletNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_approx_wavelet_edge_get(s : MathapproxwaveletEdge, i : Int) -> Doubl
 }
 
 pub fn math_approx_wavelet_edge_set(s : MathapproxwaveletEdge, i : Int, v : Double) -> MathapproxwaveletEdge {
-  let result = math_approx_wavelet_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_wavelet_edge_sum(s : MathapproxwaveletEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_approx_wavelet_path_get(s : MathapproxwaveletPath, i : Int) -> Doubl
 }
 
 pub fn math_approx_wavelet_path_set(s : MathapproxwaveletPath, i : Int, v : Double) -> MathapproxwaveletPath {
-  let result = math_approx_wavelet_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_wavelet_path_sum(s : MathapproxwaveletPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_approx_wavelet_cluster_get(s : MathapproxwaveletCluster, i : Int) ->
 }
 
 pub fn math_approx_wavelet_cluster_set(s : MathapproxwaveletCluster, i : Int, v : Double) -> MathapproxwaveletCluster {
-  let result = math_approx_wavelet_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_wavelet_cluster_sum(s : MathapproxwaveletCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_approx_wavelet_model_get(s : MathapproxwaveletModel, i : Int) -> Dou
 }
 
 pub fn math_approx_wavelet_model_set(s : MathapproxwaveletModel, i : Int, v : Double) -> MathapproxwaveletModel {
-  let result = math_approx_wavelet_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_wavelet_model_sum(s : MathapproxwaveletModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_approx_wavelet_layer_get(s : MathapproxwaveletLayer, i : Int) -> Dou
 }
 
 pub fn math_approx_wavelet_layer_set(s : MathapproxwaveletLayer, i : Int, v : Double) -> MathapproxwaveletLayer {
-  let result = math_approx_wavelet_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_wavelet_layer_sum(s : MathapproxwaveletLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_approx_wavelet_buffer_get(s : MathapproxwaveletBuffer, i : Int) -> D
 }
 
 pub fn math_approx_wavelet_buffer_set(s : MathapproxwaveletBuffer, i : Int, v : Double) -> MathapproxwaveletBuffer {
-  let result = math_approx_wavelet_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_wavelet_buffer_sum(s : MathapproxwaveletBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_approx_wavelet_cursor_get(s : MathapproxwaveletCursor, i : Int) -> D
 }
 
 pub fn math_approx_wavelet_cursor_set(s : MathapproxwaveletCursor, i : Int, v : Double) -> MathapproxwaveletCursor {
-  let result = math_approx_wavelet_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_wavelet_cursor_sum(s : MathapproxwaveletCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_approx_wavelet_view_get(s : MathapproxwaveletView, i : Int) -> Doubl
 }
 
 pub fn math_approx_wavelet_view_set(s : MathapproxwaveletView, i : Int, v : Double) -> MathapproxwaveletView {
-  let result = math_approx_wavelet_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_wavelet_view_sum(s : MathapproxwaveletView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_approx_wavelet_range_get(s : MathapproxwaveletRange, i : Int) -> Dou
 }
 
 pub fn math_approx_wavelet_range_set(s : MathapproxwaveletRange, i : Int, v : Double) -> MathapproxwaveletRange {
-  let result = math_approx_wavelet_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_wavelet_range_sum(s : MathapproxwaveletRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_approx_wavelet_slice_get(s : MathapproxwaveletSlice, i : Int) -> Dou
 }
 
 pub fn math_approx_wavelet_slice_set(s : MathapproxwaveletSlice, i : Int, v : Double) -> MathapproxwaveletSlice {
-  let result = math_approx_wavelet_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_wavelet_slice_sum(s : MathapproxwaveletSlice) -> Double { @_common.sum(s.data) }

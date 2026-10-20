@@ -107,23 +107,15 @@ pub fn bio_phylo_consensus_series_std(s : BiophyloconsensusSeries) -> Double { @
 pub fn bio_phylo_consensus_series_median(s : BiophyloconsensusSeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_phylo_consensus_series_scale(s : BiophyloconsensusSeries, f : Double) -> BiophyloconsensusSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_phylo_consensus_series_add(a : BiophyloconsensusSeries, b : BiophyloconsensusSeries) -> BiophyloconsensusSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_phylo_consensus_series_sub(a : BiophyloconsensusSeries, b : BiophyloconsensusSeries) -> BiophyloconsensusSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_phylo_consensus_series_normalize(s : BiophyloconsensusSeries) -> BiophyloconsensusSeries {
@@ -254,22 +246,16 @@ pub fn bio_phylo_consensus_vector_zero(dim : Int) -> BiophyloconsensusVector {
 
 pub fn bio_phylo_consensus_vector_add(a : BiophyloconsensusVector, b : BiophyloconsensusVector) -> BiophyloconsensusVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_phylo_consensus_vector_sub(a : BiophyloconsensusVector, b : BiophyloconsensusVector) -> BiophyloconsensusVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_phylo_consensus_vector_scale(v : BiophyloconsensusVector, s : Double) -> BiophyloconsensusVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_phylo_consensus_vector_dot(a : BiophyloconsensusVector, b : BiophyloconsensusVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_phylo_consensus_frame_get(s : BiophyloconsensusFrame, i : Int) -> Dou
 }
 
 pub fn bio_phylo_consensus_frame_set(s : BiophyloconsensusFrame, i : Int, v : Double) -> BiophyloconsensusFrame {
-  let result = bio_phylo_consensus_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_consensus_frame_sum(s : BiophyloconsensusFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_phylo_consensus_table_get(s : BiophyloconsensusTable, i : Int) -> Dou
 }
 
 pub fn bio_phylo_consensus_table_set(s : BiophyloconsensusTable, i : Int, v : Double) -> BiophyloconsensusTable {
-  let result = bio_phylo_consensus_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_consensus_table_sum(s : BiophyloconsensusTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_phylo_consensus_graphn_get(s : BiophyloconsensusGraphN, i : Int) -> D
 }
 
 pub fn bio_phylo_consensus_graphn_set(s : BiophyloconsensusGraphN, i : Int, v : Double) -> BiophyloconsensusGraphN {
-  let result = bio_phylo_consensus_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_consensus_graphn_sum(s : BiophyloconsensusGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_phylo_consensus_node_get(s : BiophyloconsensusNode, i : Int) -> Doubl
 }
 
 pub fn bio_phylo_consensus_node_set(s : BiophyloconsensusNode, i : Int, v : Double) -> BiophyloconsensusNode {
-  let result = bio_phylo_consensus_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_consensus_node_sum(s : BiophyloconsensusNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_phylo_consensus_edge_get(s : BiophyloconsensusEdge, i : Int) -> Doubl
 }
 
 pub fn bio_phylo_consensus_edge_set(s : BiophyloconsensusEdge, i : Int, v : Double) -> BiophyloconsensusEdge {
-  let result = bio_phylo_consensus_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_consensus_edge_sum(s : BiophyloconsensusEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_phylo_consensus_path_get(s : BiophyloconsensusPath, i : Int) -> Doubl
 }
 
 pub fn bio_phylo_consensus_path_set(s : BiophyloconsensusPath, i : Int, v : Double) -> BiophyloconsensusPath {
-  let result = bio_phylo_consensus_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_consensus_path_sum(s : BiophyloconsensusPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_phylo_consensus_cluster_get(s : BiophyloconsensusCluster, i : Int) ->
 }
 
 pub fn bio_phylo_consensus_cluster_set(s : BiophyloconsensusCluster, i : Int, v : Double) -> BiophyloconsensusCluster {
-  let result = bio_phylo_consensus_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_consensus_cluster_sum(s : BiophyloconsensusCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_phylo_consensus_model_get(s : BiophyloconsensusModel, i : Int) -> Dou
 }
 
 pub fn bio_phylo_consensus_model_set(s : BiophyloconsensusModel, i : Int, v : Double) -> BiophyloconsensusModel {
-  let result = bio_phylo_consensus_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_consensus_model_sum(s : BiophyloconsensusModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_phylo_consensus_layer_get(s : BiophyloconsensusLayer, i : Int) -> Dou
 }
 
 pub fn bio_phylo_consensus_layer_set(s : BiophyloconsensusLayer, i : Int, v : Double) -> BiophyloconsensusLayer {
-  let result = bio_phylo_consensus_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_consensus_layer_sum(s : BiophyloconsensusLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_phylo_consensus_buffer_get(s : BiophyloconsensusBuffer, i : Int) -> D
 }
 
 pub fn bio_phylo_consensus_buffer_set(s : BiophyloconsensusBuffer, i : Int, v : Double) -> BiophyloconsensusBuffer {
-  let result = bio_phylo_consensus_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_consensus_buffer_sum(s : BiophyloconsensusBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_phylo_consensus_cursor_get(s : BiophyloconsensusCursor, i : Int) -> D
 }
 
 pub fn bio_phylo_consensus_cursor_set(s : BiophyloconsensusCursor, i : Int, v : Double) -> BiophyloconsensusCursor {
-  let result = bio_phylo_consensus_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_consensus_cursor_sum(s : BiophyloconsensusCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_phylo_consensus_view_get(s : BiophyloconsensusView, i : Int) -> Doubl
 }
 
 pub fn bio_phylo_consensus_view_set(s : BiophyloconsensusView, i : Int, v : Double) -> BiophyloconsensusView {
-  let result = bio_phylo_consensus_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_consensus_view_sum(s : BiophyloconsensusView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_phylo_consensus_range_get(s : BiophyloconsensusRange, i : Int) -> Dou
 }
 
 pub fn bio_phylo_consensus_range_set(s : BiophyloconsensusRange, i : Int, v : Double) -> BiophyloconsensusRange {
-  let result = bio_phylo_consensus_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_consensus_range_sum(s : BiophyloconsensusRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_phylo_consensus_slice_get(s : BiophyloconsensusSlice, i : Int) -> Dou
 }
 
 pub fn bio_phylo_consensus_slice_set(s : BiophyloconsensusSlice, i : Int, v : Double) -> BiophyloconsensusSlice {
-  let result = bio_phylo_consensus_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_consensus_slice_sum(s : BiophyloconsensusSlice) -> Double { @_common.sum(s.data) }

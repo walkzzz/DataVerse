@@ -107,23 +107,15 @@ pub fn db_store_matrix_series_std(s : DbstorematrixSeries) -> Double { @_common.
 pub fn db_store_matrix_series_median(s : DbstorematrixSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_store_matrix_series_scale(s : DbstorematrixSeries, f : Double) -> DbstorematrixSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_store_matrix_series_add(a : DbstorematrixSeries, b : DbstorematrixSeries) -> DbstorematrixSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_store_matrix_series_sub(a : DbstorematrixSeries, b : DbstorematrixSeries) -> DbstorematrixSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_store_matrix_series_normalize(s : DbstorematrixSeries) -> DbstorematrixSeries {
@@ -254,22 +246,16 @@ pub fn db_store_matrix_vector_zero(dim : Int) -> DbstorematrixVector {
 
 pub fn db_store_matrix_vector_add(a : DbstorematrixVector, b : DbstorematrixVector) -> DbstorematrixVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_store_matrix_vector_sub(a : DbstorematrixVector, b : DbstorematrixVector) -> DbstorematrixVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_store_matrix_vector_scale(v : DbstorematrixVector, s : Double) -> DbstorematrixVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_store_matrix_vector_dot(a : DbstorematrixVector, b : DbstorematrixVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_store_matrix_frame_get(s : DbstorematrixFrame, i : Int) -> Double {
 }
 
 pub fn db_store_matrix_frame_set(s : DbstorematrixFrame, i : Int, v : Double) -> DbstorematrixFrame {
-  let result = db_store_matrix_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_matrix_frame_sum(s : DbstorematrixFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_store_matrix_table_get(s : DbstorematrixTable, i : Int) -> Double {
 }
 
 pub fn db_store_matrix_table_set(s : DbstorematrixTable, i : Int, v : Double) -> DbstorematrixTable {
-  let result = db_store_matrix_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_matrix_table_sum(s : DbstorematrixTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_store_matrix_graphn_get(s : DbstorematrixGraphN, i : Int) -> Double {
 }
 
 pub fn db_store_matrix_graphn_set(s : DbstorematrixGraphN, i : Int, v : Double) -> DbstorematrixGraphN {
-  let result = db_store_matrix_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_matrix_graphn_sum(s : DbstorematrixGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_store_matrix_node_get(s : DbstorematrixNode, i : Int) -> Double {
 }
 
 pub fn db_store_matrix_node_set(s : DbstorematrixNode, i : Int, v : Double) -> DbstorematrixNode {
-  let result = db_store_matrix_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_matrix_node_sum(s : DbstorematrixNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_store_matrix_edge_get(s : DbstorematrixEdge, i : Int) -> Double {
 }
 
 pub fn db_store_matrix_edge_set(s : DbstorematrixEdge, i : Int, v : Double) -> DbstorematrixEdge {
-  let result = db_store_matrix_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_matrix_edge_sum(s : DbstorematrixEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_store_matrix_path_get(s : DbstorematrixPath, i : Int) -> Double {
 }
 
 pub fn db_store_matrix_path_set(s : DbstorematrixPath, i : Int, v : Double) -> DbstorematrixPath {
-  let result = db_store_matrix_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_matrix_path_sum(s : DbstorematrixPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_store_matrix_cluster_get(s : DbstorematrixCluster, i : Int) -> Double 
 }
 
 pub fn db_store_matrix_cluster_set(s : DbstorematrixCluster, i : Int, v : Double) -> DbstorematrixCluster {
-  let result = db_store_matrix_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_matrix_cluster_sum(s : DbstorematrixCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_store_matrix_model_get(s : DbstorematrixModel, i : Int) -> Double {
 }
 
 pub fn db_store_matrix_model_set(s : DbstorematrixModel, i : Int, v : Double) -> DbstorematrixModel {
-  let result = db_store_matrix_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_matrix_model_sum(s : DbstorematrixModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_store_matrix_layer_get(s : DbstorematrixLayer, i : Int) -> Double {
 }
 
 pub fn db_store_matrix_layer_set(s : DbstorematrixLayer, i : Int, v : Double) -> DbstorematrixLayer {
-  let result = db_store_matrix_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_matrix_layer_sum(s : DbstorematrixLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_store_matrix_buffer_get(s : DbstorematrixBuffer, i : Int) -> Double {
 }
 
 pub fn db_store_matrix_buffer_set(s : DbstorematrixBuffer, i : Int, v : Double) -> DbstorematrixBuffer {
-  let result = db_store_matrix_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_matrix_buffer_sum(s : DbstorematrixBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_store_matrix_cursor_get(s : DbstorematrixCursor, i : Int) -> Double {
 }
 
 pub fn db_store_matrix_cursor_set(s : DbstorematrixCursor, i : Int, v : Double) -> DbstorematrixCursor {
-  let result = db_store_matrix_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_matrix_cursor_sum(s : DbstorematrixCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_store_matrix_view_get(s : DbstorematrixView, i : Int) -> Double {
 }
 
 pub fn db_store_matrix_view_set(s : DbstorematrixView, i : Int, v : Double) -> DbstorematrixView {
-  let result = db_store_matrix_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_matrix_view_sum(s : DbstorematrixView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_store_matrix_range_get(s : DbstorematrixRange, i : Int) -> Double {
 }
 
 pub fn db_store_matrix_range_set(s : DbstorematrixRange, i : Int, v : Double) -> DbstorematrixRange {
-  let result = db_store_matrix_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_matrix_range_sum(s : DbstorematrixRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_store_matrix_slice_get(s : DbstorematrixSlice, i : Int) -> Double {
 }
 
 pub fn db_store_matrix_slice_set(s : DbstorematrixSlice, i : Int, v : Double) -> DbstorematrixSlice {
-  let result = db_store_matrix_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_matrix_slice_sum(s : DbstorematrixSlice) -> Double { @_common.sum(s.data) }

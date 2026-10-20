@@ -107,23 +107,15 @@ pub fn math_numerical_diff_series_std(s : MathnumericaldiffSeries) -> Double { @
 pub fn math_numerical_diff_series_median(s : MathnumericaldiffSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_numerical_diff_series_scale(s : MathnumericaldiffSeries, f : Double) -> MathnumericaldiffSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_numerical_diff_series_add(a : MathnumericaldiffSeries, b : MathnumericaldiffSeries) -> MathnumericaldiffSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_numerical_diff_series_sub(a : MathnumericaldiffSeries, b : MathnumericaldiffSeries) -> MathnumericaldiffSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_numerical_diff_series_normalize(s : MathnumericaldiffSeries) -> MathnumericaldiffSeries {
@@ -254,22 +246,16 @@ pub fn math_numerical_diff_vector_zero(dim : Int) -> MathnumericaldiffVector {
 
 pub fn math_numerical_diff_vector_add(a : MathnumericaldiffVector, b : MathnumericaldiffVector) -> MathnumericaldiffVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_numerical_diff_vector_sub(a : MathnumericaldiffVector, b : MathnumericaldiffVector) -> MathnumericaldiffVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_numerical_diff_vector_scale(v : MathnumericaldiffVector, s : Double) -> MathnumericaldiffVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_numerical_diff_vector_dot(a : MathnumericaldiffVector, b : MathnumericaldiffVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_numerical_diff_frame_get(s : MathnumericaldiffFrame, i : Int) -> Dou
 }
 
 pub fn math_numerical_diff_frame_set(s : MathnumericaldiffFrame, i : Int, v : Double) -> MathnumericaldiffFrame {
-  let result = math_numerical_diff_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_diff_frame_sum(s : MathnumericaldiffFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_numerical_diff_table_get(s : MathnumericaldiffTable, i : Int) -> Dou
 }
 
 pub fn math_numerical_diff_table_set(s : MathnumericaldiffTable, i : Int, v : Double) -> MathnumericaldiffTable {
-  let result = math_numerical_diff_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_diff_table_sum(s : MathnumericaldiffTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_numerical_diff_graphn_get(s : MathnumericaldiffGraphN, i : Int) -> D
 }
 
 pub fn math_numerical_diff_graphn_set(s : MathnumericaldiffGraphN, i : Int, v : Double) -> MathnumericaldiffGraphN {
-  let result = math_numerical_diff_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_diff_graphn_sum(s : MathnumericaldiffGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_numerical_diff_node_get(s : MathnumericaldiffNode, i : Int) -> Doubl
 }
 
 pub fn math_numerical_diff_node_set(s : MathnumericaldiffNode, i : Int, v : Double) -> MathnumericaldiffNode {
-  let result = math_numerical_diff_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_diff_node_sum(s : MathnumericaldiffNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_numerical_diff_edge_get(s : MathnumericaldiffEdge, i : Int) -> Doubl
 }
 
 pub fn math_numerical_diff_edge_set(s : MathnumericaldiffEdge, i : Int, v : Double) -> MathnumericaldiffEdge {
-  let result = math_numerical_diff_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_diff_edge_sum(s : MathnumericaldiffEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_numerical_diff_path_get(s : MathnumericaldiffPath, i : Int) -> Doubl
 }
 
 pub fn math_numerical_diff_path_set(s : MathnumericaldiffPath, i : Int, v : Double) -> MathnumericaldiffPath {
-  let result = math_numerical_diff_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_diff_path_sum(s : MathnumericaldiffPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_numerical_diff_cluster_get(s : MathnumericaldiffCluster, i : Int) ->
 }
 
 pub fn math_numerical_diff_cluster_set(s : MathnumericaldiffCluster, i : Int, v : Double) -> MathnumericaldiffCluster {
-  let result = math_numerical_diff_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_diff_cluster_sum(s : MathnumericaldiffCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_numerical_diff_model_get(s : MathnumericaldiffModel, i : Int) -> Dou
 }
 
 pub fn math_numerical_diff_model_set(s : MathnumericaldiffModel, i : Int, v : Double) -> MathnumericaldiffModel {
-  let result = math_numerical_diff_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_diff_model_sum(s : MathnumericaldiffModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_numerical_diff_layer_get(s : MathnumericaldiffLayer, i : Int) -> Dou
 }
 
 pub fn math_numerical_diff_layer_set(s : MathnumericaldiffLayer, i : Int, v : Double) -> MathnumericaldiffLayer {
-  let result = math_numerical_diff_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_diff_layer_sum(s : MathnumericaldiffLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_numerical_diff_buffer_get(s : MathnumericaldiffBuffer, i : Int) -> D
 }
 
 pub fn math_numerical_diff_buffer_set(s : MathnumericaldiffBuffer, i : Int, v : Double) -> MathnumericaldiffBuffer {
-  let result = math_numerical_diff_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_diff_buffer_sum(s : MathnumericaldiffBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_numerical_diff_cursor_get(s : MathnumericaldiffCursor, i : Int) -> D
 }
 
 pub fn math_numerical_diff_cursor_set(s : MathnumericaldiffCursor, i : Int, v : Double) -> MathnumericaldiffCursor {
-  let result = math_numerical_diff_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_diff_cursor_sum(s : MathnumericaldiffCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_numerical_diff_view_get(s : MathnumericaldiffView, i : Int) -> Doubl
 }
 
 pub fn math_numerical_diff_view_set(s : MathnumericaldiffView, i : Int, v : Double) -> MathnumericaldiffView {
-  let result = math_numerical_diff_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_diff_view_sum(s : MathnumericaldiffView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_numerical_diff_range_get(s : MathnumericaldiffRange, i : Int) -> Dou
 }
 
 pub fn math_numerical_diff_range_set(s : MathnumericaldiffRange, i : Int, v : Double) -> MathnumericaldiffRange {
-  let result = math_numerical_diff_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_diff_range_sum(s : MathnumericaldiffRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_numerical_diff_slice_get(s : MathnumericaldiffSlice, i : Int) -> Dou
 }
 
 pub fn math_numerical_diff_slice_set(s : MathnumericaldiffSlice, i : Int, v : Double) -> MathnumericaldiffSlice {
-  let result = math_numerical_diff_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_numerical_diff_slice_sum(s : MathnumericaldiffSlice) -> Double { @_common.sum(s.data) }

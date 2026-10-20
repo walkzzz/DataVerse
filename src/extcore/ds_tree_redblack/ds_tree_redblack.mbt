@@ -107,23 +107,15 @@ pub fn ds_tree_redblack_series_std(s : DstreeredblackSeries) -> Double { @_commo
 pub fn ds_tree_redblack_series_median(s : DstreeredblackSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_tree_redblack_series_scale(s : DstreeredblackSeries, f : Double) -> DstreeredblackSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_tree_redblack_series_add(a : DstreeredblackSeries, b : DstreeredblackSeries) -> DstreeredblackSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_tree_redblack_series_sub(a : DstreeredblackSeries, b : DstreeredblackSeries) -> DstreeredblackSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_tree_redblack_series_normalize(s : DstreeredblackSeries) -> DstreeredblackSeries {
@@ -254,22 +246,16 @@ pub fn ds_tree_redblack_vector_zero(dim : Int) -> DstreeredblackVector {
 
 pub fn ds_tree_redblack_vector_add(a : DstreeredblackVector, b : DstreeredblackVector) -> DstreeredblackVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_tree_redblack_vector_sub(a : DstreeredblackVector, b : DstreeredblackVector) -> DstreeredblackVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_tree_redblack_vector_scale(v : DstreeredblackVector, s : Double) -> DstreeredblackVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_tree_redblack_vector_dot(a : DstreeredblackVector, b : DstreeredblackVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_tree_redblack_frame_get(s : DstreeredblackFrame, i : Int) -> Double {
 }
 
 pub fn ds_tree_redblack_frame_set(s : DstreeredblackFrame, i : Int, v : Double) -> DstreeredblackFrame {
-  let result = ds_tree_redblack_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_redblack_frame_sum(s : DstreeredblackFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_tree_redblack_table_get(s : DstreeredblackTable, i : Int) -> Double {
 }
 
 pub fn ds_tree_redblack_table_set(s : DstreeredblackTable, i : Int, v : Double) -> DstreeredblackTable {
-  let result = ds_tree_redblack_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_redblack_table_sum(s : DstreeredblackTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_tree_redblack_graphn_get(s : DstreeredblackGraphN, i : Int) -> Double 
 }
 
 pub fn ds_tree_redblack_graphn_set(s : DstreeredblackGraphN, i : Int, v : Double) -> DstreeredblackGraphN {
-  let result = ds_tree_redblack_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_redblack_graphn_sum(s : DstreeredblackGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_tree_redblack_node_get(s : DstreeredblackNode, i : Int) -> Double {
 }
 
 pub fn ds_tree_redblack_node_set(s : DstreeredblackNode, i : Int, v : Double) -> DstreeredblackNode {
-  let result = ds_tree_redblack_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_redblack_node_sum(s : DstreeredblackNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_tree_redblack_edge_get(s : DstreeredblackEdge, i : Int) -> Double {
 }
 
 pub fn ds_tree_redblack_edge_set(s : DstreeredblackEdge, i : Int, v : Double) -> DstreeredblackEdge {
-  let result = ds_tree_redblack_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_redblack_edge_sum(s : DstreeredblackEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_tree_redblack_path_get(s : DstreeredblackPath, i : Int) -> Double {
 }
 
 pub fn ds_tree_redblack_path_set(s : DstreeredblackPath, i : Int, v : Double) -> DstreeredblackPath {
-  let result = ds_tree_redblack_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_redblack_path_sum(s : DstreeredblackPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_tree_redblack_cluster_get(s : DstreeredblackCluster, i : Int) -> Doubl
 }
 
 pub fn ds_tree_redblack_cluster_set(s : DstreeredblackCluster, i : Int, v : Double) -> DstreeredblackCluster {
-  let result = ds_tree_redblack_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_redblack_cluster_sum(s : DstreeredblackCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_tree_redblack_model_get(s : DstreeredblackModel, i : Int) -> Double {
 }
 
 pub fn ds_tree_redblack_model_set(s : DstreeredblackModel, i : Int, v : Double) -> DstreeredblackModel {
-  let result = ds_tree_redblack_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_redblack_model_sum(s : DstreeredblackModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_tree_redblack_layer_get(s : DstreeredblackLayer, i : Int) -> Double {
 }
 
 pub fn ds_tree_redblack_layer_set(s : DstreeredblackLayer, i : Int, v : Double) -> DstreeredblackLayer {
-  let result = ds_tree_redblack_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_redblack_layer_sum(s : DstreeredblackLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_tree_redblack_buffer_get(s : DstreeredblackBuffer, i : Int) -> Double 
 }
 
 pub fn ds_tree_redblack_buffer_set(s : DstreeredblackBuffer, i : Int, v : Double) -> DstreeredblackBuffer {
-  let result = ds_tree_redblack_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_redblack_buffer_sum(s : DstreeredblackBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_tree_redblack_cursor_get(s : DstreeredblackCursor, i : Int) -> Double 
 }
 
 pub fn ds_tree_redblack_cursor_set(s : DstreeredblackCursor, i : Int, v : Double) -> DstreeredblackCursor {
-  let result = ds_tree_redblack_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_redblack_cursor_sum(s : DstreeredblackCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_tree_redblack_view_get(s : DstreeredblackView, i : Int) -> Double {
 }
 
 pub fn ds_tree_redblack_view_set(s : DstreeredblackView, i : Int, v : Double) -> DstreeredblackView {
-  let result = ds_tree_redblack_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_redblack_view_sum(s : DstreeredblackView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_tree_redblack_range_get(s : DstreeredblackRange, i : Int) -> Double {
 }
 
 pub fn ds_tree_redblack_range_set(s : DstreeredblackRange, i : Int, v : Double) -> DstreeredblackRange {
-  let result = ds_tree_redblack_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_redblack_range_sum(s : DstreeredblackRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_tree_redblack_slice_get(s : DstreeredblackSlice, i : Int) -> Double {
 }
 
 pub fn ds_tree_redblack_slice_set(s : DstreeredblackSlice, i : Int, v : Double) -> DstreeredblackSlice {
-  let result = ds_tree_redblack_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_redblack_slice_sum(s : DstreeredblackSlice) -> Double { @_common.sum(s.data) }

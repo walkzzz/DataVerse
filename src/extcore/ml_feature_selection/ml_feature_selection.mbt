@@ -107,23 +107,15 @@ pub fn ml_feature_selection_series_std(s : MlfeatureselectionSeries) -> Double {
 pub fn ml_feature_selection_series_median(s : MlfeatureselectionSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_feature_selection_series_scale(s : MlfeatureselectionSeries, f : Double) -> MlfeatureselectionSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_feature_selection_series_add(a : MlfeatureselectionSeries, b : MlfeatureselectionSeries) -> MlfeatureselectionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_feature_selection_series_sub(a : MlfeatureselectionSeries, b : MlfeatureselectionSeries) -> MlfeatureselectionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_feature_selection_series_normalize(s : MlfeatureselectionSeries) -> MlfeatureselectionSeries {
@@ -254,22 +246,16 @@ pub fn ml_feature_selection_vector_zero(dim : Int) -> MlfeatureselectionVector {
 
 pub fn ml_feature_selection_vector_add(a : MlfeatureselectionVector, b : MlfeatureselectionVector) -> MlfeatureselectionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_feature_selection_vector_sub(a : MlfeatureselectionVector, b : MlfeatureselectionVector) -> MlfeatureselectionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_feature_selection_vector_scale(v : MlfeatureselectionVector, s : Double) -> MlfeatureselectionVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_feature_selection_vector_dot(a : MlfeatureselectionVector, b : MlfeatureselectionVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_feature_selection_frame_get(s : MlfeatureselectionFrame, i : Int) -> D
 }
 
 pub fn ml_feature_selection_frame_set(s : MlfeatureselectionFrame, i : Int, v : Double) -> MlfeatureselectionFrame {
-  let result = ml_feature_selection_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_selection_frame_sum(s : MlfeatureselectionFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_feature_selection_table_get(s : MlfeatureselectionTable, i : Int) -> D
 }
 
 pub fn ml_feature_selection_table_set(s : MlfeatureselectionTable, i : Int, v : Double) -> MlfeatureselectionTable {
-  let result = ml_feature_selection_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_selection_table_sum(s : MlfeatureselectionTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_feature_selection_graphn_get(s : MlfeatureselectionGraphN, i : Int) ->
 }
 
 pub fn ml_feature_selection_graphn_set(s : MlfeatureselectionGraphN, i : Int, v : Double) -> MlfeatureselectionGraphN {
-  let result = ml_feature_selection_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_selection_graphn_sum(s : MlfeatureselectionGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_feature_selection_node_get(s : MlfeatureselectionNode, i : Int) -> Dou
 }
 
 pub fn ml_feature_selection_node_set(s : MlfeatureselectionNode, i : Int, v : Double) -> MlfeatureselectionNode {
-  let result = ml_feature_selection_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_selection_node_sum(s : MlfeatureselectionNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_feature_selection_edge_get(s : MlfeatureselectionEdge, i : Int) -> Dou
 }
 
 pub fn ml_feature_selection_edge_set(s : MlfeatureselectionEdge, i : Int, v : Double) -> MlfeatureselectionEdge {
-  let result = ml_feature_selection_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_selection_edge_sum(s : MlfeatureselectionEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_feature_selection_path_get(s : MlfeatureselectionPath, i : Int) -> Dou
 }
 
 pub fn ml_feature_selection_path_set(s : MlfeatureselectionPath, i : Int, v : Double) -> MlfeatureselectionPath {
-  let result = ml_feature_selection_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_selection_path_sum(s : MlfeatureselectionPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_feature_selection_cluster_get(s : MlfeatureselectionCluster, i : Int) 
 }
 
 pub fn ml_feature_selection_cluster_set(s : MlfeatureselectionCluster, i : Int, v : Double) -> MlfeatureselectionCluster {
-  let result = ml_feature_selection_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_selection_cluster_sum(s : MlfeatureselectionCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_feature_selection_model_get(s : MlfeatureselectionModel, i : Int) -> D
 }
 
 pub fn ml_feature_selection_model_set(s : MlfeatureselectionModel, i : Int, v : Double) -> MlfeatureselectionModel {
-  let result = ml_feature_selection_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_selection_model_sum(s : MlfeatureselectionModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_feature_selection_layer_get(s : MlfeatureselectionLayer, i : Int) -> D
 }
 
 pub fn ml_feature_selection_layer_set(s : MlfeatureselectionLayer, i : Int, v : Double) -> MlfeatureselectionLayer {
-  let result = ml_feature_selection_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_selection_layer_sum(s : MlfeatureselectionLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_feature_selection_buffer_get(s : MlfeatureselectionBuffer, i : Int) ->
 }
 
 pub fn ml_feature_selection_buffer_set(s : MlfeatureselectionBuffer, i : Int, v : Double) -> MlfeatureselectionBuffer {
-  let result = ml_feature_selection_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_selection_buffer_sum(s : MlfeatureselectionBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_feature_selection_cursor_get(s : MlfeatureselectionCursor, i : Int) ->
 }
 
 pub fn ml_feature_selection_cursor_set(s : MlfeatureselectionCursor, i : Int, v : Double) -> MlfeatureselectionCursor {
-  let result = ml_feature_selection_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_selection_cursor_sum(s : MlfeatureselectionCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_feature_selection_view_get(s : MlfeatureselectionView, i : Int) -> Dou
 }
 
 pub fn ml_feature_selection_view_set(s : MlfeatureselectionView, i : Int, v : Double) -> MlfeatureselectionView {
-  let result = ml_feature_selection_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_selection_view_sum(s : MlfeatureselectionView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_feature_selection_range_get(s : MlfeatureselectionRange, i : Int) -> D
 }
 
 pub fn ml_feature_selection_range_set(s : MlfeatureselectionRange, i : Int, v : Double) -> MlfeatureselectionRange {
-  let result = ml_feature_selection_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_selection_range_sum(s : MlfeatureselectionRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_feature_selection_slice_get(s : MlfeatureselectionSlice, i : Int) -> D
 }
 
 pub fn ml_feature_selection_slice_set(s : MlfeatureselectionSlice, i : Int, v : Double) -> MlfeatureselectionSlice {
-  let result = ml_feature_selection_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_feature_selection_slice_sum(s : MlfeatureselectionSlice) -> Double { @_common.sum(s.data) }

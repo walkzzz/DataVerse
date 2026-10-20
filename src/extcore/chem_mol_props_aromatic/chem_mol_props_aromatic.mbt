@@ -107,23 +107,15 @@ pub fn chem_mol_props_aromatic_series_std(s : ChemmolpropsaromaticSeries) -> Dou
 pub fn chem_mol_props_aromatic_series_median(s : ChemmolpropsaromaticSeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_mol_props_aromatic_series_scale(s : ChemmolpropsaromaticSeries, f : Double) -> ChemmolpropsaromaticSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn chem_mol_props_aromatic_series_add(a : ChemmolpropsaromaticSeries, b : ChemmolpropsaromaticSeries) -> ChemmolpropsaromaticSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn chem_mol_props_aromatic_series_sub(a : ChemmolpropsaromaticSeries, b : ChemmolpropsaromaticSeries) -> ChemmolpropsaromaticSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn chem_mol_props_aromatic_series_normalize(s : ChemmolpropsaromaticSeries) -> ChemmolpropsaromaticSeries {
@@ -254,22 +246,16 @@ pub fn chem_mol_props_aromatic_vector_zero(dim : Int) -> ChemmolpropsaromaticVec
 
 pub fn chem_mol_props_aromatic_vector_add(a : ChemmolpropsaromaticVector, b : ChemmolpropsaromaticVector) -> ChemmolpropsaromaticVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_mol_props_aromatic_vector_sub(a : ChemmolpropsaromaticVector, b : ChemmolpropsaromaticVector) -> ChemmolpropsaromaticVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_mol_props_aromatic_vector_scale(v : ChemmolpropsaromaticVector, s : Double) -> ChemmolpropsaromaticVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn chem_mol_props_aromatic_vector_dot(a : ChemmolpropsaromaticVector, b : ChemmolpropsaromaticVector) -> Double {
@@ -372,10 +358,9 @@ pub fn chem_mol_props_aromatic_frame_get(s : ChemmolpropsaromaticFrame, i : Int)
 }
 
 pub fn chem_mol_props_aromatic_frame_set(s : ChemmolpropsaromaticFrame, i : Int, v : Double) -> ChemmolpropsaromaticFrame {
-  let result = chem_mol_props_aromatic_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_aromatic_frame_sum(s : ChemmolpropsaromaticFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn chem_mol_props_aromatic_table_get(s : ChemmolpropsaromaticTable, i : Int)
 }
 
 pub fn chem_mol_props_aromatic_table_set(s : ChemmolpropsaromaticTable, i : Int, v : Double) -> ChemmolpropsaromaticTable {
-  let result = chem_mol_props_aromatic_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_aromatic_table_sum(s : ChemmolpropsaromaticTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn chem_mol_props_aromatic_graphn_get(s : ChemmolpropsaromaticGraphN, i : In
 }
 
 pub fn chem_mol_props_aromatic_graphn_set(s : ChemmolpropsaromaticGraphN, i : Int, v : Double) -> ChemmolpropsaromaticGraphN {
-  let result = chem_mol_props_aromatic_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_aromatic_graphn_sum(s : ChemmolpropsaromaticGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn chem_mol_props_aromatic_node_get(s : ChemmolpropsaromaticNode, i : Int) -
 }
 
 pub fn chem_mol_props_aromatic_node_set(s : ChemmolpropsaromaticNode, i : Int, v : Double) -> ChemmolpropsaromaticNode {
-  let result = chem_mol_props_aromatic_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_aromatic_node_sum(s : ChemmolpropsaromaticNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn chem_mol_props_aromatic_edge_get(s : ChemmolpropsaromaticEdge, i : Int) -
 }
 
 pub fn chem_mol_props_aromatic_edge_set(s : ChemmolpropsaromaticEdge, i : Int, v : Double) -> ChemmolpropsaromaticEdge {
-  let result = chem_mol_props_aromatic_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_aromatic_edge_sum(s : ChemmolpropsaromaticEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn chem_mol_props_aromatic_path_get(s : ChemmolpropsaromaticPath, i : Int) -
 }
 
 pub fn chem_mol_props_aromatic_path_set(s : ChemmolpropsaromaticPath, i : Int, v : Double) -> ChemmolpropsaromaticPath {
-  let result = chem_mol_props_aromatic_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_aromatic_path_sum(s : ChemmolpropsaromaticPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn chem_mol_props_aromatic_cluster_get(s : ChemmolpropsaromaticCluster, i : 
 }
 
 pub fn chem_mol_props_aromatic_cluster_set(s : ChemmolpropsaromaticCluster, i : Int, v : Double) -> ChemmolpropsaromaticCluster {
-  let result = chem_mol_props_aromatic_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_aromatic_cluster_sum(s : ChemmolpropsaromaticCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn chem_mol_props_aromatic_model_get(s : ChemmolpropsaromaticModel, i : Int)
 }
 
 pub fn chem_mol_props_aromatic_model_set(s : ChemmolpropsaromaticModel, i : Int, v : Double) -> ChemmolpropsaromaticModel {
-  let result = chem_mol_props_aromatic_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_aromatic_model_sum(s : ChemmolpropsaromaticModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn chem_mol_props_aromatic_layer_get(s : ChemmolpropsaromaticLayer, i : Int)
 }
 
 pub fn chem_mol_props_aromatic_layer_set(s : ChemmolpropsaromaticLayer, i : Int, v : Double) -> ChemmolpropsaromaticLayer {
-  let result = chem_mol_props_aromatic_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_aromatic_layer_sum(s : ChemmolpropsaromaticLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn chem_mol_props_aromatic_buffer_get(s : ChemmolpropsaromaticBuffer, i : In
 }
 
 pub fn chem_mol_props_aromatic_buffer_set(s : ChemmolpropsaromaticBuffer, i : Int, v : Double) -> ChemmolpropsaromaticBuffer {
-  let result = chem_mol_props_aromatic_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_aromatic_buffer_sum(s : ChemmolpropsaromaticBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn chem_mol_props_aromatic_cursor_get(s : ChemmolpropsaromaticCursor, i : In
 }
 
 pub fn chem_mol_props_aromatic_cursor_set(s : ChemmolpropsaromaticCursor, i : Int, v : Double) -> ChemmolpropsaromaticCursor {
-  let result = chem_mol_props_aromatic_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_aromatic_cursor_sum(s : ChemmolpropsaromaticCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn chem_mol_props_aromatic_view_get(s : ChemmolpropsaromaticView, i : Int) -
 }
 
 pub fn chem_mol_props_aromatic_view_set(s : ChemmolpropsaromaticView, i : Int, v : Double) -> ChemmolpropsaromaticView {
-  let result = chem_mol_props_aromatic_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_aromatic_view_sum(s : ChemmolpropsaromaticView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn chem_mol_props_aromatic_range_get(s : ChemmolpropsaromaticRange, i : Int)
 }
 
 pub fn chem_mol_props_aromatic_range_set(s : ChemmolpropsaromaticRange, i : Int, v : Double) -> ChemmolpropsaromaticRange {
-  let result = chem_mol_props_aromatic_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_aromatic_range_sum(s : ChemmolpropsaromaticRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn chem_mol_props_aromatic_slice_get(s : ChemmolpropsaromaticSlice, i : Int)
 }
 
 pub fn chem_mol_props_aromatic_slice_set(s : ChemmolpropsaromaticSlice, i : Int, v : Double) -> ChemmolpropsaromaticSlice {
-  let result = chem_mol_props_aromatic_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_aromatic_slice_sum(s : ChemmolpropsaromaticSlice) -> Double { @_common.sum(s.data) }

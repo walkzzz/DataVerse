@@ -107,23 +107,15 @@ pub fn ds_graph_adj_matrix_series_std(s : DsgraphadjmatrixSeries) -> Double { @_
 pub fn ds_graph_adj_matrix_series_median(s : DsgraphadjmatrixSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_graph_adj_matrix_series_scale(s : DsgraphadjmatrixSeries, f : Double) -> DsgraphadjmatrixSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_graph_adj_matrix_series_add(a : DsgraphadjmatrixSeries, b : DsgraphadjmatrixSeries) -> DsgraphadjmatrixSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_graph_adj_matrix_series_sub(a : DsgraphadjmatrixSeries, b : DsgraphadjmatrixSeries) -> DsgraphadjmatrixSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_graph_adj_matrix_series_normalize(s : DsgraphadjmatrixSeries) -> DsgraphadjmatrixSeries {
@@ -254,22 +246,16 @@ pub fn ds_graph_adj_matrix_vector_zero(dim : Int) -> DsgraphadjmatrixVector {
 
 pub fn ds_graph_adj_matrix_vector_add(a : DsgraphadjmatrixVector, b : DsgraphadjmatrixVector) -> DsgraphadjmatrixVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_graph_adj_matrix_vector_sub(a : DsgraphadjmatrixVector, b : DsgraphadjmatrixVector) -> DsgraphadjmatrixVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_graph_adj_matrix_vector_scale(v : DsgraphadjmatrixVector, s : Double) -> DsgraphadjmatrixVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_graph_adj_matrix_vector_dot(a : DsgraphadjmatrixVector, b : DsgraphadjmatrixVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_graph_adj_matrix_frame_get(s : DsgraphadjmatrixFrame, i : Int) -> Doub
 }
 
 pub fn ds_graph_adj_matrix_frame_set(s : DsgraphadjmatrixFrame, i : Int, v : Double) -> DsgraphadjmatrixFrame {
-  let result = ds_graph_adj_matrix_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_matrix_frame_sum(s : DsgraphadjmatrixFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_graph_adj_matrix_table_get(s : DsgraphadjmatrixTable, i : Int) -> Doub
 }
 
 pub fn ds_graph_adj_matrix_table_set(s : DsgraphadjmatrixTable, i : Int, v : Double) -> DsgraphadjmatrixTable {
-  let result = ds_graph_adj_matrix_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_matrix_table_sum(s : DsgraphadjmatrixTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_graph_adj_matrix_graphn_get(s : DsgraphadjmatrixGraphN, i : Int) -> Do
 }
 
 pub fn ds_graph_adj_matrix_graphn_set(s : DsgraphadjmatrixGraphN, i : Int, v : Double) -> DsgraphadjmatrixGraphN {
-  let result = ds_graph_adj_matrix_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_matrix_graphn_sum(s : DsgraphadjmatrixGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_graph_adj_matrix_node_get(s : DsgraphadjmatrixNode, i : Int) -> Double
 }
 
 pub fn ds_graph_adj_matrix_node_set(s : DsgraphadjmatrixNode, i : Int, v : Double) -> DsgraphadjmatrixNode {
-  let result = ds_graph_adj_matrix_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_matrix_node_sum(s : DsgraphadjmatrixNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_graph_adj_matrix_edge_get(s : DsgraphadjmatrixEdge, i : Int) -> Double
 }
 
 pub fn ds_graph_adj_matrix_edge_set(s : DsgraphadjmatrixEdge, i : Int, v : Double) -> DsgraphadjmatrixEdge {
-  let result = ds_graph_adj_matrix_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_matrix_edge_sum(s : DsgraphadjmatrixEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_graph_adj_matrix_path_get(s : DsgraphadjmatrixPath, i : Int) -> Double
 }
 
 pub fn ds_graph_adj_matrix_path_set(s : DsgraphadjmatrixPath, i : Int, v : Double) -> DsgraphadjmatrixPath {
-  let result = ds_graph_adj_matrix_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_matrix_path_sum(s : DsgraphadjmatrixPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_graph_adj_matrix_cluster_get(s : DsgraphadjmatrixCluster, i : Int) -> 
 }
 
 pub fn ds_graph_adj_matrix_cluster_set(s : DsgraphadjmatrixCluster, i : Int, v : Double) -> DsgraphadjmatrixCluster {
-  let result = ds_graph_adj_matrix_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_matrix_cluster_sum(s : DsgraphadjmatrixCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_graph_adj_matrix_model_get(s : DsgraphadjmatrixModel, i : Int) -> Doub
 }
 
 pub fn ds_graph_adj_matrix_model_set(s : DsgraphadjmatrixModel, i : Int, v : Double) -> DsgraphadjmatrixModel {
-  let result = ds_graph_adj_matrix_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_matrix_model_sum(s : DsgraphadjmatrixModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_graph_adj_matrix_layer_get(s : DsgraphadjmatrixLayer, i : Int) -> Doub
 }
 
 pub fn ds_graph_adj_matrix_layer_set(s : DsgraphadjmatrixLayer, i : Int, v : Double) -> DsgraphadjmatrixLayer {
-  let result = ds_graph_adj_matrix_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_matrix_layer_sum(s : DsgraphadjmatrixLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_graph_adj_matrix_buffer_get(s : DsgraphadjmatrixBuffer, i : Int) -> Do
 }
 
 pub fn ds_graph_adj_matrix_buffer_set(s : DsgraphadjmatrixBuffer, i : Int, v : Double) -> DsgraphadjmatrixBuffer {
-  let result = ds_graph_adj_matrix_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_matrix_buffer_sum(s : DsgraphadjmatrixBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_graph_adj_matrix_cursor_get(s : DsgraphadjmatrixCursor, i : Int) -> Do
 }
 
 pub fn ds_graph_adj_matrix_cursor_set(s : DsgraphadjmatrixCursor, i : Int, v : Double) -> DsgraphadjmatrixCursor {
-  let result = ds_graph_adj_matrix_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_matrix_cursor_sum(s : DsgraphadjmatrixCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_graph_adj_matrix_view_get(s : DsgraphadjmatrixView, i : Int) -> Double
 }
 
 pub fn ds_graph_adj_matrix_view_set(s : DsgraphadjmatrixView, i : Int, v : Double) -> DsgraphadjmatrixView {
-  let result = ds_graph_adj_matrix_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_matrix_view_sum(s : DsgraphadjmatrixView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_graph_adj_matrix_range_get(s : DsgraphadjmatrixRange, i : Int) -> Doub
 }
 
 pub fn ds_graph_adj_matrix_range_set(s : DsgraphadjmatrixRange, i : Int, v : Double) -> DsgraphadjmatrixRange {
-  let result = ds_graph_adj_matrix_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_matrix_range_sum(s : DsgraphadjmatrixRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_graph_adj_matrix_slice_get(s : DsgraphadjmatrixSlice, i : Int) -> Doub
 }
 
 pub fn ds_graph_adj_matrix_slice_set(s : DsgraphadjmatrixSlice, i : Int, v : Double) -> DsgraphadjmatrixSlice {
-  let result = ds_graph_adj_matrix_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_adj_matrix_slice_sum(s : DsgraphadjmatrixSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn sort_dist_inplace_series_std(s : SortdistinplaceSeries) -> Double { @_com
 pub fn sort_dist_inplace_series_median(s : SortdistinplaceSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_dist_inplace_series_scale(s : SortdistinplaceSeries, f : Double) -> SortdistinplaceSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn sort_dist_inplace_series_add(a : SortdistinplaceSeries, b : SortdistinplaceSeries) -> SortdistinplaceSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn sort_dist_inplace_series_sub(a : SortdistinplaceSeries, b : SortdistinplaceSeries) -> SortdistinplaceSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn sort_dist_inplace_series_normalize(s : SortdistinplaceSeries) -> SortdistinplaceSeries {
@@ -254,22 +246,16 @@ pub fn sort_dist_inplace_vector_zero(dim : Int) -> SortdistinplaceVector {
 
 pub fn sort_dist_inplace_vector_add(a : SortdistinplaceVector, b : SortdistinplaceVector) -> SortdistinplaceVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_dist_inplace_vector_sub(a : SortdistinplaceVector, b : SortdistinplaceVector) -> SortdistinplaceVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_dist_inplace_vector_scale(v : SortdistinplaceVector, s : Double) -> SortdistinplaceVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn sort_dist_inplace_vector_dot(a : SortdistinplaceVector, b : SortdistinplaceVector) -> Double {
@@ -372,10 +358,9 @@ pub fn sort_dist_inplace_frame_get(s : SortdistinplaceFrame, i : Int) -> Double 
 }
 
 pub fn sort_dist_inplace_frame_set(s : SortdistinplaceFrame, i : Int, v : Double) -> SortdistinplaceFrame {
-  let result = sort_dist_inplace_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_inplace_frame_sum(s : SortdistinplaceFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn sort_dist_inplace_table_get(s : SortdistinplaceTable, i : Int) -> Double 
 }
 
 pub fn sort_dist_inplace_table_set(s : SortdistinplaceTable, i : Int, v : Double) -> SortdistinplaceTable {
-  let result = sort_dist_inplace_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_inplace_table_sum(s : SortdistinplaceTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn sort_dist_inplace_graphn_get(s : SortdistinplaceGraphN, i : Int) -> Doubl
 }
 
 pub fn sort_dist_inplace_graphn_set(s : SortdistinplaceGraphN, i : Int, v : Double) -> SortdistinplaceGraphN {
-  let result = sort_dist_inplace_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_inplace_graphn_sum(s : SortdistinplaceGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn sort_dist_inplace_node_get(s : SortdistinplaceNode, i : Int) -> Double {
 }
 
 pub fn sort_dist_inplace_node_set(s : SortdistinplaceNode, i : Int, v : Double) -> SortdistinplaceNode {
-  let result = sort_dist_inplace_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_inplace_node_sum(s : SortdistinplaceNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn sort_dist_inplace_edge_get(s : SortdistinplaceEdge, i : Int) -> Double {
 }
 
 pub fn sort_dist_inplace_edge_set(s : SortdistinplaceEdge, i : Int, v : Double) -> SortdistinplaceEdge {
-  let result = sort_dist_inplace_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_inplace_edge_sum(s : SortdistinplaceEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn sort_dist_inplace_path_get(s : SortdistinplacePath, i : Int) -> Double {
 }
 
 pub fn sort_dist_inplace_path_set(s : SortdistinplacePath, i : Int, v : Double) -> SortdistinplacePath {
-  let result = sort_dist_inplace_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_inplace_path_sum(s : SortdistinplacePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn sort_dist_inplace_cluster_get(s : SortdistinplaceCluster, i : Int) -> Dou
 }
 
 pub fn sort_dist_inplace_cluster_set(s : SortdistinplaceCluster, i : Int, v : Double) -> SortdistinplaceCluster {
-  let result = sort_dist_inplace_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_inplace_cluster_sum(s : SortdistinplaceCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn sort_dist_inplace_model_get(s : SortdistinplaceModel, i : Int) -> Double 
 }
 
 pub fn sort_dist_inplace_model_set(s : SortdistinplaceModel, i : Int, v : Double) -> SortdistinplaceModel {
-  let result = sort_dist_inplace_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_inplace_model_sum(s : SortdistinplaceModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn sort_dist_inplace_layer_get(s : SortdistinplaceLayer, i : Int) -> Double 
 }
 
 pub fn sort_dist_inplace_layer_set(s : SortdistinplaceLayer, i : Int, v : Double) -> SortdistinplaceLayer {
-  let result = sort_dist_inplace_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_inplace_layer_sum(s : SortdistinplaceLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn sort_dist_inplace_buffer_get(s : SortdistinplaceBuffer, i : Int) -> Doubl
 }
 
 pub fn sort_dist_inplace_buffer_set(s : SortdistinplaceBuffer, i : Int, v : Double) -> SortdistinplaceBuffer {
-  let result = sort_dist_inplace_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_inplace_buffer_sum(s : SortdistinplaceBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn sort_dist_inplace_cursor_get(s : SortdistinplaceCursor, i : Int) -> Doubl
 }
 
 pub fn sort_dist_inplace_cursor_set(s : SortdistinplaceCursor, i : Int, v : Double) -> SortdistinplaceCursor {
-  let result = sort_dist_inplace_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_inplace_cursor_sum(s : SortdistinplaceCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn sort_dist_inplace_view_get(s : SortdistinplaceView, i : Int) -> Double {
 }
 
 pub fn sort_dist_inplace_view_set(s : SortdistinplaceView, i : Int, v : Double) -> SortdistinplaceView {
-  let result = sort_dist_inplace_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_inplace_view_sum(s : SortdistinplaceView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn sort_dist_inplace_range_get(s : SortdistinplaceRange, i : Int) -> Double 
 }
 
 pub fn sort_dist_inplace_range_set(s : SortdistinplaceRange, i : Int, v : Double) -> SortdistinplaceRange {
-  let result = sort_dist_inplace_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_inplace_range_sum(s : SortdistinplaceRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn sort_dist_inplace_slice_get(s : SortdistinplaceSlice, i : Int) -> Double 
 }
 
 pub fn sort_dist_inplace_slice_set(s : SortdistinplaceSlice, i : Int, v : Double) -> SortdistinplaceSlice {
-  let result = sort_dist_inplace_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_inplace_slice_sum(s : SortdistinplaceSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn ml_metric_pr_series_std(s : MlmetricprSeries) -> Double { @_common.std(s.
 pub fn ml_metric_pr_series_median(s : MlmetricprSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_metric_pr_series_scale(s : MlmetricprSeries, f : Double) -> MlmetricprSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_metric_pr_series_add(a : MlmetricprSeries, b : MlmetricprSeries) -> MlmetricprSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_metric_pr_series_sub(a : MlmetricprSeries, b : MlmetricprSeries) -> MlmetricprSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_metric_pr_series_normalize(s : MlmetricprSeries) -> MlmetricprSeries {
@@ -254,22 +246,16 @@ pub fn ml_metric_pr_vector_zero(dim : Int) -> MlmetricprVector {
 
 pub fn ml_metric_pr_vector_add(a : MlmetricprVector, b : MlmetricprVector) -> MlmetricprVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_metric_pr_vector_sub(a : MlmetricprVector, b : MlmetricprVector) -> MlmetricprVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_metric_pr_vector_scale(v : MlmetricprVector, s : Double) -> MlmetricprVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_metric_pr_vector_dot(a : MlmetricprVector, b : MlmetricprVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_metric_pr_frame_get(s : MlmetricprFrame, i : Int) -> Double {
 }
 
 pub fn ml_metric_pr_frame_set(s : MlmetricprFrame, i : Int, v : Double) -> MlmetricprFrame {
-  let result = ml_metric_pr_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_frame_sum(s : MlmetricprFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_metric_pr_table_get(s : MlmetricprTable, i : Int) -> Double {
 }
 
 pub fn ml_metric_pr_table_set(s : MlmetricprTable, i : Int, v : Double) -> MlmetricprTable {
-  let result = ml_metric_pr_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_table_sum(s : MlmetricprTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_metric_pr_graphn_get(s : MlmetricprGraphN, i : Int) -> Double {
 }
 
 pub fn ml_metric_pr_graphn_set(s : MlmetricprGraphN, i : Int, v : Double) -> MlmetricprGraphN {
-  let result = ml_metric_pr_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_graphn_sum(s : MlmetricprGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_metric_pr_node_get(s : MlmetricprNode, i : Int) -> Double {
 }
 
 pub fn ml_metric_pr_node_set(s : MlmetricprNode, i : Int, v : Double) -> MlmetricprNode {
-  let result = ml_metric_pr_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_node_sum(s : MlmetricprNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_metric_pr_edge_get(s : MlmetricprEdge, i : Int) -> Double {
 }
 
 pub fn ml_metric_pr_edge_set(s : MlmetricprEdge, i : Int, v : Double) -> MlmetricprEdge {
-  let result = ml_metric_pr_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_edge_sum(s : MlmetricprEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_metric_pr_path_get(s : MlmetricprPath, i : Int) -> Double {
 }
 
 pub fn ml_metric_pr_path_set(s : MlmetricprPath, i : Int, v : Double) -> MlmetricprPath {
-  let result = ml_metric_pr_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_path_sum(s : MlmetricprPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_metric_pr_cluster_get(s : MlmetricprCluster, i : Int) -> Double {
 }
 
 pub fn ml_metric_pr_cluster_set(s : MlmetricprCluster, i : Int, v : Double) -> MlmetricprCluster {
-  let result = ml_metric_pr_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_cluster_sum(s : MlmetricprCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_metric_pr_model_get(s : MlmetricprModel, i : Int) -> Double {
 }
 
 pub fn ml_metric_pr_model_set(s : MlmetricprModel, i : Int, v : Double) -> MlmetricprModel {
-  let result = ml_metric_pr_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_model_sum(s : MlmetricprModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_metric_pr_layer_get(s : MlmetricprLayer, i : Int) -> Double {
 }
 
 pub fn ml_metric_pr_layer_set(s : MlmetricprLayer, i : Int, v : Double) -> MlmetricprLayer {
-  let result = ml_metric_pr_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_layer_sum(s : MlmetricprLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_metric_pr_buffer_get(s : MlmetricprBuffer, i : Int) -> Double {
 }
 
 pub fn ml_metric_pr_buffer_set(s : MlmetricprBuffer, i : Int, v : Double) -> MlmetricprBuffer {
-  let result = ml_metric_pr_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_buffer_sum(s : MlmetricprBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_metric_pr_cursor_get(s : MlmetricprCursor, i : Int) -> Double {
 }
 
 pub fn ml_metric_pr_cursor_set(s : MlmetricprCursor, i : Int, v : Double) -> MlmetricprCursor {
-  let result = ml_metric_pr_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_cursor_sum(s : MlmetricprCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_metric_pr_view_get(s : MlmetricprView, i : Int) -> Double {
 }
 
 pub fn ml_metric_pr_view_set(s : MlmetricprView, i : Int, v : Double) -> MlmetricprView {
-  let result = ml_metric_pr_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_view_sum(s : MlmetricprView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_metric_pr_range_get(s : MlmetricprRange, i : Int) -> Double {
 }
 
 pub fn ml_metric_pr_range_set(s : MlmetricprRange, i : Int, v : Double) -> MlmetricprRange {
-  let result = ml_metric_pr_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_range_sum(s : MlmetricprRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_metric_pr_slice_get(s : MlmetricprSlice, i : Int) -> Double {
 }
 
 pub fn ml_metric_pr_slice_set(s : MlmetricprSlice, i : Int, v : Double) -> MlmetricprSlice {
-  let result = ml_metric_pr_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_pr_slice_sum(s : MlmetricprSlice) -> Double { @_common.sum(s.data) }

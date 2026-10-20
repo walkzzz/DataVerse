@@ -107,23 +107,15 @@ pub fn net_flow_policing_series_std(s : NetflowpolicingSeries) -> Double { @_com
 pub fn net_flow_policing_series_median(s : NetflowpolicingSeries) -> Double { @_common.median(s.vals) }
 
 pub fn net_flow_policing_series_scale(s : NetflowpolicingSeries, f : Double) -> NetflowpolicingSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn net_flow_policing_series_add(a : NetflowpolicingSeries, b : NetflowpolicingSeries) -> NetflowpolicingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn net_flow_policing_series_sub(a : NetflowpolicingSeries, b : NetflowpolicingSeries) -> NetflowpolicingSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn net_flow_policing_series_normalize(s : NetflowpolicingSeries) -> NetflowpolicingSeries {
@@ -254,22 +246,16 @@ pub fn net_flow_policing_vector_zero(dim : Int) -> NetflowpolicingVector {
 
 pub fn net_flow_policing_vector_add(a : NetflowpolicingVector, b : NetflowpolicingVector) -> NetflowpolicingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_flow_policing_vector_sub(a : NetflowpolicingVector, b : NetflowpolicingVector) -> NetflowpolicingVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_flow_policing_vector_scale(v : NetflowpolicingVector, s : Double) -> NetflowpolicingVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn net_flow_policing_vector_dot(a : NetflowpolicingVector, b : NetflowpolicingVector) -> Double {
@@ -372,10 +358,9 @@ pub fn net_flow_policing_frame_get(s : NetflowpolicingFrame, i : Int) -> Double 
 }
 
 pub fn net_flow_policing_frame_set(s : NetflowpolicingFrame, i : Int, v : Double) -> NetflowpolicingFrame {
-  let result = net_flow_policing_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_policing_frame_sum(s : NetflowpolicingFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn net_flow_policing_table_get(s : NetflowpolicingTable, i : Int) -> Double 
 }
 
 pub fn net_flow_policing_table_set(s : NetflowpolicingTable, i : Int, v : Double) -> NetflowpolicingTable {
-  let result = net_flow_policing_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_policing_table_sum(s : NetflowpolicingTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn net_flow_policing_graphn_get(s : NetflowpolicingGraphN, i : Int) -> Doubl
 }
 
 pub fn net_flow_policing_graphn_set(s : NetflowpolicingGraphN, i : Int, v : Double) -> NetflowpolicingGraphN {
-  let result = net_flow_policing_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_policing_graphn_sum(s : NetflowpolicingGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn net_flow_policing_node_get(s : NetflowpolicingNode, i : Int) -> Double {
 }
 
 pub fn net_flow_policing_node_set(s : NetflowpolicingNode, i : Int, v : Double) -> NetflowpolicingNode {
-  let result = net_flow_policing_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_policing_node_sum(s : NetflowpolicingNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn net_flow_policing_edge_get(s : NetflowpolicingEdge, i : Int) -> Double {
 }
 
 pub fn net_flow_policing_edge_set(s : NetflowpolicingEdge, i : Int, v : Double) -> NetflowpolicingEdge {
-  let result = net_flow_policing_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_policing_edge_sum(s : NetflowpolicingEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn net_flow_policing_path_get(s : NetflowpolicingPath, i : Int) -> Double {
 }
 
 pub fn net_flow_policing_path_set(s : NetflowpolicingPath, i : Int, v : Double) -> NetflowpolicingPath {
-  let result = net_flow_policing_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_policing_path_sum(s : NetflowpolicingPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn net_flow_policing_cluster_get(s : NetflowpolicingCluster, i : Int) -> Dou
 }
 
 pub fn net_flow_policing_cluster_set(s : NetflowpolicingCluster, i : Int, v : Double) -> NetflowpolicingCluster {
-  let result = net_flow_policing_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_policing_cluster_sum(s : NetflowpolicingCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn net_flow_policing_model_get(s : NetflowpolicingModel, i : Int) -> Double 
 }
 
 pub fn net_flow_policing_model_set(s : NetflowpolicingModel, i : Int, v : Double) -> NetflowpolicingModel {
-  let result = net_flow_policing_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_policing_model_sum(s : NetflowpolicingModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn net_flow_policing_layer_get(s : NetflowpolicingLayer, i : Int) -> Double 
 }
 
 pub fn net_flow_policing_layer_set(s : NetflowpolicingLayer, i : Int, v : Double) -> NetflowpolicingLayer {
-  let result = net_flow_policing_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_policing_layer_sum(s : NetflowpolicingLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn net_flow_policing_buffer_get(s : NetflowpolicingBuffer, i : Int) -> Doubl
 }
 
 pub fn net_flow_policing_buffer_set(s : NetflowpolicingBuffer, i : Int, v : Double) -> NetflowpolicingBuffer {
-  let result = net_flow_policing_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_policing_buffer_sum(s : NetflowpolicingBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn net_flow_policing_cursor_get(s : NetflowpolicingCursor, i : Int) -> Doubl
 }
 
 pub fn net_flow_policing_cursor_set(s : NetflowpolicingCursor, i : Int, v : Double) -> NetflowpolicingCursor {
-  let result = net_flow_policing_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_policing_cursor_sum(s : NetflowpolicingCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn net_flow_policing_view_get(s : NetflowpolicingView, i : Int) -> Double {
 }
 
 pub fn net_flow_policing_view_set(s : NetflowpolicingView, i : Int, v : Double) -> NetflowpolicingView {
-  let result = net_flow_policing_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_policing_view_sum(s : NetflowpolicingView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn net_flow_policing_range_get(s : NetflowpolicingRange, i : Int) -> Double 
 }
 
 pub fn net_flow_policing_range_set(s : NetflowpolicingRange, i : Int, v : Double) -> NetflowpolicingRange {
-  let result = net_flow_policing_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_policing_range_sum(s : NetflowpolicingRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn net_flow_policing_slice_get(s : NetflowpolicingSlice, i : Int) -> Double 
 }
 
 pub fn net_flow_policing_slice_set(s : NetflowpolicingSlice, i : Int, v : Double) -> NetflowpolicingSlice {
-  let result = net_flow_policing_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_flow_policing_slice_sum(s : NetflowpolicingSlice) -> Double { @_common.sum(s.data) }

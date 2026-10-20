@@ -107,23 +107,15 @@ pub fn db_index_bitmap_series_std(s : DbindexbitmapSeries) -> Double { @_common.
 pub fn db_index_bitmap_series_median(s : DbindexbitmapSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_index_bitmap_series_scale(s : DbindexbitmapSeries, f : Double) -> DbindexbitmapSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_index_bitmap_series_add(a : DbindexbitmapSeries, b : DbindexbitmapSeries) -> DbindexbitmapSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_index_bitmap_series_sub(a : DbindexbitmapSeries, b : DbindexbitmapSeries) -> DbindexbitmapSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_index_bitmap_series_normalize(s : DbindexbitmapSeries) -> DbindexbitmapSeries {
@@ -254,22 +246,16 @@ pub fn db_index_bitmap_vector_zero(dim : Int) -> DbindexbitmapVector {
 
 pub fn db_index_bitmap_vector_add(a : DbindexbitmapVector, b : DbindexbitmapVector) -> DbindexbitmapVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_index_bitmap_vector_sub(a : DbindexbitmapVector, b : DbindexbitmapVector) -> DbindexbitmapVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_index_bitmap_vector_scale(v : DbindexbitmapVector, s : Double) -> DbindexbitmapVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_index_bitmap_vector_dot(a : DbindexbitmapVector, b : DbindexbitmapVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_index_bitmap_frame_get(s : DbindexbitmapFrame, i : Int) -> Double {
 }
 
 pub fn db_index_bitmap_frame_set(s : DbindexbitmapFrame, i : Int, v : Double) -> DbindexbitmapFrame {
-  let result = db_index_bitmap_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_bitmap_frame_sum(s : DbindexbitmapFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_index_bitmap_table_get(s : DbindexbitmapTable, i : Int) -> Double {
 }
 
 pub fn db_index_bitmap_table_set(s : DbindexbitmapTable, i : Int, v : Double) -> DbindexbitmapTable {
-  let result = db_index_bitmap_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_bitmap_table_sum(s : DbindexbitmapTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_index_bitmap_graphn_get(s : DbindexbitmapGraphN, i : Int) -> Double {
 }
 
 pub fn db_index_bitmap_graphn_set(s : DbindexbitmapGraphN, i : Int, v : Double) -> DbindexbitmapGraphN {
-  let result = db_index_bitmap_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_bitmap_graphn_sum(s : DbindexbitmapGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_index_bitmap_node_get(s : DbindexbitmapNode, i : Int) -> Double {
 }
 
 pub fn db_index_bitmap_node_set(s : DbindexbitmapNode, i : Int, v : Double) -> DbindexbitmapNode {
-  let result = db_index_bitmap_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_bitmap_node_sum(s : DbindexbitmapNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_index_bitmap_edge_get(s : DbindexbitmapEdge, i : Int) -> Double {
 }
 
 pub fn db_index_bitmap_edge_set(s : DbindexbitmapEdge, i : Int, v : Double) -> DbindexbitmapEdge {
-  let result = db_index_bitmap_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_bitmap_edge_sum(s : DbindexbitmapEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_index_bitmap_path_get(s : DbindexbitmapPath, i : Int) -> Double {
 }
 
 pub fn db_index_bitmap_path_set(s : DbindexbitmapPath, i : Int, v : Double) -> DbindexbitmapPath {
-  let result = db_index_bitmap_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_bitmap_path_sum(s : DbindexbitmapPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_index_bitmap_cluster_get(s : DbindexbitmapCluster, i : Int) -> Double 
 }
 
 pub fn db_index_bitmap_cluster_set(s : DbindexbitmapCluster, i : Int, v : Double) -> DbindexbitmapCluster {
-  let result = db_index_bitmap_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_bitmap_cluster_sum(s : DbindexbitmapCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_index_bitmap_model_get(s : DbindexbitmapModel, i : Int) -> Double {
 }
 
 pub fn db_index_bitmap_model_set(s : DbindexbitmapModel, i : Int, v : Double) -> DbindexbitmapModel {
-  let result = db_index_bitmap_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_bitmap_model_sum(s : DbindexbitmapModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_index_bitmap_layer_get(s : DbindexbitmapLayer, i : Int) -> Double {
 }
 
 pub fn db_index_bitmap_layer_set(s : DbindexbitmapLayer, i : Int, v : Double) -> DbindexbitmapLayer {
-  let result = db_index_bitmap_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_bitmap_layer_sum(s : DbindexbitmapLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_index_bitmap_buffer_get(s : DbindexbitmapBuffer, i : Int) -> Double {
 }
 
 pub fn db_index_bitmap_buffer_set(s : DbindexbitmapBuffer, i : Int, v : Double) -> DbindexbitmapBuffer {
-  let result = db_index_bitmap_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_bitmap_buffer_sum(s : DbindexbitmapBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_index_bitmap_cursor_get(s : DbindexbitmapCursor, i : Int) -> Double {
 }
 
 pub fn db_index_bitmap_cursor_set(s : DbindexbitmapCursor, i : Int, v : Double) -> DbindexbitmapCursor {
-  let result = db_index_bitmap_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_bitmap_cursor_sum(s : DbindexbitmapCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_index_bitmap_view_get(s : DbindexbitmapView, i : Int) -> Double {
 }
 
 pub fn db_index_bitmap_view_set(s : DbindexbitmapView, i : Int, v : Double) -> DbindexbitmapView {
-  let result = db_index_bitmap_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_bitmap_view_sum(s : DbindexbitmapView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_index_bitmap_range_get(s : DbindexbitmapRange, i : Int) -> Double {
 }
 
 pub fn db_index_bitmap_range_set(s : DbindexbitmapRange, i : Int, v : Double) -> DbindexbitmapRange {
-  let result = db_index_bitmap_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_bitmap_range_sum(s : DbindexbitmapRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_index_bitmap_slice_get(s : DbindexbitmapSlice, i : Int) -> Double {
 }
 
 pub fn db_index_bitmap_slice_set(s : DbindexbitmapSlice, i : Int, v : Double) -> DbindexbitmapSlice {
-  let result = db_index_bitmap_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_index_bitmap_slice_sum(s : DbindexbitmapSlice) -> Double { @_common.sum(s.data) }

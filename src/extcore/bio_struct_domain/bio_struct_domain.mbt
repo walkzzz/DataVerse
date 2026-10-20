@@ -107,23 +107,15 @@ pub fn bio_struct_domain_series_std(s : BiostructdomainSeries) -> Double { @_com
 pub fn bio_struct_domain_series_median(s : BiostructdomainSeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_struct_domain_series_scale(s : BiostructdomainSeries, f : Double) -> BiostructdomainSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_struct_domain_series_add(a : BiostructdomainSeries, b : BiostructdomainSeries) -> BiostructdomainSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_struct_domain_series_sub(a : BiostructdomainSeries, b : BiostructdomainSeries) -> BiostructdomainSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_struct_domain_series_normalize(s : BiostructdomainSeries) -> BiostructdomainSeries {
@@ -254,22 +246,16 @@ pub fn bio_struct_domain_vector_zero(dim : Int) -> BiostructdomainVector {
 
 pub fn bio_struct_domain_vector_add(a : BiostructdomainVector, b : BiostructdomainVector) -> BiostructdomainVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_struct_domain_vector_sub(a : BiostructdomainVector, b : BiostructdomainVector) -> BiostructdomainVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_struct_domain_vector_scale(v : BiostructdomainVector, s : Double) -> BiostructdomainVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_struct_domain_vector_dot(a : BiostructdomainVector, b : BiostructdomainVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_struct_domain_frame_get(s : BiostructdomainFrame, i : Int) -> Double 
 }
 
 pub fn bio_struct_domain_frame_set(s : BiostructdomainFrame, i : Int, v : Double) -> BiostructdomainFrame {
-  let result = bio_struct_domain_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_domain_frame_sum(s : BiostructdomainFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_struct_domain_table_get(s : BiostructdomainTable, i : Int) -> Double 
 }
 
 pub fn bio_struct_domain_table_set(s : BiostructdomainTable, i : Int, v : Double) -> BiostructdomainTable {
-  let result = bio_struct_domain_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_domain_table_sum(s : BiostructdomainTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_struct_domain_graphn_get(s : BiostructdomainGraphN, i : Int) -> Doubl
 }
 
 pub fn bio_struct_domain_graphn_set(s : BiostructdomainGraphN, i : Int, v : Double) -> BiostructdomainGraphN {
-  let result = bio_struct_domain_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_domain_graphn_sum(s : BiostructdomainGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_struct_domain_node_get(s : BiostructdomainNode, i : Int) -> Double {
 }
 
 pub fn bio_struct_domain_node_set(s : BiostructdomainNode, i : Int, v : Double) -> BiostructdomainNode {
-  let result = bio_struct_domain_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_domain_node_sum(s : BiostructdomainNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_struct_domain_edge_get(s : BiostructdomainEdge, i : Int) -> Double {
 }
 
 pub fn bio_struct_domain_edge_set(s : BiostructdomainEdge, i : Int, v : Double) -> BiostructdomainEdge {
-  let result = bio_struct_domain_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_domain_edge_sum(s : BiostructdomainEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_struct_domain_path_get(s : BiostructdomainPath, i : Int) -> Double {
 }
 
 pub fn bio_struct_domain_path_set(s : BiostructdomainPath, i : Int, v : Double) -> BiostructdomainPath {
-  let result = bio_struct_domain_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_domain_path_sum(s : BiostructdomainPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_struct_domain_cluster_get(s : BiostructdomainCluster, i : Int) -> Dou
 }
 
 pub fn bio_struct_domain_cluster_set(s : BiostructdomainCluster, i : Int, v : Double) -> BiostructdomainCluster {
-  let result = bio_struct_domain_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_domain_cluster_sum(s : BiostructdomainCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_struct_domain_model_get(s : BiostructdomainModel, i : Int) -> Double 
 }
 
 pub fn bio_struct_domain_model_set(s : BiostructdomainModel, i : Int, v : Double) -> BiostructdomainModel {
-  let result = bio_struct_domain_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_domain_model_sum(s : BiostructdomainModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_struct_domain_layer_get(s : BiostructdomainLayer, i : Int) -> Double 
 }
 
 pub fn bio_struct_domain_layer_set(s : BiostructdomainLayer, i : Int, v : Double) -> BiostructdomainLayer {
-  let result = bio_struct_domain_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_domain_layer_sum(s : BiostructdomainLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_struct_domain_buffer_get(s : BiostructdomainBuffer, i : Int) -> Doubl
 }
 
 pub fn bio_struct_domain_buffer_set(s : BiostructdomainBuffer, i : Int, v : Double) -> BiostructdomainBuffer {
-  let result = bio_struct_domain_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_domain_buffer_sum(s : BiostructdomainBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_struct_domain_cursor_get(s : BiostructdomainCursor, i : Int) -> Doubl
 }
 
 pub fn bio_struct_domain_cursor_set(s : BiostructdomainCursor, i : Int, v : Double) -> BiostructdomainCursor {
-  let result = bio_struct_domain_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_domain_cursor_sum(s : BiostructdomainCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_struct_domain_view_get(s : BiostructdomainView, i : Int) -> Double {
 }
 
 pub fn bio_struct_domain_view_set(s : BiostructdomainView, i : Int, v : Double) -> BiostructdomainView {
-  let result = bio_struct_domain_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_domain_view_sum(s : BiostructdomainView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_struct_domain_range_get(s : BiostructdomainRange, i : Int) -> Double 
 }
 
 pub fn bio_struct_domain_range_set(s : BiostructdomainRange, i : Int, v : Double) -> BiostructdomainRange {
-  let result = bio_struct_domain_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_domain_range_sum(s : BiostructdomainRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_struct_domain_slice_get(s : BiostructdomainSlice, i : Int) -> Double 
 }
 
 pub fn bio_struct_domain_slice_set(s : BiostructdomainSlice, i : Int, v : Double) -> BiostructdomainSlice {
-  let result = bio_struct_domain_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_struct_domain_slice_sum(s : BiostructdomainSlice) -> Double { @_common.sum(s.data) }

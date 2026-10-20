@@ -107,23 +107,15 @@ pub fn image_morph_gradient_series_std(s : ImagemorphgradientSeries) -> Double {
 pub fn image_morph_gradient_series_median(s : ImagemorphgradientSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_morph_gradient_series_scale(s : ImagemorphgradientSeries, f : Double) -> ImagemorphgradientSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_morph_gradient_series_add(a : ImagemorphgradientSeries, b : ImagemorphgradientSeries) -> ImagemorphgradientSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_morph_gradient_series_sub(a : ImagemorphgradientSeries, b : ImagemorphgradientSeries) -> ImagemorphgradientSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_morph_gradient_series_normalize(s : ImagemorphgradientSeries) -> ImagemorphgradientSeries {
@@ -254,22 +246,16 @@ pub fn image_morph_gradient_vector_zero(dim : Int) -> ImagemorphgradientVector {
 
 pub fn image_morph_gradient_vector_add(a : ImagemorphgradientVector, b : ImagemorphgradientVector) -> ImagemorphgradientVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_morph_gradient_vector_sub(a : ImagemorphgradientVector, b : ImagemorphgradientVector) -> ImagemorphgradientVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_morph_gradient_vector_scale(v : ImagemorphgradientVector, s : Double) -> ImagemorphgradientVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_morph_gradient_vector_dot(a : ImagemorphgradientVector, b : ImagemorphgradientVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_morph_gradient_frame_get(s : ImagemorphgradientFrame, i : Int) -> D
 }
 
 pub fn image_morph_gradient_frame_set(s : ImagemorphgradientFrame, i : Int, v : Double) -> ImagemorphgradientFrame {
-  let result = image_morph_gradient_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_gradient_frame_sum(s : ImagemorphgradientFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_morph_gradient_table_get(s : ImagemorphgradientTable, i : Int) -> D
 }
 
 pub fn image_morph_gradient_table_set(s : ImagemorphgradientTable, i : Int, v : Double) -> ImagemorphgradientTable {
-  let result = image_morph_gradient_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_gradient_table_sum(s : ImagemorphgradientTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_morph_gradient_graphn_get(s : ImagemorphgradientGraphN, i : Int) ->
 }
 
 pub fn image_morph_gradient_graphn_set(s : ImagemorphgradientGraphN, i : Int, v : Double) -> ImagemorphgradientGraphN {
-  let result = image_morph_gradient_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_gradient_graphn_sum(s : ImagemorphgradientGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_morph_gradient_node_get(s : ImagemorphgradientNode, i : Int) -> Dou
 }
 
 pub fn image_morph_gradient_node_set(s : ImagemorphgradientNode, i : Int, v : Double) -> ImagemorphgradientNode {
-  let result = image_morph_gradient_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_gradient_node_sum(s : ImagemorphgradientNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_morph_gradient_edge_get(s : ImagemorphgradientEdge, i : Int) -> Dou
 }
 
 pub fn image_morph_gradient_edge_set(s : ImagemorphgradientEdge, i : Int, v : Double) -> ImagemorphgradientEdge {
-  let result = image_morph_gradient_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_gradient_edge_sum(s : ImagemorphgradientEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_morph_gradient_path_get(s : ImagemorphgradientPath, i : Int) -> Dou
 }
 
 pub fn image_morph_gradient_path_set(s : ImagemorphgradientPath, i : Int, v : Double) -> ImagemorphgradientPath {
-  let result = image_morph_gradient_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_gradient_path_sum(s : ImagemorphgradientPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_morph_gradient_cluster_get(s : ImagemorphgradientCluster, i : Int) 
 }
 
 pub fn image_morph_gradient_cluster_set(s : ImagemorphgradientCluster, i : Int, v : Double) -> ImagemorphgradientCluster {
-  let result = image_morph_gradient_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_gradient_cluster_sum(s : ImagemorphgradientCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_morph_gradient_model_get(s : ImagemorphgradientModel, i : Int) -> D
 }
 
 pub fn image_morph_gradient_model_set(s : ImagemorphgradientModel, i : Int, v : Double) -> ImagemorphgradientModel {
-  let result = image_morph_gradient_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_gradient_model_sum(s : ImagemorphgradientModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_morph_gradient_layer_get(s : ImagemorphgradientLayer, i : Int) -> D
 }
 
 pub fn image_morph_gradient_layer_set(s : ImagemorphgradientLayer, i : Int, v : Double) -> ImagemorphgradientLayer {
-  let result = image_morph_gradient_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_gradient_layer_sum(s : ImagemorphgradientLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_morph_gradient_buffer_get(s : ImagemorphgradientBuffer, i : Int) ->
 }
 
 pub fn image_morph_gradient_buffer_set(s : ImagemorphgradientBuffer, i : Int, v : Double) -> ImagemorphgradientBuffer {
-  let result = image_morph_gradient_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_gradient_buffer_sum(s : ImagemorphgradientBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_morph_gradient_cursor_get(s : ImagemorphgradientCursor, i : Int) ->
 }
 
 pub fn image_morph_gradient_cursor_set(s : ImagemorphgradientCursor, i : Int, v : Double) -> ImagemorphgradientCursor {
-  let result = image_morph_gradient_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_gradient_cursor_sum(s : ImagemorphgradientCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_morph_gradient_view_get(s : ImagemorphgradientView, i : Int) -> Dou
 }
 
 pub fn image_morph_gradient_view_set(s : ImagemorphgradientView, i : Int, v : Double) -> ImagemorphgradientView {
-  let result = image_morph_gradient_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_gradient_view_sum(s : ImagemorphgradientView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_morph_gradient_range_get(s : ImagemorphgradientRange, i : Int) -> D
 }
 
 pub fn image_morph_gradient_range_set(s : ImagemorphgradientRange, i : Int, v : Double) -> ImagemorphgradientRange {
-  let result = image_morph_gradient_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_gradient_range_sum(s : ImagemorphgradientRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_morph_gradient_slice_get(s : ImagemorphgradientSlice, i : Int) -> D
 }
 
 pub fn image_morph_gradient_slice_set(s : ImagemorphgradientSlice, i : Int, v : Double) -> ImagemorphgradientSlice {
-  let result = image_morph_gradient_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_morph_gradient_slice_sum(s : ImagemorphgradientSlice) -> Double { @_common.sum(s.data) }

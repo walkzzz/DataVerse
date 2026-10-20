@@ -107,23 +107,15 @@ pub fn physics_mechanics_joint_series_std(s : PhysicsmechanicsjointSeries) -> Do
 pub fn physics_mechanics_joint_series_median(s : PhysicsmechanicsjointSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_mechanics_joint_series_scale(s : PhysicsmechanicsjointSeries, f : Double) -> PhysicsmechanicsjointSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_mechanics_joint_series_add(a : PhysicsmechanicsjointSeries, b : PhysicsmechanicsjointSeries) -> PhysicsmechanicsjointSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_mechanics_joint_series_sub(a : PhysicsmechanicsjointSeries, b : PhysicsmechanicsjointSeries) -> PhysicsmechanicsjointSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_mechanics_joint_series_normalize(s : PhysicsmechanicsjointSeries) -> PhysicsmechanicsjointSeries {
@@ -254,22 +246,16 @@ pub fn physics_mechanics_joint_vector_zero(dim : Int) -> PhysicsmechanicsjointVe
 
 pub fn physics_mechanics_joint_vector_add(a : PhysicsmechanicsjointVector, b : PhysicsmechanicsjointVector) -> PhysicsmechanicsjointVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_mechanics_joint_vector_sub(a : PhysicsmechanicsjointVector, b : PhysicsmechanicsjointVector) -> PhysicsmechanicsjointVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_mechanics_joint_vector_scale(v : PhysicsmechanicsjointVector, s : Double) -> PhysicsmechanicsjointVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_mechanics_joint_vector_dot(a : PhysicsmechanicsjointVector, b : PhysicsmechanicsjointVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_mechanics_joint_frame_get(s : PhysicsmechanicsjointFrame, i : Int
 }
 
 pub fn physics_mechanics_joint_frame_set(s : PhysicsmechanicsjointFrame, i : Int, v : Double) -> PhysicsmechanicsjointFrame {
-  let result = physics_mechanics_joint_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_frame_sum(s : PhysicsmechanicsjointFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_mechanics_joint_table_get(s : PhysicsmechanicsjointTable, i : Int
 }
 
 pub fn physics_mechanics_joint_table_set(s : PhysicsmechanicsjointTable, i : Int, v : Double) -> PhysicsmechanicsjointTable {
-  let result = physics_mechanics_joint_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_table_sum(s : PhysicsmechanicsjointTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_mechanics_joint_graphn_get(s : PhysicsmechanicsjointGraphN, i : I
 }
 
 pub fn physics_mechanics_joint_graphn_set(s : PhysicsmechanicsjointGraphN, i : Int, v : Double) -> PhysicsmechanicsjointGraphN {
-  let result = physics_mechanics_joint_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_graphn_sum(s : PhysicsmechanicsjointGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_mechanics_joint_node_get(s : PhysicsmechanicsjointNode, i : Int) 
 }
 
 pub fn physics_mechanics_joint_node_set(s : PhysicsmechanicsjointNode, i : Int, v : Double) -> PhysicsmechanicsjointNode {
-  let result = physics_mechanics_joint_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_node_sum(s : PhysicsmechanicsjointNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_mechanics_joint_edge_get(s : PhysicsmechanicsjointEdge, i : Int) 
 }
 
 pub fn physics_mechanics_joint_edge_set(s : PhysicsmechanicsjointEdge, i : Int, v : Double) -> PhysicsmechanicsjointEdge {
-  let result = physics_mechanics_joint_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_edge_sum(s : PhysicsmechanicsjointEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_mechanics_joint_path_get(s : PhysicsmechanicsjointPath, i : Int) 
 }
 
 pub fn physics_mechanics_joint_path_set(s : PhysicsmechanicsjointPath, i : Int, v : Double) -> PhysicsmechanicsjointPath {
-  let result = physics_mechanics_joint_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_path_sum(s : PhysicsmechanicsjointPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_mechanics_joint_cluster_get(s : PhysicsmechanicsjointCluster, i :
 }
 
 pub fn physics_mechanics_joint_cluster_set(s : PhysicsmechanicsjointCluster, i : Int, v : Double) -> PhysicsmechanicsjointCluster {
-  let result = physics_mechanics_joint_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_cluster_sum(s : PhysicsmechanicsjointCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_mechanics_joint_model_get(s : PhysicsmechanicsjointModel, i : Int
 }
 
 pub fn physics_mechanics_joint_model_set(s : PhysicsmechanicsjointModel, i : Int, v : Double) -> PhysicsmechanicsjointModel {
-  let result = physics_mechanics_joint_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_model_sum(s : PhysicsmechanicsjointModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_mechanics_joint_layer_get(s : PhysicsmechanicsjointLayer, i : Int
 }
 
 pub fn physics_mechanics_joint_layer_set(s : PhysicsmechanicsjointLayer, i : Int, v : Double) -> PhysicsmechanicsjointLayer {
-  let result = physics_mechanics_joint_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_layer_sum(s : PhysicsmechanicsjointLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_mechanics_joint_buffer_get(s : PhysicsmechanicsjointBuffer, i : I
 }
 
 pub fn physics_mechanics_joint_buffer_set(s : PhysicsmechanicsjointBuffer, i : Int, v : Double) -> PhysicsmechanicsjointBuffer {
-  let result = physics_mechanics_joint_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_buffer_sum(s : PhysicsmechanicsjointBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_mechanics_joint_cursor_get(s : PhysicsmechanicsjointCursor, i : I
 }
 
 pub fn physics_mechanics_joint_cursor_set(s : PhysicsmechanicsjointCursor, i : Int, v : Double) -> PhysicsmechanicsjointCursor {
-  let result = physics_mechanics_joint_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_cursor_sum(s : PhysicsmechanicsjointCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_mechanics_joint_view_get(s : PhysicsmechanicsjointView, i : Int) 
 }
 
 pub fn physics_mechanics_joint_view_set(s : PhysicsmechanicsjointView, i : Int, v : Double) -> PhysicsmechanicsjointView {
-  let result = physics_mechanics_joint_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_view_sum(s : PhysicsmechanicsjointView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_mechanics_joint_range_get(s : PhysicsmechanicsjointRange, i : Int
 }
 
 pub fn physics_mechanics_joint_range_set(s : PhysicsmechanicsjointRange, i : Int, v : Double) -> PhysicsmechanicsjointRange {
-  let result = physics_mechanics_joint_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_range_sum(s : PhysicsmechanicsjointRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_mechanics_joint_slice_get(s : PhysicsmechanicsjointSlice, i : Int
 }
 
 pub fn physics_mechanics_joint_slice_set(s : PhysicsmechanicsjointSlice, i : Int, v : Double) -> PhysicsmechanicsjointSlice {
-  let result = physics_mechanics_joint_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_joint_slice_sum(s : PhysicsmechanicsjointSlice) -> Double { @_common.sum(s.data) }

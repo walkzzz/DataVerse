@@ -107,23 +107,15 @@ pub fn ds_tree_trie_series_std(s : DstreetrieSeries) -> Double { @_common.std(s.
 pub fn ds_tree_trie_series_median(s : DstreetrieSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_tree_trie_series_scale(s : DstreetrieSeries, f : Double) -> DstreetrieSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_tree_trie_series_add(a : DstreetrieSeries, b : DstreetrieSeries) -> DstreetrieSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_tree_trie_series_sub(a : DstreetrieSeries, b : DstreetrieSeries) -> DstreetrieSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_tree_trie_series_normalize(s : DstreetrieSeries) -> DstreetrieSeries {
@@ -254,22 +246,16 @@ pub fn ds_tree_trie_vector_zero(dim : Int) -> DstreetrieVector {
 
 pub fn ds_tree_trie_vector_add(a : DstreetrieVector, b : DstreetrieVector) -> DstreetrieVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_tree_trie_vector_sub(a : DstreetrieVector, b : DstreetrieVector) -> DstreetrieVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_tree_trie_vector_scale(v : DstreetrieVector, s : Double) -> DstreetrieVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_tree_trie_vector_dot(a : DstreetrieVector, b : DstreetrieVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_tree_trie_frame_get(s : DstreetrieFrame, i : Int) -> Double {
 }
 
 pub fn ds_tree_trie_frame_set(s : DstreetrieFrame, i : Int, v : Double) -> DstreetrieFrame {
-  let result = ds_tree_trie_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_trie_frame_sum(s : DstreetrieFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_tree_trie_table_get(s : DstreetrieTable, i : Int) -> Double {
 }
 
 pub fn ds_tree_trie_table_set(s : DstreetrieTable, i : Int, v : Double) -> DstreetrieTable {
-  let result = ds_tree_trie_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_trie_table_sum(s : DstreetrieTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_tree_trie_graphn_get(s : DstreetrieGraphN, i : Int) -> Double {
 }
 
 pub fn ds_tree_trie_graphn_set(s : DstreetrieGraphN, i : Int, v : Double) -> DstreetrieGraphN {
-  let result = ds_tree_trie_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_trie_graphn_sum(s : DstreetrieGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_tree_trie_node_get(s : DstreetrieNode, i : Int) -> Double {
 }
 
 pub fn ds_tree_trie_node_set(s : DstreetrieNode, i : Int, v : Double) -> DstreetrieNode {
-  let result = ds_tree_trie_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_trie_node_sum(s : DstreetrieNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_tree_trie_edge_get(s : DstreetrieEdge, i : Int) -> Double {
 }
 
 pub fn ds_tree_trie_edge_set(s : DstreetrieEdge, i : Int, v : Double) -> DstreetrieEdge {
-  let result = ds_tree_trie_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_trie_edge_sum(s : DstreetrieEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_tree_trie_path_get(s : DstreetriePath, i : Int) -> Double {
 }
 
 pub fn ds_tree_trie_path_set(s : DstreetriePath, i : Int, v : Double) -> DstreetriePath {
-  let result = ds_tree_trie_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_trie_path_sum(s : DstreetriePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_tree_trie_cluster_get(s : DstreetrieCluster, i : Int) -> Double {
 }
 
 pub fn ds_tree_trie_cluster_set(s : DstreetrieCluster, i : Int, v : Double) -> DstreetrieCluster {
-  let result = ds_tree_trie_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_trie_cluster_sum(s : DstreetrieCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_tree_trie_model_get(s : DstreetrieModel, i : Int) -> Double {
 }
 
 pub fn ds_tree_trie_model_set(s : DstreetrieModel, i : Int, v : Double) -> DstreetrieModel {
-  let result = ds_tree_trie_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_trie_model_sum(s : DstreetrieModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_tree_trie_layer_get(s : DstreetrieLayer, i : Int) -> Double {
 }
 
 pub fn ds_tree_trie_layer_set(s : DstreetrieLayer, i : Int, v : Double) -> DstreetrieLayer {
-  let result = ds_tree_trie_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_trie_layer_sum(s : DstreetrieLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_tree_trie_buffer_get(s : DstreetrieBuffer, i : Int) -> Double {
 }
 
 pub fn ds_tree_trie_buffer_set(s : DstreetrieBuffer, i : Int, v : Double) -> DstreetrieBuffer {
-  let result = ds_tree_trie_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_trie_buffer_sum(s : DstreetrieBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_tree_trie_cursor_get(s : DstreetrieCursor, i : Int) -> Double {
 }
 
 pub fn ds_tree_trie_cursor_set(s : DstreetrieCursor, i : Int, v : Double) -> DstreetrieCursor {
-  let result = ds_tree_trie_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_trie_cursor_sum(s : DstreetrieCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_tree_trie_view_get(s : DstreetrieView, i : Int) -> Double {
 }
 
 pub fn ds_tree_trie_view_set(s : DstreetrieView, i : Int, v : Double) -> DstreetrieView {
-  let result = ds_tree_trie_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_trie_view_sum(s : DstreetrieView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_tree_trie_range_get(s : DstreetrieRange, i : Int) -> Double {
 }
 
 pub fn ds_tree_trie_range_set(s : DstreetrieRange, i : Int, v : Double) -> DstreetrieRange {
-  let result = ds_tree_trie_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_trie_range_sum(s : DstreetrieRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_tree_trie_slice_get(s : DstreetrieSlice, i : Int) -> Double {
 }
 
 pub fn ds_tree_trie_slice_set(s : DstreetrieSlice, i : Int, v : Double) -> DstreetrieSlice {
-  let result = ds_tree_trie_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_trie_slice_sum(s : DstreetrieSlice) -> Double { @_common.sum(s.data) }

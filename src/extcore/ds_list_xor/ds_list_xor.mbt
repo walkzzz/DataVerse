@@ -107,23 +107,15 @@ pub fn ds_list_xor_series_std(s : DslistxorSeries) -> Double { @_common.std(s.va
 pub fn ds_list_xor_series_median(s : DslistxorSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_list_xor_series_scale(s : DslistxorSeries, f : Double) -> DslistxorSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_list_xor_series_add(a : DslistxorSeries, b : DslistxorSeries) -> DslistxorSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_list_xor_series_sub(a : DslistxorSeries, b : DslistxorSeries) -> DslistxorSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_list_xor_series_normalize(s : DslistxorSeries) -> DslistxorSeries {
@@ -254,22 +246,16 @@ pub fn ds_list_xor_vector_zero(dim : Int) -> DslistxorVector {
 
 pub fn ds_list_xor_vector_add(a : DslistxorVector, b : DslistxorVector) -> DslistxorVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_list_xor_vector_sub(a : DslistxorVector, b : DslistxorVector) -> DslistxorVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_list_xor_vector_scale(v : DslistxorVector, s : Double) -> DslistxorVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_list_xor_vector_dot(a : DslistxorVector, b : DslistxorVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_list_xor_frame_get(s : DslistxorFrame, i : Int) -> Double {
 }
 
 pub fn ds_list_xor_frame_set(s : DslistxorFrame, i : Int, v : Double) -> DslistxorFrame {
-  let result = ds_list_xor_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_xor_frame_sum(s : DslistxorFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_list_xor_table_get(s : DslistxorTable, i : Int) -> Double {
 }
 
 pub fn ds_list_xor_table_set(s : DslistxorTable, i : Int, v : Double) -> DslistxorTable {
-  let result = ds_list_xor_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_xor_table_sum(s : DslistxorTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_list_xor_graphn_get(s : DslistxorGraphN, i : Int) -> Double {
 }
 
 pub fn ds_list_xor_graphn_set(s : DslistxorGraphN, i : Int, v : Double) -> DslistxorGraphN {
-  let result = ds_list_xor_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_xor_graphn_sum(s : DslistxorGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_list_xor_node_get(s : DslistxorNode, i : Int) -> Double {
 }
 
 pub fn ds_list_xor_node_set(s : DslistxorNode, i : Int, v : Double) -> DslistxorNode {
-  let result = ds_list_xor_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_xor_node_sum(s : DslistxorNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_list_xor_edge_get(s : DslistxorEdge, i : Int) -> Double {
 }
 
 pub fn ds_list_xor_edge_set(s : DslistxorEdge, i : Int, v : Double) -> DslistxorEdge {
-  let result = ds_list_xor_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_xor_edge_sum(s : DslistxorEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_list_xor_path_get(s : DslistxorPath, i : Int) -> Double {
 }
 
 pub fn ds_list_xor_path_set(s : DslistxorPath, i : Int, v : Double) -> DslistxorPath {
-  let result = ds_list_xor_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_xor_path_sum(s : DslistxorPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_list_xor_cluster_get(s : DslistxorCluster, i : Int) -> Double {
 }
 
 pub fn ds_list_xor_cluster_set(s : DslistxorCluster, i : Int, v : Double) -> DslistxorCluster {
-  let result = ds_list_xor_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_xor_cluster_sum(s : DslistxorCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_list_xor_model_get(s : DslistxorModel, i : Int) -> Double {
 }
 
 pub fn ds_list_xor_model_set(s : DslistxorModel, i : Int, v : Double) -> DslistxorModel {
-  let result = ds_list_xor_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_xor_model_sum(s : DslistxorModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_list_xor_layer_get(s : DslistxorLayer, i : Int) -> Double {
 }
 
 pub fn ds_list_xor_layer_set(s : DslistxorLayer, i : Int, v : Double) -> DslistxorLayer {
-  let result = ds_list_xor_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_xor_layer_sum(s : DslistxorLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_list_xor_buffer_get(s : DslistxorBuffer, i : Int) -> Double {
 }
 
 pub fn ds_list_xor_buffer_set(s : DslistxorBuffer, i : Int, v : Double) -> DslistxorBuffer {
-  let result = ds_list_xor_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_xor_buffer_sum(s : DslistxorBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_list_xor_cursor_get(s : DslistxorCursor, i : Int) -> Double {
 }
 
 pub fn ds_list_xor_cursor_set(s : DslistxorCursor, i : Int, v : Double) -> DslistxorCursor {
-  let result = ds_list_xor_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_xor_cursor_sum(s : DslistxorCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_list_xor_view_get(s : DslistxorView, i : Int) -> Double {
 }
 
 pub fn ds_list_xor_view_set(s : DslistxorView, i : Int, v : Double) -> DslistxorView {
-  let result = ds_list_xor_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_xor_view_sum(s : DslistxorView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_list_xor_range_get(s : DslistxorRange, i : Int) -> Double {
 }
 
 pub fn ds_list_xor_range_set(s : DslistxorRange, i : Int, v : Double) -> DslistxorRange {
-  let result = ds_list_xor_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_xor_range_sum(s : DslistxorRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_list_xor_slice_get(s : DslistxorSlice, i : Int) -> Double {
 }
 
 pub fn ds_list_xor_slice_set(s : DslistxorSlice, i : Int, v : Double) -> DslistxorSlice {
-  let result = ds_list_xor_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_list_xor_slice_sum(s : DslistxorSlice) -> Double { @_common.sum(s.data) }

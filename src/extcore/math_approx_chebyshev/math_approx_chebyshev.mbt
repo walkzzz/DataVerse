@@ -107,23 +107,15 @@ pub fn math_approx_chebyshev_series_std(s : MathapproxchebyshevSeries) -> Double
 pub fn math_approx_chebyshev_series_median(s : MathapproxchebyshevSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_approx_chebyshev_series_scale(s : MathapproxchebyshevSeries, f : Double) -> MathapproxchebyshevSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_approx_chebyshev_series_add(a : MathapproxchebyshevSeries, b : MathapproxchebyshevSeries) -> MathapproxchebyshevSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_approx_chebyshev_series_sub(a : MathapproxchebyshevSeries, b : MathapproxchebyshevSeries) -> MathapproxchebyshevSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_approx_chebyshev_series_normalize(s : MathapproxchebyshevSeries) -> MathapproxchebyshevSeries {
@@ -254,22 +246,16 @@ pub fn math_approx_chebyshev_vector_zero(dim : Int) -> MathapproxchebyshevVector
 
 pub fn math_approx_chebyshev_vector_add(a : MathapproxchebyshevVector, b : MathapproxchebyshevVector) -> MathapproxchebyshevVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_approx_chebyshev_vector_sub(a : MathapproxchebyshevVector, b : MathapproxchebyshevVector) -> MathapproxchebyshevVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_approx_chebyshev_vector_scale(v : MathapproxchebyshevVector, s : Double) -> MathapproxchebyshevVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_approx_chebyshev_vector_dot(a : MathapproxchebyshevVector, b : MathapproxchebyshevVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_approx_chebyshev_frame_get(s : MathapproxchebyshevFrame, i : Int) ->
 }
 
 pub fn math_approx_chebyshev_frame_set(s : MathapproxchebyshevFrame, i : Int, v : Double) -> MathapproxchebyshevFrame {
-  let result = math_approx_chebyshev_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_chebyshev_frame_sum(s : MathapproxchebyshevFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_approx_chebyshev_table_get(s : MathapproxchebyshevTable, i : Int) ->
 }
 
 pub fn math_approx_chebyshev_table_set(s : MathapproxchebyshevTable, i : Int, v : Double) -> MathapproxchebyshevTable {
-  let result = math_approx_chebyshev_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_chebyshev_table_sum(s : MathapproxchebyshevTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_approx_chebyshev_graphn_get(s : MathapproxchebyshevGraphN, i : Int) 
 }
 
 pub fn math_approx_chebyshev_graphn_set(s : MathapproxchebyshevGraphN, i : Int, v : Double) -> MathapproxchebyshevGraphN {
-  let result = math_approx_chebyshev_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_chebyshev_graphn_sum(s : MathapproxchebyshevGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_approx_chebyshev_node_get(s : MathapproxchebyshevNode, i : Int) -> D
 }
 
 pub fn math_approx_chebyshev_node_set(s : MathapproxchebyshevNode, i : Int, v : Double) -> MathapproxchebyshevNode {
-  let result = math_approx_chebyshev_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_chebyshev_node_sum(s : MathapproxchebyshevNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_approx_chebyshev_edge_get(s : MathapproxchebyshevEdge, i : Int) -> D
 }
 
 pub fn math_approx_chebyshev_edge_set(s : MathapproxchebyshevEdge, i : Int, v : Double) -> MathapproxchebyshevEdge {
-  let result = math_approx_chebyshev_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_chebyshev_edge_sum(s : MathapproxchebyshevEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_approx_chebyshev_path_get(s : MathapproxchebyshevPath, i : Int) -> D
 }
 
 pub fn math_approx_chebyshev_path_set(s : MathapproxchebyshevPath, i : Int, v : Double) -> MathapproxchebyshevPath {
-  let result = math_approx_chebyshev_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_chebyshev_path_sum(s : MathapproxchebyshevPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_approx_chebyshev_cluster_get(s : MathapproxchebyshevCluster, i : Int
 }
 
 pub fn math_approx_chebyshev_cluster_set(s : MathapproxchebyshevCluster, i : Int, v : Double) -> MathapproxchebyshevCluster {
-  let result = math_approx_chebyshev_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_chebyshev_cluster_sum(s : MathapproxchebyshevCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_approx_chebyshev_model_get(s : MathapproxchebyshevModel, i : Int) ->
 }
 
 pub fn math_approx_chebyshev_model_set(s : MathapproxchebyshevModel, i : Int, v : Double) -> MathapproxchebyshevModel {
-  let result = math_approx_chebyshev_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_chebyshev_model_sum(s : MathapproxchebyshevModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_approx_chebyshev_layer_get(s : MathapproxchebyshevLayer, i : Int) ->
 }
 
 pub fn math_approx_chebyshev_layer_set(s : MathapproxchebyshevLayer, i : Int, v : Double) -> MathapproxchebyshevLayer {
-  let result = math_approx_chebyshev_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_chebyshev_layer_sum(s : MathapproxchebyshevLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_approx_chebyshev_buffer_get(s : MathapproxchebyshevBuffer, i : Int) 
 }
 
 pub fn math_approx_chebyshev_buffer_set(s : MathapproxchebyshevBuffer, i : Int, v : Double) -> MathapproxchebyshevBuffer {
-  let result = math_approx_chebyshev_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_chebyshev_buffer_sum(s : MathapproxchebyshevBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_approx_chebyshev_cursor_get(s : MathapproxchebyshevCursor, i : Int) 
 }
 
 pub fn math_approx_chebyshev_cursor_set(s : MathapproxchebyshevCursor, i : Int, v : Double) -> MathapproxchebyshevCursor {
-  let result = math_approx_chebyshev_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_chebyshev_cursor_sum(s : MathapproxchebyshevCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_approx_chebyshev_view_get(s : MathapproxchebyshevView, i : Int) -> D
 }
 
 pub fn math_approx_chebyshev_view_set(s : MathapproxchebyshevView, i : Int, v : Double) -> MathapproxchebyshevView {
-  let result = math_approx_chebyshev_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_chebyshev_view_sum(s : MathapproxchebyshevView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_approx_chebyshev_range_get(s : MathapproxchebyshevRange, i : Int) ->
 }
 
 pub fn math_approx_chebyshev_range_set(s : MathapproxchebyshevRange, i : Int, v : Double) -> MathapproxchebyshevRange {
-  let result = math_approx_chebyshev_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_chebyshev_range_sum(s : MathapproxchebyshevRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_approx_chebyshev_slice_get(s : MathapproxchebyshevSlice, i : Int) ->
 }
 
 pub fn math_approx_chebyshev_slice_set(s : MathapproxchebyshevSlice, i : Int, v : Double) -> MathapproxchebyshevSlice {
-  let result = math_approx_chebyshev_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_chebyshev_slice_sum(s : MathapproxchebyshevSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn sort_exchange_odd_even_series_std(s : SortexchangeoddevenSeries) -> Doubl
 pub fn sort_exchange_odd_even_series_median(s : SortexchangeoddevenSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_exchange_odd_even_series_scale(s : SortexchangeoddevenSeries, f : Double) -> SortexchangeoddevenSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn sort_exchange_odd_even_series_add(a : SortexchangeoddevenSeries, b : SortexchangeoddevenSeries) -> SortexchangeoddevenSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn sort_exchange_odd_even_series_sub(a : SortexchangeoddevenSeries, b : SortexchangeoddevenSeries) -> SortexchangeoddevenSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn sort_exchange_odd_even_series_normalize(s : SortexchangeoddevenSeries) -> SortexchangeoddevenSeries {
@@ -254,22 +246,16 @@ pub fn sort_exchange_odd_even_vector_zero(dim : Int) -> SortexchangeoddevenVecto
 
 pub fn sort_exchange_odd_even_vector_add(a : SortexchangeoddevenVector, b : SortexchangeoddevenVector) -> SortexchangeoddevenVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_exchange_odd_even_vector_sub(a : SortexchangeoddevenVector, b : SortexchangeoddevenVector) -> SortexchangeoddevenVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_exchange_odd_even_vector_scale(v : SortexchangeoddevenVector, s : Double) -> SortexchangeoddevenVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn sort_exchange_odd_even_vector_dot(a : SortexchangeoddevenVector, b : SortexchangeoddevenVector) -> Double {
@@ -372,10 +358,9 @@ pub fn sort_exchange_odd_even_frame_get(s : SortexchangeoddevenFrame, i : Int) -
 }
 
 pub fn sort_exchange_odd_even_frame_set(s : SortexchangeoddevenFrame, i : Int, v : Double) -> SortexchangeoddevenFrame {
-  let result = sort_exchange_odd_even_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_odd_even_frame_sum(s : SortexchangeoddevenFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn sort_exchange_odd_even_table_get(s : SortexchangeoddevenTable, i : Int) -
 }
 
 pub fn sort_exchange_odd_even_table_set(s : SortexchangeoddevenTable, i : Int, v : Double) -> SortexchangeoddevenTable {
-  let result = sort_exchange_odd_even_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_odd_even_table_sum(s : SortexchangeoddevenTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn sort_exchange_odd_even_graphn_get(s : SortexchangeoddevenGraphN, i : Int)
 }
 
 pub fn sort_exchange_odd_even_graphn_set(s : SortexchangeoddevenGraphN, i : Int, v : Double) -> SortexchangeoddevenGraphN {
-  let result = sort_exchange_odd_even_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_odd_even_graphn_sum(s : SortexchangeoddevenGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn sort_exchange_odd_even_node_get(s : SortexchangeoddevenNode, i : Int) -> 
 }
 
 pub fn sort_exchange_odd_even_node_set(s : SortexchangeoddevenNode, i : Int, v : Double) -> SortexchangeoddevenNode {
-  let result = sort_exchange_odd_even_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_odd_even_node_sum(s : SortexchangeoddevenNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn sort_exchange_odd_even_edge_get(s : SortexchangeoddevenEdge, i : Int) -> 
 }
 
 pub fn sort_exchange_odd_even_edge_set(s : SortexchangeoddevenEdge, i : Int, v : Double) -> SortexchangeoddevenEdge {
-  let result = sort_exchange_odd_even_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_odd_even_edge_sum(s : SortexchangeoddevenEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn sort_exchange_odd_even_path_get(s : SortexchangeoddevenPath, i : Int) -> 
 }
 
 pub fn sort_exchange_odd_even_path_set(s : SortexchangeoddevenPath, i : Int, v : Double) -> SortexchangeoddevenPath {
-  let result = sort_exchange_odd_even_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_odd_even_path_sum(s : SortexchangeoddevenPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn sort_exchange_odd_even_cluster_get(s : SortexchangeoddevenCluster, i : In
 }
 
 pub fn sort_exchange_odd_even_cluster_set(s : SortexchangeoddevenCluster, i : Int, v : Double) -> SortexchangeoddevenCluster {
-  let result = sort_exchange_odd_even_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_odd_even_cluster_sum(s : SortexchangeoddevenCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn sort_exchange_odd_even_model_get(s : SortexchangeoddevenModel, i : Int) -
 }
 
 pub fn sort_exchange_odd_even_model_set(s : SortexchangeoddevenModel, i : Int, v : Double) -> SortexchangeoddevenModel {
-  let result = sort_exchange_odd_even_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_odd_even_model_sum(s : SortexchangeoddevenModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn sort_exchange_odd_even_layer_get(s : SortexchangeoddevenLayer, i : Int) -
 }
 
 pub fn sort_exchange_odd_even_layer_set(s : SortexchangeoddevenLayer, i : Int, v : Double) -> SortexchangeoddevenLayer {
-  let result = sort_exchange_odd_even_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_odd_even_layer_sum(s : SortexchangeoddevenLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn sort_exchange_odd_even_buffer_get(s : SortexchangeoddevenBuffer, i : Int)
 }
 
 pub fn sort_exchange_odd_even_buffer_set(s : SortexchangeoddevenBuffer, i : Int, v : Double) -> SortexchangeoddevenBuffer {
-  let result = sort_exchange_odd_even_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_odd_even_buffer_sum(s : SortexchangeoddevenBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn sort_exchange_odd_even_cursor_get(s : SortexchangeoddevenCursor, i : Int)
 }
 
 pub fn sort_exchange_odd_even_cursor_set(s : SortexchangeoddevenCursor, i : Int, v : Double) -> SortexchangeoddevenCursor {
-  let result = sort_exchange_odd_even_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_odd_even_cursor_sum(s : SortexchangeoddevenCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn sort_exchange_odd_even_view_get(s : SortexchangeoddevenView, i : Int) -> 
 }
 
 pub fn sort_exchange_odd_even_view_set(s : SortexchangeoddevenView, i : Int, v : Double) -> SortexchangeoddevenView {
-  let result = sort_exchange_odd_even_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_odd_even_view_sum(s : SortexchangeoddevenView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn sort_exchange_odd_even_range_get(s : SortexchangeoddevenRange, i : Int) -
 }
 
 pub fn sort_exchange_odd_even_range_set(s : SortexchangeoddevenRange, i : Int, v : Double) -> SortexchangeoddevenRange {
-  let result = sort_exchange_odd_even_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_odd_even_range_sum(s : SortexchangeoddevenRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn sort_exchange_odd_even_slice_get(s : SortexchangeoddevenSlice, i : Int) -
 }
 
 pub fn sort_exchange_odd_even_slice_set(s : SortexchangeoddevenSlice, i : Int, v : Double) -> SortexchangeoddevenSlice {
-  let result = sort_exchange_odd_even_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_exchange_odd_even_slice_sum(s : SortexchangeoddevenSlice) -> Double { @_common.sum(s.data) }

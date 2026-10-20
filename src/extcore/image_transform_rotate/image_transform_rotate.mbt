@@ -107,23 +107,15 @@ pub fn image_transform_rotate_series_std(s : ImagetransformrotateSeries) -> Doub
 pub fn image_transform_rotate_series_median(s : ImagetransformrotateSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_transform_rotate_series_scale(s : ImagetransformrotateSeries, f : Double) -> ImagetransformrotateSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_transform_rotate_series_add(a : ImagetransformrotateSeries, b : ImagetransformrotateSeries) -> ImagetransformrotateSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_transform_rotate_series_sub(a : ImagetransformrotateSeries, b : ImagetransformrotateSeries) -> ImagetransformrotateSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_transform_rotate_series_normalize(s : ImagetransformrotateSeries) -> ImagetransformrotateSeries {
@@ -254,22 +246,16 @@ pub fn image_transform_rotate_vector_zero(dim : Int) -> ImagetransformrotateVect
 
 pub fn image_transform_rotate_vector_add(a : ImagetransformrotateVector, b : ImagetransformrotateVector) -> ImagetransformrotateVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_transform_rotate_vector_sub(a : ImagetransformrotateVector, b : ImagetransformrotateVector) -> ImagetransformrotateVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_transform_rotate_vector_scale(v : ImagetransformrotateVector, s : Double) -> ImagetransformrotateVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_transform_rotate_vector_dot(a : ImagetransformrotateVector, b : ImagetransformrotateVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_transform_rotate_frame_get(s : ImagetransformrotateFrame, i : Int) 
 }
 
 pub fn image_transform_rotate_frame_set(s : ImagetransformrotateFrame, i : Int, v : Double) -> ImagetransformrotateFrame {
-  let result = image_transform_rotate_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_rotate_frame_sum(s : ImagetransformrotateFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_transform_rotate_table_get(s : ImagetransformrotateTable, i : Int) 
 }
 
 pub fn image_transform_rotate_table_set(s : ImagetransformrotateTable, i : Int, v : Double) -> ImagetransformrotateTable {
-  let result = image_transform_rotate_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_rotate_table_sum(s : ImagetransformrotateTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_transform_rotate_graphn_get(s : ImagetransformrotateGraphN, i : Int
 }
 
 pub fn image_transform_rotate_graphn_set(s : ImagetransformrotateGraphN, i : Int, v : Double) -> ImagetransformrotateGraphN {
-  let result = image_transform_rotate_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_rotate_graphn_sum(s : ImagetransformrotateGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_transform_rotate_node_get(s : ImagetransformrotateNode, i : Int) ->
 }
 
 pub fn image_transform_rotate_node_set(s : ImagetransformrotateNode, i : Int, v : Double) -> ImagetransformrotateNode {
-  let result = image_transform_rotate_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_rotate_node_sum(s : ImagetransformrotateNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_transform_rotate_edge_get(s : ImagetransformrotateEdge, i : Int) ->
 }
 
 pub fn image_transform_rotate_edge_set(s : ImagetransformrotateEdge, i : Int, v : Double) -> ImagetransformrotateEdge {
-  let result = image_transform_rotate_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_rotate_edge_sum(s : ImagetransformrotateEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_transform_rotate_path_get(s : ImagetransformrotatePath, i : Int) ->
 }
 
 pub fn image_transform_rotate_path_set(s : ImagetransformrotatePath, i : Int, v : Double) -> ImagetransformrotatePath {
-  let result = image_transform_rotate_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_rotate_path_sum(s : ImagetransformrotatePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_transform_rotate_cluster_get(s : ImagetransformrotateCluster, i : I
 }
 
 pub fn image_transform_rotate_cluster_set(s : ImagetransformrotateCluster, i : Int, v : Double) -> ImagetransformrotateCluster {
-  let result = image_transform_rotate_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_rotate_cluster_sum(s : ImagetransformrotateCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_transform_rotate_model_get(s : ImagetransformrotateModel, i : Int) 
 }
 
 pub fn image_transform_rotate_model_set(s : ImagetransformrotateModel, i : Int, v : Double) -> ImagetransformrotateModel {
-  let result = image_transform_rotate_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_rotate_model_sum(s : ImagetransformrotateModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_transform_rotate_layer_get(s : ImagetransformrotateLayer, i : Int) 
 }
 
 pub fn image_transform_rotate_layer_set(s : ImagetransformrotateLayer, i : Int, v : Double) -> ImagetransformrotateLayer {
-  let result = image_transform_rotate_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_rotate_layer_sum(s : ImagetransformrotateLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_transform_rotate_buffer_get(s : ImagetransformrotateBuffer, i : Int
 }
 
 pub fn image_transform_rotate_buffer_set(s : ImagetransformrotateBuffer, i : Int, v : Double) -> ImagetransformrotateBuffer {
-  let result = image_transform_rotate_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_rotate_buffer_sum(s : ImagetransformrotateBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_transform_rotate_cursor_get(s : ImagetransformrotateCursor, i : Int
 }
 
 pub fn image_transform_rotate_cursor_set(s : ImagetransformrotateCursor, i : Int, v : Double) -> ImagetransformrotateCursor {
-  let result = image_transform_rotate_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_rotate_cursor_sum(s : ImagetransformrotateCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_transform_rotate_view_get(s : ImagetransformrotateView, i : Int) ->
 }
 
 pub fn image_transform_rotate_view_set(s : ImagetransformrotateView, i : Int, v : Double) -> ImagetransformrotateView {
-  let result = image_transform_rotate_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_rotate_view_sum(s : ImagetransformrotateView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_transform_rotate_range_get(s : ImagetransformrotateRange, i : Int) 
 }
 
 pub fn image_transform_rotate_range_set(s : ImagetransformrotateRange, i : Int, v : Double) -> ImagetransformrotateRange {
-  let result = image_transform_rotate_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_rotate_range_sum(s : ImagetransformrotateRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_transform_rotate_slice_get(s : ImagetransformrotateSlice, i : Int) 
 }
 
 pub fn image_transform_rotate_slice_set(s : ImagetransformrotateSlice, i : Int, v : Double) -> ImagetransformrotateSlice {
-  let result = image_transform_rotate_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_rotate_slice_sum(s : ImagetransformrotateSlice) -> Double { @_common.sum(s.data) }

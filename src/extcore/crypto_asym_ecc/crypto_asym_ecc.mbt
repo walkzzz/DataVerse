@@ -107,23 +107,15 @@ pub fn crypto_asym_ecc_series_std(s : CryptoasymeccSeries) -> Double { @_common.
 pub fn crypto_asym_ecc_series_median(s : CryptoasymeccSeries) -> Double { @_common.median(s.vals) }
 
 pub fn crypto_asym_ecc_series_scale(s : CryptoasymeccSeries, f : Double) -> CryptoasymeccSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn crypto_asym_ecc_series_add(a : CryptoasymeccSeries, b : CryptoasymeccSeries) -> CryptoasymeccSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn crypto_asym_ecc_series_sub(a : CryptoasymeccSeries, b : CryptoasymeccSeries) -> CryptoasymeccSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn crypto_asym_ecc_series_normalize(s : CryptoasymeccSeries) -> CryptoasymeccSeries {
@@ -254,22 +246,16 @@ pub fn crypto_asym_ecc_vector_zero(dim : Int) -> CryptoasymeccVector {
 
 pub fn crypto_asym_ecc_vector_add(a : CryptoasymeccVector, b : CryptoasymeccVector) -> CryptoasymeccVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_asym_ecc_vector_sub(a : CryptoasymeccVector, b : CryptoasymeccVector) -> CryptoasymeccVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_asym_ecc_vector_scale(v : CryptoasymeccVector, s : Double) -> CryptoasymeccVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn crypto_asym_ecc_vector_dot(a : CryptoasymeccVector, b : CryptoasymeccVector) -> Double {
@@ -372,10 +358,9 @@ pub fn crypto_asym_ecc_frame_get(s : CryptoasymeccFrame, i : Int) -> Double {
 }
 
 pub fn crypto_asym_ecc_frame_set(s : CryptoasymeccFrame, i : Int, v : Double) -> CryptoasymeccFrame {
-  let result = crypto_asym_ecc_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_ecc_frame_sum(s : CryptoasymeccFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn crypto_asym_ecc_table_get(s : CryptoasymeccTable, i : Int) -> Double {
 }
 
 pub fn crypto_asym_ecc_table_set(s : CryptoasymeccTable, i : Int, v : Double) -> CryptoasymeccTable {
-  let result = crypto_asym_ecc_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_ecc_table_sum(s : CryptoasymeccTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn crypto_asym_ecc_graphn_get(s : CryptoasymeccGraphN, i : Int) -> Double {
 }
 
 pub fn crypto_asym_ecc_graphn_set(s : CryptoasymeccGraphN, i : Int, v : Double) -> CryptoasymeccGraphN {
-  let result = crypto_asym_ecc_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_ecc_graphn_sum(s : CryptoasymeccGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn crypto_asym_ecc_node_get(s : CryptoasymeccNode, i : Int) -> Double {
 }
 
 pub fn crypto_asym_ecc_node_set(s : CryptoasymeccNode, i : Int, v : Double) -> CryptoasymeccNode {
-  let result = crypto_asym_ecc_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_ecc_node_sum(s : CryptoasymeccNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn crypto_asym_ecc_edge_get(s : CryptoasymeccEdge, i : Int) -> Double {
 }
 
 pub fn crypto_asym_ecc_edge_set(s : CryptoasymeccEdge, i : Int, v : Double) -> CryptoasymeccEdge {
-  let result = crypto_asym_ecc_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_ecc_edge_sum(s : CryptoasymeccEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn crypto_asym_ecc_path_get(s : CryptoasymeccPath, i : Int) -> Double {
 }
 
 pub fn crypto_asym_ecc_path_set(s : CryptoasymeccPath, i : Int, v : Double) -> CryptoasymeccPath {
-  let result = crypto_asym_ecc_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_ecc_path_sum(s : CryptoasymeccPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn crypto_asym_ecc_cluster_get(s : CryptoasymeccCluster, i : Int) -> Double 
 }
 
 pub fn crypto_asym_ecc_cluster_set(s : CryptoasymeccCluster, i : Int, v : Double) -> CryptoasymeccCluster {
-  let result = crypto_asym_ecc_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_ecc_cluster_sum(s : CryptoasymeccCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn crypto_asym_ecc_model_get(s : CryptoasymeccModel, i : Int) -> Double {
 }
 
 pub fn crypto_asym_ecc_model_set(s : CryptoasymeccModel, i : Int, v : Double) -> CryptoasymeccModel {
-  let result = crypto_asym_ecc_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_ecc_model_sum(s : CryptoasymeccModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn crypto_asym_ecc_layer_get(s : CryptoasymeccLayer, i : Int) -> Double {
 }
 
 pub fn crypto_asym_ecc_layer_set(s : CryptoasymeccLayer, i : Int, v : Double) -> CryptoasymeccLayer {
-  let result = crypto_asym_ecc_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_ecc_layer_sum(s : CryptoasymeccLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn crypto_asym_ecc_buffer_get(s : CryptoasymeccBuffer, i : Int) -> Double {
 }
 
 pub fn crypto_asym_ecc_buffer_set(s : CryptoasymeccBuffer, i : Int, v : Double) -> CryptoasymeccBuffer {
-  let result = crypto_asym_ecc_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_ecc_buffer_sum(s : CryptoasymeccBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn crypto_asym_ecc_cursor_get(s : CryptoasymeccCursor, i : Int) -> Double {
 }
 
 pub fn crypto_asym_ecc_cursor_set(s : CryptoasymeccCursor, i : Int, v : Double) -> CryptoasymeccCursor {
-  let result = crypto_asym_ecc_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_ecc_cursor_sum(s : CryptoasymeccCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn crypto_asym_ecc_view_get(s : CryptoasymeccView, i : Int) -> Double {
 }
 
 pub fn crypto_asym_ecc_view_set(s : CryptoasymeccView, i : Int, v : Double) -> CryptoasymeccView {
-  let result = crypto_asym_ecc_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_ecc_view_sum(s : CryptoasymeccView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn crypto_asym_ecc_range_get(s : CryptoasymeccRange, i : Int) -> Double {
 }
 
 pub fn crypto_asym_ecc_range_set(s : CryptoasymeccRange, i : Int, v : Double) -> CryptoasymeccRange {
-  let result = crypto_asym_ecc_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_ecc_range_sum(s : CryptoasymeccRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn crypto_asym_ecc_slice_get(s : CryptoasymeccSlice, i : Int) -> Double {
 }
 
 pub fn crypto_asym_ecc_slice_set(s : CryptoasymeccSlice, i : Int, v : Double) -> CryptoasymeccSlice {
-  let result = crypto_asym_ecc_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_asym_ecc_slice_sum(s : CryptoasymeccSlice) -> Double { @_common.sum(s.data) }

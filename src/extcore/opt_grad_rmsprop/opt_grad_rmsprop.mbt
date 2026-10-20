@@ -107,23 +107,15 @@ pub fn opt_grad_rmsprop_series_std(s : OptgradrmspropSeries) -> Double { @_commo
 pub fn opt_grad_rmsprop_series_median(s : OptgradrmspropSeries) -> Double { @_common.median(s.vals) }
 
 pub fn opt_grad_rmsprop_series_scale(s : OptgradrmspropSeries, f : Double) -> OptgradrmspropSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn opt_grad_rmsprop_series_add(a : OptgradrmspropSeries, b : OptgradrmspropSeries) -> OptgradrmspropSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn opt_grad_rmsprop_series_sub(a : OptgradrmspropSeries, b : OptgradrmspropSeries) -> OptgradrmspropSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn opt_grad_rmsprop_series_normalize(s : OptgradrmspropSeries) -> OptgradrmspropSeries {
@@ -254,22 +246,16 @@ pub fn opt_grad_rmsprop_vector_zero(dim : Int) -> OptgradrmspropVector {
 
 pub fn opt_grad_rmsprop_vector_add(a : OptgradrmspropVector, b : OptgradrmspropVector) -> OptgradrmspropVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_grad_rmsprop_vector_sub(a : OptgradrmspropVector, b : OptgradrmspropVector) -> OptgradrmspropVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_grad_rmsprop_vector_scale(v : OptgradrmspropVector, s : Double) -> OptgradrmspropVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn opt_grad_rmsprop_vector_dot(a : OptgradrmspropVector, b : OptgradrmspropVector) -> Double {
@@ -372,10 +358,9 @@ pub fn opt_grad_rmsprop_frame_get(s : OptgradrmspropFrame, i : Int) -> Double {
 }
 
 pub fn opt_grad_rmsprop_frame_set(s : OptgradrmspropFrame, i : Int, v : Double) -> OptgradrmspropFrame {
-  let result = opt_grad_rmsprop_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_rmsprop_frame_sum(s : OptgradrmspropFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn opt_grad_rmsprop_table_get(s : OptgradrmspropTable, i : Int) -> Double {
 }
 
 pub fn opt_grad_rmsprop_table_set(s : OptgradrmspropTable, i : Int, v : Double) -> OptgradrmspropTable {
-  let result = opt_grad_rmsprop_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_rmsprop_table_sum(s : OptgradrmspropTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn opt_grad_rmsprop_graphn_get(s : OptgradrmspropGraphN, i : Int) -> Double 
 }
 
 pub fn opt_grad_rmsprop_graphn_set(s : OptgradrmspropGraphN, i : Int, v : Double) -> OptgradrmspropGraphN {
-  let result = opt_grad_rmsprop_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_rmsprop_graphn_sum(s : OptgradrmspropGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn opt_grad_rmsprop_node_get(s : OptgradrmspropNode, i : Int) -> Double {
 }
 
 pub fn opt_grad_rmsprop_node_set(s : OptgradrmspropNode, i : Int, v : Double) -> OptgradrmspropNode {
-  let result = opt_grad_rmsprop_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_rmsprop_node_sum(s : OptgradrmspropNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn opt_grad_rmsprop_edge_get(s : OptgradrmspropEdge, i : Int) -> Double {
 }
 
 pub fn opt_grad_rmsprop_edge_set(s : OptgradrmspropEdge, i : Int, v : Double) -> OptgradrmspropEdge {
-  let result = opt_grad_rmsprop_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_rmsprop_edge_sum(s : OptgradrmspropEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn opt_grad_rmsprop_path_get(s : OptgradrmspropPath, i : Int) -> Double {
 }
 
 pub fn opt_grad_rmsprop_path_set(s : OptgradrmspropPath, i : Int, v : Double) -> OptgradrmspropPath {
-  let result = opt_grad_rmsprop_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_rmsprop_path_sum(s : OptgradrmspropPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn opt_grad_rmsprop_cluster_get(s : OptgradrmspropCluster, i : Int) -> Doubl
 }
 
 pub fn opt_grad_rmsprop_cluster_set(s : OptgradrmspropCluster, i : Int, v : Double) -> OptgradrmspropCluster {
-  let result = opt_grad_rmsprop_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_rmsprop_cluster_sum(s : OptgradrmspropCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn opt_grad_rmsprop_model_get(s : OptgradrmspropModel, i : Int) -> Double {
 }
 
 pub fn opt_grad_rmsprop_model_set(s : OptgradrmspropModel, i : Int, v : Double) -> OptgradrmspropModel {
-  let result = opt_grad_rmsprop_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_rmsprop_model_sum(s : OptgradrmspropModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn opt_grad_rmsprop_layer_get(s : OptgradrmspropLayer, i : Int) -> Double {
 }
 
 pub fn opt_grad_rmsprop_layer_set(s : OptgradrmspropLayer, i : Int, v : Double) -> OptgradrmspropLayer {
-  let result = opt_grad_rmsprop_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_rmsprop_layer_sum(s : OptgradrmspropLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn opt_grad_rmsprop_buffer_get(s : OptgradrmspropBuffer, i : Int) -> Double 
 }
 
 pub fn opt_grad_rmsprop_buffer_set(s : OptgradrmspropBuffer, i : Int, v : Double) -> OptgradrmspropBuffer {
-  let result = opt_grad_rmsprop_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_rmsprop_buffer_sum(s : OptgradrmspropBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn opt_grad_rmsprop_cursor_get(s : OptgradrmspropCursor, i : Int) -> Double 
 }
 
 pub fn opt_grad_rmsprop_cursor_set(s : OptgradrmspropCursor, i : Int, v : Double) -> OptgradrmspropCursor {
-  let result = opt_grad_rmsprop_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_rmsprop_cursor_sum(s : OptgradrmspropCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn opt_grad_rmsprop_view_get(s : OptgradrmspropView, i : Int) -> Double {
 }
 
 pub fn opt_grad_rmsprop_view_set(s : OptgradrmspropView, i : Int, v : Double) -> OptgradrmspropView {
-  let result = opt_grad_rmsprop_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_rmsprop_view_sum(s : OptgradrmspropView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn opt_grad_rmsprop_range_get(s : OptgradrmspropRange, i : Int) -> Double {
 }
 
 pub fn opt_grad_rmsprop_range_set(s : OptgradrmspropRange, i : Int, v : Double) -> OptgradrmspropRange {
-  let result = opt_grad_rmsprop_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_rmsprop_range_sum(s : OptgradrmspropRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn opt_grad_rmsprop_slice_get(s : OptgradrmspropSlice, i : Int) -> Double {
 }
 
 pub fn opt_grad_rmsprop_slice_set(s : OptgradrmspropSlice, i : Int, v : Double) -> OptgradrmspropSlice {
-  let result = opt_grad_rmsprop_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_grad_rmsprop_slice_sum(s : OptgradrmspropSlice) -> Double { @_common.sum(s.data) }

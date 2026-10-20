@@ -107,23 +107,15 @@ pub fn nlp_parse_shift_reduce_series_std(s : NlpparseshiftreduceSeries) -> Doubl
 pub fn nlp_parse_shift_reduce_series_median(s : NlpparseshiftreduceSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_parse_shift_reduce_series_scale(s : NlpparseshiftreduceSeries, f : Double) -> NlpparseshiftreduceSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_parse_shift_reduce_series_add(a : NlpparseshiftreduceSeries, b : NlpparseshiftreduceSeries) -> NlpparseshiftreduceSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_parse_shift_reduce_series_sub(a : NlpparseshiftreduceSeries, b : NlpparseshiftreduceSeries) -> NlpparseshiftreduceSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_parse_shift_reduce_series_normalize(s : NlpparseshiftreduceSeries) -> NlpparseshiftreduceSeries {
@@ -254,22 +246,16 @@ pub fn nlp_parse_shift_reduce_vector_zero(dim : Int) -> NlpparseshiftreduceVecto
 
 pub fn nlp_parse_shift_reduce_vector_add(a : NlpparseshiftreduceVector, b : NlpparseshiftreduceVector) -> NlpparseshiftreduceVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_parse_shift_reduce_vector_sub(a : NlpparseshiftreduceVector, b : NlpparseshiftreduceVector) -> NlpparseshiftreduceVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_parse_shift_reduce_vector_scale(v : NlpparseshiftreduceVector, s : Double) -> NlpparseshiftreduceVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_parse_shift_reduce_vector_dot(a : NlpparseshiftreduceVector, b : NlpparseshiftreduceVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_parse_shift_reduce_frame_get(s : NlpparseshiftreduceFrame, i : Int) -
 }
 
 pub fn nlp_parse_shift_reduce_frame_set(s : NlpparseshiftreduceFrame, i : Int, v : Double) -> NlpparseshiftreduceFrame {
-  let result = nlp_parse_shift_reduce_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_frame_sum(s : NlpparseshiftreduceFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_parse_shift_reduce_table_get(s : NlpparseshiftreduceTable, i : Int) -
 }
 
 pub fn nlp_parse_shift_reduce_table_set(s : NlpparseshiftreduceTable, i : Int, v : Double) -> NlpparseshiftreduceTable {
-  let result = nlp_parse_shift_reduce_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_table_sum(s : NlpparseshiftreduceTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_parse_shift_reduce_graphn_get(s : NlpparseshiftreduceGraphN, i : Int)
 }
 
 pub fn nlp_parse_shift_reduce_graphn_set(s : NlpparseshiftreduceGraphN, i : Int, v : Double) -> NlpparseshiftreduceGraphN {
-  let result = nlp_parse_shift_reduce_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_graphn_sum(s : NlpparseshiftreduceGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_parse_shift_reduce_node_get(s : NlpparseshiftreduceNode, i : Int) -> 
 }
 
 pub fn nlp_parse_shift_reduce_node_set(s : NlpparseshiftreduceNode, i : Int, v : Double) -> NlpparseshiftreduceNode {
-  let result = nlp_parse_shift_reduce_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_node_sum(s : NlpparseshiftreduceNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_parse_shift_reduce_edge_get(s : NlpparseshiftreduceEdge, i : Int) -> 
 }
 
 pub fn nlp_parse_shift_reduce_edge_set(s : NlpparseshiftreduceEdge, i : Int, v : Double) -> NlpparseshiftreduceEdge {
-  let result = nlp_parse_shift_reduce_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_edge_sum(s : NlpparseshiftreduceEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_parse_shift_reduce_path_get(s : NlpparseshiftreducePath, i : Int) -> 
 }
 
 pub fn nlp_parse_shift_reduce_path_set(s : NlpparseshiftreducePath, i : Int, v : Double) -> NlpparseshiftreducePath {
-  let result = nlp_parse_shift_reduce_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_path_sum(s : NlpparseshiftreducePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_parse_shift_reduce_cluster_get(s : NlpparseshiftreduceCluster, i : In
 }
 
 pub fn nlp_parse_shift_reduce_cluster_set(s : NlpparseshiftreduceCluster, i : Int, v : Double) -> NlpparseshiftreduceCluster {
-  let result = nlp_parse_shift_reduce_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_cluster_sum(s : NlpparseshiftreduceCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_parse_shift_reduce_model_get(s : NlpparseshiftreduceModel, i : Int) -
 }
 
 pub fn nlp_parse_shift_reduce_model_set(s : NlpparseshiftreduceModel, i : Int, v : Double) -> NlpparseshiftreduceModel {
-  let result = nlp_parse_shift_reduce_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_model_sum(s : NlpparseshiftreduceModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_parse_shift_reduce_layer_get(s : NlpparseshiftreduceLayer, i : Int) -
 }
 
 pub fn nlp_parse_shift_reduce_layer_set(s : NlpparseshiftreduceLayer, i : Int, v : Double) -> NlpparseshiftreduceLayer {
-  let result = nlp_parse_shift_reduce_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_layer_sum(s : NlpparseshiftreduceLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_parse_shift_reduce_buffer_get(s : NlpparseshiftreduceBuffer, i : Int)
 }
 
 pub fn nlp_parse_shift_reduce_buffer_set(s : NlpparseshiftreduceBuffer, i : Int, v : Double) -> NlpparseshiftreduceBuffer {
-  let result = nlp_parse_shift_reduce_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_buffer_sum(s : NlpparseshiftreduceBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_parse_shift_reduce_cursor_get(s : NlpparseshiftreduceCursor, i : Int)
 }
 
 pub fn nlp_parse_shift_reduce_cursor_set(s : NlpparseshiftreduceCursor, i : Int, v : Double) -> NlpparseshiftreduceCursor {
-  let result = nlp_parse_shift_reduce_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_cursor_sum(s : NlpparseshiftreduceCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_parse_shift_reduce_view_get(s : NlpparseshiftreduceView, i : Int) -> 
 }
 
 pub fn nlp_parse_shift_reduce_view_set(s : NlpparseshiftreduceView, i : Int, v : Double) -> NlpparseshiftreduceView {
-  let result = nlp_parse_shift_reduce_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_view_sum(s : NlpparseshiftreduceView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_parse_shift_reduce_range_get(s : NlpparseshiftreduceRange, i : Int) -
 }
 
 pub fn nlp_parse_shift_reduce_range_set(s : NlpparseshiftreduceRange, i : Int, v : Double) -> NlpparseshiftreduceRange {
-  let result = nlp_parse_shift_reduce_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_range_sum(s : NlpparseshiftreduceRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_parse_shift_reduce_slice_get(s : NlpparseshiftreduceSlice, i : Int) -
 }
 
 pub fn nlp_parse_shift_reduce_slice_set(s : NlpparseshiftreduceSlice, i : Int, v : Double) -> NlpparseshiftreduceSlice {
-  let result = nlp_parse_shift_reduce_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_parse_shift_reduce_slice_sum(s : NlpparseshiftreduceSlice) -> Double { @_common.sum(s.data) }

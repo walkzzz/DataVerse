@@ -107,23 +107,15 @@ pub fn bio_seq_align_multiple_series_std(s : BioseqalignmultipleSeries) -> Doubl
 pub fn bio_seq_align_multiple_series_median(s : BioseqalignmultipleSeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_seq_align_multiple_series_scale(s : BioseqalignmultipleSeries, f : Double) -> BioseqalignmultipleSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_seq_align_multiple_series_add(a : BioseqalignmultipleSeries, b : BioseqalignmultipleSeries) -> BioseqalignmultipleSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_align_multiple_series_sub(a : BioseqalignmultipleSeries, b : BioseqalignmultipleSeries) -> BioseqalignmultipleSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_seq_align_multiple_series_normalize(s : BioseqalignmultipleSeries) -> BioseqalignmultipleSeries {
@@ -254,22 +246,16 @@ pub fn bio_seq_align_multiple_vector_zero(dim : Int) -> BioseqalignmultipleVecto
 
 pub fn bio_seq_align_multiple_vector_add(a : BioseqalignmultipleVector, b : BioseqalignmultipleVector) -> BioseqalignmultipleVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_align_multiple_vector_sub(a : BioseqalignmultipleVector, b : BioseqalignmultipleVector) -> BioseqalignmultipleVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_seq_align_multiple_vector_scale(v : BioseqalignmultipleVector, s : Double) -> BioseqalignmultipleVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_seq_align_multiple_vector_dot(a : BioseqalignmultipleVector, b : BioseqalignmultipleVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_seq_align_multiple_frame_get(s : BioseqalignmultipleFrame, i : Int) -
 }
 
 pub fn bio_seq_align_multiple_frame_set(s : BioseqalignmultipleFrame, i : Int, v : Double) -> BioseqalignmultipleFrame {
-  let result = bio_seq_align_multiple_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_multiple_frame_sum(s : BioseqalignmultipleFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_seq_align_multiple_table_get(s : BioseqalignmultipleTable, i : Int) -
 }
 
 pub fn bio_seq_align_multiple_table_set(s : BioseqalignmultipleTable, i : Int, v : Double) -> BioseqalignmultipleTable {
-  let result = bio_seq_align_multiple_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_multiple_table_sum(s : BioseqalignmultipleTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_seq_align_multiple_graphn_get(s : BioseqalignmultipleGraphN, i : Int)
 }
 
 pub fn bio_seq_align_multiple_graphn_set(s : BioseqalignmultipleGraphN, i : Int, v : Double) -> BioseqalignmultipleGraphN {
-  let result = bio_seq_align_multiple_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_multiple_graphn_sum(s : BioseqalignmultipleGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_seq_align_multiple_node_get(s : BioseqalignmultipleNode, i : Int) -> 
 }
 
 pub fn bio_seq_align_multiple_node_set(s : BioseqalignmultipleNode, i : Int, v : Double) -> BioseqalignmultipleNode {
-  let result = bio_seq_align_multiple_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_multiple_node_sum(s : BioseqalignmultipleNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_seq_align_multiple_edge_get(s : BioseqalignmultipleEdge, i : Int) -> 
 }
 
 pub fn bio_seq_align_multiple_edge_set(s : BioseqalignmultipleEdge, i : Int, v : Double) -> BioseqalignmultipleEdge {
-  let result = bio_seq_align_multiple_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_multiple_edge_sum(s : BioseqalignmultipleEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_seq_align_multiple_path_get(s : BioseqalignmultiplePath, i : Int) -> 
 }
 
 pub fn bio_seq_align_multiple_path_set(s : BioseqalignmultiplePath, i : Int, v : Double) -> BioseqalignmultiplePath {
-  let result = bio_seq_align_multiple_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_multiple_path_sum(s : BioseqalignmultiplePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_seq_align_multiple_cluster_get(s : BioseqalignmultipleCluster, i : In
 }
 
 pub fn bio_seq_align_multiple_cluster_set(s : BioseqalignmultipleCluster, i : Int, v : Double) -> BioseqalignmultipleCluster {
-  let result = bio_seq_align_multiple_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_multiple_cluster_sum(s : BioseqalignmultipleCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_seq_align_multiple_model_get(s : BioseqalignmultipleModel, i : Int) -
 }
 
 pub fn bio_seq_align_multiple_model_set(s : BioseqalignmultipleModel, i : Int, v : Double) -> BioseqalignmultipleModel {
-  let result = bio_seq_align_multiple_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_multiple_model_sum(s : BioseqalignmultipleModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_seq_align_multiple_layer_get(s : BioseqalignmultipleLayer, i : Int) -
 }
 
 pub fn bio_seq_align_multiple_layer_set(s : BioseqalignmultipleLayer, i : Int, v : Double) -> BioseqalignmultipleLayer {
-  let result = bio_seq_align_multiple_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_multiple_layer_sum(s : BioseqalignmultipleLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_seq_align_multiple_buffer_get(s : BioseqalignmultipleBuffer, i : Int)
 }
 
 pub fn bio_seq_align_multiple_buffer_set(s : BioseqalignmultipleBuffer, i : Int, v : Double) -> BioseqalignmultipleBuffer {
-  let result = bio_seq_align_multiple_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_multiple_buffer_sum(s : BioseqalignmultipleBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_seq_align_multiple_cursor_get(s : BioseqalignmultipleCursor, i : Int)
 }
 
 pub fn bio_seq_align_multiple_cursor_set(s : BioseqalignmultipleCursor, i : Int, v : Double) -> BioseqalignmultipleCursor {
-  let result = bio_seq_align_multiple_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_multiple_cursor_sum(s : BioseqalignmultipleCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_seq_align_multiple_view_get(s : BioseqalignmultipleView, i : Int) -> 
 }
 
 pub fn bio_seq_align_multiple_view_set(s : BioseqalignmultipleView, i : Int, v : Double) -> BioseqalignmultipleView {
-  let result = bio_seq_align_multiple_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_multiple_view_sum(s : BioseqalignmultipleView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_seq_align_multiple_range_get(s : BioseqalignmultipleRange, i : Int) -
 }
 
 pub fn bio_seq_align_multiple_range_set(s : BioseqalignmultipleRange, i : Int, v : Double) -> BioseqalignmultipleRange {
-  let result = bio_seq_align_multiple_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_multiple_range_sum(s : BioseqalignmultipleRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_seq_align_multiple_slice_get(s : BioseqalignmultipleSlice, i : Int) -
 }
 
 pub fn bio_seq_align_multiple_slice_set(s : BioseqalignmultipleSlice, i : Int, v : Double) -> BioseqalignmultipleSlice {
-  let result = bio_seq_align_multiple_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_seq_align_multiple_slice_sum(s : BioseqalignmultipleSlice) -> Double { @_common.sum(s.data) }

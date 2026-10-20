@@ -107,23 +107,15 @@ pub fn nlp_embed_contrastive_series_std(s : NlpembedcontrastiveSeries) -> Double
 pub fn nlp_embed_contrastive_series_median(s : NlpembedcontrastiveSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_embed_contrastive_series_scale(s : NlpembedcontrastiveSeries, f : Double) -> NlpembedcontrastiveSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_embed_contrastive_series_add(a : NlpembedcontrastiveSeries, b : NlpembedcontrastiveSeries) -> NlpembedcontrastiveSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_embed_contrastive_series_sub(a : NlpembedcontrastiveSeries, b : NlpembedcontrastiveSeries) -> NlpembedcontrastiveSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_embed_contrastive_series_normalize(s : NlpembedcontrastiveSeries) -> NlpembedcontrastiveSeries {
@@ -254,22 +246,16 @@ pub fn nlp_embed_contrastive_vector_zero(dim : Int) -> NlpembedcontrastiveVector
 
 pub fn nlp_embed_contrastive_vector_add(a : NlpembedcontrastiveVector, b : NlpembedcontrastiveVector) -> NlpembedcontrastiveVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_embed_contrastive_vector_sub(a : NlpembedcontrastiveVector, b : NlpembedcontrastiveVector) -> NlpembedcontrastiveVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_embed_contrastive_vector_scale(v : NlpembedcontrastiveVector, s : Double) -> NlpembedcontrastiveVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_embed_contrastive_vector_dot(a : NlpembedcontrastiveVector, b : NlpembedcontrastiveVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_embed_contrastive_frame_get(s : NlpembedcontrastiveFrame, i : Int) ->
 }
 
 pub fn nlp_embed_contrastive_frame_set(s : NlpembedcontrastiveFrame, i : Int, v : Double) -> NlpembedcontrastiveFrame {
-  let result = nlp_embed_contrastive_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_contrastive_frame_sum(s : NlpembedcontrastiveFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_embed_contrastive_table_get(s : NlpembedcontrastiveTable, i : Int) ->
 }
 
 pub fn nlp_embed_contrastive_table_set(s : NlpembedcontrastiveTable, i : Int, v : Double) -> NlpembedcontrastiveTable {
-  let result = nlp_embed_contrastive_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_contrastive_table_sum(s : NlpembedcontrastiveTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_embed_contrastive_graphn_get(s : NlpembedcontrastiveGraphN, i : Int) 
 }
 
 pub fn nlp_embed_contrastive_graphn_set(s : NlpembedcontrastiveGraphN, i : Int, v : Double) -> NlpembedcontrastiveGraphN {
-  let result = nlp_embed_contrastive_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_contrastive_graphn_sum(s : NlpembedcontrastiveGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_embed_contrastive_node_get(s : NlpembedcontrastiveNode, i : Int) -> D
 }
 
 pub fn nlp_embed_contrastive_node_set(s : NlpembedcontrastiveNode, i : Int, v : Double) -> NlpembedcontrastiveNode {
-  let result = nlp_embed_contrastive_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_contrastive_node_sum(s : NlpembedcontrastiveNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_embed_contrastive_edge_get(s : NlpembedcontrastiveEdge, i : Int) -> D
 }
 
 pub fn nlp_embed_contrastive_edge_set(s : NlpembedcontrastiveEdge, i : Int, v : Double) -> NlpembedcontrastiveEdge {
-  let result = nlp_embed_contrastive_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_contrastive_edge_sum(s : NlpembedcontrastiveEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_embed_contrastive_path_get(s : NlpembedcontrastivePath, i : Int) -> D
 }
 
 pub fn nlp_embed_contrastive_path_set(s : NlpembedcontrastivePath, i : Int, v : Double) -> NlpembedcontrastivePath {
-  let result = nlp_embed_contrastive_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_contrastive_path_sum(s : NlpembedcontrastivePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_embed_contrastive_cluster_get(s : NlpembedcontrastiveCluster, i : Int
 }
 
 pub fn nlp_embed_contrastive_cluster_set(s : NlpembedcontrastiveCluster, i : Int, v : Double) -> NlpembedcontrastiveCluster {
-  let result = nlp_embed_contrastive_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_contrastive_cluster_sum(s : NlpembedcontrastiveCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_embed_contrastive_model_get(s : NlpembedcontrastiveModel, i : Int) ->
 }
 
 pub fn nlp_embed_contrastive_model_set(s : NlpembedcontrastiveModel, i : Int, v : Double) -> NlpembedcontrastiveModel {
-  let result = nlp_embed_contrastive_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_contrastive_model_sum(s : NlpembedcontrastiveModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_embed_contrastive_layer_get(s : NlpembedcontrastiveLayer, i : Int) ->
 }
 
 pub fn nlp_embed_contrastive_layer_set(s : NlpembedcontrastiveLayer, i : Int, v : Double) -> NlpembedcontrastiveLayer {
-  let result = nlp_embed_contrastive_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_contrastive_layer_sum(s : NlpembedcontrastiveLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_embed_contrastive_buffer_get(s : NlpembedcontrastiveBuffer, i : Int) 
 }
 
 pub fn nlp_embed_contrastive_buffer_set(s : NlpembedcontrastiveBuffer, i : Int, v : Double) -> NlpembedcontrastiveBuffer {
-  let result = nlp_embed_contrastive_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_contrastive_buffer_sum(s : NlpembedcontrastiveBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_embed_contrastive_cursor_get(s : NlpembedcontrastiveCursor, i : Int) 
 }
 
 pub fn nlp_embed_contrastive_cursor_set(s : NlpembedcontrastiveCursor, i : Int, v : Double) -> NlpembedcontrastiveCursor {
-  let result = nlp_embed_contrastive_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_contrastive_cursor_sum(s : NlpembedcontrastiveCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_embed_contrastive_view_get(s : NlpembedcontrastiveView, i : Int) -> D
 }
 
 pub fn nlp_embed_contrastive_view_set(s : NlpembedcontrastiveView, i : Int, v : Double) -> NlpembedcontrastiveView {
-  let result = nlp_embed_contrastive_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_contrastive_view_sum(s : NlpembedcontrastiveView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_embed_contrastive_range_get(s : NlpembedcontrastiveRange, i : Int) ->
 }
 
 pub fn nlp_embed_contrastive_range_set(s : NlpembedcontrastiveRange, i : Int, v : Double) -> NlpembedcontrastiveRange {
-  let result = nlp_embed_contrastive_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_contrastive_range_sum(s : NlpembedcontrastiveRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_embed_contrastive_slice_get(s : NlpembedcontrastiveSlice, i : Int) ->
 }
 
 pub fn nlp_embed_contrastive_slice_set(s : NlpembedcontrastiveSlice, i : Int, v : Double) -> NlpembedcontrastiveSlice {
-  let result = nlp_embed_contrastive_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_embed_contrastive_slice_sum(s : NlpembedcontrastiveSlice) -> Double { @_common.sum(s.data) }

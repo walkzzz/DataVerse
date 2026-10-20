@@ -107,23 +107,15 @@ pub fn image_transform_perspective_series_std(s : ImagetransformperspectiveSerie
 pub fn image_transform_perspective_series_median(s : ImagetransformperspectiveSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_transform_perspective_series_scale(s : ImagetransformperspectiveSeries, f : Double) -> ImagetransformperspectiveSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_transform_perspective_series_add(a : ImagetransformperspectiveSeries, b : ImagetransformperspectiveSeries) -> ImagetransformperspectiveSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_transform_perspective_series_sub(a : ImagetransformperspectiveSeries, b : ImagetransformperspectiveSeries) -> ImagetransformperspectiveSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_transform_perspective_series_normalize(s : ImagetransformperspectiveSeries) -> ImagetransformperspectiveSeries {
@@ -254,22 +246,16 @@ pub fn image_transform_perspective_vector_zero(dim : Int) -> Imagetransformpersp
 
 pub fn image_transform_perspective_vector_add(a : ImagetransformperspectiveVector, b : ImagetransformperspectiveVector) -> ImagetransformperspectiveVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_transform_perspective_vector_sub(a : ImagetransformperspectiveVector, b : ImagetransformperspectiveVector) -> ImagetransformperspectiveVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_transform_perspective_vector_scale(v : ImagetransformperspectiveVector, s : Double) -> ImagetransformperspectiveVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_transform_perspective_vector_dot(a : ImagetransformperspectiveVector, b : ImagetransformperspectiveVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_transform_perspective_frame_get(s : ImagetransformperspectiveFrame,
 }
 
 pub fn image_transform_perspective_frame_set(s : ImagetransformperspectiveFrame, i : Int, v : Double) -> ImagetransformperspectiveFrame {
-  let result = image_transform_perspective_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_frame_sum(s : ImagetransformperspectiveFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_transform_perspective_table_get(s : ImagetransformperspectiveTable,
 }
 
 pub fn image_transform_perspective_table_set(s : ImagetransformperspectiveTable, i : Int, v : Double) -> ImagetransformperspectiveTable {
-  let result = image_transform_perspective_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_table_sum(s : ImagetransformperspectiveTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_transform_perspective_graphn_get(s : ImagetransformperspectiveGraph
 }
 
 pub fn image_transform_perspective_graphn_set(s : ImagetransformperspectiveGraphN, i : Int, v : Double) -> ImagetransformperspectiveGraphN {
-  let result = image_transform_perspective_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_graphn_sum(s : ImagetransformperspectiveGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_transform_perspective_node_get(s : ImagetransformperspectiveNode, i
 }
 
 pub fn image_transform_perspective_node_set(s : ImagetransformperspectiveNode, i : Int, v : Double) -> ImagetransformperspectiveNode {
-  let result = image_transform_perspective_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_node_sum(s : ImagetransformperspectiveNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_transform_perspective_edge_get(s : ImagetransformperspectiveEdge, i
 }
 
 pub fn image_transform_perspective_edge_set(s : ImagetransformperspectiveEdge, i : Int, v : Double) -> ImagetransformperspectiveEdge {
-  let result = image_transform_perspective_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_edge_sum(s : ImagetransformperspectiveEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_transform_perspective_path_get(s : ImagetransformperspectivePath, i
 }
 
 pub fn image_transform_perspective_path_set(s : ImagetransformperspectivePath, i : Int, v : Double) -> ImagetransformperspectivePath {
-  let result = image_transform_perspective_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_path_sum(s : ImagetransformperspectivePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_transform_perspective_cluster_get(s : ImagetransformperspectiveClus
 }
 
 pub fn image_transform_perspective_cluster_set(s : ImagetransformperspectiveCluster, i : Int, v : Double) -> ImagetransformperspectiveCluster {
-  let result = image_transform_perspective_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_cluster_sum(s : ImagetransformperspectiveCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_transform_perspective_model_get(s : ImagetransformperspectiveModel,
 }
 
 pub fn image_transform_perspective_model_set(s : ImagetransformperspectiveModel, i : Int, v : Double) -> ImagetransformperspectiveModel {
-  let result = image_transform_perspective_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_model_sum(s : ImagetransformperspectiveModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_transform_perspective_layer_get(s : ImagetransformperspectiveLayer,
 }
 
 pub fn image_transform_perspective_layer_set(s : ImagetransformperspectiveLayer, i : Int, v : Double) -> ImagetransformperspectiveLayer {
-  let result = image_transform_perspective_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_layer_sum(s : ImagetransformperspectiveLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_transform_perspective_buffer_get(s : ImagetransformperspectiveBuffe
 }
 
 pub fn image_transform_perspective_buffer_set(s : ImagetransformperspectiveBuffer, i : Int, v : Double) -> ImagetransformperspectiveBuffer {
-  let result = image_transform_perspective_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_buffer_sum(s : ImagetransformperspectiveBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_transform_perspective_cursor_get(s : ImagetransformperspectiveCurso
 }
 
 pub fn image_transform_perspective_cursor_set(s : ImagetransformperspectiveCursor, i : Int, v : Double) -> ImagetransformperspectiveCursor {
-  let result = image_transform_perspective_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_cursor_sum(s : ImagetransformperspectiveCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_transform_perspective_view_get(s : ImagetransformperspectiveView, i
 }
 
 pub fn image_transform_perspective_view_set(s : ImagetransformperspectiveView, i : Int, v : Double) -> ImagetransformperspectiveView {
-  let result = image_transform_perspective_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_view_sum(s : ImagetransformperspectiveView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_transform_perspective_range_get(s : ImagetransformperspectiveRange,
 }
 
 pub fn image_transform_perspective_range_set(s : ImagetransformperspectiveRange, i : Int, v : Double) -> ImagetransformperspectiveRange {
-  let result = image_transform_perspective_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_range_sum(s : ImagetransformperspectiveRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_transform_perspective_slice_get(s : ImagetransformperspectiveSlice,
 }
 
 pub fn image_transform_perspective_slice_set(s : ImagetransformperspectiveSlice, i : Int, v : Double) -> ImagetransformperspectiveSlice {
-  let result = image_transform_perspective_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_transform_perspective_slice_sum(s : ImagetransformperspectiveSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn chem_desc_hybrid_series_std(s : ChemdeschybridSeries) -> Double { @_commo
 pub fn chem_desc_hybrid_series_median(s : ChemdeschybridSeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_desc_hybrid_series_scale(s : ChemdeschybridSeries, f : Double) -> ChemdeschybridSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn chem_desc_hybrid_series_add(a : ChemdeschybridSeries, b : ChemdeschybridSeries) -> ChemdeschybridSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn chem_desc_hybrid_series_sub(a : ChemdeschybridSeries, b : ChemdeschybridSeries) -> ChemdeschybridSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn chem_desc_hybrid_series_normalize(s : ChemdeschybridSeries) -> ChemdeschybridSeries {
@@ -254,22 +246,16 @@ pub fn chem_desc_hybrid_vector_zero(dim : Int) -> ChemdeschybridVector {
 
 pub fn chem_desc_hybrid_vector_add(a : ChemdeschybridVector, b : ChemdeschybridVector) -> ChemdeschybridVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_desc_hybrid_vector_sub(a : ChemdeschybridVector, b : ChemdeschybridVector) -> ChemdeschybridVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_desc_hybrid_vector_scale(v : ChemdeschybridVector, s : Double) -> ChemdeschybridVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn chem_desc_hybrid_vector_dot(a : ChemdeschybridVector, b : ChemdeschybridVector) -> Double {
@@ -372,10 +358,9 @@ pub fn chem_desc_hybrid_frame_get(s : ChemdeschybridFrame, i : Int) -> Double {
 }
 
 pub fn chem_desc_hybrid_frame_set(s : ChemdeschybridFrame, i : Int, v : Double) -> ChemdeschybridFrame {
-  let result = chem_desc_hybrid_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_hybrid_frame_sum(s : ChemdeschybridFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn chem_desc_hybrid_table_get(s : ChemdeschybridTable, i : Int) -> Double {
 }
 
 pub fn chem_desc_hybrid_table_set(s : ChemdeschybridTable, i : Int, v : Double) -> ChemdeschybridTable {
-  let result = chem_desc_hybrid_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_hybrid_table_sum(s : ChemdeschybridTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn chem_desc_hybrid_graphn_get(s : ChemdeschybridGraphN, i : Int) -> Double 
 }
 
 pub fn chem_desc_hybrid_graphn_set(s : ChemdeschybridGraphN, i : Int, v : Double) -> ChemdeschybridGraphN {
-  let result = chem_desc_hybrid_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_hybrid_graphn_sum(s : ChemdeschybridGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn chem_desc_hybrid_node_get(s : ChemdeschybridNode, i : Int) -> Double {
 }
 
 pub fn chem_desc_hybrid_node_set(s : ChemdeschybridNode, i : Int, v : Double) -> ChemdeschybridNode {
-  let result = chem_desc_hybrid_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_hybrid_node_sum(s : ChemdeschybridNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn chem_desc_hybrid_edge_get(s : ChemdeschybridEdge, i : Int) -> Double {
 }
 
 pub fn chem_desc_hybrid_edge_set(s : ChemdeschybridEdge, i : Int, v : Double) -> ChemdeschybridEdge {
-  let result = chem_desc_hybrid_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_hybrid_edge_sum(s : ChemdeschybridEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn chem_desc_hybrid_path_get(s : ChemdeschybridPath, i : Int) -> Double {
 }
 
 pub fn chem_desc_hybrid_path_set(s : ChemdeschybridPath, i : Int, v : Double) -> ChemdeschybridPath {
-  let result = chem_desc_hybrid_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_hybrid_path_sum(s : ChemdeschybridPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn chem_desc_hybrid_cluster_get(s : ChemdeschybridCluster, i : Int) -> Doubl
 }
 
 pub fn chem_desc_hybrid_cluster_set(s : ChemdeschybridCluster, i : Int, v : Double) -> ChemdeschybridCluster {
-  let result = chem_desc_hybrid_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_hybrid_cluster_sum(s : ChemdeschybridCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn chem_desc_hybrid_model_get(s : ChemdeschybridModel, i : Int) -> Double {
 }
 
 pub fn chem_desc_hybrid_model_set(s : ChemdeschybridModel, i : Int, v : Double) -> ChemdeschybridModel {
-  let result = chem_desc_hybrid_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_hybrid_model_sum(s : ChemdeschybridModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn chem_desc_hybrid_layer_get(s : ChemdeschybridLayer, i : Int) -> Double {
 }
 
 pub fn chem_desc_hybrid_layer_set(s : ChemdeschybridLayer, i : Int, v : Double) -> ChemdeschybridLayer {
-  let result = chem_desc_hybrid_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_hybrid_layer_sum(s : ChemdeschybridLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn chem_desc_hybrid_buffer_get(s : ChemdeschybridBuffer, i : Int) -> Double 
 }
 
 pub fn chem_desc_hybrid_buffer_set(s : ChemdeschybridBuffer, i : Int, v : Double) -> ChemdeschybridBuffer {
-  let result = chem_desc_hybrid_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_hybrid_buffer_sum(s : ChemdeschybridBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn chem_desc_hybrid_cursor_get(s : ChemdeschybridCursor, i : Int) -> Double 
 }
 
 pub fn chem_desc_hybrid_cursor_set(s : ChemdeschybridCursor, i : Int, v : Double) -> ChemdeschybridCursor {
-  let result = chem_desc_hybrid_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_hybrid_cursor_sum(s : ChemdeschybridCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn chem_desc_hybrid_view_get(s : ChemdeschybridView, i : Int) -> Double {
 }
 
 pub fn chem_desc_hybrid_view_set(s : ChemdeschybridView, i : Int, v : Double) -> ChemdeschybridView {
-  let result = chem_desc_hybrid_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_hybrid_view_sum(s : ChemdeschybridView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn chem_desc_hybrid_range_get(s : ChemdeschybridRange, i : Int) -> Double {
 }
 
 pub fn chem_desc_hybrid_range_set(s : ChemdeschybridRange, i : Int, v : Double) -> ChemdeschybridRange {
-  let result = chem_desc_hybrid_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_hybrid_range_sum(s : ChemdeschybridRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn chem_desc_hybrid_slice_get(s : ChemdeschybridSlice, i : Int) -> Double {
 }
 
 pub fn chem_desc_hybrid_slice_set(s : ChemdeschybridSlice, i : Int, v : Double) -> ChemdeschybridSlice {
-  let result = chem_desc_hybrid_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_desc_hybrid_slice_sum(s : ChemdeschybridSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn chem_mol_props_charge_series_std(s : ChemmolpropschargeSeries) -> Double 
 pub fn chem_mol_props_charge_series_median(s : ChemmolpropschargeSeries) -> Double { @_common.median(s.vals) }
 
 pub fn chem_mol_props_charge_series_scale(s : ChemmolpropschargeSeries, f : Double) -> ChemmolpropschargeSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn chem_mol_props_charge_series_add(a : ChemmolpropschargeSeries, b : ChemmolpropschargeSeries) -> ChemmolpropschargeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn chem_mol_props_charge_series_sub(a : ChemmolpropschargeSeries, b : ChemmolpropschargeSeries) -> ChemmolpropschargeSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn chem_mol_props_charge_series_normalize(s : ChemmolpropschargeSeries) -> ChemmolpropschargeSeries {
@@ -254,22 +246,16 @@ pub fn chem_mol_props_charge_vector_zero(dim : Int) -> ChemmolpropschargeVector 
 
 pub fn chem_mol_props_charge_vector_add(a : ChemmolpropschargeVector, b : ChemmolpropschargeVector) -> ChemmolpropschargeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_mol_props_charge_vector_sub(a : ChemmolpropschargeVector, b : ChemmolpropschargeVector) -> ChemmolpropschargeVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn chem_mol_props_charge_vector_scale(v : ChemmolpropschargeVector, s : Double) -> ChemmolpropschargeVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn chem_mol_props_charge_vector_dot(a : ChemmolpropschargeVector, b : ChemmolpropschargeVector) -> Double {
@@ -372,10 +358,9 @@ pub fn chem_mol_props_charge_frame_get(s : ChemmolpropschargeFrame, i : Int) -> 
 }
 
 pub fn chem_mol_props_charge_frame_set(s : ChemmolpropschargeFrame, i : Int, v : Double) -> ChemmolpropschargeFrame {
-  let result = chem_mol_props_charge_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_frame_sum(s : ChemmolpropschargeFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn chem_mol_props_charge_table_get(s : ChemmolpropschargeTable, i : Int) -> 
 }
 
 pub fn chem_mol_props_charge_table_set(s : ChemmolpropschargeTable, i : Int, v : Double) -> ChemmolpropschargeTable {
-  let result = chem_mol_props_charge_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_table_sum(s : ChemmolpropschargeTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn chem_mol_props_charge_graphn_get(s : ChemmolpropschargeGraphN, i : Int) -
 }
 
 pub fn chem_mol_props_charge_graphn_set(s : ChemmolpropschargeGraphN, i : Int, v : Double) -> ChemmolpropschargeGraphN {
-  let result = chem_mol_props_charge_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_graphn_sum(s : ChemmolpropschargeGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn chem_mol_props_charge_node_get(s : ChemmolpropschargeNode, i : Int) -> Do
 }
 
 pub fn chem_mol_props_charge_node_set(s : ChemmolpropschargeNode, i : Int, v : Double) -> ChemmolpropschargeNode {
-  let result = chem_mol_props_charge_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_node_sum(s : ChemmolpropschargeNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn chem_mol_props_charge_edge_get(s : ChemmolpropschargeEdge, i : Int) -> Do
 }
 
 pub fn chem_mol_props_charge_edge_set(s : ChemmolpropschargeEdge, i : Int, v : Double) -> ChemmolpropschargeEdge {
-  let result = chem_mol_props_charge_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_edge_sum(s : ChemmolpropschargeEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn chem_mol_props_charge_path_get(s : ChemmolpropschargePath, i : Int) -> Do
 }
 
 pub fn chem_mol_props_charge_path_set(s : ChemmolpropschargePath, i : Int, v : Double) -> ChemmolpropschargePath {
-  let result = chem_mol_props_charge_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_path_sum(s : ChemmolpropschargePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn chem_mol_props_charge_cluster_get(s : ChemmolpropschargeCluster, i : Int)
 }
 
 pub fn chem_mol_props_charge_cluster_set(s : ChemmolpropschargeCluster, i : Int, v : Double) -> ChemmolpropschargeCluster {
-  let result = chem_mol_props_charge_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_cluster_sum(s : ChemmolpropschargeCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn chem_mol_props_charge_model_get(s : ChemmolpropschargeModel, i : Int) -> 
 }
 
 pub fn chem_mol_props_charge_model_set(s : ChemmolpropschargeModel, i : Int, v : Double) -> ChemmolpropschargeModel {
-  let result = chem_mol_props_charge_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_model_sum(s : ChemmolpropschargeModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn chem_mol_props_charge_layer_get(s : ChemmolpropschargeLayer, i : Int) -> 
 }
 
 pub fn chem_mol_props_charge_layer_set(s : ChemmolpropschargeLayer, i : Int, v : Double) -> ChemmolpropschargeLayer {
-  let result = chem_mol_props_charge_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_layer_sum(s : ChemmolpropschargeLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn chem_mol_props_charge_buffer_get(s : ChemmolpropschargeBuffer, i : Int) -
 }
 
 pub fn chem_mol_props_charge_buffer_set(s : ChemmolpropschargeBuffer, i : Int, v : Double) -> ChemmolpropschargeBuffer {
-  let result = chem_mol_props_charge_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_buffer_sum(s : ChemmolpropschargeBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn chem_mol_props_charge_cursor_get(s : ChemmolpropschargeCursor, i : Int) -
 }
 
 pub fn chem_mol_props_charge_cursor_set(s : ChemmolpropschargeCursor, i : Int, v : Double) -> ChemmolpropschargeCursor {
-  let result = chem_mol_props_charge_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_cursor_sum(s : ChemmolpropschargeCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn chem_mol_props_charge_view_get(s : ChemmolpropschargeView, i : Int) -> Do
 }
 
 pub fn chem_mol_props_charge_view_set(s : ChemmolpropschargeView, i : Int, v : Double) -> ChemmolpropschargeView {
-  let result = chem_mol_props_charge_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_view_sum(s : ChemmolpropschargeView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn chem_mol_props_charge_range_get(s : ChemmolpropschargeRange, i : Int) -> 
 }
 
 pub fn chem_mol_props_charge_range_set(s : ChemmolpropschargeRange, i : Int, v : Double) -> ChemmolpropschargeRange {
-  let result = chem_mol_props_charge_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_range_sum(s : ChemmolpropschargeRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn chem_mol_props_charge_slice_get(s : ChemmolpropschargeSlice, i : Int) -> 
 }
 
 pub fn chem_mol_props_charge_slice_set(s : ChemmolpropschargeSlice, i : Int, v : Double) -> ChemmolpropschargeSlice {
-  let result = chem_mol_props_charge_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn chem_mol_props_charge_slice_sum(s : ChemmolpropschargeSlice) -> Double { @_common.sum(s.data) }

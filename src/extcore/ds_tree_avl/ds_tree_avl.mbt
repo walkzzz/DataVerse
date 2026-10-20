@@ -107,23 +107,15 @@ pub fn ds_tree_avl_series_std(s : DstreeavlSeries) -> Double { @_common.std(s.va
 pub fn ds_tree_avl_series_median(s : DstreeavlSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_tree_avl_series_scale(s : DstreeavlSeries, f : Double) -> DstreeavlSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_tree_avl_series_add(a : DstreeavlSeries, b : DstreeavlSeries) -> DstreeavlSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_tree_avl_series_sub(a : DstreeavlSeries, b : DstreeavlSeries) -> DstreeavlSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_tree_avl_series_normalize(s : DstreeavlSeries) -> DstreeavlSeries {
@@ -254,22 +246,16 @@ pub fn ds_tree_avl_vector_zero(dim : Int) -> DstreeavlVector {
 
 pub fn ds_tree_avl_vector_add(a : DstreeavlVector, b : DstreeavlVector) -> DstreeavlVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_tree_avl_vector_sub(a : DstreeavlVector, b : DstreeavlVector) -> DstreeavlVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_tree_avl_vector_scale(v : DstreeavlVector, s : Double) -> DstreeavlVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_tree_avl_vector_dot(a : DstreeavlVector, b : DstreeavlVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_tree_avl_frame_get(s : DstreeavlFrame, i : Int) -> Double {
 }
 
 pub fn ds_tree_avl_frame_set(s : DstreeavlFrame, i : Int, v : Double) -> DstreeavlFrame {
-  let result = ds_tree_avl_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_avl_frame_sum(s : DstreeavlFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_tree_avl_table_get(s : DstreeavlTable, i : Int) -> Double {
 }
 
 pub fn ds_tree_avl_table_set(s : DstreeavlTable, i : Int, v : Double) -> DstreeavlTable {
-  let result = ds_tree_avl_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_avl_table_sum(s : DstreeavlTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_tree_avl_graphn_get(s : DstreeavlGraphN, i : Int) -> Double {
 }
 
 pub fn ds_tree_avl_graphn_set(s : DstreeavlGraphN, i : Int, v : Double) -> DstreeavlGraphN {
-  let result = ds_tree_avl_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_avl_graphn_sum(s : DstreeavlGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_tree_avl_node_get(s : DstreeavlNode, i : Int) -> Double {
 }
 
 pub fn ds_tree_avl_node_set(s : DstreeavlNode, i : Int, v : Double) -> DstreeavlNode {
-  let result = ds_tree_avl_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_avl_node_sum(s : DstreeavlNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_tree_avl_edge_get(s : DstreeavlEdge, i : Int) -> Double {
 }
 
 pub fn ds_tree_avl_edge_set(s : DstreeavlEdge, i : Int, v : Double) -> DstreeavlEdge {
-  let result = ds_tree_avl_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_avl_edge_sum(s : DstreeavlEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_tree_avl_path_get(s : DstreeavlPath, i : Int) -> Double {
 }
 
 pub fn ds_tree_avl_path_set(s : DstreeavlPath, i : Int, v : Double) -> DstreeavlPath {
-  let result = ds_tree_avl_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_avl_path_sum(s : DstreeavlPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_tree_avl_cluster_get(s : DstreeavlCluster, i : Int) -> Double {
 }
 
 pub fn ds_tree_avl_cluster_set(s : DstreeavlCluster, i : Int, v : Double) -> DstreeavlCluster {
-  let result = ds_tree_avl_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_avl_cluster_sum(s : DstreeavlCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_tree_avl_model_get(s : DstreeavlModel, i : Int) -> Double {
 }
 
 pub fn ds_tree_avl_model_set(s : DstreeavlModel, i : Int, v : Double) -> DstreeavlModel {
-  let result = ds_tree_avl_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_avl_model_sum(s : DstreeavlModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_tree_avl_layer_get(s : DstreeavlLayer, i : Int) -> Double {
 }
 
 pub fn ds_tree_avl_layer_set(s : DstreeavlLayer, i : Int, v : Double) -> DstreeavlLayer {
-  let result = ds_tree_avl_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_avl_layer_sum(s : DstreeavlLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_tree_avl_buffer_get(s : DstreeavlBuffer, i : Int) -> Double {
 }
 
 pub fn ds_tree_avl_buffer_set(s : DstreeavlBuffer, i : Int, v : Double) -> DstreeavlBuffer {
-  let result = ds_tree_avl_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_avl_buffer_sum(s : DstreeavlBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_tree_avl_cursor_get(s : DstreeavlCursor, i : Int) -> Double {
 }
 
 pub fn ds_tree_avl_cursor_set(s : DstreeavlCursor, i : Int, v : Double) -> DstreeavlCursor {
-  let result = ds_tree_avl_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_avl_cursor_sum(s : DstreeavlCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_tree_avl_view_get(s : DstreeavlView, i : Int) -> Double {
 }
 
 pub fn ds_tree_avl_view_set(s : DstreeavlView, i : Int, v : Double) -> DstreeavlView {
-  let result = ds_tree_avl_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_avl_view_sum(s : DstreeavlView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_tree_avl_range_get(s : DstreeavlRange, i : Int) -> Double {
 }
 
 pub fn ds_tree_avl_range_set(s : DstreeavlRange, i : Int, v : Double) -> DstreeavlRange {
-  let result = ds_tree_avl_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_avl_range_sum(s : DstreeavlRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_tree_avl_slice_get(s : DstreeavlSlice, i : Int) -> Double {
 }
 
 pub fn ds_tree_avl_slice_set(s : DstreeavlSlice, i : Int, v : Double) -> DstreeavlSlice {
-  let result = ds_tree_avl_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_tree_avl_slice_sum(s : DstreeavlSlice) -> Double { @_common.sum(s.data) }

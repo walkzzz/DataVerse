@@ -107,23 +107,15 @@ pub fn sort_compare_selection_series_std(s : SortcompareselectionSeries) -> Doub
 pub fn sort_compare_selection_series_median(s : SortcompareselectionSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_compare_selection_series_scale(s : SortcompareselectionSeries, f : Double) -> SortcompareselectionSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn sort_compare_selection_series_add(a : SortcompareselectionSeries, b : SortcompareselectionSeries) -> SortcompareselectionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn sort_compare_selection_series_sub(a : SortcompareselectionSeries, b : SortcompareselectionSeries) -> SortcompareselectionSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn sort_compare_selection_series_normalize(s : SortcompareselectionSeries) -> SortcompareselectionSeries {
@@ -254,22 +246,16 @@ pub fn sort_compare_selection_vector_zero(dim : Int) -> SortcompareselectionVect
 
 pub fn sort_compare_selection_vector_add(a : SortcompareselectionVector, b : SortcompareselectionVector) -> SortcompareselectionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_compare_selection_vector_sub(a : SortcompareselectionVector, b : SortcompareselectionVector) -> SortcompareselectionVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_compare_selection_vector_scale(v : SortcompareselectionVector, s : Double) -> SortcompareselectionVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn sort_compare_selection_vector_dot(a : SortcompareselectionVector, b : SortcompareselectionVector) -> Double {
@@ -372,10 +358,9 @@ pub fn sort_compare_selection_frame_get(s : SortcompareselectionFrame, i : Int) 
 }
 
 pub fn sort_compare_selection_frame_set(s : SortcompareselectionFrame, i : Int, v : Double) -> SortcompareselectionFrame {
-  let result = sort_compare_selection_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_frame_sum(s : SortcompareselectionFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn sort_compare_selection_table_get(s : SortcompareselectionTable, i : Int) 
 }
 
 pub fn sort_compare_selection_table_set(s : SortcompareselectionTable, i : Int, v : Double) -> SortcompareselectionTable {
-  let result = sort_compare_selection_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_table_sum(s : SortcompareselectionTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn sort_compare_selection_graphn_get(s : SortcompareselectionGraphN, i : Int
 }
 
 pub fn sort_compare_selection_graphn_set(s : SortcompareselectionGraphN, i : Int, v : Double) -> SortcompareselectionGraphN {
-  let result = sort_compare_selection_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_graphn_sum(s : SortcompareselectionGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn sort_compare_selection_node_get(s : SortcompareselectionNode, i : Int) ->
 }
 
 pub fn sort_compare_selection_node_set(s : SortcompareselectionNode, i : Int, v : Double) -> SortcompareselectionNode {
-  let result = sort_compare_selection_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_node_sum(s : SortcompareselectionNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn sort_compare_selection_edge_get(s : SortcompareselectionEdge, i : Int) ->
 }
 
 pub fn sort_compare_selection_edge_set(s : SortcompareselectionEdge, i : Int, v : Double) -> SortcompareselectionEdge {
-  let result = sort_compare_selection_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_edge_sum(s : SortcompareselectionEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn sort_compare_selection_path_get(s : SortcompareselectionPath, i : Int) ->
 }
 
 pub fn sort_compare_selection_path_set(s : SortcompareselectionPath, i : Int, v : Double) -> SortcompareselectionPath {
-  let result = sort_compare_selection_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_path_sum(s : SortcompareselectionPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn sort_compare_selection_cluster_get(s : SortcompareselectionCluster, i : I
 }
 
 pub fn sort_compare_selection_cluster_set(s : SortcompareselectionCluster, i : Int, v : Double) -> SortcompareselectionCluster {
-  let result = sort_compare_selection_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_cluster_sum(s : SortcompareselectionCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn sort_compare_selection_model_get(s : SortcompareselectionModel, i : Int) 
 }
 
 pub fn sort_compare_selection_model_set(s : SortcompareselectionModel, i : Int, v : Double) -> SortcompareselectionModel {
-  let result = sort_compare_selection_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_model_sum(s : SortcompareselectionModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn sort_compare_selection_layer_get(s : SortcompareselectionLayer, i : Int) 
 }
 
 pub fn sort_compare_selection_layer_set(s : SortcompareselectionLayer, i : Int, v : Double) -> SortcompareselectionLayer {
-  let result = sort_compare_selection_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_layer_sum(s : SortcompareselectionLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn sort_compare_selection_buffer_get(s : SortcompareselectionBuffer, i : Int
 }
 
 pub fn sort_compare_selection_buffer_set(s : SortcompareselectionBuffer, i : Int, v : Double) -> SortcompareselectionBuffer {
-  let result = sort_compare_selection_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_buffer_sum(s : SortcompareselectionBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn sort_compare_selection_cursor_get(s : SortcompareselectionCursor, i : Int
 }
 
 pub fn sort_compare_selection_cursor_set(s : SortcompareselectionCursor, i : Int, v : Double) -> SortcompareselectionCursor {
-  let result = sort_compare_selection_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_cursor_sum(s : SortcompareselectionCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn sort_compare_selection_view_get(s : SortcompareselectionView, i : Int) ->
 }
 
 pub fn sort_compare_selection_view_set(s : SortcompareselectionView, i : Int, v : Double) -> SortcompareselectionView {
-  let result = sort_compare_selection_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_view_sum(s : SortcompareselectionView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn sort_compare_selection_range_get(s : SortcompareselectionRange, i : Int) 
 }
 
 pub fn sort_compare_selection_range_set(s : SortcompareselectionRange, i : Int, v : Double) -> SortcompareselectionRange {
-  let result = sort_compare_selection_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_range_sum(s : SortcompareselectionRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn sort_compare_selection_slice_get(s : SortcompareselectionSlice, i : Int) 
 }
 
 pub fn sort_compare_selection_slice_set(s : SortcompareselectionSlice, i : Int, v : Double) -> SortcompareselectionSlice {
-  let result = sort_compare_selection_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_compare_selection_slice_sum(s : SortcompareselectionSlice) -> Double { @_common.sum(s.data) }

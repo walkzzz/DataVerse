@@ -107,23 +107,15 @@ pub fn geo_proj_orthographic_series_std(s : GeoprojorthographicSeries) -> Double
 pub fn geo_proj_orthographic_series_median(s : GeoprojorthographicSeries) -> Double { @_common.median(s.vals) }
 
 pub fn geo_proj_orthographic_series_scale(s : GeoprojorthographicSeries, f : Double) -> GeoprojorthographicSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn geo_proj_orthographic_series_add(a : GeoprojorthographicSeries, b : GeoprojorthographicSeries) -> GeoprojorthographicSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn geo_proj_orthographic_series_sub(a : GeoprojorthographicSeries, b : GeoprojorthographicSeries) -> GeoprojorthographicSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn geo_proj_orthographic_series_normalize(s : GeoprojorthographicSeries) -> GeoprojorthographicSeries {
@@ -254,22 +246,16 @@ pub fn geo_proj_orthographic_vector_zero(dim : Int) -> GeoprojorthographicVector
 
 pub fn geo_proj_orthographic_vector_add(a : GeoprojorthographicVector, b : GeoprojorthographicVector) -> GeoprojorthographicVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_proj_orthographic_vector_sub(a : GeoprojorthographicVector, b : GeoprojorthographicVector) -> GeoprojorthographicVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn geo_proj_orthographic_vector_scale(v : GeoprojorthographicVector, s : Double) -> GeoprojorthographicVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn geo_proj_orthographic_vector_dot(a : GeoprojorthographicVector, b : GeoprojorthographicVector) -> Double {
@@ -372,10 +358,9 @@ pub fn geo_proj_orthographic_frame_get(s : GeoprojorthographicFrame, i : Int) ->
 }
 
 pub fn geo_proj_orthographic_frame_set(s : GeoprojorthographicFrame, i : Int, v : Double) -> GeoprojorthographicFrame {
-  let result = geo_proj_orthographic_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_orthographic_frame_sum(s : GeoprojorthographicFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn geo_proj_orthographic_table_get(s : GeoprojorthographicTable, i : Int) ->
 }
 
 pub fn geo_proj_orthographic_table_set(s : GeoprojorthographicTable, i : Int, v : Double) -> GeoprojorthographicTable {
-  let result = geo_proj_orthographic_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_orthographic_table_sum(s : GeoprojorthographicTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn geo_proj_orthographic_graphn_get(s : GeoprojorthographicGraphN, i : Int) 
 }
 
 pub fn geo_proj_orthographic_graphn_set(s : GeoprojorthographicGraphN, i : Int, v : Double) -> GeoprojorthographicGraphN {
-  let result = geo_proj_orthographic_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_orthographic_graphn_sum(s : GeoprojorthographicGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn geo_proj_orthographic_node_get(s : GeoprojorthographicNode, i : Int) -> D
 }
 
 pub fn geo_proj_orthographic_node_set(s : GeoprojorthographicNode, i : Int, v : Double) -> GeoprojorthographicNode {
-  let result = geo_proj_orthographic_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_orthographic_node_sum(s : GeoprojorthographicNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn geo_proj_orthographic_edge_get(s : GeoprojorthographicEdge, i : Int) -> D
 }
 
 pub fn geo_proj_orthographic_edge_set(s : GeoprojorthographicEdge, i : Int, v : Double) -> GeoprojorthographicEdge {
-  let result = geo_proj_orthographic_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_orthographic_edge_sum(s : GeoprojorthographicEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn geo_proj_orthographic_path_get(s : GeoprojorthographicPath, i : Int) -> D
 }
 
 pub fn geo_proj_orthographic_path_set(s : GeoprojorthographicPath, i : Int, v : Double) -> GeoprojorthographicPath {
-  let result = geo_proj_orthographic_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_orthographic_path_sum(s : GeoprojorthographicPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn geo_proj_orthographic_cluster_get(s : GeoprojorthographicCluster, i : Int
 }
 
 pub fn geo_proj_orthographic_cluster_set(s : GeoprojorthographicCluster, i : Int, v : Double) -> GeoprojorthographicCluster {
-  let result = geo_proj_orthographic_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_orthographic_cluster_sum(s : GeoprojorthographicCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn geo_proj_orthographic_model_get(s : GeoprojorthographicModel, i : Int) ->
 }
 
 pub fn geo_proj_orthographic_model_set(s : GeoprojorthographicModel, i : Int, v : Double) -> GeoprojorthographicModel {
-  let result = geo_proj_orthographic_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_orthographic_model_sum(s : GeoprojorthographicModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn geo_proj_orthographic_layer_get(s : GeoprojorthographicLayer, i : Int) ->
 }
 
 pub fn geo_proj_orthographic_layer_set(s : GeoprojorthographicLayer, i : Int, v : Double) -> GeoprojorthographicLayer {
-  let result = geo_proj_orthographic_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_orthographic_layer_sum(s : GeoprojorthographicLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn geo_proj_orthographic_buffer_get(s : GeoprojorthographicBuffer, i : Int) 
 }
 
 pub fn geo_proj_orthographic_buffer_set(s : GeoprojorthographicBuffer, i : Int, v : Double) -> GeoprojorthographicBuffer {
-  let result = geo_proj_orthographic_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_orthographic_buffer_sum(s : GeoprojorthographicBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn geo_proj_orthographic_cursor_get(s : GeoprojorthographicCursor, i : Int) 
 }
 
 pub fn geo_proj_orthographic_cursor_set(s : GeoprojorthographicCursor, i : Int, v : Double) -> GeoprojorthographicCursor {
-  let result = geo_proj_orthographic_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_orthographic_cursor_sum(s : GeoprojorthographicCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn geo_proj_orthographic_view_get(s : GeoprojorthographicView, i : Int) -> D
 }
 
 pub fn geo_proj_orthographic_view_set(s : GeoprojorthographicView, i : Int, v : Double) -> GeoprojorthographicView {
-  let result = geo_proj_orthographic_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_orthographic_view_sum(s : GeoprojorthographicView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn geo_proj_orthographic_range_get(s : GeoprojorthographicRange, i : Int) ->
 }
 
 pub fn geo_proj_orthographic_range_set(s : GeoprojorthographicRange, i : Int, v : Double) -> GeoprojorthographicRange {
-  let result = geo_proj_orthographic_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_orthographic_range_sum(s : GeoprojorthographicRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn geo_proj_orthographic_slice_get(s : GeoprojorthographicSlice, i : Int) ->
 }
 
 pub fn geo_proj_orthographic_slice_set(s : GeoprojorthographicSlice, i : Int, v : Double) -> GeoprojorthographicSlice {
-  let result = geo_proj_orthographic_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn geo_proj_orthographic_slice_sum(s : GeoprojorthographicSlice) -> Double { @_common.sum(s.data) }

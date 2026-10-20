@@ -107,23 +107,15 @@ pub fn ml_cluster_hierarchical_series_std(s : MlclusterhierarchicalSeries) -> Do
 pub fn ml_cluster_hierarchical_series_median(s : MlclusterhierarchicalSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_cluster_hierarchical_series_scale(s : MlclusterhierarchicalSeries, f : Double) -> MlclusterhierarchicalSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_cluster_hierarchical_series_add(a : MlclusterhierarchicalSeries, b : MlclusterhierarchicalSeries) -> MlclusterhierarchicalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_cluster_hierarchical_series_sub(a : MlclusterhierarchicalSeries, b : MlclusterhierarchicalSeries) -> MlclusterhierarchicalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_cluster_hierarchical_series_normalize(s : MlclusterhierarchicalSeries) -> MlclusterhierarchicalSeries {
@@ -254,22 +246,16 @@ pub fn ml_cluster_hierarchical_vector_zero(dim : Int) -> MlclusterhierarchicalVe
 
 pub fn ml_cluster_hierarchical_vector_add(a : MlclusterhierarchicalVector, b : MlclusterhierarchicalVector) -> MlclusterhierarchicalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_cluster_hierarchical_vector_sub(a : MlclusterhierarchicalVector, b : MlclusterhierarchicalVector) -> MlclusterhierarchicalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_cluster_hierarchical_vector_scale(v : MlclusterhierarchicalVector, s : Double) -> MlclusterhierarchicalVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_cluster_hierarchical_vector_dot(a : MlclusterhierarchicalVector, b : MlclusterhierarchicalVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_cluster_hierarchical_frame_get(s : MlclusterhierarchicalFrame, i : Int
 }
 
 pub fn ml_cluster_hierarchical_frame_set(s : MlclusterhierarchicalFrame, i : Int, v : Double) -> MlclusterhierarchicalFrame {
-  let result = ml_cluster_hierarchical_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_hierarchical_frame_sum(s : MlclusterhierarchicalFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_cluster_hierarchical_table_get(s : MlclusterhierarchicalTable, i : Int
 }
 
 pub fn ml_cluster_hierarchical_table_set(s : MlclusterhierarchicalTable, i : Int, v : Double) -> MlclusterhierarchicalTable {
-  let result = ml_cluster_hierarchical_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_hierarchical_table_sum(s : MlclusterhierarchicalTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_cluster_hierarchical_graphn_get(s : MlclusterhierarchicalGraphN, i : I
 }
 
 pub fn ml_cluster_hierarchical_graphn_set(s : MlclusterhierarchicalGraphN, i : Int, v : Double) -> MlclusterhierarchicalGraphN {
-  let result = ml_cluster_hierarchical_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_hierarchical_graphn_sum(s : MlclusterhierarchicalGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_cluster_hierarchical_node_get(s : MlclusterhierarchicalNode, i : Int) 
 }
 
 pub fn ml_cluster_hierarchical_node_set(s : MlclusterhierarchicalNode, i : Int, v : Double) -> MlclusterhierarchicalNode {
-  let result = ml_cluster_hierarchical_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_hierarchical_node_sum(s : MlclusterhierarchicalNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_cluster_hierarchical_edge_get(s : MlclusterhierarchicalEdge, i : Int) 
 }
 
 pub fn ml_cluster_hierarchical_edge_set(s : MlclusterhierarchicalEdge, i : Int, v : Double) -> MlclusterhierarchicalEdge {
-  let result = ml_cluster_hierarchical_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_hierarchical_edge_sum(s : MlclusterhierarchicalEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_cluster_hierarchical_path_get(s : MlclusterhierarchicalPath, i : Int) 
 }
 
 pub fn ml_cluster_hierarchical_path_set(s : MlclusterhierarchicalPath, i : Int, v : Double) -> MlclusterhierarchicalPath {
-  let result = ml_cluster_hierarchical_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_hierarchical_path_sum(s : MlclusterhierarchicalPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_cluster_hierarchical_cluster_get(s : MlclusterhierarchicalCluster, i :
 }
 
 pub fn ml_cluster_hierarchical_cluster_set(s : MlclusterhierarchicalCluster, i : Int, v : Double) -> MlclusterhierarchicalCluster {
-  let result = ml_cluster_hierarchical_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_hierarchical_cluster_sum(s : MlclusterhierarchicalCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_cluster_hierarchical_model_get(s : MlclusterhierarchicalModel, i : Int
 }
 
 pub fn ml_cluster_hierarchical_model_set(s : MlclusterhierarchicalModel, i : Int, v : Double) -> MlclusterhierarchicalModel {
-  let result = ml_cluster_hierarchical_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_hierarchical_model_sum(s : MlclusterhierarchicalModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_cluster_hierarchical_layer_get(s : MlclusterhierarchicalLayer, i : Int
 }
 
 pub fn ml_cluster_hierarchical_layer_set(s : MlclusterhierarchicalLayer, i : Int, v : Double) -> MlclusterhierarchicalLayer {
-  let result = ml_cluster_hierarchical_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_hierarchical_layer_sum(s : MlclusterhierarchicalLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_cluster_hierarchical_buffer_get(s : MlclusterhierarchicalBuffer, i : I
 }
 
 pub fn ml_cluster_hierarchical_buffer_set(s : MlclusterhierarchicalBuffer, i : Int, v : Double) -> MlclusterhierarchicalBuffer {
-  let result = ml_cluster_hierarchical_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_hierarchical_buffer_sum(s : MlclusterhierarchicalBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_cluster_hierarchical_cursor_get(s : MlclusterhierarchicalCursor, i : I
 }
 
 pub fn ml_cluster_hierarchical_cursor_set(s : MlclusterhierarchicalCursor, i : Int, v : Double) -> MlclusterhierarchicalCursor {
-  let result = ml_cluster_hierarchical_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_hierarchical_cursor_sum(s : MlclusterhierarchicalCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_cluster_hierarchical_view_get(s : MlclusterhierarchicalView, i : Int) 
 }
 
 pub fn ml_cluster_hierarchical_view_set(s : MlclusterhierarchicalView, i : Int, v : Double) -> MlclusterhierarchicalView {
-  let result = ml_cluster_hierarchical_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_hierarchical_view_sum(s : MlclusterhierarchicalView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_cluster_hierarchical_range_get(s : MlclusterhierarchicalRange, i : Int
 }
 
 pub fn ml_cluster_hierarchical_range_set(s : MlclusterhierarchicalRange, i : Int, v : Double) -> MlclusterhierarchicalRange {
-  let result = ml_cluster_hierarchical_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_hierarchical_range_sum(s : MlclusterhierarchicalRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_cluster_hierarchical_slice_get(s : MlclusterhierarchicalSlice, i : Int
 }
 
 pub fn ml_cluster_hierarchical_slice_set(s : MlclusterhierarchicalSlice, i : Int, v : Double) -> MlclusterhierarchicalSlice {
-  let result = ml_cluster_hierarchical_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_hierarchical_slice_sum(s : MlclusterhierarchicalSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn timeseries_decomp_classical_series_std(s : TimeseriesdecompclassicalSerie
 pub fn timeseries_decomp_classical_series_median(s : TimeseriesdecompclassicalSeries) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_decomp_classical_series_scale(s : TimeseriesdecompclassicalSeries, f : Double) -> TimeseriesdecompclassicalSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn timeseries_decomp_classical_series_add(a : TimeseriesdecompclassicalSeries, b : TimeseriesdecompclassicalSeries) -> TimeseriesdecompclassicalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_decomp_classical_series_sub(a : TimeseriesdecompclassicalSeries, b : TimeseriesdecompclassicalSeries) -> TimeseriesdecompclassicalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_decomp_classical_series_normalize(s : TimeseriesdecompclassicalSeries) -> TimeseriesdecompclassicalSeries {
@@ -254,22 +246,16 @@ pub fn timeseries_decomp_classical_vector_zero(dim : Int) -> Timeseriesdecompcla
 
 pub fn timeseries_decomp_classical_vector_add(a : TimeseriesdecompclassicalVector, b : TimeseriesdecompclassicalVector) -> TimeseriesdecompclassicalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_decomp_classical_vector_sub(a : TimeseriesdecompclassicalVector, b : TimeseriesdecompclassicalVector) -> TimeseriesdecompclassicalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_decomp_classical_vector_scale(v : TimeseriesdecompclassicalVector, s : Double) -> TimeseriesdecompclassicalVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn timeseries_decomp_classical_vector_dot(a : TimeseriesdecompclassicalVector, b : TimeseriesdecompclassicalVector) -> Double {
@@ -372,10 +358,9 @@ pub fn timeseries_decomp_classical_frame_get(s : TimeseriesdecompclassicalFrame,
 }
 
 pub fn timeseries_decomp_classical_frame_set(s : TimeseriesdecompclassicalFrame, i : Int, v : Double) -> TimeseriesdecompclassicalFrame {
-  let result = timeseries_decomp_classical_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_classical_frame_sum(s : TimeseriesdecompclassicalFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn timeseries_decomp_classical_table_get(s : TimeseriesdecompclassicalTable,
 }
 
 pub fn timeseries_decomp_classical_table_set(s : TimeseriesdecompclassicalTable, i : Int, v : Double) -> TimeseriesdecompclassicalTable {
-  let result = timeseries_decomp_classical_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_classical_table_sum(s : TimeseriesdecompclassicalTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn timeseries_decomp_classical_graphn_get(s : TimeseriesdecompclassicalGraph
 }
 
 pub fn timeseries_decomp_classical_graphn_set(s : TimeseriesdecompclassicalGraphN, i : Int, v : Double) -> TimeseriesdecompclassicalGraphN {
-  let result = timeseries_decomp_classical_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_classical_graphn_sum(s : TimeseriesdecompclassicalGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn timeseries_decomp_classical_node_get(s : TimeseriesdecompclassicalNode, i
 }
 
 pub fn timeseries_decomp_classical_node_set(s : TimeseriesdecompclassicalNode, i : Int, v : Double) -> TimeseriesdecompclassicalNode {
-  let result = timeseries_decomp_classical_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_classical_node_sum(s : TimeseriesdecompclassicalNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn timeseries_decomp_classical_edge_get(s : TimeseriesdecompclassicalEdge, i
 }
 
 pub fn timeseries_decomp_classical_edge_set(s : TimeseriesdecompclassicalEdge, i : Int, v : Double) -> TimeseriesdecompclassicalEdge {
-  let result = timeseries_decomp_classical_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_classical_edge_sum(s : TimeseriesdecompclassicalEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn timeseries_decomp_classical_path_get(s : TimeseriesdecompclassicalPath, i
 }
 
 pub fn timeseries_decomp_classical_path_set(s : TimeseriesdecompclassicalPath, i : Int, v : Double) -> TimeseriesdecompclassicalPath {
-  let result = timeseries_decomp_classical_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_classical_path_sum(s : TimeseriesdecompclassicalPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn timeseries_decomp_classical_cluster_get(s : TimeseriesdecompclassicalClus
 }
 
 pub fn timeseries_decomp_classical_cluster_set(s : TimeseriesdecompclassicalCluster, i : Int, v : Double) -> TimeseriesdecompclassicalCluster {
-  let result = timeseries_decomp_classical_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_classical_cluster_sum(s : TimeseriesdecompclassicalCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn timeseries_decomp_classical_model_get(s : TimeseriesdecompclassicalModel,
 }
 
 pub fn timeseries_decomp_classical_model_set(s : TimeseriesdecompclassicalModel, i : Int, v : Double) -> TimeseriesdecompclassicalModel {
-  let result = timeseries_decomp_classical_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_classical_model_sum(s : TimeseriesdecompclassicalModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn timeseries_decomp_classical_layer_get(s : TimeseriesdecompclassicalLayer,
 }
 
 pub fn timeseries_decomp_classical_layer_set(s : TimeseriesdecompclassicalLayer, i : Int, v : Double) -> TimeseriesdecompclassicalLayer {
-  let result = timeseries_decomp_classical_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_classical_layer_sum(s : TimeseriesdecompclassicalLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn timeseries_decomp_classical_buffer_get(s : TimeseriesdecompclassicalBuffe
 }
 
 pub fn timeseries_decomp_classical_buffer_set(s : TimeseriesdecompclassicalBuffer, i : Int, v : Double) -> TimeseriesdecompclassicalBuffer {
-  let result = timeseries_decomp_classical_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_classical_buffer_sum(s : TimeseriesdecompclassicalBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn timeseries_decomp_classical_cursor_get(s : TimeseriesdecompclassicalCurso
 }
 
 pub fn timeseries_decomp_classical_cursor_set(s : TimeseriesdecompclassicalCursor, i : Int, v : Double) -> TimeseriesdecompclassicalCursor {
-  let result = timeseries_decomp_classical_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_classical_cursor_sum(s : TimeseriesdecompclassicalCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn timeseries_decomp_classical_view_get(s : TimeseriesdecompclassicalView, i
 }
 
 pub fn timeseries_decomp_classical_view_set(s : TimeseriesdecompclassicalView, i : Int, v : Double) -> TimeseriesdecompclassicalView {
-  let result = timeseries_decomp_classical_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_classical_view_sum(s : TimeseriesdecompclassicalView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn timeseries_decomp_classical_range_get(s : TimeseriesdecompclassicalRange,
 }
 
 pub fn timeseries_decomp_classical_range_set(s : TimeseriesdecompclassicalRange, i : Int, v : Double) -> TimeseriesdecompclassicalRange {
-  let result = timeseries_decomp_classical_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_classical_range_sum(s : TimeseriesdecompclassicalRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn timeseries_decomp_classical_slice_get(s : TimeseriesdecompclassicalSlice,
 }
 
 pub fn timeseries_decomp_classical_slice_set(s : TimeseriesdecompclassicalSlice, i : Int, v : Double) -> TimeseriesdecompclassicalSlice {
-  let result = timeseries_decomp_classical_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_classical_slice_sum(s : TimeseriesdecompclassicalSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn finance_portfolio_robust_series_std(s : FinanceportfoliorobustSeries) -> 
 pub fn finance_portfolio_robust_series_median(s : FinanceportfoliorobustSeries) -> Double { @_common.median(s.vals) }
 
 pub fn finance_portfolio_robust_series_scale(s : FinanceportfoliorobustSeries, f : Double) -> FinanceportfoliorobustSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn finance_portfolio_robust_series_add(a : FinanceportfoliorobustSeries, b : FinanceportfoliorobustSeries) -> FinanceportfoliorobustSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn finance_portfolio_robust_series_sub(a : FinanceportfoliorobustSeries, b : FinanceportfoliorobustSeries) -> FinanceportfoliorobustSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn finance_portfolio_robust_series_normalize(s : FinanceportfoliorobustSeries) -> FinanceportfoliorobustSeries {
@@ -254,22 +246,16 @@ pub fn finance_portfolio_robust_vector_zero(dim : Int) -> Financeportfoliorobust
 
 pub fn finance_portfolio_robust_vector_add(a : FinanceportfoliorobustVector, b : FinanceportfoliorobustVector) -> FinanceportfoliorobustVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_portfolio_robust_vector_sub(a : FinanceportfoliorobustVector, b : FinanceportfoliorobustVector) -> FinanceportfoliorobustVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_portfolio_robust_vector_scale(v : FinanceportfoliorobustVector, s : Double) -> FinanceportfoliorobustVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn finance_portfolio_robust_vector_dot(a : FinanceportfoliorobustVector, b : FinanceportfoliorobustVector) -> Double {
@@ -372,10 +358,9 @@ pub fn finance_portfolio_robust_frame_get(s : FinanceportfoliorobustFrame, i : I
 }
 
 pub fn finance_portfolio_robust_frame_set(s : FinanceportfoliorobustFrame, i : Int, v : Double) -> FinanceportfoliorobustFrame {
-  let result = finance_portfolio_robust_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_robust_frame_sum(s : FinanceportfoliorobustFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn finance_portfolio_robust_table_get(s : FinanceportfoliorobustTable, i : I
 }
 
 pub fn finance_portfolio_robust_table_set(s : FinanceportfoliorobustTable, i : Int, v : Double) -> FinanceportfoliorobustTable {
-  let result = finance_portfolio_robust_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_robust_table_sum(s : FinanceportfoliorobustTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn finance_portfolio_robust_graphn_get(s : FinanceportfoliorobustGraphN, i :
 }
 
 pub fn finance_portfolio_robust_graphn_set(s : FinanceportfoliorobustGraphN, i : Int, v : Double) -> FinanceportfoliorobustGraphN {
-  let result = finance_portfolio_robust_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_robust_graphn_sum(s : FinanceportfoliorobustGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn finance_portfolio_robust_node_get(s : FinanceportfoliorobustNode, i : Int
 }
 
 pub fn finance_portfolio_robust_node_set(s : FinanceportfoliorobustNode, i : Int, v : Double) -> FinanceportfoliorobustNode {
-  let result = finance_portfolio_robust_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_robust_node_sum(s : FinanceportfoliorobustNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn finance_portfolio_robust_edge_get(s : FinanceportfoliorobustEdge, i : Int
 }
 
 pub fn finance_portfolio_robust_edge_set(s : FinanceportfoliorobustEdge, i : Int, v : Double) -> FinanceportfoliorobustEdge {
-  let result = finance_portfolio_robust_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_robust_edge_sum(s : FinanceportfoliorobustEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn finance_portfolio_robust_path_get(s : FinanceportfoliorobustPath, i : Int
 }
 
 pub fn finance_portfolio_robust_path_set(s : FinanceportfoliorobustPath, i : Int, v : Double) -> FinanceportfoliorobustPath {
-  let result = finance_portfolio_robust_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_robust_path_sum(s : FinanceportfoliorobustPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn finance_portfolio_robust_cluster_get(s : FinanceportfoliorobustCluster, i
 }
 
 pub fn finance_portfolio_robust_cluster_set(s : FinanceportfoliorobustCluster, i : Int, v : Double) -> FinanceportfoliorobustCluster {
-  let result = finance_portfolio_robust_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_robust_cluster_sum(s : FinanceportfoliorobustCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn finance_portfolio_robust_model_get(s : FinanceportfoliorobustModel, i : I
 }
 
 pub fn finance_portfolio_robust_model_set(s : FinanceportfoliorobustModel, i : Int, v : Double) -> FinanceportfoliorobustModel {
-  let result = finance_portfolio_robust_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_robust_model_sum(s : FinanceportfoliorobustModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn finance_portfolio_robust_layer_get(s : FinanceportfoliorobustLayer, i : I
 }
 
 pub fn finance_portfolio_robust_layer_set(s : FinanceportfoliorobustLayer, i : Int, v : Double) -> FinanceportfoliorobustLayer {
-  let result = finance_portfolio_robust_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_robust_layer_sum(s : FinanceportfoliorobustLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn finance_portfolio_robust_buffer_get(s : FinanceportfoliorobustBuffer, i :
 }
 
 pub fn finance_portfolio_robust_buffer_set(s : FinanceportfoliorobustBuffer, i : Int, v : Double) -> FinanceportfoliorobustBuffer {
-  let result = finance_portfolio_robust_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_robust_buffer_sum(s : FinanceportfoliorobustBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn finance_portfolio_robust_cursor_get(s : FinanceportfoliorobustCursor, i :
 }
 
 pub fn finance_portfolio_robust_cursor_set(s : FinanceportfoliorobustCursor, i : Int, v : Double) -> FinanceportfoliorobustCursor {
-  let result = finance_portfolio_robust_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_robust_cursor_sum(s : FinanceportfoliorobustCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn finance_portfolio_robust_view_get(s : FinanceportfoliorobustView, i : Int
 }
 
 pub fn finance_portfolio_robust_view_set(s : FinanceportfoliorobustView, i : Int, v : Double) -> FinanceportfoliorobustView {
-  let result = finance_portfolio_robust_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_robust_view_sum(s : FinanceportfoliorobustView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn finance_portfolio_robust_range_get(s : FinanceportfoliorobustRange, i : I
 }
 
 pub fn finance_portfolio_robust_range_set(s : FinanceportfoliorobustRange, i : Int, v : Double) -> FinanceportfoliorobustRange {
-  let result = finance_portfolio_robust_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_robust_range_sum(s : FinanceportfoliorobustRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn finance_portfolio_robust_slice_get(s : FinanceportfoliorobustSlice, i : I
 }
 
 pub fn finance_portfolio_robust_slice_set(s : FinanceportfoliorobustSlice, i : Int, v : Double) -> FinanceportfoliorobustSlice {
-  let result = finance_portfolio_robust_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_portfolio_robust_slice_sum(s : FinanceportfoliorobustSlice) -> Double { @_common.sum(s.data) }

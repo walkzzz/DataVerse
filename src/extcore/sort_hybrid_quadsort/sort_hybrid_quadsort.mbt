@@ -107,23 +107,15 @@ pub fn sort_hybrid_quadsort_series_std(s : SorthybridquadsortSeries) -> Double {
 pub fn sort_hybrid_quadsort_series_median(s : SorthybridquadsortSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_hybrid_quadsort_series_scale(s : SorthybridquadsortSeries, f : Double) -> SorthybridquadsortSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn sort_hybrid_quadsort_series_add(a : SorthybridquadsortSeries, b : SorthybridquadsortSeries) -> SorthybridquadsortSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn sort_hybrid_quadsort_series_sub(a : SorthybridquadsortSeries, b : SorthybridquadsortSeries) -> SorthybridquadsortSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn sort_hybrid_quadsort_series_normalize(s : SorthybridquadsortSeries) -> SorthybridquadsortSeries {
@@ -254,22 +246,16 @@ pub fn sort_hybrid_quadsort_vector_zero(dim : Int) -> SorthybridquadsortVector {
 
 pub fn sort_hybrid_quadsort_vector_add(a : SorthybridquadsortVector, b : SorthybridquadsortVector) -> SorthybridquadsortVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_hybrid_quadsort_vector_sub(a : SorthybridquadsortVector, b : SorthybridquadsortVector) -> SorthybridquadsortVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_hybrid_quadsort_vector_scale(v : SorthybridquadsortVector, s : Double) -> SorthybridquadsortVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn sort_hybrid_quadsort_vector_dot(a : SorthybridquadsortVector, b : SorthybridquadsortVector) -> Double {
@@ -372,10 +358,9 @@ pub fn sort_hybrid_quadsort_frame_get(s : SorthybridquadsortFrame, i : Int) -> D
 }
 
 pub fn sort_hybrid_quadsort_frame_set(s : SorthybridquadsortFrame, i : Int, v : Double) -> SorthybridquadsortFrame {
-  let result = sort_hybrid_quadsort_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_quadsort_frame_sum(s : SorthybridquadsortFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn sort_hybrid_quadsort_table_get(s : SorthybridquadsortTable, i : Int) -> D
 }
 
 pub fn sort_hybrid_quadsort_table_set(s : SorthybridquadsortTable, i : Int, v : Double) -> SorthybridquadsortTable {
-  let result = sort_hybrid_quadsort_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_quadsort_table_sum(s : SorthybridquadsortTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn sort_hybrid_quadsort_graphn_get(s : SorthybridquadsortGraphN, i : Int) ->
 }
 
 pub fn sort_hybrid_quadsort_graphn_set(s : SorthybridquadsortGraphN, i : Int, v : Double) -> SorthybridquadsortGraphN {
-  let result = sort_hybrid_quadsort_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_quadsort_graphn_sum(s : SorthybridquadsortGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn sort_hybrid_quadsort_node_get(s : SorthybridquadsortNode, i : Int) -> Dou
 }
 
 pub fn sort_hybrid_quadsort_node_set(s : SorthybridquadsortNode, i : Int, v : Double) -> SorthybridquadsortNode {
-  let result = sort_hybrid_quadsort_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_quadsort_node_sum(s : SorthybridquadsortNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn sort_hybrid_quadsort_edge_get(s : SorthybridquadsortEdge, i : Int) -> Dou
 }
 
 pub fn sort_hybrid_quadsort_edge_set(s : SorthybridquadsortEdge, i : Int, v : Double) -> SorthybridquadsortEdge {
-  let result = sort_hybrid_quadsort_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_quadsort_edge_sum(s : SorthybridquadsortEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn sort_hybrid_quadsort_path_get(s : SorthybridquadsortPath, i : Int) -> Dou
 }
 
 pub fn sort_hybrid_quadsort_path_set(s : SorthybridquadsortPath, i : Int, v : Double) -> SorthybridquadsortPath {
-  let result = sort_hybrid_quadsort_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_quadsort_path_sum(s : SorthybridquadsortPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn sort_hybrid_quadsort_cluster_get(s : SorthybridquadsortCluster, i : Int) 
 }
 
 pub fn sort_hybrid_quadsort_cluster_set(s : SorthybridquadsortCluster, i : Int, v : Double) -> SorthybridquadsortCluster {
-  let result = sort_hybrid_quadsort_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_quadsort_cluster_sum(s : SorthybridquadsortCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn sort_hybrid_quadsort_model_get(s : SorthybridquadsortModel, i : Int) -> D
 }
 
 pub fn sort_hybrid_quadsort_model_set(s : SorthybridquadsortModel, i : Int, v : Double) -> SorthybridquadsortModel {
-  let result = sort_hybrid_quadsort_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_quadsort_model_sum(s : SorthybridquadsortModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn sort_hybrid_quadsort_layer_get(s : SorthybridquadsortLayer, i : Int) -> D
 }
 
 pub fn sort_hybrid_quadsort_layer_set(s : SorthybridquadsortLayer, i : Int, v : Double) -> SorthybridquadsortLayer {
-  let result = sort_hybrid_quadsort_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_quadsort_layer_sum(s : SorthybridquadsortLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn sort_hybrid_quadsort_buffer_get(s : SorthybridquadsortBuffer, i : Int) ->
 }
 
 pub fn sort_hybrid_quadsort_buffer_set(s : SorthybridquadsortBuffer, i : Int, v : Double) -> SorthybridquadsortBuffer {
-  let result = sort_hybrid_quadsort_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_quadsort_buffer_sum(s : SorthybridquadsortBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn sort_hybrid_quadsort_cursor_get(s : SorthybridquadsortCursor, i : Int) ->
 }
 
 pub fn sort_hybrid_quadsort_cursor_set(s : SorthybridquadsortCursor, i : Int, v : Double) -> SorthybridquadsortCursor {
-  let result = sort_hybrid_quadsort_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_quadsort_cursor_sum(s : SorthybridquadsortCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn sort_hybrid_quadsort_view_get(s : SorthybridquadsortView, i : Int) -> Dou
 }
 
 pub fn sort_hybrid_quadsort_view_set(s : SorthybridquadsortView, i : Int, v : Double) -> SorthybridquadsortView {
-  let result = sort_hybrid_quadsort_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_quadsort_view_sum(s : SorthybridquadsortView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn sort_hybrid_quadsort_range_get(s : SorthybridquadsortRange, i : Int) -> D
 }
 
 pub fn sort_hybrid_quadsort_range_set(s : SorthybridquadsortRange, i : Int, v : Double) -> SorthybridquadsortRange {
-  let result = sort_hybrid_quadsort_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_quadsort_range_sum(s : SorthybridquadsortRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn sort_hybrid_quadsort_slice_get(s : SorthybridquadsortSlice, i : Int) -> D
 }
 
 pub fn sort_hybrid_quadsort_slice_set(s : SorthybridquadsortSlice, i : Int, v : Double) -> SorthybridquadsortSlice {
-  let result = sort_hybrid_quadsort_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_hybrid_quadsort_slice_sum(s : SorthybridquadsortSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn ml_regress_lasso_series_std(s : MlregresslassoSeries) -> Double { @_commo
 pub fn ml_regress_lasso_series_median(s : MlregresslassoSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_regress_lasso_series_scale(s : MlregresslassoSeries, f : Double) -> MlregresslassoSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_regress_lasso_series_add(a : MlregresslassoSeries, b : MlregresslassoSeries) -> MlregresslassoSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_regress_lasso_series_sub(a : MlregresslassoSeries, b : MlregresslassoSeries) -> MlregresslassoSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_regress_lasso_series_normalize(s : MlregresslassoSeries) -> MlregresslassoSeries {
@@ -254,22 +246,16 @@ pub fn ml_regress_lasso_vector_zero(dim : Int) -> MlregresslassoVector {
 
 pub fn ml_regress_lasso_vector_add(a : MlregresslassoVector, b : MlregresslassoVector) -> MlregresslassoVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_regress_lasso_vector_sub(a : MlregresslassoVector, b : MlregresslassoVector) -> MlregresslassoVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_regress_lasso_vector_scale(v : MlregresslassoVector, s : Double) -> MlregresslassoVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_regress_lasso_vector_dot(a : MlregresslassoVector, b : MlregresslassoVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_regress_lasso_frame_get(s : MlregresslassoFrame, i : Int) -> Double {
 }
 
 pub fn ml_regress_lasso_frame_set(s : MlregresslassoFrame, i : Int, v : Double) -> MlregresslassoFrame {
-  let result = ml_regress_lasso_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_lasso_frame_sum(s : MlregresslassoFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_regress_lasso_table_get(s : MlregresslassoTable, i : Int) -> Double {
 }
 
 pub fn ml_regress_lasso_table_set(s : MlregresslassoTable, i : Int, v : Double) -> MlregresslassoTable {
-  let result = ml_regress_lasso_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_lasso_table_sum(s : MlregresslassoTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_regress_lasso_graphn_get(s : MlregresslassoGraphN, i : Int) -> Double 
 }
 
 pub fn ml_regress_lasso_graphn_set(s : MlregresslassoGraphN, i : Int, v : Double) -> MlregresslassoGraphN {
-  let result = ml_regress_lasso_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_lasso_graphn_sum(s : MlregresslassoGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_regress_lasso_node_get(s : MlregresslassoNode, i : Int) -> Double {
 }
 
 pub fn ml_regress_lasso_node_set(s : MlregresslassoNode, i : Int, v : Double) -> MlregresslassoNode {
-  let result = ml_regress_lasso_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_lasso_node_sum(s : MlregresslassoNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_regress_lasso_edge_get(s : MlregresslassoEdge, i : Int) -> Double {
 }
 
 pub fn ml_regress_lasso_edge_set(s : MlregresslassoEdge, i : Int, v : Double) -> MlregresslassoEdge {
-  let result = ml_regress_lasso_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_lasso_edge_sum(s : MlregresslassoEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_regress_lasso_path_get(s : MlregresslassoPath, i : Int) -> Double {
 }
 
 pub fn ml_regress_lasso_path_set(s : MlregresslassoPath, i : Int, v : Double) -> MlregresslassoPath {
-  let result = ml_regress_lasso_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_lasso_path_sum(s : MlregresslassoPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_regress_lasso_cluster_get(s : MlregresslassoCluster, i : Int) -> Doubl
 }
 
 pub fn ml_regress_lasso_cluster_set(s : MlregresslassoCluster, i : Int, v : Double) -> MlregresslassoCluster {
-  let result = ml_regress_lasso_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_lasso_cluster_sum(s : MlregresslassoCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_regress_lasso_model_get(s : MlregresslassoModel, i : Int) -> Double {
 }
 
 pub fn ml_regress_lasso_model_set(s : MlregresslassoModel, i : Int, v : Double) -> MlregresslassoModel {
-  let result = ml_regress_lasso_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_lasso_model_sum(s : MlregresslassoModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_regress_lasso_layer_get(s : MlregresslassoLayer, i : Int) -> Double {
 }
 
 pub fn ml_regress_lasso_layer_set(s : MlregresslassoLayer, i : Int, v : Double) -> MlregresslassoLayer {
-  let result = ml_regress_lasso_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_lasso_layer_sum(s : MlregresslassoLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_regress_lasso_buffer_get(s : MlregresslassoBuffer, i : Int) -> Double 
 }
 
 pub fn ml_regress_lasso_buffer_set(s : MlregresslassoBuffer, i : Int, v : Double) -> MlregresslassoBuffer {
-  let result = ml_regress_lasso_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_lasso_buffer_sum(s : MlregresslassoBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_regress_lasso_cursor_get(s : MlregresslassoCursor, i : Int) -> Double 
 }
 
 pub fn ml_regress_lasso_cursor_set(s : MlregresslassoCursor, i : Int, v : Double) -> MlregresslassoCursor {
-  let result = ml_regress_lasso_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_lasso_cursor_sum(s : MlregresslassoCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_regress_lasso_view_get(s : MlregresslassoView, i : Int) -> Double {
 }
 
 pub fn ml_regress_lasso_view_set(s : MlregresslassoView, i : Int, v : Double) -> MlregresslassoView {
-  let result = ml_regress_lasso_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_lasso_view_sum(s : MlregresslassoView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_regress_lasso_range_get(s : MlregresslassoRange, i : Int) -> Double {
 }
 
 pub fn ml_regress_lasso_range_set(s : MlregresslassoRange, i : Int, v : Double) -> MlregresslassoRange {
-  let result = ml_regress_lasso_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_lasso_range_sum(s : MlregresslassoRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_regress_lasso_slice_get(s : MlregresslassoSlice, i : Int) -> Double {
 }
 
 pub fn ml_regress_lasso_slice_set(s : MlregresslassoSlice, i : Int, v : Double) -> MlregresslassoSlice {
-  let result = ml_regress_lasso_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_regress_lasso_slice_sum(s : MlregresslassoSlice) -> Double { @_common.sum(s.data) }

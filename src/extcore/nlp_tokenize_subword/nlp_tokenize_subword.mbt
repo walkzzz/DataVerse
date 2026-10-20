@@ -107,23 +107,15 @@ pub fn nlp_tokenize_subword_series_std(s : NlptokenizesubwordSeries) -> Double {
 pub fn nlp_tokenize_subword_series_median(s : NlptokenizesubwordSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_tokenize_subword_series_scale(s : NlptokenizesubwordSeries, f : Double) -> NlptokenizesubwordSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_tokenize_subword_series_add(a : NlptokenizesubwordSeries, b : NlptokenizesubwordSeries) -> NlptokenizesubwordSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_tokenize_subword_series_sub(a : NlptokenizesubwordSeries, b : NlptokenizesubwordSeries) -> NlptokenizesubwordSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_tokenize_subword_series_normalize(s : NlptokenizesubwordSeries) -> NlptokenizesubwordSeries {
@@ -254,22 +246,16 @@ pub fn nlp_tokenize_subword_vector_zero(dim : Int) -> NlptokenizesubwordVector {
 
 pub fn nlp_tokenize_subword_vector_add(a : NlptokenizesubwordVector, b : NlptokenizesubwordVector) -> NlptokenizesubwordVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_tokenize_subword_vector_sub(a : NlptokenizesubwordVector, b : NlptokenizesubwordVector) -> NlptokenizesubwordVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_tokenize_subword_vector_scale(v : NlptokenizesubwordVector, s : Double) -> NlptokenizesubwordVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_tokenize_subword_vector_dot(a : NlptokenizesubwordVector, b : NlptokenizesubwordVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_tokenize_subword_frame_get(s : NlptokenizesubwordFrame, i : Int) -> D
 }
 
 pub fn nlp_tokenize_subword_frame_set(s : NlptokenizesubwordFrame, i : Int, v : Double) -> NlptokenizesubwordFrame {
-  let result = nlp_tokenize_subword_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_frame_sum(s : NlptokenizesubwordFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_tokenize_subword_table_get(s : NlptokenizesubwordTable, i : Int) -> D
 }
 
 pub fn nlp_tokenize_subword_table_set(s : NlptokenizesubwordTable, i : Int, v : Double) -> NlptokenizesubwordTable {
-  let result = nlp_tokenize_subword_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_table_sum(s : NlptokenizesubwordTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_tokenize_subword_graphn_get(s : NlptokenizesubwordGraphN, i : Int) ->
 }
 
 pub fn nlp_tokenize_subword_graphn_set(s : NlptokenizesubwordGraphN, i : Int, v : Double) -> NlptokenizesubwordGraphN {
-  let result = nlp_tokenize_subword_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_graphn_sum(s : NlptokenizesubwordGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_tokenize_subword_node_get(s : NlptokenizesubwordNode, i : Int) -> Dou
 }
 
 pub fn nlp_tokenize_subword_node_set(s : NlptokenizesubwordNode, i : Int, v : Double) -> NlptokenizesubwordNode {
-  let result = nlp_tokenize_subword_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_node_sum(s : NlptokenizesubwordNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_tokenize_subword_edge_get(s : NlptokenizesubwordEdge, i : Int) -> Dou
 }
 
 pub fn nlp_tokenize_subword_edge_set(s : NlptokenizesubwordEdge, i : Int, v : Double) -> NlptokenizesubwordEdge {
-  let result = nlp_tokenize_subword_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_edge_sum(s : NlptokenizesubwordEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_tokenize_subword_path_get(s : NlptokenizesubwordPath, i : Int) -> Dou
 }
 
 pub fn nlp_tokenize_subword_path_set(s : NlptokenizesubwordPath, i : Int, v : Double) -> NlptokenizesubwordPath {
-  let result = nlp_tokenize_subword_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_path_sum(s : NlptokenizesubwordPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_tokenize_subword_cluster_get(s : NlptokenizesubwordCluster, i : Int) 
 }
 
 pub fn nlp_tokenize_subword_cluster_set(s : NlptokenizesubwordCluster, i : Int, v : Double) -> NlptokenizesubwordCluster {
-  let result = nlp_tokenize_subword_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_cluster_sum(s : NlptokenizesubwordCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_tokenize_subword_model_get(s : NlptokenizesubwordModel, i : Int) -> D
 }
 
 pub fn nlp_tokenize_subword_model_set(s : NlptokenizesubwordModel, i : Int, v : Double) -> NlptokenizesubwordModel {
-  let result = nlp_tokenize_subword_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_model_sum(s : NlptokenizesubwordModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_tokenize_subword_layer_get(s : NlptokenizesubwordLayer, i : Int) -> D
 }
 
 pub fn nlp_tokenize_subword_layer_set(s : NlptokenizesubwordLayer, i : Int, v : Double) -> NlptokenizesubwordLayer {
-  let result = nlp_tokenize_subword_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_layer_sum(s : NlptokenizesubwordLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_tokenize_subword_buffer_get(s : NlptokenizesubwordBuffer, i : Int) ->
 }
 
 pub fn nlp_tokenize_subword_buffer_set(s : NlptokenizesubwordBuffer, i : Int, v : Double) -> NlptokenizesubwordBuffer {
-  let result = nlp_tokenize_subword_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_buffer_sum(s : NlptokenizesubwordBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_tokenize_subword_cursor_get(s : NlptokenizesubwordCursor, i : Int) ->
 }
 
 pub fn nlp_tokenize_subword_cursor_set(s : NlptokenizesubwordCursor, i : Int, v : Double) -> NlptokenizesubwordCursor {
-  let result = nlp_tokenize_subword_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_cursor_sum(s : NlptokenizesubwordCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_tokenize_subword_view_get(s : NlptokenizesubwordView, i : Int) -> Dou
 }
 
 pub fn nlp_tokenize_subword_view_set(s : NlptokenizesubwordView, i : Int, v : Double) -> NlptokenizesubwordView {
-  let result = nlp_tokenize_subword_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_view_sum(s : NlptokenizesubwordView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_tokenize_subword_range_get(s : NlptokenizesubwordRange, i : Int) -> D
 }
 
 pub fn nlp_tokenize_subword_range_set(s : NlptokenizesubwordRange, i : Int, v : Double) -> NlptokenizesubwordRange {
-  let result = nlp_tokenize_subword_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_range_sum(s : NlptokenizesubwordRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_tokenize_subword_slice_get(s : NlptokenizesubwordSlice, i : Int) -> D
 }
 
 pub fn nlp_tokenize_subword_slice_set(s : NlptokenizesubwordSlice, i : Int, v : Double) -> NlptokenizesubwordSlice {
-  let result = nlp_tokenize_subword_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_subword_slice_sum(s : NlptokenizesubwordSlice) -> Double { @_common.sum(s.data) }

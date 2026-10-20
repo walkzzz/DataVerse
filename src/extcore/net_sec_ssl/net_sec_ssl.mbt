@@ -107,23 +107,15 @@ pub fn net_sec_ssl_series_std(s : NetsecsslSeries) -> Double { @_common.std(s.va
 pub fn net_sec_ssl_series_median(s : NetsecsslSeries) -> Double { @_common.median(s.vals) }
 
 pub fn net_sec_ssl_series_scale(s : NetsecsslSeries, f : Double) -> NetsecsslSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn net_sec_ssl_series_add(a : NetsecsslSeries, b : NetsecsslSeries) -> NetsecsslSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn net_sec_ssl_series_sub(a : NetsecsslSeries, b : NetsecsslSeries) -> NetsecsslSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn net_sec_ssl_series_normalize(s : NetsecsslSeries) -> NetsecsslSeries {
@@ -254,22 +246,16 @@ pub fn net_sec_ssl_vector_zero(dim : Int) -> NetsecsslVector {
 
 pub fn net_sec_ssl_vector_add(a : NetsecsslVector, b : NetsecsslVector) -> NetsecsslVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_sec_ssl_vector_sub(a : NetsecsslVector, b : NetsecsslVector) -> NetsecsslVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_sec_ssl_vector_scale(v : NetsecsslVector, s : Double) -> NetsecsslVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn net_sec_ssl_vector_dot(a : NetsecsslVector, b : NetsecsslVector) -> Double {
@@ -372,10 +358,9 @@ pub fn net_sec_ssl_frame_get(s : NetsecsslFrame, i : Int) -> Double {
 }
 
 pub fn net_sec_ssl_frame_set(s : NetsecsslFrame, i : Int, v : Double) -> NetsecsslFrame {
-  let result = net_sec_ssl_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ssl_frame_sum(s : NetsecsslFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn net_sec_ssl_table_get(s : NetsecsslTable, i : Int) -> Double {
 }
 
 pub fn net_sec_ssl_table_set(s : NetsecsslTable, i : Int, v : Double) -> NetsecsslTable {
-  let result = net_sec_ssl_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ssl_table_sum(s : NetsecsslTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn net_sec_ssl_graphn_get(s : NetsecsslGraphN, i : Int) -> Double {
 }
 
 pub fn net_sec_ssl_graphn_set(s : NetsecsslGraphN, i : Int, v : Double) -> NetsecsslGraphN {
-  let result = net_sec_ssl_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ssl_graphn_sum(s : NetsecsslGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn net_sec_ssl_node_get(s : NetsecsslNode, i : Int) -> Double {
 }
 
 pub fn net_sec_ssl_node_set(s : NetsecsslNode, i : Int, v : Double) -> NetsecsslNode {
-  let result = net_sec_ssl_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ssl_node_sum(s : NetsecsslNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn net_sec_ssl_edge_get(s : NetsecsslEdge, i : Int) -> Double {
 }
 
 pub fn net_sec_ssl_edge_set(s : NetsecsslEdge, i : Int, v : Double) -> NetsecsslEdge {
-  let result = net_sec_ssl_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ssl_edge_sum(s : NetsecsslEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn net_sec_ssl_path_get(s : NetsecsslPath, i : Int) -> Double {
 }
 
 pub fn net_sec_ssl_path_set(s : NetsecsslPath, i : Int, v : Double) -> NetsecsslPath {
-  let result = net_sec_ssl_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ssl_path_sum(s : NetsecsslPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn net_sec_ssl_cluster_get(s : NetsecsslCluster, i : Int) -> Double {
 }
 
 pub fn net_sec_ssl_cluster_set(s : NetsecsslCluster, i : Int, v : Double) -> NetsecsslCluster {
-  let result = net_sec_ssl_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ssl_cluster_sum(s : NetsecsslCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn net_sec_ssl_model_get(s : NetsecsslModel, i : Int) -> Double {
 }
 
 pub fn net_sec_ssl_model_set(s : NetsecsslModel, i : Int, v : Double) -> NetsecsslModel {
-  let result = net_sec_ssl_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ssl_model_sum(s : NetsecsslModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn net_sec_ssl_layer_get(s : NetsecsslLayer, i : Int) -> Double {
 }
 
 pub fn net_sec_ssl_layer_set(s : NetsecsslLayer, i : Int, v : Double) -> NetsecsslLayer {
-  let result = net_sec_ssl_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ssl_layer_sum(s : NetsecsslLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn net_sec_ssl_buffer_get(s : NetsecsslBuffer, i : Int) -> Double {
 }
 
 pub fn net_sec_ssl_buffer_set(s : NetsecsslBuffer, i : Int, v : Double) -> NetsecsslBuffer {
-  let result = net_sec_ssl_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ssl_buffer_sum(s : NetsecsslBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn net_sec_ssl_cursor_get(s : NetsecsslCursor, i : Int) -> Double {
 }
 
 pub fn net_sec_ssl_cursor_set(s : NetsecsslCursor, i : Int, v : Double) -> NetsecsslCursor {
-  let result = net_sec_ssl_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ssl_cursor_sum(s : NetsecsslCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn net_sec_ssl_view_get(s : NetsecsslView, i : Int) -> Double {
 }
 
 pub fn net_sec_ssl_view_set(s : NetsecsslView, i : Int, v : Double) -> NetsecsslView {
-  let result = net_sec_ssl_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ssl_view_sum(s : NetsecsslView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn net_sec_ssl_range_get(s : NetsecsslRange, i : Int) -> Double {
 }
 
 pub fn net_sec_ssl_range_set(s : NetsecsslRange, i : Int, v : Double) -> NetsecsslRange {
-  let result = net_sec_ssl_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ssl_range_sum(s : NetsecsslRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn net_sec_ssl_slice_get(s : NetsecsslSlice, i : Int) -> Double {
 }
 
 pub fn net_sec_ssl_slice_set(s : NetsecsslSlice, i : Int, v : Double) -> NetsecsslSlice {
-  let result = net_sec_ssl_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ssl_slice_sum(s : NetsecsslSlice) -> Double { @_common.sum(s.data) }

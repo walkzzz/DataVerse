@@ -107,23 +107,15 @@ pub fn timeseries_forecast_seasonal_series_std(s : TimeseriesforecastseasonalSer
 pub fn timeseries_forecast_seasonal_series_median(s : TimeseriesforecastseasonalSeries) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_forecast_seasonal_series_scale(s : TimeseriesforecastseasonalSeries, f : Double) -> TimeseriesforecastseasonalSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn timeseries_forecast_seasonal_series_add(a : TimeseriesforecastseasonalSeries, b : TimeseriesforecastseasonalSeries) -> TimeseriesforecastseasonalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_forecast_seasonal_series_sub(a : TimeseriesforecastseasonalSeries, b : TimeseriesforecastseasonalSeries) -> TimeseriesforecastseasonalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_forecast_seasonal_series_normalize(s : TimeseriesforecastseasonalSeries) -> TimeseriesforecastseasonalSeries {
@@ -254,22 +246,16 @@ pub fn timeseries_forecast_seasonal_vector_zero(dim : Int) -> Timeseriesforecast
 
 pub fn timeseries_forecast_seasonal_vector_add(a : TimeseriesforecastseasonalVector, b : TimeseriesforecastseasonalVector) -> TimeseriesforecastseasonalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_forecast_seasonal_vector_sub(a : TimeseriesforecastseasonalVector, b : TimeseriesforecastseasonalVector) -> TimeseriesforecastseasonalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_forecast_seasonal_vector_scale(v : TimeseriesforecastseasonalVector, s : Double) -> TimeseriesforecastseasonalVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn timeseries_forecast_seasonal_vector_dot(a : TimeseriesforecastseasonalVector, b : TimeseriesforecastseasonalVector) -> Double {
@@ -372,10 +358,9 @@ pub fn timeseries_forecast_seasonal_frame_get(s : TimeseriesforecastseasonalFram
 }
 
 pub fn timeseries_forecast_seasonal_frame_set(s : TimeseriesforecastseasonalFrame, i : Int, v : Double) -> TimeseriesforecastseasonalFrame {
-  let result = timeseries_forecast_seasonal_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_seasonal_frame_sum(s : TimeseriesforecastseasonalFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn timeseries_forecast_seasonal_table_get(s : TimeseriesforecastseasonalTabl
 }
 
 pub fn timeseries_forecast_seasonal_table_set(s : TimeseriesforecastseasonalTable, i : Int, v : Double) -> TimeseriesforecastseasonalTable {
-  let result = timeseries_forecast_seasonal_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_seasonal_table_sum(s : TimeseriesforecastseasonalTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn timeseries_forecast_seasonal_graphn_get(s : TimeseriesforecastseasonalGra
 }
 
 pub fn timeseries_forecast_seasonal_graphn_set(s : TimeseriesforecastseasonalGraphN, i : Int, v : Double) -> TimeseriesforecastseasonalGraphN {
-  let result = timeseries_forecast_seasonal_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_seasonal_graphn_sum(s : TimeseriesforecastseasonalGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn timeseries_forecast_seasonal_node_get(s : TimeseriesforecastseasonalNode,
 }
 
 pub fn timeseries_forecast_seasonal_node_set(s : TimeseriesforecastseasonalNode, i : Int, v : Double) -> TimeseriesforecastseasonalNode {
-  let result = timeseries_forecast_seasonal_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_seasonal_node_sum(s : TimeseriesforecastseasonalNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn timeseries_forecast_seasonal_edge_get(s : TimeseriesforecastseasonalEdge,
 }
 
 pub fn timeseries_forecast_seasonal_edge_set(s : TimeseriesforecastseasonalEdge, i : Int, v : Double) -> TimeseriesforecastseasonalEdge {
-  let result = timeseries_forecast_seasonal_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_seasonal_edge_sum(s : TimeseriesforecastseasonalEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn timeseries_forecast_seasonal_path_get(s : TimeseriesforecastseasonalPath,
 }
 
 pub fn timeseries_forecast_seasonal_path_set(s : TimeseriesforecastseasonalPath, i : Int, v : Double) -> TimeseriesforecastseasonalPath {
-  let result = timeseries_forecast_seasonal_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_seasonal_path_sum(s : TimeseriesforecastseasonalPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn timeseries_forecast_seasonal_cluster_get(s : TimeseriesforecastseasonalCl
 }
 
 pub fn timeseries_forecast_seasonal_cluster_set(s : TimeseriesforecastseasonalCluster, i : Int, v : Double) -> TimeseriesforecastseasonalCluster {
-  let result = timeseries_forecast_seasonal_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_seasonal_cluster_sum(s : TimeseriesforecastseasonalCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn timeseries_forecast_seasonal_model_get(s : TimeseriesforecastseasonalMode
 }
 
 pub fn timeseries_forecast_seasonal_model_set(s : TimeseriesforecastseasonalModel, i : Int, v : Double) -> TimeseriesforecastseasonalModel {
-  let result = timeseries_forecast_seasonal_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_seasonal_model_sum(s : TimeseriesforecastseasonalModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn timeseries_forecast_seasonal_layer_get(s : TimeseriesforecastseasonalLaye
 }
 
 pub fn timeseries_forecast_seasonal_layer_set(s : TimeseriesforecastseasonalLayer, i : Int, v : Double) -> TimeseriesforecastseasonalLayer {
-  let result = timeseries_forecast_seasonal_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_seasonal_layer_sum(s : TimeseriesforecastseasonalLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn timeseries_forecast_seasonal_buffer_get(s : TimeseriesforecastseasonalBuf
 }
 
 pub fn timeseries_forecast_seasonal_buffer_set(s : TimeseriesforecastseasonalBuffer, i : Int, v : Double) -> TimeseriesforecastseasonalBuffer {
-  let result = timeseries_forecast_seasonal_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_seasonal_buffer_sum(s : TimeseriesforecastseasonalBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn timeseries_forecast_seasonal_cursor_get(s : TimeseriesforecastseasonalCur
 }
 
 pub fn timeseries_forecast_seasonal_cursor_set(s : TimeseriesforecastseasonalCursor, i : Int, v : Double) -> TimeseriesforecastseasonalCursor {
-  let result = timeseries_forecast_seasonal_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_seasonal_cursor_sum(s : TimeseriesforecastseasonalCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn timeseries_forecast_seasonal_view_get(s : TimeseriesforecastseasonalView,
 }
 
 pub fn timeseries_forecast_seasonal_view_set(s : TimeseriesforecastseasonalView, i : Int, v : Double) -> TimeseriesforecastseasonalView {
-  let result = timeseries_forecast_seasonal_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_seasonal_view_sum(s : TimeseriesforecastseasonalView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn timeseries_forecast_seasonal_range_get(s : TimeseriesforecastseasonalRang
 }
 
 pub fn timeseries_forecast_seasonal_range_set(s : TimeseriesforecastseasonalRange, i : Int, v : Double) -> TimeseriesforecastseasonalRange {
-  let result = timeseries_forecast_seasonal_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_seasonal_range_sum(s : TimeseriesforecastseasonalRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn timeseries_forecast_seasonal_slice_get(s : TimeseriesforecastseasonalSlic
 }
 
 pub fn timeseries_forecast_seasonal_slice_set(s : TimeseriesforecastseasonalSlice, i : Int, v : Double) -> TimeseriesforecastseasonalSlice {
-  let result = timeseries_forecast_seasonal_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_forecast_seasonal_slice_sum(s : TimeseriesforecastseasonalSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn ds_graph_labeled_series_std(s : DsgraphlabeledSeries) -> Double { @_commo
 pub fn ds_graph_labeled_series_median(s : DsgraphlabeledSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_graph_labeled_series_scale(s : DsgraphlabeledSeries, f : Double) -> DsgraphlabeledSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_graph_labeled_series_add(a : DsgraphlabeledSeries, b : DsgraphlabeledSeries) -> DsgraphlabeledSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_graph_labeled_series_sub(a : DsgraphlabeledSeries, b : DsgraphlabeledSeries) -> DsgraphlabeledSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_graph_labeled_series_normalize(s : DsgraphlabeledSeries) -> DsgraphlabeledSeries {
@@ -254,22 +246,16 @@ pub fn ds_graph_labeled_vector_zero(dim : Int) -> DsgraphlabeledVector {
 
 pub fn ds_graph_labeled_vector_add(a : DsgraphlabeledVector, b : DsgraphlabeledVector) -> DsgraphlabeledVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_graph_labeled_vector_sub(a : DsgraphlabeledVector, b : DsgraphlabeledVector) -> DsgraphlabeledVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_graph_labeled_vector_scale(v : DsgraphlabeledVector, s : Double) -> DsgraphlabeledVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_graph_labeled_vector_dot(a : DsgraphlabeledVector, b : DsgraphlabeledVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_graph_labeled_frame_get(s : DsgraphlabeledFrame, i : Int) -> Double {
 }
 
 pub fn ds_graph_labeled_frame_set(s : DsgraphlabeledFrame, i : Int, v : Double) -> DsgraphlabeledFrame {
-  let result = ds_graph_labeled_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_labeled_frame_sum(s : DsgraphlabeledFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_graph_labeled_table_get(s : DsgraphlabeledTable, i : Int) -> Double {
 }
 
 pub fn ds_graph_labeled_table_set(s : DsgraphlabeledTable, i : Int, v : Double) -> DsgraphlabeledTable {
-  let result = ds_graph_labeled_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_labeled_table_sum(s : DsgraphlabeledTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_graph_labeled_graphn_get(s : DsgraphlabeledGraphN, i : Int) -> Double 
 }
 
 pub fn ds_graph_labeled_graphn_set(s : DsgraphlabeledGraphN, i : Int, v : Double) -> DsgraphlabeledGraphN {
-  let result = ds_graph_labeled_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_labeled_graphn_sum(s : DsgraphlabeledGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_graph_labeled_node_get(s : DsgraphlabeledNode, i : Int) -> Double {
 }
 
 pub fn ds_graph_labeled_node_set(s : DsgraphlabeledNode, i : Int, v : Double) -> DsgraphlabeledNode {
-  let result = ds_graph_labeled_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_labeled_node_sum(s : DsgraphlabeledNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_graph_labeled_edge_get(s : DsgraphlabeledEdge, i : Int) -> Double {
 }
 
 pub fn ds_graph_labeled_edge_set(s : DsgraphlabeledEdge, i : Int, v : Double) -> DsgraphlabeledEdge {
-  let result = ds_graph_labeled_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_labeled_edge_sum(s : DsgraphlabeledEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_graph_labeled_path_get(s : DsgraphlabeledPath, i : Int) -> Double {
 }
 
 pub fn ds_graph_labeled_path_set(s : DsgraphlabeledPath, i : Int, v : Double) -> DsgraphlabeledPath {
-  let result = ds_graph_labeled_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_labeled_path_sum(s : DsgraphlabeledPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_graph_labeled_cluster_get(s : DsgraphlabeledCluster, i : Int) -> Doubl
 }
 
 pub fn ds_graph_labeled_cluster_set(s : DsgraphlabeledCluster, i : Int, v : Double) -> DsgraphlabeledCluster {
-  let result = ds_graph_labeled_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_labeled_cluster_sum(s : DsgraphlabeledCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_graph_labeled_model_get(s : DsgraphlabeledModel, i : Int) -> Double {
 }
 
 pub fn ds_graph_labeled_model_set(s : DsgraphlabeledModel, i : Int, v : Double) -> DsgraphlabeledModel {
-  let result = ds_graph_labeled_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_labeled_model_sum(s : DsgraphlabeledModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_graph_labeled_layer_get(s : DsgraphlabeledLayer, i : Int) -> Double {
 }
 
 pub fn ds_graph_labeled_layer_set(s : DsgraphlabeledLayer, i : Int, v : Double) -> DsgraphlabeledLayer {
-  let result = ds_graph_labeled_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_labeled_layer_sum(s : DsgraphlabeledLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_graph_labeled_buffer_get(s : DsgraphlabeledBuffer, i : Int) -> Double 
 }
 
 pub fn ds_graph_labeled_buffer_set(s : DsgraphlabeledBuffer, i : Int, v : Double) -> DsgraphlabeledBuffer {
-  let result = ds_graph_labeled_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_labeled_buffer_sum(s : DsgraphlabeledBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_graph_labeled_cursor_get(s : DsgraphlabeledCursor, i : Int) -> Double 
 }
 
 pub fn ds_graph_labeled_cursor_set(s : DsgraphlabeledCursor, i : Int, v : Double) -> DsgraphlabeledCursor {
-  let result = ds_graph_labeled_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_labeled_cursor_sum(s : DsgraphlabeledCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_graph_labeled_view_get(s : DsgraphlabeledView, i : Int) -> Double {
 }
 
 pub fn ds_graph_labeled_view_set(s : DsgraphlabeledView, i : Int, v : Double) -> DsgraphlabeledView {
-  let result = ds_graph_labeled_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_labeled_view_sum(s : DsgraphlabeledView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_graph_labeled_range_get(s : DsgraphlabeledRange, i : Int) -> Double {
 }
 
 pub fn ds_graph_labeled_range_set(s : DsgraphlabeledRange, i : Int, v : Double) -> DsgraphlabeledRange {
-  let result = ds_graph_labeled_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_labeled_range_sum(s : DsgraphlabeledRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_graph_labeled_slice_get(s : DsgraphlabeledSlice, i : Int) -> Double {
 }
 
 pub fn ds_graph_labeled_slice_set(s : DsgraphlabeledSlice, i : Int, v : Double) -> DsgraphlabeledSlice {
-  let result = ds_graph_labeled_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_graph_labeled_slice_sum(s : DsgraphlabeledSlice) -> Double { @_common.sum(s.data) }

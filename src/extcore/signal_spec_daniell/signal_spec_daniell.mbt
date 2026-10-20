@@ -107,23 +107,15 @@ pub fn signal_spec_daniell_series_std(s : SignalspecdaniellSeries) -> Double { @
 pub fn signal_spec_daniell_series_median(s : SignalspecdaniellSeries) -> Double { @_common.median(s.vals) }
 
 pub fn signal_spec_daniell_series_scale(s : SignalspecdaniellSeries, f : Double) -> SignalspecdaniellSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn signal_spec_daniell_series_add(a : SignalspecdaniellSeries, b : SignalspecdaniellSeries) -> SignalspecdaniellSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_spec_daniell_series_sub(a : SignalspecdaniellSeries, b : SignalspecdaniellSeries) -> SignalspecdaniellSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn signal_spec_daniell_series_normalize(s : SignalspecdaniellSeries) -> SignalspecdaniellSeries {
@@ -254,22 +246,16 @@ pub fn signal_spec_daniell_vector_zero(dim : Int) -> SignalspecdaniellVector {
 
 pub fn signal_spec_daniell_vector_add(a : SignalspecdaniellVector, b : SignalspecdaniellVector) -> SignalspecdaniellVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_spec_daniell_vector_sub(a : SignalspecdaniellVector, b : SignalspecdaniellVector) -> SignalspecdaniellVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn signal_spec_daniell_vector_scale(v : SignalspecdaniellVector, s : Double) -> SignalspecdaniellVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn signal_spec_daniell_vector_dot(a : SignalspecdaniellVector, b : SignalspecdaniellVector) -> Double {
@@ -372,10 +358,9 @@ pub fn signal_spec_daniell_frame_get(s : SignalspecdaniellFrame, i : Int) -> Dou
 }
 
 pub fn signal_spec_daniell_frame_set(s : SignalspecdaniellFrame, i : Int, v : Double) -> SignalspecdaniellFrame {
-  let result = signal_spec_daniell_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_daniell_frame_sum(s : SignalspecdaniellFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn signal_spec_daniell_table_get(s : SignalspecdaniellTable, i : Int) -> Dou
 }
 
 pub fn signal_spec_daniell_table_set(s : SignalspecdaniellTable, i : Int, v : Double) -> SignalspecdaniellTable {
-  let result = signal_spec_daniell_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_daniell_table_sum(s : SignalspecdaniellTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn signal_spec_daniell_graphn_get(s : SignalspecdaniellGraphN, i : Int) -> D
 }
 
 pub fn signal_spec_daniell_graphn_set(s : SignalspecdaniellGraphN, i : Int, v : Double) -> SignalspecdaniellGraphN {
-  let result = signal_spec_daniell_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_daniell_graphn_sum(s : SignalspecdaniellGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn signal_spec_daniell_node_get(s : SignalspecdaniellNode, i : Int) -> Doubl
 }
 
 pub fn signal_spec_daniell_node_set(s : SignalspecdaniellNode, i : Int, v : Double) -> SignalspecdaniellNode {
-  let result = signal_spec_daniell_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_daniell_node_sum(s : SignalspecdaniellNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn signal_spec_daniell_edge_get(s : SignalspecdaniellEdge, i : Int) -> Doubl
 }
 
 pub fn signal_spec_daniell_edge_set(s : SignalspecdaniellEdge, i : Int, v : Double) -> SignalspecdaniellEdge {
-  let result = signal_spec_daniell_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_daniell_edge_sum(s : SignalspecdaniellEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn signal_spec_daniell_path_get(s : SignalspecdaniellPath, i : Int) -> Doubl
 }
 
 pub fn signal_spec_daniell_path_set(s : SignalspecdaniellPath, i : Int, v : Double) -> SignalspecdaniellPath {
-  let result = signal_spec_daniell_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_daniell_path_sum(s : SignalspecdaniellPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn signal_spec_daniell_cluster_get(s : SignalspecdaniellCluster, i : Int) ->
 }
 
 pub fn signal_spec_daniell_cluster_set(s : SignalspecdaniellCluster, i : Int, v : Double) -> SignalspecdaniellCluster {
-  let result = signal_spec_daniell_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_daniell_cluster_sum(s : SignalspecdaniellCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn signal_spec_daniell_model_get(s : SignalspecdaniellModel, i : Int) -> Dou
 }
 
 pub fn signal_spec_daniell_model_set(s : SignalspecdaniellModel, i : Int, v : Double) -> SignalspecdaniellModel {
-  let result = signal_spec_daniell_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_daniell_model_sum(s : SignalspecdaniellModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn signal_spec_daniell_layer_get(s : SignalspecdaniellLayer, i : Int) -> Dou
 }
 
 pub fn signal_spec_daniell_layer_set(s : SignalspecdaniellLayer, i : Int, v : Double) -> SignalspecdaniellLayer {
-  let result = signal_spec_daniell_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_daniell_layer_sum(s : SignalspecdaniellLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn signal_spec_daniell_buffer_get(s : SignalspecdaniellBuffer, i : Int) -> D
 }
 
 pub fn signal_spec_daniell_buffer_set(s : SignalspecdaniellBuffer, i : Int, v : Double) -> SignalspecdaniellBuffer {
-  let result = signal_spec_daniell_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_daniell_buffer_sum(s : SignalspecdaniellBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn signal_spec_daniell_cursor_get(s : SignalspecdaniellCursor, i : Int) -> D
 }
 
 pub fn signal_spec_daniell_cursor_set(s : SignalspecdaniellCursor, i : Int, v : Double) -> SignalspecdaniellCursor {
-  let result = signal_spec_daniell_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_daniell_cursor_sum(s : SignalspecdaniellCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn signal_spec_daniell_view_get(s : SignalspecdaniellView, i : Int) -> Doubl
 }
 
 pub fn signal_spec_daniell_view_set(s : SignalspecdaniellView, i : Int, v : Double) -> SignalspecdaniellView {
-  let result = signal_spec_daniell_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_daniell_view_sum(s : SignalspecdaniellView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn signal_spec_daniell_range_get(s : SignalspecdaniellRange, i : Int) -> Dou
 }
 
 pub fn signal_spec_daniell_range_set(s : SignalspecdaniellRange, i : Int, v : Double) -> SignalspecdaniellRange {
-  let result = signal_spec_daniell_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_daniell_range_sum(s : SignalspecdaniellRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn signal_spec_daniell_slice_get(s : SignalspecdaniellSlice, i : Int) -> Dou
 }
 
 pub fn signal_spec_daniell_slice_set(s : SignalspecdaniellSlice, i : Int, v : Double) -> SignalspecdaniellSlice {
-  let result = signal_spec_daniell_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn signal_spec_daniell_slice_sum(s : SignalspecdaniellSlice) -> Double { @_common.sum(s.data) }

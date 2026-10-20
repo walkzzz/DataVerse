@@ -107,23 +107,15 @@ pub fn opt_convex_newton_series_std(s : OptconvexnewtonSeries) -> Double { @_com
 pub fn opt_convex_newton_series_median(s : OptconvexnewtonSeries) -> Double { @_common.median(s.vals) }
 
 pub fn opt_convex_newton_series_scale(s : OptconvexnewtonSeries, f : Double) -> OptconvexnewtonSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn opt_convex_newton_series_add(a : OptconvexnewtonSeries, b : OptconvexnewtonSeries) -> OptconvexnewtonSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn opt_convex_newton_series_sub(a : OptconvexnewtonSeries, b : OptconvexnewtonSeries) -> OptconvexnewtonSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn opt_convex_newton_series_normalize(s : OptconvexnewtonSeries) -> OptconvexnewtonSeries {
@@ -254,22 +246,16 @@ pub fn opt_convex_newton_vector_zero(dim : Int) -> OptconvexnewtonVector {
 
 pub fn opt_convex_newton_vector_add(a : OptconvexnewtonVector, b : OptconvexnewtonVector) -> OptconvexnewtonVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_convex_newton_vector_sub(a : OptconvexnewtonVector, b : OptconvexnewtonVector) -> OptconvexnewtonVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn opt_convex_newton_vector_scale(v : OptconvexnewtonVector, s : Double) -> OptconvexnewtonVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn opt_convex_newton_vector_dot(a : OptconvexnewtonVector, b : OptconvexnewtonVector) -> Double {
@@ -372,10 +358,9 @@ pub fn opt_convex_newton_frame_get(s : OptconvexnewtonFrame, i : Int) -> Double 
 }
 
 pub fn opt_convex_newton_frame_set(s : OptconvexnewtonFrame, i : Int, v : Double) -> OptconvexnewtonFrame {
-  let result = opt_convex_newton_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_newton_frame_sum(s : OptconvexnewtonFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn opt_convex_newton_table_get(s : OptconvexnewtonTable, i : Int) -> Double 
 }
 
 pub fn opt_convex_newton_table_set(s : OptconvexnewtonTable, i : Int, v : Double) -> OptconvexnewtonTable {
-  let result = opt_convex_newton_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_newton_table_sum(s : OptconvexnewtonTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn opt_convex_newton_graphn_get(s : OptconvexnewtonGraphN, i : Int) -> Doubl
 }
 
 pub fn opt_convex_newton_graphn_set(s : OptconvexnewtonGraphN, i : Int, v : Double) -> OptconvexnewtonGraphN {
-  let result = opt_convex_newton_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_newton_graphn_sum(s : OptconvexnewtonGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn opt_convex_newton_node_get(s : OptconvexnewtonNode, i : Int) -> Double {
 }
 
 pub fn opt_convex_newton_node_set(s : OptconvexnewtonNode, i : Int, v : Double) -> OptconvexnewtonNode {
-  let result = opt_convex_newton_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_newton_node_sum(s : OptconvexnewtonNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn opt_convex_newton_edge_get(s : OptconvexnewtonEdge, i : Int) -> Double {
 }
 
 pub fn opt_convex_newton_edge_set(s : OptconvexnewtonEdge, i : Int, v : Double) -> OptconvexnewtonEdge {
-  let result = opt_convex_newton_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_newton_edge_sum(s : OptconvexnewtonEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn opt_convex_newton_path_get(s : OptconvexnewtonPath, i : Int) -> Double {
 }
 
 pub fn opt_convex_newton_path_set(s : OptconvexnewtonPath, i : Int, v : Double) -> OptconvexnewtonPath {
-  let result = opt_convex_newton_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_newton_path_sum(s : OptconvexnewtonPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn opt_convex_newton_cluster_get(s : OptconvexnewtonCluster, i : Int) -> Dou
 }
 
 pub fn opt_convex_newton_cluster_set(s : OptconvexnewtonCluster, i : Int, v : Double) -> OptconvexnewtonCluster {
-  let result = opt_convex_newton_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_newton_cluster_sum(s : OptconvexnewtonCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn opt_convex_newton_model_get(s : OptconvexnewtonModel, i : Int) -> Double 
 }
 
 pub fn opt_convex_newton_model_set(s : OptconvexnewtonModel, i : Int, v : Double) -> OptconvexnewtonModel {
-  let result = opt_convex_newton_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_newton_model_sum(s : OptconvexnewtonModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn opt_convex_newton_layer_get(s : OptconvexnewtonLayer, i : Int) -> Double 
 }
 
 pub fn opt_convex_newton_layer_set(s : OptconvexnewtonLayer, i : Int, v : Double) -> OptconvexnewtonLayer {
-  let result = opt_convex_newton_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_newton_layer_sum(s : OptconvexnewtonLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn opt_convex_newton_buffer_get(s : OptconvexnewtonBuffer, i : Int) -> Doubl
 }
 
 pub fn opt_convex_newton_buffer_set(s : OptconvexnewtonBuffer, i : Int, v : Double) -> OptconvexnewtonBuffer {
-  let result = opt_convex_newton_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_newton_buffer_sum(s : OptconvexnewtonBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn opt_convex_newton_cursor_get(s : OptconvexnewtonCursor, i : Int) -> Doubl
 }
 
 pub fn opt_convex_newton_cursor_set(s : OptconvexnewtonCursor, i : Int, v : Double) -> OptconvexnewtonCursor {
-  let result = opt_convex_newton_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_newton_cursor_sum(s : OptconvexnewtonCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn opt_convex_newton_view_get(s : OptconvexnewtonView, i : Int) -> Double {
 }
 
 pub fn opt_convex_newton_view_set(s : OptconvexnewtonView, i : Int, v : Double) -> OptconvexnewtonView {
-  let result = opt_convex_newton_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_newton_view_sum(s : OptconvexnewtonView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn opt_convex_newton_range_get(s : OptconvexnewtonRange, i : Int) -> Double 
 }
 
 pub fn opt_convex_newton_range_set(s : OptconvexnewtonRange, i : Int, v : Double) -> OptconvexnewtonRange {
-  let result = opt_convex_newton_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_newton_range_sum(s : OptconvexnewtonRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn opt_convex_newton_slice_get(s : OptconvexnewtonSlice, i : Int) -> Double 
 }
 
 pub fn opt_convex_newton_slice_set(s : OptconvexnewtonSlice, i : Int, v : Double) -> OptconvexnewtonSlice {
-  let result = opt_convex_newton_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn opt_convex_newton_slice_sum(s : OptconvexnewtonSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn stats_test_homogeneity_series_std(s : StatstesthomogeneitySeries) -> Doub
 pub fn stats_test_homogeneity_series_median(s : StatstesthomogeneitySeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_test_homogeneity_series_scale(s : StatstesthomogeneitySeries, f : Double) -> StatstesthomogeneitySeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_test_homogeneity_series_add(a : StatstesthomogeneitySeries, b : StatstesthomogeneitySeries) -> StatstesthomogeneitySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_test_homogeneity_series_sub(a : StatstesthomogeneitySeries, b : StatstesthomogeneitySeries) -> StatstesthomogeneitySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_test_homogeneity_series_normalize(s : StatstesthomogeneitySeries) -> StatstesthomogeneitySeries {
@@ -254,22 +246,16 @@ pub fn stats_test_homogeneity_vector_zero(dim : Int) -> StatstesthomogeneityVect
 
 pub fn stats_test_homogeneity_vector_add(a : StatstesthomogeneityVector, b : StatstesthomogeneityVector) -> StatstesthomogeneityVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_test_homogeneity_vector_sub(a : StatstesthomogeneityVector, b : StatstesthomogeneityVector) -> StatstesthomogeneityVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_test_homogeneity_vector_scale(v : StatstesthomogeneityVector, s : Double) -> StatstesthomogeneityVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_test_homogeneity_vector_dot(a : StatstesthomogeneityVector, b : StatstesthomogeneityVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_test_homogeneity_frame_get(s : StatstesthomogeneityFrame, i : Int) 
 }
 
 pub fn stats_test_homogeneity_frame_set(s : StatstesthomogeneityFrame, i : Int, v : Double) -> StatstesthomogeneityFrame {
-  let result = stats_test_homogeneity_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_homogeneity_frame_sum(s : StatstesthomogeneityFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_test_homogeneity_table_get(s : StatstesthomogeneityTable, i : Int) 
 }
 
 pub fn stats_test_homogeneity_table_set(s : StatstesthomogeneityTable, i : Int, v : Double) -> StatstesthomogeneityTable {
-  let result = stats_test_homogeneity_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_homogeneity_table_sum(s : StatstesthomogeneityTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_test_homogeneity_graphn_get(s : StatstesthomogeneityGraphN, i : Int
 }
 
 pub fn stats_test_homogeneity_graphn_set(s : StatstesthomogeneityGraphN, i : Int, v : Double) -> StatstesthomogeneityGraphN {
-  let result = stats_test_homogeneity_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_homogeneity_graphn_sum(s : StatstesthomogeneityGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_test_homogeneity_node_get(s : StatstesthomogeneityNode, i : Int) ->
 }
 
 pub fn stats_test_homogeneity_node_set(s : StatstesthomogeneityNode, i : Int, v : Double) -> StatstesthomogeneityNode {
-  let result = stats_test_homogeneity_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_homogeneity_node_sum(s : StatstesthomogeneityNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_test_homogeneity_edge_get(s : StatstesthomogeneityEdge, i : Int) ->
 }
 
 pub fn stats_test_homogeneity_edge_set(s : StatstesthomogeneityEdge, i : Int, v : Double) -> StatstesthomogeneityEdge {
-  let result = stats_test_homogeneity_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_homogeneity_edge_sum(s : StatstesthomogeneityEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_test_homogeneity_path_get(s : StatstesthomogeneityPath, i : Int) ->
 }
 
 pub fn stats_test_homogeneity_path_set(s : StatstesthomogeneityPath, i : Int, v : Double) -> StatstesthomogeneityPath {
-  let result = stats_test_homogeneity_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_homogeneity_path_sum(s : StatstesthomogeneityPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_test_homogeneity_cluster_get(s : StatstesthomogeneityCluster, i : I
 }
 
 pub fn stats_test_homogeneity_cluster_set(s : StatstesthomogeneityCluster, i : Int, v : Double) -> StatstesthomogeneityCluster {
-  let result = stats_test_homogeneity_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_homogeneity_cluster_sum(s : StatstesthomogeneityCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_test_homogeneity_model_get(s : StatstesthomogeneityModel, i : Int) 
 }
 
 pub fn stats_test_homogeneity_model_set(s : StatstesthomogeneityModel, i : Int, v : Double) -> StatstesthomogeneityModel {
-  let result = stats_test_homogeneity_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_homogeneity_model_sum(s : StatstesthomogeneityModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_test_homogeneity_layer_get(s : StatstesthomogeneityLayer, i : Int) 
 }
 
 pub fn stats_test_homogeneity_layer_set(s : StatstesthomogeneityLayer, i : Int, v : Double) -> StatstesthomogeneityLayer {
-  let result = stats_test_homogeneity_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_homogeneity_layer_sum(s : StatstesthomogeneityLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_test_homogeneity_buffer_get(s : StatstesthomogeneityBuffer, i : Int
 }
 
 pub fn stats_test_homogeneity_buffer_set(s : StatstesthomogeneityBuffer, i : Int, v : Double) -> StatstesthomogeneityBuffer {
-  let result = stats_test_homogeneity_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_homogeneity_buffer_sum(s : StatstesthomogeneityBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_test_homogeneity_cursor_get(s : StatstesthomogeneityCursor, i : Int
 }
 
 pub fn stats_test_homogeneity_cursor_set(s : StatstesthomogeneityCursor, i : Int, v : Double) -> StatstesthomogeneityCursor {
-  let result = stats_test_homogeneity_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_homogeneity_cursor_sum(s : StatstesthomogeneityCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_test_homogeneity_view_get(s : StatstesthomogeneityView, i : Int) ->
 }
 
 pub fn stats_test_homogeneity_view_set(s : StatstesthomogeneityView, i : Int, v : Double) -> StatstesthomogeneityView {
-  let result = stats_test_homogeneity_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_homogeneity_view_sum(s : StatstesthomogeneityView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_test_homogeneity_range_get(s : StatstesthomogeneityRange, i : Int) 
 }
 
 pub fn stats_test_homogeneity_range_set(s : StatstesthomogeneityRange, i : Int, v : Double) -> StatstesthomogeneityRange {
-  let result = stats_test_homogeneity_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_homogeneity_range_sum(s : StatstesthomogeneityRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_test_homogeneity_slice_get(s : StatstesthomogeneitySlice, i : Int) 
 }
 
 pub fn stats_test_homogeneity_slice_set(s : StatstesthomogeneitySlice, i : Int, v : Double) -> StatstesthomogeneitySlice {
-  let result = stats_test_homogeneity_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_test_homogeneity_slice_sum(s : StatstesthomogeneitySlice) -> Double { @_common.sum(s.data) }

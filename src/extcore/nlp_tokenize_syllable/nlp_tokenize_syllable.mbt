@@ -107,23 +107,15 @@ pub fn nlp_tokenize_syllable_series_std(s : NlptokenizesyllableSeries) -> Double
 pub fn nlp_tokenize_syllable_series_median(s : NlptokenizesyllableSeries) -> Double { @_common.median(s.vals) }
 
 pub fn nlp_tokenize_syllable_series_scale(s : NlptokenizesyllableSeries, f : Double) -> NlptokenizesyllableSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn nlp_tokenize_syllable_series_add(a : NlptokenizesyllableSeries, b : NlptokenizesyllableSeries) -> NlptokenizesyllableSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn nlp_tokenize_syllable_series_sub(a : NlptokenizesyllableSeries, b : NlptokenizesyllableSeries) -> NlptokenizesyllableSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn nlp_tokenize_syllable_series_normalize(s : NlptokenizesyllableSeries) -> NlptokenizesyllableSeries {
@@ -254,22 +246,16 @@ pub fn nlp_tokenize_syllable_vector_zero(dim : Int) -> NlptokenizesyllableVector
 
 pub fn nlp_tokenize_syllable_vector_add(a : NlptokenizesyllableVector, b : NlptokenizesyllableVector) -> NlptokenizesyllableVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_tokenize_syllable_vector_sub(a : NlptokenizesyllableVector, b : NlptokenizesyllableVector) -> NlptokenizesyllableVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn nlp_tokenize_syllable_vector_scale(v : NlptokenizesyllableVector, s : Double) -> NlptokenizesyllableVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn nlp_tokenize_syllable_vector_dot(a : NlptokenizesyllableVector, b : NlptokenizesyllableVector) -> Double {
@@ -372,10 +358,9 @@ pub fn nlp_tokenize_syllable_frame_get(s : NlptokenizesyllableFrame, i : Int) ->
 }
 
 pub fn nlp_tokenize_syllable_frame_set(s : NlptokenizesyllableFrame, i : Int, v : Double) -> NlptokenizesyllableFrame {
-  let result = nlp_tokenize_syllable_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_frame_sum(s : NlptokenizesyllableFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn nlp_tokenize_syllable_table_get(s : NlptokenizesyllableTable, i : Int) ->
 }
 
 pub fn nlp_tokenize_syllable_table_set(s : NlptokenizesyllableTable, i : Int, v : Double) -> NlptokenizesyllableTable {
-  let result = nlp_tokenize_syllable_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_table_sum(s : NlptokenizesyllableTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn nlp_tokenize_syllable_graphn_get(s : NlptokenizesyllableGraphN, i : Int) 
 }
 
 pub fn nlp_tokenize_syllable_graphn_set(s : NlptokenizesyllableGraphN, i : Int, v : Double) -> NlptokenizesyllableGraphN {
-  let result = nlp_tokenize_syllable_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_graphn_sum(s : NlptokenizesyllableGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn nlp_tokenize_syllable_node_get(s : NlptokenizesyllableNode, i : Int) -> D
 }
 
 pub fn nlp_tokenize_syllable_node_set(s : NlptokenizesyllableNode, i : Int, v : Double) -> NlptokenizesyllableNode {
-  let result = nlp_tokenize_syllable_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_node_sum(s : NlptokenizesyllableNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn nlp_tokenize_syllable_edge_get(s : NlptokenizesyllableEdge, i : Int) -> D
 }
 
 pub fn nlp_tokenize_syllable_edge_set(s : NlptokenizesyllableEdge, i : Int, v : Double) -> NlptokenizesyllableEdge {
-  let result = nlp_tokenize_syllable_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_edge_sum(s : NlptokenizesyllableEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn nlp_tokenize_syllable_path_get(s : NlptokenizesyllablePath, i : Int) -> D
 }
 
 pub fn nlp_tokenize_syllable_path_set(s : NlptokenizesyllablePath, i : Int, v : Double) -> NlptokenizesyllablePath {
-  let result = nlp_tokenize_syllable_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_path_sum(s : NlptokenizesyllablePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn nlp_tokenize_syllable_cluster_get(s : NlptokenizesyllableCluster, i : Int
 }
 
 pub fn nlp_tokenize_syllable_cluster_set(s : NlptokenizesyllableCluster, i : Int, v : Double) -> NlptokenizesyllableCluster {
-  let result = nlp_tokenize_syllable_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_cluster_sum(s : NlptokenizesyllableCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn nlp_tokenize_syllable_model_get(s : NlptokenizesyllableModel, i : Int) ->
 }
 
 pub fn nlp_tokenize_syllable_model_set(s : NlptokenizesyllableModel, i : Int, v : Double) -> NlptokenizesyllableModel {
-  let result = nlp_tokenize_syllable_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_model_sum(s : NlptokenizesyllableModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn nlp_tokenize_syllable_layer_get(s : NlptokenizesyllableLayer, i : Int) ->
 }
 
 pub fn nlp_tokenize_syllable_layer_set(s : NlptokenizesyllableLayer, i : Int, v : Double) -> NlptokenizesyllableLayer {
-  let result = nlp_tokenize_syllable_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_layer_sum(s : NlptokenizesyllableLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn nlp_tokenize_syllable_buffer_get(s : NlptokenizesyllableBuffer, i : Int) 
 }
 
 pub fn nlp_tokenize_syllable_buffer_set(s : NlptokenizesyllableBuffer, i : Int, v : Double) -> NlptokenizesyllableBuffer {
-  let result = nlp_tokenize_syllable_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_buffer_sum(s : NlptokenizesyllableBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn nlp_tokenize_syllable_cursor_get(s : NlptokenizesyllableCursor, i : Int) 
 }
 
 pub fn nlp_tokenize_syllable_cursor_set(s : NlptokenizesyllableCursor, i : Int, v : Double) -> NlptokenizesyllableCursor {
-  let result = nlp_tokenize_syllable_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_cursor_sum(s : NlptokenizesyllableCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn nlp_tokenize_syllable_view_get(s : NlptokenizesyllableView, i : Int) -> D
 }
 
 pub fn nlp_tokenize_syllable_view_set(s : NlptokenizesyllableView, i : Int, v : Double) -> NlptokenizesyllableView {
-  let result = nlp_tokenize_syllable_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_view_sum(s : NlptokenizesyllableView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn nlp_tokenize_syllable_range_get(s : NlptokenizesyllableRange, i : Int) ->
 }
 
 pub fn nlp_tokenize_syllable_range_set(s : NlptokenizesyllableRange, i : Int, v : Double) -> NlptokenizesyllableRange {
-  let result = nlp_tokenize_syllable_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_range_sum(s : NlptokenizesyllableRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn nlp_tokenize_syllable_slice_get(s : NlptokenizesyllableSlice, i : Int) ->
 }
 
 pub fn nlp_tokenize_syllable_slice_set(s : NlptokenizesyllableSlice, i : Int, v : Double) -> NlptokenizesyllableSlice {
-  let result = nlp_tokenize_syllable_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn nlp_tokenize_syllable_slice_sum(s : NlptokenizesyllableSlice) -> Double { @_common.sum(s.data) }

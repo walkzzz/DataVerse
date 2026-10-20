@@ -107,23 +107,15 @@ pub fn timeseries_arima_series_std(s : TimeseriesarimaSeries) -> Double { @_comm
 pub fn timeseries_arima_series_median(s : TimeseriesarimaSeries) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_arima_series_scale(s : TimeseriesarimaSeries, f : Double) -> TimeseriesarimaSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn timeseries_arima_series_add(a : TimeseriesarimaSeries, b : TimeseriesarimaSeries) -> TimeseriesarimaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_arima_series_sub(a : TimeseriesarimaSeries, b : TimeseriesarimaSeries) -> TimeseriesarimaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_arima_series_normalize(s : TimeseriesarimaSeries) -> TimeseriesarimaSeries {
@@ -254,22 +246,16 @@ pub fn timeseries_arima_vector_zero(dim : Int) -> TimeseriesarimaVector {
 
 pub fn timeseries_arima_vector_add(a : TimeseriesarimaVector, b : TimeseriesarimaVector) -> TimeseriesarimaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_arima_vector_sub(a : TimeseriesarimaVector, b : TimeseriesarimaVector) -> TimeseriesarimaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_arima_vector_scale(v : TimeseriesarimaVector, s : Double) -> TimeseriesarimaVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn timeseries_arima_vector_dot(a : TimeseriesarimaVector, b : TimeseriesarimaVector) -> Double {
@@ -372,10 +358,9 @@ pub fn timeseries_arima_frame_get(s : TimeseriesarimaFrame, i : Int) -> Double {
 }
 
 pub fn timeseries_arima_frame_set(s : TimeseriesarimaFrame, i : Int, v : Double) -> TimeseriesarimaFrame {
-  let result = timeseries_arima_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_arima_frame_sum(s : TimeseriesarimaFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn timeseries_arima_table_get(s : TimeseriesarimaTable, i : Int) -> Double {
 }
 
 pub fn timeseries_arima_table_set(s : TimeseriesarimaTable, i : Int, v : Double) -> TimeseriesarimaTable {
-  let result = timeseries_arima_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_arima_table_sum(s : TimeseriesarimaTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn timeseries_arima_graphn_get(s : TimeseriesarimaGraphN, i : Int) -> Double
 }
 
 pub fn timeseries_arima_graphn_set(s : TimeseriesarimaGraphN, i : Int, v : Double) -> TimeseriesarimaGraphN {
-  let result = timeseries_arima_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_arima_graphn_sum(s : TimeseriesarimaGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn timeseries_arima_node_get(s : TimeseriesarimaNode, i : Int) -> Double {
 }
 
 pub fn timeseries_arima_node_set(s : TimeseriesarimaNode, i : Int, v : Double) -> TimeseriesarimaNode {
-  let result = timeseries_arima_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_arima_node_sum(s : TimeseriesarimaNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn timeseries_arima_edge_get(s : TimeseriesarimaEdge, i : Int) -> Double {
 }
 
 pub fn timeseries_arima_edge_set(s : TimeseriesarimaEdge, i : Int, v : Double) -> TimeseriesarimaEdge {
-  let result = timeseries_arima_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_arima_edge_sum(s : TimeseriesarimaEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn timeseries_arima_path_get(s : TimeseriesarimaPath, i : Int) -> Double {
 }
 
 pub fn timeseries_arima_path_set(s : TimeseriesarimaPath, i : Int, v : Double) -> TimeseriesarimaPath {
-  let result = timeseries_arima_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_arima_path_sum(s : TimeseriesarimaPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn timeseries_arima_cluster_get(s : TimeseriesarimaCluster, i : Int) -> Doub
 }
 
 pub fn timeseries_arima_cluster_set(s : TimeseriesarimaCluster, i : Int, v : Double) -> TimeseriesarimaCluster {
-  let result = timeseries_arima_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_arima_cluster_sum(s : TimeseriesarimaCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn timeseries_arima_model_get(s : TimeseriesarimaModel, i : Int) -> Double {
 }
 
 pub fn timeseries_arima_model_set(s : TimeseriesarimaModel, i : Int, v : Double) -> TimeseriesarimaModel {
-  let result = timeseries_arima_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_arima_model_sum(s : TimeseriesarimaModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn timeseries_arima_layer_get(s : TimeseriesarimaLayer, i : Int) -> Double {
 }
 
 pub fn timeseries_arima_layer_set(s : TimeseriesarimaLayer, i : Int, v : Double) -> TimeseriesarimaLayer {
-  let result = timeseries_arima_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_arima_layer_sum(s : TimeseriesarimaLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn timeseries_arima_buffer_get(s : TimeseriesarimaBuffer, i : Int) -> Double
 }
 
 pub fn timeseries_arima_buffer_set(s : TimeseriesarimaBuffer, i : Int, v : Double) -> TimeseriesarimaBuffer {
-  let result = timeseries_arima_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_arima_buffer_sum(s : TimeseriesarimaBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn timeseries_arima_cursor_get(s : TimeseriesarimaCursor, i : Int) -> Double
 }
 
 pub fn timeseries_arima_cursor_set(s : TimeseriesarimaCursor, i : Int, v : Double) -> TimeseriesarimaCursor {
-  let result = timeseries_arima_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_arima_cursor_sum(s : TimeseriesarimaCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn timeseries_arima_view_get(s : TimeseriesarimaView, i : Int) -> Double {
 }
 
 pub fn timeseries_arima_view_set(s : TimeseriesarimaView, i : Int, v : Double) -> TimeseriesarimaView {
-  let result = timeseries_arima_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_arima_view_sum(s : TimeseriesarimaView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn timeseries_arima_range_get(s : TimeseriesarimaRange, i : Int) -> Double {
 }
 
 pub fn timeseries_arima_range_set(s : TimeseriesarimaRange, i : Int, v : Double) -> TimeseriesarimaRange {
-  let result = timeseries_arima_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_arima_range_sum(s : TimeseriesarimaRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn timeseries_arima_slice_get(s : TimeseriesarimaSlice, i : Int) -> Double {
 }
 
 pub fn timeseries_arima_slice_set(s : TimeseriesarimaSlice, i : Int, v : Double) -> TimeseriesarimaSlice {
-  let result = timeseries_arima_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_arima_slice_sum(s : TimeseriesarimaSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn ml_ensemble_lightgbm_series_std(s : MlensemblelightgbmSeries) -> Double {
 pub fn ml_ensemble_lightgbm_series_median(s : MlensemblelightgbmSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_ensemble_lightgbm_series_scale(s : MlensemblelightgbmSeries, f : Double) -> MlensemblelightgbmSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_ensemble_lightgbm_series_add(a : MlensemblelightgbmSeries, b : MlensemblelightgbmSeries) -> MlensemblelightgbmSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_ensemble_lightgbm_series_sub(a : MlensemblelightgbmSeries, b : MlensemblelightgbmSeries) -> MlensemblelightgbmSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_ensemble_lightgbm_series_normalize(s : MlensemblelightgbmSeries) -> MlensemblelightgbmSeries {
@@ -254,22 +246,16 @@ pub fn ml_ensemble_lightgbm_vector_zero(dim : Int) -> MlensemblelightgbmVector {
 
 pub fn ml_ensemble_lightgbm_vector_add(a : MlensemblelightgbmVector, b : MlensemblelightgbmVector) -> MlensemblelightgbmVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_ensemble_lightgbm_vector_sub(a : MlensemblelightgbmVector, b : MlensemblelightgbmVector) -> MlensemblelightgbmVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_ensemble_lightgbm_vector_scale(v : MlensemblelightgbmVector, s : Double) -> MlensemblelightgbmVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_ensemble_lightgbm_vector_dot(a : MlensemblelightgbmVector, b : MlensemblelightgbmVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_ensemble_lightgbm_frame_get(s : MlensemblelightgbmFrame, i : Int) -> D
 }
 
 pub fn ml_ensemble_lightgbm_frame_set(s : MlensemblelightgbmFrame, i : Int, v : Double) -> MlensemblelightgbmFrame {
-  let result = ml_ensemble_lightgbm_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_lightgbm_frame_sum(s : MlensemblelightgbmFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_ensemble_lightgbm_table_get(s : MlensemblelightgbmTable, i : Int) -> D
 }
 
 pub fn ml_ensemble_lightgbm_table_set(s : MlensemblelightgbmTable, i : Int, v : Double) -> MlensemblelightgbmTable {
-  let result = ml_ensemble_lightgbm_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_lightgbm_table_sum(s : MlensemblelightgbmTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_ensemble_lightgbm_graphn_get(s : MlensemblelightgbmGraphN, i : Int) ->
 }
 
 pub fn ml_ensemble_lightgbm_graphn_set(s : MlensemblelightgbmGraphN, i : Int, v : Double) -> MlensemblelightgbmGraphN {
-  let result = ml_ensemble_lightgbm_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_lightgbm_graphn_sum(s : MlensemblelightgbmGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_ensemble_lightgbm_node_get(s : MlensemblelightgbmNode, i : Int) -> Dou
 }
 
 pub fn ml_ensemble_lightgbm_node_set(s : MlensemblelightgbmNode, i : Int, v : Double) -> MlensemblelightgbmNode {
-  let result = ml_ensemble_lightgbm_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_lightgbm_node_sum(s : MlensemblelightgbmNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_ensemble_lightgbm_edge_get(s : MlensemblelightgbmEdge, i : Int) -> Dou
 }
 
 pub fn ml_ensemble_lightgbm_edge_set(s : MlensemblelightgbmEdge, i : Int, v : Double) -> MlensemblelightgbmEdge {
-  let result = ml_ensemble_lightgbm_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_lightgbm_edge_sum(s : MlensemblelightgbmEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_ensemble_lightgbm_path_get(s : MlensemblelightgbmPath, i : Int) -> Dou
 }
 
 pub fn ml_ensemble_lightgbm_path_set(s : MlensemblelightgbmPath, i : Int, v : Double) -> MlensemblelightgbmPath {
-  let result = ml_ensemble_lightgbm_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_lightgbm_path_sum(s : MlensemblelightgbmPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_ensemble_lightgbm_cluster_get(s : MlensemblelightgbmCluster, i : Int) 
 }
 
 pub fn ml_ensemble_lightgbm_cluster_set(s : MlensemblelightgbmCluster, i : Int, v : Double) -> MlensemblelightgbmCluster {
-  let result = ml_ensemble_lightgbm_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_lightgbm_cluster_sum(s : MlensemblelightgbmCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_ensemble_lightgbm_model_get(s : MlensemblelightgbmModel, i : Int) -> D
 }
 
 pub fn ml_ensemble_lightgbm_model_set(s : MlensemblelightgbmModel, i : Int, v : Double) -> MlensemblelightgbmModel {
-  let result = ml_ensemble_lightgbm_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_lightgbm_model_sum(s : MlensemblelightgbmModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_ensemble_lightgbm_layer_get(s : MlensemblelightgbmLayer, i : Int) -> D
 }
 
 pub fn ml_ensemble_lightgbm_layer_set(s : MlensemblelightgbmLayer, i : Int, v : Double) -> MlensemblelightgbmLayer {
-  let result = ml_ensemble_lightgbm_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_lightgbm_layer_sum(s : MlensemblelightgbmLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_ensemble_lightgbm_buffer_get(s : MlensemblelightgbmBuffer, i : Int) ->
 }
 
 pub fn ml_ensemble_lightgbm_buffer_set(s : MlensemblelightgbmBuffer, i : Int, v : Double) -> MlensemblelightgbmBuffer {
-  let result = ml_ensemble_lightgbm_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_lightgbm_buffer_sum(s : MlensemblelightgbmBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_ensemble_lightgbm_cursor_get(s : MlensemblelightgbmCursor, i : Int) ->
 }
 
 pub fn ml_ensemble_lightgbm_cursor_set(s : MlensemblelightgbmCursor, i : Int, v : Double) -> MlensemblelightgbmCursor {
-  let result = ml_ensemble_lightgbm_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_lightgbm_cursor_sum(s : MlensemblelightgbmCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_ensemble_lightgbm_view_get(s : MlensemblelightgbmView, i : Int) -> Dou
 }
 
 pub fn ml_ensemble_lightgbm_view_set(s : MlensemblelightgbmView, i : Int, v : Double) -> MlensemblelightgbmView {
-  let result = ml_ensemble_lightgbm_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_lightgbm_view_sum(s : MlensemblelightgbmView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_ensemble_lightgbm_range_get(s : MlensemblelightgbmRange, i : Int) -> D
 }
 
 pub fn ml_ensemble_lightgbm_range_set(s : MlensemblelightgbmRange, i : Int, v : Double) -> MlensemblelightgbmRange {
-  let result = ml_ensemble_lightgbm_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_lightgbm_range_sum(s : MlensemblelightgbmRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_ensemble_lightgbm_slice_get(s : MlensemblelightgbmSlice, i : Int) -> D
 }
 
 pub fn ml_ensemble_lightgbm_slice_set(s : MlensemblelightgbmSlice, i : Int, v : Double) -> MlensemblelightgbmSlice {
-  let result = ml_ensemble_lightgbm_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_ensemble_lightgbm_slice_sum(s : MlensemblelightgbmSlice) -> Double { @_common.sum(s.data) }

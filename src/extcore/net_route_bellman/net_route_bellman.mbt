@@ -107,23 +107,15 @@ pub fn net_route_bellman_series_std(s : NetroutebellmanSeries) -> Double { @_com
 pub fn net_route_bellman_series_median(s : NetroutebellmanSeries) -> Double { @_common.median(s.vals) }
 
 pub fn net_route_bellman_series_scale(s : NetroutebellmanSeries, f : Double) -> NetroutebellmanSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn net_route_bellman_series_add(a : NetroutebellmanSeries, b : NetroutebellmanSeries) -> NetroutebellmanSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn net_route_bellman_series_sub(a : NetroutebellmanSeries, b : NetroutebellmanSeries) -> NetroutebellmanSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn net_route_bellman_series_normalize(s : NetroutebellmanSeries) -> NetroutebellmanSeries {
@@ -254,22 +246,16 @@ pub fn net_route_bellman_vector_zero(dim : Int) -> NetroutebellmanVector {
 
 pub fn net_route_bellman_vector_add(a : NetroutebellmanVector, b : NetroutebellmanVector) -> NetroutebellmanVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_route_bellman_vector_sub(a : NetroutebellmanVector, b : NetroutebellmanVector) -> NetroutebellmanVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_route_bellman_vector_scale(v : NetroutebellmanVector, s : Double) -> NetroutebellmanVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn net_route_bellman_vector_dot(a : NetroutebellmanVector, b : NetroutebellmanVector) -> Double {
@@ -372,10 +358,9 @@ pub fn net_route_bellman_frame_get(s : NetroutebellmanFrame, i : Int) -> Double 
 }
 
 pub fn net_route_bellman_frame_set(s : NetroutebellmanFrame, i : Int, v : Double) -> NetroutebellmanFrame {
-  let result = net_route_bellman_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_frame_sum(s : NetroutebellmanFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn net_route_bellman_table_get(s : NetroutebellmanTable, i : Int) -> Double 
 }
 
 pub fn net_route_bellman_table_set(s : NetroutebellmanTable, i : Int, v : Double) -> NetroutebellmanTable {
-  let result = net_route_bellman_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_table_sum(s : NetroutebellmanTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn net_route_bellman_graphn_get(s : NetroutebellmanGraphN, i : Int) -> Doubl
 }
 
 pub fn net_route_bellman_graphn_set(s : NetroutebellmanGraphN, i : Int, v : Double) -> NetroutebellmanGraphN {
-  let result = net_route_bellman_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_graphn_sum(s : NetroutebellmanGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn net_route_bellman_node_get(s : NetroutebellmanNode, i : Int) -> Double {
 }
 
 pub fn net_route_bellman_node_set(s : NetroutebellmanNode, i : Int, v : Double) -> NetroutebellmanNode {
-  let result = net_route_bellman_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_node_sum(s : NetroutebellmanNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn net_route_bellman_edge_get(s : NetroutebellmanEdge, i : Int) -> Double {
 }
 
 pub fn net_route_bellman_edge_set(s : NetroutebellmanEdge, i : Int, v : Double) -> NetroutebellmanEdge {
-  let result = net_route_bellman_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_edge_sum(s : NetroutebellmanEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn net_route_bellman_path_get(s : NetroutebellmanPath, i : Int) -> Double {
 }
 
 pub fn net_route_bellman_path_set(s : NetroutebellmanPath, i : Int, v : Double) -> NetroutebellmanPath {
-  let result = net_route_bellman_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_path_sum(s : NetroutebellmanPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn net_route_bellman_cluster_get(s : NetroutebellmanCluster, i : Int) -> Dou
 }
 
 pub fn net_route_bellman_cluster_set(s : NetroutebellmanCluster, i : Int, v : Double) -> NetroutebellmanCluster {
-  let result = net_route_bellman_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_cluster_sum(s : NetroutebellmanCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn net_route_bellman_model_get(s : NetroutebellmanModel, i : Int) -> Double 
 }
 
 pub fn net_route_bellman_model_set(s : NetroutebellmanModel, i : Int, v : Double) -> NetroutebellmanModel {
-  let result = net_route_bellman_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_model_sum(s : NetroutebellmanModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn net_route_bellman_layer_get(s : NetroutebellmanLayer, i : Int) -> Double 
 }
 
 pub fn net_route_bellman_layer_set(s : NetroutebellmanLayer, i : Int, v : Double) -> NetroutebellmanLayer {
-  let result = net_route_bellman_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_layer_sum(s : NetroutebellmanLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn net_route_bellman_buffer_get(s : NetroutebellmanBuffer, i : Int) -> Doubl
 }
 
 pub fn net_route_bellman_buffer_set(s : NetroutebellmanBuffer, i : Int, v : Double) -> NetroutebellmanBuffer {
-  let result = net_route_bellman_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_buffer_sum(s : NetroutebellmanBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn net_route_bellman_cursor_get(s : NetroutebellmanCursor, i : Int) -> Doubl
 }
 
 pub fn net_route_bellman_cursor_set(s : NetroutebellmanCursor, i : Int, v : Double) -> NetroutebellmanCursor {
-  let result = net_route_bellman_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_cursor_sum(s : NetroutebellmanCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn net_route_bellman_view_get(s : NetroutebellmanView, i : Int) -> Double {
 }
 
 pub fn net_route_bellman_view_set(s : NetroutebellmanView, i : Int, v : Double) -> NetroutebellmanView {
-  let result = net_route_bellman_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_view_sum(s : NetroutebellmanView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn net_route_bellman_range_get(s : NetroutebellmanRange, i : Int) -> Double 
 }
 
 pub fn net_route_bellman_range_set(s : NetroutebellmanRange, i : Int, v : Double) -> NetroutebellmanRange {
-  let result = net_route_bellman_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_range_sum(s : NetroutebellmanRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn net_route_bellman_slice_get(s : NetroutebellmanSlice, i : Int) -> Double 
 }
 
 pub fn net_route_bellman_slice_set(s : NetroutebellmanSlice, i : Int, v : Double) -> NetroutebellmanSlice {
-  let result = net_route_bellman_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_bellman_slice_sum(s : NetroutebellmanSlice) -> Double { @_common.sum(s.data) }

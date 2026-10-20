@@ -107,23 +107,15 @@ pub fn physics_heat_insulation_series_std(s : PhysicsheatinsulationSeries) -> Do
 pub fn physics_heat_insulation_series_median(s : PhysicsheatinsulationSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_heat_insulation_series_scale(s : PhysicsheatinsulationSeries, f : Double) -> PhysicsheatinsulationSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_heat_insulation_series_add(a : PhysicsheatinsulationSeries, b : PhysicsheatinsulationSeries) -> PhysicsheatinsulationSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_heat_insulation_series_sub(a : PhysicsheatinsulationSeries, b : PhysicsheatinsulationSeries) -> PhysicsheatinsulationSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_heat_insulation_series_normalize(s : PhysicsheatinsulationSeries) -> PhysicsheatinsulationSeries {
@@ -254,22 +246,16 @@ pub fn physics_heat_insulation_vector_zero(dim : Int) -> PhysicsheatinsulationVe
 
 pub fn physics_heat_insulation_vector_add(a : PhysicsheatinsulationVector, b : PhysicsheatinsulationVector) -> PhysicsheatinsulationVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_heat_insulation_vector_sub(a : PhysicsheatinsulationVector, b : PhysicsheatinsulationVector) -> PhysicsheatinsulationVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_heat_insulation_vector_scale(v : PhysicsheatinsulationVector, s : Double) -> PhysicsheatinsulationVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_heat_insulation_vector_dot(a : PhysicsheatinsulationVector, b : PhysicsheatinsulationVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_heat_insulation_frame_get(s : PhysicsheatinsulationFrame, i : Int
 }
 
 pub fn physics_heat_insulation_frame_set(s : PhysicsheatinsulationFrame, i : Int, v : Double) -> PhysicsheatinsulationFrame {
-  let result = physics_heat_insulation_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_insulation_frame_sum(s : PhysicsheatinsulationFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_heat_insulation_table_get(s : PhysicsheatinsulationTable, i : Int
 }
 
 pub fn physics_heat_insulation_table_set(s : PhysicsheatinsulationTable, i : Int, v : Double) -> PhysicsheatinsulationTable {
-  let result = physics_heat_insulation_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_insulation_table_sum(s : PhysicsheatinsulationTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_heat_insulation_graphn_get(s : PhysicsheatinsulationGraphN, i : I
 }
 
 pub fn physics_heat_insulation_graphn_set(s : PhysicsheatinsulationGraphN, i : Int, v : Double) -> PhysicsheatinsulationGraphN {
-  let result = physics_heat_insulation_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_insulation_graphn_sum(s : PhysicsheatinsulationGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_heat_insulation_node_get(s : PhysicsheatinsulationNode, i : Int) 
 }
 
 pub fn physics_heat_insulation_node_set(s : PhysicsheatinsulationNode, i : Int, v : Double) -> PhysicsheatinsulationNode {
-  let result = physics_heat_insulation_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_insulation_node_sum(s : PhysicsheatinsulationNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_heat_insulation_edge_get(s : PhysicsheatinsulationEdge, i : Int) 
 }
 
 pub fn physics_heat_insulation_edge_set(s : PhysicsheatinsulationEdge, i : Int, v : Double) -> PhysicsheatinsulationEdge {
-  let result = physics_heat_insulation_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_insulation_edge_sum(s : PhysicsheatinsulationEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_heat_insulation_path_get(s : PhysicsheatinsulationPath, i : Int) 
 }
 
 pub fn physics_heat_insulation_path_set(s : PhysicsheatinsulationPath, i : Int, v : Double) -> PhysicsheatinsulationPath {
-  let result = physics_heat_insulation_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_insulation_path_sum(s : PhysicsheatinsulationPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_heat_insulation_cluster_get(s : PhysicsheatinsulationCluster, i :
 }
 
 pub fn physics_heat_insulation_cluster_set(s : PhysicsheatinsulationCluster, i : Int, v : Double) -> PhysicsheatinsulationCluster {
-  let result = physics_heat_insulation_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_insulation_cluster_sum(s : PhysicsheatinsulationCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_heat_insulation_model_get(s : PhysicsheatinsulationModel, i : Int
 }
 
 pub fn physics_heat_insulation_model_set(s : PhysicsheatinsulationModel, i : Int, v : Double) -> PhysicsheatinsulationModel {
-  let result = physics_heat_insulation_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_insulation_model_sum(s : PhysicsheatinsulationModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_heat_insulation_layer_get(s : PhysicsheatinsulationLayer, i : Int
 }
 
 pub fn physics_heat_insulation_layer_set(s : PhysicsheatinsulationLayer, i : Int, v : Double) -> PhysicsheatinsulationLayer {
-  let result = physics_heat_insulation_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_insulation_layer_sum(s : PhysicsheatinsulationLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_heat_insulation_buffer_get(s : PhysicsheatinsulationBuffer, i : I
 }
 
 pub fn physics_heat_insulation_buffer_set(s : PhysicsheatinsulationBuffer, i : Int, v : Double) -> PhysicsheatinsulationBuffer {
-  let result = physics_heat_insulation_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_insulation_buffer_sum(s : PhysicsheatinsulationBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_heat_insulation_cursor_get(s : PhysicsheatinsulationCursor, i : I
 }
 
 pub fn physics_heat_insulation_cursor_set(s : PhysicsheatinsulationCursor, i : Int, v : Double) -> PhysicsheatinsulationCursor {
-  let result = physics_heat_insulation_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_insulation_cursor_sum(s : PhysicsheatinsulationCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_heat_insulation_view_get(s : PhysicsheatinsulationView, i : Int) 
 }
 
 pub fn physics_heat_insulation_view_set(s : PhysicsheatinsulationView, i : Int, v : Double) -> PhysicsheatinsulationView {
-  let result = physics_heat_insulation_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_insulation_view_sum(s : PhysicsheatinsulationView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_heat_insulation_range_get(s : PhysicsheatinsulationRange, i : Int
 }
 
 pub fn physics_heat_insulation_range_set(s : PhysicsheatinsulationRange, i : Int, v : Double) -> PhysicsheatinsulationRange {
-  let result = physics_heat_insulation_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_insulation_range_sum(s : PhysicsheatinsulationRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_heat_insulation_slice_get(s : PhysicsheatinsulationSlice, i : Int
 }
 
 pub fn physics_heat_insulation_slice_set(s : PhysicsheatinsulationSlice, i : Int, v : Double) -> PhysicsheatinsulationSlice {
-  let result = physics_heat_insulation_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_insulation_slice_sum(s : PhysicsheatinsulationSlice) -> Double { @_common.sum(s.data) }

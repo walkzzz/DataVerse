@@ -107,23 +107,15 @@ pub fn ml_metric_roc_series_std(s : MlmetricrocSeries) -> Double { @_common.std(
 pub fn ml_metric_roc_series_median(s : MlmetricrocSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_metric_roc_series_scale(s : MlmetricrocSeries, f : Double) -> MlmetricrocSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_metric_roc_series_add(a : MlmetricrocSeries, b : MlmetricrocSeries) -> MlmetricrocSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_metric_roc_series_sub(a : MlmetricrocSeries, b : MlmetricrocSeries) -> MlmetricrocSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_metric_roc_series_normalize(s : MlmetricrocSeries) -> MlmetricrocSeries {
@@ -254,22 +246,16 @@ pub fn ml_metric_roc_vector_zero(dim : Int) -> MlmetricrocVector {
 
 pub fn ml_metric_roc_vector_add(a : MlmetricrocVector, b : MlmetricrocVector) -> MlmetricrocVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_metric_roc_vector_sub(a : MlmetricrocVector, b : MlmetricrocVector) -> MlmetricrocVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_metric_roc_vector_scale(v : MlmetricrocVector, s : Double) -> MlmetricrocVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_metric_roc_vector_dot(a : MlmetricrocVector, b : MlmetricrocVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_metric_roc_frame_get(s : MlmetricrocFrame, i : Int) -> Double {
 }
 
 pub fn ml_metric_roc_frame_set(s : MlmetricrocFrame, i : Int, v : Double) -> MlmetricrocFrame {
-  let result = ml_metric_roc_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_roc_frame_sum(s : MlmetricrocFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_metric_roc_table_get(s : MlmetricrocTable, i : Int) -> Double {
 }
 
 pub fn ml_metric_roc_table_set(s : MlmetricrocTable, i : Int, v : Double) -> MlmetricrocTable {
-  let result = ml_metric_roc_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_roc_table_sum(s : MlmetricrocTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_metric_roc_graphn_get(s : MlmetricrocGraphN, i : Int) -> Double {
 }
 
 pub fn ml_metric_roc_graphn_set(s : MlmetricrocGraphN, i : Int, v : Double) -> MlmetricrocGraphN {
-  let result = ml_metric_roc_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_roc_graphn_sum(s : MlmetricrocGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_metric_roc_node_get(s : MlmetricrocNode, i : Int) -> Double {
 }
 
 pub fn ml_metric_roc_node_set(s : MlmetricrocNode, i : Int, v : Double) -> MlmetricrocNode {
-  let result = ml_metric_roc_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_roc_node_sum(s : MlmetricrocNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_metric_roc_edge_get(s : MlmetricrocEdge, i : Int) -> Double {
 }
 
 pub fn ml_metric_roc_edge_set(s : MlmetricrocEdge, i : Int, v : Double) -> MlmetricrocEdge {
-  let result = ml_metric_roc_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_roc_edge_sum(s : MlmetricrocEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_metric_roc_path_get(s : MlmetricrocPath, i : Int) -> Double {
 }
 
 pub fn ml_metric_roc_path_set(s : MlmetricrocPath, i : Int, v : Double) -> MlmetricrocPath {
-  let result = ml_metric_roc_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_roc_path_sum(s : MlmetricrocPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_metric_roc_cluster_get(s : MlmetricrocCluster, i : Int) -> Double {
 }
 
 pub fn ml_metric_roc_cluster_set(s : MlmetricrocCluster, i : Int, v : Double) -> MlmetricrocCluster {
-  let result = ml_metric_roc_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_roc_cluster_sum(s : MlmetricrocCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_metric_roc_model_get(s : MlmetricrocModel, i : Int) -> Double {
 }
 
 pub fn ml_metric_roc_model_set(s : MlmetricrocModel, i : Int, v : Double) -> MlmetricrocModel {
-  let result = ml_metric_roc_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_roc_model_sum(s : MlmetricrocModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_metric_roc_layer_get(s : MlmetricrocLayer, i : Int) -> Double {
 }
 
 pub fn ml_metric_roc_layer_set(s : MlmetricrocLayer, i : Int, v : Double) -> MlmetricrocLayer {
-  let result = ml_metric_roc_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_roc_layer_sum(s : MlmetricrocLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_metric_roc_buffer_get(s : MlmetricrocBuffer, i : Int) -> Double {
 }
 
 pub fn ml_metric_roc_buffer_set(s : MlmetricrocBuffer, i : Int, v : Double) -> MlmetricrocBuffer {
-  let result = ml_metric_roc_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_roc_buffer_sum(s : MlmetricrocBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_metric_roc_cursor_get(s : MlmetricrocCursor, i : Int) -> Double {
 }
 
 pub fn ml_metric_roc_cursor_set(s : MlmetricrocCursor, i : Int, v : Double) -> MlmetricrocCursor {
-  let result = ml_metric_roc_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_roc_cursor_sum(s : MlmetricrocCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_metric_roc_view_get(s : MlmetricrocView, i : Int) -> Double {
 }
 
 pub fn ml_metric_roc_view_set(s : MlmetricrocView, i : Int, v : Double) -> MlmetricrocView {
-  let result = ml_metric_roc_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_roc_view_sum(s : MlmetricrocView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_metric_roc_range_get(s : MlmetricrocRange, i : Int) -> Double {
 }
 
 pub fn ml_metric_roc_range_set(s : MlmetricrocRange, i : Int, v : Double) -> MlmetricrocRange {
-  let result = ml_metric_roc_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_roc_range_sum(s : MlmetricrocRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_metric_roc_slice_get(s : MlmetricrocSlice, i : Int) -> Double {
 }
 
 pub fn ml_metric_roc_slice_set(s : MlmetricrocSlice, i : Int, v : Double) -> MlmetricrocSlice {
-  let result = ml_metric_roc_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_roc_slice_sum(s : MlmetricrocSlice) -> Double { @_common.sum(s.data) }

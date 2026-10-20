@@ -107,23 +107,15 @@ pub fn stats_model_gam_series_std(s : StatsmodelgamSeries) -> Double { @_common.
 pub fn stats_model_gam_series_median(s : StatsmodelgamSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_model_gam_series_scale(s : StatsmodelgamSeries, f : Double) -> StatsmodelgamSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_model_gam_series_add(a : StatsmodelgamSeries, b : StatsmodelgamSeries) -> StatsmodelgamSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_model_gam_series_sub(a : StatsmodelgamSeries, b : StatsmodelgamSeries) -> StatsmodelgamSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_model_gam_series_normalize(s : StatsmodelgamSeries) -> StatsmodelgamSeries {
@@ -254,22 +246,16 @@ pub fn stats_model_gam_vector_zero(dim : Int) -> StatsmodelgamVector {
 
 pub fn stats_model_gam_vector_add(a : StatsmodelgamVector, b : StatsmodelgamVector) -> StatsmodelgamVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_model_gam_vector_sub(a : StatsmodelgamVector, b : StatsmodelgamVector) -> StatsmodelgamVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_model_gam_vector_scale(v : StatsmodelgamVector, s : Double) -> StatsmodelgamVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_model_gam_vector_dot(a : StatsmodelgamVector, b : StatsmodelgamVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_model_gam_frame_get(s : StatsmodelgamFrame, i : Int) -> Double {
 }
 
 pub fn stats_model_gam_frame_set(s : StatsmodelgamFrame, i : Int, v : Double) -> StatsmodelgamFrame {
-  let result = stats_model_gam_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_frame_sum(s : StatsmodelgamFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_model_gam_table_get(s : StatsmodelgamTable, i : Int) -> Double {
 }
 
 pub fn stats_model_gam_table_set(s : StatsmodelgamTable, i : Int, v : Double) -> StatsmodelgamTable {
-  let result = stats_model_gam_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_table_sum(s : StatsmodelgamTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_model_gam_graphn_get(s : StatsmodelgamGraphN, i : Int) -> Double {
 }
 
 pub fn stats_model_gam_graphn_set(s : StatsmodelgamGraphN, i : Int, v : Double) -> StatsmodelgamGraphN {
-  let result = stats_model_gam_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_graphn_sum(s : StatsmodelgamGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_model_gam_node_get(s : StatsmodelgamNode, i : Int) -> Double {
 }
 
 pub fn stats_model_gam_node_set(s : StatsmodelgamNode, i : Int, v : Double) -> StatsmodelgamNode {
-  let result = stats_model_gam_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_node_sum(s : StatsmodelgamNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_model_gam_edge_get(s : StatsmodelgamEdge, i : Int) -> Double {
 }
 
 pub fn stats_model_gam_edge_set(s : StatsmodelgamEdge, i : Int, v : Double) -> StatsmodelgamEdge {
-  let result = stats_model_gam_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_edge_sum(s : StatsmodelgamEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_model_gam_path_get(s : StatsmodelgamPath, i : Int) -> Double {
 }
 
 pub fn stats_model_gam_path_set(s : StatsmodelgamPath, i : Int, v : Double) -> StatsmodelgamPath {
-  let result = stats_model_gam_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_path_sum(s : StatsmodelgamPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_model_gam_cluster_get(s : StatsmodelgamCluster, i : Int) -> Double 
 }
 
 pub fn stats_model_gam_cluster_set(s : StatsmodelgamCluster, i : Int, v : Double) -> StatsmodelgamCluster {
-  let result = stats_model_gam_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_cluster_sum(s : StatsmodelgamCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_model_gam_model_get(s : StatsmodelgamModel, i : Int) -> Double {
 }
 
 pub fn stats_model_gam_model_set(s : StatsmodelgamModel, i : Int, v : Double) -> StatsmodelgamModel {
-  let result = stats_model_gam_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_model_sum(s : StatsmodelgamModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_model_gam_layer_get(s : StatsmodelgamLayer, i : Int) -> Double {
 }
 
 pub fn stats_model_gam_layer_set(s : StatsmodelgamLayer, i : Int, v : Double) -> StatsmodelgamLayer {
-  let result = stats_model_gam_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_layer_sum(s : StatsmodelgamLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_model_gam_buffer_get(s : StatsmodelgamBuffer, i : Int) -> Double {
 }
 
 pub fn stats_model_gam_buffer_set(s : StatsmodelgamBuffer, i : Int, v : Double) -> StatsmodelgamBuffer {
-  let result = stats_model_gam_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_buffer_sum(s : StatsmodelgamBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_model_gam_cursor_get(s : StatsmodelgamCursor, i : Int) -> Double {
 }
 
 pub fn stats_model_gam_cursor_set(s : StatsmodelgamCursor, i : Int, v : Double) -> StatsmodelgamCursor {
-  let result = stats_model_gam_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_cursor_sum(s : StatsmodelgamCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_model_gam_view_get(s : StatsmodelgamView, i : Int) -> Double {
 }
 
 pub fn stats_model_gam_view_set(s : StatsmodelgamView, i : Int, v : Double) -> StatsmodelgamView {
-  let result = stats_model_gam_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_view_sum(s : StatsmodelgamView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_model_gam_range_get(s : StatsmodelgamRange, i : Int) -> Double {
 }
 
 pub fn stats_model_gam_range_set(s : StatsmodelgamRange, i : Int, v : Double) -> StatsmodelgamRange {
-  let result = stats_model_gam_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_range_sum(s : StatsmodelgamRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_model_gam_slice_get(s : StatsmodelgamSlice, i : Int) -> Double {
 }
 
 pub fn stats_model_gam_slice_set(s : StatsmodelgamSlice, i : Int, v : Double) -> StatsmodelgamSlice {
-  let result = stats_model_gam_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_gam_slice_sum(s : StatsmodelgamSlice) -> Double { @_common.sum(s.data) }

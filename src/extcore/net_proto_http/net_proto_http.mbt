@@ -107,23 +107,15 @@ pub fn net_proto_http_series_std(s : NetprotohttpSeries) -> Double { @_common.st
 pub fn net_proto_http_series_median(s : NetprotohttpSeries) -> Double { @_common.median(s.vals) }
 
 pub fn net_proto_http_series_scale(s : NetprotohttpSeries, f : Double) -> NetprotohttpSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn net_proto_http_series_add(a : NetprotohttpSeries, b : NetprotohttpSeries) -> NetprotohttpSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn net_proto_http_series_sub(a : NetprotohttpSeries, b : NetprotohttpSeries) -> NetprotohttpSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn net_proto_http_series_normalize(s : NetprotohttpSeries) -> NetprotohttpSeries {
@@ -254,22 +246,16 @@ pub fn net_proto_http_vector_zero(dim : Int) -> NetprotohttpVector {
 
 pub fn net_proto_http_vector_add(a : NetprotohttpVector, b : NetprotohttpVector) -> NetprotohttpVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_proto_http_vector_sub(a : NetprotohttpVector, b : NetprotohttpVector) -> NetprotohttpVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_proto_http_vector_scale(v : NetprotohttpVector, s : Double) -> NetprotohttpVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn net_proto_http_vector_dot(a : NetprotohttpVector, b : NetprotohttpVector) -> Double {
@@ -372,10 +358,9 @@ pub fn net_proto_http_frame_get(s : NetprotohttpFrame, i : Int) -> Double {
 }
 
 pub fn net_proto_http_frame_set(s : NetprotohttpFrame, i : Int, v : Double) -> NetprotohttpFrame {
-  let result = net_proto_http_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_http_frame_sum(s : NetprotohttpFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn net_proto_http_table_get(s : NetprotohttpTable, i : Int) -> Double {
 }
 
 pub fn net_proto_http_table_set(s : NetprotohttpTable, i : Int, v : Double) -> NetprotohttpTable {
-  let result = net_proto_http_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_http_table_sum(s : NetprotohttpTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn net_proto_http_graphn_get(s : NetprotohttpGraphN, i : Int) -> Double {
 }
 
 pub fn net_proto_http_graphn_set(s : NetprotohttpGraphN, i : Int, v : Double) -> NetprotohttpGraphN {
-  let result = net_proto_http_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_http_graphn_sum(s : NetprotohttpGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn net_proto_http_node_get(s : NetprotohttpNode, i : Int) -> Double {
 }
 
 pub fn net_proto_http_node_set(s : NetprotohttpNode, i : Int, v : Double) -> NetprotohttpNode {
-  let result = net_proto_http_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_http_node_sum(s : NetprotohttpNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn net_proto_http_edge_get(s : NetprotohttpEdge, i : Int) -> Double {
 }
 
 pub fn net_proto_http_edge_set(s : NetprotohttpEdge, i : Int, v : Double) -> NetprotohttpEdge {
-  let result = net_proto_http_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_http_edge_sum(s : NetprotohttpEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn net_proto_http_path_get(s : NetprotohttpPath, i : Int) -> Double {
 }
 
 pub fn net_proto_http_path_set(s : NetprotohttpPath, i : Int, v : Double) -> NetprotohttpPath {
-  let result = net_proto_http_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_http_path_sum(s : NetprotohttpPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn net_proto_http_cluster_get(s : NetprotohttpCluster, i : Int) -> Double {
 }
 
 pub fn net_proto_http_cluster_set(s : NetprotohttpCluster, i : Int, v : Double) -> NetprotohttpCluster {
-  let result = net_proto_http_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_http_cluster_sum(s : NetprotohttpCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn net_proto_http_model_get(s : NetprotohttpModel, i : Int) -> Double {
 }
 
 pub fn net_proto_http_model_set(s : NetprotohttpModel, i : Int, v : Double) -> NetprotohttpModel {
-  let result = net_proto_http_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_http_model_sum(s : NetprotohttpModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn net_proto_http_layer_get(s : NetprotohttpLayer, i : Int) -> Double {
 }
 
 pub fn net_proto_http_layer_set(s : NetprotohttpLayer, i : Int, v : Double) -> NetprotohttpLayer {
-  let result = net_proto_http_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_http_layer_sum(s : NetprotohttpLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn net_proto_http_buffer_get(s : NetprotohttpBuffer, i : Int) -> Double {
 }
 
 pub fn net_proto_http_buffer_set(s : NetprotohttpBuffer, i : Int, v : Double) -> NetprotohttpBuffer {
-  let result = net_proto_http_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_http_buffer_sum(s : NetprotohttpBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn net_proto_http_cursor_get(s : NetprotohttpCursor, i : Int) -> Double {
 }
 
 pub fn net_proto_http_cursor_set(s : NetprotohttpCursor, i : Int, v : Double) -> NetprotohttpCursor {
-  let result = net_proto_http_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_http_cursor_sum(s : NetprotohttpCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn net_proto_http_view_get(s : NetprotohttpView, i : Int) -> Double {
 }
 
 pub fn net_proto_http_view_set(s : NetprotohttpView, i : Int, v : Double) -> NetprotohttpView {
-  let result = net_proto_http_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_http_view_sum(s : NetprotohttpView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn net_proto_http_range_get(s : NetprotohttpRange, i : Int) -> Double {
 }
 
 pub fn net_proto_http_range_set(s : NetprotohttpRange, i : Int, v : Double) -> NetprotohttpRange {
-  let result = net_proto_http_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_http_range_sum(s : NetprotohttpRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn net_proto_http_slice_get(s : NetprotohttpSlice, i : Int) -> Double {
 }
 
 pub fn net_proto_http_slice_set(s : NetprotohttpSlice, i : Int, v : Double) -> NetprotohttpSlice {
-  let result = net_proto_http_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_proto_http_slice_sum(s : NetprotohttpSlice) -> Double { @_common.sum(s.data) }

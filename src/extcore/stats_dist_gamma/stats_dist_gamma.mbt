@@ -107,23 +107,15 @@ pub fn stats_dist_gamma_series_std(s : StatsdistgammaSeries) -> Double { @_commo
 pub fn stats_dist_gamma_series_median(s : StatsdistgammaSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_dist_gamma_series_scale(s : StatsdistgammaSeries, f : Double) -> StatsdistgammaSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_dist_gamma_series_add(a : StatsdistgammaSeries, b : StatsdistgammaSeries) -> StatsdistgammaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_dist_gamma_series_sub(a : StatsdistgammaSeries, b : StatsdistgammaSeries) -> StatsdistgammaSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_dist_gamma_series_normalize(s : StatsdistgammaSeries) -> StatsdistgammaSeries {
@@ -254,22 +246,16 @@ pub fn stats_dist_gamma_vector_zero(dim : Int) -> StatsdistgammaVector {
 
 pub fn stats_dist_gamma_vector_add(a : StatsdistgammaVector, b : StatsdistgammaVector) -> StatsdistgammaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_dist_gamma_vector_sub(a : StatsdistgammaVector, b : StatsdistgammaVector) -> StatsdistgammaVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_dist_gamma_vector_scale(v : StatsdistgammaVector, s : Double) -> StatsdistgammaVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_dist_gamma_vector_dot(a : StatsdistgammaVector, b : StatsdistgammaVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_dist_gamma_frame_get(s : StatsdistgammaFrame, i : Int) -> Double {
 }
 
 pub fn stats_dist_gamma_frame_set(s : StatsdistgammaFrame, i : Int, v : Double) -> StatsdistgammaFrame {
-  let result = stats_dist_gamma_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_gamma_frame_sum(s : StatsdistgammaFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_dist_gamma_table_get(s : StatsdistgammaTable, i : Int) -> Double {
 }
 
 pub fn stats_dist_gamma_table_set(s : StatsdistgammaTable, i : Int, v : Double) -> StatsdistgammaTable {
-  let result = stats_dist_gamma_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_gamma_table_sum(s : StatsdistgammaTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_dist_gamma_graphn_get(s : StatsdistgammaGraphN, i : Int) -> Double 
 }
 
 pub fn stats_dist_gamma_graphn_set(s : StatsdistgammaGraphN, i : Int, v : Double) -> StatsdistgammaGraphN {
-  let result = stats_dist_gamma_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_gamma_graphn_sum(s : StatsdistgammaGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_dist_gamma_node_get(s : StatsdistgammaNode, i : Int) -> Double {
 }
 
 pub fn stats_dist_gamma_node_set(s : StatsdistgammaNode, i : Int, v : Double) -> StatsdistgammaNode {
-  let result = stats_dist_gamma_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_gamma_node_sum(s : StatsdistgammaNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_dist_gamma_edge_get(s : StatsdistgammaEdge, i : Int) -> Double {
 }
 
 pub fn stats_dist_gamma_edge_set(s : StatsdistgammaEdge, i : Int, v : Double) -> StatsdistgammaEdge {
-  let result = stats_dist_gamma_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_gamma_edge_sum(s : StatsdistgammaEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_dist_gamma_path_get(s : StatsdistgammaPath, i : Int) -> Double {
 }
 
 pub fn stats_dist_gamma_path_set(s : StatsdistgammaPath, i : Int, v : Double) -> StatsdistgammaPath {
-  let result = stats_dist_gamma_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_gamma_path_sum(s : StatsdistgammaPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_dist_gamma_cluster_get(s : StatsdistgammaCluster, i : Int) -> Doubl
 }
 
 pub fn stats_dist_gamma_cluster_set(s : StatsdistgammaCluster, i : Int, v : Double) -> StatsdistgammaCluster {
-  let result = stats_dist_gamma_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_gamma_cluster_sum(s : StatsdistgammaCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_dist_gamma_model_get(s : StatsdistgammaModel, i : Int) -> Double {
 }
 
 pub fn stats_dist_gamma_model_set(s : StatsdistgammaModel, i : Int, v : Double) -> StatsdistgammaModel {
-  let result = stats_dist_gamma_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_gamma_model_sum(s : StatsdistgammaModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_dist_gamma_layer_get(s : StatsdistgammaLayer, i : Int) -> Double {
 }
 
 pub fn stats_dist_gamma_layer_set(s : StatsdistgammaLayer, i : Int, v : Double) -> StatsdistgammaLayer {
-  let result = stats_dist_gamma_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_gamma_layer_sum(s : StatsdistgammaLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_dist_gamma_buffer_get(s : StatsdistgammaBuffer, i : Int) -> Double 
 }
 
 pub fn stats_dist_gamma_buffer_set(s : StatsdistgammaBuffer, i : Int, v : Double) -> StatsdistgammaBuffer {
-  let result = stats_dist_gamma_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_gamma_buffer_sum(s : StatsdistgammaBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_dist_gamma_cursor_get(s : StatsdistgammaCursor, i : Int) -> Double 
 }
 
 pub fn stats_dist_gamma_cursor_set(s : StatsdistgammaCursor, i : Int, v : Double) -> StatsdistgammaCursor {
-  let result = stats_dist_gamma_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_gamma_cursor_sum(s : StatsdistgammaCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_dist_gamma_view_get(s : StatsdistgammaView, i : Int) -> Double {
 }
 
 pub fn stats_dist_gamma_view_set(s : StatsdistgammaView, i : Int, v : Double) -> StatsdistgammaView {
-  let result = stats_dist_gamma_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_gamma_view_sum(s : StatsdistgammaView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_dist_gamma_range_get(s : StatsdistgammaRange, i : Int) -> Double {
 }
 
 pub fn stats_dist_gamma_range_set(s : StatsdistgammaRange, i : Int, v : Double) -> StatsdistgammaRange {
-  let result = stats_dist_gamma_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_gamma_range_sum(s : StatsdistgammaRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_dist_gamma_slice_get(s : StatsdistgammaSlice, i : Int) -> Double {
 }
 
 pub fn stats_dist_gamma_slice_set(s : StatsdistgammaSlice, i : Int, v : Double) -> StatsdistgammaSlice {
-  let result = stats_dist_gamma_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_gamma_slice_sum(s : StatsdistgammaSlice) -> Double { @_common.sum(s.data) }

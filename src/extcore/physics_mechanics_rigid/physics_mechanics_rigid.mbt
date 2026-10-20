@@ -107,23 +107,15 @@ pub fn physics_mechanics_rigid_series_std(s : PhysicsmechanicsrigidSeries) -> Do
 pub fn physics_mechanics_rigid_series_median(s : PhysicsmechanicsrigidSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_mechanics_rigid_series_scale(s : PhysicsmechanicsrigidSeries, f : Double) -> PhysicsmechanicsrigidSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_mechanics_rigid_series_add(a : PhysicsmechanicsrigidSeries, b : PhysicsmechanicsrigidSeries) -> PhysicsmechanicsrigidSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_mechanics_rigid_series_sub(a : PhysicsmechanicsrigidSeries, b : PhysicsmechanicsrigidSeries) -> PhysicsmechanicsrigidSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_mechanics_rigid_series_normalize(s : PhysicsmechanicsrigidSeries) -> PhysicsmechanicsrigidSeries {
@@ -254,22 +246,16 @@ pub fn physics_mechanics_rigid_vector_zero(dim : Int) -> PhysicsmechanicsrigidVe
 
 pub fn physics_mechanics_rigid_vector_add(a : PhysicsmechanicsrigidVector, b : PhysicsmechanicsrigidVector) -> PhysicsmechanicsrigidVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_mechanics_rigid_vector_sub(a : PhysicsmechanicsrigidVector, b : PhysicsmechanicsrigidVector) -> PhysicsmechanicsrigidVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_mechanics_rigid_vector_scale(v : PhysicsmechanicsrigidVector, s : Double) -> PhysicsmechanicsrigidVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_mechanics_rigid_vector_dot(a : PhysicsmechanicsrigidVector, b : PhysicsmechanicsrigidVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_mechanics_rigid_frame_get(s : PhysicsmechanicsrigidFrame, i : Int
 }
 
 pub fn physics_mechanics_rigid_frame_set(s : PhysicsmechanicsrigidFrame, i : Int, v : Double) -> PhysicsmechanicsrigidFrame {
-  let result = physics_mechanics_rigid_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_frame_sum(s : PhysicsmechanicsrigidFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_mechanics_rigid_table_get(s : PhysicsmechanicsrigidTable, i : Int
 }
 
 pub fn physics_mechanics_rigid_table_set(s : PhysicsmechanicsrigidTable, i : Int, v : Double) -> PhysicsmechanicsrigidTable {
-  let result = physics_mechanics_rigid_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_table_sum(s : PhysicsmechanicsrigidTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_mechanics_rigid_graphn_get(s : PhysicsmechanicsrigidGraphN, i : I
 }
 
 pub fn physics_mechanics_rigid_graphn_set(s : PhysicsmechanicsrigidGraphN, i : Int, v : Double) -> PhysicsmechanicsrigidGraphN {
-  let result = physics_mechanics_rigid_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_graphn_sum(s : PhysicsmechanicsrigidGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_mechanics_rigid_node_get(s : PhysicsmechanicsrigidNode, i : Int) 
 }
 
 pub fn physics_mechanics_rigid_node_set(s : PhysicsmechanicsrigidNode, i : Int, v : Double) -> PhysicsmechanicsrigidNode {
-  let result = physics_mechanics_rigid_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_node_sum(s : PhysicsmechanicsrigidNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_mechanics_rigid_edge_get(s : PhysicsmechanicsrigidEdge, i : Int) 
 }
 
 pub fn physics_mechanics_rigid_edge_set(s : PhysicsmechanicsrigidEdge, i : Int, v : Double) -> PhysicsmechanicsrigidEdge {
-  let result = physics_mechanics_rigid_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_edge_sum(s : PhysicsmechanicsrigidEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_mechanics_rigid_path_get(s : PhysicsmechanicsrigidPath, i : Int) 
 }
 
 pub fn physics_mechanics_rigid_path_set(s : PhysicsmechanicsrigidPath, i : Int, v : Double) -> PhysicsmechanicsrigidPath {
-  let result = physics_mechanics_rigid_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_path_sum(s : PhysicsmechanicsrigidPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_mechanics_rigid_cluster_get(s : PhysicsmechanicsrigidCluster, i :
 }
 
 pub fn physics_mechanics_rigid_cluster_set(s : PhysicsmechanicsrigidCluster, i : Int, v : Double) -> PhysicsmechanicsrigidCluster {
-  let result = physics_mechanics_rigid_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_cluster_sum(s : PhysicsmechanicsrigidCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_mechanics_rigid_model_get(s : PhysicsmechanicsrigidModel, i : Int
 }
 
 pub fn physics_mechanics_rigid_model_set(s : PhysicsmechanicsrigidModel, i : Int, v : Double) -> PhysicsmechanicsrigidModel {
-  let result = physics_mechanics_rigid_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_model_sum(s : PhysicsmechanicsrigidModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_mechanics_rigid_layer_get(s : PhysicsmechanicsrigidLayer, i : Int
 }
 
 pub fn physics_mechanics_rigid_layer_set(s : PhysicsmechanicsrigidLayer, i : Int, v : Double) -> PhysicsmechanicsrigidLayer {
-  let result = physics_mechanics_rigid_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_layer_sum(s : PhysicsmechanicsrigidLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_mechanics_rigid_buffer_get(s : PhysicsmechanicsrigidBuffer, i : I
 }
 
 pub fn physics_mechanics_rigid_buffer_set(s : PhysicsmechanicsrigidBuffer, i : Int, v : Double) -> PhysicsmechanicsrigidBuffer {
-  let result = physics_mechanics_rigid_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_buffer_sum(s : PhysicsmechanicsrigidBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_mechanics_rigid_cursor_get(s : PhysicsmechanicsrigidCursor, i : I
 }
 
 pub fn physics_mechanics_rigid_cursor_set(s : PhysicsmechanicsrigidCursor, i : Int, v : Double) -> PhysicsmechanicsrigidCursor {
-  let result = physics_mechanics_rigid_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_cursor_sum(s : PhysicsmechanicsrigidCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_mechanics_rigid_view_get(s : PhysicsmechanicsrigidView, i : Int) 
 }
 
 pub fn physics_mechanics_rigid_view_set(s : PhysicsmechanicsrigidView, i : Int, v : Double) -> PhysicsmechanicsrigidView {
-  let result = physics_mechanics_rigid_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_view_sum(s : PhysicsmechanicsrigidView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_mechanics_rigid_range_get(s : PhysicsmechanicsrigidRange, i : Int
 }
 
 pub fn physics_mechanics_rigid_range_set(s : PhysicsmechanicsrigidRange, i : Int, v : Double) -> PhysicsmechanicsrigidRange {
-  let result = physics_mechanics_rigid_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_range_sum(s : PhysicsmechanicsrigidRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_mechanics_rigid_slice_get(s : PhysicsmechanicsrigidSlice, i : Int
 }
 
 pub fn physics_mechanics_rigid_slice_set(s : PhysicsmechanicsrigidSlice, i : Int, v : Double) -> PhysicsmechanicsrigidSlice {
-  let result = physics_mechanics_rigid_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_mechanics_rigid_slice_sum(s : PhysicsmechanicsrigidSlice) -> Double { @_common.sum(s.data) }

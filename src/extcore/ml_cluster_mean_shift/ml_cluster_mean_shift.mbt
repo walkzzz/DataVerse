@@ -107,23 +107,15 @@ pub fn ml_cluster_mean_shift_series_std(s : MlclustermeanshiftSeries) -> Double 
 pub fn ml_cluster_mean_shift_series_median(s : MlclustermeanshiftSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_cluster_mean_shift_series_scale(s : MlclustermeanshiftSeries, f : Double) -> MlclustermeanshiftSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_cluster_mean_shift_series_add(a : MlclustermeanshiftSeries, b : MlclustermeanshiftSeries) -> MlclustermeanshiftSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_cluster_mean_shift_series_sub(a : MlclustermeanshiftSeries, b : MlclustermeanshiftSeries) -> MlclustermeanshiftSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_cluster_mean_shift_series_normalize(s : MlclustermeanshiftSeries) -> MlclustermeanshiftSeries {
@@ -254,22 +246,16 @@ pub fn ml_cluster_mean_shift_vector_zero(dim : Int) -> MlclustermeanshiftVector 
 
 pub fn ml_cluster_mean_shift_vector_add(a : MlclustermeanshiftVector, b : MlclustermeanshiftVector) -> MlclustermeanshiftVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_cluster_mean_shift_vector_sub(a : MlclustermeanshiftVector, b : MlclustermeanshiftVector) -> MlclustermeanshiftVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_cluster_mean_shift_vector_scale(v : MlclustermeanshiftVector, s : Double) -> MlclustermeanshiftVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_cluster_mean_shift_vector_dot(a : MlclustermeanshiftVector, b : MlclustermeanshiftVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_cluster_mean_shift_frame_get(s : MlclustermeanshiftFrame, i : Int) -> 
 }
 
 pub fn ml_cluster_mean_shift_frame_set(s : MlclustermeanshiftFrame, i : Int, v : Double) -> MlclustermeanshiftFrame {
-  let result = ml_cluster_mean_shift_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_mean_shift_frame_sum(s : MlclustermeanshiftFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_cluster_mean_shift_table_get(s : MlclustermeanshiftTable, i : Int) -> 
 }
 
 pub fn ml_cluster_mean_shift_table_set(s : MlclustermeanshiftTable, i : Int, v : Double) -> MlclustermeanshiftTable {
-  let result = ml_cluster_mean_shift_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_mean_shift_table_sum(s : MlclustermeanshiftTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_cluster_mean_shift_graphn_get(s : MlclustermeanshiftGraphN, i : Int) -
 }
 
 pub fn ml_cluster_mean_shift_graphn_set(s : MlclustermeanshiftGraphN, i : Int, v : Double) -> MlclustermeanshiftGraphN {
-  let result = ml_cluster_mean_shift_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_mean_shift_graphn_sum(s : MlclustermeanshiftGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_cluster_mean_shift_node_get(s : MlclustermeanshiftNode, i : Int) -> Do
 }
 
 pub fn ml_cluster_mean_shift_node_set(s : MlclustermeanshiftNode, i : Int, v : Double) -> MlclustermeanshiftNode {
-  let result = ml_cluster_mean_shift_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_mean_shift_node_sum(s : MlclustermeanshiftNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_cluster_mean_shift_edge_get(s : MlclustermeanshiftEdge, i : Int) -> Do
 }
 
 pub fn ml_cluster_mean_shift_edge_set(s : MlclustermeanshiftEdge, i : Int, v : Double) -> MlclustermeanshiftEdge {
-  let result = ml_cluster_mean_shift_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_mean_shift_edge_sum(s : MlclustermeanshiftEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_cluster_mean_shift_path_get(s : MlclustermeanshiftPath, i : Int) -> Do
 }
 
 pub fn ml_cluster_mean_shift_path_set(s : MlclustermeanshiftPath, i : Int, v : Double) -> MlclustermeanshiftPath {
-  let result = ml_cluster_mean_shift_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_mean_shift_path_sum(s : MlclustermeanshiftPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_cluster_mean_shift_cluster_get(s : MlclustermeanshiftCluster, i : Int)
 }
 
 pub fn ml_cluster_mean_shift_cluster_set(s : MlclustermeanshiftCluster, i : Int, v : Double) -> MlclustermeanshiftCluster {
-  let result = ml_cluster_mean_shift_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_mean_shift_cluster_sum(s : MlclustermeanshiftCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_cluster_mean_shift_model_get(s : MlclustermeanshiftModel, i : Int) -> 
 }
 
 pub fn ml_cluster_mean_shift_model_set(s : MlclustermeanshiftModel, i : Int, v : Double) -> MlclustermeanshiftModel {
-  let result = ml_cluster_mean_shift_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_mean_shift_model_sum(s : MlclustermeanshiftModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_cluster_mean_shift_layer_get(s : MlclustermeanshiftLayer, i : Int) -> 
 }
 
 pub fn ml_cluster_mean_shift_layer_set(s : MlclustermeanshiftLayer, i : Int, v : Double) -> MlclustermeanshiftLayer {
-  let result = ml_cluster_mean_shift_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_mean_shift_layer_sum(s : MlclustermeanshiftLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_cluster_mean_shift_buffer_get(s : MlclustermeanshiftBuffer, i : Int) -
 }
 
 pub fn ml_cluster_mean_shift_buffer_set(s : MlclustermeanshiftBuffer, i : Int, v : Double) -> MlclustermeanshiftBuffer {
-  let result = ml_cluster_mean_shift_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_mean_shift_buffer_sum(s : MlclustermeanshiftBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_cluster_mean_shift_cursor_get(s : MlclustermeanshiftCursor, i : Int) -
 }
 
 pub fn ml_cluster_mean_shift_cursor_set(s : MlclustermeanshiftCursor, i : Int, v : Double) -> MlclustermeanshiftCursor {
-  let result = ml_cluster_mean_shift_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_mean_shift_cursor_sum(s : MlclustermeanshiftCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_cluster_mean_shift_view_get(s : MlclustermeanshiftView, i : Int) -> Do
 }
 
 pub fn ml_cluster_mean_shift_view_set(s : MlclustermeanshiftView, i : Int, v : Double) -> MlclustermeanshiftView {
-  let result = ml_cluster_mean_shift_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_mean_shift_view_sum(s : MlclustermeanshiftView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_cluster_mean_shift_range_get(s : MlclustermeanshiftRange, i : Int) -> 
 }
 
 pub fn ml_cluster_mean_shift_range_set(s : MlclustermeanshiftRange, i : Int, v : Double) -> MlclustermeanshiftRange {
-  let result = ml_cluster_mean_shift_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_mean_shift_range_sum(s : MlclustermeanshiftRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_cluster_mean_shift_slice_get(s : MlclustermeanshiftSlice, i : Int) -> 
 }
 
 pub fn ml_cluster_mean_shift_slice_set(s : MlclustermeanshiftSlice, i : Int, v : Double) -> MlclustermeanshiftSlice {
-  let result = ml_cluster_mean_shift_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_mean_shift_slice_sum(s : MlclustermeanshiftSlice) -> Double { @_common.sum(s.data) }

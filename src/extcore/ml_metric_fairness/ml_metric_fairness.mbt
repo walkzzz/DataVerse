@@ -107,23 +107,15 @@ pub fn ml_metric_fairness_series_std(s : MlmetricfairnessSeries) -> Double { @_c
 pub fn ml_metric_fairness_series_median(s : MlmetricfairnessSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_metric_fairness_series_scale(s : MlmetricfairnessSeries, f : Double) -> MlmetricfairnessSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_metric_fairness_series_add(a : MlmetricfairnessSeries, b : MlmetricfairnessSeries) -> MlmetricfairnessSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_metric_fairness_series_sub(a : MlmetricfairnessSeries, b : MlmetricfairnessSeries) -> MlmetricfairnessSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_metric_fairness_series_normalize(s : MlmetricfairnessSeries) -> MlmetricfairnessSeries {
@@ -254,22 +246,16 @@ pub fn ml_metric_fairness_vector_zero(dim : Int) -> MlmetricfairnessVector {
 
 pub fn ml_metric_fairness_vector_add(a : MlmetricfairnessVector, b : MlmetricfairnessVector) -> MlmetricfairnessVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_metric_fairness_vector_sub(a : MlmetricfairnessVector, b : MlmetricfairnessVector) -> MlmetricfairnessVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_metric_fairness_vector_scale(v : MlmetricfairnessVector, s : Double) -> MlmetricfairnessVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_metric_fairness_vector_dot(a : MlmetricfairnessVector, b : MlmetricfairnessVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_metric_fairness_frame_get(s : MlmetricfairnessFrame, i : Int) -> Doubl
 }
 
 pub fn ml_metric_fairness_frame_set(s : MlmetricfairnessFrame, i : Int, v : Double) -> MlmetricfairnessFrame {
-  let result = ml_metric_fairness_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_fairness_frame_sum(s : MlmetricfairnessFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_metric_fairness_table_get(s : MlmetricfairnessTable, i : Int) -> Doubl
 }
 
 pub fn ml_metric_fairness_table_set(s : MlmetricfairnessTable, i : Int, v : Double) -> MlmetricfairnessTable {
-  let result = ml_metric_fairness_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_fairness_table_sum(s : MlmetricfairnessTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_metric_fairness_graphn_get(s : MlmetricfairnessGraphN, i : Int) -> Dou
 }
 
 pub fn ml_metric_fairness_graphn_set(s : MlmetricfairnessGraphN, i : Int, v : Double) -> MlmetricfairnessGraphN {
-  let result = ml_metric_fairness_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_fairness_graphn_sum(s : MlmetricfairnessGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_metric_fairness_node_get(s : MlmetricfairnessNode, i : Int) -> Double 
 }
 
 pub fn ml_metric_fairness_node_set(s : MlmetricfairnessNode, i : Int, v : Double) -> MlmetricfairnessNode {
-  let result = ml_metric_fairness_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_fairness_node_sum(s : MlmetricfairnessNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_metric_fairness_edge_get(s : MlmetricfairnessEdge, i : Int) -> Double 
 }
 
 pub fn ml_metric_fairness_edge_set(s : MlmetricfairnessEdge, i : Int, v : Double) -> MlmetricfairnessEdge {
-  let result = ml_metric_fairness_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_fairness_edge_sum(s : MlmetricfairnessEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_metric_fairness_path_get(s : MlmetricfairnessPath, i : Int) -> Double 
 }
 
 pub fn ml_metric_fairness_path_set(s : MlmetricfairnessPath, i : Int, v : Double) -> MlmetricfairnessPath {
-  let result = ml_metric_fairness_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_fairness_path_sum(s : MlmetricfairnessPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_metric_fairness_cluster_get(s : MlmetricfairnessCluster, i : Int) -> D
 }
 
 pub fn ml_metric_fairness_cluster_set(s : MlmetricfairnessCluster, i : Int, v : Double) -> MlmetricfairnessCluster {
-  let result = ml_metric_fairness_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_fairness_cluster_sum(s : MlmetricfairnessCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_metric_fairness_model_get(s : MlmetricfairnessModel, i : Int) -> Doubl
 }
 
 pub fn ml_metric_fairness_model_set(s : MlmetricfairnessModel, i : Int, v : Double) -> MlmetricfairnessModel {
-  let result = ml_metric_fairness_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_fairness_model_sum(s : MlmetricfairnessModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_metric_fairness_layer_get(s : MlmetricfairnessLayer, i : Int) -> Doubl
 }
 
 pub fn ml_metric_fairness_layer_set(s : MlmetricfairnessLayer, i : Int, v : Double) -> MlmetricfairnessLayer {
-  let result = ml_metric_fairness_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_fairness_layer_sum(s : MlmetricfairnessLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_metric_fairness_buffer_get(s : MlmetricfairnessBuffer, i : Int) -> Dou
 }
 
 pub fn ml_metric_fairness_buffer_set(s : MlmetricfairnessBuffer, i : Int, v : Double) -> MlmetricfairnessBuffer {
-  let result = ml_metric_fairness_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_fairness_buffer_sum(s : MlmetricfairnessBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_metric_fairness_cursor_get(s : MlmetricfairnessCursor, i : Int) -> Dou
 }
 
 pub fn ml_metric_fairness_cursor_set(s : MlmetricfairnessCursor, i : Int, v : Double) -> MlmetricfairnessCursor {
-  let result = ml_metric_fairness_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_fairness_cursor_sum(s : MlmetricfairnessCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_metric_fairness_view_get(s : MlmetricfairnessView, i : Int) -> Double 
 }
 
 pub fn ml_metric_fairness_view_set(s : MlmetricfairnessView, i : Int, v : Double) -> MlmetricfairnessView {
-  let result = ml_metric_fairness_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_fairness_view_sum(s : MlmetricfairnessView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_metric_fairness_range_get(s : MlmetricfairnessRange, i : Int) -> Doubl
 }
 
 pub fn ml_metric_fairness_range_set(s : MlmetricfairnessRange, i : Int, v : Double) -> MlmetricfairnessRange {
-  let result = ml_metric_fairness_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_fairness_range_sum(s : MlmetricfairnessRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_metric_fairness_slice_get(s : MlmetricfairnessSlice, i : Int) -> Doubl
 }
 
 pub fn ml_metric_fairness_slice_set(s : MlmetricfairnessSlice, i : Int, v : Double) -> MlmetricfairnessSlice {
-  let result = ml_metric_fairness_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_metric_fairness_slice_sum(s : MlmetricfairnessSlice) -> Double { @_common.sum(s.data) }

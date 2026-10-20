@@ -107,23 +107,15 @@ pub fn graph_connect_paths_series_std(s : GraphconnectpathsSeries) -> Double { @
 pub fn graph_connect_paths_series_median(s : GraphconnectpathsSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_connect_paths_series_scale(s : GraphconnectpathsSeries, f : Double) -> GraphconnectpathsSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_connect_paths_series_add(a : GraphconnectpathsSeries, b : GraphconnectpathsSeries) -> GraphconnectpathsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_connect_paths_series_sub(a : GraphconnectpathsSeries, b : GraphconnectpathsSeries) -> GraphconnectpathsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_connect_paths_series_normalize(s : GraphconnectpathsSeries) -> GraphconnectpathsSeries {
@@ -254,22 +246,16 @@ pub fn graph_connect_paths_vector_zero(dim : Int) -> GraphconnectpathsVector {
 
 pub fn graph_connect_paths_vector_add(a : GraphconnectpathsVector, b : GraphconnectpathsVector) -> GraphconnectpathsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_connect_paths_vector_sub(a : GraphconnectpathsVector, b : GraphconnectpathsVector) -> GraphconnectpathsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_connect_paths_vector_scale(v : GraphconnectpathsVector, s : Double) -> GraphconnectpathsVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_connect_paths_vector_dot(a : GraphconnectpathsVector, b : GraphconnectpathsVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_connect_paths_frame_get(s : GraphconnectpathsFrame, i : Int) -> Dou
 }
 
 pub fn graph_connect_paths_frame_set(s : GraphconnectpathsFrame, i : Int, v : Double) -> GraphconnectpathsFrame {
-  let result = graph_connect_paths_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_paths_frame_sum(s : GraphconnectpathsFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_connect_paths_table_get(s : GraphconnectpathsTable, i : Int) -> Dou
 }
 
 pub fn graph_connect_paths_table_set(s : GraphconnectpathsTable, i : Int, v : Double) -> GraphconnectpathsTable {
-  let result = graph_connect_paths_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_paths_table_sum(s : GraphconnectpathsTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_connect_paths_graphn_get(s : GraphconnectpathsGraphN, i : Int) -> D
 }
 
 pub fn graph_connect_paths_graphn_set(s : GraphconnectpathsGraphN, i : Int, v : Double) -> GraphconnectpathsGraphN {
-  let result = graph_connect_paths_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_paths_graphn_sum(s : GraphconnectpathsGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_connect_paths_node_get(s : GraphconnectpathsNode, i : Int) -> Doubl
 }
 
 pub fn graph_connect_paths_node_set(s : GraphconnectpathsNode, i : Int, v : Double) -> GraphconnectpathsNode {
-  let result = graph_connect_paths_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_paths_node_sum(s : GraphconnectpathsNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_connect_paths_edge_get(s : GraphconnectpathsEdge, i : Int) -> Doubl
 }
 
 pub fn graph_connect_paths_edge_set(s : GraphconnectpathsEdge, i : Int, v : Double) -> GraphconnectpathsEdge {
-  let result = graph_connect_paths_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_paths_edge_sum(s : GraphconnectpathsEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_connect_paths_path_get(s : GraphconnectpathsPath, i : Int) -> Doubl
 }
 
 pub fn graph_connect_paths_path_set(s : GraphconnectpathsPath, i : Int, v : Double) -> GraphconnectpathsPath {
-  let result = graph_connect_paths_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_paths_path_sum(s : GraphconnectpathsPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_connect_paths_cluster_get(s : GraphconnectpathsCluster, i : Int) ->
 }
 
 pub fn graph_connect_paths_cluster_set(s : GraphconnectpathsCluster, i : Int, v : Double) -> GraphconnectpathsCluster {
-  let result = graph_connect_paths_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_paths_cluster_sum(s : GraphconnectpathsCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_connect_paths_model_get(s : GraphconnectpathsModel, i : Int) -> Dou
 }
 
 pub fn graph_connect_paths_model_set(s : GraphconnectpathsModel, i : Int, v : Double) -> GraphconnectpathsModel {
-  let result = graph_connect_paths_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_paths_model_sum(s : GraphconnectpathsModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_connect_paths_layer_get(s : GraphconnectpathsLayer, i : Int) -> Dou
 }
 
 pub fn graph_connect_paths_layer_set(s : GraphconnectpathsLayer, i : Int, v : Double) -> GraphconnectpathsLayer {
-  let result = graph_connect_paths_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_paths_layer_sum(s : GraphconnectpathsLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_connect_paths_buffer_get(s : GraphconnectpathsBuffer, i : Int) -> D
 }
 
 pub fn graph_connect_paths_buffer_set(s : GraphconnectpathsBuffer, i : Int, v : Double) -> GraphconnectpathsBuffer {
-  let result = graph_connect_paths_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_paths_buffer_sum(s : GraphconnectpathsBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_connect_paths_cursor_get(s : GraphconnectpathsCursor, i : Int) -> D
 }
 
 pub fn graph_connect_paths_cursor_set(s : GraphconnectpathsCursor, i : Int, v : Double) -> GraphconnectpathsCursor {
-  let result = graph_connect_paths_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_paths_cursor_sum(s : GraphconnectpathsCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_connect_paths_view_get(s : GraphconnectpathsView, i : Int) -> Doubl
 }
 
 pub fn graph_connect_paths_view_set(s : GraphconnectpathsView, i : Int, v : Double) -> GraphconnectpathsView {
-  let result = graph_connect_paths_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_paths_view_sum(s : GraphconnectpathsView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_connect_paths_range_get(s : GraphconnectpathsRange, i : Int) -> Dou
 }
 
 pub fn graph_connect_paths_range_set(s : GraphconnectpathsRange, i : Int, v : Double) -> GraphconnectpathsRange {
-  let result = graph_connect_paths_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_paths_range_sum(s : GraphconnectpathsRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_connect_paths_slice_get(s : GraphconnectpathsSlice, i : Int) -> Dou
 }
 
 pub fn graph_connect_paths_slice_set(s : GraphconnectpathsSlice, i : Int, v : Double) -> GraphconnectpathsSlice {
-  let result = graph_connect_paths_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_paths_slice_sum(s : GraphconnectpathsSlice) -> Double { @_common.sum(s.data) }

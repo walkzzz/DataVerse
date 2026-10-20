@@ -107,23 +107,15 @@ pub fn crypto_hash_whirlpool_series_std(s : CryptohashwhirlpoolSeries) -> Double
 pub fn crypto_hash_whirlpool_series_median(s : CryptohashwhirlpoolSeries) -> Double { @_common.median(s.vals) }
 
 pub fn crypto_hash_whirlpool_series_scale(s : CryptohashwhirlpoolSeries, f : Double) -> CryptohashwhirlpoolSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn crypto_hash_whirlpool_series_add(a : CryptohashwhirlpoolSeries, b : CryptohashwhirlpoolSeries) -> CryptohashwhirlpoolSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn crypto_hash_whirlpool_series_sub(a : CryptohashwhirlpoolSeries, b : CryptohashwhirlpoolSeries) -> CryptohashwhirlpoolSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn crypto_hash_whirlpool_series_normalize(s : CryptohashwhirlpoolSeries) -> CryptohashwhirlpoolSeries {
@@ -254,22 +246,16 @@ pub fn crypto_hash_whirlpool_vector_zero(dim : Int) -> CryptohashwhirlpoolVector
 
 pub fn crypto_hash_whirlpool_vector_add(a : CryptohashwhirlpoolVector, b : CryptohashwhirlpoolVector) -> CryptohashwhirlpoolVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_hash_whirlpool_vector_sub(a : CryptohashwhirlpoolVector, b : CryptohashwhirlpoolVector) -> CryptohashwhirlpoolVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn crypto_hash_whirlpool_vector_scale(v : CryptohashwhirlpoolVector, s : Double) -> CryptohashwhirlpoolVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn crypto_hash_whirlpool_vector_dot(a : CryptohashwhirlpoolVector, b : CryptohashwhirlpoolVector) -> Double {
@@ -372,10 +358,9 @@ pub fn crypto_hash_whirlpool_frame_get(s : CryptohashwhirlpoolFrame, i : Int) ->
 }
 
 pub fn crypto_hash_whirlpool_frame_set(s : CryptohashwhirlpoolFrame, i : Int, v : Double) -> CryptohashwhirlpoolFrame {
-  let result = crypto_hash_whirlpool_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_whirlpool_frame_sum(s : CryptohashwhirlpoolFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn crypto_hash_whirlpool_table_get(s : CryptohashwhirlpoolTable, i : Int) ->
 }
 
 pub fn crypto_hash_whirlpool_table_set(s : CryptohashwhirlpoolTable, i : Int, v : Double) -> CryptohashwhirlpoolTable {
-  let result = crypto_hash_whirlpool_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_whirlpool_table_sum(s : CryptohashwhirlpoolTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn crypto_hash_whirlpool_graphn_get(s : CryptohashwhirlpoolGraphN, i : Int) 
 }
 
 pub fn crypto_hash_whirlpool_graphn_set(s : CryptohashwhirlpoolGraphN, i : Int, v : Double) -> CryptohashwhirlpoolGraphN {
-  let result = crypto_hash_whirlpool_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_whirlpool_graphn_sum(s : CryptohashwhirlpoolGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn crypto_hash_whirlpool_node_get(s : CryptohashwhirlpoolNode, i : Int) -> D
 }
 
 pub fn crypto_hash_whirlpool_node_set(s : CryptohashwhirlpoolNode, i : Int, v : Double) -> CryptohashwhirlpoolNode {
-  let result = crypto_hash_whirlpool_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_whirlpool_node_sum(s : CryptohashwhirlpoolNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn crypto_hash_whirlpool_edge_get(s : CryptohashwhirlpoolEdge, i : Int) -> D
 }
 
 pub fn crypto_hash_whirlpool_edge_set(s : CryptohashwhirlpoolEdge, i : Int, v : Double) -> CryptohashwhirlpoolEdge {
-  let result = crypto_hash_whirlpool_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_whirlpool_edge_sum(s : CryptohashwhirlpoolEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn crypto_hash_whirlpool_path_get(s : CryptohashwhirlpoolPath, i : Int) -> D
 }
 
 pub fn crypto_hash_whirlpool_path_set(s : CryptohashwhirlpoolPath, i : Int, v : Double) -> CryptohashwhirlpoolPath {
-  let result = crypto_hash_whirlpool_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_whirlpool_path_sum(s : CryptohashwhirlpoolPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn crypto_hash_whirlpool_cluster_get(s : CryptohashwhirlpoolCluster, i : Int
 }
 
 pub fn crypto_hash_whirlpool_cluster_set(s : CryptohashwhirlpoolCluster, i : Int, v : Double) -> CryptohashwhirlpoolCluster {
-  let result = crypto_hash_whirlpool_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_whirlpool_cluster_sum(s : CryptohashwhirlpoolCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn crypto_hash_whirlpool_model_get(s : CryptohashwhirlpoolModel, i : Int) ->
 }
 
 pub fn crypto_hash_whirlpool_model_set(s : CryptohashwhirlpoolModel, i : Int, v : Double) -> CryptohashwhirlpoolModel {
-  let result = crypto_hash_whirlpool_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_whirlpool_model_sum(s : CryptohashwhirlpoolModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn crypto_hash_whirlpool_layer_get(s : CryptohashwhirlpoolLayer, i : Int) ->
 }
 
 pub fn crypto_hash_whirlpool_layer_set(s : CryptohashwhirlpoolLayer, i : Int, v : Double) -> CryptohashwhirlpoolLayer {
-  let result = crypto_hash_whirlpool_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_whirlpool_layer_sum(s : CryptohashwhirlpoolLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn crypto_hash_whirlpool_buffer_get(s : CryptohashwhirlpoolBuffer, i : Int) 
 }
 
 pub fn crypto_hash_whirlpool_buffer_set(s : CryptohashwhirlpoolBuffer, i : Int, v : Double) -> CryptohashwhirlpoolBuffer {
-  let result = crypto_hash_whirlpool_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_whirlpool_buffer_sum(s : CryptohashwhirlpoolBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn crypto_hash_whirlpool_cursor_get(s : CryptohashwhirlpoolCursor, i : Int) 
 }
 
 pub fn crypto_hash_whirlpool_cursor_set(s : CryptohashwhirlpoolCursor, i : Int, v : Double) -> CryptohashwhirlpoolCursor {
-  let result = crypto_hash_whirlpool_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_whirlpool_cursor_sum(s : CryptohashwhirlpoolCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn crypto_hash_whirlpool_view_get(s : CryptohashwhirlpoolView, i : Int) -> D
 }
 
 pub fn crypto_hash_whirlpool_view_set(s : CryptohashwhirlpoolView, i : Int, v : Double) -> CryptohashwhirlpoolView {
-  let result = crypto_hash_whirlpool_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_whirlpool_view_sum(s : CryptohashwhirlpoolView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn crypto_hash_whirlpool_range_get(s : CryptohashwhirlpoolRange, i : Int) ->
 }
 
 pub fn crypto_hash_whirlpool_range_set(s : CryptohashwhirlpoolRange, i : Int, v : Double) -> CryptohashwhirlpoolRange {
-  let result = crypto_hash_whirlpool_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_whirlpool_range_sum(s : CryptohashwhirlpoolRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn crypto_hash_whirlpool_slice_get(s : CryptohashwhirlpoolSlice, i : Int) ->
 }
 
 pub fn crypto_hash_whirlpool_slice_set(s : CryptohashwhirlpoolSlice, i : Int, v : Double) -> CryptohashwhirlpoolSlice {
-  let result = crypto_hash_whirlpool_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn crypto_hash_whirlpool_slice_sum(s : CryptohashwhirlpoolSlice) -> Double { @_common.sum(s.data) }

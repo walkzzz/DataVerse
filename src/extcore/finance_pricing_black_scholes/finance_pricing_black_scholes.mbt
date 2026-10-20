@@ -107,23 +107,15 @@ pub fn finance_pricing_black_scholes_series_std(s : FinancepricingblackscholesSe
 pub fn finance_pricing_black_scholes_series_median(s : FinancepricingblackscholesSeries) -> Double { @_common.median(s.vals) }
 
 pub fn finance_pricing_black_scholes_series_scale(s : FinancepricingblackscholesSeries, f : Double) -> FinancepricingblackscholesSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn finance_pricing_black_scholes_series_add(a : FinancepricingblackscholesSeries, b : FinancepricingblackscholesSeries) -> FinancepricingblackscholesSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn finance_pricing_black_scholes_series_sub(a : FinancepricingblackscholesSeries, b : FinancepricingblackscholesSeries) -> FinancepricingblackscholesSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn finance_pricing_black_scholes_series_normalize(s : FinancepricingblackscholesSeries) -> FinancepricingblackscholesSeries {
@@ -254,22 +246,16 @@ pub fn finance_pricing_black_scholes_vector_zero(dim : Int) -> Financepricingbla
 
 pub fn finance_pricing_black_scholes_vector_add(a : FinancepricingblackscholesVector, b : FinancepricingblackscholesVector) -> FinancepricingblackscholesVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_pricing_black_scholes_vector_sub(a : FinancepricingblackscholesVector, b : FinancepricingblackscholesVector) -> FinancepricingblackscholesVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_pricing_black_scholes_vector_scale(v : FinancepricingblackscholesVector, s : Double) -> FinancepricingblackscholesVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn finance_pricing_black_scholes_vector_dot(a : FinancepricingblackscholesVector, b : FinancepricingblackscholesVector) -> Double {
@@ -372,10 +358,9 @@ pub fn finance_pricing_black_scholes_frame_get(s : FinancepricingblackscholesFra
 }
 
 pub fn finance_pricing_black_scholes_frame_set(s : FinancepricingblackscholesFrame, i : Int, v : Double) -> FinancepricingblackscholesFrame {
-  let result = finance_pricing_black_scholes_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_black_scholes_frame_sum(s : FinancepricingblackscholesFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn finance_pricing_black_scholes_table_get(s : FinancepricingblackscholesTab
 }
 
 pub fn finance_pricing_black_scholes_table_set(s : FinancepricingblackscholesTable, i : Int, v : Double) -> FinancepricingblackscholesTable {
-  let result = finance_pricing_black_scholes_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_black_scholes_table_sum(s : FinancepricingblackscholesTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn finance_pricing_black_scholes_graphn_get(s : FinancepricingblackscholesGr
 }
 
 pub fn finance_pricing_black_scholes_graphn_set(s : FinancepricingblackscholesGraphN, i : Int, v : Double) -> FinancepricingblackscholesGraphN {
-  let result = finance_pricing_black_scholes_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_black_scholes_graphn_sum(s : FinancepricingblackscholesGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn finance_pricing_black_scholes_node_get(s : FinancepricingblackscholesNode
 }
 
 pub fn finance_pricing_black_scholes_node_set(s : FinancepricingblackscholesNode, i : Int, v : Double) -> FinancepricingblackscholesNode {
-  let result = finance_pricing_black_scholes_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_black_scholes_node_sum(s : FinancepricingblackscholesNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn finance_pricing_black_scholes_edge_get(s : FinancepricingblackscholesEdge
 }
 
 pub fn finance_pricing_black_scholes_edge_set(s : FinancepricingblackscholesEdge, i : Int, v : Double) -> FinancepricingblackscholesEdge {
-  let result = finance_pricing_black_scholes_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_black_scholes_edge_sum(s : FinancepricingblackscholesEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn finance_pricing_black_scholes_path_get(s : FinancepricingblackscholesPath
 }
 
 pub fn finance_pricing_black_scholes_path_set(s : FinancepricingblackscholesPath, i : Int, v : Double) -> FinancepricingblackscholesPath {
-  let result = finance_pricing_black_scholes_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_black_scholes_path_sum(s : FinancepricingblackscholesPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn finance_pricing_black_scholes_cluster_get(s : FinancepricingblackscholesC
 }
 
 pub fn finance_pricing_black_scholes_cluster_set(s : FinancepricingblackscholesCluster, i : Int, v : Double) -> FinancepricingblackscholesCluster {
-  let result = finance_pricing_black_scholes_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_black_scholes_cluster_sum(s : FinancepricingblackscholesCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn finance_pricing_black_scholes_model_get(s : FinancepricingblackscholesMod
 }
 
 pub fn finance_pricing_black_scholes_model_set(s : FinancepricingblackscholesModel, i : Int, v : Double) -> FinancepricingblackscholesModel {
-  let result = finance_pricing_black_scholes_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_black_scholes_model_sum(s : FinancepricingblackscholesModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn finance_pricing_black_scholes_layer_get(s : FinancepricingblackscholesLay
 }
 
 pub fn finance_pricing_black_scholes_layer_set(s : FinancepricingblackscholesLayer, i : Int, v : Double) -> FinancepricingblackscholesLayer {
-  let result = finance_pricing_black_scholes_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_black_scholes_layer_sum(s : FinancepricingblackscholesLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn finance_pricing_black_scholes_buffer_get(s : FinancepricingblackscholesBu
 }
 
 pub fn finance_pricing_black_scholes_buffer_set(s : FinancepricingblackscholesBuffer, i : Int, v : Double) -> FinancepricingblackscholesBuffer {
-  let result = finance_pricing_black_scholes_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_black_scholes_buffer_sum(s : FinancepricingblackscholesBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn finance_pricing_black_scholes_cursor_get(s : FinancepricingblackscholesCu
 }
 
 pub fn finance_pricing_black_scholes_cursor_set(s : FinancepricingblackscholesCursor, i : Int, v : Double) -> FinancepricingblackscholesCursor {
-  let result = finance_pricing_black_scholes_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_black_scholes_cursor_sum(s : FinancepricingblackscholesCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn finance_pricing_black_scholes_view_get(s : FinancepricingblackscholesView
 }
 
 pub fn finance_pricing_black_scholes_view_set(s : FinancepricingblackscholesView, i : Int, v : Double) -> FinancepricingblackscholesView {
-  let result = finance_pricing_black_scholes_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_black_scholes_view_sum(s : FinancepricingblackscholesView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn finance_pricing_black_scholes_range_get(s : FinancepricingblackscholesRan
 }
 
 pub fn finance_pricing_black_scholes_range_set(s : FinancepricingblackscholesRange, i : Int, v : Double) -> FinancepricingblackscholesRange {
-  let result = finance_pricing_black_scholes_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_black_scholes_range_sum(s : FinancepricingblackscholesRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn finance_pricing_black_scholes_slice_get(s : FinancepricingblackscholesSli
 }
 
 pub fn finance_pricing_black_scholes_slice_set(s : FinancepricingblackscholesSlice, i : Int, v : Double) -> FinancepricingblackscholesSlice {
-  let result = finance_pricing_black_scholes_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_pricing_black_scholes_slice_sum(s : FinancepricingblackscholesSlice) -> Double { @_common.sum(s.data) }

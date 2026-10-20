@@ -107,23 +107,15 @@ pub fn ds_hash_robin_series_std(s : DshashrobinSeries) -> Double { @_common.std(
 pub fn ds_hash_robin_series_median(s : DshashrobinSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ds_hash_robin_series_scale(s : DshashrobinSeries, f : Double) -> DshashrobinSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ds_hash_robin_series_add(a : DshashrobinSeries, b : DshashrobinSeries) -> DshashrobinSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ds_hash_robin_series_sub(a : DshashrobinSeries, b : DshashrobinSeries) -> DshashrobinSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ds_hash_robin_series_normalize(s : DshashrobinSeries) -> DshashrobinSeries {
@@ -254,22 +246,16 @@ pub fn ds_hash_robin_vector_zero(dim : Int) -> DshashrobinVector {
 
 pub fn ds_hash_robin_vector_add(a : DshashrobinVector, b : DshashrobinVector) -> DshashrobinVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_hash_robin_vector_sub(a : DshashrobinVector, b : DshashrobinVector) -> DshashrobinVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ds_hash_robin_vector_scale(v : DshashrobinVector, s : Double) -> DshashrobinVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ds_hash_robin_vector_dot(a : DshashrobinVector, b : DshashrobinVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ds_hash_robin_frame_get(s : DshashrobinFrame, i : Int) -> Double {
 }
 
 pub fn ds_hash_robin_frame_set(s : DshashrobinFrame, i : Int, v : Double) -> DshashrobinFrame {
-  let result = ds_hash_robin_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_robin_frame_sum(s : DshashrobinFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ds_hash_robin_table_get(s : DshashrobinTable, i : Int) -> Double {
 }
 
 pub fn ds_hash_robin_table_set(s : DshashrobinTable, i : Int, v : Double) -> DshashrobinTable {
-  let result = ds_hash_robin_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_robin_table_sum(s : DshashrobinTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ds_hash_robin_graphn_get(s : DshashrobinGraphN, i : Int) -> Double {
 }
 
 pub fn ds_hash_robin_graphn_set(s : DshashrobinGraphN, i : Int, v : Double) -> DshashrobinGraphN {
-  let result = ds_hash_robin_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_robin_graphn_sum(s : DshashrobinGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ds_hash_robin_node_get(s : DshashrobinNode, i : Int) -> Double {
 }
 
 pub fn ds_hash_robin_node_set(s : DshashrobinNode, i : Int, v : Double) -> DshashrobinNode {
-  let result = ds_hash_robin_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_robin_node_sum(s : DshashrobinNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ds_hash_robin_edge_get(s : DshashrobinEdge, i : Int) -> Double {
 }
 
 pub fn ds_hash_robin_edge_set(s : DshashrobinEdge, i : Int, v : Double) -> DshashrobinEdge {
-  let result = ds_hash_robin_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_robin_edge_sum(s : DshashrobinEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ds_hash_robin_path_get(s : DshashrobinPath, i : Int) -> Double {
 }
 
 pub fn ds_hash_robin_path_set(s : DshashrobinPath, i : Int, v : Double) -> DshashrobinPath {
-  let result = ds_hash_robin_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_robin_path_sum(s : DshashrobinPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ds_hash_robin_cluster_get(s : DshashrobinCluster, i : Int) -> Double {
 }
 
 pub fn ds_hash_robin_cluster_set(s : DshashrobinCluster, i : Int, v : Double) -> DshashrobinCluster {
-  let result = ds_hash_robin_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_robin_cluster_sum(s : DshashrobinCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ds_hash_robin_model_get(s : DshashrobinModel, i : Int) -> Double {
 }
 
 pub fn ds_hash_robin_model_set(s : DshashrobinModel, i : Int, v : Double) -> DshashrobinModel {
-  let result = ds_hash_robin_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_robin_model_sum(s : DshashrobinModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ds_hash_robin_layer_get(s : DshashrobinLayer, i : Int) -> Double {
 }
 
 pub fn ds_hash_robin_layer_set(s : DshashrobinLayer, i : Int, v : Double) -> DshashrobinLayer {
-  let result = ds_hash_robin_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_robin_layer_sum(s : DshashrobinLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ds_hash_robin_buffer_get(s : DshashrobinBuffer, i : Int) -> Double {
 }
 
 pub fn ds_hash_robin_buffer_set(s : DshashrobinBuffer, i : Int, v : Double) -> DshashrobinBuffer {
-  let result = ds_hash_robin_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_robin_buffer_sum(s : DshashrobinBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ds_hash_robin_cursor_get(s : DshashrobinCursor, i : Int) -> Double {
 }
 
 pub fn ds_hash_robin_cursor_set(s : DshashrobinCursor, i : Int, v : Double) -> DshashrobinCursor {
-  let result = ds_hash_robin_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_robin_cursor_sum(s : DshashrobinCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ds_hash_robin_view_get(s : DshashrobinView, i : Int) -> Double {
 }
 
 pub fn ds_hash_robin_view_set(s : DshashrobinView, i : Int, v : Double) -> DshashrobinView {
-  let result = ds_hash_robin_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_robin_view_sum(s : DshashrobinView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ds_hash_robin_range_get(s : DshashrobinRange, i : Int) -> Double {
 }
 
 pub fn ds_hash_robin_range_set(s : DshashrobinRange, i : Int, v : Double) -> DshashrobinRange {
-  let result = ds_hash_robin_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_robin_range_sum(s : DshashrobinRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ds_hash_robin_slice_get(s : DshashrobinSlice, i : Int) -> Double {
 }
 
 pub fn ds_hash_robin_slice_set(s : DshashrobinSlice, i : Int, v : Double) -> DshashrobinSlice {
-  let result = ds_hash_robin_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ds_hash_robin_slice_sum(s : DshashrobinSlice) -> Double { @_common.sum(s.data) }

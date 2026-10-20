@@ -107,23 +107,15 @@ pub fn stats_model_nonlinear_series_std(s : StatsmodelnonlinearSeries) -> Double
 pub fn stats_model_nonlinear_series_median(s : StatsmodelnonlinearSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_model_nonlinear_series_scale(s : StatsmodelnonlinearSeries, f : Double) -> StatsmodelnonlinearSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_model_nonlinear_series_add(a : StatsmodelnonlinearSeries, b : StatsmodelnonlinearSeries) -> StatsmodelnonlinearSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_model_nonlinear_series_sub(a : StatsmodelnonlinearSeries, b : StatsmodelnonlinearSeries) -> StatsmodelnonlinearSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_model_nonlinear_series_normalize(s : StatsmodelnonlinearSeries) -> StatsmodelnonlinearSeries {
@@ -254,22 +246,16 @@ pub fn stats_model_nonlinear_vector_zero(dim : Int) -> StatsmodelnonlinearVector
 
 pub fn stats_model_nonlinear_vector_add(a : StatsmodelnonlinearVector, b : StatsmodelnonlinearVector) -> StatsmodelnonlinearVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_model_nonlinear_vector_sub(a : StatsmodelnonlinearVector, b : StatsmodelnonlinearVector) -> StatsmodelnonlinearVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_model_nonlinear_vector_scale(v : StatsmodelnonlinearVector, s : Double) -> StatsmodelnonlinearVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_model_nonlinear_vector_dot(a : StatsmodelnonlinearVector, b : StatsmodelnonlinearVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_model_nonlinear_frame_get(s : StatsmodelnonlinearFrame, i : Int) ->
 }
 
 pub fn stats_model_nonlinear_frame_set(s : StatsmodelnonlinearFrame, i : Int, v : Double) -> StatsmodelnonlinearFrame {
-  let result = stats_model_nonlinear_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_frame_sum(s : StatsmodelnonlinearFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_model_nonlinear_table_get(s : StatsmodelnonlinearTable, i : Int) ->
 }
 
 pub fn stats_model_nonlinear_table_set(s : StatsmodelnonlinearTable, i : Int, v : Double) -> StatsmodelnonlinearTable {
-  let result = stats_model_nonlinear_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_table_sum(s : StatsmodelnonlinearTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_model_nonlinear_graphn_get(s : StatsmodelnonlinearGraphN, i : Int) 
 }
 
 pub fn stats_model_nonlinear_graphn_set(s : StatsmodelnonlinearGraphN, i : Int, v : Double) -> StatsmodelnonlinearGraphN {
-  let result = stats_model_nonlinear_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_graphn_sum(s : StatsmodelnonlinearGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_model_nonlinear_node_get(s : StatsmodelnonlinearNode, i : Int) -> D
 }
 
 pub fn stats_model_nonlinear_node_set(s : StatsmodelnonlinearNode, i : Int, v : Double) -> StatsmodelnonlinearNode {
-  let result = stats_model_nonlinear_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_node_sum(s : StatsmodelnonlinearNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_model_nonlinear_edge_get(s : StatsmodelnonlinearEdge, i : Int) -> D
 }
 
 pub fn stats_model_nonlinear_edge_set(s : StatsmodelnonlinearEdge, i : Int, v : Double) -> StatsmodelnonlinearEdge {
-  let result = stats_model_nonlinear_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_edge_sum(s : StatsmodelnonlinearEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_model_nonlinear_path_get(s : StatsmodelnonlinearPath, i : Int) -> D
 }
 
 pub fn stats_model_nonlinear_path_set(s : StatsmodelnonlinearPath, i : Int, v : Double) -> StatsmodelnonlinearPath {
-  let result = stats_model_nonlinear_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_path_sum(s : StatsmodelnonlinearPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_model_nonlinear_cluster_get(s : StatsmodelnonlinearCluster, i : Int
 }
 
 pub fn stats_model_nonlinear_cluster_set(s : StatsmodelnonlinearCluster, i : Int, v : Double) -> StatsmodelnonlinearCluster {
-  let result = stats_model_nonlinear_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_cluster_sum(s : StatsmodelnonlinearCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_model_nonlinear_model_get(s : StatsmodelnonlinearModel, i : Int) ->
 }
 
 pub fn stats_model_nonlinear_model_set(s : StatsmodelnonlinearModel, i : Int, v : Double) -> StatsmodelnonlinearModel {
-  let result = stats_model_nonlinear_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_model_sum(s : StatsmodelnonlinearModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_model_nonlinear_layer_get(s : StatsmodelnonlinearLayer, i : Int) ->
 }
 
 pub fn stats_model_nonlinear_layer_set(s : StatsmodelnonlinearLayer, i : Int, v : Double) -> StatsmodelnonlinearLayer {
-  let result = stats_model_nonlinear_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_layer_sum(s : StatsmodelnonlinearLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_model_nonlinear_buffer_get(s : StatsmodelnonlinearBuffer, i : Int) 
 }
 
 pub fn stats_model_nonlinear_buffer_set(s : StatsmodelnonlinearBuffer, i : Int, v : Double) -> StatsmodelnonlinearBuffer {
-  let result = stats_model_nonlinear_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_buffer_sum(s : StatsmodelnonlinearBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_model_nonlinear_cursor_get(s : StatsmodelnonlinearCursor, i : Int) 
 }
 
 pub fn stats_model_nonlinear_cursor_set(s : StatsmodelnonlinearCursor, i : Int, v : Double) -> StatsmodelnonlinearCursor {
-  let result = stats_model_nonlinear_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_cursor_sum(s : StatsmodelnonlinearCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_model_nonlinear_view_get(s : StatsmodelnonlinearView, i : Int) -> D
 }
 
 pub fn stats_model_nonlinear_view_set(s : StatsmodelnonlinearView, i : Int, v : Double) -> StatsmodelnonlinearView {
-  let result = stats_model_nonlinear_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_view_sum(s : StatsmodelnonlinearView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_model_nonlinear_range_get(s : StatsmodelnonlinearRange, i : Int) ->
 }
 
 pub fn stats_model_nonlinear_range_set(s : StatsmodelnonlinearRange, i : Int, v : Double) -> StatsmodelnonlinearRange {
-  let result = stats_model_nonlinear_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_range_sum(s : StatsmodelnonlinearRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_model_nonlinear_slice_get(s : StatsmodelnonlinearSlice, i : Int) ->
 }
 
 pub fn stats_model_nonlinear_slice_set(s : StatsmodelnonlinearSlice, i : Int, v : Double) -> StatsmodelnonlinearSlice {
-  let result = stats_model_nonlinear_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_model_nonlinear_slice_sum(s : StatsmodelnonlinearSlice) -> Double { @_common.sum(s.data) }

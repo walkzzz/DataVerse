@@ -107,23 +107,15 @@ pub fn math_special_hermite_series_std(s : MathspecialhermiteSeries) -> Double {
 pub fn math_special_hermite_series_median(s : MathspecialhermiteSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_special_hermite_series_scale(s : MathspecialhermiteSeries, f : Double) -> MathspecialhermiteSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_special_hermite_series_add(a : MathspecialhermiteSeries, b : MathspecialhermiteSeries) -> MathspecialhermiteSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_special_hermite_series_sub(a : MathspecialhermiteSeries, b : MathspecialhermiteSeries) -> MathspecialhermiteSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_special_hermite_series_normalize(s : MathspecialhermiteSeries) -> MathspecialhermiteSeries {
@@ -254,22 +246,16 @@ pub fn math_special_hermite_vector_zero(dim : Int) -> MathspecialhermiteVector {
 
 pub fn math_special_hermite_vector_add(a : MathspecialhermiteVector, b : MathspecialhermiteVector) -> MathspecialhermiteVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_special_hermite_vector_sub(a : MathspecialhermiteVector, b : MathspecialhermiteVector) -> MathspecialhermiteVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_special_hermite_vector_scale(v : MathspecialhermiteVector, s : Double) -> MathspecialhermiteVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_special_hermite_vector_dot(a : MathspecialhermiteVector, b : MathspecialhermiteVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_special_hermite_frame_get(s : MathspecialhermiteFrame, i : Int) -> D
 }
 
 pub fn math_special_hermite_frame_set(s : MathspecialhermiteFrame, i : Int, v : Double) -> MathspecialhermiteFrame {
-  let result = math_special_hermite_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hermite_frame_sum(s : MathspecialhermiteFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_special_hermite_table_get(s : MathspecialhermiteTable, i : Int) -> D
 }
 
 pub fn math_special_hermite_table_set(s : MathspecialhermiteTable, i : Int, v : Double) -> MathspecialhermiteTable {
-  let result = math_special_hermite_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hermite_table_sum(s : MathspecialhermiteTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_special_hermite_graphn_get(s : MathspecialhermiteGraphN, i : Int) ->
 }
 
 pub fn math_special_hermite_graphn_set(s : MathspecialhermiteGraphN, i : Int, v : Double) -> MathspecialhermiteGraphN {
-  let result = math_special_hermite_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hermite_graphn_sum(s : MathspecialhermiteGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_special_hermite_node_get(s : MathspecialhermiteNode, i : Int) -> Dou
 }
 
 pub fn math_special_hermite_node_set(s : MathspecialhermiteNode, i : Int, v : Double) -> MathspecialhermiteNode {
-  let result = math_special_hermite_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hermite_node_sum(s : MathspecialhermiteNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_special_hermite_edge_get(s : MathspecialhermiteEdge, i : Int) -> Dou
 }
 
 pub fn math_special_hermite_edge_set(s : MathspecialhermiteEdge, i : Int, v : Double) -> MathspecialhermiteEdge {
-  let result = math_special_hermite_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hermite_edge_sum(s : MathspecialhermiteEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_special_hermite_path_get(s : MathspecialhermitePath, i : Int) -> Dou
 }
 
 pub fn math_special_hermite_path_set(s : MathspecialhermitePath, i : Int, v : Double) -> MathspecialhermitePath {
-  let result = math_special_hermite_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hermite_path_sum(s : MathspecialhermitePath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_special_hermite_cluster_get(s : MathspecialhermiteCluster, i : Int) 
 }
 
 pub fn math_special_hermite_cluster_set(s : MathspecialhermiteCluster, i : Int, v : Double) -> MathspecialhermiteCluster {
-  let result = math_special_hermite_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hermite_cluster_sum(s : MathspecialhermiteCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_special_hermite_model_get(s : MathspecialhermiteModel, i : Int) -> D
 }
 
 pub fn math_special_hermite_model_set(s : MathspecialhermiteModel, i : Int, v : Double) -> MathspecialhermiteModel {
-  let result = math_special_hermite_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hermite_model_sum(s : MathspecialhermiteModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_special_hermite_layer_get(s : MathspecialhermiteLayer, i : Int) -> D
 }
 
 pub fn math_special_hermite_layer_set(s : MathspecialhermiteLayer, i : Int, v : Double) -> MathspecialhermiteLayer {
-  let result = math_special_hermite_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hermite_layer_sum(s : MathspecialhermiteLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_special_hermite_buffer_get(s : MathspecialhermiteBuffer, i : Int) ->
 }
 
 pub fn math_special_hermite_buffer_set(s : MathspecialhermiteBuffer, i : Int, v : Double) -> MathspecialhermiteBuffer {
-  let result = math_special_hermite_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hermite_buffer_sum(s : MathspecialhermiteBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_special_hermite_cursor_get(s : MathspecialhermiteCursor, i : Int) ->
 }
 
 pub fn math_special_hermite_cursor_set(s : MathspecialhermiteCursor, i : Int, v : Double) -> MathspecialhermiteCursor {
-  let result = math_special_hermite_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hermite_cursor_sum(s : MathspecialhermiteCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_special_hermite_view_get(s : MathspecialhermiteView, i : Int) -> Dou
 }
 
 pub fn math_special_hermite_view_set(s : MathspecialhermiteView, i : Int, v : Double) -> MathspecialhermiteView {
-  let result = math_special_hermite_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hermite_view_sum(s : MathspecialhermiteView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_special_hermite_range_get(s : MathspecialhermiteRange, i : Int) -> D
 }
 
 pub fn math_special_hermite_range_set(s : MathspecialhermiteRange, i : Int, v : Double) -> MathspecialhermiteRange {
-  let result = math_special_hermite_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hermite_range_sum(s : MathspecialhermiteRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_special_hermite_slice_get(s : MathspecialhermiteSlice, i : Int) -> D
 }
 
 pub fn math_special_hermite_slice_set(s : MathspecialhermiteSlice, i : Int, v : Double) -> MathspecialhermiteSlice {
-  let result = math_special_hermite_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_special_hermite_slice_sum(s : MathspecialhermiteSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn net_route_dijkstra_series_std(s : NetroutedijkstraSeries) -> Double { @_c
 pub fn net_route_dijkstra_series_median(s : NetroutedijkstraSeries) -> Double { @_common.median(s.vals) }
 
 pub fn net_route_dijkstra_series_scale(s : NetroutedijkstraSeries, f : Double) -> NetroutedijkstraSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn net_route_dijkstra_series_add(a : NetroutedijkstraSeries, b : NetroutedijkstraSeries) -> NetroutedijkstraSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn net_route_dijkstra_series_sub(a : NetroutedijkstraSeries, b : NetroutedijkstraSeries) -> NetroutedijkstraSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn net_route_dijkstra_series_normalize(s : NetroutedijkstraSeries) -> NetroutedijkstraSeries {
@@ -254,22 +246,16 @@ pub fn net_route_dijkstra_vector_zero(dim : Int) -> NetroutedijkstraVector {
 
 pub fn net_route_dijkstra_vector_add(a : NetroutedijkstraVector, b : NetroutedijkstraVector) -> NetroutedijkstraVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_route_dijkstra_vector_sub(a : NetroutedijkstraVector, b : NetroutedijkstraVector) -> NetroutedijkstraVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_route_dijkstra_vector_scale(v : NetroutedijkstraVector, s : Double) -> NetroutedijkstraVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn net_route_dijkstra_vector_dot(a : NetroutedijkstraVector, b : NetroutedijkstraVector) -> Double {
@@ -372,10 +358,9 @@ pub fn net_route_dijkstra_frame_get(s : NetroutedijkstraFrame, i : Int) -> Doubl
 }
 
 pub fn net_route_dijkstra_frame_set(s : NetroutedijkstraFrame, i : Int, v : Double) -> NetroutedijkstraFrame {
-  let result = net_route_dijkstra_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_dijkstra_frame_sum(s : NetroutedijkstraFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn net_route_dijkstra_table_get(s : NetroutedijkstraTable, i : Int) -> Doubl
 }
 
 pub fn net_route_dijkstra_table_set(s : NetroutedijkstraTable, i : Int, v : Double) -> NetroutedijkstraTable {
-  let result = net_route_dijkstra_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_dijkstra_table_sum(s : NetroutedijkstraTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn net_route_dijkstra_graphn_get(s : NetroutedijkstraGraphN, i : Int) -> Dou
 }
 
 pub fn net_route_dijkstra_graphn_set(s : NetroutedijkstraGraphN, i : Int, v : Double) -> NetroutedijkstraGraphN {
-  let result = net_route_dijkstra_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_dijkstra_graphn_sum(s : NetroutedijkstraGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn net_route_dijkstra_node_get(s : NetroutedijkstraNode, i : Int) -> Double 
 }
 
 pub fn net_route_dijkstra_node_set(s : NetroutedijkstraNode, i : Int, v : Double) -> NetroutedijkstraNode {
-  let result = net_route_dijkstra_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_dijkstra_node_sum(s : NetroutedijkstraNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn net_route_dijkstra_edge_get(s : NetroutedijkstraEdge, i : Int) -> Double 
 }
 
 pub fn net_route_dijkstra_edge_set(s : NetroutedijkstraEdge, i : Int, v : Double) -> NetroutedijkstraEdge {
-  let result = net_route_dijkstra_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_dijkstra_edge_sum(s : NetroutedijkstraEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn net_route_dijkstra_path_get(s : NetroutedijkstraPath, i : Int) -> Double 
 }
 
 pub fn net_route_dijkstra_path_set(s : NetroutedijkstraPath, i : Int, v : Double) -> NetroutedijkstraPath {
-  let result = net_route_dijkstra_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_dijkstra_path_sum(s : NetroutedijkstraPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn net_route_dijkstra_cluster_get(s : NetroutedijkstraCluster, i : Int) -> D
 }
 
 pub fn net_route_dijkstra_cluster_set(s : NetroutedijkstraCluster, i : Int, v : Double) -> NetroutedijkstraCluster {
-  let result = net_route_dijkstra_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_dijkstra_cluster_sum(s : NetroutedijkstraCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn net_route_dijkstra_model_get(s : NetroutedijkstraModel, i : Int) -> Doubl
 }
 
 pub fn net_route_dijkstra_model_set(s : NetroutedijkstraModel, i : Int, v : Double) -> NetroutedijkstraModel {
-  let result = net_route_dijkstra_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_dijkstra_model_sum(s : NetroutedijkstraModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn net_route_dijkstra_layer_get(s : NetroutedijkstraLayer, i : Int) -> Doubl
 }
 
 pub fn net_route_dijkstra_layer_set(s : NetroutedijkstraLayer, i : Int, v : Double) -> NetroutedijkstraLayer {
-  let result = net_route_dijkstra_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_dijkstra_layer_sum(s : NetroutedijkstraLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn net_route_dijkstra_buffer_get(s : NetroutedijkstraBuffer, i : Int) -> Dou
 }
 
 pub fn net_route_dijkstra_buffer_set(s : NetroutedijkstraBuffer, i : Int, v : Double) -> NetroutedijkstraBuffer {
-  let result = net_route_dijkstra_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_dijkstra_buffer_sum(s : NetroutedijkstraBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn net_route_dijkstra_cursor_get(s : NetroutedijkstraCursor, i : Int) -> Dou
 }
 
 pub fn net_route_dijkstra_cursor_set(s : NetroutedijkstraCursor, i : Int, v : Double) -> NetroutedijkstraCursor {
-  let result = net_route_dijkstra_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_dijkstra_cursor_sum(s : NetroutedijkstraCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn net_route_dijkstra_view_get(s : NetroutedijkstraView, i : Int) -> Double 
 }
 
 pub fn net_route_dijkstra_view_set(s : NetroutedijkstraView, i : Int, v : Double) -> NetroutedijkstraView {
-  let result = net_route_dijkstra_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_dijkstra_view_sum(s : NetroutedijkstraView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn net_route_dijkstra_range_get(s : NetroutedijkstraRange, i : Int) -> Doubl
 }
 
 pub fn net_route_dijkstra_range_set(s : NetroutedijkstraRange, i : Int, v : Double) -> NetroutedijkstraRange {
-  let result = net_route_dijkstra_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_dijkstra_range_sum(s : NetroutedijkstraRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn net_route_dijkstra_slice_get(s : NetroutedijkstraSlice, i : Int) -> Doubl
 }
 
 pub fn net_route_dijkstra_slice_set(s : NetroutedijkstraSlice, i : Int, v : Double) -> NetroutedijkstraSlice {
-  let result = net_route_dijkstra_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_route_dijkstra_slice_sum(s : NetroutedijkstraSlice) -> Double { @_common.sum(s.data) }

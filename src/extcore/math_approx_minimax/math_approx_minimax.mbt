@@ -107,23 +107,15 @@ pub fn math_approx_minimax_series_std(s : MathapproxminimaxSeries) -> Double { @
 pub fn math_approx_minimax_series_median(s : MathapproxminimaxSeries) -> Double { @_common.median(s.vals) }
 
 pub fn math_approx_minimax_series_scale(s : MathapproxminimaxSeries, f : Double) -> MathapproxminimaxSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn math_approx_minimax_series_add(a : MathapproxminimaxSeries, b : MathapproxminimaxSeries) -> MathapproxminimaxSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_approx_minimax_series_sub(a : MathapproxminimaxSeries, b : MathapproxminimaxSeries) -> MathapproxminimaxSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn math_approx_minimax_series_normalize(s : MathapproxminimaxSeries) -> MathapproxminimaxSeries {
@@ -254,22 +246,16 @@ pub fn math_approx_minimax_vector_zero(dim : Int) -> MathapproxminimaxVector {
 
 pub fn math_approx_minimax_vector_add(a : MathapproxminimaxVector, b : MathapproxminimaxVector) -> MathapproxminimaxVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_approx_minimax_vector_sub(a : MathapproxminimaxVector, b : MathapproxminimaxVector) -> MathapproxminimaxVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn math_approx_minimax_vector_scale(v : MathapproxminimaxVector, s : Double) -> MathapproxminimaxVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn math_approx_minimax_vector_dot(a : MathapproxminimaxVector, b : MathapproxminimaxVector) -> Double {
@@ -372,10 +358,9 @@ pub fn math_approx_minimax_frame_get(s : MathapproxminimaxFrame, i : Int) -> Dou
 }
 
 pub fn math_approx_minimax_frame_set(s : MathapproxminimaxFrame, i : Int, v : Double) -> MathapproxminimaxFrame {
-  let result = math_approx_minimax_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_minimax_frame_sum(s : MathapproxminimaxFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn math_approx_minimax_table_get(s : MathapproxminimaxTable, i : Int) -> Dou
 }
 
 pub fn math_approx_minimax_table_set(s : MathapproxminimaxTable, i : Int, v : Double) -> MathapproxminimaxTable {
-  let result = math_approx_minimax_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_minimax_table_sum(s : MathapproxminimaxTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn math_approx_minimax_graphn_get(s : MathapproxminimaxGraphN, i : Int) -> D
 }
 
 pub fn math_approx_minimax_graphn_set(s : MathapproxminimaxGraphN, i : Int, v : Double) -> MathapproxminimaxGraphN {
-  let result = math_approx_minimax_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_minimax_graphn_sum(s : MathapproxminimaxGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn math_approx_minimax_node_get(s : MathapproxminimaxNode, i : Int) -> Doubl
 }
 
 pub fn math_approx_minimax_node_set(s : MathapproxminimaxNode, i : Int, v : Double) -> MathapproxminimaxNode {
-  let result = math_approx_minimax_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_minimax_node_sum(s : MathapproxminimaxNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn math_approx_minimax_edge_get(s : MathapproxminimaxEdge, i : Int) -> Doubl
 }
 
 pub fn math_approx_minimax_edge_set(s : MathapproxminimaxEdge, i : Int, v : Double) -> MathapproxminimaxEdge {
-  let result = math_approx_minimax_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_minimax_edge_sum(s : MathapproxminimaxEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn math_approx_minimax_path_get(s : MathapproxminimaxPath, i : Int) -> Doubl
 }
 
 pub fn math_approx_minimax_path_set(s : MathapproxminimaxPath, i : Int, v : Double) -> MathapproxminimaxPath {
-  let result = math_approx_minimax_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_minimax_path_sum(s : MathapproxminimaxPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn math_approx_minimax_cluster_get(s : MathapproxminimaxCluster, i : Int) ->
 }
 
 pub fn math_approx_minimax_cluster_set(s : MathapproxminimaxCluster, i : Int, v : Double) -> MathapproxminimaxCluster {
-  let result = math_approx_minimax_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_minimax_cluster_sum(s : MathapproxminimaxCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn math_approx_minimax_model_get(s : MathapproxminimaxModel, i : Int) -> Dou
 }
 
 pub fn math_approx_minimax_model_set(s : MathapproxminimaxModel, i : Int, v : Double) -> MathapproxminimaxModel {
-  let result = math_approx_minimax_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_minimax_model_sum(s : MathapproxminimaxModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn math_approx_minimax_layer_get(s : MathapproxminimaxLayer, i : Int) -> Dou
 }
 
 pub fn math_approx_minimax_layer_set(s : MathapproxminimaxLayer, i : Int, v : Double) -> MathapproxminimaxLayer {
-  let result = math_approx_minimax_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_minimax_layer_sum(s : MathapproxminimaxLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn math_approx_minimax_buffer_get(s : MathapproxminimaxBuffer, i : Int) -> D
 }
 
 pub fn math_approx_minimax_buffer_set(s : MathapproxminimaxBuffer, i : Int, v : Double) -> MathapproxminimaxBuffer {
-  let result = math_approx_minimax_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_minimax_buffer_sum(s : MathapproxminimaxBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn math_approx_minimax_cursor_get(s : MathapproxminimaxCursor, i : Int) -> D
 }
 
 pub fn math_approx_minimax_cursor_set(s : MathapproxminimaxCursor, i : Int, v : Double) -> MathapproxminimaxCursor {
-  let result = math_approx_minimax_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_minimax_cursor_sum(s : MathapproxminimaxCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn math_approx_minimax_view_get(s : MathapproxminimaxView, i : Int) -> Doubl
 }
 
 pub fn math_approx_minimax_view_set(s : MathapproxminimaxView, i : Int, v : Double) -> MathapproxminimaxView {
-  let result = math_approx_minimax_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_minimax_view_sum(s : MathapproxminimaxView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn math_approx_minimax_range_get(s : MathapproxminimaxRange, i : Int) -> Dou
 }
 
 pub fn math_approx_minimax_range_set(s : MathapproxminimaxRange, i : Int, v : Double) -> MathapproxminimaxRange {
-  let result = math_approx_minimax_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_minimax_range_sum(s : MathapproxminimaxRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn math_approx_minimax_slice_get(s : MathapproxminimaxSlice, i : Int) -> Dou
 }
 
 pub fn math_approx_minimax_slice_set(s : MathapproxminimaxSlice, i : Int, v : Double) -> MathapproxminimaxSlice {
-  let result = math_approx_minimax_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn math_approx_minimax_slice_sum(s : MathapproxminimaxSlice) -> Double { @_common.sum(s.data) }

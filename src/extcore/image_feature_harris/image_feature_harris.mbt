@@ -107,23 +107,15 @@ pub fn image_feature_harris_series_std(s : ImagefeatureharrisSeries) -> Double {
 pub fn image_feature_harris_series_median(s : ImagefeatureharrisSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_feature_harris_series_scale(s : ImagefeatureharrisSeries, f : Double) -> ImagefeatureharrisSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_feature_harris_series_add(a : ImagefeatureharrisSeries, b : ImagefeatureharrisSeries) -> ImagefeatureharrisSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_feature_harris_series_sub(a : ImagefeatureharrisSeries, b : ImagefeatureharrisSeries) -> ImagefeatureharrisSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_feature_harris_series_normalize(s : ImagefeatureharrisSeries) -> ImagefeatureharrisSeries {
@@ -254,22 +246,16 @@ pub fn image_feature_harris_vector_zero(dim : Int) -> ImagefeatureharrisVector {
 
 pub fn image_feature_harris_vector_add(a : ImagefeatureharrisVector, b : ImagefeatureharrisVector) -> ImagefeatureharrisVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_feature_harris_vector_sub(a : ImagefeatureharrisVector, b : ImagefeatureharrisVector) -> ImagefeatureharrisVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_feature_harris_vector_scale(v : ImagefeatureharrisVector, s : Double) -> ImagefeatureharrisVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_feature_harris_vector_dot(a : ImagefeatureharrisVector, b : ImagefeatureharrisVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_feature_harris_frame_get(s : ImagefeatureharrisFrame, i : Int) -> D
 }
 
 pub fn image_feature_harris_frame_set(s : ImagefeatureharrisFrame, i : Int, v : Double) -> ImagefeatureharrisFrame {
-  let result = image_feature_harris_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_harris_frame_sum(s : ImagefeatureharrisFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_feature_harris_table_get(s : ImagefeatureharrisTable, i : Int) -> D
 }
 
 pub fn image_feature_harris_table_set(s : ImagefeatureharrisTable, i : Int, v : Double) -> ImagefeatureharrisTable {
-  let result = image_feature_harris_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_harris_table_sum(s : ImagefeatureharrisTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_feature_harris_graphn_get(s : ImagefeatureharrisGraphN, i : Int) ->
 }
 
 pub fn image_feature_harris_graphn_set(s : ImagefeatureharrisGraphN, i : Int, v : Double) -> ImagefeatureharrisGraphN {
-  let result = image_feature_harris_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_harris_graphn_sum(s : ImagefeatureharrisGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_feature_harris_node_get(s : ImagefeatureharrisNode, i : Int) -> Dou
 }
 
 pub fn image_feature_harris_node_set(s : ImagefeatureharrisNode, i : Int, v : Double) -> ImagefeatureharrisNode {
-  let result = image_feature_harris_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_harris_node_sum(s : ImagefeatureharrisNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_feature_harris_edge_get(s : ImagefeatureharrisEdge, i : Int) -> Dou
 }
 
 pub fn image_feature_harris_edge_set(s : ImagefeatureharrisEdge, i : Int, v : Double) -> ImagefeatureharrisEdge {
-  let result = image_feature_harris_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_harris_edge_sum(s : ImagefeatureharrisEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_feature_harris_path_get(s : ImagefeatureharrisPath, i : Int) -> Dou
 }
 
 pub fn image_feature_harris_path_set(s : ImagefeatureharrisPath, i : Int, v : Double) -> ImagefeatureharrisPath {
-  let result = image_feature_harris_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_harris_path_sum(s : ImagefeatureharrisPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_feature_harris_cluster_get(s : ImagefeatureharrisCluster, i : Int) 
 }
 
 pub fn image_feature_harris_cluster_set(s : ImagefeatureharrisCluster, i : Int, v : Double) -> ImagefeatureharrisCluster {
-  let result = image_feature_harris_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_harris_cluster_sum(s : ImagefeatureharrisCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_feature_harris_model_get(s : ImagefeatureharrisModel, i : Int) -> D
 }
 
 pub fn image_feature_harris_model_set(s : ImagefeatureharrisModel, i : Int, v : Double) -> ImagefeatureharrisModel {
-  let result = image_feature_harris_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_harris_model_sum(s : ImagefeatureharrisModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_feature_harris_layer_get(s : ImagefeatureharrisLayer, i : Int) -> D
 }
 
 pub fn image_feature_harris_layer_set(s : ImagefeatureharrisLayer, i : Int, v : Double) -> ImagefeatureharrisLayer {
-  let result = image_feature_harris_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_harris_layer_sum(s : ImagefeatureharrisLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_feature_harris_buffer_get(s : ImagefeatureharrisBuffer, i : Int) ->
 }
 
 pub fn image_feature_harris_buffer_set(s : ImagefeatureharrisBuffer, i : Int, v : Double) -> ImagefeatureharrisBuffer {
-  let result = image_feature_harris_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_harris_buffer_sum(s : ImagefeatureharrisBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_feature_harris_cursor_get(s : ImagefeatureharrisCursor, i : Int) ->
 }
 
 pub fn image_feature_harris_cursor_set(s : ImagefeatureharrisCursor, i : Int, v : Double) -> ImagefeatureharrisCursor {
-  let result = image_feature_harris_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_harris_cursor_sum(s : ImagefeatureharrisCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_feature_harris_view_get(s : ImagefeatureharrisView, i : Int) -> Dou
 }
 
 pub fn image_feature_harris_view_set(s : ImagefeatureharrisView, i : Int, v : Double) -> ImagefeatureharrisView {
-  let result = image_feature_harris_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_harris_view_sum(s : ImagefeatureharrisView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_feature_harris_range_get(s : ImagefeatureharrisRange, i : Int) -> D
 }
 
 pub fn image_feature_harris_range_set(s : ImagefeatureharrisRange, i : Int, v : Double) -> ImagefeatureharrisRange {
-  let result = image_feature_harris_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_harris_range_sum(s : ImagefeatureharrisRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_feature_harris_slice_get(s : ImagefeatureharrisSlice, i : Int) -> D
 }
 
 pub fn image_feature_harris_slice_set(s : ImagefeatureharrisSlice, i : Int, v : Double) -> ImagefeatureharrisSlice {
-  let result = image_feature_harris_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_harris_slice_sum(s : ImagefeatureharrisSlice) -> Double { @_common.sum(s.data) }

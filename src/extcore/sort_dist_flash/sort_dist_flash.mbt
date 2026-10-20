@@ -107,23 +107,15 @@ pub fn sort_dist_flash_series_std(s : SortdistflashSeries) -> Double { @_common.
 pub fn sort_dist_flash_series_median(s : SortdistflashSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_dist_flash_series_scale(s : SortdistflashSeries, f : Double) -> SortdistflashSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn sort_dist_flash_series_add(a : SortdistflashSeries, b : SortdistflashSeries) -> SortdistflashSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn sort_dist_flash_series_sub(a : SortdistflashSeries, b : SortdistflashSeries) -> SortdistflashSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn sort_dist_flash_series_normalize(s : SortdistflashSeries) -> SortdistflashSeries {
@@ -254,22 +246,16 @@ pub fn sort_dist_flash_vector_zero(dim : Int) -> SortdistflashVector {
 
 pub fn sort_dist_flash_vector_add(a : SortdistflashVector, b : SortdistflashVector) -> SortdistflashVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_dist_flash_vector_sub(a : SortdistflashVector, b : SortdistflashVector) -> SortdistflashVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_dist_flash_vector_scale(v : SortdistflashVector, s : Double) -> SortdistflashVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn sort_dist_flash_vector_dot(a : SortdistflashVector, b : SortdistflashVector) -> Double {
@@ -372,10 +358,9 @@ pub fn sort_dist_flash_frame_get(s : SortdistflashFrame, i : Int) -> Double {
 }
 
 pub fn sort_dist_flash_frame_set(s : SortdistflashFrame, i : Int, v : Double) -> SortdistflashFrame {
-  let result = sort_dist_flash_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_flash_frame_sum(s : SortdistflashFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn sort_dist_flash_table_get(s : SortdistflashTable, i : Int) -> Double {
 }
 
 pub fn sort_dist_flash_table_set(s : SortdistflashTable, i : Int, v : Double) -> SortdistflashTable {
-  let result = sort_dist_flash_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_flash_table_sum(s : SortdistflashTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn sort_dist_flash_graphn_get(s : SortdistflashGraphN, i : Int) -> Double {
 }
 
 pub fn sort_dist_flash_graphn_set(s : SortdistflashGraphN, i : Int, v : Double) -> SortdistflashGraphN {
-  let result = sort_dist_flash_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_flash_graphn_sum(s : SortdistflashGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn sort_dist_flash_node_get(s : SortdistflashNode, i : Int) -> Double {
 }
 
 pub fn sort_dist_flash_node_set(s : SortdistflashNode, i : Int, v : Double) -> SortdistflashNode {
-  let result = sort_dist_flash_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_flash_node_sum(s : SortdistflashNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn sort_dist_flash_edge_get(s : SortdistflashEdge, i : Int) -> Double {
 }
 
 pub fn sort_dist_flash_edge_set(s : SortdistflashEdge, i : Int, v : Double) -> SortdistflashEdge {
-  let result = sort_dist_flash_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_flash_edge_sum(s : SortdistflashEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn sort_dist_flash_path_get(s : SortdistflashPath, i : Int) -> Double {
 }
 
 pub fn sort_dist_flash_path_set(s : SortdistflashPath, i : Int, v : Double) -> SortdistflashPath {
-  let result = sort_dist_flash_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_flash_path_sum(s : SortdistflashPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn sort_dist_flash_cluster_get(s : SortdistflashCluster, i : Int) -> Double 
 }
 
 pub fn sort_dist_flash_cluster_set(s : SortdistflashCluster, i : Int, v : Double) -> SortdistflashCluster {
-  let result = sort_dist_flash_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_flash_cluster_sum(s : SortdistflashCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn sort_dist_flash_model_get(s : SortdistflashModel, i : Int) -> Double {
 }
 
 pub fn sort_dist_flash_model_set(s : SortdistflashModel, i : Int, v : Double) -> SortdistflashModel {
-  let result = sort_dist_flash_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_flash_model_sum(s : SortdistflashModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn sort_dist_flash_layer_get(s : SortdistflashLayer, i : Int) -> Double {
 }
 
 pub fn sort_dist_flash_layer_set(s : SortdistflashLayer, i : Int, v : Double) -> SortdistflashLayer {
-  let result = sort_dist_flash_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_flash_layer_sum(s : SortdistflashLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn sort_dist_flash_buffer_get(s : SortdistflashBuffer, i : Int) -> Double {
 }
 
 pub fn sort_dist_flash_buffer_set(s : SortdistflashBuffer, i : Int, v : Double) -> SortdistflashBuffer {
-  let result = sort_dist_flash_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_flash_buffer_sum(s : SortdistflashBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn sort_dist_flash_cursor_get(s : SortdistflashCursor, i : Int) -> Double {
 }
 
 pub fn sort_dist_flash_cursor_set(s : SortdistflashCursor, i : Int, v : Double) -> SortdistflashCursor {
-  let result = sort_dist_flash_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_flash_cursor_sum(s : SortdistflashCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn sort_dist_flash_view_get(s : SortdistflashView, i : Int) -> Double {
 }
 
 pub fn sort_dist_flash_view_set(s : SortdistflashView, i : Int, v : Double) -> SortdistflashView {
-  let result = sort_dist_flash_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_flash_view_sum(s : SortdistflashView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn sort_dist_flash_range_get(s : SortdistflashRange, i : Int) -> Double {
 }
 
 pub fn sort_dist_flash_range_set(s : SortdistflashRange, i : Int, v : Double) -> SortdistflashRange {
-  let result = sort_dist_flash_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_flash_range_sum(s : SortdistflashRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn sort_dist_flash_slice_get(s : SortdistflashSlice, i : Int) -> Double {
 }
 
 pub fn sort_dist_flash_slice_set(s : SortdistflashSlice, i : Int, v : Double) -> SortdistflashSlice {
-  let result = sort_dist_flash_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_flash_slice_sum(s : SortdistflashSlice) -> Double { @_common.sum(s.data) }

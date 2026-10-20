@@ -107,23 +107,15 @@ pub fn bio_phylo_bayesian_series_std(s : BiophylobayesianSeries) -> Double { @_c
 pub fn bio_phylo_bayesian_series_median(s : BiophylobayesianSeries) -> Double { @_common.median(s.vals) }
 
 pub fn bio_phylo_bayesian_series_scale(s : BiophylobayesianSeries, f : Double) -> BiophylobayesianSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn bio_phylo_bayesian_series_add(a : BiophylobayesianSeries, b : BiophylobayesianSeries) -> BiophylobayesianSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn bio_phylo_bayesian_series_sub(a : BiophylobayesianSeries, b : BiophylobayesianSeries) -> BiophylobayesianSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn bio_phylo_bayesian_series_normalize(s : BiophylobayesianSeries) -> BiophylobayesianSeries {
@@ -254,22 +246,16 @@ pub fn bio_phylo_bayesian_vector_zero(dim : Int) -> BiophylobayesianVector {
 
 pub fn bio_phylo_bayesian_vector_add(a : BiophylobayesianVector, b : BiophylobayesianVector) -> BiophylobayesianVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_phylo_bayesian_vector_sub(a : BiophylobayesianVector, b : BiophylobayesianVector) -> BiophylobayesianVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn bio_phylo_bayesian_vector_scale(v : BiophylobayesianVector, s : Double) -> BiophylobayesianVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn bio_phylo_bayesian_vector_dot(a : BiophylobayesianVector, b : BiophylobayesianVector) -> Double {
@@ -372,10 +358,9 @@ pub fn bio_phylo_bayesian_frame_get(s : BiophylobayesianFrame, i : Int) -> Doubl
 }
 
 pub fn bio_phylo_bayesian_frame_set(s : BiophylobayesianFrame, i : Int, v : Double) -> BiophylobayesianFrame {
-  let result = bio_phylo_bayesian_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_frame_sum(s : BiophylobayesianFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn bio_phylo_bayesian_table_get(s : BiophylobayesianTable, i : Int) -> Doubl
 }
 
 pub fn bio_phylo_bayesian_table_set(s : BiophylobayesianTable, i : Int, v : Double) -> BiophylobayesianTable {
-  let result = bio_phylo_bayesian_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_table_sum(s : BiophylobayesianTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn bio_phylo_bayesian_graphn_get(s : BiophylobayesianGraphN, i : Int) -> Dou
 }
 
 pub fn bio_phylo_bayesian_graphn_set(s : BiophylobayesianGraphN, i : Int, v : Double) -> BiophylobayesianGraphN {
-  let result = bio_phylo_bayesian_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_graphn_sum(s : BiophylobayesianGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn bio_phylo_bayesian_node_get(s : BiophylobayesianNode, i : Int) -> Double 
 }
 
 pub fn bio_phylo_bayesian_node_set(s : BiophylobayesianNode, i : Int, v : Double) -> BiophylobayesianNode {
-  let result = bio_phylo_bayesian_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_node_sum(s : BiophylobayesianNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn bio_phylo_bayesian_edge_get(s : BiophylobayesianEdge, i : Int) -> Double 
 }
 
 pub fn bio_phylo_bayesian_edge_set(s : BiophylobayesianEdge, i : Int, v : Double) -> BiophylobayesianEdge {
-  let result = bio_phylo_bayesian_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_edge_sum(s : BiophylobayesianEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn bio_phylo_bayesian_path_get(s : BiophylobayesianPath, i : Int) -> Double 
 }
 
 pub fn bio_phylo_bayesian_path_set(s : BiophylobayesianPath, i : Int, v : Double) -> BiophylobayesianPath {
-  let result = bio_phylo_bayesian_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_path_sum(s : BiophylobayesianPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn bio_phylo_bayesian_cluster_get(s : BiophylobayesianCluster, i : Int) -> D
 }
 
 pub fn bio_phylo_bayesian_cluster_set(s : BiophylobayesianCluster, i : Int, v : Double) -> BiophylobayesianCluster {
-  let result = bio_phylo_bayesian_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_cluster_sum(s : BiophylobayesianCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn bio_phylo_bayesian_model_get(s : BiophylobayesianModel, i : Int) -> Doubl
 }
 
 pub fn bio_phylo_bayesian_model_set(s : BiophylobayesianModel, i : Int, v : Double) -> BiophylobayesianModel {
-  let result = bio_phylo_bayesian_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_model_sum(s : BiophylobayesianModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn bio_phylo_bayesian_layer_get(s : BiophylobayesianLayer, i : Int) -> Doubl
 }
 
 pub fn bio_phylo_bayesian_layer_set(s : BiophylobayesianLayer, i : Int, v : Double) -> BiophylobayesianLayer {
-  let result = bio_phylo_bayesian_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_layer_sum(s : BiophylobayesianLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn bio_phylo_bayesian_buffer_get(s : BiophylobayesianBuffer, i : Int) -> Dou
 }
 
 pub fn bio_phylo_bayesian_buffer_set(s : BiophylobayesianBuffer, i : Int, v : Double) -> BiophylobayesianBuffer {
-  let result = bio_phylo_bayesian_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_buffer_sum(s : BiophylobayesianBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn bio_phylo_bayesian_cursor_get(s : BiophylobayesianCursor, i : Int) -> Dou
 }
 
 pub fn bio_phylo_bayesian_cursor_set(s : BiophylobayesianCursor, i : Int, v : Double) -> BiophylobayesianCursor {
-  let result = bio_phylo_bayesian_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_cursor_sum(s : BiophylobayesianCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn bio_phylo_bayesian_view_get(s : BiophylobayesianView, i : Int) -> Double 
 }
 
 pub fn bio_phylo_bayesian_view_set(s : BiophylobayesianView, i : Int, v : Double) -> BiophylobayesianView {
-  let result = bio_phylo_bayesian_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_view_sum(s : BiophylobayesianView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn bio_phylo_bayesian_range_get(s : BiophylobayesianRange, i : Int) -> Doubl
 }
 
 pub fn bio_phylo_bayesian_range_set(s : BiophylobayesianRange, i : Int, v : Double) -> BiophylobayesianRange {
-  let result = bio_phylo_bayesian_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_range_sum(s : BiophylobayesianRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn bio_phylo_bayesian_slice_get(s : BiophylobayesianSlice, i : Int) -> Doubl
 }
 
 pub fn bio_phylo_bayesian_slice_set(s : BiophylobayesianSlice, i : Int, v : Double) -> BiophylobayesianSlice {
-  let result = bio_phylo_bayesian_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn bio_phylo_bayesian_slice_sum(s : BiophylobayesianSlice) -> Double { @_common.sum(s.data) }

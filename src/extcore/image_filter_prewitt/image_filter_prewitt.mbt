@@ -107,23 +107,15 @@ pub fn image_filter_prewitt_series_std(s : ImagefilterprewittSeries) -> Double {
 pub fn image_filter_prewitt_series_median(s : ImagefilterprewittSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_filter_prewitt_series_scale(s : ImagefilterprewittSeries, f : Double) -> ImagefilterprewittSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_filter_prewitt_series_add(a : ImagefilterprewittSeries, b : ImagefilterprewittSeries) -> ImagefilterprewittSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_filter_prewitt_series_sub(a : ImagefilterprewittSeries, b : ImagefilterprewittSeries) -> ImagefilterprewittSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_filter_prewitt_series_normalize(s : ImagefilterprewittSeries) -> ImagefilterprewittSeries {
@@ -254,22 +246,16 @@ pub fn image_filter_prewitt_vector_zero(dim : Int) -> ImagefilterprewittVector {
 
 pub fn image_filter_prewitt_vector_add(a : ImagefilterprewittVector, b : ImagefilterprewittVector) -> ImagefilterprewittVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_filter_prewitt_vector_sub(a : ImagefilterprewittVector, b : ImagefilterprewittVector) -> ImagefilterprewittVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_filter_prewitt_vector_scale(v : ImagefilterprewittVector, s : Double) -> ImagefilterprewittVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_filter_prewitt_vector_dot(a : ImagefilterprewittVector, b : ImagefilterprewittVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_filter_prewitt_frame_get(s : ImagefilterprewittFrame, i : Int) -> D
 }
 
 pub fn image_filter_prewitt_frame_set(s : ImagefilterprewittFrame, i : Int, v : Double) -> ImagefilterprewittFrame {
-  let result = image_filter_prewitt_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_prewitt_frame_sum(s : ImagefilterprewittFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_filter_prewitt_table_get(s : ImagefilterprewittTable, i : Int) -> D
 }
 
 pub fn image_filter_prewitt_table_set(s : ImagefilterprewittTable, i : Int, v : Double) -> ImagefilterprewittTable {
-  let result = image_filter_prewitt_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_prewitt_table_sum(s : ImagefilterprewittTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_filter_prewitt_graphn_get(s : ImagefilterprewittGraphN, i : Int) ->
 }
 
 pub fn image_filter_prewitt_graphn_set(s : ImagefilterprewittGraphN, i : Int, v : Double) -> ImagefilterprewittGraphN {
-  let result = image_filter_prewitt_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_prewitt_graphn_sum(s : ImagefilterprewittGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_filter_prewitt_node_get(s : ImagefilterprewittNode, i : Int) -> Dou
 }
 
 pub fn image_filter_prewitt_node_set(s : ImagefilterprewittNode, i : Int, v : Double) -> ImagefilterprewittNode {
-  let result = image_filter_prewitt_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_prewitt_node_sum(s : ImagefilterprewittNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_filter_prewitt_edge_get(s : ImagefilterprewittEdge, i : Int) -> Dou
 }
 
 pub fn image_filter_prewitt_edge_set(s : ImagefilterprewittEdge, i : Int, v : Double) -> ImagefilterprewittEdge {
-  let result = image_filter_prewitt_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_prewitt_edge_sum(s : ImagefilterprewittEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_filter_prewitt_path_get(s : ImagefilterprewittPath, i : Int) -> Dou
 }
 
 pub fn image_filter_prewitt_path_set(s : ImagefilterprewittPath, i : Int, v : Double) -> ImagefilterprewittPath {
-  let result = image_filter_prewitt_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_prewitt_path_sum(s : ImagefilterprewittPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_filter_prewitt_cluster_get(s : ImagefilterprewittCluster, i : Int) 
 }
 
 pub fn image_filter_prewitt_cluster_set(s : ImagefilterprewittCluster, i : Int, v : Double) -> ImagefilterprewittCluster {
-  let result = image_filter_prewitt_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_prewitt_cluster_sum(s : ImagefilterprewittCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_filter_prewitt_model_get(s : ImagefilterprewittModel, i : Int) -> D
 }
 
 pub fn image_filter_prewitt_model_set(s : ImagefilterprewittModel, i : Int, v : Double) -> ImagefilterprewittModel {
-  let result = image_filter_prewitt_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_prewitt_model_sum(s : ImagefilterprewittModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_filter_prewitt_layer_get(s : ImagefilterprewittLayer, i : Int) -> D
 }
 
 pub fn image_filter_prewitt_layer_set(s : ImagefilterprewittLayer, i : Int, v : Double) -> ImagefilterprewittLayer {
-  let result = image_filter_prewitt_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_prewitt_layer_sum(s : ImagefilterprewittLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_filter_prewitt_buffer_get(s : ImagefilterprewittBuffer, i : Int) ->
 }
 
 pub fn image_filter_prewitt_buffer_set(s : ImagefilterprewittBuffer, i : Int, v : Double) -> ImagefilterprewittBuffer {
-  let result = image_filter_prewitt_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_prewitt_buffer_sum(s : ImagefilterprewittBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_filter_prewitt_cursor_get(s : ImagefilterprewittCursor, i : Int) ->
 }
 
 pub fn image_filter_prewitt_cursor_set(s : ImagefilterprewittCursor, i : Int, v : Double) -> ImagefilterprewittCursor {
-  let result = image_filter_prewitt_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_prewitt_cursor_sum(s : ImagefilterprewittCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_filter_prewitt_view_get(s : ImagefilterprewittView, i : Int) -> Dou
 }
 
 pub fn image_filter_prewitt_view_set(s : ImagefilterprewittView, i : Int, v : Double) -> ImagefilterprewittView {
-  let result = image_filter_prewitt_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_prewitt_view_sum(s : ImagefilterprewittView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_filter_prewitt_range_get(s : ImagefilterprewittRange, i : Int) -> D
 }
 
 pub fn image_filter_prewitt_range_set(s : ImagefilterprewittRange, i : Int, v : Double) -> ImagefilterprewittRange {
-  let result = image_filter_prewitt_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_prewitt_range_sum(s : ImagefilterprewittRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_filter_prewitt_slice_get(s : ImagefilterprewittSlice, i : Int) -> D
 }
 
 pub fn image_filter_prewitt_slice_set(s : ImagefilterprewittSlice, i : Int, v : Double) -> ImagefilterprewittSlice {
-  let result = image_filter_prewitt_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_prewitt_slice_sum(s : ImagefilterprewittSlice) -> Double { @_common.sum(s.data) }

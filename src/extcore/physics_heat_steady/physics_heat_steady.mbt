@@ -107,23 +107,15 @@ pub fn physics_heat_steady_series_std(s : PhysicsheatsteadySeries) -> Double { @
 pub fn physics_heat_steady_series_median(s : PhysicsheatsteadySeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_heat_steady_series_scale(s : PhysicsheatsteadySeries, f : Double) -> PhysicsheatsteadySeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_heat_steady_series_add(a : PhysicsheatsteadySeries, b : PhysicsheatsteadySeries) -> PhysicsheatsteadySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_heat_steady_series_sub(a : PhysicsheatsteadySeries, b : PhysicsheatsteadySeries) -> PhysicsheatsteadySeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_heat_steady_series_normalize(s : PhysicsheatsteadySeries) -> PhysicsheatsteadySeries {
@@ -254,22 +246,16 @@ pub fn physics_heat_steady_vector_zero(dim : Int) -> PhysicsheatsteadyVector {
 
 pub fn physics_heat_steady_vector_add(a : PhysicsheatsteadyVector, b : PhysicsheatsteadyVector) -> PhysicsheatsteadyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_heat_steady_vector_sub(a : PhysicsheatsteadyVector, b : PhysicsheatsteadyVector) -> PhysicsheatsteadyVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_heat_steady_vector_scale(v : PhysicsheatsteadyVector, s : Double) -> PhysicsheatsteadyVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_heat_steady_vector_dot(a : PhysicsheatsteadyVector, b : PhysicsheatsteadyVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_heat_steady_frame_get(s : PhysicsheatsteadyFrame, i : Int) -> Dou
 }
 
 pub fn physics_heat_steady_frame_set(s : PhysicsheatsteadyFrame, i : Int, v : Double) -> PhysicsheatsteadyFrame {
-  let result = physics_heat_steady_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_steady_frame_sum(s : PhysicsheatsteadyFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_heat_steady_table_get(s : PhysicsheatsteadyTable, i : Int) -> Dou
 }
 
 pub fn physics_heat_steady_table_set(s : PhysicsheatsteadyTable, i : Int, v : Double) -> PhysicsheatsteadyTable {
-  let result = physics_heat_steady_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_steady_table_sum(s : PhysicsheatsteadyTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_heat_steady_graphn_get(s : PhysicsheatsteadyGraphN, i : Int) -> D
 }
 
 pub fn physics_heat_steady_graphn_set(s : PhysicsheatsteadyGraphN, i : Int, v : Double) -> PhysicsheatsteadyGraphN {
-  let result = physics_heat_steady_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_steady_graphn_sum(s : PhysicsheatsteadyGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_heat_steady_node_get(s : PhysicsheatsteadyNode, i : Int) -> Doubl
 }
 
 pub fn physics_heat_steady_node_set(s : PhysicsheatsteadyNode, i : Int, v : Double) -> PhysicsheatsteadyNode {
-  let result = physics_heat_steady_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_steady_node_sum(s : PhysicsheatsteadyNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_heat_steady_edge_get(s : PhysicsheatsteadyEdge, i : Int) -> Doubl
 }
 
 pub fn physics_heat_steady_edge_set(s : PhysicsheatsteadyEdge, i : Int, v : Double) -> PhysicsheatsteadyEdge {
-  let result = physics_heat_steady_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_steady_edge_sum(s : PhysicsheatsteadyEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_heat_steady_path_get(s : PhysicsheatsteadyPath, i : Int) -> Doubl
 }
 
 pub fn physics_heat_steady_path_set(s : PhysicsheatsteadyPath, i : Int, v : Double) -> PhysicsheatsteadyPath {
-  let result = physics_heat_steady_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_steady_path_sum(s : PhysicsheatsteadyPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_heat_steady_cluster_get(s : PhysicsheatsteadyCluster, i : Int) ->
 }
 
 pub fn physics_heat_steady_cluster_set(s : PhysicsheatsteadyCluster, i : Int, v : Double) -> PhysicsheatsteadyCluster {
-  let result = physics_heat_steady_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_steady_cluster_sum(s : PhysicsheatsteadyCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_heat_steady_model_get(s : PhysicsheatsteadyModel, i : Int) -> Dou
 }
 
 pub fn physics_heat_steady_model_set(s : PhysicsheatsteadyModel, i : Int, v : Double) -> PhysicsheatsteadyModel {
-  let result = physics_heat_steady_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_steady_model_sum(s : PhysicsheatsteadyModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_heat_steady_layer_get(s : PhysicsheatsteadyLayer, i : Int) -> Dou
 }
 
 pub fn physics_heat_steady_layer_set(s : PhysicsheatsteadyLayer, i : Int, v : Double) -> PhysicsheatsteadyLayer {
-  let result = physics_heat_steady_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_steady_layer_sum(s : PhysicsheatsteadyLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_heat_steady_buffer_get(s : PhysicsheatsteadyBuffer, i : Int) -> D
 }
 
 pub fn physics_heat_steady_buffer_set(s : PhysicsheatsteadyBuffer, i : Int, v : Double) -> PhysicsheatsteadyBuffer {
-  let result = physics_heat_steady_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_steady_buffer_sum(s : PhysicsheatsteadyBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_heat_steady_cursor_get(s : PhysicsheatsteadyCursor, i : Int) -> D
 }
 
 pub fn physics_heat_steady_cursor_set(s : PhysicsheatsteadyCursor, i : Int, v : Double) -> PhysicsheatsteadyCursor {
-  let result = physics_heat_steady_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_steady_cursor_sum(s : PhysicsheatsteadyCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_heat_steady_view_get(s : PhysicsheatsteadyView, i : Int) -> Doubl
 }
 
 pub fn physics_heat_steady_view_set(s : PhysicsheatsteadyView, i : Int, v : Double) -> PhysicsheatsteadyView {
-  let result = physics_heat_steady_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_steady_view_sum(s : PhysicsheatsteadyView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_heat_steady_range_get(s : PhysicsheatsteadyRange, i : Int) -> Dou
 }
 
 pub fn physics_heat_steady_range_set(s : PhysicsheatsteadyRange, i : Int, v : Double) -> PhysicsheatsteadyRange {
-  let result = physics_heat_steady_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_steady_range_sum(s : PhysicsheatsteadyRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_heat_steady_slice_get(s : PhysicsheatsteadySlice, i : Int) -> Dou
 }
 
 pub fn physics_heat_steady_slice_set(s : PhysicsheatsteadySlice, i : Int, v : Double) -> PhysicsheatsteadySlice {
-  let result = physics_heat_steady_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_heat_steady_slice_sum(s : PhysicsheatsteadySlice) -> Double { @_common.sum(s.data) }

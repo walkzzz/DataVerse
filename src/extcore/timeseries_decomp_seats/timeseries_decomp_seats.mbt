@@ -107,23 +107,15 @@ pub fn timeseries_decomp_seats_series_std(s : TimeseriesdecompseatsSeries) -> Do
 pub fn timeseries_decomp_seats_series_median(s : TimeseriesdecompseatsSeries) -> Double { @_common.median(s.vals) }
 
 pub fn timeseries_decomp_seats_series_scale(s : TimeseriesdecompseatsSeries, f : Double) -> TimeseriesdecompseatsSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn timeseries_decomp_seats_series_add(a : TimeseriesdecompseatsSeries, b : TimeseriesdecompseatsSeries) -> TimeseriesdecompseatsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_decomp_seats_series_sub(a : TimeseriesdecompseatsSeries, b : TimeseriesdecompseatsSeries) -> TimeseriesdecompseatsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn timeseries_decomp_seats_series_normalize(s : TimeseriesdecompseatsSeries) -> TimeseriesdecompseatsSeries {
@@ -254,22 +246,16 @@ pub fn timeseries_decomp_seats_vector_zero(dim : Int) -> TimeseriesdecompseatsVe
 
 pub fn timeseries_decomp_seats_vector_add(a : TimeseriesdecompseatsVector, b : TimeseriesdecompseatsVector) -> TimeseriesdecompseatsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_decomp_seats_vector_sub(a : TimeseriesdecompseatsVector, b : TimeseriesdecompseatsVector) -> TimeseriesdecompseatsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn timeseries_decomp_seats_vector_scale(v : TimeseriesdecompseatsVector, s : Double) -> TimeseriesdecompseatsVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn timeseries_decomp_seats_vector_dot(a : TimeseriesdecompseatsVector, b : TimeseriesdecompseatsVector) -> Double {
@@ -372,10 +358,9 @@ pub fn timeseries_decomp_seats_frame_get(s : TimeseriesdecompseatsFrame, i : Int
 }
 
 pub fn timeseries_decomp_seats_frame_set(s : TimeseriesdecompseatsFrame, i : Int, v : Double) -> TimeseriesdecompseatsFrame {
-  let result = timeseries_decomp_seats_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_seats_frame_sum(s : TimeseriesdecompseatsFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn timeseries_decomp_seats_table_get(s : TimeseriesdecompseatsTable, i : Int
 }
 
 pub fn timeseries_decomp_seats_table_set(s : TimeseriesdecompseatsTable, i : Int, v : Double) -> TimeseriesdecompseatsTable {
-  let result = timeseries_decomp_seats_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_seats_table_sum(s : TimeseriesdecompseatsTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn timeseries_decomp_seats_graphn_get(s : TimeseriesdecompseatsGraphN, i : I
 }
 
 pub fn timeseries_decomp_seats_graphn_set(s : TimeseriesdecompseatsGraphN, i : Int, v : Double) -> TimeseriesdecompseatsGraphN {
-  let result = timeseries_decomp_seats_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_seats_graphn_sum(s : TimeseriesdecompseatsGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn timeseries_decomp_seats_node_get(s : TimeseriesdecompseatsNode, i : Int) 
 }
 
 pub fn timeseries_decomp_seats_node_set(s : TimeseriesdecompseatsNode, i : Int, v : Double) -> TimeseriesdecompseatsNode {
-  let result = timeseries_decomp_seats_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_seats_node_sum(s : TimeseriesdecompseatsNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn timeseries_decomp_seats_edge_get(s : TimeseriesdecompseatsEdge, i : Int) 
 }
 
 pub fn timeseries_decomp_seats_edge_set(s : TimeseriesdecompseatsEdge, i : Int, v : Double) -> TimeseriesdecompseatsEdge {
-  let result = timeseries_decomp_seats_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_seats_edge_sum(s : TimeseriesdecompseatsEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn timeseries_decomp_seats_path_get(s : TimeseriesdecompseatsPath, i : Int) 
 }
 
 pub fn timeseries_decomp_seats_path_set(s : TimeseriesdecompseatsPath, i : Int, v : Double) -> TimeseriesdecompseatsPath {
-  let result = timeseries_decomp_seats_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_seats_path_sum(s : TimeseriesdecompseatsPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn timeseries_decomp_seats_cluster_get(s : TimeseriesdecompseatsCluster, i :
 }
 
 pub fn timeseries_decomp_seats_cluster_set(s : TimeseriesdecompseatsCluster, i : Int, v : Double) -> TimeseriesdecompseatsCluster {
-  let result = timeseries_decomp_seats_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_seats_cluster_sum(s : TimeseriesdecompseatsCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn timeseries_decomp_seats_model_get(s : TimeseriesdecompseatsModel, i : Int
 }
 
 pub fn timeseries_decomp_seats_model_set(s : TimeseriesdecompseatsModel, i : Int, v : Double) -> TimeseriesdecompseatsModel {
-  let result = timeseries_decomp_seats_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_seats_model_sum(s : TimeseriesdecompseatsModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn timeseries_decomp_seats_layer_get(s : TimeseriesdecompseatsLayer, i : Int
 }
 
 pub fn timeseries_decomp_seats_layer_set(s : TimeseriesdecompseatsLayer, i : Int, v : Double) -> TimeseriesdecompseatsLayer {
-  let result = timeseries_decomp_seats_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_seats_layer_sum(s : TimeseriesdecompseatsLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn timeseries_decomp_seats_buffer_get(s : TimeseriesdecompseatsBuffer, i : I
 }
 
 pub fn timeseries_decomp_seats_buffer_set(s : TimeseriesdecompseatsBuffer, i : Int, v : Double) -> TimeseriesdecompseatsBuffer {
-  let result = timeseries_decomp_seats_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_seats_buffer_sum(s : TimeseriesdecompseatsBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn timeseries_decomp_seats_cursor_get(s : TimeseriesdecompseatsCursor, i : I
 }
 
 pub fn timeseries_decomp_seats_cursor_set(s : TimeseriesdecompseatsCursor, i : Int, v : Double) -> TimeseriesdecompseatsCursor {
-  let result = timeseries_decomp_seats_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_seats_cursor_sum(s : TimeseriesdecompseatsCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn timeseries_decomp_seats_view_get(s : TimeseriesdecompseatsView, i : Int) 
 }
 
 pub fn timeseries_decomp_seats_view_set(s : TimeseriesdecompseatsView, i : Int, v : Double) -> TimeseriesdecompseatsView {
-  let result = timeseries_decomp_seats_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_seats_view_sum(s : TimeseriesdecompseatsView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn timeseries_decomp_seats_range_get(s : TimeseriesdecompseatsRange, i : Int
 }
 
 pub fn timeseries_decomp_seats_range_set(s : TimeseriesdecompseatsRange, i : Int, v : Double) -> TimeseriesdecompseatsRange {
-  let result = timeseries_decomp_seats_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_seats_range_sum(s : TimeseriesdecompseatsRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn timeseries_decomp_seats_slice_get(s : TimeseriesdecompseatsSlice, i : Int
 }
 
 pub fn timeseries_decomp_seats_slice_set(s : TimeseriesdecompseatsSlice, i : Int, v : Double) -> TimeseriesdecompseatsSlice {
-  let result = timeseries_decomp_seats_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn timeseries_decomp_seats_slice_sum(s : TimeseriesdecompseatsSlice) -> Double { @_common.sum(s.data) }

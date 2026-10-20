@@ -107,23 +107,15 @@ pub fn db_store_spatial_series_std(s : DbstorespatialSeries) -> Double { @_commo
 pub fn db_store_spatial_series_median(s : DbstorespatialSeries) -> Double { @_common.median(s.vals) }
 
 pub fn db_store_spatial_series_scale(s : DbstorespatialSeries, f : Double) -> DbstorespatialSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn db_store_spatial_series_add(a : DbstorespatialSeries, b : DbstorespatialSeries) -> DbstorespatialSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_store_spatial_series_sub(a : DbstorespatialSeries, b : DbstorespatialSeries) -> DbstorespatialSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn db_store_spatial_series_normalize(s : DbstorespatialSeries) -> DbstorespatialSeries {
@@ -254,22 +246,16 @@ pub fn db_store_spatial_vector_zero(dim : Int) -> DbstorespatialVector {
 
 pub fn db_store_spatial_vector_add(a : DbstorespatialVector, b : DbstorespatialVector) -> DbstorespatialVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_store_spatial_vector_sub(a : DbstorespatialVector, b : DbstorespatialVector) -> DbstorespatialVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn db_store_spatial_vector_scale(v : DbstorespatialVector, s : Double) -> DbstorespatialVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn db_store_spatial_vector_dot(a : DbstorespatialVector, b : DbstorespatialVector) -> Double {
@@ -372,10 +358,9 @@ pub fn db_store_spatial_frame_get(s : DbstorespatialFrame, i : Int) -> Double {
 }
 
 pub fn db_store_spatial_frame_set(s : DbstorespatialFrame, i : Int, v : Double) -> DbstorespatialFrame {
-  let result = db_store_spatial_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_spatial_frame_sum(s : DbstorespatialFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn db_store_spatial_table_get(s : DbstorespatialTable, i : Int) -> Double {
 }
 
 pub fn db_store_spatial_table_set(s : DbstorespatialTable, i : Int, v : Double) -> DbstorespatialTable {
-  let result = db_store_spatial_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_spatial_table_sum(s : DbstorespatialTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn db_store_spatial_graphn_get(s : DbstorespatialGraphN, i : Int) -> Double 
 }
 
 pub fn db_store_spatial_graphn_set(s : DbstorespatialGraphN, i : Int, v : Double) -> DbstorespatialGraphN {
-  let result = db_store_spatial_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_spatial_graphn_sum(s : DbstorespatialGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn db_store_spatial_node_get(s : DbstorespatialNode, i : Int) -> Double {
 }
 
 pub fn db_store_spatial_node_set(s : DbstorespatialNode, i : Int, v : Double) -> DbstorespatialNode {
-  let result = db_store_spatial_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_spatial_node_sum(s : DbstorespatialNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn db_store_spatial_edge_get(s : DbstorespatialEdge, i : Int) -> Double {
 }
 
 pub fn db_store_spatial_edge_set(s : DbstorespatialEdge, i : Int, v : Double) -> DbstorespatialEdge {
-  let result = db_store_spatial_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_spatial_edge_sum(s : DbstorespatialEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn db_store_spatial_path_get(s : DbstorespatialPath, i : Int) -> Double {
 }
 
 pub fn db_store_spatial_path_set(s : DbstorespatialPath, i : Int, v : Double) -> DbstorespatialPath {
-  let result = db_store_spatial_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_spatial_path_sum(s : DbstorespatialPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn db_store_spatial_cluster_get(s : DbstorespatialCluster, i : Int) -> Doubl
 }
 
 pub fn db_store_spatial_cluster_set(s : DbstorespatialCluster, i : Int, v : Double) -> DbstorespatialCluster {
-  let result = db_store_spatial_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_spatial_cluster_sum(s : DbstorespatialCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn db_store_spatial_model_get(s : DbstorespatialModel, i : Int) -> Double {
 }
 
 pub fn db_store_spatial_model_set(s : DbstorespatialModel, i : Int, v : Double) -> DbstorespatialModel {
-  let result = db_store_spatial_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_spatial_model_sum(s : DbstorespatialModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn db_store_spatial_layer_get(s : DbstorespatialLayer, i : Int) -> Double {
 }
 
 pub fn db_store_spatial_layer_set(s : DbstorespatialLayer, i : Int, v : Double) -> DbstorespatialLayer {
-  let result = db_store_spatial_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_spatial_layer_sum(s : DbstorespatialLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn db_store_spatial_buffer_get(s : DbstorespatialBuffer, i : Int) -> Double 
 }
 
 pub fn db_store_spatial_buffer_set(s : DbstorespatialBuffer, i : Int, v : Double) -> DbstorespatialBuffer {
-  let result = db_store_spatial_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_spatial_buffer_sum(s : DbstorespatialBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn db_store_spatial_cursor_get(s : DbstorespatialCursor, i : Int) -> Double 
 }
 
 pub fn db_store_spatial_cursor_set(s : DbstorespatialCursor, i : Int, v : Double) -> DbstorespatialCursor {
-  let result = db_store_spatial_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_spatial_cursor_sum(s : DbstorespatialCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn db_store_spatial_view_get(s : DbstorespatialView, i : Int) -> Double {
 }
 
 pub fn db_store_spatial_view_set(s : DbstorespatialView, i : Int, v : Double) -> DbstorespatialView {
-  let result = db_store_spatial_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_spatial_view_sum(s : DbstorespatialView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn db_store_spatial_range_get(s : DbstorespatialRange, i : Int) -> Double {
 }
 
 pub fn db_store_spatial_range_set(s : DbstorespatialRange, i : Int, v : Double) -> DbstorespatialRange {
-  let result = db_store_spatial_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_spatial_range_sum(s : DbstorespatialRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn db_store_spatial_slice_get(s : DbstorespatialSlice, i : Int) -> Double {
 }
 
 pub fn db_store_spatial_slice_set(s : DbstorespatialSlice, i : Int, v : Double) -> DbstorespatialSlice {
-  let result = db_store_spatial_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn db_store_spatial_slice_sum(s : DbstorespatialSlice) -> Double { @_common.sum(s.data) }

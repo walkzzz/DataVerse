@@ -107,23 +107,15 @@ pub fn stats_dist_pareto_series_std(s : StatsdistparetoSeries) -> Double { @_com
 pub fn stats_dist_pareto_series_median(s : StatsdistparetoSeries) -> Double { @_common.median(s.vals) }
 
 pub fn stats_dist_pareto_series_scale(s : StatsdistparetoSeries, f : Double) -> StatsdistparetoSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn stats_dist_pareto_series_add(a : StatsdistparetoSeries, b : StatsdistparetoSeries) -> StatsdistparetoSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn stats_dist_pareto_series_sub(a : StatsdistparetoSeries, b : StatsdistparetoSeries) -> StatsdistparetoSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn stats_dist_pareto_series_normalize(s : StatsdistparetoSeries) -> StatsdistparetoSeries {
@@ -254,22 +246,16 @@ pub fn stats_dist_pareto_vector_zero(dim : Int) -> StatsdistparetoVector {
 
 pub fn stats_dist_pareto_vector_add(a : StatsdistparetoVector, b : StatsdistparetoVector) -> StatsdistparetoVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_dist_pareto_vector_sub(a : StatsdistparetoVector, b : StatsdistparetoVector) -> StatsdistparetoVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn stats_dist_pareto_vector_scale(v : StatsdistparetoVector, s : Double) -> StatsdistparetoVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn stats_dist_pareto_vector_dot(a : StatsdistparetoVector, b : StatsdistparetoVector) -> Double {
@@ -372,10 +358,9 @@ pub fn stats_dist_pareto_frame_get(s : StatsdistparetoFrame, i : Int) -> Double 
 }
 
 pub fn stats_dist_pareto_frame_set(s : StatsdistparetoFrame, i : Int, v : Double) -> StatsdistparetoFrame {
-  let result = stats_dist_pareto_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_frame_sum(s : StatsdistparetoFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn stats_dist_pareto_table_get(s : StatsdistparetoTable, i : Int) -> Double 
 }
 
 pub fn stats_dist_pareto_table_set(s : StatsdistparetoTable, i : Int, v : Double) -> StatsdistparetoTable {
-  let result = stats_dist_pareto_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_table_sum(s : StatsdistparetoTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn stats_dist_pareto_graphn_get(s : StatsdistparetoGraphN, i : Int) -> Doubl
 }
 
 pub fn stats_dist_pareto_graphn_set(s : StatsdistparetoGraphN, i : Int, v : Double) -> StatsdistparetoGraphN {
-  let result = stats_dist_pareto_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_graphn_sum(s : StatsdistparetoGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn stats_dist_pareto_node_get(s : StatsdistparetoNode, i : Int) -> Double {
 }
 
 pub fn stats_dist_pareto_node_set(s : StatsdistparetoNode, i : Int, v : Double) -> StatsdistparetoNode {
-  let result = stats_dist_pareto_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_node_sum(s : StatsdistparetoNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn stats_dist_pareto_edge_get(s : StatsdistparetoEdge, i : Int) -> Double {
 }
 
 pub fn stats_dist_pareto_edge_set(s : StatsdistparetoEdge, i : Int, v : Double) -> StatsdistparetoEdge {
-  let result = stats_dist_pareto_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_edge_sum(s : StatsdistparetoEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn stats_dist_pareto_path_get(s : StatsdistparetoPath, i : Int) -> Double {
 }
 
 pub fn stats_dist_pareto_path_set(s : StatsdistparetoPath, i : Int, v : Double) -> StatsdistparetoPath {
-  let result = stats_dist_pareto_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_path_sum(s : StatsdistparetoPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn stats_dist_pareto_cluster_get(s : StatsdistparetoCluster, i : Int) -> Dou
 }
 
 pub fn stats_dist_pareto_cluster_set(s : StatsdistparetoCluster, i : Int, v : Double) -> StatsdistparetoCluster {
-  let result = stats_dist_pareto_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_cluster_sum(s : StatsdistparetoCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn stats_dist_pareto_model_get(s : StatsdistparetoModel, i : Int) -> Double 
 }
 
 pub fn stats_dist_pareto_model_set(s : StatsdistparetoModel, i : Int, v : Double) -> StatsdistparetoModel {
-  let result = stats_dist_pareto_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_model_sum(s : StatsdistparetoModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn stats_dist_pareto_layer_get(s : StatsdistparetoLayer, i : Int) -> Double 
 }
 
 pub fn stats_dist_pareto_layer_set(s : StatsdistparetoLayer, i : Int, v : Double) -> StatsdistparetoLayer {
-  let result = stats_dist_pareto_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_layer_sum(s : StatsdistparetoLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn stats_dist_pareto_buffer_get(s : StatsdistparetoBuffer, i : Int) -> Doubl
 }
 
 pub fn stats_dist_pareto_buffer_set(s : StatsdistparetoBuffer, i : Int, v : Double) -> StatsdistparetoBuffer {
-  let result = stats_dist_pareto_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_buffer_sum(s : StatsdistparetoBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn stats_dist_pareto_cursor_get(s : StatsdistparetoCursor, i : Int) -> Doubl
 }
 
 pub fn stats_dist_pareto_cursor_set(s : StatsdistparetoCursor, i : Int, v : Double) -> StatsdistparetoCursor {
-  let result = stats_dist_pareto_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_cursor_sum(s : StatsdistparetoCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn stats_dist_pareto_view_get(s : StatsdistparetoView, i : Int) -> Double {
 }
 
 pub fn stats_dist_pareto_view_set(s : StatsdistparetoView, i : Int, v : Double) -> StatsdistparetoView {
-  let result = stats_dist_pareto_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_view_sum(s : StatsdistparetoView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn stats_dist_pareto_range_get(s : StatsdistparetoRange, i : Int) -> Double 
 }
 
 pub fn stats_dist_pareto_range_set(s : StatsdistparetoRange, i : Int, v : Double) -> StatsdistparetoRange {
-  let result = stats_dist_pareto_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_range_sum(s : StatsdistparetoRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn stats_dist_pareto_slice_get(s : StatsdistparetoSlice, i : Int) -> Double 
 }
 
 pub fn stats_dist_pareto_slice_set(s : StatsdistparetoSlice, i : Int, v : Double) -> StatsdistparetoSlice {
-  let result = stats_dist_pareto_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn stats_dist_pareto_slice_sum(s : StatsdistparetoSlice) -> Double { @_common.sum(s.data) }

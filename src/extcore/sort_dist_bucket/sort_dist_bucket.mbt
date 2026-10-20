@@ -107,23 +107,15 @@ pub fn sort_dist_bucket_series_std(s : SortdistbucketSeries) -> Double { @_commo
 pub fn sort_dist_bucket_series_median(s : SortdistbucketSeries) -> Double { @_common.median(s.vals) }
 
 pub fn sort_dist_bucket_series_scale(s : SortdistbucketSeries, f : Double) -> SortdistbucketSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn sort_dist_bucket_series_add(a : SortdistbucketSeries, b : SortdistbucketSeries) -> SortdistbucketSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn sort_dist_bucket_series_sub(a : SortdistbucketSeries, b : SortdistbucketSeries) -> SortdistbucketSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn sort_dist_bucket_series_normalize(s : SortdistbucketSeries) -> SortdistbucketSeries {
@@ -254,22 +246,16 @@ pub fn sort_dist_bucket_vector_zero(dim : Int) -> SortdistbucketVector {
 
 pub fn sort_dist_bucket_vector_add(a : SortdistbucketVector, b : SortdistbucketVector) -> SortdistbucketVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_dist_bucket_vector_sub(a : SortdistbucketVector, b : SortdistbucketVector) -> SortdistbucketVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn sort_dist_bucket_vector_scale(v : SortdistbucketVector, s : Double) -> SortdistbucketVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn sort_dist_bucket_vector_dot(a : SortdistbucketVector, b : SortdistbucketVector) -> Double {
@@ -372,10 +358,9 @@ pub fn sort_dist_bucket_frame_get(s : SortdistbucketFrame, i : Int) -> Double {
 }
 
 pub fn sort_dist_bucket_frame_set(s : SortdistbucketFrame, i : Int, v : Double) -> SortdistbucketFrame {
-  let result = sort_dist_bucket_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_bucket_frame_sum(s : SortdistbucketFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn sort_dist_bucket_table_get(s : SortdistbucketTable, i : Int) -> Double {
 }
 
 pub fn sort_dist_bucket_table_set(s : SortdistbucketTable, i : Int, v : Double) -> SortdistbucketTable {
-  let result = sort_dist_bucket_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_bucket_table_sum(s : SortdistbucketTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn sort_dist_bucket_graphn_get(s : SortdistbucketGraphN, i : Int) -> Double 
 }
 
 pub fn sort_dist_bucket_graphn_set(s : SortdistbucketGraphN, i : Int, v : Double) -> SortdistbucketGraphN {
-  let result = sort_dist_bucket_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_bucket_graphn_sum(s : SortdistbucketGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn sort_dist_bucket_node_get(s : SortdistbucketNode, i : Int) -> Double {
 }
 
 pub fn sort_dist_bucket_node_set(s : SortdistbucketNode, i : Int, v : Double) -> SortdistbucketNode {
-  let result = sort_dist_bucket_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_bucket_node_sum(s : SortdistbucketNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn sort_dist_bucket_edge_get(s : SortdistbucketEdge, i : Int) -> Double {
 }
 
 pub fn sort_dist_bucket_edge_set(s : SortdistbucketEdge, i : Int, v : Double) -> SortdistbucketEdge {
-  let result = sort_dist_bucket_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_bucket_edge_sum(s : SortdistbucketEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn sort_dist_bucket_path_get(s : SortdistbucketPath, i : Int) -> Double {
 }
 
 pub fn sort_dist_bucket_path_set(s : SortdistbucketPath, i : Int, v : Double) -> SortdistbucketPath {
-  let result = sort_dist_bucket_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_bucket_path_sum(s : SortdistbucketPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn sort_dist_bucket_cluster_get(s : SortdistbucketCluster, i : Int) -> Doubl
 }
 
 pub fn sort_dist_bucket_cluster_set(s : SortdistbucketCluster, i : Int, v : Double) -> SortdistbucketCluster {
-  let result = sort_dist_bucket_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_bucket_cluster_sum(s : SortdistbucketCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn sort_dist_bucket_model_get(s : SortdistbucketModel, i : Int) -> Double {
 }
 
 pub fn sort_dist_bucket_model_set(s : SortdistbucketModel, i : Int, v : Double) -> SortdistbucketModel {
-  let result = sort_dist_bucket_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_bucket_model_sum(s : SortdistbucketModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn sort_dist_bucket_layer_get(s : SortdistbucketLayer, i : Int) -> Double {
 }
 
 pub fn sort_dist_bucket_layer_set(s : SortdistbucketLayer, i : Int, v : Double) -> SortdistbucketLayer {
-  let result = sort_dist_bucket_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_bucket_layer_sum(s : SortdistbucketLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn sort_dist_bucket_buffer_get(s : SortdistbucketBuffer, i : Int) -> Double 
 }
 
 pub fn sort_dist_bucket_buffer_set(s : SortdistbucketBuffer, i : Int, v : Double) -> SortdistbucketBuffer {
-  let result = sort_dist_bucket_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_bucket_buffer_sum(s : SortdistbucketBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn sort_dist_bucket_cursor_get(s : SortdistbucketCursor, i : Int) -> Double 
 }
 
 pub fn sort_dist_bucket_cursor_set(s : SortdistbucketCursor, i : Int, v : Double) -> SortdistbucketCursor {
-  let result = sort_dist_bucket_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_bucket_cursor_sum(s : SortdistbucketCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn sort_dist_bucket_view_get(s : SortdistbucketView, i : Int) -> Double {
 }
 
 pub fn sort_dist_bucket_view_set(s : SortdistbucketView, i : Int, v : Double) -> SortdistbucketView {
-  let result = sort_dist_bucket_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_bucket_view_sum(s : SortdistbucketView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn sort_dist_bucket_range_get(s : SortdistbucketRange, i : Int) -> Double {
 }
 
 pub fn sort_dist_bucket_range_set(s : SortdistbucketRange, i : Int, v : Double) -> SortdistbucketRange {
-  let result = sort_dist_bucket_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_bucket_range_sum(s : SortdistbucketRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn sort_dist_bucket_slice_get(s : SortdistbucketSlice, i : Int) -> Double {
 }
 
 pub fn sort_dist_bucket_slice_set(s : SortdistbucketSlice, i : Int, v : Double) -> SortdistbucketSlice {
-  let result = sort_dist_bucket_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn sort_dist_bucket_slice_sum(s : SortdistbucketSlice) -> Double { @_common.sum(s.data) }

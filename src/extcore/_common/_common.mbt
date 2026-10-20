@@ -631,6 +631,20 @@ pub fn add_arr(a : Array[Double], b : Array[Double]) -> Array[Double] {
   result
 }
 
+/// 数组逐元素减
+pub fn sub_arr(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let n = if a.length() < b.length() {
+    a.length()
+  } else {
+    b.length()
+  }
+  let result = Array::make(n, 0.0)
+  for i in 0..<n {
+    result[i] = a[i] - b[i]
+  }
+  result
+}
+
 /// 填充数组
 pub fn fill_arr(n : Int, v : Double) -> Array[Double] {
   Array::make(n, v)

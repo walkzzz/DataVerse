@@ -107,23 +107,15 @@ pub fn image_feature_blob_series_std(s : ImagefeatureblobSeries) -> Double { @_c
 pub fn image_feature_blob_series_median(s : ImagefeatureblobSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_feature_blob_series_scale(s : ImagefeatureblobSeries, f : Double) -> ImagefeatureblobSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_feature_blob_series_add(a : ImagefeatureblobSeries, b : ImagefeatureblobSeries) -> ImagefeatureblobSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_feature_blob_series_sub(a : ImagefeatureblobSeries, b : ImagefeatureblobSeries) -> ImagefeatureblobSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_feature_blob_series_normalize(s : ImagefeatureblobSeries) -> ImagefeatureblobSeries {
@@ -254,22 +246,16 @@ pub fn image_feature_blob_vector_zero(dim : Int) -> ImagefeatureblobVector {
 
 pub fn image_feature_blob_vector_add(a : ImagefeatureblobVector, b : ImagefeatureblobVector) -> ImagefeatureblobVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_feature_blob_vector_sub(a : ImagefeatureblobVector, b : ImagefeatureblobVector) -> ImagefeatureblobVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_feature_blob_vector_scale(v : ImagefeatureblobVector, s : Double) -> ImagefeatureblobVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_feature_blob_vector_dot(a : ImagefeatureblobVector, b : ImagefeatureblobVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_feature_blob_frame_get(s : ImagefeatureblobFrame, i : Int) -> Doubl
 }
 
 pub fn image_feature_blob_frame_set(s : ImagefeatureblobFrame, i : Int, v : Double) -> ImagefeatureblobFrame {
-  let result = image_feature_blob_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_blob_frame_sum(s : ImagefeatureblobFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_feature_blob_table_get(s : ImagefeatureblobTable, i : Int) -> Doubl
 }
 
 pub fn image_feature_blob_table_set(s : ImagefeatureblobTable, i : Int, v : Double) -> ImagefeatureblobTable {
-  let result = image_feature_blob_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_blob_table_sum(s : ImagefeatureblobTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_feature_blob_graphn_get(s : ImagefeatureblobGraphN, i : Int) -> Dou
 }
 
 pub fn image_feature_blob_graphn_set(s : ImagefeatureblobGraphN, i : Int, v : Double) -> ImagefeatureblobGraphN {
-  let result = image_feature_blob_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_blob_graphn_sum(s : ImagefeatureblobGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_feature_blob_node_get(s : ImagefeatureblobNode, i : Int) -> Double 
 }
 
 pub fn image_feature_blob_node_set(s : ImagefeatureblobNode, i : Int, v : Double) -> ImagefeatureblobNode {
-  let result = image_feature_blob_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_blob_node_sum(s : ImagefeatureblobNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_feature_blob_edge_get(s : ImagefeatureblobEdge, i : Int) -> Double 
 }
 
 pub fn image_feature_blob_edge_set(s : ImagefeatureblobEdge, i : Int, v : Double) -> ImagefeatureblobEdge {
-  let result = image_feature_blob_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_blob_edge_sum(s : ImagefeatureblobEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_feature_blob_path_get(s : ImagefeatureblobPath, i : Int) -> Double 
 }
 
 pub fn image_feature_blob_path_set(s : ImagefeatureblobPath, i : Int, v : Double) -> ImagefeatureblobPath {
-  let result = image_feature_blob_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_blob_path_sum(s : ImagefeatureblobPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_feature_blob_cluster_get(s : ImagefeatureblobCluster, i : Int) -> D
 }
 
 pub fn image_feature_blob_cluster_set(s : ImagefeatureblobCluster, i : Int, v : Double) -> ImagefeatureblobCluster {
-  let result = image_feature_blob_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_blob_cluster_sum(s : ImagefeatureblobCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_feature_blob_model_get(s : ImagefeatureblobModel, i : Int) -> Doubl
 }
 
 pub fn image_feature_blob_model_set(s : ImagefeatureblobModel, i : Int, v : Double) -> ImagefeatureblobModel {
-  let result = image_feature_blob_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_blob_model_sum(s : ImagefeatureblobModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_feature_blob_layer_get(s : ImagefeatureblobLayer, i : Int) -> Doubl
 }
 
 pub fn image_feature_blob_layer_set(s : ImagefeatureblobLayer, i : Int, v : Double) -> ImagefeatureblobLayer {
-  let result = image_feature_blob_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_blob_layer_sum(s : ImagefeatureblobLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_feature_blob_buffer_get(s : ImagefeatureblobBuffer, i : Int) -> Dou
 }
 
 pub fn image_feature_blob_buffer_set(s : ImagefeatureblobBuffer, i : Int, v : Double) -> ImagefeatureblobBuffer {
-  let result = image_feature_blob_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_blob_buffer_sum(s : ImagefeatureblobBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_feature_blob_cursor_get(s : ImagefeatureblobCursor, i : Int) -> Dou
 }
 
 pub fn image_feature_blob_cursor_set(s : ImagefeatureblobCursor, i : Int, v : Double) -> ImagefeatureblobCursor {
-  let result = image_feature_blob_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_blob_cursor_sum(s : ImagefeatureblobCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_feature_blob_view_get(s : ImagefeatureblobView, i : Int) -> Double 
 }
 
 pub fn image_feature_blob_view_set(s : ImagefeatureblobView, i : Int, v : Double) -> ImagefeatureblobView {
-  let result = image_feature_blob_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_blob_view_sum(s : ImagefeatureblobView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_feature_blob_range_get(s : ImagefeatureblobRange, i : Int) -> Doubl
 }
 
 pub fn image_feature_blob_range_set(s : ImagefeatureblobRange, i : Int, v : Double) -> ImagefeatureblobRange {
-  let result = image_feature_blob_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_blob_range_sum(s : ImagefeatureblobRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_feature_blob_slice_get(s : ImagefeatureblobSlice, i : Int) -> Doubl
 }
 
 pub fn image_feature_blob_slice_set(s : ImagefeatureblobSlice, i : Int, v : Double) -> ImagefeatureblobSlice {
-  let result = image_feature_blob_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_blob_slice_sum(s : ImagefeatureblobSlice) -> Double { @_common.sum(s.data) }

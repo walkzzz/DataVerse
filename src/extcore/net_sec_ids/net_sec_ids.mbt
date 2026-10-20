@@ -107,23 +107,15 @@ pub fn net_sec_ids_series_std(s : NetsecidsSeries) -> Double { @_common.std(s.va
 pub fn net_sec_ids_series_median(s : NetsecidsSeries) -> Double { @_common.median(s.vals) }
 
 pub fn net_sec_ids_series_scale(s : NetsecidsSeries, f : Double) -> NetsecidsSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn net_sec_ids_series_add(a : NetsecidsSeries, b : NetsecidsSeries) -> NetsecidsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn net_sec_ids_series_sub(a : NetsecidsSeries, b : NetsecidsSeries) -> NetsecidsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn net_sec_ids_series_normalize(s : NetsecidsSeries) -> NetsecidsSeries {
@@ -254,22 +246,16 @@ pub fn net_sec_ids_vector_zero(dim : Int) -> NetsecidsVector {
 
 pub fn net_sec_ids_vector_add(a : NetsecidsVector, b : NetsecidsVector) -> NetsecidsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_sec_ids_vector_sub(a : NetsecidsVector, b : NetsecidsVector) -> NetsecidsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn net_sec_ids_vector_scale(v : NetsecidsVector, s : Double) -> NetsecidsVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn net_sec_ids_vector_dot(a : NetsecidsVector, b : NetsecidsVector) -> Double {
@@ -372,10 +358,9 @@ pub fn net_sec_ids_frame_get(s : NetsecidsFrame, i : Int) -> Double {
 }
 
 pub fn net_sec_ids_frame_set(s : NetsecidsFrame, i : Int, v : Double) -> NetsecidsFrame {
-  let result = net_sec_ids_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ids_frame_sum(s : NetsecidsFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn net_sec_ids_table_get(s : NetsecidsTable, i : Int) -> Double {
 }
 
 pub fn net_sec_ids_table_set(s : NetsecidsTable, i : Int, v : Double) -> NetsecidsTable {
-  let result = net_sec_ids_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ids_table_sum(s : NetsecidsTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn net_sec_ids_graphn_get(s : NetsecidsGraphN, i : Int) -> Double {
 }
 
 pub fn net_sec_ids_graphn_set(s : NetsecidsGraphN, i : Int, v : Double) -> NetsecidsGraphN {
-  let result = net_sec_ids_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ids_graphn_sum(s : NetsecidsGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn net_sec_ids_node_get(s : NetsecidsNode, i : Int) -> Double {
 }
 
 pub fn net_sec_ids_node_set(s : NetsecidsNode, i : Int, v : Double) -> NetsecidsNode {
-  let result = net_sec_ids_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ids_node_sum(s : NetsecidsNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn net_sec_ids_edge_get(s : NetsecidsEdge, i : Int) -> Double {
 }
 
 pub fn net_sec_ids_edge_set(s : NetsecidsEdge, i : Int, v : Double) -> NetsecidsEdge {
-  let result = net_sec_ids_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ids_edge_sum(s : NetsecidsEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn net_sec_ids_path_get(s : NetsecidsPath, i : Int) -> Double {
 }
 
 pub fn net_sec_ids_path_set(s : NetsecidsPath, i : Int, v : Double) -> NetsecidsPath {
-  let result = net_sec_ids_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ids_path_sum(s : NetsecidsPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn net_sec_ids_cluster_get(s : NetsecidsCluster, i : Int) -> Double {
 }
 
 pub fn net_sec_ids_cluster_set(s : NetsecidsCluster, i : Int, v : Double) -> NetsecidsCluster {
-  let result = net_sec_ids_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ids_cluster_sum(s : NetsecidsCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn net_sec_ids_model_get(s : NetsecidsModel, i : Int) -> Double {
 }
 
 pub fn net_sec_ids_model_set(s : NetsecidsModel, i : Int, v : Double) -> NetsecidsModel {
-  let result = net_sec_ids_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ids_model_sum(s : NetsecidsModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn net_sec_ids_layer_get(s : NetsecidsLayer, i : Int) -> Double {
 }
 
 pub fn net_sec_ids_layer_set(s : NetsecidsLayer, i : Int, v : Double) -> NetsecidsLayer {
-  let result = net_sec_ids_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ids_layer_sum(s : NetsecidsLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn net_sec_ids_buffer_get(s : NetsecidsBuffer, i : Int) -> Double {
 }
 
 pub fn net_sec_ids_buffer_set(s : NetsecidsBuffer, i : Int, v : Double) -> NetsecidsBuffer {
-  let result = net_sec_ids_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ids_buffer_sum(s : NetsecidsBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn net_sec_ids_cursor_get(s : NetsecidsCursor, i : Int) -> Double {
 }
 
 pub fn net_sec_ids_cursor_set(s : NetsecidsCursor, i : Int, v : Double) -> NetsecidsCursor {
-  let result = net_sec_ids_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ids_cursor_sum(s : NetsecidsCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn net_sec_ids_view_get(s : NetsecidsView, i : Int) -> Double {
 }
 
 pub fn net_sec_ids_view_set(s : NetsecidsView, i : Int, v : Double) -> NetsecidsView {
-  let result = net_sec_ids_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ids_view_sum(s : NetsecidsView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn net_sec_ids_range_get(s : NetsecidsRange, i : Int) -> Double {
 }
 
 pub fn net_sec_ids_range_set(s : NetsecidsRange, i : Int, v : Double) -> NetsecidsRange {
-  let result = net_sec_ids_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ids_range_sum(s : NetsecidsRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn net_sec_ids_slice_get(s : NetsecidsSlice, i : Int) -> Double {
 }
 
 pub fn net_sec_ids_slice_set(s : NetsecidsSlice, i : Int, v : Double) -> NetsecidsSlice {
-  let result = net_sec_ids_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn net_sec_ids_slice_sum(s : NetsecidsSlice) -> Double { @_common.sum(s.data) }

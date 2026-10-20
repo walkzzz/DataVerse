@@ -107,23 +107,15 @@ pub fn finance_risk_marginal_series_std(s : FinanceriskmarginalSeries) -> Double
 pub fn finance_risk_marginal_series_median(s : FinanceriskmarginalSeries) -> Double { @_common.median(s.vals) }
 
 pub fn finance_risk_marginal_series_scale(s : FinanceriskmarginalSeries, f : Double) -> FinanceriskmarginalSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn finance_risk_marginal_series_add(a : FinanceriskmarginalSeries, b : FinanceriskmarginalSeries) -> FinanceriskmarginalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn finance_risk_marginal_series_sub(a : FinanceriskmarginalSeries, b : FinanceriskmarginalSeries) -> FinanceriskmarginalSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn finance_risk_marginal_series_normalize(s : FinanceriskmarginalSeries) -> FinanceriskmarginalSeries {
@@ -254,22 +246,16 @@ pub fn finance_risk_marginal_vector_zero(dim : Int) -> FinanceriskmarginalVector
 
 pub fn finance_risk_marginal_vector_add(a : FinanceriskmarginalVector, b : FinanceriskmarginalVector) -> FinanceriskmarginalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_risk_marginal_vector_sub(a : FinanceriskmarginalVector, b : FinanceriskmarginalVector) -> FinanceriskmarginalVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn finance_risk_marginal_vector_scale(v : FinanceriskmarginalVector, s : Double) -> FinanceriskmarginalVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn finance_risk_marginal_vector_dot(a : FinanceriskmarginalVector, b : FinanceriskmarginalVector) -> Double {
@@ -372,10 +358,9 @@ pub fn finance_risk_marginal_frame_get(s : FinanceriskmarginalFrame, i : Int) ->
 }
 
 pub fn finance_risk_marginal_frame_set(s : FinanceriskmarginalFrame, i : Int, v : Double) -> FinanceriskmarginalFrame {
-  let result = finance_risk_marginal_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_marginal_frame_sum(s : FinanceriskmarginalFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn finance_risk_marginal_table_get(s : FinanceriskmarginalTable, i : Int) ->
 }
 
 pub fn finance_risk_marginal_table_set(s : FinanceriskmarginalTable, i : Int, v : Double) -> FinanceriskmarginalTable {
-  let result = finance_risk_marginal_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_marginal_table_sum(s : FinanceriskmarginalTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn finance_risk_marginal_graphn_get(s : FinanceriskmarginalGraphN, i : Int) 
 }
 
 pub fn finance_risk_marginal_graphn_set(s : FinanceriskmarginalGraphN, i : Int, v : Double) -> FinanceriskmarginalGraphN {
-  let result = finance_risk_marginal_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_marginal_graphn_sum(s : FinanceriskmarginalGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn finance_risk_marginal_node_get(s : FinanceriskmarginalNode, i : Int) -> D
 }
 
 pub fn finance_risk_marginal_node_set(s : FinanceriskmarginalNode, i : Int, v : Double) -> FinanceriskmarginalNode {
-  let result = finance_risk_marginal_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_marginal_node_sum(s : FinanceriskmarginalNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn finance_risk_marginal_edge_get(s : FinanceriskmarginalEdge, i : Int) -> D
 }
 
 pub fn finance_risk_marginal_edge_set(s : FinanceriskmarginalEdge, i : Int, v : Double) -> FinanceriskmarginalEdge {
-  let result = finance_risk_marginal_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_marginal_edge_sum(s : FinanceriskmarginalEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn finance_risk_marginal_path_get(s : FinanceriskmarginalPath, i : Int) -> D
 }
 
 pub fn finance_risk_marginal_path_set(s : FinanceriskmarginalPath, i : Int, v : Double) -> FinanceriskmarginalPath {
-  let result = finance_risk_marginal_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_marginal_path_sum(s : FinanceriskmarginalPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn finance_risk_marginal_cluster_get(s : FinanceriskmarginalCluster, i : Int
 }
 
 pub fn finance_risk_marginal_cluster_set(s : FinanceriskmarginalCluster, i : Int, v : Double) -> FinanceriskmarginalCluster {
-  let result = finance_risk_marginal_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_marginal_cluster_sum(s : FinanceriskmarginalCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn finance_risk_marginal_model_get(s : FinanceriskmarginalModel, i : Int) ->
 }
 
 pub fn finance_risk_marginal_model_set(s : FinanceriskmarginalModel, i : Int, v : Double) -> FinanceriskmarginalModel {
-  let result = finance_risk_marginal_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_marginal_model_sum(s : FinanceriskmarginalModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn finance_risk_marginal_layer_get(s : FinanceriskmarginalLayer, i : Int) ->
 }
 
 pub fn finance_risk_marginal_layer_set(s : FinanceriskmarginalLayer, i : Int, v : Double) -> FinanceriskmarginalLayer {
-  let result = finance_risk_marginal_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_marginal_layer_sum(s : FinanceriskmarginalLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn finance_risk_marginal_buffer_get(s : FinanceriskmarginalBuffer, i : Int) 
 }
 
 pub fn finance_risk_marginal_buffer_set(s : FinanceriskmarginalBuffer, i : Int, v : Double) -> FinanceriskmarginalBuffer {
-  let result = finance_risk_marginal_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_marginal_buffer_sum(s : FinanceriskmarginalBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn finance_risk_marginal_cursor_get(s : FinanceriskmarginalCursor, i : Int) 
 }
 
 pub fn finance_risk_marginal_cursor_set(s : FinanceriskmarginalCursor, i : Int, v : Double) -> FinanceriskmarginalCursor {
-  let result = finance_risk_marginal_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_marginal_cursor_sum(s : FinanceriskmarginalCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn finance_risk_marginal_view_get(s : FinanceriskmarginalView, i : Int) -> D
 }
 
 pub fn finance_risk_marginal_view_set(s : FinanceriskmarginalView, i : Int, v : Double) -> FinanceriskmarginalView {
-  let result = finance_risk_marginal_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_marginal_view_sum(s : FinanceriskmarginalView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn finance_risk_marginal_range_get(s : FinanceriskmarginalRange, i : Int) ->
 }
 
 pub fn finance_risk_marginal_range_set(s : FinanceriskmarginalRange, i : Int, v : Double) -> FinanceriskmarginalRange {
-  let result = finance_risk_marginal_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_marginal_range_sum(s : FinanceriskmarginalRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn finance_risk_marginal_slice_get(s : FinanceriskmarginalSlice, i : Int) ->
 }
 
 pub fn finance_risk_marginal_slice_set(s : FinanceriskmarginalSlice, i : Int, v : Double) -> FinanceriskmarginalSlice {
-  let result = finance_risk_marginal_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn finance_risk_marginal_slice_sum(s : FinanceriskmarginalSlice) -> Double { @_common.sum(s.data) }

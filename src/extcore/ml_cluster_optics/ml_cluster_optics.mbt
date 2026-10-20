@@ -107,23 +107,15 @@ pub fn ml_cluster_optics_series_std(s : MlclusteropticsSeries) -> Double { @_com
 pub fn ml_cluster_optics_series_median(s : MlclusteropticsSeries) -> Double { @_common.median(s.vals) }
 
 pub fn ml_cluster_optics_series_scale(s : MlclusteropticsSeries, f : Double) -> MlclusteropticsSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn ml_cluster_optics_series_add(a : MlclusteropticsSeries, b : MlclusteropticsSeries) -> MlclusteropticsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn ml_cluster_optics_series_sub(a : MlclusteropticsSeries, b : MlclusteropticsSeries) -> MlclusteropticsSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn ml_cluster_optics_series_normalize(s : MlclusteropticsSeries) -> MlclusteropticsSeries {
@@ -254,22 +246,16 @@ pub fn ml_cluster_optics_vector_zero(dim : Int) -> MlclusteropticsVector {
 
 pub fn ml_cluster_optics_vector_add(a : MlclusteropticsVector, b : MlclusteropticsVector) -> MlclusteropticsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_cluster_optics_vector_sub(a : MlclusteropticsVector, b : MlclusteropticsVector) -> MlclusteropticsVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn ml_cluster_optics_vector_scale(v : MlclusteropticsVector, s : Double) -> MlclusteropticsVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn ml_cluster_optics_vector_dot(a : MlclusteropticsVector, b : MlclusteropticsVector) -> Double {
@@ -372,10 +358,9 @@ pub fn ml_cluster_optics_frame_get(s : MlclusteropticsFrame, i : Int) -> Double 
 }
 
 pub fn ml_cluster_optics_frame_set(s : MlclusteropticsFrame, i : Int, v : Double) -> MlclusteropticsFrame {
-  let result = ml_cluster_optics_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_optics_frame_sum(s : MlclusteropticsFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn ml_cluster_optics_table_get(s : MlclusteropticsTable, i : Int) -> Double 
 }
 
 pub fn ml_cluster_optics_table_set(s : MlclusteropticsTable, i : Int, v : Double) -> MlclusteropticsTable {
-  let result = ml_cluster_optics_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_optics_table_sum(s : MlclusteropticsTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn ml_cluster_optics_graphn_get(s : MlclusteropticsGraphN, i : Int) -> Doubl
 }
 
 pub fn ml_cluster_optics_graphn_set(s : MlclusteropticsGraphN, i : Int, v : Double) -> MlclusteropticsGraphN {
-  let result = ml_cluster_optics_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_optics_graphn_sum(s : MlclusteropticsGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn ml_cluster_optics_node_get(s : MlclusteropticsNode, i : Int) -> Double {
 }
 
 pub fn ml_cluster_optics_node_set(s : MlclusteropticsNode, i : Int, v : Double) -> MlclusteropticsNode {
-  let result = ml_cluster_optics_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_optics_node_sum(s : MlclusteropticsNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn ml_cluster_optics_edge_get(s : MlclusteropticsEdge, i : Int) -> Double {
 }
 
 pub fn ml_cluster_optics_edge_set(s : MlclusteropticsEdge, i : Int, v : Double) -> MlclusteropticsEdge {
-  let result = ml_cluster_optics_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_optics_edge_sum(s : MlclusteropticsEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn ml_cluster_optics_path_get(s : MlclusteropticsPath, i : Int) -> Double {
 }
 
 pub fn ml_cluster_optics_path_set(s : MlclusteropticsPath, i : Int, v : Double) -> MlclusteropticsPath {
-  let result = ml_cluster_optics_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_optics_path_sum(s : MlclusteropticsPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn ml_cluster_optics_cluster_get(s : MlclusteropticsCluster, i : Int) -> Dou
 }
 
 pub fn ml_cluster_optics_cluster_set(s : MlclusteropticsCluster, i : Int, v : Double) -> MlclusteropticsCluster {
-  let result = ml_cluster_optics_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_optics_cluster_sum(s : MlclusteropticsCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn ml_cluster_optics_model_get(s : MlclusteropticsModel, i : Int) -> Double 
 }
 
 pub fn ml_cluster_optics_model_set(s : MlclusteropticsModel, i : Int, v : Double) -> MlclusteropticsModel {
-  let result = ml_cluster_optics_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_optics_model_sum(s : MlclusteropticsModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn ml_cluster_optics_layer_get(s : MlclusteropticsLayer, i : Int) -> Double 
 }
 
 pub fn ml_cluster_optics_layer_set(s : MlclusteropticsLayer, i : Int, v : Double) -> MlclusteropticsLayer {
-  let result = ml_cluster_optics_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_optics_layer_sum(s : MlclusteropticsLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn ml_cluster_optics_buffer_get(s : MlclusteropticsBuffer, i : Int) -> Doubl
 }
 
 pub fn ml_cluster_optics_buffer_set(s : MlclusteropticsBuffer, i : Int, v : Double) -> MlclusteropticsBuffer {
-  let result = ml_cluster_optics_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_optics_buffer_sum(s : MlclusteropticsBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn ml_cluster_optics_cursor_get(s : MlclusteropticsCursor, i : Int) -> Doubl
 }
 
 pub fn ml_cluster_optics_cursor_set(s : MlclusteropticsCursor, i : Int, v : Double) -> MlclusteropticsCursor {
-  let result = ml_cluster_optics_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_optics_cursor_sum(s : MlclusteropticsCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn ml_cluster_optics_view_get(s : MlclusteropticsView, i : Int) -> Double {
 }
 
 pub fn ml_cluster_optics_view_set(s : MlclusteropticsView, i : Int, v : Double) -> MlclusteropticsView {
-  let result = ml_cluster_optics_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_optics_view_sum(s : MlclusteropticsView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn ml_cluster_optics_range_get(s : MlclusteropticsRange, i : Int) -> Double 
 }
 
 pub fn ml_cluster_optics_range_set(s : MlclusteropticsRange, i : Int, v : Double) -> MlclusteropticsRange {
-  let result = ml_cluster_optics_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_optics_range_sum(s : MlclusteropticsRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn ml_cluster_optics_slice_get(s : MlclusteropticsSlice, i : Int) -> Double 
 }
 
 pub fn ml_cluster_optics_slice_set(s : MlclusteropticsSlice, i : Int, v : Double) -> MlclusteropticsSlice {
-  let result = ml_cluster_optics_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn ml_cluster_optics_slice_sum(s : MlclusteropticsSlice) -> Double { @_common.sum(s.data) }

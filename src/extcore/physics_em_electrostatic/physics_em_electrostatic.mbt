@@ -107,23 +107,15 @@ pub fn physics_em_electrostatic_series_std(s : PhysicsemelectrostaticSeries) -> 
 pub fn physics_em_electrostatic_series_median(s : PhysicsemelectrostaticSeries) -> Double { @_common.median(s.vals) }
 
 pub fn physics_em_electrostatic_series_scale(s : PhysicsemelectrostaticSeries, f : Double) -> PhysicsemelectrostaticSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn physics_em_electrostatic_series_add(a : PhysicsemelectrostaticSeries, b : PhysicsemelectrostaticSeries) -> PhysicsemelectrostaticSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn physics_em_electrostatic_series_sub(a : PhysicsemelectrostaticSeries, b : PhysicsemelectrostaticSeries) -> PhysicsemelectrostaticSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn physics_em_electrostatic_series_normalize(s : PhysicsemelectrostaticSeries) -> PhysicsemelectrostaticSeries {
@@ -254,22 +246,16 @@ pub fn physics_em_electrostatic_vector_zero(dim : Int) -> Physicsemelectrostatic
 
 pub fn physics_em_electrostatic_vector_add(a : PhysicsemelectrostaticVector, b : PhysicsemelectrostaticVector) -> PhysicsemelectrostaticVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_em_electrostatic_vector_sub(a : PhysicsemelectrostaticVector, b : PhysicsemelectrostaticVector) -> PhysicsemelectrostaticVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn physics_em_electrostatic_vector_scale(v : PhysicsemelectrostaticVector, s : Double) -> PhysicsemelectrostaticVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn physics_em_electrostatic_vector_dot(a : PhysicsemelectrostaticVector, b : PhysicsemelectrostaticVector) -> Double {
@@ -372,10 +358,9 @@ pub fn physics_em_electrostatic_frame_get(s : PhysicsemelectrostaticFrame, i : I
 }
 
 pub fn physics_em_electrostatic_frame_set(s : PhysicsemelectrostaticFrame, i : Int, v : Double) -> PhysicsemelectrostaticFrame {
-  let result = physics_em_electrostatic_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_electrostatic_frame_sum(s : PhysicsemelectrostaticFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn physics_em_electrostatic_table_get(s : PhysicsemelectrostaticTable, i : I
 }
 
 pub fn physics_em_electrostatic_table_set(s : PhysicsemelectrostaticTable, i : Int, v : Double) -> PhysicsemelectrostaticTable {
-  let result = physics_em_electrostatic_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_electrostatic_table_sum(s : PhysicsemelectrostaticTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn physics_em_electrostatic_graphn_get(s : PhysicsemelectrostaticGraphN, i :
 }
 
 pub fn physics_em_electrostatic_graphn_set(s : PhysicsemelectrostaticGraphN, i : Int, v : Double) -> PhysicsemelectrostaticGraphN {
-  let result = physics_em_electrostatic_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_electrostatic_graphn_sum(s : PhysicsemelectrostaticGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn physics_em_electrostatic_node_get(s : PhysicsemelectrostaticNode, i : Int
 }
 
 pub fn physics_em_electrostatic_node_set(s : PhysicsemelectrostaticNode, i : Int, v : Double) -> PhysicsemelectrostaticNode {
-  let result = physics_em_electrostatic_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_electrostatic_node_sum(s : PhysicsemelectrostaticNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn physics_em_electrostatic_edge_get(s : PhysicsemelectrostaticEdge, i : Int
 }
 
 pub fn physics_em_electrostatic_edge_set(s : PhysicsemelectrostaticEdge, i : Int, v : Double) -> PhysicsemelectrostaticEdge {
-  let result = physics_em_electrostatic_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_electrostatic_edge_sum(s : PhysicsemelectrostaticEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn physics_em_electrostatic_path_get(s : PhysicsemelectrostaticPath, i : Int
 }
 
 pub fn physics_em_electrostatic_path_set(s : PhysicsemelectrostaticPath, i : Int, v : Double) -> PhysicsemelectrostaticPath {
-  let result = physics_em_electrostatic_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_electrostatic_path_sum(s : PhysicsemelectrostaticPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn physics_em_electrostatic_cluster_get(s : PhysicsemelectrostaticCluster, i
 }
 
 pub fn physics_em_electrostatic_cluster_set(s : PhysicsemelectrostaticCluster, i : Int, v : Double) -> PhysicsemelectrostaticCluster {
-  let result = physics_em_electrostatic_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_electrostatic_cluster_sum(s : PhysicsemelectrostaticCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn physics_em_electrostatic_model_get(s : PhysicsemelectrostaticModel, i : I
 }
 
 pub fn physics_em_electrostatic_model_set(s : PhysicsemelectrostaticModel, i : Int, v : Double) -> PhysicsemelectrostaticModel {
-  let result = physics_em_electrostatic_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_electrostatic_model_sum(s : PhysicsemelectrostaticModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn physics_em_electrostatic_layer_get(s : PhysicsemelectrostaticLayer, i : I
 }
 
 pub fn physics_em_electrostatic_layer_set(s : PhysicsemelectrostaticLayer, i : Int, v : Double) -> PhysicsemelectrostaticLayer {
-  let result = physics_em_electrostatic_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_electrostatic_layer_sum(s : PhysicsemelectrostaticLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn physics_em_electrostatic_buffer_get(s : PhysicsemelectrostaticBuffer, i :
 }
 
 pub fn physics_em_electrostatic_buffer_set(s : PhysicsemelectrostaticBuffer, i : Int, v : Double) -> PhysicsemelectrostaticBuffer {
-  let result = physics_em_electrostatic_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_electrostatic_buffer_sum(s : PhysicsemelectrostaticBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn physics_em_electrostatic_cursor_get(s : PhysicsemelectrostaticCursor, i :
 }
 
 pub fn physics_em_electrostatic_cursor_set(s : PhysicsemelectrostaticCursor, i : Int, v : Double) -> PhysicsemelectrostaticCursor {
-  let result = physics_em_electrostatic_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_electrostatic_cursor_sum(s : PhysicsemelectrostaticCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn physics_em_electrostatic_view_get(s : PhysicsemelectrostaticView, i : Int
 }
 
 pub fn physics_em_electrostatic_view_set(s : PhysicsemelectrostaticView, i : Int, v : Double) -> PhysicsemelectrostaticView {
-  let result = physics_em_electrostatic_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_electrostatic_view_sum(s : PhysicsemelectrostaticView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn physics_em_electrostatic_range_get(s : PhysicsemelectrostaticRange, i : I
 }
 
 pub fn physics_em_electrostatic_range_set(s : PhysicsemelectrostaticRange, i : Int, v : Double) -> PhysicsemelectrostaticRange {
-  let result = physics_em_electrostatic_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_electrostatic_range_sum(s : PhysicsemelectrostaticRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn physics_em_electrostatic_slice_get(s : PhysicsemelectrostaticSlice, i : I
 }
 
 pub fn physics_em_electrostatic_slice_set(s : PhysicsemelectrostaticSlice, i : Int, v : Double) -> PhysicsemelectrostaticSlice {
-  let result = physics_em_electrostatic_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn physics_em_electrostatic_slice_sum(s : PhysicsemelectrostaticSlice) -> Double { @_common.sum(s.data) }

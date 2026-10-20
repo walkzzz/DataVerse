@@ -107,23 +107,15 @@ pub fn graph_connect_weak_series_std(s : GraphconnectweakSeries) -> Double { @_c
 pub fn graph_connect_weak_series_median(s : GraphconnectweakSeries) -> Double { @_common.median(s.vals) }
 
 pub fn graph_connect_weak_series_scale(s : GraphconnectweakSeries, f : Double) -> GraphconnectweakSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn graph_connect_weak_series_add(a : GraphconnectweakSeries, b : GraphconnectweakSeries) -> GraphconnectweakSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn graph_connect_weak_series_sub(a : GraphconnectweakSeries, b : GraphconnectweakSeries) -> GraphconnectweakSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn graph_connect_weak_series_normalize(s : GraphconnectweakSeries) -> GraphconnectweakSeries {
@@ -254,22 +246,16 @@ pub fn graph_connect_weak_vector_zero(dim : Int) -> GraphconnectweakVector {
 
 pub fn graph_connect_weak_vector_add(a : GraphconnectweakVector, b : GraphconnectweakVector) -> GraphconnectweakVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_connect_weak_vector_sub(a : GraphconnectweakVector, b : GraphconnectweakVector) -> GraphconnectweakVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn graph_connect_weak_vector_scale(v : GraphconnectweakVector, s : Double) -> GraphconnectweakVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn graph_connect_weak_vector_dot(a : GraphconnectweakVector, b : GraphconnectweakVector) -> Double {
@@ -372,10 +358,9 @@ pub fn graph_connect_weak_frame_get(s : GraphconnectweakFrame, i : Int) -> Doubl
 }
 
 pub fn graph_connect_weak_frame_set(s : GraphconnectweakFrame, i : Int, v : Double) -> GraphconnectweakFrame {
-  let result = graph_connect_weak_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_weak_frame_sum(s : GraphconnectweakFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn graph_connect_weak_table_get(s : GraphconnectweakTable, i : Int) -> Doubl
 }
 
 pub fn graph_connect_weak_table_set(s : GraphconnectweakTable, i : Int, v : Double) -> GraphconnectweakTable {
-  let result = graph_connect_weak_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_weak_table_sum(s : GraphconnectweakTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn graph_connect_weak_graphn_get(s : GraphconnectweakGraphN, i : Int) -> Dou
 }
 
 pub fn graph_connect_weak_graphn_set(s : GraphconnectweakGraphN, i : Int, v : Double) -> GraphconnectweakGraphN {
-  let result = graph_connect_weak_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_weak_graphn_sum(s : GraphconnectweakGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn graph_connect_weak_node_get(s : GraphconnectweakNode, i : Int) -> Double 
 }
 
 pub fn graph_connect_weak_node_set(s : GraphconnectweakNode, i : Int, v : Double) -> GraphconnectweakNode {
-  let result = graph_connect_weak_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_weak_node_sum(s : GraphconnectweakNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn graph_connect_weak_edge_get(s : GraphconnectweakEdge, i : Int) -> Double 
 }
 
 pub fn graph_connect_weak_edge_set(s : GraphconnectweakEdge, i : Int, v : Double) -> GraphconnectweakEdge {
-  let result = graph_connect_weak_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_weak_edge_sum(s : GraphconnectweakEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn graph_connect_weak_path_get(s : GraphconnectweakPath, i : Int) -> Double 
 }
 
 pub fn graph_connect_weak_path_set(s : GraphconnectweakPath, i : Int, v : Double) -> GraphconnectweakPath {
-  let result = graph_connect_weak_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_weak_path_sum(s : GraphconnectweakPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn graph_connect_weak_cluster_get(s : GraphconnectweakCluster, i : Int) -> D
 }
 
 pub fn graph_connect_weak_cluster_set(s : GraphconnectweakCluster, i : Int, v : Double) -> GraphconnectweakCluster {
-  let result = graph_connect_weak_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_weak_cluster_sum(s : GraphconnectweakCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn graph_connect_weak_model_get(s : GraphconnectweakModel, i : Int) -> Doubl
 }
 
 pub fn graph_connect_weak_model_set(s : GraphconnectweakModel, i : Int, v : Double) -> GraphconnectweakModel {
-  let result = graph_connect_weak_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_weak_model_sum(s : GraphconnectweakModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn graph_connect_weak_layer_get(s : GraphconnectweakLayer, i : Int) -> Doubl
 }
 
 pub fn graph_connect_weak_layer_set(s : GraphconnectweakLayer, i : Int, v : Double) -> GraphconnectweakLayer {
-  let result = graph_connect_weak_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_weak_layer_sum(s : GraphconnectweakLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn graph_connect_weak_buffer_get(s : GraphconnectweakBuffer, i : Int) -> Dou
 }
 
 pub fn graph_connect_weak_buffer_set(s : GraphconnectweakBuffer, i : Int, v : Double) -> GraphconnectweakBuffer {
-  let result = graph_connect_weak_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_weak_buffer_sum(s : GraphconnectweakBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn graph_connect_weak_cursor_get(s : GraphconnectweakCursor, i : Int) -> Dou
 }
 
 pub fn graph_connect_weak_cursor_set(s : GraphconnectweakCursor, i : Int, v : Double) -> GraphconnectweakCursor {
-  let result = graph_connect_weak_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_weak_cursor_sum(s : GraphconnectweakCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn graph_connect_weak_view_get(s : GraphconnectweakView, i : Int) -> Double 
 }
 
 pub fn graph_connect_weak_view_set(s : GraphconnectweakView, i : Int, v : Double) -> GraphconnectweakView {
-  let result = graph_connect_weak_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_weak_view_sum(s : GraphconnectweakView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn graph_connect_weak_range_get(s : GraphconnectweakRange, i : Int) -> Doubl
 }
 
 pub fn graph_connect_weak_range_set(s : GraphconnectweakRange, i : Int, v : Double) -> GraphconnectweakRange {
-  let result = graph_connect_weak_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_weak_range_sum(s : GraphconnectweakRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn graph_connect_weak_slice_get(s : GraphconnectweakSlice, i : Int) -> Doubl
 }
 
 pub fn graph_connect_weak_slice_set(s : GraphconnectweakSlice, i : Int, v : Double) -> GraphconnectweakSlice {
-  let result = graph_connect_weak_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn graph_connect_weak_slice_sum(s : GraphconnectweakSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn image_feature_fast_series_std(s : ImagefeaturefastSeries) -> Double { @_c
 pub fn image_feature_fast_series_median(s : ImagefeaturefastSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_feature_fast_series_scale(s : ImagefeaturefastSeries, f : Double) -> ImagefeaturefastSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_feature_fast_series_add(a : ImagefeaturefastSeries, b : ImagefeaturefastSeries) -> ImagefeaturefastSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_feature_fast_series_sub(a : ImagefeaturefastSeries, b : ImagefeaturefastSeries) -> ImagefeaturefastSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_feature_fast_series_normalize(s : ImagefeaturefastSeries) -> ImagefeaturefastSeries {
@@ -254,22 +246,16 @@ pub fn image_feature_fast_vector_zero(dim : Int) -> ImagefeaturefastVector {
 
 pub fn image_feature_fast_vector_add(a : ImagefeaturefastVector, b : ImagefeaturefastVector) -> ImagefeaturefastVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_feature_fast_vector_sub(a : ImagefeaturefastVector, b : ImagefeaturefastVector) -> ImagefeaturefastVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_feature_fast_vector_scale(v : ImagefeaturefastVector, s : Double) -> ImagefeaturefastVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_feature_fast_vector_dot(a : ImagefeaturefastVector, b : ImagefeaturefastVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_feature_fast_frame_get(s : ImagefeaturefastFrame, i : Int) -> Doubl
 }
 
 pub fn image_feature_fast_frame_set(s : ImagefeaturefastFrame, i : Int, v : Double) -> ImagefeaturefastFrame {
-  let result = image_feature_fast_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_fast_frame_sum(s : ImagefeaturefastFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_feature_fast_table_get(s : ImagefeaturefastTable, i : Int) -> Doubl
 }
 
 pub fn image_feature_fast_table_set(s : ImagefeaturefastTable, i : Int, v : Double) -> ImagefeaturefastTable {
-  let result = image_feature_fast_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_fast_table_sum(s : ImagefeaturefastTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_feature_fast_graphn_get(s : ImagefeaturefastGraphN, i : Int) -> Dou
 }
 
 pub fn image_feature_fast_graphn_set(s : ImagefeaturefastGraphN, i : Int, v : Double) -> ImagefeaturefastGraphN {
-  let result = image_feature_fast_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_fast_graphn_sum(s : ImagefeaturefastGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_feature_fast_node_get(s : ImagefeaturefastNode, i : Int) -> Double 
 }
 
 pub fn image_feature_fast_node_set(s : ImagefeaturefastNode, i : Int, v : Double) -> ImagefeaturefastNode {
-  let result = image_feature_fast_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_fast_node_sum(s : ImagefeaturefastNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_feature_fast_edge_get(s : ImagefeaturefastEdge, i : Int) -> Double 
 }
 
 pub fn image_feature_fast_edge_set(s : ImagefeaturefastEdge, i : Int, v : Double) -> ImagefeaturefastEdge {
-  let result = image_feature_fast_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_fast_edge_sum(s : ImagefeaturefastEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_feature_fast_path_get(s : ImagefeaturefastPath, i : Int) -> Double 
 }
 
 pub fn image_feature_fast_path_set(s : ImagefeaturefastPath, i : Int, v : Double) -> ImagefeaturefastPath {
-  let result = image_feature_fast_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_fast_path_sum(s : ImagefeaturefastPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_feature_fast_cluster_get(s : ImagefeaturefastCluster, i : Int) -> D
 }
 
 pub fn image_feature_fast_cluster_set(s : ImagefeaturefastCluster, i : Int, v : Double) -> ImagefeaturefastCluster {
-  let result = image_feature_fast_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_fast_cluster_sum(s : ImagefeaturefastCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_feature_fast_model_get(s : ImagefeaturefastModel, i : Int) -> Doubl
 }
 
 pub fn image_feature_fast_model_set(s : ImagefeaturefastModel, i : Int, v : Double) -> ImagefeaturefastModel {
-  let result = image_feature_fast_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_fast_model_sum(s : ImagefeaturefastModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_feature_fast_layer_get(s : ImagefeaturefastLayer, i : Int) -> Doubl
 }
 
 pub fn image_feature_fast_layer_set(s : ImagefeaturefastLayer, i : Int, v : Double) -> ImagefeaturefastLayer {
-  let result = image_feature_fast_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_fast_layer_sum(s : ImagefeaturefastLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_feature_fast_buffer_get(s : ImagefeaturefastBuffer, i : Int) -> Dou
 }
 
 pub fn image_feature_fast_buffer_set(s : ImagefeaturefastBuffer, i : Int, v : Double) -> ImagefeaturefastBuffer {
-  let result = image_feature_fast_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_fast_buffer_sum(s : ImagefeaturefastBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_feature_fast_cursor_get(s : ImagefeaturefastCursor, i : Int) -> Dou
 }
 
 pub fn image_feature_fast_cursor_set(s : ImagefeaturefastCursor, i : Int, v : Double) -> ImagefeaturefastCursor {
-  let result = image_feature_fast_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_fast_cursor_sum(s : ImagefeaturefastCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_feature_fast_view_get(s : ImagefeaturefastView, i : Int) -> Double 
 }
 
 pub fn image_feature_fast_view_set(s : ImagefeaturefastView, i : Int, v : Double) -> ImagefeaturefastView {
-  let result = image_feature_fast_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_fast_view_sum(s : ImagefeaturefastView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_feature_fast_range_get(s : ImagefeaturefastRange, i : Int) -> Doubl
 }
 
 pub fn image_feature_fast_range_set(s : ImagefeaturefastRange, i : Int, v : Double) -> ImagefeaturefastRange {
-  let result = image_feature_fast_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_fast_range_sum(s : ImagefeaturefastRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_feature_fast_slice_get(s : ImagefeaturefastSlice, i : Int) -> Doubl
 }
 
 pub fn image_feature_fast_slice_set(s : ImagefeaturefastSlice, i : Int, v : Double) -> ImagefeaturefastSlice {
-  let result = image_feature_fast_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_feature_fast_slice_sum(s : ImagefeaturefastSlice) -> Double { @_common.sum(s.data) }

@@ -107,23 +107,15 @@ pub fn image_filter_bilateral_series_std(s : ImagefilterbilateralSeries) -> Doub
 pub fn image_filter_bilateral_series_median(s : ImagefilterbilateralSeries) -> Double { @_common.median(s.vals) }
 
 pub fn image_filter_bilateral_series_scale(s : ImagefilterbilateralSeries, f : Double) -> ImagefilterbilateralSeries {
-  let result = []
-  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
-  { vals: result, name: s.name, meta: s.meta }
+  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
 }
 
 pub fn image_filter_bilateral_series_add(a : ImagefilterbilateralSeries, b : ImagefilterbilateralSeries) -> ImagefilterbilateralSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
-  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn image_filter_bilateral_series_sub(a : ImagefilterbilateralSeries, b : ImagefilterbilateralSeries) -> ImagefilterbilateralSeries {
-  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let result = []
-  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
-  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
 }
 
 pub fn image_filter_bilateral_series_normalize(s : ImagefilterbilateralSeries) -> ImagefilterbilateralSeries {
@@ -254,22 +246,16 @@ pub fn image_filter_bilateral_vector_zero(dim : Int) -> ImagefilterbilateralVect
 
 pub fn image_filter_bilateral_vector_add(a : ImagefilterbilateralVector, b : ImagefilterbilateralVector) -> ImagefilterbilateralVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_filter_bilateral_vector_sub(a : ImagefilterbilateralVector, b : ImagefilterbilateralVector) -> ImagefilterbilateralVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let result = []
-  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
-  { comps: result, dim: n }
+  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
 }
 
 pub fn image_filter_bilateral_vector_scale(v : ImagefilterbilateralVector, s : Double) -> ImagefilterbilateralVector {
-  let result = []
-  for i in 0..<v.dim { result.push(v.comps[i] * s) }
-  { comps: result, dim: v.dim }
+  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
 }
 
 pub fn image_filter_bilateral_vector_dot(a : ImagefilterbilateralVector, b : ImagefilterbilateralVector) -> Double {
@@ -372,10 +358,9 @@ pub fn image_filter_bilateral_frame_get(s : ImagefilterbilateralFrame, i : Int) 
 }
 
 pub fn image_filter_bilateral_frame_set(s : ImagefilterbilateralFrame, i : Int, v : Double) -> ImagefilterbilateralFrame {
-  let result = image_filter_bilateral_frame_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_bilateral_frame_sum(s : ImagefilterbilateralFrame) -> Double { @_common.sum(s.data) }
@@ -424,10 +409,9 @@ pub fn image_filter_bilateral_table_get(s : ImagefilterbilateralTable, i : Int) 
 }
 
 pub fn image_filter_bilateral_table_set(s : ImagefilterbilateralTable, i : Int, v : Double) -> ImagefilterbilateralTable {
-  let result = image_filter_bilateral_table_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_bilateral_table_sum(s : ImagefilterbilateralTable) -> Double { @_common.sum(s.data) }
@@ -476,10 +460,9 @@ pub fn image_filter_bilateral_graphn_get(s : ImagefilterbilateralGraphN, i : Int
 }
 
 pub fn image_filter_bilateral_graphn_set(s : ImagefilterbilateralGraphN, i : Int, v : Double) -> ImagefilterbilateralGraphN {
-  let result = image_filter_bilateral_graphn_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_bilateral_graphn_sum(s : ImagefilterbilateralGraphN) -> Double { @_common.sum(s.data) }
@@ -528,10 +511,9 @@ pub fn image_filter_bilateral_node_get(s : ImagefilterbilateralNode, i : Int) ->
 }
 
 pub fn image_filter_bilateral_node_set(s : ImagefilterbilateralNode, i : Int, v : Double) -> ImagefilterbilateralNode {
-  let result = image_filter_bilateral_node_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_bilateral_node_sum(s : ImagefilterbilateralNode) -> Double { @_common.sum(s.data) }
@@ -580,10 +562,9 @@ pub fn image_filter_bilateral_edge_get(s : ImagefilterbilateralEdge, i : Int) ->
 }
 
 pub fn image_filter_bilateral_edge_set(s : ImagefilterbilateralEdge, i : Int, v : Double) -> ImagefilterbilateralEdge {
-  let result = image_filter_bilateral_edge_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_bilateral_edge_sum(s : ImagefilterbilateralEdge) -> Double { @_common.sum(s.data) }
@@ -632,10 +613,9 @@ pub fn image_filter_bilateral_path_get(s : ImagefilterbilateralPath, i : Int) ->
 }
 
 pub fn image_filter_bilateral_path_set(s : ImagefilterbilateralPath, i : Int, v : Double) -> ImagefilterbilateralPath {
-  let result = image_filter_bilateral_path_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_bilateral_path_sum(s : ImagefilterbilateralPath) -> Double { @_common.sum(s.data) }
@@ -684,10 +664,9 @@ pub fn image_filter_bilateral_cluster_get(s : ImagefilterbilateralCluster, i : I
 }
 
 pub fn image_filter_bilateral_cluster_set(s : ImagefilterbilateralCluster, i : Int, v : Double) -> ImagefilterbilateralCluster {
-  let result = image_filter_bilateral_cluster_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_bilateral_cluster_sum(s : ImagefilterbilateralCluster) -> Double { @_common.sum(s.data) }
@@ -736,10 +715,9 @@ pub fn image_filter_bilateral_model_get(s : ImagefilterbilateralModel, i : Int) 
 }
 
 pub fn image_filter_bilateral_model_set(s : ImagefilterbilateralModel, i : Int, v : Double) -> ImagefilterbilateralModel {
-  let result = image_filter_bilateral_model_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_bilateral_model_sum(s : ImagefilterbilateralModel) -> Double { @_common.sum(s.data) }
@@ -788,10 +766,9 @@ pub fn image_filter_bilateral_layer_get(s : ImagefilterbilateralLayer, i : Int) 
 }
 
 pub fn image_filter_bilateral_layer_set(s : ImagefilterbilateralLayer, i : Int, v : Double) -> ImagefilterbilateralLayer {
-  let result = image_filter_bilateral_layer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_bilateral_layer_sum(s : ImagefilterbilateralLayer) -> Double { @_common.sum(s.data) }
@@ -840,10 +817,9 @@ pub fn image_filter_bilateral_buffer_get(s : ImagefilterbilateralBuffer, i : Int
 }
 
 pub fn image_filter_bilateral_buffer_set(s : ImagefilterbilateralBuffer, i : Int, v : Double) -> ImagefilterbilateralBuffer {
-  let result = image_filter_bilateral_buffer_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_bilateral_buffer_sum(s : ImagefilterbilateralBuffer) -> Double { @_common.sum(s.data) }
@@ -892,10 +868,9 @@ pub fn image_filter_bilateral_cursor_get(s : ImagefilterbilateralCursor, i : Int
 }
 
 pub fn image_filter_bilateral_cursor_set(s : ImagefilterbilateralCursor, i : Int, v : Double) -> ImagefilterbilateralCursor {
-  let result = image_filter_bilateral_cursor_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_bilateral_cursor_sum(s : ImagefilterbilateralCursor) -> Double { @_common.sum(s.data) }
@@ -944,10 +919,9 @@ pub fn image_filter_bilateral_view_get(s : ImagefilterbilateralView, i : Int) ->
 }
 
 pub fn image_filter_bilateral_view_set(s : ImagefilterbilateralView, i : Int, v : Double) -> ImagefilterbilateralView {
-  let result = image_filter_bilateral_view_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_bilateral_view_sum(s : ImagefilterbilateralView) -> Double { @_common.sum(s.data) }
@@ -996,10 +970,9 @@ pub fn image_filter_bilateral_range_get(s : ImagefilterbilateralRange, i : Int) 
 }
 
 pub fn image_filter_bilateral_range_set(s : ImagefilterbilateralRange, i : Int, v : Double) -> ImagefilterbilateralRange {
-  let result = image_filter_bilateral_range_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_bilateral_range_sum(s : ImagefilterbilateralRange) -> Double { @_common.sum(s.data) }
@@ -1048,10 +1021,9 @@ pub fn image_filter_bilateral_slice_get(s : ImagefilterbilateralSlice, i : Int) 
 }
 
 pub fn image_filter_bilateral_slice_set(s : ImagefilterbilateralSlice, i : Int, v : Double) -> ImagefilterbilateralSlice {
-  let result = image_filter_bilateral_slice_make(s.size)
-  for j in 0..<s.size { result.data[j] = s.data[j] }
-  if i >= 0 && i < s.size { result.data[i] = v }
-  result
+  let data = @_common.copy_arr(s.data)
+  if i >= 0 && i < s.size { data[i] = v }
+  { data, size: s.size, tag: s.tag }
 }
 
 pub fn image_filter_bilateral_slice_sum(s : ImagefilterbilateralSlice) -> Double { @_common.sum(s.data) }
